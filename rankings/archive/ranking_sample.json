@@ -1,0 +1,3786 @@
+[
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1146_annurev_conmatphys_031119_050745",
+    "title": "Statistical Mechanics of Deep Learning",
+    "abstract": "The recent striking success of deep neural networks in machine learning raises profound questions about the theoretical principles underlying their success. For example, what can such deep networks compute? How can we train them? How does information propagate through them? Why can they generalize? And how can we teach them to imagine? We review recent work in which methods of physical analysis rooted in statistical mechanics have begun to provide conceptual insights into these questions. These insights yield connections between deep learning and diverse physical and mathematical topics, including random landscapes, spin glasses, jamming, dynamical phase transitions, chaos, Riemannian geometry, random matrix theory, free probability, and nonequilibrium statistical mechanics. Indeed, the fields of statistical mechanics and machine learning have long enjoyed a rich history of strongly coupled interactions, and recent advances at the intersection of statistical mechanics and deep learning suggest these interactions will only deepen going forward.",
+    "authors": [
+      "Yasaman Bahri",
+      "Jonathan Kadmon",
+      "Jeffrey Pennington",
+      "Sam Schoenholz",
+      "Jascha Sohl‐Dickstein",
+      "Surya Ganguli"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2019-12-09",
+    "doi": "10.1146/annurev-conmatphys-031119-050745",
+    "pdf_url": "https://www.annualreviews.org/doi/pdf/10.1146/annurev-conmatphys-031119-050745",
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 251,
+    "citation_count_openalex": 251,
+    "citation_count_semantic": 55,
+    "influential_citation_count": 1,
+    "reference_count": 17,
+    "fwci": 1.7891,
+    "citation_normalized_percentile": 0.81818182,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 24
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 39
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 34
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 43
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 42
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 46
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 22
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Statistical Mechanics and Entropy",
+      "Neural Networks and Applications",
+      "Gaussian Processes and Bayesian Inference"
+    ],
+    "concepts": [
+      "Statistical mechanics",
+      "Computer science",
+      "Statistical physics",
+      "Artificial intelligence",
+      "Deep learning",
+      "Intersection (aeronautics)",
+      "Theoretical physics",
+      "Cognitive science",
+      "Physics",
+      "Psychology"
+    ],
+    "openalex_id": "https://openalex.org/W2996141621",
+    "semantic_scholar_id": "8351b7666cafafcca6c369e27cea34a0dc1cab28",
+    "embedding_available": true,
+    "citation_velocity": 3.0902,
+    "citation_growth": 0.615,
+    "citation_acceleration": -15,
+    "trajectory": "stable",
+    "influence_ratio": 0.0182,
+    "score_impact": 0.636,
+    "score_momentum": 0.319,
+    "score_influence": 0.1069,
+    "score_recency": 0.0,
+    "score_breadth": 0.325,
+    "score_accessibility": 1.0,
+    "score_overall": 0.3582,
+    "age_days": 2472,
+    "age_months": 81.22,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1155_2022_3077453",
+    "title": "A Study of English Translation Theory Based on Multivariate Statistical Analysis of Random Matrix",
+    "abstract": "With the continuous advancement of artificial intelligence in natural language processing technology, machine translation based on machine learning technology has been fully transformed from traditional machine translation methods to neural network machine translation methods. In particular, the tremendous development of large families has made data-driven a reality. With deep learning as the research and design background, the neural network structure of random matrix multivariate statistical analysis is designed according to the language characteristics of English. The model was tested on a Chinese-English panning model, and the optimal model fused with a Bleu value of 39.53. The model results were applied to a real system to achieve language detection, multidirectional language translation, and manual correction of results to be able to learn long dependencies and overcome the limitations of recurrent neural networks to translate long sentences more fluently.",
+    "authors": [
+      "Yongfang Li"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2022-07-31",
+    "doi": "10.1155/2022/3077453",
+    "pdf_url": "https://downloads.hindawi.com/journals/mpe/2022/3077453.pdf",
+    "arxiv_url": null,
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 1,
+    "citation_count_openalex": 1,
+    "citation_count_semantic": null,
+    "influential_citation_count": null,
+    "reference_count": null,
+    "fwci": 0.1192,
+    "citation_normalized_percentile": 0.47270224,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2023,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Advanced Technologies and Applied Computing",
+      "Medical Imaging and Analysis",
+      "Applied Advanced Technologies"
+    ],
+    "concepts": [
+      "Machine translation",
+      "Computer science",
+      "Artificial intelligence",
+      "Natural language processing",
+      "Artificial neural network",
+      "Translation (biology)",
+      "Machine learning",
+      "Multivariate statistics",
+      "Messenger RNA",
+      "Gene"
+    ],
+    "openalex_id": "https://openalex.org/W4289132422",
+    "semantic_scholar_id": null,
+    "embedding_available": false,
+    "citation_velocity": 0.0202,
+    "trajectory": "new_or_sparse",
+    "score_impact": 0.1443,
+    "score_momentum": 0.0016,
+    "score_influence": 0.0,
+    "score_recency": 0.1742,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.1311,
+    "age_days": 1507,
+    "age_months": 49.52,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "noarxiv:2e9cbf1e0208",
+    "title": "Automatic Differentiation in Machine Learning: a Survey",
+    "abstract": "Derivatives, mostly in the form of gradients and Hessians, are ubiquitous in machine learning. Automatic differentiation (AD) is a technique for calculating derivatives of numeric functions expressed as computer programs efficiently and accurately, used in fields such as computational fluid dynamics, nuclear engineering, and atmospheric sciences. Despite its advantages and use in other fields, machine learning practitioners have been little influenced by AD and make scant use of available tools. We survey the intersection of AD and machine learning, cover applications where AD has the potential to make a big impact, and report on some recent developments in the adoption of this technique. We aim to dispel some misconceptions that we contend have impeded the use of AD within the machine learning community.",
+    "authors": [
+      "Atılım Güneş Baydin",
+      "Barak A. Pearlmutter",
+      "Alexey Radul",
+      "Jeffrey Mark Siskind"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2015-01-01",
+    "doi": null,
+    "pdf_url": "https://mural.maynoothuniversity.ie/id/eprint/10227/1/BP-Automatic-2018.pdf",
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 2093,
+    "citation_count_openalex": 2093,
+    "citation_count_semantic": null,
+    "influential_citation_count": null,
+    "reference_count": null,
+    "fwci": 17.6862,
+    "citation_normalized_percentile": 0.99124643,
+    "is_top_1_percent": true,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 252
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 379
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 398
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 312
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 378
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 241
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 100
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 23
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 6
+      },
+      {
+        "year": 2016,
+        "cited_by_count": 4
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Gaussian Processes and Bayesian Inference",
+      "Neural Networks and Applications",
+      "Computational Physics and Python Applications"
+    ],
+    "concepts": [
+      "Computer science",
+      "Artificial intelligence",
+      "Relevance (law)",
+      "Machine learning",
+      "Automatic differentiation",
+      "Differentiable function",
+      "CLARITY",
+      "Toolbox",
+      "Field (mathematics)",
+      "Algorithmic learning theory"
+    ],
+    "openalex_id": "https://openalex.org/W2962727772",
+    "semantic_scholar_id": null,
+    "embedding_available": false,
+    "citation_velocity": 14.9016,
+    "citation_growth": 0.665,
+    "citation_acceleration": -127,
+    "trajectory": "stable",
+    "score_impact": 0.9982,
+    "score_momentum": 0.4776,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.875,
+    "score_accessibility": 1.0,
+    "score_overall": 0.5126,
+    "age_days": 4275,
+    "age_months": 140.45,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1145_3774942",
+    "title": "How Do Large Language Models Understand Relevance? A Mechanistic Interpretability Perspective",
+    "abstract": "Recent studies have shown that large language models (LLMs) can assess relevance and support information retrieval (IR) tasks such as document ranking and relevance judgment generation. However, the internal mechanisms by which off-the-shelf LLMs understand and operationalize relevance remain largely unexplored. In this article, we systematically investigate how different LLM modules contribute to relevance judgment through the lens of mechanistic interpretability. Using activation patching techniques, we analyze the roles of various model components and identify a multi-stage, progressive process in generating either pointwise or pairwise relevance judgment. Specifically, LLMs first extract query and document information in the early layers, then process relevance information according to instructions in the middle layers, and finally utilize specific attention heads in the later layers to generate relevance judgments in the required format. Our findings provide insights into the mechanisms underlying relevance assessment in LLMs, offering valuable implications for future research on leveraging LLMs for IR tasks.",
+    "authors": [
+      "Qi Liu",
+      "Haozhe Duan",
+      "Jiaxin Mao",
+      "Ji-Rong Wen"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-11-11",
+    "doi": "10.1145/3774942",
+    "pdf_url": null,
+    "arxiv_url": null,
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 11,
+    "citation_count_openalex": 3,
+    "citation_count_semantic": 11,
+    "influential_citation_count": 2,
+    "reference_count": 54,
+    "fwci": 5.3748,
+    "citation_normalized_percentile": 0.95989615,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 3
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Information Retrieval and Search Behavior",
+      "Topic Modeling",
+      "Text Readability and Simplification"
+    ],
+    "concepts": [
+      "Relevance (law)",
+      "Interpretability",
+      "Computer science",
+      "Operationalization",
+      "Ranking (information retrieval)",
+      "Perspective (graphical)",
+      "Process (computing)",
+      "Pairwise comparison",
+      "Pointwise",
+      "Information retrieval"
+    ],
+    "openalex_id": "https://openalex.org/W4416109867",
+    "semantic_scholar_id": "cd5645d273660c3f2f2d844e4f5cb68dc62471a4",
+    "embedding_available": true,
+    "citation_velocity": 1.0856,
+    "trajectory": "new_or_sparse",
+    "influence_ratio": 0.1818,
+    "score_impact": 0.7819,
+    "score_momentum": 0.0868,
+    "score_influence": 0.4754,
+    "score_recency": 0.8312,
+    "score_breadth": 0.225,
+    "score_accessibility": 0.0,
+    "score_overall": 0.4873,
+    "age_days": 308,
+    "age_months": 10.13,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "2302.08991",
+    "internal_id": "2302.08991",
+    "title": "Bridging scales with Machine Learning: From first principles statistical mechanics to continuum phase field computations to study order disorder transitions in LixCoO2",
+    "abstract": "LixTMO2 (TM=Ni, Co, Mn) forms an important family of cathode materials for Li-ion batteries, whose performance is strongly governed by Li composition-dependent crystal structure and phase stability. Here, we use LixCoO2 (LCO) as a model system to benchmark a machine learning-enabled framework for bridging scales in materials physics. We focus on two scales: (a) assemblies of thousands of atoms described by density functional theory-informed statistical mechanics, and (b) continuum phase field models to study the dynamics of order-disorder transitions in LCO. Central to the scale bridging is the rigorous, quantitatively accurate, representation of the free energy density and chemical potentials of this material system by coarsegraining formation energies for specific atomic configurations. We develop active learning workflows to train recently developed integrable deep neural networks for such high-dimensional free energy density and chemical potential functions. The resulting, first principles-informed, machine learning-enabled, phase-field computations allow us to study LCO cathodes' phase evolution in terms of temperature, morphology, charge cycling and particle size.",
+    "authors": [
+      "G. Teichert",
+      "Sambit Das",
+      "M. F. Shojaei",
+      "Jamie Holber",
+      "Tim Mueller",
+      "Linda Hung",
+      "V. Gavini",
+      "K. Garikipati"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2023-02-17",
+    "doi": "10.48550/arXiv.2302.08991",
+    "pdf_url": "http://arxiv.org/pdf/2302.08991",
+    "arxiv_url": "https://arxiv.org/abs/2302.08991",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 10,
+    "citation_count_openalex": 2,
+    "citation_count_semantic": 10,
+    "influential_citation_count": 0,
+    "reference_count": 77,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Machine Learning in Materials Science",
+      "Electron and X-Ray Spectroscopy Techniques",
+      "Advanced Electron Microscopy Techniques and Applications"
+    ],
+    "concepts": [
+      "Bridging (networking)",
+      "Statistical mechanics",
+      "Statistical physics",
+      "Phase transition",
+      "Computation",
+      "Atomic units",
+      "Computer science",
+      "Physics",
+      "Algorithm",
+      "Thermodynamics"
+    ],
+    "openalex_id": "https://openalex.org/W4321392960",
+    "semantic_scholar_id": "ebc61a0f4774f90fa757b46666f6d4b5122dc53b",
+    "embedding_available": true,
+    "citation_velocity": 0.233,
+    "citation_growth": 1.0,
+    "citation_acceleration": 0,
+    "trajectory": "stable",
+    "influence_ratio": 0.0,
+    "score_impact": 0.135,
+    "score_momentum": 0.1353,
+    "score_influence": 0.0,
+    "score_recency": 0.2844,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.167,
+    "age_days": 1306,
+    "age_months": 42.92,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2506.08764",
+    "internal_id": "2506.08764",
+    "title": "On the Stability of the Jacobian Matrix in Deep Neural Networks",
+    "abstract": "Deep neural networks are known to suffer from exploding or vanishing gradients as depth increases, a phenomenon closely tied to the spectral behavior of the input-output Jacobian. Prior work has identified critical initialization schemes that ensure Jacobian stability, but these analyses are typically restricted to fully connected networks with i.i.d. weights. In this work, we go significantly beyond these limitations: we establish a general stability theorem for deep neural networks that accommodates sparsity (such as that introduced by pruning) and non-i.i.d., weakly correlated weights (e.g. induced by training). Our results rely on recent advances in random matrix theory, and provide rigorous guarantees for spectral stability in a much broader class of network models. This extends the theoretical foundation for initialization schemes in modern neural networks with structured and dependent randomness.",
+    "authors": [
+      "B. Dadoun",
+      "Soufiane Hayou",
+      "H. Salam",
+      "M. Seddik",
+      "Pierre Youssef"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-06-10",
+    "doi": "10.48550/arXiv.2506.08764",
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2506.08764",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 4,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 4,
+    "influential_citation_count": 0,
+    "reference_count": 45,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Stochastic Gradient Optimization Techniques",
+      "Model Reduction and Neural Networks",
+      "Quantum many-body systems"
+    ],
+    "concepts": [
+      "Jacobian matrix and determinant",
+      "Initialization",
+      "Artificial neural network",
+      "Stability (learning theory)",
+      "Class (philosophy)",
+      "Computer science",
+      "Matrix (chemical analysis)",
+      "Deep neural networks",
+      "Mathematics",
+      "Algorithm"
+    ],
+    "openalex_id": "https://openalex.org/W6910656004",
+    "semantic_scholar_id": "ea85e52ee040b614ecdeeac64d8b8736e5ed4d1b",
+    "embedding_available": true,
+    "citation_velocity": 0.2633,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.0906,
+    "score_momentum": 0.0211,
+    "score_influence": 0.0,
+    "score_recency": 0.7468,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.1945,
+    "age_days": 462,
+    "age_months": 15.19,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2605.12394",
+    "internal_id": "2605.12394",
+    "title": "Detecting overfitting in Neural Networks during long-horizon grokking using Random Matrix Theory",
+    "abstract": "Training Neural Networks (NNs) without overfitting is difficult; detecting that overfitting is difficult as well. We present a novel Random Matrix Theory method that detects the onset of overfitting in deep learning models without access to train or test data. For each model layer, we randomize each weight matrix element-wise, $\\mathbf{W} \\to \\mathbf{W}^{\\mathrm{rand}}$, fit the randomized empirical spectral distribution with a Marchenko-Pastur distribution, and identify large outliers that violate self-averaging. We call these outliers Correlation Traps. During the onset of overfitting, which we call the\"anti-grokking\"phase in long-horizon grokking, Correlation Traps form and grow in number and scale as test accuracy decreases while train accuracy remains high. Traps may be benign or may harm generalization; we provide an empirical approach to distinguish between them by passing random data through the trained model and evaluating the JS divergence of output logits. Our findings show that anti-grokking is an additional grokking phase with high train accuracy and decreasing test accuracy, structurally distinct from pre-grokking through its Correlation Traps. More broadly, we find that some foundation-scale LLMs exhibit the same Correlation Traps, indicating potentially harmful overfitting.",
+    "authors": [
+      "Hari Prakash",
+      "Charles H. Martin"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2026-05-12",
+    "doi": "10.48550/arXiv.2605.12394",
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2605.12394",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 1,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 1,
+    "influential_citation_count": 0,
+    "reference_count": 27,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Stochastic Gradient Optimization Techniques",
+      "Generative Adversarial Networks and Image Synthesis",
+      "Adversarial Robustness in Machine Learning"
+    ],
+    "concepts": [
+      "Overfitting",
+      "Artificial intelligence",
+      "Outlier",
+      "Computer science",
+      "Machine learning",
+      "Pattern recognition (psychology)",
+      "Artificial neural network",
+      "Correlation",
+      "Divergence (linguistics)",
+      "Covariance matrix"
+    ],
+    "openalex_id": "https://openalex.org/W7160984472",
+    "semantic_scholar_id": "0fbb8e519ac58b1f39beea5e12badffee94336b8",
+    "embedding_available": true,
+    "citation_velocity": 0.2408,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.039,
+    "score_momentum": 0.0193,
+    "score_influence": 0.0,
+    "score_recency": 0.931,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2062,
+    "age_days": 126,
+    "age_months": 4.15,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "q-bio/0510046",
+    "internal_id": "q-bio/0510046",
+    "title": "Speed of synchronization in complex networks of neural oscillators: analytic results based on Random Matrix Theory.",
+    "abstract": "We analyze the dynamics of networks of spiking neural oscillators. First, we present an exact linear stability theory of the synchronous state for networks of arbitrary connectivity. For general neuron rise functions, stability is determined by multiple operators, for which standard analysis is not suitable. We describe a general nonstandard solution to the multioperator problem. Subsequently, we derive a class of neuronal rise functions for which all stability operators become degenerate and standard eigenvalue analysis becomes a suitable tool. Interestingly, this class is found to consist of networks of leaky integrate-and-fire neurons. For random networks of inhibitory integrate-and-fire neurons, we then develop an analytical approach, based on the theory of random matrices, to precisely determine the eigenvalue distributions of the stability operators. This yields the asymptotic relaxation time for perturbations to the synchronous state which provides the characteristic time scale on which neurons can coordinate their activity in such networks. For networks with finite in-degree, i.e., finite number of presynaptic inputs per neuron, we find a speed limit to coordinating spiking activity. Even with arbitrarily strong interaction strengths neurons cannot synchronize faster than at a certain maximal speed determined by the typical in-degree.",
+    "authors": [
+      "M. Timme",
+      "T. Geisel",
+      "F. Wolf"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2005-10-25",
+    "doi": "10.1063/1.2150775",
+    "pdf_url": "https://pubs.aip.org/aip/cha/article-pdf/doi/10.1063/1.2150775/14597951/015108_1_online.pdf",
+    "arxiv_url": "https://arxiv.org/abs/q-bio/0510046",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 53,
+    "citation_count_openalex": 53,
+    "citation_count_semantic": 46,
+    "influential_citation_count": 1,
+    "reference_count": 43,
+    "fwci": 1.7027,
+    "citation_normalized_percentile": 0.82754866,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 4
+      },
+      {
+        "year": 2016,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2015,
+        "cited_by_count": 4
+      },
+      {
+        "year": 2014,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2013,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2012,
+        "cited_by_count": 4
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Neural dynamics and brain function",
+      "Nonlinear Dynamics and Pattern Formation",
+      "stochastic dynamics and bifurcation"
+    ],
+    "concepts": [
+      "Eigenvalues and eigenvectors",
+      "Synchronization (alternating current)",
+      "Artificial neural network",
+      "Random matrix",
+      "Degenerate energy levels",
+      "Stability (learning theory)",
+      "Topology (electrical circuits)",
+      "Matrix (chemical analysis)",
+      "Applied mathematics",
+      "Relaxation (psychology)"
+    ],
+    "openalex_id": "https://openalex.org/W2133724036",
+    "semantic_scholar_id": "97ebc8d21f457d64bb2a216058bfcdfc5c7866d4",
+    "embedding_available": true,
+    "citation_velocity": 0.2114,
+    "citation_growth": 1.0,
+    "citation_acceleration": 0,
+    "trajectory": "stable",
+    "influence_ratio": 0.0217,
+    "score_impact": 0.5433,
+    "score_momentum": 0.1336,
+    "score_influence": 0.1139,
+    "score_recency": 0.0,
+    "score_breadth": 0.325,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2854,
+    "age_days": 7630,
+    "age_months": 250.67,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2506.13139",
+    "internal_id": "2506.13139",
+    "title": "Random Matrix Theory for Deep Learning: Beyond Eigenvalues of Linear Models [Special Issue on the Mathematics of Deep Learning]",
+    "abstract": "Modern machine learning (ML) and deep neural networks (DNNs) often operate on high-dimensional data and rely on overparameterized models, where classical low-dimensional intuitions break down. In particular, the proportional regime where the data dimension, sample size, and number of model parameters are all large and comparable, gives rise to novel and sometimes counterintuitive behaviors. This article extends traditional random matrix theory (RMT) beyond eigenvalue-based analysis of linear models to address the challenges posed by nonlinear ML models such as DNNs in this regime. We introduce the concept of high-dimensional equivalent, which unifies and generalizes both deterministic equivalent and linear equivalent, to systematically address three technical challenges: high dimensionality, nonlinearity, and the need to analyze generic eigenspectral functionals. Leveraging this framework, we provide precise characterizations of the training and generalization performance of linear models, nonlinear shallow networks, and deep networks. Our results capture rich phenomena, including scaling laws, double descent, and nonlinear learning dynamics, offering a unified perspective on the theoretical understanding of deep learning in high dimensions.",
+    "authors": [
+      "Zhenyu Liao",
+      "Michael W. Mahoney"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-06-16",
+    "doi": "10.1109/MSP.2025.3618012",
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2506.13139",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 2,
+    "citation_count_openalex": null,
+    "citation_count_semantic": 2,
+    "influential_citation_count": 0,
+    "reference_count": 46,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": null,
+    "is_oa": null,
+    "topics": [],
+    "concepts": [],
+    "openalex_id": null,
+    "semantic_scholar_id": "996c4f1e54c01b18608d47fcb6fe20bcbb41dfa1",
+    "embedding_available": true,
+    "citation_velocity": 0.1334,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.0619,
+    "score_momentum": 0.0107,
+    "score_influence": 0.0,
+    "score_recency": 0.7501,
+    "score_breadth": 0.0,
+    "score_accessibility": 0.0,
+    "score_overall": 0.1338,
+    "age_days": 456,
+    "age_months": 14.99,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1109_ACCESS.2026.3703892",
+    "title": "Physics-Embedded Deep Learning for Wildfire Risk Assessment: Integrating Statistical Mechanics Into Neural Networks for Interpretable Environmental Modeling",
+    "abstract": "This paper introduces a novel framework that fuses physical laws from statistical mechanics with deep learning to advance wildfire risk assessment. At its core is the “Physics-Embedded Entropy Layer,” which adapts the Boltzmann-Gibbs entropy formula to measure landscape complexity and wildfire susceptibility using tabular environmental data. Integrated as a trainable middle layer within a Parallel Multi-path Feed Forward Neural Network (PMFFNN), this layer transforms raw inputs such as vegetation indices, soil moisture, and meteorological data from the “Morocco Wildfire Predictions: 2010-2022 ML Dataset” into an interpretable, physically grounded representation. A hybrid training approach, combining pretraining of the entropy layer with end-to-end fine-tuning, enables the model to achieve competitive precision and AUC scores, affirming its potential for reliable early warning systems. Although its overall accuracy is moderate compared to some data-driven baselines, the model’s balanced error profile and physical interpretability make it especially suitable for applications demanding trust and mechanistic insight. We also report a complementary experiment on the same Kaggle dataset using a Fire-Triangle Entropy Network (FTEN), which keeps the original physics-embedded entropy idea but reorganizes it into fuel, dryness/heat, wind/spread, and entropy/heterogeneity gates with longer training, stronger regularization, and five repeated random seeds. In this later experiment, FTEN-full achieved ROC-AUC <inline-formula> <tex-math notation=\"LaTeX\">$0.864\\pm 0.080$ </tex-math></inline-formula>, F1-score <inline-formula> <tex-math notation=\"LaTeX\">$0.774\\pm 0.088$ </tex-math></inline-formula>, precision <inline-formula> <tex-math notation=\"LaTeX\">$0.894\\pm 0.023$ </tex-math></inline-formula>, recall <inline-formula> <tex-math notation=\"LaTeX\">$0.692\\pm 0.131$ </tex-math></inline-formula>, and Brier score <inline-formula> <tex-math notation=\"LaTeX\">$0.116\\pm 0.009$ </tex-math></inline-formula>, improving over a regularized FFN baseline in ROC-AUC, F1-score, recall, and calibration error while preserving interpretable physical decomposition. Beyond wildfires, this physics-embedded deep learning approach offers a scalable, interpretable paradigm for diverse scientific challenges, including climate modeling, material science, and environmental risk analysis, laying a robust foundation for future advancements in scientific machine learning.",
+    "authors": [
+      "Ayoub Jadouli",
+      "Chaker El Amrani"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2026",
+    "doi": "10.1109/ACCESS.2026.3703892",
+    "pdf_url": "https://doi.org/10.1109/access.2026.3703892",
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 2,
+    "citation_count_openalex": 1,
+    "citation_count_semantic": 2,
+    "influential_citation_count": 0,
+    "reference_count": 40,
+    "fwci": 0.0,
+    "citation_normalized_percentile": 0.00311292,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Landslides and related hazards"
+    ],
+    "concepts": [
+      "Artificial neural network",
+      "Artificial intelligence",
+      "Machine learning",
+      "Computer science"
+    ],
+    "openalex_id": "https://openalex.org/W4409259810",
+    "semantic_scholar_id": "a4eeef28c1c301a464a19e4f209ecf564619def5",
+    "embedding_available": true,
+    "citation_velocity": 0.2365,
+    "trajectory": "new_or_sparse",
+    "influence_ratio": 0.0,
+    "score_impact": 0.0625,
+    "score_momentum": 0.0189,
+    "score_influence": 0.0,
+    "score_recency": 0.8592,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2136,
+    "age_days": 257,
+    "age_months": 8.46,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1145_3787104",
+    "title": "Bridging the Black Box: A Survey on Mechanistic Interpretability in AI",
+    "abstract": "Mechanistic interpretability seeks to reverse-engineer the internal logic of neural networks by uncovering human-understandable circuits, algorithms, and causal structures that drive model behavior. Unlike post hoc explanations that describe what models do, this paradigm focuses on why and how they compute, tracing information flow through neurons, attention heads, and activation pathways. This survey provides a high-level synthesis of the field-highlighting its motivation, conceptual foundations, and methodological taxonomy rather than enumerating individual techniques. We organize mechanistic interpretability across three abstraction layers— neurons , circuits , and algorithms —and three evaluation perspectives: behavioral , counterfactual , and causal . We further discuss representative approaches and toolchains that enable structural analysis of modern AI systems, outlining how mechanistic interpretability bridges theoretical insights with practical transparency. Despite rapid progress, challenges persist in scaling these analyses to frontier models, resolving polysemantic representations, and establishing standardized causal benchmarks. By connecting historical evolution, current methodologies, and emerging research directions, this survey aims to provide an integrative framework for understanding how mechanistic interpretability can support transparency, reliability, and governance in large-scale AI.",
+    "authors": [
+      "Shriyank Somvanshi",
+      "Md Majharul Islam",
+      "Amir Rafe",
+      "Anannya Ghosh Tusti",
+      "Arka Chakraborty",
+      "Anika Baitullah",
+      "T Chowdhury",
+      "Nawaf Alnawmasi",
+      "Anandi Dutta",
+      "Subasish Das"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2026-01-23",
+    "doi": "10.1145/3787104",
+    "pdf_url": null,
+    "arxiv_url": null,
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 22,
+    "citation_count_openalex": 9,
+    "citation_count_semantic": 22,
+    "influential_citation_count": 0,
+    "reference_count": 118,
+    "fwci": 60.1641,
+    "citation_normalized_percentile": 0.99853013,
+    "is_top_1_percent": true,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 9
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Explainable Artificial Intelligence (XAI)",
+      "Embodied and Extended Cognition",
+      "Ethics and Social Impacts of AI"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Computer science",
+      "Bridging (networking)",
+      "Data science",
+      "Artificial intelligence",
+      "Cognitive science",
+      "Taxonomy (biology)",
+      "Abstraction",
+      "Corporate governance",
+      "Management science"
+    ],
+    "openalex_id": "https://openalex.org/W7125584057",
+    "semantic_scholar_id": "32bcacc81c3e5f0d2252434a5cbd5795558644c7",
+    "embedding_available": true,
+    "citation_velocity": 2.8444,
+    "trajectory": "growing",
+    "influence_ratio": 0.0,
+    "score_impact": 0.8262,
+    "score_momentum": 0.3076,
+    "score_influence": 0.0,
+    "score_recency": 0.8712,
+    "score_breadth": 0.55,
+    "score_accessibility": 0.0,
+    "score_overall": 0.4829,
+    "age_days": 235,
+    "age_months": 7.73,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1017_CBO9781139164542.001",
+    "title": "Statistical Mechanics of Learning: Preface",
+    "abstract": null,
+    "authors": [
+      "A. Engel",
+      "C. Van den Broeck"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2001",
+    "doi": "10.1017/CBO9781139164542.001",
+    "pdf_url": "",
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 1,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 0,
+    "influential_citation_count": 0,
+    "reference_count": 0,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": false,
+    "topics": [
+      "Neural Networks and Applications",
+      "Neural Networks and Reservoir Computing",
+      "Model Reduction and Neural Networks"
+    ],
+    "concepts": [
+      "Computer science"
+    ],
+    "openalex_id": "https://openalex.org/W2313516998",
+    "semantic_scholar_id": "44bb3edb616c6d73de34e1d9019733a9222c618c",
+    "embedding_available": true,
+    "citation_velocity": 0.0032,
+    "trajectory": "unknown",
+    "score_impact": 0.039,
+    "score_momentum": 0.0003,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 0.0,
+    "score_overall": 0.023,
+    "age_days": 9388,
+    "age_months": 308.42,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "2509.18131",
+    "internal_id": "2509.18131",
+    "title": "Randomness and signal propagation in physics-informed neural networks (PINNs): a neural PDE perspective",
+    "abstract": "Physics-informed neural networks (PINNs) often exhibit weight matrices that appear statistically random after training, yet their implications for signal propagation and stability remain unsatisfactorily understood, let alone the interpretability. In this work, we analyze the spectral and statistical properties of trained PINN weights using viscous and inviscid variants of the one-dimensional Burgers'equation, and show that the learned weights reside in a high-entropy regime consistent with predictions from random matrix theory. To investigate the dynamical consequences of such weight structures, we study the evolution of signal features inside a network through the lens of neural partial differential equations (neural PDEs). We show that random and structured weight matrices can be associated with specific discretizations of neural PDEs, and that the numerical stability of these discretizations governs the stability of signal propagation through the network. In particular, explicit unstable schemes lead to degraded signal evolution, whereas stable implicit and higher-order schemes yield well-behaved dynamics for the same underlying neural PDE. Our results offer an explicit example of how numerical stability and network architecture shape signal propagation in deep networks, in relation to random matrix and neural PDE descriptions in PINNs.",
+    "authors": [
+      "J. Tucny",
+      "Abhisek Ganguly",
+      "S. Ansumali",
+      "S. Succi"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-09-12",
+    "doi": "10.1140/epjp/s13360-026-07549-0",
+    "pdf_url": "https://arxiv.org/pdf/2509.18131",
+    "arxiv_url": "https://arxiv.org/abs/2509.18131",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 1,
+    "citation_count_openalex": 1,
+    "citation_count_semantic": 1,
+    "influential_citation_count": 0,
+    "reference_count": 20,
+    "fwci": 5.2764,
+    "citation_normalized_percentile": 0.91229831,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Model Reduction and Neural Networks",
+      "Quantum many-body systems",
+      "Neural Networks and Reservoir Computing"
+    ],
+    "concepts": [
+      "Randomness",
+      "Artificial neural network",
+      "Stability (learning theory)",
+      "SIGNAL (programming language)",
+      "Mathematics",
+      "Algorithm",
+      "Backpropagation",
+      "Inviscid flow",
+      "Matrix (chemical analysis)",
+      "Computer science"
+    ],
+    "openalex_id": "https://openalex.org/W4416257506",
+    "semantic_scholar_id": "b959fffd6059a25b4d244beecf46276391c71f12",
+    "embedding_available": true,
+    "citation_velocity": 0.0826,
+    "trajectory": "new_or_sparse",
+    "influence_ratio": 0.0,
+    "score_impact": 0.6715,
+    "score_momentum": 0.0066,
+    "score_influence": 0.0,
+    "score_recency": 0.7984,
+    "score_breadth": 0.55,
+    "score_accessibility": 1.0,
+    "score_overall": 0.4004,
+    "age_days": 368,
+    "age_months": 12.1,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2006.09092",
+    "internal_id": "2006.09092",
+    "title": "Learning Rates as a Function of Batch Size: A Random Matrix Theory Approach to Neural Network Training",
+    "abstract": "We study the effect of mini-batching on the loss landscape of deep neural networks using spiked, field-dependent random matrix theory. We demonstrate that the magnitude of the extremal values of the batch Hessian are larger than those of the empirical Hessian. We also derive similar results for the Generalised Gauss-Newton matrix approximation of the Hessian. As a consequence of our theorems we derive an analytical expressions for the maximal learning rates as a function of batch size, informing practical optimisation schemes for both stochastic gradient descent (linear scaling) and adaptive algorithms such as Adam (square root scaling). Whilst the linear scaling for stochastic gradient descent has been derived under more restrictive conditions, which we generalise, the square root scaling rule for adaptive optimisers is, to our knowledge, completely novel. We validate our claims on the VGG/WideResNet architectures on the CIFAR-100 and ImageNet datasets.",
+    "authors": [
+      "Diego Granziol",
+      "S. Zohren",
+      "Stephen J. Roberts"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2020-06-16",
+    "doi": null,
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2006.09092",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 76,
+    "citation_count_openalex": 9,
+    "citation_count_semantic": 76,
+    "influential_citation_count": 5,
+    "reference_count": 104,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 5
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Stochastic Gradient Optimization Techniques",
+      "Sparse and Compressive Sensing Techniques",
+      "Random Matrices and Applications"
+    ],
+    "concepts": [
+      "Hessian matrix",
+      "Scaling",
+      "Square root",
+      "Stochastic gradient descent",
+      "Artificial neural network",
+      "Matrix (chemical analysis)",
+      "Mathematics",
+      "Function (biology)",
+      "Applied mathematics",
+      "Gradient descent"
+    ],
+    "openalex_id": "https://openalex.org/W3103622152",
+    "semantic_scholar_id": "3cf27875b5d8626aa82ecc77b27af659c7bca741",
+    "embedding_available": true,
+    "citation_velocity": 1.0136,
+    "citation_growth": 5.0,
+    "citation_acceleration": 4,
+    "trajectory": "exploding",
+    "influence_ratio": 0.0658,
+    "score_impact": 0.2446,
+    "score_momentum": 0.6144,
+    "score_influence": 0.3139,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.351,
+    "age_days": 2282,
+    "age_months": 74.98,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": "2412.05439",
+    "internal_id": "2412.05439",
+    "title": "Statistical mechanics of support vector regression.",
+    "abstract": "A key problem in deep learning and computational neuroscience is relating the geometrical properties of neural representations to task performance. Here, we consider this problem for continuous decoding tasks where neural variability may affect task precision. Using methods from statistical mechanics, we study the average-case learning curves for ɛ-insensitive support vector regression and discuss its capacity as a measure of linear decodability. Our analysis reveals a phase transition in training error at a critical load, capturing the interplay between the tolerance parameter ɛ and neural variability. We uncover a double-descent phenomenon in the generalization error, showing that ɛ acts as a regularizer, both suppressing and shifting these peaks. Theoretical predictions are validated both with toy models and deep neural networks, extending the theory of support vector machines to continuous tasks with inherent neural variability.",
+    "authors": [
+      "Abdulkadir Canatar",
+      "SueYeon Chung"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2024-12-06",
+    "doi": "10.1103/78dr-c4xd",
+    "pdf_url": "https://doi.org/10.1103/78dr-c4xd",
+    "arxiv_url": "https://arxiv.org/abs/2412.05439",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 5,
+    "citation_count_openalex": 5,
+    "citation_count_semantic": 3,
+    "influential_citation_count": 1,
+    "reference_count": 9,
+    "fwci": 2.0891,
+    "citation_normalized_percentile": 0.87486465,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 5
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Face and Expression Recognition",
+      "Bayesian Methods and Mixture Models",
+      "Anomaly Detection Techniques and Applications"
+    ],
+    "concepts": [
+      "Statistical mechanics",
+      "Statistical physics",
+      "Regression",
+      "Mathematics",
+      "Computer science",
+      "Statistics",
+      "Physics"
+    ],
+    "openalex_id": "https://openalex.org/W4411544553",
+    "semantic_scholar_id": "7dfbec561d09643a1c0ce07fc3cf0bbffdaf2538",
+    "embedding_available": true,
+    "citation_velocity": 0.2347,
+    "trajectory": "new_or_sparse",
+    "influence_ratio": 0.3333,
+    "score_impact": 0.4639,
+    "score_momentum": 0.0188,
+    "score_influence": 0.6705,
+    "score_recency": 0.6449,
+    "score_breadth": 0.425,
+    "score_accessibility": 1.0,
+    "score_overall": 0.446,
+    "age_days": 648,
+    "age_months": 21.3,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": "1612.01717",
+    "internal_id": "1612.01717",
+    "title": "Statistical mechanics of unsupervised feature learning in a restricted Boltzmann machine with binary synapses",
+    "abstract": "Revealing hidden features in unlabeled data is called unsupervised feature learning, which plays an important role in pretraining a deep neural network. Here we provide a statistical mechanics analysis of the unsupervised learning in a restricted Boltzmann machine with binary synapses. A message passing equation to infer the hidden feature is derived, and furthermore, variants of this equation are analyzed. A statistical analysis by replica theory describes the thermodynamic properties of the model. Our analysis confirms an entropy crisis preceding the non-convergence of the message passing equation, suggesting a discontinuous phase transition as a key characteristic of the restricted Boltzmann machine. Continuous phase transition is also confirmed depending on the embedded feature strength in the data. The mean-field result under the replica symmetric assumption agrees with that obtained by running message passing algorithms on single instances of finite sizes. Interestingly, in an approximate Hopfield model, the entropy crisis is absent, and a continuous phase transition is observed instead. We also develop an iterative equation to infer the hyper-parameter (temperature) hidden in the data, which in physics corresponds to iteratively imposing Nishimori condition. Our study provides insights towards understanding the thermodynamic properties of the restricted Boltzmann machine learning, and moreover important theoretical basis to build simplified deep networks.",
+    "authors": [
+      "Hai-Ping Huang"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2016-12-06",
+    "doi": "10.1088/1742-5468/aa6ddc",
+    "pdf_url": "https://iopscience.iop.org/article/10.1088/1742-5468/aa6ddc/pdf",
+    "arxiv_url": "https://arxiv.org/abs/1612.01717",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 32,
+    "citation_count_openalex": 27,
+    "citation_count_semantic": 32,
+    "influential_citation_count": 2,
+    "reference_count": 33,
+    "fwci": 1.1263,
+    "citation_normalized_percentile": 0.8312504,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 5
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 7
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 5
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Generative Adversarial Networks and Image Synthesis",
+      "Quantum many-body systems",
+      "Stochastic Gradient Optimization Techniques"
+    ],
+    "concepts": [
+      "Boltzmann machine",
+      "Statistical mechanics",
+      "Restricted Boltzmann machine",
+      "Replica",
+      "Unsupervised learning",
+      "Computer science",
+      "Feature (linguistics)",
+      "Artificial neural network",
+      "Statistical physics",
+      "Boltzmann constant"
+    ],
+    "openalex_id": "https://openalex.org/W2584659637",
+    "semantic_scholar_id": "9597ba0b50e7343e13c0271c6d7bd8e562ab65e4",
+    "embedding_available": true,
+    "citation_velocity": 0.2728,
+    "citation_growth": 5.0,
+    "citation_acceleration": 4,
+    "trajectory": "exploding",
+    "influence_ratio": 0.0625,
+    "score_impact": 0.4645,
+    "score_momentum": 0.5552,
+    "score_influence": 0.2368,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.3868,
+    "age_days": 3570,
+    "age_months": 117.29,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": "2201.04543",
+    "internal_id": "2201.04543",
+    "title": "Eigenvalue Distribution of Large Random Matrices Arising in Deep Neural Networks: Orthogonal Case",
+    "abstract": "This paper deals with the distribution of singular values of the input–output Jacobian of deep untrained neural networks in the limit of their infinite width. The Jacobian is the product of random matrices where the independent weight matrices alternate with diagonal matrices whose entries depend on the corresponding column of the nearest neighbor weight matrix. The problem has been considered in the several recent studies of the field for the Gaussian weights and biases and also for the weights that are Haar distributed orthogonal matrices and Gaussian biases. Based on a free probability argument, it was claimed in those papers that, in the limit of infinite width (matrix size), the singular value distribution of the Jacobian coincides with that of the analog of the Jacobian with special random but weight independent diagonal matrices, the case well known in random matrix theory. In this paper, we justify the claim for random Haar distributed weight matrices and Gaussian biases. This, in particular, justifies the validity of the mean field approximation in the infinite width limit for the deep untrained neural networks and extends the macroscopic universality of random matrix theory to this new class of random matrices.",
+    "authors": [
+      "L. Pastur"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2022-01-12",
+    "doi": "10.1063/5.0085204",
+    "pdf_url": "https://arxiv.org/pdf/2201.04543",
+    "arxiv_url": "https://arxiv.org/abs/2201.04543",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 7,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 7,
+    "influential_citation_count": 0,
+    "reference_count": 36,
+    "fwci": 0.0,
+    "citation_normalized_percentile": 0.02357351,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Stochastic Gradient Optimization Techniques",
+      "Random Matrices and Applications",
+      "Machine Learning and ELM"
+    ],
+    "concepts": [
+      "Random matrix",
+      "Jacobian matrix and determinant",
+      "Mathematics",
+      "Circular law",
+      "Gaussian",
+      "Eigenvalues and eigenvectors",
+      "Multivariate random variable",
+      "Matrix (chemical analysis)",
+      "Orthogonal matrix",
+      "Singular value"
+    ],
+    "openalex_id": "https://openalex.org/W4221147204",
+    "semantic_scholar_id": "5fa90753d20e8e3fdd12861dd4111fc58ae10fd4",
+    "embedding_available": true,
+    "citation_velocity": 0.1248,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.1218,
+    "score_momentum": 0.01,
+    "score_influence": 0.0,
+    "score_recency": 0.0647,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.11,
+    "age_days": 1707,
+    "age_months": 56.09,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2102.06740",
+    "internal_id": "2102.06740",
+    "title": "Appearance of random matrix theory in deep learning",
+    "abstract": "We investigate the local spectral statistics of the loss surface Hessians of artificial neural networks, where we discover excellent agreement with Gaussian Orthogonal Ensemble statistics across several network architectures and datasets. These results shed new light on the applicability of Random Matrix Theory to modelling neural networks and suggest a previously unrecognised role for it in the study of loss surfaces in deep learning. Inspired by these observations, we propose a novel model for the true loss surfaces of neural networks, consistent with our observations, which allows for Hessian spectral densities with rank degeneracy and outliers, extensively observed in practice, and predicts a growing independence of loss gradients as a function of distance in weight-space. We further investigate the importance of the true loss surface in neural networks and find, in contrast to previous work, that the exponential hardness of locating the global minimum has practical consequences for achieving state of the art performance.",
+    "authors": [
+      "Nicholas P. Baskerville",
+      "Diego Granziol",
+      "J. Keating"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2021-02-12",
+    "doi": "10.1016/j.physa.2021.126742",
+    "pdf_url": "https://arxiv.org/pdf/2102.06740",
+    "arxiv_url": "https://arxiv.org/abs/2102.06740",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 14,
+    "citation_count_openalex": 12,
+    "citation_count_semantic": 14,
+    "influential_citation_count": 0,
+    "reference_count": 80,
+    "fwci": 1.3633,
+    "citation_normalized_percentile": 0.79104743,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 4
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Statistical Mechanics and Entropy",
+      "Theoretical and Computational Physics",
+      "Gaussian Processes and Bayesian Inference"
+    ],
+    "concepts": [
+      "Hessian matrix",
+      "Random matrix",
+      "Gaussian",
+      "Artificial neural network",
+      "Outlier",
+      "Computer science",
+      "Artificial intelligence",
+      "Deep learning",
+      "Statistical physics",
+      "Matrix (chemical analysis)"
+    ],
+    "openalex_id": "https://openalex.org/W4205544082",
+    "semantic_scholar_id": "404f12ef45a893b7c02627ae19e0050a3f90599c",
+    "embedding_available": true,
+    "citation_velocity": 0.2088,
+    "citation_growth": 1.5,
+    "citation_acceleration": 1,
+    "trajectory": "growing",
+    "influence_ratio": 0.0,
+    "score_impact": 0.4334,
+    "score_momentum": 0.28,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.65,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2825,
+    "age_days": 2041,
+    "age_months": 67.06,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "1406.2572",
+    "internal_id": "1406.2572",
+    "title": "Identifying and attacking the saddle point problem in high-dimensional non-convex optimization",
+    "abstract": "A central challenge to many fields of science and engineering involves minimizing non-convex error functions over continuous, high dimensional spaces. Gradient descent or quasi-Newton methods are almost ubiquitously used to perform such minimizations, and it is often thought that a main source of difficulty for these local methods to find the global minimum is the proliferation of local minima with much higher error than the global minimum. Here we argue, based on results from statistical physics, random matrix theory, neural network theory, and empirical evidence, that a deeper and more profound difficulty originates from the proliferation of saddle points, not local minima, especially in high dimensional problems of practical interest. Such saddle points are surrounded by high error plateaus that can dramatically slow down learning, and give the illusory impression of the existence of a local minimum. Motivated by these arguments, we propose a new approach to second-order optimization, the saddle-free Newton method, that can rapidly escape high dimensional saddle points, unlike gradient descent and quasi-Newton methods. We apply this algorithm to deep or recurrent neural network training, and provide numerical evidence for its superior optimization performance.",
+    "authors": [
+      "Yann Dauphin",
+      "Razvan Pascanu",
+      "Çağlar Gülçehre",
+      "Kyunghyun Cho",
+      "Surya Ganguli",
+      "Yoshua Bengio"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2014-12-08",
+    "doi": null,
+    "pdf_url": "https://arxiv.org/pdf/1406.2572",
+    "arxiv_url": "https://arxiv.org/abs/1406.2572",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 1558,
+    "citation_count_openalex": 491,
+    "citation_count_semantic": 1558,
+    "influential_citation_count": 87,
+    "reference_count": 30,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 11
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 27
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 44
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 70
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 66
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 67
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 84
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 49
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 34
+      },
+      {
+        "year": 2016,
+        "cited_by_count": 22
+      },
+      {
+        "year": 2015,
+        "cited_by_count": 16
+      },
+      {
+        "year": 2014,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Sparse and Compressive Sensing Techniques",
+      "Stochastic Gradient Optimization Techniques",
+      "Face and Expression Recognition"
+    ],
+    "concepts": [
+      "Maxima and minima",
+      "Saddle point",
+      "Gradient descent",
+      "Saddle",
+      "Artificial neural network",
+      "Mathematical optimization",
+      "Computer science",
+      "Convex optimization",
+      "Convex function",
+      "Mathematics"
+    ],
+    "openalex_id": "https://openalex.org/W2963586744",
+    "semantic_scholar_id": "981ce6b655cc06416ff6bf7fac8c6c2076fd7fac",
+    "embedding_available": true,
+    "citation_velocity": 11.0306,
+    "citation_growth": 0.407,
+    "citation_acceleration": -16,
+    "trajectory": "declining",
+    "influence_ratio": 0.0558,
+    "score_impact": 0.35,
+    "score_momentum": 0.4475,
+    "score_influence": 0.5116,
+    "score_recency": 0.0,
+    "score_breadth": 0.55,
+    "score_accessibility": 1.0,
+    "score_overall": 0.3967,
+    "age_days": 4299,
+    "age_months": 141.24,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1207_s15516709cog0901_7",
+    "title": "A Learning Algorithm for Boltzmann Machines*",
+    "abstract": "The computational power of massively parallel networks of simple processing elements resides in the communication bandwidth provided by the hardware connections between elements. These connections can allow a significant fraction of the knowledge of the system to be applied to an instance of a problem in a very short time. One kind of computation for which massively parallel networks appear to be well suited is large constraint satisfaction searches, but to use the connections efficiently two conditions must be met: First, a search technique that is suitable for parallel networks must be found. Second, there must be some way of choosing internal representations which allow the preexisting hardware connections to be used efficiently for encoding the constraints in the domain being searched. We describe a general parallel search method, based on statistical mechanics, and we show how it leads to a general learning rule for modifying the connection strengths so as to incorporate knowledge about a task domain in an efficient way. We describe some simple examples in which the learning algorithm creates internal representations that are demonstrably the most efficient way of using the preexisting connectivity structure.",
+    "authors": [
+      "David H. Ackley",
+      "Geoffrey E. Hinton",
+      "Terrence J. Sejnowski"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "1985-01-01",
+    "doi": "10.1207/s15516709cog0901_7",
+    "pdf_url": null,
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 3327,
+    "citation_count_openalex": 3327,
+    "citation_count_semantic": null,
+    "influential_citation_count": null,
+    "reference_count": null,
+    "fwci": 72.5038,
+    "citation_normalized_percentile": 1.0,
+    "is_top_1_percent": true,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 17
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 35
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 63
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 127
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 136
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 209
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 171
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 181
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 163
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 142
+      },
+      {
+        "year": 2016,
+        "cited_by_count": 124
+      },
+      {
+        "year": 2015,
+        "cited_by_count": 106
+      },
+      {
+        "year": 2014,
+        "cited_by_count": 91
+      },
+      {
+        "year": 2013,
+        "cited_by_count": 104
+      },
+      {
+        "year": 2012,
+        "cited_by_count": 92
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Neural dynamics and brain function",
+      "Neural Networks and Applications",
+      "Markov Chains and Monte Carlo Methods"
+    ],
+    "concepts": [
+      "Massively parallel",
+      "Computer science",
+      "Simple (philosophy)",
+      "Computation",
+      "Fraction (chemistry)",
+      "Domain (mathematical analysis)",
+      "Theoretical computer science",
+      "Connection (principal bundle)",
+      "Algorithm",
+      "Artificial intelligence"
+    ],
+    "openalex_id": "https://openalex.org/W2042492924",
+    "semantic_scholar_id": null,
+    "embedding_available": false,
+    "citation_velocity": 6.6486,
+    "citation_growth": 0.486,
+    "citation_acceleration": -18,
+    "trajectory": "declining",
+    "score_impact": 1.0,
+    "score_momentum": 0.4567,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.55,
+    "score_accessibility": 0.0,
+    "score_overall": 0.4417,
+    "age_days": 15232,
+    "age_months": 500.41,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1016_j.csbr.2025.100066",
+    "title": "Cracking the clinical code: A scoping review on mechanistic interpretability in medical report generation",
+    "abstract": "Medical report generation (MRG) bridges computer vision and natural language processing by translating clinical images into diagnostic text. Although encoder–decoder models have significantly advanced this domain, their opaque internal processes continue to impede clinical trust and regulatory acceptance. This survey presents a comprehensive methodological review of interpretability techniques applied to MRG, with particular emphasis on mechanistic interpretability. This emerging paradigm shifts the focus from attribution-based methods towards uncovering how specific model components such as neurons, attention heads, and residual connections encode diagnostic logic. We categorise core techniques including activation patching, causal tracing, circuit decomposition, and concept bottleneck probing, and propose a structured taxonomy spanning modalities, architectures, and evaluation strategies. Unlike conventional post hoc attribution methods, mechanistic approaches aim to provide causal, component-level explanations that are predictive and verifiable. We identify major challenges in this area, including cross-modal entanglement, the absence of internal ground-truth benchmarks, and the need for clinically aligned evaluation protocols. To address these limitations, we outline future research directions involving interpretable-by-design architectures, interactive explanation refinement through clinician feedback, and standardised metrics for mechanistic fidelity. By synthesising insights from machine learning, neuroscience, and radiology, this survey establishes a foundation for building MRG systems that are transparent, trustworthy, and clinically useful.",
+    "authors": [
+      "Dost Muhammad",
+      "Muhammad Salman",
+      "Malika Bendechache"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-01-01",
+    "doi": "10.1016/j.csbr.2025.100066",
+    "pdf_url": "https://doi.org/10.1016/j.csbr.2025.100066",
+    "arxiv_url": null,
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 6,
+    "citation_count_openalex": 6,
+    "citation_count_semantic": 4,
+    "influential_citation_count": 0,
+    "reference_count": 37,
+    "fwci": 6.2569,
+    "citation_normalized_percentile": 0.96189953,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 4
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 2
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Topic Modeling",
+      "Biomedical Text Mining and Ontologies",
+      "Machine Learning in Healthcare"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Data science",
+      "Computer science",
+      "Artificial intelligence",
+      "Bottleneck",
+      "Risk analysis (engineering)",
+      "Dependency (UML)",
+      "Rotation formalisms in three dimensions",
+      "Management science",
+      "Causal chain"
+    ],
+    "openalex_id": "https://openalex.org/W4414920038",
+    "semantic_scholar_id": "04af88081317d043086d35d62e41386478230f86",
+    "embedding_available": true,
+    "citation_velocity": 0.2934,
+    "citation_growth": 2.0,
+    "citation_acceleration": 2,
+    "trajectory": "growing",
+    "influence_ratio": 0.0,
+    "score_impact": 0.7519,
+    "score_momentum": 0.3535,
+    "score_influence": 0.0,
+    "score_recency": 0.6592,
+    "score_breadth": 0.45,
+    "score_accessibility": 1.0,
+    "score_overall": 0.4853,
+    "age_days": 622,
+    "age_months": 20.45,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "noarxiv:f5246c64de6c",
+    "title": "Towards understanding the true loss surface of deep neural networks using random matrix theory and iterative spectral methods",
+    "abstract": null,
+    "authors": [
+      "Diego Granziol",
+      "T. Garipov",
+      "D. Vetrov",
+      "S. Zohren",
+      "Stephen J. Roberts",
+      "A. Wilson"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2019-09-25",
+    "doi": null,
+    "pdf_url": "",
+    "arxiv_url": null,
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 18,
+    "citation_count_openalex": 11,
+    "citation_count_semantic": 18,
+    "influential_citation_count": 1,
+    "reference_count": 46,
+    "fwci": 1.5907,
+    "citation_normalized_percentile": 0.88141966,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2022,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 4
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Neural Networks and Applications"
+    ],
+    "concepts": [
+      "Mathematics",
+      "Algorithm",
+      "Artificial neural network",
+      "Matrix (chemical analysis)",
+      "Iterative method",
+      "Computer science",
+      "Artificial intelligence",
+      "Applied mathematics",
+      "Calculus (dental)",
+      "Medicine"
+    ],
+    "openalex_id": "https://openalex.org/W2997401498",
+    "semantic_scholar_id": "8d87eccf297c98daf152c02c87aeb29d6794c972",
+    "embedding_available": true,
+    "citation_velocity": 0.2151,
+    "citation_growth": 0.75,
+    "citation_acceleration": -1,
+    "trajectory": "stable",
+    "influence_ratio": 0.0556,
+    "score_impact": 0.4852,
+    "score_momentum": 0.1047,
+    "score_influence": 0.1817,
+    "score_recency": 0.0,
+    "score_breadth": 0.0,
+    "score_accessibility": 0.0,
+    "score_overall": 0.2081,
+    "age_days": 2547,
+    "age_months": 83.69,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": "1203.6178",
+    "internal_id": "1203.6178",
+    "title": "Statistical mechanics of dictionary learning",
+    "abstract": "Finding a basis matrix (dictionary) by which objective signals are represented sparsely is of major relevance in various scientific and technological fields. We consider a problem to learn a dictionary from a set of training signals. We employ techniques of statistical mechanics of disordered systems to evaluate the size of the training set necessary to typically succeed in the dictionary learning. The results indicate that the necessary size is much smaller than previously estimated, which theoretically supports and/or encourages the use of dictionary learning in practical situations.",
+    "authors": [
+      "Ayaka Sakata",
+      "Yoshiyuki Kabashima"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2013-07-01",
+    "doi": "10.1209/0295-5075/103/28008",
+    "pdf_url": "https://iopscience.iop.org/article/10.1209/0295-5075/103/28008/pdf",
+    "arxiv_url": "https://arxiv.org/abs/1203.6178",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 26,
+    "citation_count_openalex": 22,
+    "citation_count_semantic": 26,
+    "influential_citation_count": 3,
+    "reference_count": 23,
+    "fwci": 3.8264,
+    "citation_normalized_percentile": 0.92631067,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2016,
+        "cited_by_count": 6
+      },
+      {
+        "year": 2015,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2014,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2013,
+        "cited_by_count": 3
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Sparse and Compressive Sensing Techniques",
+      "Blind Source Separation Techniques",
+      "Neural Networks and Applications"
+    ],
+    "concepts": [
+      "Statistical mechanics",
+      "Computer science",
+      "Relevance (law)",
+      "Set (abstract data type)",
+      "Statistical learning",
+      "Artificial intelligence",
+      "Basis (linear algebra)",
+      "Matrix (chemical analysis)",
+      "Natural language processing",
+      "Machine learning"
+    ],
+    "openalex_id": "https://openalex.org/W1994395934",
+    "semantic_scholar_id": "f2a3a74e92498e15218fc0ee05a63007ea9a7094",
+    "embedding_available": true,
+    "citation_velocity": 0.164,
+    "citation_growth": 0.333,
+    "citation_acceleration": -2,
+    "trajectory": "declining",
+    "influence_ratio": 0.1154,
+    "score_impact": 0.7152,
+    "score_momentum": 0.052,
+    "score_influence": 0.3718,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.3632,
+    "age_days": 4824,
+    "age_months": 158.49,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "cond-mat/0102319",
+    "internal_id": "cond-mat/0102319",
+    "title": "Statistical mechanics of learning with soft margin classifiers.",
+    "abstract": "We study the typical learning properties of the recently introduced soft margin classifiers (SMCs), learning realizable and unrealizable tasks, with the tools of statistical mechanics. We derive analytically the behavior of the learning curves in the regime of very large training sets. We obtain exponential and power laws for the decay of the generalization error towards the asymptotic value, depending on the task and on general characteristics of the distribution of stabilities of the patterns to be learned. The optimal learning curves of the SMCs, which give the minimal generalization error, are obtained by tuning the coefficient controlling the trade-off between the error and the regularization terms in the cost function. If the task is realizable by the SMC, the optimal performance is better than that of a hard margin support vector machine and is very close to that of a Bayesian classifier.",
+    "authors": [
+      "S. Risau-Gusman",
+      "M. B. Gordon"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2001-02-18",
+    "doi": "10.1103/PhysRevE.64.031907",
+    "pdf_url": "https://arxiv.org/pdf/cond-mat/0102319",
+    "arxiv_url": "https://arxiv.org/abs/cond-mat/0102319",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 5,
+    "citation_count_openalex": 3,
+    "citation_count_semantic": 5,
+    "influential_citation_count": 0,
+    "reference_count": 18,
+    "fwci": 0.0,
+    "citation_normalized_percentile": 0.08659114,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2022,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Neural Networks and Applications",
+      "Machine Learning and Algorithms",
+      "Fault Detection and Control Systems"
+    ],
+    "concepts": [
+      "Generalization error",
+      "Margin (machine learning)",
+      "Computer science",
+      "Generalization",
+      "Margin classifier",
+      "Classifier (UML)",
+      "Exponential function",
+      "Artificial intelligence",
+      "Statistical mechanics",
+      "Statistical learning theory"
+    ],
+    "openalex_id": "https://openalex.org/W1648640574",
+    "semantic_scholar_id": "60cf46a11bd46a9fa5531b2819200eaa5e30aa58",
+    "embedding_available": true,
+    "citation_velocity": 0.0163,
+    "citation_growth": 1.0,
+    "citation_acceleration": 0,
+    "trajectory": "stable",
+    "influence_ratio": 0.0,
+    "score_impact": 0.1182,
+    "score_momentum": 0.118,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.325,
+    "score_accessibility": 1.0,
+    "score_overall": 0.1312,
+    "age_days": 9340,
+    "age_months": 306.85,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "2104.08318",
+    "internal_id": "2104.08318",
+    "title": "LixCoO2 phase stability studied by machine learning-enabled scale bridging between electronic structure, statistical mechanics and phase field theories",
+    "abstract": "Li$_xTM$O$_2$ (TM={Ni, Co, Mn}) are promising cathodes for Li-ion batteries, whose electrochemical cycling performance is strongly governed by crystal structure and phase stability as a function of Li content at the atomistic scale. Here, we use Li$_x$CoO$_2$ (LCO) as a model system to benchmark a scale-bridging framework that combines density functional theory (DFT) calculations at the atomistic scale with phase field modeling at the continuum scale to understand the impact of phase stability on microstructure evolution. This scale bridging is accomplished by incorporating traditional statistical mechanics methods with integrable deep neural networks, which allows formation energies for specific atomic configurations to be coarse-grained and incorporated in a neural network description of the free energy of the material. The resulting realistic free energy functions enable atomistically informed phase-field simulations. These computational results allow us to make connections to experimental work on LCO cathode degradation as a function of temperature, morphology and particle size.",
+    "authors": [
+      "G. Teichert",
+      "Sambit Das",
+      "M. Aykol",
+      "C. Gopal",
+      "V. Gavini",
+      "K. Garikipati"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2021-04-16",
+    "doi": null,
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2104.08318",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 2,
+    "citation_count_openalex": null,
+    "citation_count_semantic": 2,
+    "influential_citation_count": 0,
+    "reference_count": 72,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": null,
+    "is_oa": null,
+    "topics": [],
+    "concepts": [],
+    "openalex_id": null,
+    "semantic_scholar_id": "56da3fffacba8c33bba4b3125459f59e58939c67",
+    "embedding_available": true,
+    "citation_velocity": 0.0308,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.0619,
+    "score_momentum": 0.0025,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.0,
+    "score_accessibility": 0.0,
+    "score_overall": 0.0192,
+    "age_days": 1978,
+    "age_months": 64.99,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2601.17357",
+    "internal_id": "2601.17357",
+    "title": "Spectral Geometry for Deep Learning: Compression and Hallucination Detection via Random Matrix Theory",
+    "abstract": "Large language models and deep neural networks achieve strong performance but suffer from reliability issues and high computational cost. This thesis proposes a unified framework based on spectral geometry and random matrix theory to address both problems by analyzing the eigenvalue structure of hidden activations. The first contribution, EigenTrack, is a real-time method for detecting hallucinations and out-of-distribution behavior in language and vision-language models using spectral features and their temporal dynamics. The second contribution, RMT-KD, is a principled compression method that identifies informative spectral components and applies iterative knowledge distillation to produce compact and efficient models while preserving accuracy. Together, these results show that spectral statistics provide interpretable and robust signals for monitoring uncertainty and guiding compression in large-scale neural networks.",
+    "authors": [
+      "Davide Ettori"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2026-01-24",
+    "doi": "10.48550/arXiv.2601.17357",
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2601.17357",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 1,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 0,
+    "influential_citation_count": 0,
+    "reference_count": 0,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Adversarial Robustness in Machine Learning",
+      "Stochastic Gradient Optimization Techniques",
+      "Ferroelectric and Negative Capacitance Devices"
+    ],
+    "concepts": [
+      "Algorithm",
+      "Algorithm",
+      "Computer science",
+      "Computer science",
+      "Artificial intelligence",
+      "Artificial intelligence",
+      "Compression (physics)",
+      "Compression (physics)",
+      "Matrix (chemical analysis)",
+      "Matrix (chemical analysis)"
+    ],
+    "openalex_id": "https://openalex.org/W7125788154",
+    "semantic_scholar_id": "4af21a730d75a3796162b0e16b90f41325eb8638",
+    "embedding_available": true,
+    "citation_velocity": 0.1298,
+    "trajectory": "unknown",
+    "score_impact": 0.039,
+    "score_momentum": 0.0104,
+    "score_influence": 0.0,
+    "score_recency": 0.8718,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.1951,
+    "age_days": 234,
+    "age_months": 7.7,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2503.01922",
+    "internal_id": "2503.01922",
+    "title": "Pruning Deep Neural Networks via a Combination of the Marchenko-Pastur Distribution and Regularization",
+    "abstract": "Deep neural networks (DNNs) have brought significant advancements in various applications in recent years, such as image recognition, speech recognition, and natural language processing. In particular, Vision Transformers (ViTs) have emerged as a powerful class of models in the field of deep learning for image classification. In this work, we propose a novel Random Matrix Theory (RMT)-based method for pruning pre-trained DNNs, based on the sparsification of weights and singular vectors, and apply it to ViTs. RMT provides a robust framework to analyze the statistical properties of large matrices, which has been shown to be crucial for understanding and optimizing the performance of DNNs. We demonstrate that our RMT-based pruning can be used to reduce the number of parameters of ViT models (trained on ImageNet) by 30-50\\% with less than 1\\% loss in accuracy. To our knowledge, this represents the state-of-the-art in pruning for these ViT models. Furthermore, we provide a rigorous mathematical underpinning of the above numerical studies, namely we proved a theorem for fully connected DNNs, and other more general DNN structures, describing how the randomness in the weight matrices of a DNN decreases as the weights approach a local or global minimum (during training). We verify this theorem through numerical experiments on fully connected DNNs, providing empirical support for our theoretical findings. Moreover, we prove a theorem that describes how DNN loss decreases as we remove randomness in the weight layers, and show a monotone dependence of the decrease in loss with the amount of randomness that we remove. Our results also provide significant RMT-based insights into the role of regularization during training and pruning.",
+    "authors": [
+      "Leonid Berlyand",
+      "Théo Bourdais",
+      "H. Owhadi",
+      "Yitzchak Shmalo"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-03-02",
+    "doi": "10.48550/arXiv.2503.01922",
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2503.01922",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 2,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 2,
+    "influential_citation_count": 0,
+    "reference_count": 0,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Stochastic Gradient Optimization Techniques",
+      "Generative Adversarial Networks and Image Synthesis",
+      "Machine Learning and ELM"
+    ],
+    "concepts": [
+      "Randomness",
+      "Artificial neural network",
+      "Regularization (linguistics)",
+      "Mathematics",
+      "Algorithm",
+      "Pruning",
+      "Deep neural networks",
+      "Computer science",
+      "Artificial intelligence",
+      "Deep learning"
+    ],
+    "openalex_id": "https://openalex.org/W4416111060",
+    "semantic_scholar_id": "a5d8ccb883372fd044689f1a3f687b5857c474e8",
+    "embedding_available": true,
+    "citation_velocity": 0.1082,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.0619,
+    "score_momentum": 0.0087,
+    "score_influence": 0.0,
+    "score_recency": 0.6921,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.1746,
+    "age_days": 562,
+    "age_months": 18.48,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.3390_e26010041",
+    "title": "Seeing Is Believing: Brain-Inspired Modular Training for Mechanistic Interpretability",
+    "abstract": "We introduce Brain-Inspired Modular Training (BIMT), a method for making neural networks more modular and interpretable. Inspired by brains, BIMT embeds neurons in a geometric space and augments the loss function with a cost proportional to the length of each neuron connection. This is inspired by the idea of minimum connection cost in evolutionary biology, but we are the first the combine this idea with training neural networks with gradient descent for interpretability. We demonstrate that BIMT discovers useful modular neural networks for many simple tasks, revealing compositional structures in symbolic formulas, interpretable decision boundaries and features for classification, and mathematical structure in algorithmic datasets. Qualitatively, BIMT-trained networks have modules readily identifiable by the naked eye, but regularly trained networks seem much more complicated. Quantitatively, we use Newman's method to compute the modularity of network graphs; BIMT achieves the highest modularity for all our test problems. A promising and ambitious future direction is to apply the proposed method to understand large models for vision, language, and science.",
+    "authors": [
+      "Ziming Liu",
+      "Eric Gan",
+      "Max Tegmark"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2023-12-30",
+    "doi": "10.3390/e26010041",
+    "pdf_url": "https://www.mdpi.com/1099-4300/26/1/41/pdf?version=1703927844",
+    "arxiv_url": null,
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 63,
+    "citation_count_openalex": 26,
+    "citation_count_semantic": 63,
+    "influential_citation_count": 8,
+    "reference_count": 36,
+    "fwci": 6.8796,
+    "citation_normalized_percentile": 0.97400236,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 8
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 10
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 6
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 2
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Action Observation and Synchronization",
+      "Clinical Reasoning and Diagnostic Skills"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Modular design",
+      "Computer science",
+      "Artificial intelligence",
+      "Training (meteorology)",
+      "Machine learning",
+      "Cognitive science",
+      "Psychology",
+      "Programming language",
+      "Physics"
+    ],
+    "openalex_id": "https://openalex.org/W4390467836",
+    "semantic_scholar_id": "f8029060e91209f048b3f9882f2cdd3607785ccd",
+    "embedding_available": true,
+    "citation_velocity": 1.9362,
+    "citation_growth": 0.8,
+    "citation_acceleration": -2,
+    "trajectory": "stable",
+    "influence_ratio": 0.127,
+    "score_impact": 0.8789,
+    "score_momentum": 0.2482,
+    "score_influence": 0.4775,
+    "score_recency": 0.4575,
+    "score_breadth": 0.325,
+    "score_accessibility": 1.0,
+    "score_overall": 0.5561,
+    "age_days": 990,
+    "age_months": 32.54,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": "1706.06953",
+    "internal_id": "1706.06953",
+    "title": "Statistical Mechanics of Node-perturbation Learning with Noisy Baseline",
+    "abstract": "Node-perturbation learning is a type of statistical gradient descent algorithm that can be applied to problems where the objective function is not explicitly formulated, including reinforcement learning. It estimates the gradient of an objective function by using the change in the object function in response to the perturbation. The value of the objective function for an unperturbed output is called a baseline. Cho et al. proposed node-perturbation learning with a noisy baseline. In this paper, we report on building the statistical mechanics of Cho’s model and on deriving coupled differential equations of order parameters that depict learning dynamics. We also show how to derive the generalization error by solving the differential equations of order parameters. On the basis of the results, we show that Cho’s results are also apply in general cases and show some general performances of Cho’s model.",
+    "authors": [
+      "K. Hara",
+      "K. Katahira",
+      "M. Okada"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2017-02-15",
+    "doi": "10.7566/JPSJ.86.024002",
+    "pdf_url": "https://arxiv.org/pdf/1706.06953",
+    "arxiv_url": "https://arxiv.org/abs/1706.06953",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 1,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 1,
+    "influential_citation_count": 0,
+    "reference_count": 21,
+    "fwci": 0.0,
+    "citation_normalized_percentile": 0.08594462,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Stochastic Gradient Optimization Techniques",
+      "Reinforcement Learning in Robotics",
+      "Neural Networks and Applications"
+    ],
+    "concepts": [
+      "Generalization",
+      "Statistical mechanics",
+      "Gradient descent",
+      "Function (biology)",
+      "Computer science",
+      "Basis (linear algebra)",
+      "Differential equation",
+      "Object (grammar)",
+      "Applied mathematics",
+      "Reinforcement learning"
+    ],
+    "openalex_id": "https://openalex.org/W2564469815",
+    "semantic_scholar_id": "62b8bbc28c55c40ea087a63210b3839941e2ddc0",
+    "embedding_available": true,
+    "citation_velocity": 0.0087,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.0562,
+    "score_momentum": 0.0007,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.625,
+    "score_accessibility": 1.0,
+    "score_overall": 0.0983,
+    "age_days": 3499,
+    "age_months": 114.96,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2208.08266",
+    "internal_id": "2208.08266",
+    "title": "Learning nonequilibrium statistical mechanics and dynamical phase transitions",
+    "abstract": "Nonequilibrium statistical mechanics exhibit a variety of complex phenomena far from equilibrium. It inherits challenges of equilibrium, including accurately describing the joint distribution of a large number of configurations, and also poses new challenges as the distribution evolves over time. Characterizing dynamical phase transitions as an emergent behavior further requires tracking nonequilibrium systems under a control parameter. While a number of methods have been proposed, such as tensor networks for one-dimensional lattices, we lack a method for arbitrary time beyond the steady state and for higher dimensions. Here, we develop a general computational framework to study the time evolution of nonequilibrium systems in statistical mechanics by leveraging variational autoregressive networks, which offer an efficient computation on the dynamical partition function, a central quantity for discovering the phase transition. We apply the approach to prototype models of nonequilibrium statistical mechanics, including the kinetically constrained models of structural glasses up to three dimensions. The approach uncovers the active-inactive phase transition of spin flips, the dynamical phase diagram, as well as new scaling relations. The result highlights the potential of machine learning dynamical phase transitions in nonequilibrium systems.",
+    "authors": [
+      "Ying Tang",
+      "Jing Liu",
+      "Jiang Zhang",
+      "Pandeng Zhang"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2022-08-17",
+    "doi": "10.1038/s41467-024-45172-8",
+    "pdf_url": "https://www.nature.com/articles/s41467-024-45172-8.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2208.08266",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 30,
+    "citation_count_openalex": 26,
+    "citation_count_semantic": 30,
+    "influential_citation_count": 1,
+    "reference_count": 62,
+    "fwci": 4.9484,
+    "citation_normalized_percentile": 0.96111468,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 8
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 11
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 7
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Advanced Thermodynamics and Statistical Mechanics",
+      "Neural dynamics and brain function",
+      "Model Reduction and Neural Networks"
+    ],
+    "concepts": [
+      "Non-equilibrium thermodynamics",
+      "Statistical physics",
+      "Statistical mechanics",
+      "Dynamical systems theory",
+      "Phase transition",
+      "Partition function (quantum field theory)",
+      "Physics",
+      "Scaling",
+      "Computer science",
+      "Mathematics"
+    ],
+    "openalex_id": "https://openalex.org/W4391590458",
+    "semantic_scholar_id": "a120bfd001d35fb5de906f0ed29304750add29aa",
+    "embedding_available": true,
+    "citation_velocity": 0.6127,
+    "citation_growth": 0.727,
+    "citation_acceleration": -3,
+    "trajectory": "stable",
+    "influence_ratio": 0.0333,
+    "score_impact": 0.8309,
+    "score_momentum": 0.1338,
+    "score_influence": 0.1371,
+    "score_recency": 0.1836,
+    "score_breadth": 0.75,
+    "score_accessibility": 1.0,
+    "score_overall": 0.4252,
+    "age_days": 1490,
+    "age_months": 48.96,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "2502.12352",
+    "internal_id": "2502.12352",
+    "title": "Towards Mechanistic Interpretability of Graph Transformers via Attention Graphs",
+    "abstract": "We introduce Attention Graphs, a new tool for mechanistic interpretability of Graph Neural Networks (GNNs) and Graph Transformers based on the mathematical equivalence between message passing in GNNs and the self-attention mechanism in Transformers. Attention Graphs aggregate attention matrices across Transformer layers and heads to describe how information flows among input nodes. Through experiments on homophilous and heterophilous node classification tasks, we analyze Attention Graphs from a network science perspective and find that: (1) When Graph Transformers are allowed to learn the optimal graph structure using all-to-all attention among input nodes, the Attention Graphs learned by the model do not tend to correlate with the input/original graph structure; and (2) For heterophilous graphs, different Graph Transformer variants can achieve similar performance while utilising distinct information flow patterns. Open source code: https://github.com/batu-el/understanding-inductive-biases-of-gnns",
+    "authors": [
+      "Batu El",
+      "Choudhury, Deepro",
+      "Píetro Lió",
+      "Chaitanya K. Joshi"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-02-17",
+    "doi": "10.48550/arxiv.2502.12352",
+    "pdf_url": "https://arxiv.org/pdf/2502.12352",
+    "arxiv_url": "https://arxiv.org/abs/2502.12352",
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 14,
+    "citation_count_openalex": 3,
+    "citation_count_semantic": 14,
+    "influential_citation_count": 1,
+    "reference_count": 46,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 2
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Advanced Graph Neural Networks",
+      "Biomedical Text Mining and Ontologies"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Transformer",
+      "Computer science",
+      "Graph",
+      "Theoretical computer science",
+      "Artificial intelligence",
+      "Engineering",
+      "Electrical engineering",
+      "Voltage"
+    ],
+    "openalex_id": "https://openalex.org/W4407759301",
+    "semantic_scholar_id": "f928871afe54a7e79442f7b5971bd6e38beb4d2d",
+    "embedding_available": true,
+    "citation_velocity": 0.7406,
+    "citation_growth": 0.5,
+    "citation_acceleration": -1,
+    "trajectory": "stable",
+    "influence_ratio": 0.0714,
+    "score_impact": 0.1525,
+    "score_momentum": 0.1176,
+    "score_influence": 0.2133,
+    "score_recency": 0.6849,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2705,
+    "age_days": 575,
+    "age_months": 18.9,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1109_cvpr52734.2025.00767",
+    "title": "Dissecting and Mitigating Diffusion Bias via Mechanistic Interpretability",
+    "abstract": "Diffusion models have demonstrated impressive capabilities in synthesizing diverse content. However, despite their high-quality outputs, these models often perpetuate social biases, including those related to gender and race. These biases can potentially contribute to harmful real-world consequences, reinforcing stereotypes and exacerbating inequalities in various social contexts. While existing research on diffusion bias mitigation has predominantly focused on guiding content generation, it often neglects the intrinsic mechanisms within diffusion models that causally drive biased outputs. In this paper, we investigate the internal processes of diffusion models, identifying specific decision-making mechanisms, termed bias features, embedded within the model architecture. By directly manipulating these features, our method precisely isolates and adjusts the elements responsible for bias generation, permitting granular control over the bias levels in the generated content. Through experiments on both unconditional and conditional diffusion models across various social bias attributes, we demonstrate our method’s efficacy in managing generation distribution while preserving image quality. We also dissect the discovered model mechanism, revealing different intrinsic features controlling fine-grained aspects of generation, boosting further research on mechanistic interpretability of diffusion models. The project website is at https://foundation-model-research.github.io/difflens.",
+    "authors": [
+      "Yingdong Shi",
+      "Changming Li",
+      "Yifan Wang",
+      "Yongxiang Zhao",
+      "Anqi Pang",
+      "Sibei Yang",
+      "Jingyi Yu",
+      "Kan Ren"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-06-10",
+    "doi": "10.1109/cvpr52734.2025.00767",
+    "pdf_url": null,
+    "arxiv_url": null,
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 32,
+    "citation_count_openalex": 5,
+    "citation_count_semantic": 32,
+    "influential_citation_count": 3,
+    "reference_count": 0,
+    "fwci": 7.0748,
+    "citation_normalized_percentile": 0.97324161,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 2
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Adversarial Robustness in Machine Learning"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Diffusion",
+      "Computer science",
+      "Statistical physics",
+      "Artificial intelligence",
+      "Physics",
+      "Thermodynamics"
+    ],
+    "openalex_id": "https://openalex.org/W4413145956",
+    "semantic_scholar_id": "e0d518529ca6a67f3a729be7ca722321a019f68b",
+    "embedding_available": true,
+    "citation_velocity": 2.1064,
+    "citation_growth": 1.5,
+    "citation_acceleration": 1,
+    "trajectory": "growing",
+    "influence_ratio": 0.0938,
+    "score_impact": 0.8415,
+    "score_momentum": 0.4318,
+    "score_influence": 0.3286,
+    "score_recency": 0.7468,
+    "score_breadth": 0.55,
+    "score_accessibility": 0.0,
+    "score_overall": 0.5656,
+    "age_days": 462,
+    "age_months": 15.19,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": "2406.10234",
+    "internal_id": "2406.10234",
+    "title": "Review and Prospect of Algebraic Research in Equivalent Framework between Statistical Mechanics and Machine Learning Theory",
+    "abstract": "Mathematical equivalence between statistical mechanics and machine learning theory has been known since the 20th century, and research based on this equivalence has provided novel methodologies in both theoretical physics and statistical learning theory. It is well known that algebraic approaches in statistical mechanics such as operator algebra enable us to analyze phase transition phenomena mathematically. In this paper, we review and prospect algebraic research in machine learning theory for theoretical physicists who are interested in artificial intelligence. If a learning machine has a hierarchical structure or latent variables, then the random Hamiltonian cannot be expressed by any quadratic perturbation because it has singularities. To study an equilibrium state defined by such a singular random Hamiltonian, algebraic approaches are necessary to derive the asymptotic form of the free energy and the generalization error. We also introduce the most recent advance: the theoretical foundation for the alignment of artificial intelligence is now being constructed based on algebraic learning theory. This paper is devoted to the memory of Professor Huzihiro Araki who is a pioneering founder of algebraic research in both statistical mechanics and quantum field theory.",
+    "authors": [
+      "Sumio Watanabe"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2024-05-31",
+    "doi": "10.48550/arXiv.2406.10234",
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2406.10234",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 2,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 2,
+    "influential_citation_count": 0,
+    "reference_count": 97,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Neural Networks and Applications"
+    ],
+    "concepts": [
+      "Statistical mechanics",
+      "Algebraic number",
+      "Computer science",
+      "Mathematics",
+      "Mathematical economics",
+      "Management science",
+      "Statistical physics",
+      "Engineering",
+      "Physics",
+      "Mathematical analysis"
+    ],
+    "openalex_id": "https://openalex.org/W4399835864",
+    "semantic_scholar_id": "d1d1b5a73ded0c8fcef2984beb81a8bfe0fd955c",
+    "embedding_available": true,
+    "citation_velocity": 0.0727,
+    "trajectory": "unknown",
+    "influence_ratio": 0.0,
+    "score_impact": 0.0619,
+    "score_momentum": 0.0058,
+    "score_influence": 0.0,
+    "score_recency": 0.5414,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.1512,
+    "age_days": 837,
+    "age_months": 27.51,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": "1806.07572",
+    "internal_id": "1806.07572",
+    "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks",
+    "abstract": "At initialization, artificial neural networks (ANNs) are equivalent to Gaussian processes in the infinite-width limit, thus connecting them to kernel methods. We prove that the evolution of an ANN during training can also be described by a kernel: during gradient descent on the parameters of an ANN, the network function $f_θ$ (which maps input vectors to output vectors) follows the kernel gradient of the functional cost (which is convex, in contrast to the parameter cost) w.r.t. a new kernel: the Neural Tangent Kernel (NTK). This kernel is central to describe the generalization features of ANNs. While the NTK is random at initialization and varies during training, in the infinite-width limit it converges to an explicit limiting kernel and it stays constant during training. This makes it possible to study the training of ANNs in function space instead of parameter space. Convergence of the training can then be related to the positive-definiteness of the limiting NTK. We prove the positive-definiteness of the limiting NTK when the data is supported on the sphere and the non-linearity is non-polynomial. We then focus on the setting of least-squares regression and show that in the infinite-width limit, the network function $f_θ$ follows a linear differential equation during training. The convergence is fastest along the largest kernel principal components of the input data with respect to the NTK, hence suggesting a theoretical motivation for early stopping. Finally we study the NTK numerically, observe its behavior for wide networks, and compare it to the infinite-width limit.",
+    "authors": [
+      "Arthur Paul Jacot",
+      "Franck Gabriel",
+      "Clément Hongler"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2018-06-20",
+    "doi": "10.48550/arxiv.1806.07572",
+    "pdf_url": "https://arxiv.org/pdf/1806.07572",
+    "arxiv_url": "https://arxiv.org/abs/1806.07572",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 4273,
+    "citation_count_openalex": 1478,
+    "citation_count_semantic": 4273,
+    "influential_citation_count": 758,
+    "reference_count": 24,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 4
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 93
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 148
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 170
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 143
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 437
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 353
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 120
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 10
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Neural Networks and Applications",
+      "Model Reduction and Neural Networks",
+      "Stochastic Gradient Optimization Techniques"
+    ],
+    "concepts": [
+      "Mathematics",
+      "Kernel (algebra)",
+      "Artificial neural network",
+      "Gradient descent",
+      "Initialization",
+      "Applied mathematics",
+      "Variable kernel density estimation",
+      "Kernel method",
+      "Limit (mathematics)",
+      "Overfitting"
+    ],
+    "openalex_id": "https://openalex.org/W2809090039",
+    "semantic_scholar_id": "7a84a692327534fd227fa1e07fcb3816b633c591",
+    "embedding_available": true,
+    "citation_velocity": 43.2207,
+    "citation_growth": 0.043,
+    "citation_acceleration": -89,
+    "trajectory": "declining",
+    "influence_ratio": 0.1774,
+    "score_impact": 0.35,
+    "score_momentum": 0.405,
+    "score_influence": 0.7548,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.4185,
+    "age_days": 3009,
+    "age_months": 98.86,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1023_A_1012240212301",
+    "title": "Book Review: Statistical Mechanics of Learning. By A. Engel and C. Van den Broeck, Cambridge University Press",
+    "abstract": null,
+    "authors": [
+      "I. Kanter"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2001-11-01",
+    "doi": "10.1023/A:1012240212301",
+    "pdf_url": "",
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 31,
+    "citation_count_openalex": 4,
+    "citation_count_semantic": 31,
+    "influential_citation_count": 0,
+    "reference_count": 0,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2021,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "stochastic dynamics and bifurcation",
+      "Advanced Thermodynamics and Statistical Mechanics",
+      "Opinion Dynamics and Social Influence"
+    ],
+    "concepts": [
+      "Physics",
+      "Statistical physics",
+      "Mathematics"
+    ],
+    "openalex_id": "https://openalex.org/W284224677",
+    "semantic_scholar_id": "2fc2e5e675a6113c27d743352be14f047197296b",
+    "embedding_available": true,
+    "citation_velocity": 0.1039,
+    "citation_growth": 3.0,
+    "citation_acceleration": 2,
+    "trajectory": "growing",
+    "influence_ratio": 0.0,
+    "score_impact": 0.1951,
+    "score_momentum": 0.455,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 0.0,
+    "score_overall": 0.1835,
+    "age_days": 9084,
+    "age_months": 298.44,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": "2401.17975",
+    "internal_id": "2401.17975",
+    "title": "Understanding polysemanticity in neural networks through coding theory",
+    "abstract": "Despite substantial efforts, neural network interpretability remains an elusive goal, with previous research failing to provide succinct explanations of most single neurons' impact on the network output. This limitation is due to the polysemantic nature of most neurons, whereby a given neuron is involved in multiple unrelated network states, complicating the interpretation of that neuron. In this paper, we apply tools developed in neuroscience and information theory to propose both a novel practical approach to network interpretability and theoretical insights into polysemanticity and the density of codes. We infer levels of redundancy in the network's code by inspecting the eigenspectrum of the activation's covariance matrix. Furthermore, we show how random projections can reveal whether a network exhibits a smooth or non-differentiable code and hence how interpretable the code is. This same framework explains the advantages of polysemantic neurons to learning performance and explains trends found in recent results by Elhage et al.~(2022). Our approach advances the pursuit of interpretability in neural networks, providing insights into their underlying structure and suggesting new avenues for circuit-level interpretability.",
+    "authors": [
+      "Simon Marshall",
+      "Jan H. Kirchner"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2024-01-31",
+    "doi": "10.48550/arXiv.2401.17975",
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/2401.17975",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 19,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 19,
+    "influential_citation_count": 3,
+    "reference_count": 43,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Neural Networks and Applications"
+    ],
+    "concepts": [
+      "Artificial neural network",
+      "Computer science",
+      "Coding (social sciences)",
+      "Cognitive science",
+      "Artificial intelligence",
+      "Psychology",
+      "Sociology",
+      "Social science"
+    ],
+    "openalex_id": "https://openalex.org/W4391463178",
+    "semantic_scholar_id": "73a5986b29d7518abde0f65d29f7031b2b911292",
+    "embedding_available": true,
+    "citation_velocity": 0.6034,
+    "trajectory": "unknown",
+    "influence_ratio": 0.1579,
+    "score_impact": 0.1687,
+    "score_momentum": 0.0483,
+    "score_influence": 0.4568,
+    "score_recency": 0.4751,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2753,
+    "age_days": 958,
+    "age_months": 31.49,
+    "topic_relevance": 0.25
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "noarxiv:0ec4a993511d",
+    "title": "Statistical Mechanics of Learning in a Large Committee Machine",
+    "abstract": "We use statistical mechanics to study generalization in large committee machines. For an architecture with nonoverlapping receptive fields a replica calculation yields the generalization error in the limit of a large number of hidden units. For continuous weights the generalization error falls off asymptotically inversely proportional to α, the number of training examples per weight. For binary weights we find a discontinuous transition from poor to perfect generalization followed by a wide region of metastability. Broken replica symmetry is found within this region at low temperatures. For a fully connected architecture the generalization error is calculated within the annealed approximation. For both binary and continuous weights we find transitions from a symmetric state to one with specialized hidden units, accompanied by discontinuous drops in the generalization error.",
+    "authors": [
+      "H Schwarze",
+      "John Hertz"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "1992-11-30",
+    "doi": null,
+    "pdf_url": null,
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 7,
+    "citation_count_openalex": 4,
+    "citation_count_semantic": 7,
+    "influential_citation_count": 2,
+    "reference_count": 0,
+    "fwci": 0.0,
+    "citation_normalized_percentile": 0.36585366,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2024,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 2
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Neural Networks and Applications",
+      "Theoretical and Computational Physics",
+      "Quantum Computing Algorithms and Architecture"
+    ],
+    "concepts": [
+      "Generalization",
+      "Binary number",
+      "Statistical mechanics",
+      "Metastability",
+      "Replica",
+      "Generalization error",
+      "Symmetry (geometry)",
+      "Mathematics",
+      "Computer science",
+      "Statistical physics"
+    ],
+    "openalex_id": "https://openalex.org/W2142433639",
+    "semantic_scholar_id": "6eb1956166f440481041b8e9d2360475dc4700c4",
+    "embedding_available": true,
+    "citation_velocity": 0.0173,
+    "citation_growth": 1.0,
+    "citation_acceleration": 0,
+    "trajectory": "stable",
+    "influence_ratio": 0.2857,
+    "score_impact": 0.1902,
+    "score_momentum": 0.1181,
+    "score_influence": 0.6832,
+    "score_recency": 0.0,
+    "score_breadth": 0.325,
+    "score_accessibility": 0.0,
+    "score_overall": 0.2395,
+    "age_days": 12342,
+    "age_months": 405.47,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "2402.05110",
+    "internal_id": "2402.05110",
+    "title": "Opening the AI black box: program synthesis via mechanistic interpretability",
+    "abstract": "We present MIPS, a novel method for program synthesis based on automated mechanistic interpretability of neural networks trained to perform the desired task, auto-distilling the learned algorithm into Python code. We test MIPS on a benchmark of 62 algorithmic tasks that can be learned by an RNN and find it highly complementary to GPT-4: MIPS solves 32 of them, including 13 that are not solved by GPT-4 (which also solves 30). MIPS uses an integer autoencoder to convert the RNN into a finite state machine, then applies Boolean or integer symbolic regression to capture the learned algorithm. As opposed to large language models, this program synthesis technique makes no use of (and is therefore not limited by) human training data such as algorithms and code from GitHub. We discuss opportunities and challenges for scaling up this approach to make machine-learned models more interpretable and trustworthy.",
+    "authors": [
+      "Eric J. Michaud",
+      "Isaac Liao",
+      "Vedang Lad",
+      "Ziming Liu",
+      "Anish Mudide",
+      "Chloe Loughridge",
+      "Zifan Carl Guo",
+      "Tara Rezaei Kheirkhah",
+      "Mateja Vukelić",
+      "Max Tegmark"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2024-02-07",
+    "doi": "10.48550/arxiv.2402.05110",
+    "pdf_url": "https://arxiv.org/pdf/2402.05110",
+    "arxiv_url": "https://arxiv.org/abs/2402.05110",
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 25,
+    "citation_count_openalex": 4,
+    "citation_count_semantic": 25,
+    "influential_citation_count": 2,
+    "reference_count": 36,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2025,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 3
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Evolutionary Algorithms and Applications",
+      "Computability, Logic, AI Algorithms"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Black box",
+      "Computer science",
+      "Box model",
+      "Artificial intelligence",
+      "Physics",
+      "Atmospheric sciences"
+    ],
+    "openalex_id": "https://openalex.org/W4391670462",
+    "semantic_scholar_id": "618f0284465a8f2b4e979f0213227b7c51816565",
+    "embedding_available": true,
+    "citation_velocity": 0.7998,
+    "citation_growth": 0.333,
+    "citation_acceleration": -2,
+    "trajectory": "stable",
+    "influence_ratio": 0.08,
+    "score_impact": 0.1834,
+    "score_momentum": 0.1028,
+    "score_influence": 0.2718,
+    "score_recency": 0.4789,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2569,
+    "age_days": 951,
+    "age_months": 31.26,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.1103_physrevlett.97.188104",
+    "title": "Eigenvalue Spectra of Random Matrices for Neural Networks",
+    "abstract": "The dynamics of neural networks is influenced strongly by the spectrum of eigenvalues of the matrix describing their synaptic connectivity. In large networks, elements of the synaptic connectivity matrix can be chosen randomly from appropriate distributions, making results from random matrix theory highly relevant. Unfortunately, classic results on the eigenvalue spectra of random matrices do not apply to synaptic connectivity matrices because of the constraint that individual neurons are either excitatory or inhibitory. Therefore, we compute eigenvalue spectra of large random matrices with excitatory and inhibitory columns drawn from distributions with different means and equal or different variances.",
+    "authors": [
+      "Kanaka Rajan",
+      "L. F. Abbott"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2006-11-02",
+    "doi": "10.1103/physrevlett.97.188104",
+    "pdf_url": null,
+    "arxiv_url": null,
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 351,
+    "citation_count_openalex": 351,
+    "citation_count_semantic": null,
+    "influential_citation_count": null,
+    "reference_count": null,
+    "fwci": 1.081,
+    "citation_normalized_percentile": 0.73064575,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 13
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 31
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 27
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 24
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 34
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 21
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 36
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 27
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 25
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 19
+      },
+      {
+        "year": 2016,
+        "cited_by_count": 23
+      },
+      {
+        "year": 2015,
+        "cited_by_count": 18
+      },
+      {
+        "year": 2014,
+        "cited_by_count": 12
+      },
+      {
+        "year": 2013,
+        "cited_by_count": 11
+      },
+      {
+        "year": 2012,
+        "cited_by_count": 9
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Neural dynamics and brain function",
+      "Neural Networks and Applications",
+      "Blind Source Separation Techniques"
+    ],
+    "concepts": [
+      "Eigenvalues and eigenvectors",
+      "Random matrix",
+      "Spectral line",
+      "Statistical physics",
+      "Inhibitory postsynaptic potential",
+      "Spectrum (functional analysis)",
+      "Matrix (chemical analysis)",
+      "Excitatory postsynaptic potential",
+      "Constraint (computer-aided design)",
+      "Artificial neural network"
+    ],
+    "openalex_id": "https://openalex.org/W1991630689",
+    "semantic_scholar_id": null,
+    "embedding_available": false,
+    "citation_velocity": 1.4722,
+    "citation_growth": 0.419,
+    "citation_acceleration": -18,
+    "trajectory": "declining",
+    "score_impact": 0.5735,
+    "score_momentum": 0.1667,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 0.0,
+    "score_overall": 0.225,
+    "age_days": 7257,
+    "age_months": 238.42,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.18653_v1_2025.findings_acl.679",
+    "title": "Mechanistic Interpretability of Emotion Inference in Large Language Models",
+    "abstract": "Large language models (LLMs) show promising capabilities in predicting human emotions from text.However, the mechanisms through which these models process emotional stimuli remain largely unexplored.Our study addresses this gap by investigating how autoregressive LLMs infer emotions, showing that emotion representations are functionally localized to specific regions in the model.Our evaluation includes diverse model families and sizes, and is supported by robustness checks.We then show that the identified representations are psychologically plausible by drawing on cognitive appraisal theory-a well-established psychological framework positing that emotions emerge from evaluations (appraisals) of environmental stimuli.By causally intervening on construed appraisal concepts, we steer the generation and show that the outputs align with theoretical and intuitive expectations.This work highlights a novel way to causally intervene and control emotion inference, potentially benefiting safety and alignment in sensitive affective domains.Code at: GitHub repo.# Prompt Template 1 What are the inferred emotions in the following contexts?Context: My first child was born.Answer: joy Context: My dog died last week.Answer: sadness",
+    "authors": [
+      "Ala Nekouvaght Tak",
+      "Amin Banayeeanzade",
+      "Anahita Bolourani",
+      "Mina Kian",
+      "Robin Jia",
+      "Jonathan Gratch"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-01-01",
+    "doi": "10.18653/v1/2025.findings-acl.679",
+    "pdf_url": "https://aclanthology.org/2025.findings-acl.679.pdf",
+    "arxiv_url": null,
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 5,
+    "citation_count_openalex": 5,
+    "citation_count_semantic": null,
+    "influential_citation_count": null,
+    "reference_count": null,
+    "fwci": 6.7521,
+    "citation_normalized_percentile": 0.97064796,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 3
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Topic Modeling"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Computer science",
+      "Inference",
+      "Natural language processing",
+      "Artificial intelligence",
+      "Language model",
+      "Cognitive science",
+      "Psychology"
+    ],
+    "openalex_id": "https://openalex.org/W4412888258",
+    "semantic_scholar_id": null,
+    "embedding_available": false,
+    "citation_velocity": 0.2445,
+    "citation_growth": 0.667,
+    "citation_acceleration": -1,
+    "trajectory": "stable",
+    "score_impact": 0.745,
+    "score_momentum": 0.0974,
+    "score_influence": 0.0,
+    "score_recency": 0.6592,
+    "score_breadth": 0.625,
+    "score_accessibility": 1.0,
+    "score_overall": 0.428,
+    "age_days": 622,
+    "age_months": 20.45,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "1710.09553",
+    "internal_id": "1710.09553",
+    "title": "Rethinking generalization requires revisiting old ideas: statistical mechanics approaches and complex learning behavior",
+    "abstract": "We describe an approach to understand the peculiar and counterintuitive generalization properties of deep neural networks. The approach involves going beyond worst-case theoretical capacity control frameworks that have been popular in machine learning in recent years to revisit old ideas in the statistical mechanics of neural networks. Within this approach, we present a prototypical Very Simple Deep Learning (VSDL) model, whose behavior is controlled by two control parameters, one describing an effective amount of data, or load, on the network (that decreases when noise is added to the input), and one with an effective temperature interpretation (that increases when algorithms are early stopped). Using this model, we describe how a very simple application of ideas from the statistical mechanics theory of generalization provides a strong qualitative description of recently-observed empirical results regarding the inability of deep neural networks not to overfit training data, discontinuous learning and sharp transitions in the generalization properties of learning algorithms, etc.",
+    "authors": [
+      "Charles H. Martin",
+      "Michael W. Mahoney"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2017-10-26",
+    "doi": null,
+    "pdf_url": "",
+    "arxiv_url": "https://arxiv.org/abs/1710.09553",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 69,
+    "citation_count_openalex": 28,
+    "citation_count_semantic": 69,
+    "influential_citation_count": 5,
+    "reference_count": 95,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2022,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2021,
+        "cited_by_count": 7
+      },
+      {
+        "year": 2020,
+        "cited_by_count": 8
+      },
+      {
+        "year": 2019,
+        "cited_by_count": 7
+      },
+      {
+        "year": 2018,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2017,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Neural Networks and Applications",
+      "Statistical Mechanics and Entropy",
+      "Model Reduction and Neural Networks"
+    ],
+    "concepts": [
+      "Overfitting",
+      "Generalization",
+      "Counterintuitive",
+      "Statistical mechanics",
+      "Artificial neural network",
+      "Artificial intelligence",
+      "Computer science",
+      "Simple (philosophy)",
+      "Deep learning",
+      "Machine learning"
+    ],
+    "openalex_id": "https://openalex.org/W2766346350",
+    "semantic_scholar_id": "0a2c983595ced223b6d29e940851b3767c1c65c9",
+    "embedding_available": true,
+    "citation_velocity": 0.647,
+    "citation_growth": 0.286,
+    "citation_acceleration": -5,
+    "trajectory": "declining",
+    "influence_ratio": 0.0725,
+    "score_impact": 0.2392,
+    "score_momentum": 0.0851,
+    "score_influence": 0.3273,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2197,
+    "age_days": 3246,
+    "age_months": 106.65,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": "2301.04709",
+    "internal_id": "2301.04709",
+    "title": "Causal Abstraction: A Theoretical Foundation for Mechanistic Interpretability",
+    "abstract": "Causal abstraction provides a theoretical foundation for mechanistic interpretability, the field concerned with providing intelligible algorithms that are faithful simplifications of the known, but opaque low-level details of black box AI models. Our contributions are (1) generalizing the theory of causal abstraction from mechanism replacement (i.e., hard and soft interventions) to arbitrary mechanism transformation (i.e., functionals from old mechanisms to new mechanisms), (2) providing a flexible, yet precise formalization for the core concepts of polysemantic neurons, the linear representation hypothesis, modular features, and graded faithfulness, and (3) unifying a variety of mechanistic interpretability methods in the common language of causal abstraction, namely, activation and path patching, causal mediation analysis, causal scrubbing, causal tracing, circuit analysis, concept erasure, sparse autoencoders, differential binary masking, distributed alignment search, and steering.",
+    "authors": [
+      "Atticus Geiger",
+      "Ibeling, Duligur",
+      "Zur, Amir",
+      "Chaudhary, Maheep",
+      "Chauhan, Sonakshi",
+      "Huang, Jing",
+      "Arora, Aryaman",
+      "Wu, Zhengxuan",
+      "Goodman, Noah",
+      "Potts, Christopher",
+      "Icard, Thomas"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2023-01-11",
+    "doi": "10.48550/arxiv.2301.04709",
+    "pdf_url": "https://arxiv.org/pdf/2301.04709",
+    "arxiv_url": "https://arxiv.org/abs/2301.04709",
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 198,
+    "citation_count_openalex": 11,
+    "citation_count_semantic": 198,
+    "influential_citation_count": 10,
+    "reference_count": 136,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 4
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 3
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Explainable Artificial Intelligence (XAI)",
+      "Bayesian Modeling and Causal Inference",
+      "Advanced Graph Neural Networks"
+    ],
+    "concepts": [
+      "Abstraction",
+      "Causal model",
+      "Computer science",
+      "Causal consistency",
+      "Causal structure",
+      "Theoretical computer science",
+      "Artificial intelligence",
+      "Mathematics",
+      "Programming language",
+      "Correctness"
+    ],
+    "openalex_id": "https://openalex.org/W4316116432",
+    "semantic_scholar_id": "6247d7bb9093b4f6c222c6c224b3df4335d4b8bd",
+    "embedding_available": true,
+    "citation_velocity": 4.4863,
+    "citation_growth": 0.5,
+    "citation_acceleration": -2,
+    "trajectory": "stable",
+    "influence_ratio": 0.0505,
+    "score_impact": 0.298,
+    "score_momentum": 0.4172,
+    "score_influence": 0.3449,
+    "score_recency": 0.2641,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.3523,
+    "age_days": 1343,
+    "age_months": 44.13,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "doi:10.3390_bdcc9080193",
+    "title": "Survey on the Role of Mechanistic Interpretability in Generative AI",
+    "abstract": "The rapid advancement of artificial intelligence (AI) and machine learning has revolutionised how systems process information, make decisions, and adapt to dynamic environments. AI-driven approaches have significantly enhanced efficiency and problem-solving capabilities across various domains, from automated decision-making to knowledge representation and predictive modelling. These developments have led to the emergence of increasingly sophisticated models capable of learning patterns, reasoning over complex data structures, and generalising across tasks. As AI systems become more deeply integrated into networked infrastructures and the Internet of Things (IoT), their ability to process and interpret data in real-time is essential for optimising intelligent communication networks, distributed decision making, and autonomous IoT systems. However, despite these achievements, the internal mechanisms that drive LLMs’ reasoning and generalisation capabilities remain largely unexplored. This lack of transparency, compounded by challenges such as hallucinations, adversarial perturbations, and misaligned human expectations, raises concerns about their safe and beneficial deployment. Understanding the underlying principles governing AI models is crucial for their integration into intelligent network systems, automated decision-making processes, and secure digital infrastructures. This paper provides a comprehensive analysis of explainability approaches aimed at uncovering the fundamental mechanisms of LLMs. We investigate the strategic components contributing to their generalisation abilities, focusing on methods to quantify acquired knowledge and assess its representation within model parameters. Specifically, we examine mechanistic interpretability, probing techniques, and representation engineering as tools to decipher how knowledge is structured, encoded, and retrieved in AI systems. Furthermore, by adopting a mechanistic perspective, we analyse emergent phenomena within training dynamics, particularly memorisation and generalisation, which also play a crucial role in broader AI-driven systems, including adaptive network intelligence, edge computing, and real-time decision-making architectures. Understanding these principles is crucial for bridging the gap between black-box AI models and practical, explainable AI applications, thereby ensuring trust, robustness, and efficiency in language-based and general AI systems.",
+    "authors": [
+      "Leonardo Ranaldi"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-07-23",
+    "doi": "10.3390/bdcc9080193",
+    "pdf_url": "https://www.mdpi.com/2504-2289/9/8/193/pdf?version=1753265287",
+    "arxiv_url": null,
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 22,
+    "citation_count_openalex": 16,
+    "citation_count_semantic": 22,
+    "influential_citation_count": 0,
+    "reference_count": 32,
+    "fwci": 15.913,
+    "citation_normalized_percentile": 0.98955811,
+    "is_top_1_percent": false,
+    "is_top_10_percent": true,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 15
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 1
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Explainable Artificial Intelligence (XAI)",
+      "Statistical and Computational Modeling",
+      "Machine Learning in Healthcare"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Generative grammar",
+      "Artificial intelligence",
+      "Psychology",
+      "Computer science"
+    ],
+    "openalex_id": "https://openalex.org/W4412594747",
+    "semantic_scholar_id": "5855d37f295085befc3229026050eb904450d261",
+    "embedding_available": true,
+    "citation_velocity": 1.5966,
+    "citation_growth": 15.0,
+    "citation_acceleration": 14,
+    "trajectory": "exploding",
+    "influence_ratio": 0.0,
+    "score_impact": 0.8244,
+    "score_momentum": 0.7444,
+    "score_influence": 0.0,
+    "score_recency": 0.7704,
+    "score_breadth": 0.45,
+    "score_accessibility": 1.0,
+    "score_overall": 0.6215,
+    "age_days": 419,
+    "age_months": 13.78,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "2203.14661",
+    "internal_id": "2203.14661",
+    "title": "Random matrix analysis of deep neural network weight matrices",
+    "abstract": "Neural networks have been used successfully in a variety of fields, which has led to a great deal of interest in developing a theoretical understanding of how they store the information needed to perform a particular task. We study the weight matrices of trained deep neural networks using methods from random matrix theory (RMT) and show that the statistics of most of the singular values follow universal RMT predictions. This suggests that they are random and do not contain system specific information, which we investigate further by comparing the statistics of eigenvector entries to the universal Porter-Thomas distribution. We find that for most eigenvectors the hypothesis of randomness cannot be rejected, and that only eigenvectors belonging to the largest singular values deviate from the RMT prediction, indicating that they may encode learned information. In addition, a comparison with RMT predictions also allows to distinguish networks trained in different learning regimes-from lazy to rich learning. We analyze the spectral distribution of the large singular values using the Hill estimator and find that the distribution cannot in general be characterized by a tail index, i.e., is not of power-law type.",
+    "authors": [
+      "M. Thamm",
+      "Max Staats",
+      "B. Rosenow"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2022-03-28",
+    "doi": "10.1103/PhysRevE.106.054124",
+    "pdf_url": "https://arxiv.org/pdf/2203.14661",
+    "arxiv_url": "https://arxiv.org/abs/2203.14661",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 35,
+    "citation_count_openalex": 14,
+    "citation_count_semantic": 35,
+    "influential_citation_count": 2,
+    "reference_count": 105,
+    "fwci": 0.9069,
+    "citation_normalized_percentile": 0.72961599,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 6
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 2
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 3
+      },
+      {
+        "year": 2022,
+        "cited_by_count": 2
+      }
+    ],
+    "is_oa": false,
+    "topics": [
+      "Statistical Mechanics and Entropy",
+      "Theoretical and Computational Physics",
+      "Quantum many-body systems"
+    ],
+    "concepts": [
+      "Randomness",
+      "Random matrix",
+      "Estimator",
+      "Singular value",
+      "Eigenvalues and eigenvectors",
+      "Artificial neural network",
+      "Computer science",
+      "Matrix (chemical analysis)",
+      "Statistical physics",
+      "Artificial intelligence"
+    ],
+    "openalex_id": "https://openalex.org/W4308734952",
+    "semantic_scholar_id": "e1b7b22eda269cf9a2270e59510047154ba8c5ed",
+    "embedding_available": true,
+    "citation_velocity": 0.6526,
+    "citation_growth": 3.0,
+    "citation_acceleration": 4,
+    "trajectory": "exploding",
+    "influence_ratio": 0.0571,
+    "score_impact": 0.4293,
+    "score_momentum": 0.5855,
+    "score_influence": 0.226,
+    "score_recency": 0.1058,
+    "score_breadth": 0.225,
+    "score_accessibility": 0.0,
+    "score_overall": 0.3475,
+    "age_days": 1632,
+    "age_months": 53.63,
+    "topic_relevance": 0.5
+  },
+  {
+    "arxiv_id": "2501.16496",
+    "internal_id": "2501.16496",
+    "title": "Open Problems in Mechanistic Interpretability",
+    "abstract": "Mechanistic interpretability aims to understand the computational mechanisms underlying neural networks' capabilities in order to accomplish concrete scientific and engineering goals. Progress in this field thus promises to provide greater assurance over AI system behavior and shed light on exciting scientific questions about the nature of intelligence. Despite recent progress toward these goals, there are many open problems in the field that require solutions before many scientific and practical benefits can be realized: Our methods require both conceptual and practical improvements to reveal deeper insights; we must figure out how best to apply our methods in pursuit of specific goals; and the field must grapple with socio-technical challenges that influence and are influenced by our work. This forward-facing review discusses the current frontier of mechanistic interpretability and the open problems that the field may benefit from prioritizing.",
+    "authors": [
+      "Lee Sharkey",
+      "Bilal Chughtai",
+      "Joshua Batson",
+      "Jack Lindsey",
+      "Jeff Wu",
+      "Lucius Bushnaq",
+      "Nicholas Goldowsky-Dill",
+      "Stefan Heimersheim",
+      "Alejandro Ortega",
+      "Joseph Bloom",
+      "Stella Biderman",
+      "Adrià Garriga-Alonso",
+      "Arthur Conmy",
+      "Neel Nanda",
+      "Jessica Rumbelow",
+      "Martin Wattenberg",
+      "Nandi Schoots",
+      "Joseph M. Miller",
+      "Eric J. Michaud",
+      "Stephen Casper",
+      "Max Tegmark",
+      "William H. Saunders",
+      "David Bau",
+      "Eric Todd",
+      "Atticus Geiger",
+      "Mor Geva",
+      "Jesse Hoogland",
+      "Daniel Murfet",
+      "Tom McGrath"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2025-01-27",
+    "doi": "10.48550/arxiv.2501.16496",
+    "pdf_url": "https://arxiv.org/pdf/2501.16496",
+    "arxiv_url": "https://arxiv.org/abs/2501.16496",
+    "seed_topics": [
+      "mechanistic interpretability"
+    ],
+    "citation_count": 197,
+    "citation_count_openalex": 9,
+    "citation_count_semantic": 197,
+    "influential_citation_count": 7,
+    "reference_count": 0,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 4
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 5
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Natural Language Processing Techniques",
+      "Statistical and Computational Modeling"
+    ],
+    "concepts": [
+      "Interpretability",
+      "Computer science",
+      "Data science",
+      "Computational biology",
+      "Artificial intelligence",
+      "Biology"
+    ],
+    "openalex_id": "https://openalex.org/W4406949968",
+    "semantic_scholar_id": "8a94d7fb8b580621979396042aef89dbd6ec37fb",
+    "embedding_available": true,
+    "citation_velocity": 10.0542,
+    "citation_growth": 0.8,
+    "citation_acceleration": -1,
+    "trajectory": "stable",
+    "influence_ratio": 0.0355,
+    "score_impact": 0.2977,
+    "score_momentum": 0.4933,
+    "score_influence": 0.2825,
+    "score_recency": 0.6734,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.4201,
+    "age_days": 596,
+    "age_months": 19.59,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": null,
+    "internal_id": "noarxiv:0e7f0549208d",
+    "title": "Statistical Mechanics of Learning and Optimization",
+    "abstract": null,
+    "authors": [
+      "J. Inoue"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "1998",
+    "doi": null,
+    "pdf_url": "",
+    "arxiv_url": null,
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": null,
+    "citation_count_openalex": null,
+    "citation_count_semantic": null,
+    "influential_citation_count": null,
+    "reference_count": null,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": null,
+    "is_oa": null,
+    "topics": [],
+    "concepts": [],
+    "openalex_id": null,
+    "semantic_scholar_id": null,
+    "embedding_available": false,
+    "trajectory": "unknown",
+    "score_impact": 0.0,
+    "score_momentum": 0.0,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.0,
+    "score_accessibility": 0.0,
+    "score_overall": 0.0,
+    "age_days": 10484,
+    "age_months": 344.43,
+    "topic_relevance": 0.75
+  },
+  {
+    "arxiv_id": "2310.03165",
+    "internal_id": "2310.03165",
+    "title": "Enhancing Accuracy in Deep Learning Using Random Matrix Theory",
+    "abstract": "We explore the applications of random matrix theory (RMT) in the training of deep neural networks (DNNs), focusing on layer pruning that is reducing the number of DNN parameters (weights). Our numerical results show that this pruning leads to a drastic reduction of parameters while not reducing the accuracy of DNNs and CNNs. Moreover, pruning the fully connected DNNs actually increases the accuracy and decreases the variance for random initializations. Our numerics indicate that this enhancement in accuracy is due to the simplification of the loss landscape. We next provide rigorous mathematical underpinning of these numerical results by proving the RMT-based Pruning Theorem. Our results offer valuable insights into the practical application of RMT for the creation of more efficient and accurate deep-learning models.",
+    "authors": [
+      "Leonid Berlyand",
+      "E. Sandier",
+      "Yitzchak Shmalo",
+      "Lei Zhang"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2023-10-04",
+    "doi": "10.48550/arXiv.2310.03165",
+    "pdf_url": "https://arxiv.org/pdf/2310.03165",
+    "arxiv_url": "https://arxiv.org/abs/2310.03165",
+    "seed_topics": [
+      "random matrix theory neural networks"
+    ],
+    "citation_count": 6,
+    "citation_count_openalex": 0,
+    "citation_count_semantic": 6,
+    "influential_citation_count": 1,
+    "reference_count": 49,
+    "fwci": null,
+    "citation_normalized_percentile": null,
+    "is_top_1_percent": null,
+    "is_top_10_percent": null,
+    "counts_by_year": [],
+    "is_oa": true,
+    "topics": [
+      "Neural Networks and Applications",
+      "Statistical Mechanics and Entropy",
+      "Gaussian Processes and Bayesian Inference"
+    ],
+    "concepts": [
+      "Pruning",
+      "Computer science",
+      "Deep neural networks",
+      "Reduction (mathematics)",
+      "Random matrix",
+      "Artificial intelligence",
+      "Matrix (chemical analysis)",
+      "Variance (accounting)",
+      "Deep learning",
+      "Artificial neural network"
+    ],
+    "openalex_id": "https://openalex.org/W4387427569",
+    "semantic_scholar_id": "18c4a1355c34ffc79ee69d273f42947d69835092",
+    "embedding_available": true,
+    "citation_velocity": 0.1695,
+    "trajectory": "unknown",
+    "influence_ratio": 0.1667,
+    "score_impact": 0.1096,
+    "score_momentum": 0.0136,
+    "score_influence": 0.4039,
+    "score_recency": 0.4099,
+    "score_breadth": 0.0,
+    "score_accessibility": 1.0,
+    "score_overall": 0.2285,
+    "age_days": 1077,
+    "age_months": 35.4,
+    "topic_relevance": 1.0
+  },
+  {
+    "arxiv_id": "cond-mat/0209164",
+    "internal_id": "cond-mat/0209164",
+    "title": "Statistical mechanics of learning: a variational approach for real data.",
+    "abstract": "Using a variational technique, we generalize the statistical physics approach of learning from random examples to make it applicable to real data. We demonstrate the validity and relevance of our method by computing approximate estimators for generalization errors that are based on training data alone.",
+    "authors": [
+      "D. Malzahn",
+      "M. Opper"
+    ],
+    "categories": [],
+    "primary_category": null,
+    "published_date": "2002-08-19",
+    "doi": "10.1103/PhysRevLett.89.108302",
+    "pdf_url": "http://arxiv.org/pdf/cond-mat/0209164",
+    "arxiv_url": "https://arxiv.org/abs/cond-mat/0209164",
+    "seed_topics": [
+      "statistical mechanics of learning"
+    ],
+    "citation_count": 10,
+    "citation_count_openalex": 10,
+    "citation_count_semantic": 7,
+    "influential_citation_count": 0,
+    "reference_count": 18,
+    "fwci": 0.5257,
+    "citation_normalized_percentile": 0.77781517,
+    "is_top_1_percent": false,
+    "is_top_10_percent": false,
+    "counts_by_year": [
+      {
+        "year": 2026,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2025,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2024,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2023,
+        "cited_by_count": 1
+      },
+      {
+        "year": 2012,
+        "cited_by_count": 2
+      }
+    ],
+    "is_oa": true,
+    "topics": [
+      "Gaussian Processes and Bayesian Inference",
+      "Model Reduction and Neural Networks",
+      "Probabilistic and Robust Engineering Design"
+    ],
+    "concepts": [
+      "Generalization",
+      "Statistical mechanics",
+      "Estimator",
+      "Computer science",
+      "Statistical learning",
+      "Relevance (law)",
+      "Generalization error",
+      "Statistical physics",
+      "Artificial intelligence",
+      "Applied mathematics"
+    ],
+    "openalex_id": "https://openalex.org/W1984167083",
+    "semantic_scholar_id": "8dcdbda56e11fecc5e0ae6d9a714c22bd009aecc",
+    "embedding_available": true,
+    "citation_velocity": 0.0346,
+    "citation_growth": 1.0,
+    "citation_acceleration": 0,
+    "trajectory": "stable",
+    "influence_ratio": 0.0,
+    "score_impact": 0.3379,
+    "score_momentum": 0.1194,
+    "score_influence": 0.0,
+    "score_recency": 0.0,
+    "score_breadth": 0.225,
+    "score_accessibility": 1.0,
+    "score_overall": 0.1925,
+    "age_days": 8793,
+    "age_months": 288.88,
+    "topic_relevance": 1.0
+  }
+]

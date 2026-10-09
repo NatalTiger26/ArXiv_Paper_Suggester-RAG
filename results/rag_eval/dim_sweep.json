@@ -1,0 +1,55 @@
+{
+  "model": "google/embeddinggemma-2",
+  "timestamp": "2026-10-08T20:14:49.258895+00:00",
+  "rows": [
+    {
+      "dim": 128,
+      "mean_mrr": 0.5918,
+      "mean_recall@10": 0.85,
+      "mean_hit@1": 0.4875,
+      "mrr_ci95": [
+        0.4972,
+        0.6797
+      ],
+      "n_queries": 80,
+      "n_corpus": 11
+    },
+    {
+      "dim": 256,
+      "mean_mrr": 0.6347,
+      "mean_recall@10": 0.8625,
+      "mean_hit@1": 0.55,
+      "mrr_ci95": [
+        0.541,
+        0.7268
+      ],
+      "n_queries": 80,
+      "n_corpus": 11
+    },
+    {
+      "dim": 512,
+      "mean_mrr": 0.6394,
+      "mean_recall@10": 0.8625,
+      "mean_hit@1": 0.5625,
+      "mrr_ci95": [
+        0.5451,
+        0.7274
+      ],
+      "n_queries": 80,
+      "n_corpus": 11
+    },
+    {
+      "dim": 768,
+      "mean_mrr": 0.6266,
+      "mean_recall@10": 0.8625,
+      "mean_hit@1": 0.5375,
+      "mrr_ci95": [
+        0.5333,
+        0.7158
+      ],
+      "n_queries": 80,
+      "n_corpus": 11
+    }
+  ],
+  "recommendation": "Consider EMBEDDING_DIM=512 (MRR=0.6394 vs full 0.6266; \u0394\u22640.02). Rebuild indexes after change."
+}

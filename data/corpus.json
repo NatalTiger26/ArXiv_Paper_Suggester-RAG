@@ -1,0 +1,293 @@
+[
+  {
+    "arxiv_id": "2506.18852",
+    "title": "Mechanistic Interpretability Needs Philosophy",
+    "abstract": "Mechanistic interpretability (MI) aims to explain how neural networks work by uncovering their underlying mechanisms. As the field grows in influence, it is increasingly important to examine not just models themselves, but the assumptions, concepts and explanatory strategies implicit in MI research. We argue that mechanistic interpretability needs philosophy as an ongoing partner in clarifying its concepts, refining its methods, and navigating the epistemic and ethical complexities of interpreting AI systems. There is significant unrealised potential for progress in MI to be gained through deeper engagement with philosophers and philosophical frameworks. Taking three open problems from the MI literature as examples, this paper illustrates the value philosophy can add to MI research, and outlines a path toward deeper interdisciplinary dialogue.",
+    "authors": [
+      "Iwan Williams",
+      "Ninell Oldenburg",
+      "Ruchira Dhar",
+      "Joshua Hatherley",
+      "Constanza Fierro",
+      "Nina Rajcic",
+      "Sandrine R. Schiller",
+      "Filippos Stamatiou",
+      "Anders Søgaard"
+    ],
+    "published_date": "2025-06-23",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "primary_category": "cs.CL",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2506.18852.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2506.18852"
+  },
+  {
+    "arxiv_id": "2404.14082",
+    "title": "Mechanistic Interpretability for AI Safety -- A Review",
+    "abstract": "Understanding AI systems' inner workings is critical for ensuring value alignment and safety. This review explores mechanistic interpretability: reverse engineering the computational mechanisms and representations learned by neural networks into human-understandable algorithms and concepts to provide a granular, causal understanding. We establish foundational concepts such as features encoding knowledge within neural activations and hypotheses about their representation and computation. We survey methodologies for causally dissecting model behaviors and assess the relevance of mechanistic interpretability to AI safety. We examine benefits in understanding, control, alignment, and risks such as capability gains and dual-use concerns. We investigate challenges surrounding scalability, automation, and comprehensive interpretation. We advocate for clarifying concepts, setting standards, and scaling techniques to handle complex models and behaviors and expand to domains such as vision and reinforcement learning. Mechanistic interpretability could help prevent catastrophic outcomes as AI systems become more powerful and inscrutable.",
+    "authors": [
+      "Leonard Bereska",
+      "Efstratios Gavves"
+    ],
+    "published_date": "2024-04-22",
+    "categories": [
+      "cs.AI"
+    ],
+    "primary_category": "cs.AI",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2404.14082.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2404.14082"
+  },
+  {
+    "arxiv_id": "2501.16496",
+    "title": "Open Problems in Mechanistic Interpretability",
+    "abstract": "Mechanistic interpretability aims to understand the computational mechanisms underlying neural networks' capabilities in order to accomplish concrete scientific and engineering goals. Progress in this field thus promises to provide greater assurance over AI system behavior and shed light on exciting scientific questions about the nature of intelligence. Despite recent progress toward these goals, there are many open problems in the field that require solutions before many scientific and practical benefits can be realized: Our methods require both conceptual and practical improvements to reveal deeper insights; we must figure out how best to apply our methods in pursuit of specific goals; and the field must grapple with socio-technical challenges that influence and are influenced by our work. This forward-facing review discusses the current frontier of mechanistic interpretability and the open problems that the field may benefit from prioritizing.",
+    "authors": [
+      "Lee Sharkey",
+      "Bilal Chughtai",
+      "Joshua Batson",
+      "Jack Lindsey",
+      "Jeff Wu",
+      "Lucius Bushnaq",
+      "Nicholas Goldowsky-Dill",
+      "Stefan Heimersheim",
+      "Alejandro Ortega",
+      "Joseph Bloom",
+      "Stella Biderman",
+      "Adria Garriga-Alonso",
+      "Arthur Conmy",
+      "Neel Nanda",
+      "Jessica Rumbelow",
+      "Martin Wattenberg",
+      "Nandi Schoots",
+      "Joseph Miller",
+      "Eric J. Michaud",
+      "Stephen Casper",
+      "Max Tegmark",
+      "William Saunders",
+      "David Bau",
+      "Eric Todd",
+      "Atticus Geiger",
+      "Mor Geva",
+      "Jesse Hoogland",
+      "Daniel Murfet",
+      "Tom McGrath"
+    ],
+    "published_date": "2025-01-27",
+    "categories": [
+      "cs.LG"
+    ],
+    "primary_category": "cs.LG",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2501.16496.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2501.16496"
+  },
+  {
+    "arxiv_id": "2504.13151",
+    "title": "MIB: A Mechanistic Interpretability Benchmark",
+    "abstract": "How can we know whether new mechanistic interpretability methods achieve real improvements? In pursuit of lasting evaluation standards, we propose MIB, a Mechanistic Interpretability Benchmark, with two tracks spanning four tasks and five models. MIB favors methods that precisely and concisely recover relevant causal pathways or causal variables in neural language models. The circuit localization track compares methods that locate the model components - and connections between them - most important for performing a task (e.g., attribution patching or information flow routes). The causal variable localization track compares methods that featurize a hidden vector, e.g., sparse autoencoders (SAEs) or distributed alignment search (DAS), and align those features to a task-relevant causal variable. Using MIB, we find that attribution and mask optimization methods perform best on circuit localization. For causal variable localization, we find that the supervised DAS method performs best, while SAE features are not better than neurons, i.e., non-featurized hidden vectors. These findings illustrate that MIB enables meaningful comparisons, and increases our confidence that there has been real progress in the field.",
+    "authors": [
+      "Aaron Mueller",
+      "Atticus Geiger",
+      "Sarah Wiegreffe",
+      "Dana Arad",
+      "Iván Arcuschin",
+      "Adam Belfki",
+      "Yik Siu Chan",
+      "Jaden Fiotto-Kaufman",
+      "Tal Haklay",
+      "Michael Hanna",
+      "Jing Huang",
+      "Rohan Gupta",
+      "Yaniv Nikankin",
+      "Hadas Orgad",
+      "Nikhil Prakash",
+      "Anja Reusch",
+      "Aruna Sankaranarayanan",
+      "Shun Shao",
+      "Alessandro Stolfo",
+      "Martin Tutek",
+      "Amir Zur",
+      "David Bau",
+      "Yonatan Belinkov"
+    ],
+    "published_date": "2025-04-17",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "primary_category": "cs.LG",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2504.13151.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2504.13151"
+  },
+  {
+    "arxiv_id": "2602.21442",
+    "title": "MINAR: Mechanistic Interpretability for Neural Algorithmic Reasoning",
+    "abstract": "The recent field of neural algorithmic reasoning (NAR) studies the ability of graph neural networks (GNNs) to emulate classical algorithms like Bellman-Ford, a phenomenon known as algorithmic alignment. At the same time, recent advances in large language models (LLMs) have spawned the study of mechanistic interpretability, which aims to identify granular model components like circuits that perform specific computations. In this work, we introduce Mechanistic Interpretability for Neural Algorithmic Reasoning (MINAR), an efficient circuit discovery toolbox that adapts attribution patching methods from mechanistic interpretability to the GNN setting. We show through two case studies that MINAR recovers faithful neuron-level circuits from GNNs trained on algorithmic tasks. Our study sheds new light on the process of circuit formation and pruning during training, as well as giving new insight into how GNNs trained to perform multiple tasks in parallel reuse circuit components for related tasks. Our code is available at https://github.com/pnnl/MINAR.",
+    "authors": [
+      "Jesse He",
+      "Helen Jenne",
+      "Max Vargas",
+      "Davis Brown",
+      "Gal Mishne",
+      "Yusu Wang",
+      "Henry Kvinge"
+    ],
+    "published_date": "2026-02-24",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ],
+    "primary_category": "cs.LG",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2602.21442.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2602.21442"
+  },
+  {
+    "arxiv_id": "2505.00808",
+    "title": "A Mathematical Philosophy of Explanations in Mechanistic Interpretability -- The Strange Science Part I.i",
+    "abstract": "Mechanistic Interpretability aims to understand neural networks through causal explanations. We argue for the Explanatory View Hypothesis: that Mechanistic Interpretability research is a principled approach to understanding models because neural networks contain implicit explanations which can be extracted and understood. We hence show that Explanatory Faithfulness, an assessment of how well an explanation fits a model, is well-defined. We propose a definition of Mechanistic Interpretability (MI) as the practice of producing Model-level, Ontic, Causal-Mechanistic, and Falsifiable explanations of neural networks, allowing us to distinguish MI from other interpretability paradigms and detail MI's inherent limits. We formulate the Principle of Explanatory Optimism, a conjecture which we argue is a necessary precondition for the success of Mechanistic Interpretability.",
+    "authors": [
+      "Kola Ayonrinde",
+      "Louis Jaburi"
+    ],
+    "published_date": "2025-05-01",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "primary_category": "cs.LG",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2505.00808.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2505.00808"
+  },
+  {
+    "arxiv_id": "2605.09881",
+    "title": "Dissecting Jet-Tagger Through Mechanistic Interpretability",
+    "abstract": "Mechanistic interpretability seeks to reverse engineer a trained neural network by identifying the minimal subset of internal components. We perform a mechanistic interpretability analysis of the Particle Transformer architecture, trained on the Top Quark Tagging reference dataset, with the goal of identifying the computational circuit responsible for jet classification and characterizing the physical content of its internal representations. Combining zero ablation, path patching with two complementary on-manifold corruption strategies and linear probing of the residual stream, we identify a sparse six-head circuit that recovers the great majority of the full model performance while admitting a clean source-relay-readout interpretation. In this circuit, a single early layer head serves as the primary causal source, a cluster of middle-layer heads acts as relays selectively attending to hard pairwise substructure and a single late-layer head reads out the aggregated signal. Linear probes show that the residual stream is preferentially aligned with the energy correlator basis over the $N$-subjettiness basis. Within the energy correlator basis, the model preferentially encodes 2-prong substructure observables over the 3-prong observables. A per-layer trained probe further reveals that the apparent single step commitment of the model to a classification decision in the first class attention block is in fact a basis rotation, with the discriminating signal already saturating in the particle attention stack. These results demonstrate that mechanistic interpretability methods developed for natural language models can be used for jet physics classifiers and indicate that gradient descent may rediscover physically meaningful aspects of jet tagging without supervision.",
+    "authors": [
+      "Saurabh Rai",
+      "Sanmay Ganguly"
+    ],
+    "published_date": "2026-05-11",
+    "categories": [
+      "hep-ph",
+      "cs.LG",
+      "hep-ex"
+    ],
+    "primary_category": "hep-ph",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2605.09881.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2605.09881"
+  },
+  {
+    "arxiv_id": "2504.19475",
+    "title": "Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vision and Video",
+    "abstract": "Robust tooling and publicly available pre-trained models have helped drive recent advances in mechanistic interpretability for language models. However, similar progress in vision mechanistic interpretability has been hindered by the lack of accessible frameworks and pre-trained weights. We present Prisma (Access the codebase here: https://github.com/Prisma-Multimodal/ViT-Prisma), an open-source framework designed to accelerate vision mechanistic interpretability research, providing a unified toolkit for accessing 75+ vision and video transformers; support for sparse autoencoder (SAE), transcoder, and crosscoder training; a suite of 80+ pre-trained SAE weights; activation caching, circuit analysis tools, and visualization tools; and educational resources. Our analysis reveals surprising findings, including that effective vision SAEs can exhibit substantially lower sparsity patterns than language SAEs, and that in some instances, SAE reconstructions can decrease model loss. Prisma enables new research directions for understanding vision model internals while lowering barriers to entry in this emerging field.",
+    "authors": [
+      "Sonia Joseph",
+      "Praneet Suresh",
+      "Lorenz Hufe",
+      "Edward Stevinson",
+      "Robert Graham",
+      "Yash Vadi",
+      "Danilo Bzdok",
+      "Sebastian Lapuschkin",
+      "Lee Sharkey",
+      "Blake Aaron Richards"
+    ],
+    "published_date": "2025-04-28",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "primary_category": "cs.CV",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2504.19475.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2504.19475"
+  },
+  {
+    "arxiv_id": "2406.11779",
+    "title": "Compact Proofs of Model Performance via Mechanistic Interpretability",
+    "abstract": "We propose using mechanistic interpretability -- techniques for reverse engineering model weights into human-interpretable algorithms -- to derive and compactly prove formal guarantees on model performance. We prototype this approach by formally proving accuracy lower bounds for a small transformer trained on Max-of-K, validating proof transferability across 151 random seeds and four values of K. We create 102 different computer-assisted proof strategies and assess their length and tightness of bound on each of our models. Using quantitative metrics, we find that shorter proofs seem to require and provide more mechanistic understanding. Moreover, we find that more faithful mechanistic understanding leads to tighter performance bounds. We confirm these connections by qualitatively examining a subset of our proofs. Finally, we identify compounding structureless errors as a key challenge for using mechanistic interpretability to generate compact proofs on model performance.",
+    "authors": [
+      "Jason Gross",
+      "Rajashree Agrawal",
+      "Thomas Kwa",
+      "Euan Ong",
+      "Chun Hei Yip",
+      "Alex Gibson",
+      "Soufiane Noubir",
+      "Lawrence Chan"
+    ],
+    "published_date": "2024-06-17",
+    "categories": [
+      "cs.LG",
+      "cs.LO"
+    ],
+    "primary_category": "cs.LG",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2406.11779.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2406.11779"
+  },
+  {
+    "arxiv_id": "2407.13594",
+    "title": "Validating Mechanistic Interpretations: An Axiomatic Approach",
+    "abstract": "Mechanistic interpretability aims to reverse engineer the computation performed by a neural network in terms of its internal components. Although there is a growing body of research on mechanistic interpretation of neural networks, the notion of a mechanistic interpretation itself is often ad-hoc. Inspired by the notion of abstract interpretation from the program analysis literature that aims to develop approximate semantics for programs, we give a set of axioms that formally characterize a mechanistic interpretation as a description that approximately captures the semantics of the neural network under analysis in a compositional manner. We demonstrate the applicability of these axioms for validating mechanistic interpretations on an existing, well-known interpretability study as well as on a new case study involving a Transformer-based model trained to solve the well-known 2-SAT problem.",
+    "authors": [
+      "Nils Palumbo",
+      "Ravi Mangal",
+      "Zifan Wang",
+      "Saranya Vijayakumar",
+      "Corina S. Pasareanu",
+      "Somesh Jha"
+    ],
+    "published_date": "2024-07-18",
+    "categories": [
+      "cs.LG"
+    ],
+    "primary_category": "cs.LG",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/2407.13594.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2407.13594"
+  },
+  {
+    "arxiv_id": "1806.07572",
+    "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks",
+    "abstract": "At initialization, artificial neural networks (ANNs) are equivalent to Gaussian processes in the infinite-width limit, thus connecting them to kernel methods. We prove that the evolution of an ANN during training can also be described by a kernel: during gradient descent on the parameters of an ANN, the network function $f_θ$ (which maps input vectors to output vectors) follows the kernel gradient of the functional cost (which is convex, in contrast to the parameter cost) w.r.t. a new kernel: the Neural Tangent Kernel (NTK). This kernel is central to describe the generalization features of ANNs. While the NTK is random at initialization and varies during training, in the infinite-width limit it converges to an explicit limiting kernel and it stays constant during training. This makes it possible to study the training of ANNs in function space instead of parameter space. Convergence of the training can then be related to the positive-definiteness of the limiting NTK. We prove the positive-definiteness of the limiting NTK when the data is supported on the sphere and the non-linearity is non-polynomial. We then focus on the setting of least-squares regression and show that in the infinite-width limit, the network function $f_θ$ follows a linear differential equation during training. The convergence is fastest along the largest kernel principal components of the input data with respect to the NTK, hence suggesting a theoretical motivation for early stopping. Finally we study the NTK numerically, observe its behavior for wide networks, and compare it to the infinite-width limit.",
+    "authors": [
+      "Arthur Jacot",
+      "Franck Gabriel",
+      "Clément Hongler"
+    ],
+    "published_date": "2018-06-20",
+    "categories": [
+      "cs.LG",
+      "cs.NE",
+      "math.PR",
+      "stat.ML"
+    ],
+    "primary_category": "cs.LG",
+    "doi": null,
+    "citation_count": null,
+    "pdf_url": "https://arxiv.org/pdf/1806.07572.pdf",
+    "arxiv_url": "https://arxiv.org/abs/1806.07572"
+  }
+]
