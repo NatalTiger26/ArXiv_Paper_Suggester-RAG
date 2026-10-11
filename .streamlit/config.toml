@@ -6,5 +6,11 @@ enableXsrfProtection = true
 [browser]
 gatherUsageStats = false
 
+# Default theme (users can still prefer system browser; in-app toggle adjusts CSS).
 [theme]
-base = "light"
+base = "dark"
+primaryColor = "#8B9CFF"
+backgroundColor = "#0E1117"
+secondaryBackgroundColor = "#1A1D27"
+textColor = "#E8EAED"
+font = "sans serif"

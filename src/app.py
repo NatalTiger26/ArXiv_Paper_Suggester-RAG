@@ -30,20 +30,86 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.markdown(
-    """
+# Appearance: config.toml defaults to dark; sidebar can prefer light CSS overrides.
+if "ui_theme" not in st.session_state:
+    st.session_state["ui_theme"] = "dark"
+
+
+def _inject_theme_css(theme: str) -> None:
+    """Accessible contrast, focus rings, and light/dark polish on top of Streamlit theme."""
+    if theme == "light":
+        css = """
+        <style>
+        :root {
+          --aps-bg: #f7f8fc;
+          --aps-panel: #ffffff;
+          --aps-text: #1a1d27;
+          --aps-muted: #5c6370;
+          --aps-border: rgba(26, 29, 39, 0.12);
+          --aps-accent: #3d5AFE;
+          --aps-focus: #2962FF;
+        }
+        .stApp { background-color: var(--aps-bg); color: var(--aps-text); }
+        [data-testid="stSidebar"] {
+          background-color: #eef0f6 !important;
+          min-width: 280px;
+        }
+        </style>
+        """
+    else:
+        css = """
+        <style>
+        :root {
+          --aps-bg: #0E1117;
+          --aps-panel: #1A1D27;
+          --aps-text: #E8EAED;
+          --aps-muted: #A0A4B0;
+          --aps-border: rgba(232, 234, 237, 0.12);
+          --aps-accent: #8B9CFF;
+          --aps-focus: #B0B8FF;
+        }
+        .stApp { background-color: var(--aps-bg); color: var(--aps-text); }
+        [data-testid="stSidebar"] {
+          background-color: #141722 !important;
+          min-width: 280px;
+        }
+        </style>
+        """
+
+    css += """
     <style>
+    /* Shared accessibility + layout */
     div[data-testid="stMetricValue"] { font-size: 1.35rem; }
-    .block-container { padding-top: 1.1rem; padding-bottom: 2rem; }
+    .block-container { padding-top: 1.1rem; padding-bottom: 2.5rem; max-width: 1100px; }
     div[data-testid="stExpander"] {
-        border: 1px solid rgba(49,51,63,0.15);
-        border-radius: 0.5rem;
+        border: 1px solid var(--aps-border, rgba(128,128,128,0.25));
+        border-radius: 0.55rem;
     }
-    [data-testid="stSidebar"] { min-width: 280px; }
+    /* Visible keyboard focus */
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible,
+    [data-baseweb="select"] *:focus-visible {
+        outline: 2px solid var(--aps-focus, #8B9CFF) !important;
+        outline-offset: 2px !important;
+    }
+    /* Slightly larger body text for reading long answers */
+    .stMarkdown, .stCaption { line-height: 1.55; }
+    /* Answer / source cards readability */
+    code, pre {
+        font-size: 0.9em;
+        line-height: 1.45;
+    }
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+    /* High-contrast links */
+    a { text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
+    """
+    st.markdown(css, unsafe_allow_html=True)
+
+
+_inject_theme_css(st.session_state["ui_theme"])
 
 EXAMPLE_INTERESTS = [
     "mechanistic interpretability circuits",
@@ -464,6 +530,22 @@ lib_n = int(cs.get("n_papers") or 0)
 rag_n = int(rs.get("paper_count") or 0)
 
 with st.sidebar:
+    st.markdown("### Appearance")
+    _theme = st.radio(
+        "Theme",
+        options=["dark", "light"],
+        index=0 if st.session_state.get("ui_theme", "dark") == "dark" else 1,
+        horizontal=True,
+        key="ui_theme_radio",
+        help="Dark is the default. Light uses higher background luminance for bright rooms.",
+        label_visibility="collapsed",
+    )
+    if _theme != st.session_state.get("ui_theme"):
+        st.session_state["ui_theme"] = _theme
+        st.rerun()
+    _inject_theme_css(st.session_state["ui_theme"])
+    st.caption("Theme also follows `.streamlit/config.toml` base defaults.")
+    st.divider()
     st.markdown("### Workspace")
     m1, m2 = st.columns(2)
     m1.metric("Library", lib_n, help="Titles/abstracts for ranking")
