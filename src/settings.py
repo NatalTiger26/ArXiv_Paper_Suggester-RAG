@@ -131,6 +131,26 @@ if HF_TOKEN:
     os.environ.setdefault("HF_TOKEN", HF_TOKEN)
     os.environ.setdefault("HUGGING_FACE_HUB_TOKEN", HF_TOKEN)
 
+
+# ── Paths ─────────────────────────────────────────────────────────────────
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+RANKINGS_DIR = PROJECT_ROOT / "rankings"
+
+CORPUS_PATH = DATA_DIR / "corpus.json"
+CORPUS_CHROMA_DIR = DATA_DIR / "chroma_corpus"
+CORPUS_EMB_CACHE = DATA_DIR / "embeddings" / "corpus_embeddings.json"
+CORPUS_COLLECTION = "arxiv_corpus"
+
+PAPERS_DIR = DATA_DIR / "papers"
+MARKDOWN_DIR = DATA_DIR / "markdown"
+CHROMA_RAG_DIR = DATA_DIR / "chroma_rag"
+RAG_CACHE_DIR = DATA_DIR / "rag_cache"
+RAG_COLLECTION = "paper_chunks"
+RANKINGS_PATH = RANKINGS_DIR / "personal_importance.csv"
+EVAL_DIR = RESULTS_DIR / "rag_eval"
+
 # ── Generation ────────────────────────────────────────────────────────────
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.2"))
