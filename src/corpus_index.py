@@ -87,6 +87,18 @@ def load_model(model_name: str | None = None):
         raise SystemExit("uv add sentence-transformers chromadb torchvision")
     device = get_device()
     name = model_name or DEFAULT_MODEL
+    try:
+        from settings import IS_STREAMLIT_CLOUD
+    except Exception:
+        try:
+            from src.settings import IS_STREAMLIT_CLOUD
+        except Exception:
+            IS_STREAMLIT_CLOUD = False
+    if IS_STREAMLIT_CLOUD and any(
+        x in (name or "").lower() for x in ("embeddinggemma", "gemma-2", "e5-large")
+    ) and __import__("os").getenv("ALLOW_LARGE_EMBED") != "1":
+        name = "sentence-transformers/all-MiniLM-L6-v2"
+        print(f"[corpus_index] Cloud guard: using {name}", flush=True)
     print(f"Loading model: {name}  (device={device})")
     t0 = time.time()
     try:

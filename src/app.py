@@ -2,13 +2,17 @@
 """
 Unified web UI for ArXiv Paper Suggester.
 
-  uv run streamlit run src/app.py
+  uv sync
+  uv run python -m streamlit run src/app.py
 """
 
 from __future__ import annotations
 
 import os
 import sys
+import time
+import traceback
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,7 +39,6 @@ st.markdown(
         border: 1px solid rgba(49,51,63,0.15);
         border-radius: 0.5rem;
     }
-    /* Slightly calmer captions in dark/light themes */
     [data-testid="stSidebar"] { min-width: 280px; }
     </style>
     """,
@@ -79,51 +82,75 @@ WEIGHT_PRESETS = {
 }
 
 PRESET_HELP = {
-    "Balanced (default)": "Equal-ish mix of semantic match, recency, citations, and author signal.",
-    "Precision (embedding ↑)": "Trust topic similarity more — best when your library is already on-topic.",
-    "Prefer recent": "Boost newer papers — useful for fast-moving subfields.",
-    "Citation heavy": "Prefer highly cited work — can bias toward older landmarks.",
+    "Balanced (default)": "Mix of semantic match, recency, citations, and author signal.",
+    "Precision (embedding ↑)": "Trust topic similarity more — when the library is already on-topic.",
+    "Prefer recent": "Boost newer papers — fast-moving subfields.",
+    "Citation heavy": "Prefer highly cited work — can favor older landmarks.",
 }
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────
+# ── Activity log (visible when things feel stuck) ─────────────────────────
+
+
+def _ensure_log():
+    if "activity_log" not in st.session_state:
+        st.session_state["activity_log"] = []
+
+
+def log(msg: str) -> None:
+    """Append a timestamped line to the in-app activity log."""
+    _ensure_log()
+    ts = datetime.now().strftime("%H:%M:%S")
+    line = f"[{ts}] {msg}"
+    st.session_state["activity_log"].append(line)
+    # Keep last 80 lines
+    st.session_state["activity_log"] = st.session_state["activity_log"][-80:]
+    print(line, flush=True)  # also terminal / streamlit console
+
+
+def render_activity_log(expanded: bool = False) -> None:
+    _ensure_log()
+    with st.expander("Activity log (if something feels stuck, open this)", expanded=expanded):
+        lines = st.session_state.get("activity_log") or []
+        if not lines:
+            st.caption("No activity yet.")
+        else:
+            st.code("\n".join(lines[-40:]), language=None)
+        if st.button("Clear log", key="clear_activity_log"):
+            st.session_state["activity_log"] = []
+            st.rerun()
 
 
 def friendly_error(exc: BaseException | str) -> str:
-    """Map known failures to short recovery guidance (heuristic: error recovery)."""
     msg = str(exc)
     low = msg.lower()
+    log(f"ERROR: {msg[:300]}")
     if "dimension" in low and ("768" in msg or "512" in msg or "embedding" in low):
         return (
-            "**Embedding dimension mismatch.** The vector store was built with a different "
-            "`EMBEDDING_DIM` than the current config.\n\n"
-            "Fix:\n```bash\n"
+            "**Embedding dimension mismatch.** Vector store dim ≠ current `EMBEDDING_DIM`.\n\n"
+            "```bash\n"
             "uv run python -m src.rag.cli reset-index\n"
-            "uv run python -m src.rag.cli ingest --force <arxiv_ids…>\n"
+            "uv run python -m src.rag.cli ingest --force <ids…>\n"
             "```"
         )
     if "api key" in low or "apikey" in low or "authentication" in low or "401" in low:
         return (
-            "**API key missing or rejected.** Set `GEMINI_API_KEY` in `.env` "
-            "(and optional `FALLBACK_LLM_API_KEY` / NVIDIA key). Restart the app after editing `.env`."
+            "**API key missing or rejected.** Set `GEMINI_API_KEY` in `.env` and restart the app."
         )
     if "not found" in low and "model" in low:
         return (
-            "**Model name not available.** Check `GEMINI_MODEL` in `.env` "
-            "(e.g. `gemini-2.0-flash` or the model your key supports)."
+            "**Model name not available.** Check `GEMINI_MODEL` in `.env`."
         )
     if "connection" in low or "timeout" in low or "network" in low:
+        return f"**Network problem.**\n\n`{msg[:300]}`"
+    if "collection" in low and "not" in low:
         return (
-            f"**Network problem while calling a remote service.**\n\nDetails: `{msg[:300]}`"
-        )
-    if "no such file" in low or "corpus" in low:
-        return (
-            "**Library data missing.** Add papers on the **Library** tab, then rebuild the recommend index."
+            "**Vector index missing.** Rebuild recommend index or ingest full-text papers first."
         )
     return f"**Something went wrong.**\n\n`{msg[:500]}`"
 
 
-@st.cache_data(ttl=30, show_spinner=False)
+@st.cache_data(ttl=15, show_spinner=False)
 def corpus_status_cached():
     try:
         from corpus_builder import corpus_status
@@ -138,7 +165,7 @@ def corpus_status_cached():
         }
 
 
-@st.cache_data(ttl=30, show_spinner=False)
+@st.cache_data(ttl=15, show_spinner=False)
 def rag_stats_cached():
     try:
         from rag.embed_store import index_stats
@@ -159,10 +186,14 @@ def rag_stats_cached():
             }
 
 
+def clear_data_caches():
+    corpus_status_cached.clear()
+    rag_stats_cached.clear()
+
 
 def save_library(papers: list, replace: bool = False) -> int:
-    """Merge or replace corpus.json; return new size."""
     from corpus_builder import load_corpus, save_corpus, merge_papers
+
     if replace:
         save_corpus(papers)
         return len(papers)
@@ -171,22 +202,20 @@ def save_library(papers: list, replace: bool = False) -> int:
     return len(merged)
 
 
-def clear_data_caches():
-    corpus_status_cached.clear()
-    rag_stats_cached.clear()
-
-
 def system_health() -> dict:
-    """Lightweight health (no secrets displayed)."""
     try:
         from settings import FALLBACK_LLM_API_KEY, EMBEDDING_MODEL
     except Exception:
-        FALLBACK_LLM_API_KEY = os.getenv("FALLBACK_LLM_API_KEY") or os.getenv("NVIDIA_API_KEY")
+        FALLBACK_LLM_API_KEY = os.getenv("FALLBACK_LLM_API_KEY") or os.getenv(
+            "NVIDIA_API_KEY"
+        )
         EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "google/embeddinggemma-2")
     gemini = os.getenv("GEMINI_API_KEY", "")
     return {
         "gemini_key": bool(gemini and str(gemini).strip()),
-        "fallback_key": bool(FALLBACK_LLM_API_KEY and str(FALLBACK_LLM_API_KEY).strip()),
+        "fallback_key": bool(
+            FALLBACK_LLM_API_KEY and str(FALLBACK_LLM_API_KEY).strip()
+        ),
         "embedding_model": EMBEDDING_MODEL,
     }
 
@@ -202,16 +231,16 @@ def next_step_hint(cs: dict, rs: dict) -> tuple[str, str]:
     if not cs.get("chroma_exists"):
         return (
             "Library ready — build the recommend index",
-            "Open **Library** → “Rebuild index only”, or add papers with “Rebuild index” checked.",
+            "Open **Library** → “Rebuild index only”.",
         )
     if rag_n == 0:
         return (
             "Recommend papers, then ingest for Q&A",
-            "Use **Recommend** to rank papers, then **Ingest for Q&A**. Ask only sees full-text papers.",
+            "Use **Recommend** → **Ingest for Q&A**. Ask only sees full-text papers.",
         )
     return (
         "Ready to ask",
-        "Library and full-text index are set up. Use **Ask** for grounded answers with citations.",
+        "Use **Ask** for grounded answers with citations.",
     )
 
 
@@ -225,8 +254,21 @@ def push_recent_question(q: str) -> None:
     st.session_state["recent_questions"] = hist[:8]
 
 
+def paper_id_from_row(r: dict) -> str:
+    pid = r.get("arxiv_id") or r.get("paper_id") or r.get("id") or ""
+    pid = str(pid).replace("arXiv:", "").replace("http://arxiv.org/abs/", "")
+    pid = pid.replace("https://arxiv.org/abs/", "")
+    if "v" in pid and pid.split("v")[0].replace(".", "").replace("/", "").isdigit() is False:
+        # keep version strip for standard ids like 1806.07572v1
+        pass
+    if "v" in pid:
+        base, _, ver = pid.rpartition("v")
+        if ver.isdigit():
+            pid = base
+    return pid.strip()
+
+
 def show_ingest_results(results: list[dict]) -> None:
-    """Per-paper success/fail table after ingest."""
     if not results:
         st.warning("No ingest results.")
         return
@@ -239,10 +281,11 @@ def show_ingest_results(results: list[dict]) -> None:
                 "arXiv ID": r.get("arxiv_id", ""),
                 "Status": "✓ ok" if r.get("ok") else "✗ fail",
                 "Chunks": r.get("chunks", "—") if r.get("ok") else "—",
-                "Title / error": (r.get("title") or r.get("error") or "")[:80],
+                "Title / error": (r.get("title") or r.get("error") or "")[:100],
             }
         )
     st.dataframe(rows, use_container_width=True, hide_index=True)
+    log(f"Ingest summary: {ok_n}/{len(results)} ok")
 
 
 def answer_to_markdown(question: str, result: dict) -> str:
@@ -257,32 +300,25 @@ def answer_to_markdown(question: str, result: dict) -> str:
     return "\n".join(lines)
 
 
-def render_answer_block(question: str, result: dict, *, show_export: bool = True) -> None:
-    """Always-visible answer + sources + download (not hidden in a collapsed expander)."""
+def render_answer_block(question: str, result: dict) -> None:
     if result.get("cache_hit"):
         st.info(
             f"Cached answer (similarity {result.get('cache_score')}). "
-            "Turn off cache in Advanced if you want a fresh generation."
+            "Turn off cache in Advanced for a fresh LLM call."
         )
-
     cov = result.get("coverage") or "n/a"
-    cov_help = (
-        "**Coverage** estimates whether retrieved passages look on-topic "
-        "(from similarity scores). "
-        "`high` ≈ safe to trust more · `partial` ≈ incomplete · "
-        "`low`/`none` ≈ library may not contain the answer."
-    )
     if cov == "high":
-        st.success(f"Coverage: **{cov}**", icon="✅")
+        st.success(f"Coverage: **{cov}**")
     elif cov == "partial":
         st.warning(f"Coverage: **{cov}** — answer may be incomplete.")
     else:
         st.error(f"Coverage: **{cov}** — library may not contain this topic.")
-    st.caption(cov_help)
-
+    st.caption(
+        "Coverage is from retrieval scores, not a calibrated probability. "
+        "`high` is better; `low`/`none` means the topic may be missing from full-text."
+    )
     st.markdown("#### Answer")
     st.markdown(result.get("answer") or "_No answer_")
-
     refs = result.get("references") or []
     if refs:
         st.markdown("#### Sources")
@@ -300,36 +336,24 @@ def render_answer_block(question: str, result: dict, *, show_export: bool = True
                     f"[{r['n']}] {r.get('title')} (arXiv:{r.get('paper_id')})",
                     language=None,
                 )
-
-    if show_export:
-        md = answer_to_markdown(question, result)
-        st.download_button(
-            "Download answer (Markdown)",
-            data=md,
-            file_name="answer.md",
-            mime="text/markdown",
-            key=f"dl_{hash(question) % 10_000_000}",
-        )
-        try:
-            from rag.rag_pipeline import export_markdown
-        except ImportError:
-            try:
-                from src.rag.rag_pipeline import export_markdown
-            except ImportError:
-                export_markdown = None
-        if export_markdown is not None:
-            if st.button("Also save under results/", key=f"save_{hash(question) % 99991}"):
-                path = export_markdown(result, question)
-                st.success(f"Saved `{path}`")
+    md = answer_to_markdown(question, result)
+    st.download_button(
+        "Download answer (Markdown)",
+        data=md,
+        file_name="answer.md",
+        mime="text/markdown",
+        key=f"dl_{abs(hash(question)) % 10_000_000}",
+    )
 
 
 def run_ingest_with_progress(ids: list[str], force: bool = False) -> list[dict]:
-    """Staged progress: load model → each paper."""
-    ids = [i.strip() for i in ids if i and str(i).strip()]
+    ids = [str(i).strip() for i in ids if i and str(i).strip()]
     if not ids:
         return []
-    progress = st.progress(0, text="Loading embedding model…")
+    log(f"Ingest start: {len(ids)} papers force={force} → {ids}")
+    progress = st.progress(0, text="Preparing…")
     status = st.empty()
+    results: list[dict] = []
     try:
         try:
             from rag.embed_store import load_embedding_model
@@ -338,54 +362,110 @@ def run_ingest_with_progress(ids: list[str], force: bool = False) -> list[dict]:
             from src.rag.embed_store import load_embedding_model
             from src.rag.ingest import ingest_paper
 
-        status.info("Stage 1/2 — loading embedder (first time can take a minute)…")
+        status.markdown("**Step 1/2 — Loading embedding model** (first load can take 1–2 min)…")
+        progress.progress(3, text="Loading embedder…")
+        t0 = time.time()
         model = load_embedding_model()
-        progress.progress(5, text="Embedder ready")
-        results = []
+        log(f"Embedder ready in {time.time() - t0:.1f}s")
+        progress.progress(8, text="Embedder ready")
+
         n = len(ids)
         for i, aid in enumerate(ids):
-            frac = 0.05 + 0.95 * (i / max(n, 1))
-            progress.progress(min(int(frac * 100), 99), text=f"Ingesting {aid} ({i+1}/{n})")
-            status.info(
-                f"Stage 2/2 — paper **{aid}** ({i+1}/{n}): download → Markdown → chunk → embed"
+            step_lo = 8 + int(90 * i / n)
+            progress.progress(
+                step_lo,
+                text=f"Paper {i+1}/{n}: {aid} — download PDF…",
             )
-            results.append(ingest_paper(aid, model=model, force_download=force))
-        progress.progress(100, text="Done")
-        status.empty()
+            status.markdown(
+                f"**Step 2/2 — Paper `{aid}` ({i+1}/{n})**  \n"
+                f"1. Download PDF  →  2. Convert to Markdown  →  3. Chunk  →  4. Embed & store"
+            )
+            log(f"Ingesting {aid} ({i+1}/{n})…")
+            t1 = time.time()
+            try:
+                row = ingest_paper(aid, model=model, force_download=force)
+            except Exception as e:
+                row = {"arxiv_id": aid, "ok": False, "error": str(e)}
+                log(f"  failed {aid}: {e}")
+            else:
+                if row.get("ok"):
+                    log(
+                        f"  ok {aid}: {row.get('chunks')} chunks in {time.time()-t1:.1f}s"
+                    )
+                else:
+                    log(f"  fail {aid}: {row.get('error')}")
+            results.append(row)
+            progress.progress(
+                8 + int(90 * (i + 1) / n),
+                text=f"Finished {aid} ({i+1}/{n})",
+            )
+        progress.progress(100, text="Ingest complete")
+        status.success("Ingest finished — see table below.")
+        log("Ingest complete")
         return results
     except Exception as e:
         status.empty()
-        st.error("")
         st.markdown(friendly_error(e))
+        log(traceback.format_exc()[-500:])
+        return results
+
+
+def run_rank(interest: str, k: int, weights: dict | None) -> list[dict]:
+    log(f"Rank start: {interest!r} k={k}")
+    progress = st.progress(0, text="Loading ranking stack…")
+    status = st.empty()
+    try:
+        status.markdown("**Loading corpus + embedding model for ranking**…")
+        progress.progress(15, text="Loading model / corpus…")
+        from ranking import score_and_rank
+
+        status.markdown("**Scoring papers** (embedding + recency + citation + author)…")
+        progress.progress(40, text="Scoring…")
+        t0 = time.time()
+        ranked = score_and_rank(interest.strip(), k=int(k), weights=weights)
+        log(f"Rank done in {time.time()-t0:.1f}s → {len(ranked)} results")
+        progress.progress(100, text="Ranking complete")
+        status.empty()
+        return ranked
+    except Exception as e:
+        status.empty()
+        progress.empty()
+        st.markdown(friendly_error(e))
+        log(traceback.format_exc()[-500:])
         return []
 
 
-# ── Session defaults ──────────────────────────────────────────────────────
+# ── Session ───────────────────────────────────────────────────────────────
 
+_ensure_log()
 if "recent_questions" not in st.session_state:
     st.session_state["recent_questions"] = []
 if "last_ask" not in st.session_state:
     st.session_state["last_ask"] = None
 if "last_recommend" not in st.session_state:
     st.session_state["last_recommend"] = None
-if "confirm_replace" not in st.session_state:
-    st.session_state["confirm_replace"] = False
 
-
-# ── Sidebar ───────────────────────────────────────────────────────────────
-
-cs = corpus_status_cached()
-rs = rag_stats_cached()
+try:
+    cs = corpus_status_cached()
+    rs = rag_stats_cached()
+except Exception as _startup_err:
+    st.error("Startup status load failed — see details below.")
+    st.exception(_startup_err)
+    cs = {"n_papers": 0, "chroma_exists": False}
+    rs = {"paper_count": 0, "chunk_count": 0, "papers": []}
 hint_title, hint_body = next_step_hint(cs, rs)
-health = system_health()
+try:
+    health = system_health()
+except Exception:
+    health = {"gemini_key": False, "fallback_key": False, "embedding_model": "—"}
 lib_n = int(cs.get("n_papers") or 0)
 rag_n = int(rs.get("paper_count") or 0)
 
 with st.sidebar:
     st.markdown("### Workspace")
     m1, m2 = st.columns(2)
-    m1.metric("Library", lib_n, help="Titles/abstracts used for ranking")
-    m2.metric("Full-text", rag_n, help="PDFs ingested for Ask / RAG")
+    m1.metric("Library", lib_n, help="Titles/abstracts for ranking")
+    m2.metric("Full-text", rag_n, help="PDFs for Ask / RAG")
     st.caption(
         f"Recommend index: **{'ready' if cs.get('chroma_exists') else 'not built'}**  ·  "
         f"Chunks: **{rs.get('chunk_count', 0)}**"
@@ -394,19 +474,17 @@ with st.sidebar:
         st.caption(f"Embedder: `{rs.get('embedding_model')}`")
         if rs.get("embedding_dim") not in (None, "", "None"):
             st.caption(f"Dim: `{rs.get('embedding_dim')}`")
-
-    st.caption(
-        "Library = metadata for ranking.  \nFull-text = papers you can **ask** about."
-    )
+    st.caption("Library = rank · Full-text = ask")
 
     if st.button("Refresh status", use_container_width=True):
         clear_data_caches()
+        log("Status cache cleared")
         st.rerun()
 
     with st.expander("Full-text papers in RAG"):
         papers = rs.get("papers") or []
         if not papers:
-            st.caption("None yet — ingest from Recommend or Library.")
+            st.caption("None yet.")
         else:
             for p in papers:
                 st.markdown(f"`{p.get('paper_id')}`  \n{p.get('title', '')[:70]}")
@@ -420,29 +498,25 @@ with st.sidebar:
         )
         st.caption(f"Embedding model: `{health['embedding_model']}`")
         if not health["gemini_key"]:
-            st.warning("Set `GEMINI_API_KEY` in `.env` to generate answers.")
+            st.warning("Set `GEMINI_API_KEY` in `.env` for generation.")
 
     st.divider()
-    st.caption("CLI equivalents")
+    st.caption("CLI (see WORKFLOW.md)")
     st.code(
-        "uv run python src/recommend.py \"…\"\n"
-        "uv run python -m src.rag.cli ask \"…\"\n"
-        "uv run python src/final_eval.py --retrieval-only",
+        "uv run python src/corpus_builder.py search \"…\" -n 12 --build-index\n"
+        "uv run python src/recommend.py \"…\" -k 8\n"
+        "uv run python -m src.rag.cli ingest <id>\n"
+        "uv run python -m src.rag.cli ask \"…\"",
         language="bash",
     )
-
-
-# ── Header + banners ──────────────────────────────────────────────────────
 
 st.title("ArXiv Paper Suggester")
 st.caption("Find papers · read full text · ask with citations")
 
-# Library vs full-text mismatch banner (P0)
 if lib_n > 0 and rag_n < lib_n:
     st.warning(
         f"**Library has {lib_n} papers but only {rag_n} are full-text.**  \n"
-        "Ask only searches ingested full text. Use **Recommend → Ingest for Q&A** "
-        "or **Library** to ingest more PDFs."
+        "Ask only searches ingested PDFs. Use **Recommend → Ingest for Q&A**."
     )
 
 if lib_n == 0 or not cs.get("chroma_exists") or rag_n == 0:
@@ -450,36 +524,36 @@ if lib_n == 0 or not cs.get("chroma_exists") or rag_n == 0:
 else:
     st.success(f"**{hint_title}** — {hint_body}")
 
+render_activity_log(expanded=False)
+
 tab_home, tab_lib, tab_rec, tab_ask, tab_help = st.tabs(
     ["Home", "Library", "Recommend", "Ask", "Help"]
 )
 
 
-# ══════════════════════════════════════════════════════════════════════════
-# HOME
-# ══════════════════════════════════════════════════════════════════════════
+# ── HOME ──────────────────────────────────────────────────────────────────
 
 with tab_home:
     st.subheader("What do you want to do?")
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("#### 1. Add papers")
-        st.write("Search arXiv or paste IDs into your library.")
-        st.caption("→ Library tab")
+        st.write("Search arXiv or paste IDs.")
+        st.caption("→ Library")
     with c2:
         st.markdown("#### 2. Rank by interest")
-        st.write("Multi-signal ranking over your library.")
-        st.caption("→ Recommend tab")
+        st.write("Multi-signal ranking.")
+        st.caption("→ Recommend")
     with c3:
         st.markdown("#### 3. Ask questions")
-        st.write("Answers grounded in full text, with citations.")
-        st.caption("→ Ask tab (after ingest)")
+        st.write("Grounded answers + citations.")
+        st.caption("→ Ask (after ingest)")
 
     st.divider()
     st.markdown("#### Quick demo")
     st.write(
-        "One-click path: ensure library → rank → ingest top papers → answer a question. "
-        "Useful for presentations."
+        "Runs: seed library (if empty) → rebuild index → rank → ingest top papers → ask. "
+        "Watch the **Activity log** and progress labels — first embedder load is slow."
     )
     d1, d2 = st.columns(2)
     with d1:
@@ -494,90 +568,92 @@ with tab_home:
             value="What are open problems in mechanistic interpretability?",
             key="home_demo_q",
         )
-    demo_k = st.slider("How many top papers to ingest", 1, 6, 3, key="home_demo_k")
+    demo_k = st.slider("Top papers to ingest", 1, 6, 3, key="home_demo_k")
 
     if st.button("Run quick demo", type="primary", key="home_demo_btn"):
-        progress = st.progress(0, text="Starting…")
+        log("=== Quick demo start ===")
+        overall = st.progress(0, text="Demo starting…")
         try:
             if lib_n == 0:
-                progress.progress(10, text="Searching arXiv for seed papers…")
+                overall.progress(5, text="Searching arXiv…")
+                log(f"Demo: search arXiv {demo_interest!r}")
                 from corpus_builder import search_arxiv
 
                 papers = search_arxiv(demo_interest, max_results=12)
                 if not papers:
                     st.error("arXiv search returned no papers.")
+                    log("Demo: search empty")
                 else:
-                    save_library(papers, replace=True)
-                    st.write(f"Seeded library with {len(papers)} papers.")
+                    size = save_library(papers, replace=True)
+                    st.write(f"Seeded library: **{size}** papers")
+                    log(f"Demo: library size {size}")
                     clear_data_caches()
 
-            progress.progress(30, text="Building recommend index…")
-            try:
-                from corpus_builder import rebuild_index
+            overall.progress(25, text="Building recommend index…")
+            log("Demo: rebuild_index")
+            from corpus_builder import rebuild_index
 
-                rebuild_index()
-            except Exception as e:
-                st.markdown(friendly_error(e))
+            rebuild_index()
+            log("Demo: index ready")
 
-            progress.progress(50, text="Ranking…")
-            from ranking import score_and_rank
-
-            ranked = score_and_rank(demo_interest, k=int(demo_k))
-            ids = []
-            for r in ranked[:demo_k]:
-                pid = r.get("arxiv_id") or r.get("id") or r.get("paper_id")
-                if pid:
-                    ids.append(str(pid).replace("arXiv:", "").split("v")[0])
+            overall.progress(45, text="Ranking…")
+            ranked = run_rank(demo_interest, demo_k, None)
+            ids = [paper_id_from_row(r) for r in ranked[:demo_k]]
+            ids = [x for x in ids if x]
             st.write("Top IDs:", ", ".join(ids) if ids else "(none)")
 
             if ids:
-                progress.progress(65, text="Ingesting full text…")
+                overall.progress(60, text="Ingesting full text…")
                 results = run_ingest_with_progress(ids, force=False)
                 show_ingest_results(results)
                 clear_data_caches()
 
-            progress.progress(90, text="Asking…")
+            overall.progress(85, text="Asking (LLM, often 10–20 s)…")
+            log(f"Demo: ask {demo_q!r}")
             try:
                 from rag.rag_pipeline import ask
             except ImportError:
                 from src.rag.rag_pipeline import ask
+            t0 = time.time()
             result = ask(demo_q, top_k=6, use_cache=False)
+            log(f"Demo: ask done in {time.time()-t0:.1f}s coverage={result.get('coverage')}")
             st.session_state["last_ask"] = {"q": demo_q, "result": result}
             push_recent_question(demo_q)
-            progress.progress(100, text="Done")
+            overall.progress(100, text="Demo complete")
             render_answer_block(demo_q, result)
             clear_data_caches()
+            log("=== Quick demo done ===")
         except Exception as e:
             st.markdown(friendly_error(e))
+            log(traceback.format_exc()[-800:])
 
 
-# ══════════════════════════════════════════════════════════════════════════
-# LIBRARY
-# ══════════════════════════════════════════════════════════════════════════
+# ── LIBRARY ───────────────────────────────────────────────────────────────
 
 with tab_lib:
     st.subheader("Paper library")
     st.write(
-        "Build the **metadata library** used for ranking. "
-        "Full-text ingest for Ask is a separate step (Recommend or ingest below)."
+        "Metadata for **ranking**. Full-text for **Ask** is a separate ingest step."
     )
-
     mode = st.radio(
         "How do you want to add papers?",
-        ["Search arXiv", "Paste arXiv IDs", "Ingest from personal ranking", "Rebuild index only"],
+        [
+            "Search arXiv",
+            "Paste arXiv IDs",
+            "Ingest from personal ranking",
+            "Rebuild index only",
+        ],
         horizontal=True,
         key="lib_mode",
     )
-
     with st.expander("Options", expanded=False):
         replace = st.checkbox(
             "Replace library instead of merging",
             value=False,
             key="lib_replace",
-            help="Deletes the previous library contents when saving new search/ID results.",
         )
         if replace:
-            st.session_state["confirm_replace"] = st.checkbox(
+            st.checkbox(
                 "I understand this replaces the current library",
                 value=False,
                 key="lib_replace_confirm",
@@ -593,11 +669,7 @@ with tab_lib:
         return True
 
     if mode == "Search arXiv":
-        q = st.text_input(
-            "Keywords",
-            placeholder="e.g. mechanistic interpretability circuits",
-            key="lib_q",
-        )
+        q = st.text_input("Keywords", key="lib_q")
         c1, c2, c3 = st.columns(3)
         with c1:
             n = st.number_input("Max results", 5, 40, 12, key="lib_n")
@@ -615,14 +687,11 @@ with tab_lib:
             elif not (q or "").strip() and not (cat or "").strip():
                 st.error("Enter keywords or a category.")
             else:
-                with st.spinner("Searching arXiv…"):
+                log(f"Library search: {q!r} cat={cat!r}")
+                with st.status("Searching arXiv…", expanded=True) as st_status:
+                    st_status.write("Calling arXiv API…")
                     try:
-                        from corpus_builder import (
-                            search_arxiv,
-                            load_corpus,
-                            save_corpus,
-                            merge_corpus,
-                        )
+                        from corpus_builder import search_arxiv
 
                         papers = search_arxiv(
                             q or "",
@@ -630,33 +699,41 @@ with tab_lib:
                             category=(cat or None),
                             sort_by=sort,
                         )
+                        st_status.write(f"Found {len(papers)} papers")
+                        log(f"Search returned {len(papers)}")
                     except Exception as e:
                         st.markdown(friendly_error(e))
                         papers = None
+                        st_status.update(label="Search failed", state="error")
                 if papers is not None:
                     if not papers:
                         st.warning("No papers found.")
                     else:
-                        st.write(f"Found **{len(papers)}** papers:")
                         for p in papers[:8]:
                             st.markdown(
-                                f"- `{p.get('id') or p.get('arxiv_id')}` — "
+                                f"- `{p.get('arxiv_id') or p.get('id')}` — "
                                 f"{(p.get('title') or '')[:90]}"
                             )
                         try:
                             size = save_library(papers, replace=replace)
                             st.success(f"Library size: **{size}**")
+                            log(f"Library saved size={size}")
                         except Exception as e:
                             st.markdown(friendly_error(e))
                         if build_idx:
-                            with st.spinner("Building recommend index…"):
+                            with st.status("Building recommend index…", expanded=True) as s2:
+                                s2.write("Embedding titles/abstracts (may take a minute)…")
                                 try:
                                     from corpus_builder import rebuild_index
 
                                     rebuild_index()
+                                    s2.write("Index ready")
+                                    s2.update(label="Index ready", state="complete")
+                                    log("Recommend index rebuilt")
                                     st.success("Recommend index ready.")
                                 except Exception as e:
-                                    st.warning(f"Index build failed: {e}")
+                                    s2.update(label="Index failed", state="error")
+                                    st.markdown(friendly_error(e))
                         clear_data_caches()
                         st.rerun()
 
@@ -679,79 +756,93 @@ with tab_lib:
                 if not ids:
                     st.error("Enter at least one ID.")
                 else:
-                    with st.spinner("Fetching metadata…"):
+                    log(f"Fetch IDs: {ids}")
+                    with st.status("Fetching metadata…", expanded=True) as s:
                         try:
                             from corpus_builder import fetch_by_ids
 
+                            s.write(f"Requesting {len(ids)} IDs from arXiv…")
                             papers = fetch_by_ids(ids)
                             size = save_library(papers, replace=replace)
-                            st.success(f"Fetched **{len(papers)}** papers · library size **{size}**.")
+                            s.write(f"Saved library size {size}")
+                            st.success(
+                                f"Fetched **{len(papers)}** · library **{size}**"
+                            )
+                            log(f"Fetched {len(papers)} library={size}")
+                            s.update(state="complete")
                         except Exception as e:
+                            s.update(state="error")
                             st.markdown(friendly_error(e))
                             papers = []
                     if build_idx and papers:
-                        with st.spinner("Building recommend index…"):
+                        with st.status("Building recommend index…", expanded=True) as s2:
                             try:
                                 from corpus_builder import rebuild_index
 
+                                s2.write("Embedding…")
                                 rebuild_index()
+                                s2.update(label="Index ready", state="complete")
                                 st.success("Recommend index ready.")
                             except Exception as e:
-                                st.warning(str(e))
+                                s2.update(state="error")
+                                st.markdown(friendly_error(e))
                     clear_data_caches()
                     st.rerun()
 
     elif mode == "Ingest from personal ranking":
-        st.write(
-            "Pull arXiv IDs from `rankings/personal_importance.csv` (high personal scores) "
-            "and ingest full text for Ask."
-        )
+        st.write("Uses `rankings/personal_importance.csv` if present.")
         top_n = st.slider("Top-N", 1, 15, 5, key="lib_rank_n")
         min_score = st.slider(
             "Min personal score", 1.0, 5.0, 4.0, 0.5, key="lib_rank_min"
         )
         if st.button("Ingest from personal ranking", type="primary", key="lib_rank_btn"):
+            log(f"Ingest personal ranking top_n={top_n} min={min_score}")
             try:
                 try:
-                    from rag.ingest import ingest_from_personal_ranking
+                    from rag.ingest import ids_from_personal_ranking
                 except ImportError:
-                    from src.rag.ingest import ingest_from_personal_ranking
-                with st.spinner("Ingesting…"):
-                    results = ingest_from_personal_ranking(
-                        top_n=int(top_n), min_score=float(min_score)
-                    )
+                    from src.rag.ingest import ids_from_personal_ranking
+                ids = ids_from_personal_ranking(
+                    top_n=int(top_n), min_score=float(min_score)
+                )
+                st.write("IDs:", ids)
+                results = run_ingest_with_progress(list(ids), force=False)
                 show_ingest_results(results)
                 clear_data_caches()
             except Exception as e:
                 st.markdown(friendly_error(e))
 
-    else:  # Rebuild index only
-        st.write("Rebuild the recommend (title/abstract) vector index from the current library.")
+    else:
+        st.write("Rebuild title/abstract vector index from current library.")
         if st.button("Rebuild recommend index", type="primary", key="lib_rebuild_btn"):
-            with st.spinner("Building…"):
+            log("Manual rebuild_index")
+            with st.status("Building recommend index…", expanded=True) as s:
+                s.write("Loading model and embedding library texts…")
                 try:
                     from corpus_builder import rebuild_index
 
                     rebuild_index()
+                    s.update(label="Index ready", state="complete")
                     st.success("Recommend index ready.")
+                    log("rebuild_index ok")
                     clear_data_caches()
                 except Exception as e:
+                    s.update(state="error")
                     st.markdown(friendly_error(e))
 
 
-# ══════════════════════════════════════════════════════════════════════════
-# RECOMMEND
-# ══════════════════════════════════════════════════════════════════════════
+# ── RECOMMEND ─────────────────────────────────────────────────────────────
 
 with tab_rec:
     st.subheader("Recommend papers")
-    st.write("Rank library papers for a research interest (embedding + recency + citation + author).")
-
+    st.write(
+        "Ranks the **library** (needs recommend index). Then ingest top hits for Ask."
+    )
     interest = st.text_input("Research interest", key="rec_interest")
-    st.caption("Examples: " + " · ".join(f"`{e}`" for e in EXAMPLE_INTERESTS[:3]))
     ex_cols = st.columns(len(EXAMPLE_INTERESTS))
     for i, ex in enumerate(EXAMPLE_INTERESTS):
-        if ex_cols[i].button(ex[:28] + ("…" if len(ex) > 28 else ""), key=f"ex_int_{i}"):
+        label = ex[:28] + ("…" if len(ex) > 28 else "")
+        if ex_cols[i].button(label, key=f"ex_int_{i}"):
             st.session_state["rec_interest"] = ex
             st.rerun()
 
@@ -763,33 +854,24 @@ with tab_rec:
             "Weight preset",
             list(WEIGHT_PRESETS.keys()),
             key="rec_preset",
-            help=PRESET_HELP.get("Balanced (default)"),
         )
         st.caption(PRESET_HELP.get(preset_name, ""))
-
     weights = WEIGHT_PRESETS.get(preset_name)
 
     if st.button("Rank papers", type="primary", key="rec_btn"):
         if not (interest or "").strip():
             st.error("Enter a research interest.")
         elif lib_n == 0:
-            st.error("Library is empty — add papers on the Library tab first.")
+            st.error("Library is empty — use the Library tab first.")
+        elif not cs.get("chroma_exists"):
+            st.error("Recommend index not built — Library → Rebuild index only.")
         else:
-            with st.spinner("Scoring library…"):
-                try:
-                    from ranking import score_and_rank
-
-                    ranked = score_and_rank(
-                        interest.strip(),
-                        k=int(k),
-                        weights=weights,
-                    )
-                    st.session_state["last_recommend"] = {
-                        "interest": interest.strip(),
-                        "ranked": ranked,
-                    }
-                except Exception as e:
-                    st.markdown(friendly_error(e))
+            ranked = run_rank(interest.strip(), int(k), weights)
+            if ranked:
+                st.session_state["last_recommend"] = {
+                    "interest": interest.strip(),
+                    "ranked": ranked,
+                }
 
     prev = st.session_state.get("last_recommend")
     if prev and prev.get("ranked"):
@@ -797,28 +879,23 @@ with tab_rec:
         ranked = prev["ranked"]
         ids_order = []
         for i, r in enumerate(ranked, 1):
-            pid = (
-                r.get("arxiv_id")
-                or r.get("id")
-                or r.get("paper_id")
-                or ""
-            )
-            pid = str(pid).replace("arXiv:", "").split("v")[0]
+            pid = paper_id_from_row(r)
             ids_order.append(pid)
             title = (r.get("title") or "")[:100]
             score = r.get("final_score", r.get("score", ""))
-            st.markdown(f"**{i}. [{pid}](https://arxiv.org/abs/{pid})** — {title}")
+            if pid:
+                st.markdown(f"**{i}. [{pid}](https://arxiv.org/abs/{pid})** — {title}")
+            else:
+                st.markdown(f"**{i}.** {title}")
             st.caption(f"Score: {score}")
 
         st.markdown("#### Ingest for Q&A")
-        st.write(
-            "Full-text ingest downloads PDFs and builds the RAG index so **Ask** can cite them."
-        )
+        st.write("Downloads PDFs, converts to Markdown, chunks, embeds into RAG.")
         ingest_n = st.slider(
-            "Ingest top-N from this ranking",
+            "Ingest top-N",
             1,
-            min(len(ids_order), 10),
-            min(5, len(ids_order)),
+            max(1, min(len(ids_order), 10)),
+            min(5, max(1, len(ids_order))),
             key="rec_ingest_n",
         )
         force = st.checkbox("Force re-download / re-embed", value=False, key="rec_force")
@@ -831,43 +908,33 @@ with tab_rec:
             results = run_ingest_with_progress(to_ingest, force=force)
             show_ingest_results(results)
             clear_data_caches()
-            st.info("Status refreshed after rerun — open the **Ask** tab when ready.")
+            st.info("Open the **Ask** tab when ready.")
             st.rerun()
 
 
-# ══════════════════════════════════════════════════════════════════════════
-# ASK
-# ══════════════════════════════════════════════════════════════════════════
+# ── ASK ───────────────────────────────────────────────────────────────────
 
 with tab_ask:
     st.subheader("Ask the papers")
     if rag_n == 0:
-        st.warning(
-            "No full-text papers yet. Ingest from **Recommend** or **Library** before asking."
-        )
+        st.warning("No full-text papers yet. Ingest from **Recommend** first.")
     else:
         st.caption(
             f"Searching **{rag_n}** full-text papers · "
-            "Typical answer time **10–20 seconds** (LLM generation)."
+            "Typical answer time **10–20 seconds** (LLM)."
         )
 
-    # Recent questions
     recent = st.session_state.get("recent_questions") or []
     if recent:
         st.markdown("**Recent questions**")
         rcols = st.columns(min(len(recent), 4))
         for i, rq in enumerate(recent[:4]):
-            if rcols[i].button(rq[:40] + ("…" if len(rq) > 40 else ""), key=f"recent_{i}"):
+            short = rq[:40] + ("…" if len(rq) > 40 else "")
+            if rcols[i].button(short, key=f"recent_{i}"):
                 st.session_state["ask_q"] = rq
                 st.rerun()
 
-    question = st.text_area(
-        "Question",
-        height=80,
-        key="ask_q",
-        placeholder="e.g. What is the neural tangent kernel and why does it matter?",
-    )
-    st.caption("Try: " + " · ".join(f"`{q[:42]}…`" if len(q) > 42 else f"`{q}`" for q in EXAMPLE_QUESTIONS[:2]))
+    question = st.text_area("Question", height=80, key="ask_q")
     eq = st.columns(len(EXAMPLE_QUESTIONS))
     for i, exq in enumerate(EXAMPLE_QUESTIONS):
         if eq[i].button(exq[:30] + "…", key=f"ex_q_{i}"):
@@ -875,20 +942,24 @@ with tab_ask:
             st.rerun()
 
     with st.expander("Advanced", expanded=False):
-        top_k = st.slider("Passages to retrieve (top-k)", 3, 12, 6, key="ask_k")
+        top_k = st.slider("Passages (top-k)", 3, 12, 6, key="ask_k")
         use_cache = st.checkbox(
             "Use semantic answer cache",
             value=True,
             key="ask_cache",
-            help="Reuse answers to very similar questions. Turn off for a guaranteed fresh LLM call.",
+            help="Reuse near-duplicate questions. Off = always call the LLM.",
         )
         paper_filter = st.multiselect(
-            "Restrict to papers (optional)",
-            options=[p.get("paper_id") for p in (rs.get("papers") or []) if p.get("paper_id")],
+            "Restrict to papers",
+            options=[
+                p.get("paper_id")
+                for p in (rs.get("papers") or [])
+                if p.get("paper_id")
+            ],
             key="ask_filter",
         )
 
-    col_a, col_b = st.columns([1, 1])
+    col_a, col_b = st.columns(2)
     with col_a:
         ask_clicked = st.button(
             "Ask",
@@ -902,32 +973,46 @@ with tab_ask:
                 st.session_state["last_ask"] = None
                 st.rerun()
 
-    active_ids = paper_filter or None
-
     if ask_clicked and (question or "").strip():
-        with st.spinner("Retrieving passages and generating answer (often 10–20 s)…"):
+        log(f"Ask: {question.strip()!r} top_k={top_k} cache={use_cache}")
+        progress = st.progress(0, text="Starting…")
+        status = st.empty()
+        try:
+            status.markdown("**1/3 Retrieving** relevant chunks from full-text index…")
+            progress.progress(15, text="Retrieving…")
             try:
-                try:
-                    from rag.rag_pipeline import ask
-                except ImportError:
-                    from src.rag.rag_pipeline import ask
-                result = ask(
-                    question.strip(),
-                    top_k=top_k,
-                    paper_ids=active_ids,
-                    use_cache=use_cache,
-                )
-                st.session_state["last_ask"] = {
-                    "q": question.strip(),
-                    "result": result,
-                }
-                push_recent_question(question.strip())
-            except Exception as e:
-                st.markdown(friendly_error(e))
-                result = None
-        if st.session_state.get("last_ask"):
-            la = st.session_state["last_ask"]
-            render_answer_block(la["q"], la["result"])
+                from rag.rag_pipeline import ask
+            except ImportError:
+                from src.rag.rag_pipeline import ask
+            status.markdown(
+                "**2/3 Generating** with Gemini (often 10–20 s — watch Activity log)…"
+            )
+            progress.progress(40, text="Calling LLM…")
+            t0 = time.time()
+            result = ask(
+                question.strip(),
+                top_k=top_k,
+                paper_ids=paper_filter or None,
+                use_cache=use_cache,
+            )
+            elapsed = time.time() - t0
+            log(
+                f"Ask done in {elapsed:.1f}s coverage={result.get('coverage')} "
+                f"cache_hit={result.get('cache_hit')}"
+            )
+            progress.progress(100, text=f"Done in {elapsed:.1f}s")
+            status.success(f"Finished in **{elapsed:.1f}s**")
+            st.session_state["last_ask"] = {
+                "q": question.strip(),
+                "result": result,
+            }
+            push_recent_question(question.strip())
+            render_answer_block(question.strip(), result)
+        except Exception as e:
+            progress.empty()
+            status.empty()
+            st.markdown(friendly_error(e))
+            log(traceback.format_exc()[-800:])
 
     elif st.session_state.get("last_ask"):
         st.markdown("#### Last answer")
@@ -936,52 +1021,41 @@ with tab_ask:
         render_answer_block(la["q"], la["result"])
 
 
-# ══════════════════════════════════════════════════════════════════════════
-# HELP
-# ══════════════════════════════════════════════════════════════════════════
+# ── HELP ──────────────────────────────────────────────────────────────────
 
 with tab_help:
-    st.subheader("Help & concepts")
+    st.subheader("Help & CLI workflow")
     st.markdown(
         """
 **Library vs full-text**
 
 | Term | Meaning |
 |------|---------|
-| **Library** | Titles/abstracts used to *rank* papers for an interest |
-| **Full-text (RAG)** | PDFs that were downloaded, chunked, and embedded — what **Ask** searches |
+| **Library** | Titles/abstracts for *ranking* |
+| **Full-text** | Ingested PDFs that **Ask** can search |
 
-**Coverage** on an answer is a rough signal from retrieval scores, not a calibrated probability.
-Prefer `high`; treat `low` / `none` as “maybe not in the library.”
+**If the UI feels stuck**
 
-**Typical latency**
+1. Open **Activity log** at the top (also prints to the terminal).
+2. First embedder load can take 1–2 minutes with no other output — that is normal.
+3. Full answers often take **10–20 seconds** (LLM).
 
-- Retrieve only: tens of milliseconds  
-- Full answer: often **10–20 seconds** (LLM)
-
-**CLI** (debugging / batch)
+**Exact CLI workflow** is in `WORKFLOW.md` at the project root. Short version:
 
 ```bash
-uv run python src/corpus_builder.py search "mechanistic interpretability" -n 12
+uv sync
+# optional: cp .env.example .env  and set GEMINI_API_KEY
+
+uv run python src/corpus_builder.py search "mechanistic interpretability" -n 12 --build-index
 uv run python src/recommend.py "mechanistic interpretability circuits" -k 8
-uv run python -m src.rag.cli ingest 1806.07572 2501.16496
-uv run python -m src.rag.cli ask "What is the NTK?"
-uv run python src/final_eval.py --retrieval-only
+uv run python -m src.rag.cli ingest 1806.07572 2501.16496 2304.14997
+uv run python -m src.rag.cli status
+uv run python -m src.rag.cli ask "What is the neural tangent kernel?"
+uv run python -m streamlit run src/app.py
 ```
-
-**Evaluation report** (metrics, CIs, refusal, latency):  
-`results/EVALUATION_REPORT.md`
-
-**Common fixes**
-
-- Dimension mismatch → `uv run python -m src.rag.cli reset-index` then re-ingest  
-- No answers → ingest full-text papers first; check Gemini API key under **System health**
 """
     )
-
     report_path = ROOT / "results" / "EVALUATION_REPORT.md"
     if report_path.exists():
-        with st.expander("Preview evaluation report"):
-            st.markdown(report_path.read_text(encoding="utf-8")[:6000])
-            if report_path.stat().st_size > 6000:
-                st.caption("Truncated preview — open the file for the full report.")
+        with st.expander("Evaluation report preview"):
+            st.markdown(report_path.read_text(encoding="utf-8")[:5000])

@@ -180,7 +180,7 @@ def run_eval(
             result = ask(
                 item["question"],
                 top_k=top_k,
-                use_cache=True,
+                use_cache=False,  # never cache during evaluation (Lab 7: measure the live system)
                 return_chunks=False,
             )
             answer = result.get("answer") or ""

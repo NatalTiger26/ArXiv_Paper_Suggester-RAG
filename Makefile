@@ -63,3 +63,22 @@ web:
 
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+
+
+eval-suite:
+	$(PY) src/eval_suite.py --all
+
+eval-suite-full:
+	$(PY) src/eval_suite.py --all --with-generation
+
+dim-sweep:
+	$(PY) src/eval_suite.py --dim-sweep
+
+eval-advanced:
+	$(PY) src/eval_advanced.py --write-report
+
+final-eval:
+	$(PY) src/final_eval.py --retrieval-only
+
+final-eval-full:
+	$(PY) src/final_eval.py --with-generation --no-cache

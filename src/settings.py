@@ -1,13 +1,13 @@
 """
 Central project settings (paths + models).
 
-Embeddings — EmbeddingGemma 2 only (local):
-  EMBEDDING_MODEL=google/embeddinggemma-2
+Embeddings — local default EmbeddingGemma 2; Cloud defaults to MiniLM:
+  EMBEDDING_MODEL=google/embeddinggemma-2  # or all-MiniLM-L6-v2 on Cloud
   EMBEDDING_DIM=0          # 0 = full model dim; try 512 / 256 / 128 to save cost
 
 Generation — Gemini primary, OpenAI-compatible failsafe (e.g. NVIDIA):
   GEMINI_API_KEY=...
-  GEMINI_MODEL=gemini-3.8-flash
+  GEMINI_MODEL=gemini-2.0-flash
   FALLBACK_LLM_API_KEY=...           # or NVIDIA_API_KEY
   FALLBACK_LLM_BASE_URL=https://integrate.api.nvidia.com/v1
   FALLBACK_LLM_MODEL=meta/llama-3.1-8b-instruct
@@ -22,28 +22,103 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = PROJECT_ROOT / "data"
-RESULTS_DIR = PROJECT_ROOT / "results"
-RANKINGS_DIR = PROJECT_ROOT / "rankings"
+# Streamlit Cloud injects secrets as env-like values via st.secrets when available.
+def _apply_streamlit_secrets() -> None:
+    try:
+        import streamlit as st  # type: ignore
 
-CORPUS_PATH = DATA_DIR / "corpus.json"
-CORPUS_CHROMA_DIR = DATA_DIR / "chroma_corpus"
-CORPUS_EMB_CACHE = DATA_DIR / "embeddings" / "corpus_embeddings.json"
-CORPUS_COLLECTION = "arxiv_corpus"
+        secrets = getattr(st, "secrets", None)
+        if not secrets:
+            return
+        for key in (
+            "GEMINI_API_KEY",
+            "GEMINI_MODEL",
+            "HF_TOKEN",
+            "HUGGING_FACE_HUB_TOKEN",
+            "FALLBACK_LLM_API_KEY",
+            "NVIDIA_API_KEY",
+            "EMBEDDING_MODEL",
+            "RAG_EMBEDDING_MODEL",
+            "EMBEDDING_DIM",
+        ):
+            try:
+                val = secrets.get(key) if hasattr(secrets, "get") else secrets[key]
+            except Exception:
+                continue
+            if val is not None and str(val).strip() != "":
+                os.environ.setdefault(key, str(val))
+    except Exception:
+        pass
 
-PAPERS_DIR = DATA_DIR / "papers"
-MARKDOWN_DIR = DATA_DIR / "markdown"
-CHROMA_RAG_DIR = DATA_DIR / "chroma_rag"
-RAG_CACHE_DIR = DATA_DIR / "rag_cache"
-RAG_COLLECTION = "paper_chunks"
-RANKINGS_PATH = RANKINGS_DIR / "personal_importance.csv"
-EVAL_DIR = RESULTS_DIR / "rag_eval"
 
-# ── Embeddings: EmbeddingGemma 2 only ─────────────────────────────────────
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL") or os.getenv(
-    "RAG_EMBEDDING_MODEL", "google/embeddinggemma-2"
+_apply_streamlit_secrets()
+
+def _detect_streamlit_cloud() -> bool:
+    """True on Streamlit Community Cloud (and similar constrained hosts)."""
+    if os.getenv("FORCE_CLOUD_EMBED") == "1":
+        return True
+    if os.getenv("FORCE_LOCAL_EMBED") == "1":
+        return False
+    # Common Cloud markers
+    if os.path.exists("/home/adminuser"):
+        return True
+    if os.path.exists("/mount/src"):
+        return True
+    if os.getenv("STREAMLIT_RUNTIME_ENVIRONMENT") == "cloud":
+        return True
+    # Hostname / path heuristics
+    try:
+        import socket
+
+        hn = socket.gethostname() or ""
+        if "streamlit" in hn.lower():
+            return True
+    except Exception:
+        pass
+    cwd = os.getcwd()
+    if "/mount/src/" in str(cwd).replace(chr(92), "/"):
+        return True
+    return False
+
+
+IS_STREAMLIT_CLOUD = _detect_streamlit_cloud()
+
+# ── Embeddings ────────────────────────────────────────────────────────────
+# Local default: EmbeddingGemma 2 (~1GB — fine on a laptop, deadly on free Cloud).
+# On Streamlit Community Cloud we ALWAYS use a small embedder unless the user
+# explicitly sets ALLOW_LARGE_EMBED=1 (not recommended on free tier).
+_DEFAULT_LOCAL_EMBED = "google/embeddinggemma-2"
+_DEFAULT_CLOUD_EMBED = "sentence-transformers/all-MiniLM-L6-v2"
+_HEAVY_EMBED_MARKERS = (
+    "embeddinggemma",
+    "gemma-2",
+    "e5-large",
+    "gtr-t5-large",
 )
+
+_requested = (
+    os.getenv("EMBEDDING_MODEL")
+    or os.getenv("RAG_EMBEDDING_MODEL")
+    or ""
+).strip()
+
+if IS_STREAMLIT_CLOUD and os.getenv("ALLOW_LARGE_EMBED") != "1":
+    # Ignore a heavy model from .env / Secrets on free Cloud — prevents OOM kills.
+    if not _requested or any(m in _requested.lower() for m in _HEAVY_EMBED_MARKERS):
+        EMBEDDING_MODEL = _DEFAULT_CLOUD_EMBED
+        if _requested and _requested != _DEFAULT_CLOUD_EMBED:
+            print(
+                f"[settings] Streamlit Cloud: refusing heavy embedder {_requested!r}; "
+                f"using {_DEFAULT_CLOUD_EMBED!r}. Set ALLOW_LARGE_EMBED=1 to override.",
+                flush=True,
+            )
+    else:
+        EMBEDDING_MODEL = _requested
+elif _requested:
+    EMBEDDING_MODEL = _requested
+else:
+    EMBEDDING_MODEL = _DEFAULT_LOCAL_EMBED if not IS_STREAMLIT_CLOUD else _DEFAULT_CLOUD_EMBED
+
 # Matryoshka truncate. 0 = full dimension from the model (typically 768).
 # Lower values (512, 256, 128) reduce storage/compute; rebuild indexes after change.
 try:
@@ -57,7 +132,7 @@ if HF_TOKEN:
     os.environ.setdefault("HUGGING_FACE_HUB_TOKEN", HF_TOKEN)
 
 # ── Generation ────────────────────────────────────────────────────────────
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.2"))
 
 FALLBACK_LLM_API_KEY = (

@@ -98,6 +98,12 @@ def cmd_ask(args: argparse.Namespace) -> None:
         print(f"\nExported → {path}")
 
 
+
+def cmd_reset_index(args):
+    from .embed_store import reset_rag_collection
+    reset_rag_collection()
+    print("RAG index cleared. Re-ingest papers with: python -m src.rag.cli ingest --force …")
+
 def cmd_status(args: argparse.Namespace) -> None:
     from src.rag.embed_store import index_stats
 
@@ -185,6 +191,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     parser = build_parser()
+    
+    p_reset = sub.add_parser("reset-index", help="Delete RAG Chroma collection (after EMBEDDING_DIM change)")
+    p_reset.set_defaults(func=cmd_reset_index)
+
     args = parser.parse_args()
     args.func(args)
 

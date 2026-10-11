@@ -61,7 +61,24 @@ def load_embedding_model(model_name: str | None = None):
         raise SystemExit("uv add sentence-transformers")
 
     name = model_name or EMBEDDING_MODEL
+    try:
+        from settings import IS_STREAMLIT_CLOUD
+    except Exception:
+        try:
+            from src.settings import IS_STREAMLIT_CLOUD
+        except Exception:
+            IS_STREAMLIT_CLOUD = False
+    heavy = any(x in (name or "").lower() for x in ("embeddinggemma", "gemma-2", "e5-large"))
+    if IS_STREAMLIT_CLOUD and heavy and os.getenv("ALLOW_LARGE_EMBED") != "1":
+        name = "sentence-transformers/all-MiniLM-L6-v2"
+        print(
+            f"[embed] Cloud guard: switched heavy model → {name}",
+            flush=True,
+        )
     device = _get_device()
+    # Prefer CPU on Cloud to avoid huge CUDA wheels if present
+    if IS_STREAMLIT_CLOUD:
+        device = "cpu"
     print(f"[embed] Loading {name} on {device} …")
     try:
         _model = SentenceTransformer(name, device=device)
@@ -84,7 +101,38 @@ def load_embedding_model(model_name: str | None = None):
     return _model
 
 
+def _active_dim() -> int:
+    """Resolved embedding dimension after Matryoshka truncate."""
+    full = _model_full_dim or 768
+    if EMBEDDING_DIM and 0 < EMBEDDING_DIM < full:
+        return int(EMBEDDING_DIM)
+    return int(full)
+
+
+def reset_rag_collection() -> None:
+    """Delete the RAG Chroma collection (call after changing EMBEDDING_DIM)."""
+    import chromadb
+    from chromadb.config import Settings
+
+    CHROMA_RAG_DIR.mkdir(parents=True, exist_ok=True)
+    client = chromadb.PersistentClient(
+        path=str(CHROMA_RAG_DIR),
+        settings=Settings(anonymized_telemetry=False),
+    )
+    try:
+        client.delete_collection(COLLECTION_NAME)
+        print(f"[embed] Deleted collection {COLLECTION_NAME!r} (dim change / reset)")
+    except Exception:
+        pass
+
+
 def get_collection(create: bool = True):
+    """
+    Open or create the RAG collection.
+
+    If EMBEDDING_DIM changed vs metadata stored in the collection, recreate it
+    so Chroma does not reject vectors with the wrong width.
+    """
     import chromadb
     from chromadb.config import Settings
 
@@ -94,16 +142,47 @@ def get_collection(create: bool = True):
         settings=Settings(anonymized_telemetry=False),
     )
     meta_model = _model_name_loaded or EMBEDDING_MODEL
-    if create:
-        return client.get_or_create_collection(
-            name=COLLECTION_NAME,
-            metadata={
-                "hnsw:space": "cosine",
-                "model": meta_model,
-                "embedding_dim": str(EMBEDDING_DIM or "full"),
-            },
+    want_dim = str(_active_dim())
+    want_meta = {
+        "hnsw:space": "cosine",
+        "model": meta_model,
+        "embedding_dim": want_dim,
+    }
+
+    existing = None
+    try:
+        existing = client.get_collection(COLLECTION_NAME)
+    except Exception:
+        existing = None
+
+    if existing is not None:
+        got_dim = str((existing.metadata or {}).get("embedding_dim") or "")
+        # Legacy collections may lack metadata — probe count only; dim errors
+        # surface on query/upsert and are handled by callers via reset.
+        if got_dim and got_dim not in ("full", "") and got_dim != want_dim:
+            print(
+                f"[embed] Dimension mismatch: collection has dim={got_dim}, "
+                f"config wants {want_dim}. Recreating collection."
+            )
+            try:
+                client.delete_collection(COLLECTION_NAME)
+            except Exception:
+                pass
+            existing = None
+        elif create:
+            return existing
+        else:
+            return existing
+
+    if not create and existing is None:
+        raise RuntimeError(
+            f"Collection {COLLECTION_NAME!r} not found. Run ingest first."
         )
-    return client.get_collection(COLLECTION_NAME)
+
+    return client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata=want_meta,
+    )
 
 
 def embed_texts(texts: list[str], model=None) -> list[list[float]]:
@@ -160,12 +239,25 @@ def query_chunks(
         else:
             where = {"paper_id": {"$in": paper_ids}}
 
-    res = collection.query(
-        query_embeddings=[qvec],
-        n_results=min(top_k, max(collection.count(), 1)),
-        where=where,
-        include=["documents", "metadatas", "distances"],
-    )
+    try:
+        res = collection.query(
+            query_embeddings=[qvec],
+            n_results=min(top_k, max(collection.count(), 1)),
+            where=where,
+            include=["documents", "metadatas", "distances"],
+        )
+    except Exception as e:
+        msg = str(e).lower()
+        if "dimension" in msg:
+            raise RuntimeError(
+                f"{e}\n"
+                "  EMBEDDING_DIM changed but the RAG index was built at another dim.\n"
+                "  Fix:\n"
+                "    uv run python -c \"from rag.embed_store import reset_rag_collection; reset_rag_collection()\"\n"
+                "    # or: rm -rf data/chroma_rag && re-ingest papers\n"
+                "    uv run python -m src.rag.cli ingest --force <ids…>"
+            ) from e
+        raise
 
     out = []
     if not res["ids"] or not res["ids"][0]:
