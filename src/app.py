@@ -36,98 +36,246 @@ if "ui_theme" not in st.session_state:
 
 
 def _inject_theme_css(theme: str) -> None:
-    """Apply light or dark colors across Streamlit chrome + content."""
+    """Dark works with config base=dark; light applies a full override layer."""
     if theme == "light":
         css = """
         <style>
-        html, body, .stApp, [data-testid="stAppViewContainer"],
-        [data-testid="stHeader"], [data-testid="stToolbar"], section.main,
-        .block-container {
-          background-color: #f4f5f9 !important;
-          color: #12141c !important;
+        /* ===== LIGHT MODE (full override of dark base theme) ===== */
+        :root {
+          --aps-bg: #f3f4f8;
+          --aps-surface: #ffffff;
+          --aps-sidebar: #eceef5;
+          --aps-text: #111318;
+          --aps-muted: #5c6370;
+          --aps-border: #cdd2dc;
+          --aps-primary: #3b5bdb;
+          --aps-primary-hover: #364fc7;
+        }
+
+        html, body, .stApp,
+        [data-testid="stAppViewContainer"],
+        [data-testid="stHeader"],
+        [data-testid="stToolbar"],
+        section.main,
+        .main .block-container {
+          background-color: var(--aps-bg) !important;
+          color: var(--aps-text) !important;
         }
         [data-testid="stHeader"] {
-          background: rgba(244,245,249,0.95) !important;
+          background: rgba(243,244,248,0.96) !important;
+          border-bottom: 1px solid var(--aps-border);
         }
+
+        /* Sidebar */
         [data-testid="stSidebar"],
         [data-testid="stSidebar"] > div:first-child {
-          background-color: #e8eaf2 !important;
+          background-color: var(--aps-sidebar) !important;
+          border-right: 1px solid var(--aps-border);
         }
-        [data-testid="stSidebar"] p,
-        [data-testid="stSidebar"] span,
+        [data-testid="stSidebar"] .stMarkdown p,
+        [data-testid="stSidebar"] .stMarkdown li,
+        [data-testid="stSidebar"] .stMarkdown span,
+        [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+        [data-testid="stSidebar"] [data-testid="stCaption"],
         [data-testid="stSidebar"] label,
-        [data-testid="stSidebar"] div {
-          color: #12141c !important;
+        [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
+          color: var(--aps-text) !important;
         }
-        .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown h1,
-        .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5,
+        [data-testid="stSidebar"] [data-testid="stCaption"],
+        [data-testid="stSidebar"] .stCaption {
+          color: var(--aps-muted) !important;
+        }
+
+        /* Main text */
+        .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown span,
+        .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4,
         [data-testid="stMarkdownContainer"],
-        [data-testid="stWidgetLabel"], label,
+        [data-testid="stMarkdownContainer"] p,
+        [data-testid="stWidgetLabel"] p,
+        label,
         [data-testid="stMetricValue"],
-        .stRadio label, .stCheckbox label, .stSelectbox label,
-        .stTextInput label, .stTextArea label, .stNumberInput label,
-        [data-baseweb="tab"], button[data-baseweb="tab"] {
-          color: #12141c !important;
+        [data-testid="stMetricLabel"] {
+          color: var(--aps-text) !important;
         }
-        [data-testid="stMetricLabel"], .stCaption, [data-testid="stCaption"] {
-          color: #4b5563 !important;
+        [data-testid="stMetricLabel"],
+        .stCaption,
+        [data-testid="stCaption"] {
+          color: var(--aps-muted) !important;
         }
+
+        /* Inputs */
         .stTextInput input, .stNumberInput input, .stTextArea textarea,
-        [data-baseweb="select"] > div, [data-baseweb="input"] {
-          background-color: #ffffff !important;
-          color: #12141c !important;
-          border-color: rgba(18,20,28,0.18) !important;
+        [data-baseweb="select"] > div,
+        [data-baseweb="base-input"],
+        [data-baseweb="input"] {
+          background-color: var(--aps-surface) !important;
+          color: var(--aps-text) !important;
+          border: 1px solid var(--aps-border) !important;
+          caret-color: var(--aps-text) !important;
         }
+        .stTextInput input::placeholder,
+        .stTextArea textarea::placeholder {
+          color: #8b919c !important;
+          opacity: 1 !important;
+        }
+
+        /* Tabs */
+        button[data-baseweb="tab"] {
+          color: var(--aps-muted) !important;
+        }
+        button[data-baseweb="tab"][aria-selected="true"] {
+          color: var(--aps-text) !important;
+        }
+
+        /* Expanders */
         div[data-testid="stExpander"] {
-          background: #ffffff !important;
-          border: 1px solid rgba(18,20,28,0.12) !important;
-          border-radius: 0.5rem;
+          background: var(--aps-surface) !important;
+          border: 1px solid var(--aps-border) !important;
+          border-radius: 0.5rem !important;
         }
         div[data-testid="stExpander"] summary,
+        div[data-testid="stExpander"] svg,
         div[data-testid="stExpander"] p,
         div[data-testid="stExpander"] span {
-          color: #12141c !important;
+          color: var(--aps-text) !important;
         }
+
+        /* Alerts keep readable text */
+        [data-testid="stAlert"] p,
+        [data-testid="stAlert"] span {
+          color: var(--aps-text) !important;
+        }
+
+        /* Code */
         code, pre, .stCode code {
-          background: #e5e7ef !important;
-          color: #1f2937 !important;
+          background-color: #e6e8f0 !important;
+          color: #1e2430 !important;
         }
-        [data-testid="stAlert"] { color: #12141c !important; }
-        hr { border-color: rgba(18,20,28,0.12) !important; }
+
+        /* ---- Buttons (fix theme-button glitches in light mode) ---- */
+        /* Primary */
+        button[data-testid="baseButton-primary"],
+        button[kind="primary"],
+        [data-testid="stBaseButton-primary"] {
+          background-color: var(--aps-primary) !important;
+          background-image: none !important;
+          color: #ffffff !important;
+          border: 1px solid var(--aps-primary) !important;
+        }
+        button[data-testid="baseButton-primary"] p,
+        button[data-testid="baseButton-primary"] span,
+        button[kind="primary"] p,
+        button[kind="primary"] span {
+          color: #ffffff !important;
+        }
+        button[data-testid="baseButton-primary"]:hover,
+        button[kind="primary"]:hover {
+          background-color: var(--aps-primary-hover) !important;
+          border-color: var(--aps-primary-hover) !important;
+          color: #ffffff !important;
+        }
+
+        /* Secondary / default */
+        button[data-testid="baseButton-secondary"],
+        button[kind="secondary"],
+        [data-testid="stBaseButton-secondary"] {
+          background-color: #ffffff !important;
+          background-image: none !important;
+          color: var(--aps-text) !important;
+          border: 1px solid var(--aps-border) !important;
+        }
+        button[data-testid="baseButton-secondary"] p,
+        button[data-testid="baseButton-secondary"] span,
+        button[kind="secondary"] p,
+        button[kind="secondary"] span {
+          color: var(--aps-text) !important;
+        }
+        button[data-testid="baseButton-secondary"]:hover,
+        button[kind="secondary"]:hover {
+          background-color: #eef0f6 !important;
+          border-color: #b8bfcc !important;
+          color: var(--aps-text) !important;
+        }
+
+        /* Download / other buttons */
+        button[data-testid="baseButton-secondary"],
+        div.stButton > button {
+          border-radius: 0.5rem !important;
+        }
+
+        /* Theme picker itself: keep both readable */
+        div[data-testid="stColumn"] button[data-testid="baseButton-primary"],
+        div[data-testid="stColumn"] button[data-testid="baseButton-secondary"] {
+          font-weight: 600 !important;
+        }
+
+        /* Metrics */
+        [data-testid="stMetricValue"] { color: var(--aps-text) !important; }
+
+        /* Dividers */
+        hr { border-color: var(--aps-border) !important; }
+
+        /* Slider track (Quick demo top-N etc.) */
+        div[data-baseweb="slider"] div[role="slider"] {
+          background-color: var(--aps-primary) !important;
+        }
         </style>
         """
     else:
         css = """
         <style>
-        html, body, .stApp, [data-testid="stAppViewContainer"],
-        [data-testid="stHeader"], section.main, .block-container {
-          background-color: #0e1117 !important;
-          color: #e8eaed !important;
+        /* ===== DARK MODE (align with config.toml base=dark) ===== */
+        :root {
+          --aps-bg: #0e1117;
+          --aps-surface: #1a1d27;
+          --aps-sidebar: #141722;
+          --aps-text: #e8eaed;
+          --aps-muted: #a0a4b0;
+          --aps-border: rgba(232,234,237,0.14);
+          --aps-primary: #8b9cff;
+        }
+        html, body, .stApp,
+        [data-testid="stAppViewContainer"],
+        [data-testid="stHeader"],
+        section.main,
+        .main .block-container {
+          background-color: var(--aps-bg) !important;
+          color: var(--aps-text) !important;
         }
         [data-testid="stSidebar"],
         [data-testid="stSidebar"] > div:first-child {
-          background-color: #141722 !important;
+          background-color: var(--aps-sidebar) !important;
         }
         .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown h1,
         .stMarkdown h2, .stMarkdown h3, label,
-        [data-testid="stWidgetLabel"], [data-testid="stMetricValue"] {
-          color: #e8eaed !important;
+        [data-testid="stWidgetLabel"] p,
+        [data-testid="stMetricValue"] {
+          color: var(--aps-text) !important;
         }
         [data-testid="stMetricLabel"], .stCaption, [data-testid="stCaption"] {
-          color: #a0a4b0 !important;
+          color: var(--aps-muted) !important;
         }
         .stTextInput input, .stNumberInput input, .stTextArea textarea,
         [data-baseweb="select"] > div {
-          background-color: #1a1d27 !important;
-          color: #e8eaed !important;
+          background-color: var(--aps-surface) !important;
+          color: var(--aps-text) !important;
         }
         code, pre, .stCode code {
-          background: #262a36 !important;
+          background-color: #262a36 !important;
           color: #e8eaed !important;
         }
         div[data-testid="stExpander"] {
-          border: 1px solid rgba(232,234,237,0.12) !important;
-          border-radius: 0.5rem;
+          border: 1px solid var(--aps-border) !important;
+          border-radius: 0.5rem !important;
+        }
+        /* Leave Streamlit dark button defaults mostly alone — only normalize text */
+        button[data-testid="baseButton-primary"] p,
+        button[data-testid="baseButton-primary"] span {
+          color: #0e1117 !important;
+        }
+        button[data-testid="baseButton-secondary"] p,
+        button[data-testid="baseButton-secondary"] span {
+          color: var(--aps-text) !important;
         }
         </style>
         """
@@ -148,6 +296,7 @@ def _inject_theme_css(theme: str) -> None:
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
+
 
 
 def _render_theme_toggle() -> None:
