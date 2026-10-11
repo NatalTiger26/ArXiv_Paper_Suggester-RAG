@@ -191,20 +191,39 @@ def _inject_theme_css(theme: str) -> None:
 
 
 def _render_theme_toggle() -> None:
-    """Small control at the top-right (main area), not in the sidebar."""
-    left, right = st.columns([0.86, 0.14])
-    with right:
-        dark_on = st.toggle(
-            "Dark mode",
-            value=(st.session_state.get("ui_theme", "dark") == "dark"),
-            key="theme_dark_toggle",
-            help="Switch between dark and light appearance",
-        )
-        new_theme = "dark" if dark_on else "light"
-        if new_theme != st.session_state.get("ui_theme"):
-            st.session_state["ui_theme"] = new_theme
-            st.rerun()
-    _inject_theme_css(st.session_state["ui_theme"])
+    """Visible theme control: buttons on the same row as the page title."""
+    # Sync from session
+    theme = st.session_state.get("ui_theme", "dark")
+    title_col, theme_col = st.columns([0.72, 0.28])
+    with title_col:
+        st.title("ArXiv Paper Suggester")
+        st.caption("Find papers · read full text · ask with citations")
+    with theme_col:
+        st.markdown("<div style='height:0.55rem'></div>", unsafe_allow_html=True)
+        st.caption("Theme")
+        b1, b2 = st.columns(2)
+
+        def _theme_btn(label: str, key: str, active: bool) -> bool:
+            kwargs = dict(
+                key=key,
+                type="primary" if active else "secondary",
+                help=f"{label} appearance",
+            )
+            try:
+                return st.button(label, width="stretch", **kwargs)
+            except TypeError:
+                return st.button(label, use_container_width=True, **kwargs)
+
+        with b1:
+            if _theme_btn("Dark", "btn_theme_dark", theme == "dark"):
+                st.session_state["ui_theme"] = "dark"
+                st.rerun()
+        with b2:
+            if _theme_btn("Light", "btn_theme_light", theme == "light"):
+                st.session_state["ui_theme"] = "light"
+                st.rerun()
+    _inject_theme_css(st.session_state.get("ui_theme", "dark"))
+
 
 
 _inject_theme_css(st.session_state["ui_theme"])
@@ -677,8 +696,6 @@ with st.sidebar:
     )
 
 _render_theme_toggle()
-st.title("ArXiv Paper Suggester")
-st.caption("Find papers · read full text · ask with citations")
 
 if lib_n > 0 and rag_n < lib_n:
     st.warning(
