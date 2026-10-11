@@ -30,139 +30,104 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Theme: config.toml is dark by default; top-right toggle switches full CSS.
+# Theme state (default dark)
 if "ui_theme" not in st.session_state:
     st.session_state["ui_theme"] = "dark"
 
 
 def _inject_theme_css(theme: str) -> None:
-    """Force readable text/backgrounds for both themes (Streamlit base theme is dark)."""
+    """Apply light or dark colors across Streamlit chrome + content."""
     if theme == "light":
         css = """
         <style>
-        :root {
-          --aps-bg: #f5f6fa;
-          --aps-panel: #ffffff;
-          --aps-sidebar: #eef0f6;
-          --aps-text: #12141c;
-          --aps-muted: #4a5160;
-          --aps-border: rgba(18, 20, 28, 0.14);
-          --aps-accent: #3d5afe;
-          --aps-focus: #2962ff;
-          --aps-code-bg: #e8eaf0;
+        html, body, .stApp, [data-testid="stAppViewContainer"],
+        [data-testid="stHeader"], [data-testid="stToolbar"], section.main,
+        .block-container {
+          background-color: #f4f5f9 !important;
+          color: #12141c !important;
         }
-
-        /* App shell */
-        .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"],
-        [data-testid="stToolbar"], section.main {
-          background-color: var(--aps-bg) !important;
-          color: var(--aps-text) !important;
+        [data-testid="stHeader"] {
+          background: rgba(244,245,249,0.95) !important;
         }
-        [data-testid="stHeader"] { background: rgba(245,246,250,0.92) !important; }
-
-        /* Sidebar */
-        [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
-          background-color: var(--aps-sidebar) !important;
-          min-width: 280px;
+        [data-testid="stSidebar"],
+        [data-testid="stSidebar"] > div:first-child {
+          background-color: #e8eaf2 !important;
         }
-        [data-testid="stSidebar"] * {
-          color: var(--aps-text) !important;
+        [data-testid="stSidebar"] p,
+        [data-testid="stSidebar"] span,
+        [data-testid="stSidebar"] label,
+        [data-testid="stSidebar"] div {
+          color: #12141c !important;
         }
-        [data-testid="stSidebar"] .stCaption, [data-testid="stSidebar"] [data-testid="stCaption"] {
-          color: var(--aps-muted) !important;
+        .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown h1,
+        .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5,
+        [data-testid="stMarkdownContainer"],
+        [data-testid="stWidgetLabel"], label,
+        [data-testid="stMetricValue"],
+        .stRadio label, .stCheckbox label, .stSelectbox label,
+        .stTextInput label, .stTextArea label, .stNumberInput label,
+        [data-baseweb="tab"], button[data-baseweb="tab"] {
+          color: #12141c !important;
         }
-
-        /* Primary text */
-        .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown span,
-        .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4,
-        label, [data-testid="stWidgetLabel"], [data-testid="stMarkdownContainer"],
-        [data-testid="stMetricLabel"], [data-testid="stMetricValue"],
-        [data-testid="stMetricDelta"], .stCaption, [data-testid="stCaption"],
-        .stRadio label, .stCheckbox label, .stSelectbox label, .stTextInput label,
-        .stNumberInput label, .stTextArea label, .stSlider label,
-        [data-baseweb="tab"] {
-          color: var(--aps-text) !important;
+        [data-testid="stMetricLabel"], .stCaption, [data-testid="stCaption"] {
+          color: #4b5563 !important;
         }
-        .stCaption, [data-testid="stCaption"], [data-testid="stMetricLabel"] {
-          color: var(--aps-muted) !important;
-        }
-
-        /* Inputs */
         .stTextInput input, .stNumberInput input, .stTextArea textarea,
-        [data-baseweb="select"] > div, [data-baseweb="base-input"] {
-          background-color: var(--aps-panel) !important;
-          color: var(--aps-text) !important;
-          border-color: var(--aps-border) !important;
+        [data-baseweb="select"] > div, [data-baseweb="input"] {
+          background-color: #ffffff !important;
+          color: #12141c !important;
+          border-color: rgba(18,20,28,0.18) !important;
         }
-        .stTextInput input::placeholder, .stTextArea textarea::placeholder {
-          color: #6b7280 !important;
-        }
-
-        /* Expanders / alerts */
         div[data-testid="stExpander"] {
-          background-color: var(--aps-panel) !important;
-          border: 1px solid var(--aps-border) !important;
-          border-radius: 0.55rem;
+          background: #ffffff !important;
+          border: 1px solid rgba(18,20,28,0.12) !important;
+          border-radius: 0.5rem;
         }
-        div[data-testid="stExpander"] summary, div[data-testid="stExpander"] p {
-          color: var(--aps-text) !important;
+        div[data-testid="stExpander"] summary,
+        div[data-testid="stExpander"] p,
+        div[data-testid="stExpander"] span {
+          color: #12141c !important;
         }
-        [data-testid="stAlert"] { color: var(--aps-text) !important; }
-
-        /* Code */
-        code, pre, .stCode {
-          background-color: var(--aps-code-bg) !important;
-          color: #1a1d27 !important;
+        code, pre, .stCode code {
+          background: #e5e7ef !important;
+          color: #1f2937 !important;
         }
-
-        /* Tabs */
-        button[data-baseweb="tab"] { color: var(--aps-muted) !important; }
-        button[data-baseweb="tab"][aria-selected="true"] {
-          color: var(--aps-text) !important;
-        }
-
-        /* Top theme control */
-        .aps-theme-bar { display: flex; justify-content: flex-end; align-items: center; gap: 0.35rem; margin: 0 0 0.25rem 0; }
+        [data-testid="stAlert"] { color: #12141c !important; }
+        hr { border-color: rgba(18,20,28,0.12) !important; }
         </style>
         """
     else:
         css = """
         <style>
-        :root {
-          --aps-bg: #0E1117;
-          --aps-panel: #1A1D27;
-          --aps-sidebar: #141722;
-          --aps-text: #E8EAED;
-          --aps-muted: #A0A4B0;
-          --aps-border: rgba(232, 234, 237, 0.14);
-          --aps-accent: #8B9CFF;
-          --aps-focus: #B0B8FF;
-          --aps-code-bg: #262a36;
+        html, body, .stApp, [data-testid="stAppViewContainer"],
+        [data-testid="stHeader"], section.main, .block-container {
+          background-color: #0e1117 !important;
+          color: #e8eaed !important;
         }
-
-        .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"],
-        section.main {
-          background-color: var(--aps-bg) !important;
-          color: var(--aps-text) !important;
+        [data-testid="stSidebar"],
+        [data-testid="stSidebar"] > div:first-child {
+          background-color: #141722 !important;
         }
-        [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
-          background-color: var(--aps-sidebar) !important;
-          min-width: 280px;
-        }
-        .stMarkdown, .stMarkdown p, .stMarkdown li, label,
+        .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown h1,
+        .stMarkdown h2, .stMarkdown h3, label,
         [data-testid="stWidgetLabel"], [data-testid="stMetricValue"] {
-          color: var(--aps-text) !important;
+          color: #e8eaed !important;
         }
-        .stCaption, [data-testid="stCaption"], [data-testid="stMetricLabel"] {
-          color: var(--aps-muted) !important;
+        [data-testid="stMetricLabel"], .stCaption, [data-testid="stCaption"] {
+          color: #a0a4b0 !important;
         }
-        code, pre, .stCode {
-          background-color: var(--aps-code-bg) !important;
+        .stTextInput input, .stNumberInput input, .stTextArea textarea,
+        [data-baseweb="select"] > div {
+          background-color: #1a1d27 !important;
+          color: #e8eaed !important;
+        }
+        code, pre, .stCode code {
+          background: #262a36 !important;
           color: #e8eaed !important;
         }
         div[data-testid="stExpander"] {
-          border: 1px solid var(--aps-border) !important;
-          border-radius: 0.55rem;
+          border: 1px solid rgba(232,234,237,0.12) !important;
+          border-radius: 0.5rem;
         }
         </style>
         """
@@ -170,20 +135,15 @@ def _inject_theme_css(theme: str) -> None:
     css += """
     <style>
     div[data-testid="stMetricValue"] { font-size: 1.35rem; }
-    .block-container { padding-top: 0.6rem; padding-bottom: 2.5rem; max-width: 1100px; }
-    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline: 2px solid var(--aps-focus, #8B9CFF) !important;
+    .block-container { padding-top: 0.75rem; padding-bottom: 2.5rem; max-width: 1100px; }
+    [data-testid="stSidebar"] { min-width: 280px; }
+    button:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 2px solid #8b9cff !important;
       outline-offset: 2px !important;
     }
     .stMarkdown, .stCaption { line-height: 1.55; }
-    code, pre { font-size: 0.9em; line-height: 1.45; }
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
-    }
-    a { text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
-    /* Compact top-right theme toggle */
-    div[data-testid="stHorizontalBlock"]:has([data-testid="stWidgetLabel"] p) {
-      align-items: center;
     }
     </style>
     """
@@ -191,131 +151,55 @@ def _inject_theme_css(theme: str) -> None:
 
 
 def _render_theme_toggle() -> None:
-    """Title row + sun/moon pill slider (visual pill, Streamlit toggle is the hit target)."""
+    """Theme switcher: native buttons only (always receives clicks)."""
     theme = st.session_state.get("ui_theme", "dark")
-    is_dark = theme == "dark"
+    _inject_theme_css(theme)
 
-    st.markdown(
-        """
-        <style>
-        div[data-testid="stColumn"]:has(#aps-theme-anchor) {
-          display: flex !important;
-          flex-direction: column !important;
-          align-items: flex-end !important;
-          justify-content: flex-start !important;
-          padding-top: 0.35rem !important;
-        }
-        div[data-testid="stColumn"]:has(#aps-theme-anchor) [data-testid="stWidgetLabel"] {
-          display: none !important;
-        }
-        /* Invisible but clickable Streamlit control stacked on the pill */
-        div[data-testid="stColumn"]:has(#aps-theme-anchor) [data-testid="stCheckbox"],
-        div[data-testid="stColumn"]:has(#aps-theme-anchor) [data-testid="stToggle"],
-        div[data-testid="stColumn"]:has(#aps-theme-anchor) label[data-baseweb="checkbox"] {
-          position: relative !important;
-          z-index: 5 !important;
-          margin-top: -2.55rem !important;
-          margin-bottom: 0 !important;
-          opacity: 0 !important;
-          height: 2.4rem !important;
-          width: 4.6rem !important;
-          cursor: pointer !important;
-        }
-        div[data-testid="stColumn"]:has(#aps-theme-anchor) label[data-baseweb="checkbox"] {
-          width: 4.6rem !important;
-          height: 2.4rem !important;
-        }
-        .aps-pill-row {
-          display: flex;
-          justify-content: flex-end;
-          width: 100%;
-          margin: 0.15rem 0 0.35rem 0;
-          user-select: none;
-        }
-        .aps-pill {
-          position: relative;
-          width: 72px;
-          height: 36px;
-          border-radius: 999px;
-          box-shadow: inset 0 1px 3px rgba(0,0,0,0.14);
-          transition: background 0.2s ease;
-        }
-        .aps-pill.mode-light { background: #d5d8e0; }
-        .aps-pill.mode-dark  { background: #4b5568; }
-        .aps-pill .knob {
-          position: absolute;
-          top: 3px;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          background: #ffffff;
-          box-shadow: 0 2px 7px rgba(0,0,0,0.2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 14px;
-          line-height: 1;
-          transition: left 0.2s ease;
-        }
-        .aps-pill.mode-light .knob { left: 3px; }
-        .aps-pill.mode-dark  .knob { left: 39px; }
-        .aps-pill .ghost {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 13px;
-          opacity: 0.4;
-          line-height: 1;
-        }
-        .aps-pill.mode-light .ghost-moon { right: 9px; }
-        .aps-pill.mode-dark  .ghost-sun  { left: 9px; }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    title_col, theme_col = st.columns([0.82, 0.18])
-    with title_col:
+    head_l, head_r = st.columns([0.72, 0.28])
+    with head_l:
         st.title("ArXiv Paper Suggester")
         st.caption("Find papers · read full text · ask with citations")
-    with theme_col:
-        st.markdown('<div id="aps-theme-anchor"></div>', unsafe_allow_html=True)
-        mode_cls = "mode-dark" if is_dark else "mode-light"
-        knob = "🌙" if is_dark else "☀️"
-        ghost = (
-            '<span class="ghost ghost-sun">☀️</span>'
-            if is_dark
-            else '<span class="ghost ghost-moon">🌙</span>'
-        )
-        st.markdown(
-            f"""
-            <div class="aps-pill-row" title="Toggle light / dark">
-              <div class="aps-pill {mode_cls}" aria-hidden="true">
-                {ghost}
-                <div class="knob">{knob}</div>
-              </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        # Hit target (transparent) sits on top of the pill via CSS margin
-        dark_on = st.toggle(
-            "theme_switch",
-            value=is_dark,
-            key="theme_pill_toggle",
-            help="☀️ Light mode  ·  🌙 Dark mode",
-            label_visibility="collapsed",
-        )
-        new_theme = "dark" if dark_on else "light"
-        if new_theme != theme:
-            st.session_state["ui_theme"] = new_theme
+    with head_r:
+        st.caption("Appearance")
+        b_dark, b_light = st.columns(2)
+        with b_dark:
+            try:
+                clicked_dark = st.button(
+                    "🌙 Dark",
+                    key="theme_btn_dark",
+                    type="primary" if theme == "dark" else "secondary",
+                    width="stretch",
+                )
+            except TypeError:
+                clicked_dark = st.button(
+                    "🌙 Dark",
+                    key="theme_btn_dark",
+                    type="primary" if theme == "dark" else "secondary",
+                    use_container_width=True,
+                )
+        with b_light:
+            try:
+                clicked_light = st.button(
+                    "☀️ Light",
+                    key="theme_btn_light",
+                    type="primary" if theme == "light" else "secondary",
+                    width="stretch",
+                )
+            except TypeError:
+                clicked_light = st.button(
+                    "☀️ Light",
+                    key="theme_btn_light",
+                    type="primary" if theme == "light" else "secondary",
+                    use_container_width=True,
+                )
+        if clicked_dark and theme != "dark":
+            st.session_state["ui_theme"] = "dark"
+            st.rerun()
+        if clicked_light and theme != "light":
+            st.session_state["ui_theme"] = "light"
             st.rerun()
 
-    _inject_theme_css(st.session_state.get("ui_theme", "dark"))
 
-
-
-_inject_theme_css(st.session_state["ui_theme"])
 
 EXAMPLE_INTERESTS = [
     "mechanistic interpretability circuits",
