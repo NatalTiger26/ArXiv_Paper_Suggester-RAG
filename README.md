@@ -2,7 +2,13 @@
 
 **Find papers. Rank them for your research interest. Read the full text. Ask questions with citations.**
 
-A cold-start literature workspace: multi-signal arXiv recommendation, full-text PDF → Markdown → chunk → embed pipeline, and a grounded RAG assistant (Gemini primary, OpenAI-compatible failsafe). Ships with a **CLI** for diagnosis and batch work and a **Streamlit** UI for demos and exploration.
+[![Live demo](https://img.shields.io/badge/Streamlit-Live%20demo-FF4B4B?logo=streamlit&logoColor=white)](https://nataltiger26-arxiv-paper-suggester-rag-srcapp-olkakz.streamlit.app/)
+[![Python 3.10–3.12](https://img.shields.io/badge/Python-3.10%E2%80%933.12-blue?logo=python&logoColor=white)](#prerequisites)
+[![uv](https://img.shields.io/badge/package%20manager-uv-DE5FE9)](#install-uv)
+
+**Live demo:** [nataltiger26-arxiv-paper-suggester-rag (Streamlit)](https://nataltiger26-arxiv-paper-suggester-rag-srcapp-olkakz.streamlit.app/)
+
+A cold-start literature workspace: multi-signal arXiv recommendation, full-text PDF → Markdown → chunk → embed pipeline, and a grounded RAG assistant (Gemini primary, OpenAI-compatible failsafe). Ships with a **CLI** for diagnosis and batch work and a **Streamlit** UI (dark theme by default, light toggle) for demos and exploration.
 
 | Layer | Local (laptop) | Streamlit Community Cloud |
 |--------|----------------|---------------------------|
@@ -375,7 +381,7 @@ uv run python -m streamlit run src/app.py
 | **Ask** | Question answering with coverage, sources, Markdown download |
 | **Help** | Concepts, CLI cheatsheet, eval notes |
 
-**Sidebar:** library count vs full-text count, embedder name/dim, system health (API keys), CLI hints, activity log for long steps.
+**Sidebar:** **Appearance (dark/light)**, library vs full-text counts, embedder name/dim, system health (API keys), CLI hints, activity log for long steps.
 
 First embedder load can take **1–2 minutes**; Ask with Gemini often **8–20 seconds**.
 
@@ -464,6 +470,15 @@ Live pattern that works: MiniLM → rank → ingest 3 papers → Ask with Gemini
 | First command “hangs” 1–2 min | Model download | Normal; watch terminal / Activity log |
 
 ---
+
+
+## Accessibility & UI theme
+
+- **Default theme:** dark (`.streamlit/config.toml`), suitable for long reading sessions.
+- **In-app toggle:** compact **Dark mode** switch at the **top-right** of the main page (not the sidebar).
+- **Focus styles:** visible `:focus-visible` outlines on controls for keyboard users.
+- **Reading:** slightly increased line-height on markdown/answers; reduced motion respected when the OS asks for it.
+- **Cloud vs local:** free Streamlit Cloud uses a small embedder (MiniLM); full EmbeddingGemma stays on your laptop — see [Deploy](#deploy-to-streamlit-cloud).
 
 ## Design choices
 

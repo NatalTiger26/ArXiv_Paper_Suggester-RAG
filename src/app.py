@@ -30,30 +30,99 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Appearance: config.toml defaults to dark; sidebar can prefer light CSS overrides.
+# Theme: config.toml is dark by default; top-right toggle switches full CSS.
 if "ui_theme" not in st.session_state:
     st.session_state["ui_theme"] = "dark"
 
 
 def _inject_theme_css(theme: str) -> None:
-    """Accessible contrast, focus rings, and light/dark polish on top of Streamlit theme."""
+    """Force readable text/backgrounds for both themes (Streamlit base theme is dark)."""
     if theme == "light":
         css = """
         <style>
         :root {
-          --aps-bg: #f7f8fc;
+          --aps-bg: #f5f6fa;
           --aps-panel: #ffffff;
-          --aps-text: #1a1d27;
-          --aps-muted: #5c6370;
-          --aps-border: rgba(26, 29, 39, 0.12);
-          --aps-accent: #3d5AFE;
-          --aps-focus: #2962FF;
+          --aps-sidebar: #eef0f6;
+          --aps-text: #12141c;
+          --aps-muted: #4a5160;
+          --aps-border: rgba(18, 20, 28, 0.14);
+          --aps-accent: #3d5afe;
+          --aps-focus: #2962ff;
+          --aps-code-bg: #e8eaf0;
         }
-        .stApp { background-color: var(--aps-bg); color: var(--aps-text); }
-        [data-testid="stSidebar"] {
-          background-color: #eef0f6 !important;
+
+        /* App shell */
+        .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"],
+        [data-testid="stToolbar"], section.main {
+          background-color: var(--aps-bg) !important;
+          color: var(--aps-text) !important;
+        }
+        [data-testid="stHeader"] { background: rgba(245,246,250,0.92) !important; }
+
+        /* Sidebar */
+        [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
+          background-color: var(--aps-sidebar) !important;
           min-width: 280px;
         }
+        [data-testid="stSidebar"] * {
+          color: var(--aps-text) !important;
+        }
+        [data-testid="stSidebar"] .stCaption, [data-testid="stSidebar"] [data-testid="stCaption"] {
+          color: var(--aps-muted) !important;
+        }
+
+        /* Primary text */
+        .stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown span,
+        .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4,
+        label, [data-testid="stWidgetLabel"], [data-testid="stMarkdownContainer"],
+        [data-testid="stMetricLabel"], [data-testid="stMetricValue"],
+        [data-testid="stMetricDelta"], .stCaption, [data-testid="stCaption"],
+        .stRadio label, .stCheckbox label, .stSelectbox label, .stTextInput label,
+        .stNumberInput label, .stTextArea label, .stSlider label,
+        [data-baseweb="tab"] {
+          color: var(--aps-text) !important;
+        }
+        .stCaption, [data-testid="stCaption"], [data-testid="stMetricLabel"] {
+          color: var(--aps-muted) !important;
+        }
+
+        /* Inputs */
+        .stTextInput input, .stNumberInput input, .stTextArea textarea,
+        [data-baseweb="select"] > div, [data-baseweb="base-input"] {
+          background-color: var(--aps-panel) !important;
+          color: var(--aps-text) !important;
+          border-color: var(--aps-border) !important;
+        }
+        .stTextInput input::placeholder, .stTextArea textarea::placeholder {
+          color: #6b7280 !important;
+        }
+
+        /* Expanders / alerts */
+        div[data-testid="stExpander"] {
+          background-color: var(--aps-panel) !important;
+          border: 1px solid var(--aps-border) !important;
+          border-radius: 0.55rem;
+        }
+        div[data-testid="stExpander"] summary, div[data-testid="stExpander"] p {
+          color: var(--aps-text) !important;
+        }
+        [data-testid="stAlert"] { color: var(--aps-text) !important; }
+
+        /* Code */
+        code, pre, .stCode {
+          background-color: var(--aps-code-bg) !important;
+          color: #1a1d27 !important;
+        }
+
+        /* Tabs */
+        button[data-baseweb="tab"] { color: var(--aps-muted) !important; }
+        button[data-baseweb="tab"][aria-selected="true"] {
+          color: var(--aps-text) !important;
+        }
+
+        /* Top theme control */
+        .aps-theme-bar { display: flex; justify-content: flex-end; align-items: center; gap: 0.35rem; margin: 0 0 0.25rem 0; }
         </style>
         """
     else:
@@ -62,51 +131,80 @@ def _inject_theme_css(theme: str) -> None:
         :root {
           --aps-bg: #0E1117;
           --aps-panel: #1A1D27;
+          --aps-sidebar: #141722;
           --aps-text: #E8EAED;
           --aps-muted: #A0A4B0;
-          --aps-border: rgba(232, 234, 237, 0.12);
+          --aps-border: rgba(232, 234, 237, 0.14);
           --aps-accent: #8B9CFF;
           --aps-focus: #B0B8FF;
+          --aps-code-bg: #262a36;
         }
-        .stApp { background-color: var(--aps-bg); color: var(--aps-text); }
-        [data-testid="stSidebar"] {
-          background-color: #141722 !important;
+
+        .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"],
+        section.main {
+          background-color: var(--aps-bg) !important;
+          color: var(--aps-text) !important;
+        }
+        [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
+          background-color: var(--aps-sidebar) !important;
           min-width: 280px;
+        }
+        .stMarkdown, .stMarkdown p, .stMarkdown li, label,
+        [data-testid="stWidgetLabel"], [data-testid="stMetricValue"] {
+          color: var(--aps-text) !important;
+        }
+        .stCaption, [data-testid="stCaption"], [data-testid="stMetricLabel"] {
+          color: var(--aps-muted) !important;
+        }
+        code, pre, .stCode {
+          background-color: var(--aps-code-bg) !important;
+          color: #e8eaed !important;
+        }
+        div[data-testid="stExpander"] {
+          border: 1px solid var(--aps-border) !important;
+          border-radius: 0.55rem;
         }
         </style>
         """
 
     css += """
     <style>
-    /* Shared accessibility + layout */
     div[data-testid="stMetricValue"] { font-size: 1.35rem; }
-    .block-container { padding-top: 1.1rem; padding-bottom: 2.5rem; max-width: 1100px; }
-    div[data-testid="stExpander"] {
-        border: 1px solid var(--aps-border, rgba(128,128,128,0.25));
-        border-radius: 0.55rem;
+    .block-container { padding-top: 0.6rem; padding-bottom: 2.5rem; max-width: 1100px; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--aps-focus, #8B9CFF) !important;
+      outline-offset: 2px !important;
     }
-    /* Visible keyboard focus */
-    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible,
-    [data-baseweb="select"] *:focus-visible {
-        outline: 2px solid var(--aps-focus, #8B9CFF) !important;
-        outline-offset: 2px !important;
-    }
-    /* Slightly larger body text for reading long answers */
     .stMarkdown, .stCaption { line-height: 1.55; }
-    /* Answer / source cards readability */
-    code, pre {
-        font-size: 0.9em;
-        line-height: 1.45;
-    }
-    /* Reduce motion for users who prefer it */
+    code, pre { font-size: 0.9em; line-height: 1.45; }
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
     }
-    /* High-contrast links */
     a { text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+    /* Compact top-right theme toggle */
+    div[data-testid="stHorizontalBlock"]:has([data-testid="stWidgetLabel"] p) {
+      align-items: center;
+    }
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
+
+
+def _render_theme_toggle() -> None:
+    """Small control at the top-right (main area), not in the sidebar."""
+    left, right = st.columns([0.86, 0.14])
+    with right:
+        dark_on = st.toggle(
+            "Dark mode",
+            value=(st.session_state.get("ui_theme", "dark") == "dark"),
+            key="theme_dark_toggle",
+            help="Switch between dark and light appearance",
+        )
+        new_theme = "dark" if dark_on else "light"
+        if new_theme != st.session_state.get("ui_theme"):
+            st.session_state["ui_theme"] = new_theme
+            st.rerun()
+    _inject_theme_css(st.session_state["ui_theme"])
 
 
 _inject_theme_css(st.session_state["ui_theme"])
@@ -530,22 +628,6 @@ lib_n = int(cs.get("n_papers") or 0)
 rag_n = int(rs.get("paper_count") or 0)
 
 with st.sidebar:
-    st.markdown("### Appearance")
-    _theme = st.radio(
-        "Theme",
-        options=["dark", "light"],
-        index=0 if st.session_state.get("ui_theme", "dark") == "dark" else 1,
-        horizontal=True,
-        key="ui_theme_radio",
-        help="Dark is the default. Light uses higher background luminance for bright rooms.",
-        label_visibility="collapsed",
-    )
-    if _theme != st.session_state.get("ui_theme"):
-        st.session_state["ui_theme"] = _theme
-        st.rerun()
-    _inject_theme_css(st.session_state["ui_theme"])
-    st.caption("Theme also follows `.streamlit/config.toml` base defaults.")
-    st.divider()
     st.markdown("### Workspace")
     m1, m2 = st.columns(2)
     m1.metric("Library", lib_n, help="Titles/abstracts for ranking")
@@ -594,6 +676,7 @@ with st.sidebar:
         language="bash",
     )
 
+_render_theme_toggle()
 st.title("ArXiv Paper Suggester")
 st.caption("Find papers · read full text · ask with citations")
 
