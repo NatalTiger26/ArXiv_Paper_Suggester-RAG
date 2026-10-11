@@ -191,37 +191,126 @@ def _inject_theme_css(theme: str) -> None:
 
 
 def _render_theme_toggle() -> None:
-    """Visible theme control: buttons on the same row as the page title."""
-    # Sync from session
+    """Title row + sun/moon pill slider (visual pill, Streamlit toggle is the hit target)."""
     theme = st.session_state.get("ui_theme", "dark")
-    title_col, theme_col = st.columns([0.72, 0.28])
+    is_dark = theme == "dark"
+
+    st.markdown(
+        """
+        <style>
+        div[data-testid="stColumn"]:has(#aps-theme-anchor) {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-end !important;
+          justify-content: flex-start !important;
+          padding-top: 0.35rem !important;
+        }
+        div[data-testid="stColumn"]:has(#aps-theme-anchor) [data-testid="stWidgetLabel"] {
+          display: none !important;
+        }
+        /* Invisible but clickable Streamlit control stacked on the pill */
+        div[data-testid="stColumn"]:has(#aps-theme-anchor) [data-testid="stCheckbox"],
+        div[data-testid="stColumn"]:has(#aps-theme-anchor) [data-testid="stToggle"],
+        div[data-testid="stColumn"]:has(#aps-theme-anchor) label[data-baseweb="checkbox"] {
+          position: relative !important;
+          z-index: 5 !important;
+          margin-top: -2.55rem !important;
+          margin-bottom: 0 !important;
+          opacity: 0 !important;
+          height: 2.4rem !important;
+          width: 4.6rem !important;
+          cursor: pointer !important;
+        }
+        div[data-testid="stColumn"]:has(#aps-theme-anchor) label[data-baseweb="checkbox"] {
+          width: 4.6rem !important;
+          height: 2.4rem !important;
+        }
+        .aps-pill-row {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          margin: 0.15rem 0 0.35rem 0;
+          user-select: none;
+        }
+        .aps-pill {
+          position: relative;
+          width: 72px;
+          height: 36px;
+          border-radius: 999px;
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.14);
+          transition: background 0.2s ease;
+        }
+        .aps-pill.mode-light { background: #d5d8e0; }
+        .aps-pill.mode-dark  { background: #4b5568; }
+        .aps-pill .knob {
+          position: absolute;
+          top: 3px;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: #ffffff;
+          box-shadow: 0 2px 7px rgba(0,0,0,0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          line-height: 1;
+          transition: left 0.2s ease;
+        }
+        .aps-pill.mode-light .knob { left: 3px; }
+        .aps-pill.mode-dark  .knob { left: 39px; }
+        .aps-pill .ghost {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 13px;
+          opacity: 0.4;
+          line-height: 1;
+        }
+        .aps-pill.mode-light .ghost-moon { right: 9px; }
+        .aps-pill.mode-dark  .ghost-sun  { left: 9px; }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    title_col, theme_col = st.columns([0.82, 0.18])
     with title_col:
         st.title("ArXiv Paper Suggester")
         st.caption("Find papers · read full text · ask with citations")
     with theme_col:
-        st.markdown("<div style='height:0.55rem'></div>", unsafe_allow_html=True)
-        st.caption("Theme")
-        b1, b2 = st.columns(2)
+        st.markdown('<div id="aps-theme-anchor"></div>', unsafe_allow_html=True)
+        mode_cls = "mode-dark" if is_dark else "mode-light"
+        knob = "🌙" if is_dark else "☀️"
+        ghost = (
+            '<span class="ghost ghost-sun">☀️</span>'
+            if is_dark
+            else '<span class="ghost ghost-moon">🌙</span>'
+        )
+        st.markdown(
+            f"""
+            <div class="aps-pill-row" title="Toggle light / dark">
+              <div class="aps-pill {mode_cls}" aria-hidden="true">
+                {ghost}
+                <div class="knob">{knob}</div>
+              </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        # Hit target (transparent) sits on top of the pill via CSS margin
+        dark_on = st.toggle(
+            "theme_switch",
+            value=is_dark,
+            key="theme_pill_toggle",
+            help="☀️ Light mode  ·  🌙 Dark mode",
+            label_visibility="collapsed",
+        )
+        new_theme = "dark" if dark_on else "light"
+        if new_theme != theme:
+            st.session_state["ui_theme"] = new_theme
+            st.rerun()
 
-        def _theme_btn(label: str, key: str, active: bool) -> bool:
-            kwargs = dict(
-                key=key,
-                type="primary" if active else "secondary",
-                help=f"{label} appearance",
-            )
-            try:
-                return st.button(label, width="stretch", **kwargs)
-            except TypeError:
-                return st.button(label, use_container_width=True, **kwargs)
-
-        with b1:
-            if _theme_btn("Dark", "btn_theme_dark", theme == "dark"):
-                st.session_state["ui_theme"] = "dark"
-                st.rerun()
-        with b2:
-            if _theme_btn("Light", "btn_theme_light", theme == "light"):
-                st.session_state["ui_theme"] = "light"
-                st.rerun()
     _inject_theme_css(st.session_state.get("ui_theme", "dark"))
 
 
