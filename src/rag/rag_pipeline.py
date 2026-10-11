@@ -12,6 +12,7 @@ from typing import Any
 
 from dotenv import load_dotenv
 
+
 from .config import (
     DEFAULT_MAX_CONTEXT_CHARS,
     DEFAULT_TOP_K,
@@ -26,6 +27,16 @@ from .config import (
 from .embed_store import embed_texts, load_embedding_model, query_chunks
 
 load_dotenv()
+
+try:
+    from settings import get_gemini_model
+except Exception:
+    try:
+        from src.settings import get_gemini_model
+    except Exception:
+        def get_gemini_model() -> str:
+            return (os.getenv("GEMINI_MODEL") or "gemini-3.8-flash").strip()
+
 
 
 SYSTEM_PROMPT = """You are a careful research assistant. Answer the user's question using ONLY the provided paper excerpts.
@@ -105,6 +116,45 @@ def _call_openai_compatible(
     return (resp.choices[0].message.content or "").strip()
 
 
+def _extract_suggested_gemini_model(err: Exception) -> str | None:
+    """Parse Google 404 text like: use models/gemini-3.8-flash"""
+    import re
+
+    text = str(err)
+    m = re.search(r"models/(gemini-[a-z0-9._-]+)", text, re.I)
+    if m:
+        return m.group(1)
+    m = re.search(r"\b(gemini-[a-z0-9._-]+)\b", text, re.I)
+    if m and "models/" in text:
+        return m.group(1)
+    return None
+
+
+def _gemini_generate(client, model: str, prompt: str, system: str) -> str:
+    from google.genai import types
+
+    try:
+        chat = client.chats.create(
+            model=model,
+            config=types.GenerateContentConfig(
+                system_instruction=system,
+                temperature=TEMPERATURE,
+            ),
+        )
+        response = chat.send_message(prompt)
+        return (response.text or "").strip()
+    except Exception:
+        response = client.models.generate_content(
+            model=model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=system,
+                temperature=TEMPERATURE,
+            ),
+        )
+        return (response.text or "").strip()
+
+
 def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
     """Prefer Gemini; on failure or missing key, use OpenAI-compatible failsafe."""
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
@@ -113,29 +163,38 @@ def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
     if api_key:
         try:
             from google import genai
-            from google.genai import types
 
             client = genai.Client(api_key=api_key)
-            try:
-                chat = client.chats.create(
-                    model=GEMINI_MODEL,
-                    config=types.GenerateContentConfig(
-                        system_instruction=system,
-                        temperature=TEMPERATURE,
-                    ),
-                )
-                response = chat.send_message(prompt)
-                return (response.text or "").strip()
-            except Exception as chat_err:
-                response = client.models.generate_content(
-                    model=GEMINI_MODEL,
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        system_instruction=system,
-                        temperature=TEMPERATURE,
-                    ),
-                )
-                return (response.text or "").strip()
+            requested = get_gemini_model()
+            print(f"[llm] Requesting Gemini model={requested!r}", flush=True)
+            candidates: list[str] = []
+            for m in (
+                requested,
+                "gemini-3.8-flash",
+                "gemini-2.5-flash",
+                "gemini-flash-latest",
+            ):
+                if m and isinstance(m, str) and m not in candidates:
+                    candidates.append(m)
+
+            last_err: Exception | None = None
+            for model in candidates:
+                try:
+                    text = _gemini_generate(client, model, prompt, system)
+                    if model != requested:
+                        print(f"[llm] Gemini OK with model={model!r} (requested {requested!r})")
+                    else:
+                        print(f"[llm] Gemini OK with model={model!r}", flush=True)
+                    return text
+                except Exception as e:
+                    last_err = e
+                    suggested = _extract_suggested_gemini_model(e)
+                    if suggested and suggested not in candidates:
+                        candidates.append(suggested)
+                    print(f"[llm] Gemini model {model!r} failed: {e}")
+                    continue
+            gemini_err = last_err
+            print(f"[llm] Gemini unavailable after trying {candidates}; trying fallback…")
         except Exception as e:
             gemini_err = e
             print(f"[llm] Gemini unavailable ({e}); trying fallback…")

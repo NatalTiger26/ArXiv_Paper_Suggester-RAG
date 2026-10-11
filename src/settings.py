@@ -20,17 +20,20 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+# .env first (local). Streamlit Secrets must win on Cloud — do NOT use setdefault
+# after dotenv, or a stale GEMINI_MODEL in the environment shadows Secrets.
+load_dotenv(override=False)
 
-# Streamlit Cloud injects secrets as env-like values via st.secrets when available.
-def _apply_streamlit_secrets() -> None:
+
+def _apply_streamlit_secrets(*, override: bool = True) -> None:
+    """Copy st.secrets into os.environ. override=True so Cloud Secrets beat .env."""
     try:
         import streamlit as st  # type: ignore
 
         secrets = getattr(st, "secrets", None)
         if not secrets:
             return
-        for key in (
+        keys = (
             "GEMINI_API_KEY",
             "GEMINI_MODEL",
             "HF_TOKEN",
@@ -40,18 +43,33 @@ def _apply_streamlit_secrets() -> None:
             "EMBEDDING_MODEL",
             "RAG_EMBEDDING_MODEL",
             "EMBEDDING_DIM",
-        ):
+            "ALLOW_LARGE_EMBED",
+            "FORCE_CLOUD_EMBED",
+        )
+        for key in keys:
             try:
-                val = secrets.get(key) if hasattr(secrets, "get") else secrets[key]
+                if hasattr(secrets, "get"):
+                    val = secrets.get(key)
+                else:
+                    val = secrets[key]
             except Exception:
                 continue
-            if val is not None and str(val).strip() != "":
-                os.environ.setdefault(key, str(val))
+            if val is None or str(val).strip() == "":
+                continue
+            val_s = str(val).strip()
+            if override or key not in os.environ:
+                prev = os.environ.get(key)
+                os.environ[key] = val_s
+                if prev and prev != val_s and key in ("GEMINI_MODEL", "EMBEDDING_MODEL"):
+                    print(
+                        f"[settings] Secret overrode {key}: {prev!r} → {val_s!r}",
+                        flush=True,
+                    )
     except Exception:
         pass
 
 
-_apply_streamlit_secrets()
+_apply_streamlit_secrets(override=True)
 
 def _detect_streamlit_cloud() -> bool:
     """True on Streamlit Community Cloud (and similar constrained hosts)."""
@@ -152,7 +170,15 @@ RANKINGS_PATH = RANKINGS_DIR / "personal_importance.csv"
 EVAL_DIR = RESULTS_DIR / "rag_eval"
 
 # ── Generation ────────────────────────────────────────────────────────────
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+def get_gemini_model() -> str:
+    """Always re-read so late secret injection / env edits are visible."""
+    _apply_streamlit_secrets(override=True)
+    return (os.getenv("GEMINI_MODEL") or "gemini-3.8-flash").strip()
+
+
+GEMINI_MODEL = get_gemini_model()
+print(f"[settings] GEMINI_MODEL resolved to {GEMINI_MODEL!r}", flush=True)
+
 TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.2"))
 
 FALLBACK_LLM_API_KEY = (
