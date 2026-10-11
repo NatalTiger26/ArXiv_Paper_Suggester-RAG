@@ -156,21 +156,28 @@ def get_collection(create: bool = True):
         existing = None
 
     if existing is not None:
-        got_dim = str((existing.metadata or {}).get("embedding_dim") or "")
-        # Legacy collections may lack metadata — probe count only; dim errors
-        # surface on query/upsert and are handled by callers via reset.
-        if got_dim and got_dim not in ("full", "") and got_dim != want_dim:
+        meta = existing.metadata or {}
+        got_dim = str(meta.get("embedding_dim") or "")
+        got_model = str(meta.get("model") or "")
+        dim_mismatch = bool(got_dim and got_dim not in ("full", "") and got_dim != want_dim)
+        # Gemma vs MiniLM etc.
+        model_mismatch = False
+        if got_model and meta_model:
+            g = got_model.lower()
+            w = meta_model.lower()
+            if ("minilm" in w and "gemma" in g) or ("gemma" in w and "minilm" in g):
+                model_mismatch = True
+        if dim_mismatch or model_mismatch:
             print(
-                f"[embed] Dimension mismatch: collection has dim={got_dim}, "
-                f"config wants {want_dim}. Recreating collection."
+                f"[embed] Index incompatible (collection dim={got_dim or '?'}, model={got_model or '?'}; "
+                f"want dim={want_dim}, model={meta_model}). Recreating collection.",
+                flush=True,
             )
             try:
                 client.delete_collection(COLLECTION_NAME)
             except Exception:
                 pass
             existing = None
-        elif create:
-            return existing
         else:
             return existing
 
@@ -201,7 +208,6 @@ def embed_texts(texts: list[str], model=None) -> list[list[float]]:
 def upsert_chunks(chunks: list[Chunk], model=None) -> int:
     if not chunks:
         return 0
-    collection = get_collection(create=True)
     if model is None:
         model = load_embedding_model()
 
@@ -210,14 +216,29 @@ def upsert_chunks(chunks: list[Chunk], model=None) -> int:
     metadatas = [c.to_metadata() for c in chunks]
     embeddings = embed_texts(documents, model=model)
 
-    batch = 64
-    for i in range(0, len(ids), batch):
-        collection.upsert(
-            ids=ids[i : i + batch],
-            documents=documents[i : i + batch],
-            metadatas=metadatas[i : i + batch],
-            embeddings=embeddings[i : i + batch],
+    def _write(collection) -> None:
+        batch = 64
+        for i in range(0, len(ids), batch):
+            collection.upsert(
+                ids=ids[i : i + batch],
+                documents=documents[i : i + batch],
+                metadatas=metadatas[i : i + batch],
+                embeddings=embeddings[i : i + batch],
+            )
+
+    collection = get_collection(create=True)
+    try:
+        _write(collection)
+    except Exception as e:
+        if "dimension" not in str(e).lower():
+            raise
+        print(
+            f"[embed] Upsert dim mismatch ({e}). Resetting RAG collection and retrying…",
+            flush=True,
         )
+        reset_rag_collection()
+        collection = get_collection(create=True)
+        _write(collection)
     return len(ids)
 
 
@@ -227,7 +248,6 @@ def query_chunks(
     paper_ids: list[str] | None = None,
     model=None,
 ) -> list[dict[str, Any]]:
-    collection = get_collection(create=False)
     if model is None:
         model = load_embedding_model()
 
@@ -239,24 +259,27 @@ def query_chunks(
         else:
             where = {"paper_id": {"$in": paper_ids}}
 
-    try:
-        res = collection.query(
+    def _run(coll):
+        n = max(coll.count(), 1)
+        return coll.query(
             query_embeddings=[qvec],
-            n_results=min(top_k, max(collection.count(), 1)),
+            n_results=min(top_k, n),
             where=where,
             include=["documents", "metadatas", "distances"],
         )
+
+    try:
+        collection = get_collection(create=False)
+        res = _run(collection)
     except Exception as e:
         msg = str(e).lower()
-        if "dimension" in msg:
-            raise RuntimeError(
-                f"{e}\n"
-                "  EMBEDDING_DIM changed but the RAG index was built at another dim.\n"
-                "  Fix:\n"
-                "    uv run python -c \"from rag.embed_store import reset_rag_collection; reset_rag_collection()\"\n"
-                "    # or: rm -rf data/chroma_rag && re-ingest papers\n"
-                "    uv run python -m src.rag.cli ingest --force <ids…>"
-            ) from e
+        if "dimension" in msg or "not found" in msg:
+            print(
+                f"[embed] Query failed ({e}). Resetting incompatible RAG collection.",
+                flush=True,
+            )
+            reset_rag_collection()
+            return []
         raise
 
     out = []
@@ -279,6 +302,7 @@ def query_chunks(
             }
         )
     return out
+
 
 
 def list_ingested_papers() -> list[dict[str, Any]]:

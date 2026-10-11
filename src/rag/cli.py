@@ -186,15 +186,17 @@ def build_parser() -> argparse.ArgumentParser:
     ev.add_argument("--json", action="store_true")
     ev.set_defaults(func=cmd_eval)
 
+    p_reset = sub.add_parser(
+        "reset-index",
+        help="Delete RAG Chroma collection (after embedder / EMBEDDING_DIM change)",
+    )
+    p_reset.set_defaults(func=cmd_reset_index)
+
     return p
 
 
 def main() -> None:
     parser = build_parser()
-    
-    p_reset = sub.add_parser("reset-index", help="Delete RAG Chroma collection (after EMBEDDING_DIM change)")
-    p_reset.set_defaults(func=cmd_reset_index)
-
     args = parser.parse_args()
     args.func(args)
 
