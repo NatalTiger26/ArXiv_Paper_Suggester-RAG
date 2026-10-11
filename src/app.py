@@ -284,7 +284,7 @@ def show_ingest_results(results: list[dict]) -> None:
                 "Title / error": (r.get("title") or r.get("error") or "")[:100],
             }
         )
-    st.dataframe(rows, use_container_width=True, hide_index=True)
+    st.dataframe(rows, width="stretch", hide_index=True)
     log(f"Ingest summary: {ok_n}/{len(results)} ok")
 
 
@@ -300,7 +300,7 @@ def answer_to_markdown(question: str, result: dict) -> str:
     return "\n".join(lines)
 
 
-def render_answer_block(question: str, result: dict) -> None:
+def render_answer_block(question: str, result: dict, *, key_prefix: str = "ask") -> None:
     if result.get("cache_hit"):
         st.info(
             f"Cached answer (similarity {result.get('cache_score')}). "
@@ -337,12 +337,14 @@ def render_answer_block(question: str, result: dict) -> None:
                     language=None,
                 )
     md = answer_to_markdown(question, result)
+    # Keys must be unique across ALL tabs (Streamlit runs every tab body each rerun).
+    safe_q = abs(hash((key_prefix, question))) % 10_000_000
     st.download_button(
         "Download answer (Markdown)",
         data=md,
         file_name="answer.md",
         mime="text/markdown",
-        key=f"dl_{abs(hash(question)) % 10_000_000}",
+        key=f"dl_{key_prefix}_{safe_q}",
     )
 
 
@@ -476,7 +478,7 @@ with st.sidebar:
             st.caption(f"Dim: `{rs.get('embedding_dim')}`")
     st.caption("Library = rank · Full-text = ask")
 
-    if st.button("Refresh status", use_container_width=True):
+    if st.button("Refresh status", width="stretch"):
         clear_data_caches()
         log("Status cache cleared")
         st.rerun()
@@ -620,7 +622,7 @@ with tab_home:
             st.session_state["last_ask"] = {"q": demo_q, "result": result}
             push_recent_question(demo_q)
             overall.progress(100, text="Demo complete")
-            render_answer_block(demo_q, result)
+            render_answer_block(demo_q, result, key_prefix="home_demo")
             clear_data_caches()
             log("=== Quick demo done ===")
         except Exception as e:
@@ -1007,7 +1009,7 @@ with tab_ask:
                 "result": result,
             }
             push_recent_question(question.strip())
-            render_answer_block(question.strip(), result)
+            render_answer_block(question.strip(), result, key_prefix="ask_live")
         except Exception as e:
             progress.empty()
             status.empty()
@@ -1018,7 +1020,7 @@ with tab_ask:
         st.markdown("#### Last answer")
         la = st.session_state["last_ask"]
         st.caption(la.get("q"))
-        render_answer_block(la["q"], la["result"])
+        render_answer_block(la["q"], la["result"], key_prefix="ask_last")
 
 
 # ── HELP ──────────────────────────────────────────────────────────────────

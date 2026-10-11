@@ -7,7 +7,7 @@ Embeddings — local default EmbeddingGemma 2; Cloud defaults to MiniLM:
 
 Generation — Gemini primary, OpenAI-compatible failsafe (e.g. NVIDIA):
   GEMINI_API_KEY=...
-  GEMINI_MODEL=gemini-2.0-flash
+  GEMINI_MODEL=gemini-3.8-flash
   FALLBACK_LLM_API_KEY=...           # or NVIDIA_API_KEY
   FALLBACK_LLM_BASE_URL=https://integrate.api.nvidia.com/v1
   FALLBACK_LLM_MODEL=meta/llama-3.1-8b-instruct
@@ -152,7 +152,7 @@ RANKINGS_PATH = RANKINGS_DIR / "personal_importance.csv"
 EVAL_DIR = RESULTS_DIR / "rag_eval"
 
 # ── Generation ────────────────────────────────────────────────────────────
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.2"))
 
 FALLBACK_LLM_API_KEY = (
