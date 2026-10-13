@@ -1337,13 +1337,12 @@ with tab_lib:
             "Add one or more keyword blocks. All non-empty queries are searched "
             "and **merged** into the library in one run (duplicates by arXiv id skipped)."
         )
-        with st.expander("Library tips", expanded=False):
+        with st.expander("Tips", expanded=False):
             st.markdown(
                 """
-- Each block has its own **max results**; the final library is **unique by arXiv id**.
-- After big adds, **rebuild the recommend index** before ranking.
-- Ranking uses abstracts only; **Ask** needs a separate **ingest** step.
-- Details: **Help** tab.
+- **Max results** is per topic; ids are merged uniquely.  
+- Rebuild the **recommend index** after large adds.  
+- Rank ≠ Ask — **ingest** for full-text Q&A.
 """
             )
         if "lib_queries" not in st.session_state:
@@ -1704,16 +1703,12 @@ with tab_rec:
             )
 
     st.caption(f"Will rank with: **{_fmt_weights(weights)}**")
-    with st.expander("How ranking weights work", expanded=False):
+    with st.expander("What these weights mean", expanded=False):
         st.markdown(
             """
-**Embedding** — semantic fit of your interest text to title/abstract.  
-**Recency** — newer papers score higher.  
-**Citation** — higher citation counts score higher.  
-**Author** — small prior from author-side signal.
+**Embedding** = topic fit · **Recency** = newer · **Citation** = highly cited · **Author** = light prior.
 
-Edit any number to leave the preset; values are **normalized** to sum to 1.00.  
-Full tables and when to use each preset: **Help** tab.
+Change a number → **Custom** (normalized to 1.00). Preset table: **Help**.
 """
         )
 
@@ -1781,14 +1776,12 @@ Full tables and when to use each preset: **Help** tab.
             "Downloads PDFs, converts to Markdown, chunks, embeds into RAG. "
             "You can ingest any number up to the current ranked list."
         )
-        with st.expander("Ingest time, RAM, and batch size", expanded=False):
+        with st.expander("Time & RAM", expanded=False):
             st.markdown(
                 """
-**Time (first time, typical):** ~30–90s per paper (OCR-heavy PDFs can take several minutes).  
-**RAM:** 10+ papers with EmbeddingGemma can pressure a 16 GB machine — prefer **5–10** per batch or enable **Low memory mode**.  
-**Progress** shows i/N, elapsed, and ETA.  
-**Force re-download** only when you need fresh PDF/Markdown/embeddings.  
-More detail: **Help** tab.
+~**30–90s**/paper first time (OCR can be slower).  
+On 16 GB RAM prefer **5–10**/batch or **Low memory mode**.  
+Progress = i/N + ETA. Force re-download only to refresh files.
 """
             )
         max_n = max(1, len(ids_order))
@@ -1860,10 +1853,9 @@ with tab_ask:
     with st.expander("Advanced — passages, cache, paper filter", expanded=False):
         st.markdown(
             """
-**Passages (top-k)** = chunks sent to the LLM (not total chunks in the index).  
-Default **6**. Use **4–6** for narrow facts, **8–12** for comparisons, **10–15** only for broad multi-paper questions.  
-Top-k need **not** scale with library size (2000+ chunks still start at 6–8). Prefer ingesting better papers over k ≫ 15.  
-See **Help** for the full table.
+**top-k** = chunks to the LLM (index can be huge; only top-k are shown to the model).  
+Default **6**. Facts: 4–6 · normal: 6–8 · compare: 8–12.  
+Don’t raise k just because the library grew — ingest better papers instead. Full guide: **Help**.
 """
         )
         top_k = int_with_input(
@@ -1955,133 +1947,109 @@ See **Help** for the full table.
 # ── HELP ──────────────────────────────────────────────────────────────────
 
 with tab_help:
-    st.subheader("How to use this app")
+    st.subheader("Help")
     st.markdown(
         """
-### The basic loop
+**Workflow:** Library (find papers) → Recommend (rank) → Ingest (full text) → Ask (Q&A with citations).
 
-1. **Library** — add papers (keywords and/or arXiv IDs). This is *metadata* for ranking.
-2. **Recommend** — rank the library for your research interest; optionally **ingest** top papers.
-3. **Ask** — question answering over **ingested full text only**, with citations.
+| | **Library** | **Full-text** |
+|--|-------------|---------------|
+| Holds | Titles & abstracts | PDF text in chunks |
+| Used by | Rank | **Ask** only |
 
-| Term | What it is | Used by |
-|------|------------|---------|
-| **Library** | Titles + abstracts | Rank / recommend |
-| **Recommend index** | Embeddings of those abstracts | Rank |
-| **Full-text / RAG** | PDF → Markdown → chunks → vectors | **Ask** only |
-
-If Ask says the topic is missing, **ingest more relevant papers** — ranking alone is not enough.
-
----
-
-### Library
-
-- **Multiple topics:** add several keyword blocks; one run searches all and **merges** unique arXiv IDs.
-- **Max results per topic:** how many hits each block contributes (1–50), not a global unique cap.
-- **Replace library:** overwrites the saved corpus; confirm when enabled.
-- **Rebuild index:** required after large library changes before ranking quality is trustworthy.
-
----
-
-### Recommend — ranking weights
-
-Four signals (shown to 2 decimals; normalized to sum to **1.00** if you edit them):
-
-| Signal | Meaning |
-|--------|---------|
-| **Embedding** | Semantic match of your interest text to title/abstract |
-| **Recency** | Prefer newer papers |
-| **Citation** | Prefer higher citation counts |
-| **Author** | Light prior from author-side signal |
-
-**Presets**
-
-| Preset | embedding | recency | citation | author | When to use |
-|--------|-----------|---------|----------|--------|-------------|
-| Balanced (default) | 0.50 | 0.20 | 0.25 | 0.05 | General literature dig |
-| Precision | 0.65 | 0.10 | 0.20 | 0.05 | Library already on-topic; trust similarity |
-| Prefer recent | 0.45 | 0.35 | 0.15 | 0.05 | Fast-moving areas |
-| Citation heavy | 0.35 | 0.10 | 0.50 | 0.05 | Landmarks / surveys |
-| Custom | *yours* | | | | Any mix that is not a preset |
-
-If your numbers match a preset within ~0.01, the UI notes that. Otherwise ranking runs in **Custom**.
-
-**Top-k (rank list)** — how many library papers to *show* after ranking (not the same as Ask passages).
-
----
-
-### Ingest (full text)
-
-- **Ingest top-N** is limited by the **current ranked list** (if you ranked 25, max is 25).
-- **Rough time per paper (first time, EmbeddingGemma):** download ~2–10s · OCR/convert ~10–60s+ · embed ~5–30s → often **~30–90s/paper**; OCR-heavy PDFs can take several minutes.
-- **RAM:** large batches (10+) on a 16 GB Mac can stress MPS/unified memory. Prefer batches of **5–10**, use **Low memory mode**, or ingest in waves.
-- **Force re-download** only when you need to refresh a PDF/Markdown/embedding.
-- Progress shows **i/N**, elapsed time, and **ETA** from this run’s average.
-
----
-
-### Ask — passages, cache, filters
-
-**Passages (top-k)** = how many *retrieved chunks* are sent to the LLM — **not** how many chunks exist in the index.
-
-Retrieval still searches the whole full-text index (e.g. 2000+ chunks). The model only sees the top-k snippets.
-
-| Situation | Suggested top-k |
-|-----------|-----------------|
-| Short definition / fact | **4–6** |
-| Typical research question | **6–8** (default **6** is solid) |
-| Compare methods / multi-paper | **8–12** |
-| Broad survey-style question | **10–15** |
-| Rarely needed | **>15** — usually noise + cost; improve ingest set first |
-
-**Does top-k need to grow with the library?**  
-No. 200 vs 2000 chunks: still start at **6–8**. A bigger index needs *better ranking and more relevant ingest*, not automatically larger k.
-
-**Coverage** on the answer is from retrieval scores, not a calibrated probability:
-
-- **high** — strong top hits; k is probably enough  
-- **partial** — answer may be incomplete; try a narrower question or ingest more  
-- **low / none** — topic likely missing from full-text  
-
-**Semantic cache** — reuses near-duplicate questions (faster, free). Turn **off** for a fresh LLM call.
-
-**Restrict to papers** — limit retrieval to selected arXiv IDs (useful when one paper dominates the hits).
-
-Typical **LLM** answer time: **~8–20 seconds** (plus retrieval).
-
----
-
-### Time & performance expectations
-
-| Step | Typical wait |
-|------|----------------|
-| First embedder load | **1–2 min** (then reused in-session) |
-| Rank ~20–50 library papers | ~5–30s after model is warm |
-| Ingest 1 paper | ~30–90s (wide range) |
-| Ask (Gemini) | ~8–20s |
-
-Open the **Activity log** if something feels stuck; the terminal shows the same events.
-
----
-
-### Appearance & CLI
-
-- **Dark / Light** buttons top-right of the title.
-- Full CLI path: `WORKFLOW.md`. Short version:
-
-```bash
-uv sync
-# optional: .env with GEMINI_API_KEY and GEMINI_MODEL=gemini-3.8-flash
-
-uv run python src/corpus_builder.py search "your topic" -n 12 --build-index
-uv run python src/recommend.py "your interest" -k 8
-uv run python -m src.rag.cli ingest <arxiv_id> ...
-uv run python -m src.rag.cli ask "Your question"
-uv run python -m streamlit run src/app.py
-```
+Ranking never feeds Ask by itself — you must **ingest** first.
 """
     )
+
+    with st.expander("Library", expanded=False):
+        st.markdown(
+            """
+- Add **one or more topic boxes**; results are merged (unique arXiv ids).
+- **Max results** applies *per topic*, not as a global unique cap.
+- After large adds, **rebuild the recommend index** before ranking.
+"""
+        )
+
+    with st.expander("Recommend & weights", expanded=False):
+        st.markdown(
+            """
+**Signals:** embedding (topic fit) · recency · citations · author.
+
+| Preset | emb | rec | cite | auth | Best for |
+|--------|-----|-----|------|------|----------|
+| Balanced | 0.50 | 0.20 | 0.25 | 0.05 | Default dig |
+| Precision | 0.65 | 0.10 | 0.20 | 0.05 | On-topic library |
+| Prefer recent | 0.45 | 0.35 | 0.15 | 0.05 | Fast-moving fields |
+| Citation heavy | 0.35 | 0.10 | 0.50 | 0.05 | Landmarks / surveys |
+
+Edit any number → **Custom** (auto-normalized to sum to 1).  
+If numbers match a preset, the UI says so.
+"""
+        )
+
+    with st.expander("Ingest (full text)", expanded=False):
+        st.markdown(
+            """
+- **Top-N** max = size of the *current* rank list.
+- **Time:** often ~30–90s per paper the first time (OCR can be slower).
+- **RAM:** on 16 GB machines, prefer **5–10** papers per batch, or **Low memory mode**.
+- Progress shows **i/N**, elapsed, and ETA.
+"""
+        )
+
+    with st.expander("Ask — passages & coverage", expanded=False):
+        st.markdown(
+            """
+**top-k** = chunks sent to the LLM (not total chunks in the store). Retrieval still searches everything.
+
+| Question type | top-k |
+|---------------|-------|
+| Short fact | 4–6 |
+| Typical research Q | **6–8** (default 6) |
+| Compare papers | 8–12 |
+| Broad survey | 10–15 |
+
+More chunks in the index does **not** mean you need a higher k. Prefer better ingest over k &gt; 15.
+
+**Coverage:** high ≈ strong hits · partial ≈ incomplete · low/none ≈ missing topic in full-text.
+
+**Cache:** on = reuse similar questions · off = fresh LLM call.  
+**Restrict to papers:** limit which PDFs can be retrieved.
+"""
+        )
+
+    with st.expander("Timing & when it feels stuck", expanded=False):
+        st.markdown(
+            """
+| Step | Typical |
+|------|---------|
+| First model load | 1–2 min |
+| Rank | ~5–30s (warm) |
+| Ingest (1 paper) | ~30–90s |
+| Ask | ~8–20s |
+
+Use **Activity log** (and the terminal) if the UI looks idle.
+"""
+        )
+
+    with st.expander("CLI (short)", expanded=False):
+        st.code(
+            "\n".join(
+                [
+                    "uv sync",
+                    'uv run python src/corpus_builder.py search "topic" -n 12 --build-index',
+                    'uv run python src/recommend.py "interest" -k 8',
+                    "uv run python -m src.rag.cli ingest <id>",
+                    'uv run python -m src.rag.cli ask "question"',
+                    "uv run python -m streamlit run src/app.py",
+                ]
+            ),
+            language="bash",
+        )
+        st.caption("Full detail: WORKFLOW.md")
+
     report_path = ROOT / "results" / "EVALUATION_REPORT.md"
     if report_path.exists():
-        with st.expander("Evaluation report preview"):
-            st.markdown(report_path.read_text(encoding="utf-8")[:5000])
+        with st.expander("Evaluation report preview", expanded=False):
+            st.markdown(report_path.read_text(encoding="utf-8")[:4000])
+
