@@ -364,8 +364,16 @@ EXAMPLE_QUESTIONS = [
     "How can circuits in transformers be discovered automatically?",
 ]
 
+WEIGHT_KEYS = ("embedding", "recency", "citation", "author")
+
+# Explicit values (2 d.p.) — Balanced matches ranking.DEFAULT_WEIGHTS
 WEIGHT_PRESETS = {
-    "Balanced (default)": None,
+    "Balanced (default)": {
+        "embedding": 0.50,
+        "recency": 0.20,
+        "citation": 0.25,
+        "author": 0.05,
+    },
     "Precision (embedding ↑)": {
         "embedding": 0.65,
         "recency": 0.10,
@@ -391,7 +399,33 @@ PRESET_HELP = {
     "Precision (embedding ↑)": "Trust topic similarity more — when the library is already on-topic.",
     "Prefer recent": "Boost newer papers — fast-moving subfields.",
     "Citation heavy": "Prefer highly cited work — can favor older landmarks.",
+    "Custom": "Your own weights. Ranking uses these values (re-normalized if needed).",
 }
+
+
+def _fmt_weights(w: dict | None) -> str:
+    w = w or WEIGHT_PRESETS["Balanced (default)"]
+    return (
+        f"embedding={w['embedding']:.2f} · recency={w['recency']:.2f} · "
+        f"citation={w['citation']:.2f} · author={w['author']:.2f}"
+    )
+
+
+def _match_preset(w: dict, tol: float = 0.011) -> str | None:
+    """Return preset name if weights match within tol, else None."""
+    for name, preset in WEIGHT_PRESETS.items():
+        if not preset:
+            continue
+        if all(abs(float(w.get(k, 0)) - float(preset[k])) <= tol for k in WEIGHT_KEYS):
+            return name
+    return None
+
+
+def _normalize_weights(w: dict) -> dict:
+    s = sum(max(0.0, float(w.get(k, 0))) for k in WEIGHT_KEYS)
+    if s <= 1e-9:
+        return dict(WEIGHT_PRESETS["Balanced (default)"])
+    return {k: round(max(0.0, float(w.get(k, 0))) / s, 4) for k in WEIGHT_KEYS}
 
 
 # ── Activity log (visible when things feel stuck) ─────────────────────────
@@ -532,6 +566,137 @@ def float_with_input(
             on_change=_from_num,
         )
     return float(st.session_state[key])
+
+
+
+def growing_text_area(
+    label: str,
+    *,
+    key: str,
+    default: str = "",
+    min_lines: int = 3,
+    max_lines: int = 24,
+    placeholder: str | None = None,
+    help: str | None = None,
+) -> str:
+    """Multi-line text that grows with content (no silent clipping)."""
+    if key not in st.session_state:
+        st.session_state[key] = default
+    text = str(st.session_state.get(key) or "")
+    wrap = 0
+    for line in (text.splitlines() or [""]):
+        wrap += max(1, (len(line) + 88) // 89)
+    nlines = max(min_lines, min(max_lines, wrap + 1))
+    height = int(22 * nlines + 40)
+    return st.text_area(
+        label,
+        height=height,
+        key=key,
+        placeholder=placeholder,
+        help=help,
+    )
+
+
+def _release_runtime_memory() -> None:
+    """Drop transient Python/GPU caches without unloading the embedder."""
+    import gc
+
+    gc.collect()
+    try:
+        import torch
+
+        if getattr(torch, "cuda", None) and torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available():
+            try:
+                torch.mps.empty_cache()
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+
+def _fmt_duration(seconds: float) -> str:
+    seconds = max(0.0, float(seconds))
+    if seconds < 60:
+        return f"{seconds:.0f}s"
+    m, s = divmod(int(seconds), 60)
+    if m < 60:
+        return f"{m}m {s:02d}s"
+    h, m = divmod(m, 60)
+    return f"{h}h {m:02d}m"
+
+
+def set_results_panel(kind: str, payload: dict) -> None:
+    """Replace the previous results panel (one active set at a time)."""
+    st.session_state["results_panel"] = {
+        "kind": kind,
+        "payload": payload,
+        "ts": time.time(),
+    }
+
+
+def render_results_panel() -> None:
+    """Dedicated results area: replaces prior results; lists are collapsible."""
+    panel = st.session_state.get("results_panel")
+    if not panel:
+        return
+    kind = panel.get("kind")
+    payload = panel.get("payload") or {}
+    st.markdown("---")
+    st.markdown("### Results")
+    if kind == "rank":
+        n = int(payload.get("n") or 0)
+        k = int(payload.get("k") or n)
+        st.caption(f"Ranked **{n}** papers · requested top **{k}**")
+        rows = payload.get("rows") or []
+        with st.expander(f"Paper list ({len(rows)})", expanded=True):
+            for i, r in enumerate(rows, 1):
+                pid = r.get("id") or ""
+                title = (r.get("title") or "")[:120]
+                score = r.get("score", "")
+                if pid:
+                    st.markdown(
+                        f"**{i}. [{pid}](https://arxiv.org/abs/{pid})** — {title}"
+                    )
+                else:
+                    st.markdown(f"**{i}.** {title}")
+                st.caption(f"Score: {score}")
+    elif kind == "ingest":
+        results = payload.get("results") or []
+        ok_n = sum(1 for r in results if r.get("ok"))
+        st.caption(f"Ingest finished: **{ok_n}/{len(results)}** succeeded")
+        with st.expander(f"Per-paper status ({len(results)})", expanded=True):
+            rows = []
+            for r in results:
+                chunks = r.get("chunks")
+                if not r.get("ok"):
+                    chunks_disp = None
+                else:
+                    try:
+                        chunks_disp = int(chunks) if chunks is not None else None
+                    except (TypeError, ValueError):
+                        chunks_disp = None
+                rows.append(
+                    {
+                        "arXiv ID": str(r.get("arxiv_id") or ""),
+                        "Status": "ok" if r.get("ok") else "fail",
+                        "Chunks": chunks_disp,
+                        "Title / error": str(r.get("title") or r.get("error") or "")[:120],
+                    }
+                )
+            try:
+                st.dataframe(rows, width="stretch", hide_index=True)
+            except TypeError:
+                st.dataframe(rows, use_container_width=True, hide_index=True)
+        if ok_n:
+            st.info("Open the **Ask** tab when ready.")
+    elif kind == "library":
+        st.caption(payload.get("summary") or "Library updated")
+        detail = payload.get("detail")
+        if detail:
+            with st.expander("Details", expanded=False):
+                st.write(detail)
 
 
 def render_activity_log(expanded: bool = False) -> None:
@@ -699,19 +864,9 @@ def show_ingest_results(results: list[dict]) -> None:
         st.warning("No ingest results.")
         return
     ok_n = sum(1 for r in results if r.get("ok"))
-    st.write(f"Ingest finished: **{ok_n}/{len(results)}** succeeded.")
-    rows = []
-    for r in results:
-        rows.append(
-            {
-                "arXiv ID": r.get("arxiv_id", ""),
-                "Status": "✓ ok" if r.get("ok") else "✗ fail",
-                "Chunks": r.get("chunks", "—") if r.get("ok") else "—",
-                "Title / error": (r.get("title") or r.get("error") or "")[:100],
-            }
-        )
-    st.dataframe(rows, width="stretch", hide_index=True)
     log(f"Ingest summary: {ok_n}/{len(results)} ok")
+    set_results_panel("ingest", {"results": results})
+    render_results_panel()
 
 
 def answer_to_markdown(question: str, result: dict) -> str:
@@ -774,14 +929,40 @@ def render_answer_block(question: str, result: dict, *, key_prefix: str = "ask")
     )
 
 
-def run_ingest_with_progress(ids: list[str], force: bool = False) -> list[dict]:
+def run_ingest_with_progress(
+    ids: list[str],
+    force: bool = False,
+    *,
+    low_memory: bool = False,
+) -> list[dict]:
     ids = [str(i).strip() for i in ids if i and str(i).strip()]
     if not ids:
         return []
-    log(f"Ingest start: {len(ids)} papers force={force} → {ids}")
+    log(f"Ingest start: {len(ids)} papers force={force} low_mem={low_memory} → {ids}")
+
+    # Static guidance (educated choice of N)
+    st.caption(
+        "Typical cost **per paper** (first time, EmbeddingGemma on Apple GPU): "
+        "download ~2–10s · convert/OCR ~10–60s · embed ~5–30s. "
+        "Roughly **~30–90s/paper** on average; OCR-heavy PDFs can exceed **2–4 min**. "
+        "Cached PDFs/Markdown are much faster. "
+        f"Ballpark for **{len(ids)}** papers: "
+        f"**{_fmt_duration(45 * len(ids))}–{_fmt_duration(90 * len(ids))}** "
+        "(wide range — live ETA below adapts to this run)."
+    )
+    if len(ids) >= 10:
+        st.warning(
+            f"Ingesting **{len(ids)}** papers is RAM-heavy with EmbeddingGemma. "
+            "Expect high memory use; enable **Low memory mode** if the system gets tight. "
+            "MPS out-of-memory on a paper will auto-retry after a cache clear."
+        )
+
     progress = st.progress(0, text="Preparing…")
     status = st.empty()
+    eta_box = st.empty()
     results: list[dict] = []
+    per_paper_times: list[float] = []
+
     try:
         try:
             from rag.embed_store import load_embedding_model
@@ -790,31 +971,58 @@ def run_ingest_with_progress(ids: list[str], force: bool = False) -> list[dict]:
             from src.rag.embed_store import load_embedding_model
             from src.rag.ingest import ingest_paper
 
-        status.markdown("**Step 1/2 — Loading embedding model** (first load can take 1–2 min)…")
+        status.markdown(
+            "**Step 1/2 — Loading embedding model** (first load can take 1–2 min)…"
+        )
         progress.progress(3, text="Loading embedder…")
         t0 = time.time()
         model = load_embedding_model()
         log(f"Embedder ready in {time.time() - t0:.1f}s")
         progress.progress(8, text="Embedder ready")
 
+        if low_memory:
+            # Prefer smaller encode batches for this process
+            os.environ["RAG_EMBED_BATCH"] = "8"
+        else:
+            os.environ.pop("RAG_EMBED_BATCH", None)
+
         n = len(ids)
         for i, aid in enumerate(ids):
+            elapsed = sum(per_paper_times)
+            avg = (elapsed / len(per_paper_times)) if per_paper_times else 60.0
+            remaining = avg * (n - i)
+            eta_box.caption(
+                f"Progress **{i}/{n}** papers · elapsed **{_fmt_duration(elapsed)}** · "
+                f"ETA **~{_fmt_duration(remaining)}** "
+                f"(avg **{_fmt_duration(avg)}**/paper so far)"
+            )
             step_lo = 8 + int(90 * i / n)
             progress.progress(
                 step_lo,
-                text=f"Paper {i+1}/{n}: {aid} — download PDF…",
+                text=f"Paper {i+1}/{n}: {aid} — download / convert / embed…",
             )
             status.markdown(
-                f"**Step 2/2 — Paper `{aid}` ({i+1}/{n})**  \n"
-                f"1. Download PDF  →  2. Convert to Markdown  →  3. Chunk  →  4. Embed & store"
+                f"**Step 2/2 — Paper `{aid}` ({i+1}/{n})**\n"
+                "1. Download PDF → 2. Convert to Markdown → 3. Chunk → 4. Embed & store"
             )
             log(f"Ingesting {aid} ({i+1}/{n})…")
             t1 = time.time()
+            row: dict
             try:
                 row = ingest_paper(aid, model=model, force_download=force)
             except Exception as e:
-                row = {"arxiv_id": aid, "ok": False, "error": str(e)}
-                log(f"  failed {aid}: {e}")
+                err = str(e)
+                if "out of memory" in err.lower() or "oom" in err.lower():
+                    log(f"  OOM on {aid}; releasing caches and retrying once…")
+                    _release_runtime_memory()
+                    try:
+                        row = ingest_paper(aid, model=model, force_download=force)
+                    except Exception as e2:
+                        row = {"arxiv_id": aid, "ok": False, "error": str(e2)}
+                        log(f"  failed {aid} after OOM retry: {e2}")
+                else:
+                    row = {"arxiv_id": aid, "ok": False, "error": err}
+                    log(f"  failed {aid}: {e}")
             else:
                 if row.get("ok"):
                     log(
@@ -822,13 +1030,30 @@ def run_ingest_with_progress(ids: list[str], force: bool = False) -> list[dict]:
                     )
                 else:
                     log(f"  fail {aid}: {row.get('error')}")
+
+            dt = time.time() - t1
+            per_paper_times.append(dt)
             results.append(row)
+            _release_runtime_memory()
+
+            elapsed = sum(per_paper_times)
+            avg = elapsed / len(per_paper_times)
+            remaining = avg * (n - (i + 1))
             progress.progress(
                 8 + int(90 * (i + 1) / n),
-                text=f"Finished {aid} ({i+1}/{n})",
+                text=(
+                    f"Finished {aid} ({i+1}/{n}) · "
+                    f"{_fmt_duration(elapsed)} elapsed · ETA ~{_fmt_duration(remaining)}"
+                ),
             )
+            eta_box.caption(
+                f"Progress **{i+1}/{n}** papers · elapsed **{_fmt_duration(elapsed)}** · "
+                f"ETA **~{_fmt_duration(remaining)}** · "
+                f"last paper **{_fmt_duration(dt)}** · avg **{_fmt_duration(avg)}**/paper"
+            )
+
         progress.progress(100, text="Ingest complete")
-        status.success("Ingest finished — see table below.")
+        status.success("Ingest finished — see **Results** below.")
         log("Ingest complete")
         return results
     except Exception as e:
@@ -836,10 +1061,13 @@ def run_ingest_with_progress(ids: list[str], force: bool = False) -> list[dict]:
         st.markdown(friendly_error(e))
         log(traceback.format_exc()[-500:])
         return results
+    finally:
+        _release_runtime_memory()
+
 
 
 def run_rank(interest: str, k: int, weights: dict | None) -> list[dict]:
-    log(f"Rank start: {interest!r} k={k}")
+    log(f"Rank start: {(interest[:100] + "…") if len(interest) > 100 else interest!r} k={k}")
     progress = st.progress(0, text="Loading ranking stack…")
     status = st.empty()
     try:
@@ -984,10 +1212,12 @@ with tab_home:
     )
     d1, d2 = st.columns(2)
     with d1:
-        demo_interest = st.text_input(
+        demo_interest = growing_text_area(
             "Research interest",
-            value="mechanistic interpretability circuits",
             key="home_demo_interest",
+            default="mechanistic interpretability circuits",
+            min_lines=2,
+            max_lines=12,
         )
     with d2:
         demo_q = st.text_input(
@@ -998,10 +1228,10 @@ with tab_home:
     demo_k = int_with_input(
         "Top papers to ingest",
         1,
-        15,
+        25,
         3,
         key="home_demo_k",
-        help="How many ranked papers to download and embed (1–15).",
+        help="How many ranked papers to download and embed (1–25).",
     )
 
     if st.button("Run quick demo", type="primary", key="home_demo_btn"):
@@ -1103,17 +1333,67 @@ with tab_lib:
         return True
 
     if mode == "Search arXiv":
-        q = st.text_input("Keywords", key="lib_q")
+        st.caption(
+            "Add one or more keyword blocks. All non-empty queries are searched "
+            "and **merged** into the library in one run (duplicates by arXiv id skipped)."
+        )
+        with st.expander("Library tips", expanded=False):
+            st.markdown(
+                """
+- Each block has its own **max results**; the final library is **unique by arXiv id**.
+- After big adds, **rebuild the recommend index** before ranking.
+- Ranking uses abstracts only; **Ask** needs a separate **ingest** step.
+- Details: **Help** tab.
+"""
+            )
+        if "lib_queries" not in st.session_state:
+            st.session_state["lib_queries"] = [st.session_state.get("lib_q") or ""]
+
+        queries = st.session_state["lib_queries"]
+        remove_idx = None
+        for qi in range(len(queries)):
+            cols = st.columns([0.9, 0.1])
+            with cols[0]:
+                growing_text_area(
+                    f"Keywords / topic {qi + 1}",
+                    key=f"lib_q_{qi}",
+                    default=queries[qi] if qi < len(queries) else "",
+                    min_lines=2,
+                    max_lines=12,
+                    placeholder="e.g. mechanistic interpretability circuits",
+                )
+                # sync list from widget state
+                st.session_state["lib_queries"][qi] = st.session_state.get(f"lib_q_{qi}") or ""
+            with cols[1]:
+                st.write("")
+                if len(queries) > 1 and st.button("✕", key=f"lib_q_rm_{qi}", help="Remove this topic"):
+                    remove_idx = qi
+        if remove_idx is not None:
+            # drop widget keys and rebuild
+            new_q = [st.session_state["lib_queries"][j] for j in range(len(queries)) if j != remove_idx]
+            st.session_state["lib_queries"] = new_q or [""]
+            for j in range(len(queries) + 2):
+                st.session_state.pop(f"lib_q_{j}", None)
+            for j, val in enumerate(st.session_state["lib_queries"]):
+                st.session_state[f"lib_q_{j}"] = val
+            st.rerun()
+
+        b_add, b_sp = st.columns([0.35, 0.65])
+        with b_add:
+            if st.button("＋ Add another topic", key="lib_q_add"):
+                st.session_state["lib_queries"].append("")
+                st.rerun()
+
         c1, c2, c3 = st.columns(3)
         with c1:
             n = st.number_input(
-                "Max results",
+                "Max results per topic",
                 min_value=1,
                 max_value=50,
                 value=12,
                 step=1,
                 key="lib_n",
-                help="How many arXiv hits to add to the library (1–50).",
+                help="arXiv hits **per keyword block** (1–50).",
             )
         with c2:
             cat = st.text_input("Category", placeholder="cs.LG", key="lib_cat")
@@ -1126,56 +1406,80 @@ with tab_lib:
         if st.button("Search & add to library", type="primary", key="lib_search_btn"):
             if not _guard_replace():
                 pass
-            elif not (q or "").strip() and not (cat or "").strip():
-                st.error("Enter keywords or a category.")
             else:
-                log(f"Library search: {q!r} cat={cat!r}")
-                with st.status("Searching arXiv…", expanded=True) as st_status:
-                    st_status.write("Calling arXiv API…")
-                    try:
-                        from corpus_builder import search_arxiv
-
-                        papers = search_arxiv(
-                            q or "",
-                            max_results=int(n),
-                            category=(cat or None),
-                            sort_by=sort,
-                        )
-                        st_status.write(f"Found {len(papers)} papers")
-                        log(f"Search returned {len(papers)}")
-                    except Exception as e:
-                        st.markdown(friendly_error(e))
-                        papers = None
-                        st_status.update(label="Search failed", state="error")
-                if papers is not None:
-                    if not papers:
-                        st.warning("No papers found.")
-                    else:
-                        for p in papers[:8]:
-                            st.markdown(
-                                f"- `{p.get('arxiv_id') or p.get('id')}` — "
-                                f"{(p.get('title') or '')[:90]}"
-                            )
+                topics = [
+                    (st.session_state.get(f"lib_q_{i}") or "").strip()
+                    for i in range(len(st.session_state.get("lib_queries") or [""]))
+                ]
+                topics = [x for x in topics if x]
+                if not topics and not (cat or "").strip():
+                    st.error("Enter at least one topic/keywords block (or a category).")
+                else:
+                    if not topics:
+                        topics = [""]  # category-only search once
+                    log(f"Library search topics={topics!r} cat={cat!r}")
+                    with st.status("Searching arXiv…", expanded=True) as st_status:
                         try:
-                            size = save_library(papers, replace=replace)
-                            st.success(f"Library size: **{size}**")
-                            log(f"Library saved size={size}")
-                        except Exception as e:
-                            st.markdown(friendly_error(e))
-                        if build_idx:
-                            with st.status("Building recommend index…", expanded=True) as s2:
-                                s2.write("Embedding titles/abstracts (may take a minute)…")
-                                try:
-                                    from corpus_builder import rebuild_index
+                            from corpus_builder import search_arxiv
 
-                                    rebuild_index()
-                                    s2.write("Index ready")
-                                    s2.update(label="Index ready", state="complete")
-                                    log("Recommend index rebuilt")
-                                    st.success("Recommend index ready.")
-                                except Exception as e:
-                                    s2.update(label="Index failed", state="error")
-                                    st.markdown(friendly_error(e))
+                            merged: dict[str, dict] = {}
+                            for t_i, topic in enumerate(topics):
+                                st_status.write(
+                                    f"Query {t_i+1}/{len(topics)}: {topic[:60]!r}…"
+                                )
+                                papers = search_arxiv(
+                                    topic,
+                                    max_results=int(n),
+                                    category=(cat or None),
+                                    sort_by=sort,
+                                )
+                                for p in papers or []:
+                                    pid = (
+                                        p.get("arxiv_id")
+                                        or p.get("id")
+                                        or p.get("paper_id")
+                                        or ""
+                                    )
+                                    pid = str(pid).split("v")[0].strip()
+                                    if pid and pid not in merged:
+                                        merged[pid] = p
+                            papers = list(merged.values())
+                            size = save_library(papers, replace=replace)
+                            st_status.write(
+                                f"Merged **{len(papers)}** unique papers · library size **{size}**"
+                            )
+                            st.success(
+                                f"Added/merged **{len(papers)}** unique papers · library **{size}**"
+                            )
+                            set_results_panel(
+                                "library",
+                                {
+                                    "summary": f"Merged {len(papers)} unique papers from {len(topics)} topic(s).",
+                                    "detail": papers[:30],
+                                },
+                            )
+                            log(f"Library search merged={len(papers)} library={size}")
+                            st_status.update(state="complete")
+                        except Exception as e:
+                            st_status.update(state="error")
+                            st.markdown(friendly_error(e))
+                            papers = []
+                    if build_idx and papers:
+                        with st.status("Building recommend index…", expanded=True) as s2:
+                            try:
+                                from corpus_builder import rebuild_index
+
+                                rebuild_index()
+                                s2.write("Index ready")
+                                s2.update(label="Index ready", state="complete")
+                                log("Recommend index rebuilt")
+                                st.success("Recommend index ready.")
+                            except Exception as e:
+                                s2.update(label="Index failed", state="error")
+                                st.markdown(friendly_error(e))
+                        clear_data_caches()
+                        st.rerun()
+                    elif papers:
                         clear_data_caches()
                         st.rerun()
 
@@ -1293,7 +1597,15 @@ with tab_rec:
     st.write(
         "Ranks the **library** (needs recommend index). Then ingest top hits for Ask."
     )
-    interest = st.text_input("Research interest", key="rec_interest")
+    interest = growing_text_area(
+        "Research interest",
+        key="rec_interest",
+        default="",
+        min_lines=3,
+        max_lines=24,
+        placeholder="Describe what you want from papers (topics, depth, constraints)…",
+        help="Grows with your text. Long profiles are fine — results will not echo the full text.",
+    )
     ex_cols = st.columns(len(EXAMPLE_INTERESTS))
     for i, ex in enumerate(EXAMPLE_INTERESTS):
         label = ex[:28] + ("…" if len(ex) > 28 else "")
@@ -1301,24 +1613,110 @@ with tab_rec:
             st.session_state["rec_interest"] = ex
             st.rerun()
 
-    c1, c2 = st.columns(2)
-    with c1:
-        k = int_with_input(
-            "Top-k",
-            1,
-            30,
-            8,
-            key="rec_k",
-            help="How many ranked library papers to show (1–30).",
+    k = int_with_input(
+        "Top-k",
+        1,
+        50,
+        8,
+        key="rec_k",
+        help="How many ranked library papers to show (1–50).",
+    )
+
+    st.markdown("##### Ranking weights")
+    preset_options = list(WEIGHT_PRESETS.keys()) + ["Custom"]
+    # Initialize weight widget state from Balanced
+    if "rec_w_embedding" not in st.session_state:
+        base = WEIGHT_PRESETS["Balanced (default)"]
+        for kk, vv in base.items():
+            st.session_state[f"rec_w_{kk}"] = float(vv)
+        st.session_state["rec_preset"] = "Balanced (default)"
+
+    def _apply_preset_to_widgets() -> None:
+        name = st.session_state.get("rec_preset")
+        if name in WEIGHT_PRESETS and WEIGHT_PRESETS[name]:
+            for kk, vv in WEIGHT_PRESETS[name].items():
+                st.session_state[f"rec_w_{kk}"] = float(vv)
+
+    preset_name = st.selectbox(
+        "Weight preset",
+        preset_options,
+        key="rec_preset",
+        on_change=_apply_preset_to_widgets,
+        help="Pick a preset or edit numbers below for Custom.",
+    )
+    st.caption(PRESET_HELP.get(preset_name, ""))
+
+    # Show current preset table for awareness
+    with st.expander("Preset weight reference", expanded=False):
+        ref_rows = []
+        for name, pw in WEIGHT_PRESETS.items():
+            ref_rows.append(
+                {
+                    "Preset": name,
+                    "embedding": f"{pw['embedding']:.2f}",
+                    "recency": f"{pw['recency']:.2f}",
+                    "citation": f"{pw['citation']:.2f}",
+                    "author": f"{pw['author']:.2f}",
+                }
+            )
+        st.dataframe(ref_rows, hide_index=True, width="stretch")
+
+    wcols = st.columns(4)
+    labels = {
+        "embedding": "Embedding",
+        "recency": "Recency",
+        "citation": "Citation",
+        "author": "Author",
+    }
+    raw_w = {}
+    for i, kk in enumerate(WEIGHT_KEYS):
+        with wcols[i]:
+            raw_w[kk] = st.number_input(
+                labels[kk],
+                min_value=0.0,
+                max_value=1.0,
+                step=0.01,
+                format="%.2f",
+                key=f"rec_w_{kk}",
+                help=f"Weight for {kk} signal (0–1). Values are normalized before ranking.",
+            )
+
+    # Detect Custom vs matching preset from the four numbers (do not write selectbox key here)
+    matched = _match_preset(raw_w)
+    if matched is not None:
+        weights = dict(WEIGHT_PRESETS[matched])
+        st.success(f"Active weights match **{matched}**: `{_fmt_weights(weights)}`")
+        if st.session_state.get("rec_preset") not in (matched,):
+            st.caption(
+                f"Numbers are the same as **{matched}**. "
+                "You can set the dropdown to that preset for clarity."
+            )
+    else:
+        weights = _normalize_weights(raw_w)
+        st.info(
+            f"**Custom** weights in use: `{_fmt_weights(weights)}` "
+            f"(raw sum={sum(float(v) for v in raw_w.values()):.2f}; "
+            "normalized so they sum to 1.00 for ranking)."
         )
-    with c2:
-        preset_name = st.selectbox(
-            "Weight preset",
-            list(WEIGHT_PRESETS.keys()),
-            key="rec_preset",
+        if st.session_state.get("rec_preset") != "Custom":
+            st.caption(
+                "These values no longer match the selected preset — ranking runs in **Custom** mode."
+            )
+
+    st.caption(f"Will rank with: **{_fmt_weights(weights)}**")
+    with st.expander("How ranking weights work", expanded=False):
+        st.markdown(
+            """
+**Embedding** — semantic fit of your interest text to title/abstract.  
+**Recency** — newer papers score higher.  
+**Citation** — higher citation counts score higher.  
+**Author** — small prior from author-side signal.
+
+Edit any number to leave the preset; values are **normalized** to sum to 1.00.  
+Full tables and when to use each preset: **Help** tab.
+"""
         )
-        st.caption(PRESET_HELP.get(preset_name, ""))
-    weights = WEIGHT_PRESETS.get(preset_name)
+
 
     if st.button("Rank papers", type="primary", key="rec_btn"):
         if not (interest or "").strip():
@@ -1333,46 +1731,101 @@ with tab_rec:
                 st.session_state["last_recommend"] = {
                     "interest": interest.strip(),
                     "ranked": ranked,
+                    "weights": weights,
+                    "weights_label": _fmt_weights(weights),
                 }
+                rows = []
+                for r in ranked:
+                    rows.append(
+                        {
+                            "id": paper_id_from_row(r),
+                            "title": r.get("title") or "",
+                            "score": r.get("final_score", r.get("score", "")),
+                        }
+                    )
+                set_results_panel(
+                    "rank",
+                    {"n": len(rows), "k": int(k), "rows": rows},
+                )
+                st.rerun()
 
     prev = st.session_state.get("last_recommend")
+    ids_order: list[str] = []
     if prev and prev.get("ranked"):
-        st.markdown(f"#### Results for _{prev['interest']}_")
         ranked = prev["ranked"]
-        ids_order = []
-        for i, r in enumerate(ranked, 1):
+        for r in ranked:
             pid = paper_id_from_row(r)
-            ids_order.append(pid)
-            title = (r.get("title") or "")[:100]
-            score = r.get("final_score", r.get("score", ""))
             if pid:
-                st.markdown(f"**{i}. [{pid}](https://arxiv.org/abs/{pid})** — {title}")
-            else:
-                st.markdown(f"**{i}.** {title}")
-            st.caption(f"Score: {score}")
+                ids_order.append(pid)
+        # Always render the single results panel (rank list)
+        if st.session_state.get("results_panel", {}).get("kind") == "rank":
+            render_results_panel()
+        else:
+            # Fallback short header if panel not set
+            st.caption(f"Last rank: **{len(ids_order)}** papers")
+            with st.expander(f"Paper list ({len(ids_order)})", expanded=False):
+                for i, r in enumerate(ranked, 1):
+                    pid = paper_id_from_row(r)
+                    title = (r.get("title") or "")[:100]
+                    score = r.get("final_score", r.get("score", ""))
+                    if pid:
+                        st.markdown(
+                            f"**{i}. [{pid}](https://arxiv.org/abs/{pid})** — {title}"
+                        )
+                    else:
+                        st.markdown(f"**{i}.** {title}")
+                    st.caption(f"Score: {score}")
 
         st.markdown("#### Ingest for Q&A")
-        st.write("Downloads PDFs, converts to Markdown, chunks, embeds into RAG.")
+        st.write(
+            "Downloads PDFs, converts to Markdown, chunks, embeds into RAG. "
+            "You can ingest any number up to the current ranked list."
+        )
+        with st.expander("Ingest time, RAM, and batch size", expanded=False):
+            st.markdown(
+                """
+**Time (first time, typical):** ~30–90s per paper (OCR-heavy PDFs can take several minutes).  
+**RAM:** 10+ papers with EmbeddingGemma can pressure a 16 GB machine — prefer **5–10** per batch or enable **Low memory mode**.  
+**Progress** shows i/N, elapsed, and ETA.  
+**Force re-download** only when you need fresh PDF/Markdown/embeddings.  
+More detail: **Help** tab.
+"""
+            )
+        max_n = max(1, len(ids_order))
         ingest_n = int_with_input(
             "Ingest top-N",
             1,
-            max(1, min(len(ids_order), 20)),
-            min(5, max(1, len(ids_order))),
+            max_n,
+            min(5, max_n),
             key="rec_ingest_n",
-            help="How many of the ranked hits to fully ingest for Ask (1–20).",
+            help=f"How many ranked hits to fully ingest (1–{max_n}, limited by this rank run).",
         )
+        if ingest_n >= 10:
+            st.warning(
+                f"**{ingest_n}** papers ≈ **{_fmt_duration(45 * ingest_n)}–{_fmt_duration(90 * ingest_n)}** "
+                "and high RAM use with EmbeddingGemma. Prefer batches of 5–10 if memory is tight."
+            )
         force = st.checkbox("Force re-download / re-embed", value=False, key="rec_force")
+        low_mem = st.checkbox(
+            "Low memory mode",
+            value=False,
+            key="rec_low_mem",
+            help="Smaller embed batches + aggressive cache release between papers (slower, safer on 16 GB).",
+        )
         if st.button(
             f"Ingest top {ingest_n} for Q&A",
             type="primary",
             key="rec_ingest_btn",
         ):
             to_ingest = [x for x in ids_order[:ingest_n] if x]
-            results = run_ingest_with_progress(to_ingest, force=force)
+            results = run_ingest_with_progress(
+                to_ingest, force=force, low_memory=low_mem
+            )
             show_ingest_results(results)
             clear_data_caches()
-            st.info("Open the **Ask** tab when ready.")
             st.rerun()
+
+
 
 
 # ── ASK ───────────────────────────────────────────────────────────────────
@@ -1404,20 +1857,28 @@ with tab_ask:
             st.session_state["ask_q"] = exq
             st.rerun()
 
-    with st.expander("Advanced", expanded=False):
+    with st.expander("Advanced — passages, cache, paper filter", expanded=False):
+        st.markdown(
+            """
+**Passages (top-k)** = chunks sent to the LLM (not total chunks in the index).  
+Default **6**. Use **4–6** for narrow facts, **8–12** for comparisons, **10–15** only for broad multi-paper questions.  
+Top-k need **not** scale with library size (2000+ chunks still start at 6–8). Prefer ingesting better papers over k ≫ 15.  
+See **Help** for the full table.
+"""
+        )
         top_k = int_with_input(
             "Passages (top-k)",
             1,
             20,
             6,
             key="ask_k",
-            help="How many retrieved passages to send to the LLM (1–20).",
+            help="Chunks sent to the LLM after retrieval (1–20). Default 6.",
         )
         use_cache = st.checkbox(
             "Use semantic answer cache",
             value=True,
             key="ask_cache",
-            help="Reuse near-duplicate questions. Off = always call the LLM.",
+            help="Reuse near-duplicate questions (faster). Off = always call the LLM.",
         )
         paper_filter = st.multiselect(
             "Restrict to papers",
@@ -1494,33 +1955,128 @@ with tab_ask:
 # ── HELP ──────────────────────────────────────────────────────────────────
 
 with tab_help:
-    st.subheader("Help & CLI workflow")
+    st.subheader("How to use this app")
     st.markdown(
         """
-**Library vs full-text**
+### The basic loop
 
-| Term | Meaning |
-|------|---------|
-| **Library** | Titles/abstracts for *ranking* |
-| **Full-text** | Ingested PDFs that **Ask** can search |
+1. **Library** — add papers (keywords and/or arXiv IDs). This is *metadata* for ranking.
+2. **Recommend** — rank the library for your research interest; optionally **ingest** top papers.
+3. **Ask** — question answering over **ingested full text only**, with citations.
 
-**If the UI feels stuck**
+| Term | What it is | Used by |
+|------|------------|---------|
+| **Library** | Titles + abstracts | Rank / recommend |
+| **Recommend index** | Embeddings of those abstracts | Rank |
+| **Full-text / RAG** | PDF → Markdown → chunks → vectors | **Ask** only |
 
-1. Open **Activity log** at the top (also prints to the terminal).
-2. First embedder load can take 1–2 minutes with no other output — that is normal.
-3. Full answers often take **10–20 seconds** (LLM).
+If Ask says the topic is missing, **ingest more relevant papers** — ranking alone is not enough.
 
-**Exact CLI workflow** is in `WORKFLOW.md` at the project root. Short version:
+---
+
+### Library
+
+- **Multiple topics:** add several keyword blocks; one run searches all and **merges** unique arXiv IDs.
+- **Max results per topic:** how many hits each block contributes (1–50), not a global unique cap.
+- **Replace library:** overwrites the saved corpus; confirm when enabled.
+- **Rebuild index:** required after large library changes before ranking quality is trustworthy.
+
+---
+
+### Recommend — ranking weights
+
+Four signals (shown to 2 decimals; normalized to sum to **1.00** if you edit them):
+
+| Signal | Meaning |
+|--------|---------|
+| **Embedding** | Semantic match of your interest text to title/abstract |
+| **Recency** | Prefer newer papers |
+| **Citation** | Prefer higher citation counts |
+| **Author** | Light prior from author-side signal |
+
+**Presets**
+
+| Preset | embedding | recency | citation | author | When to use |
+|--------|-----------|---------|----------|--------|-------------|
+| Balanced (default) | 0.50 | 0.20 | 0.25 | 0.05 | General literature dig |
+| Precision | 0.65 | 0.10 | 0.20 | 0.05 | Library already on-topic; trust similarity |
+| Prefer recent | 0.45 | 0.35 | 0.15 | 0.05 | Fast-moving areas |
+| Citation heavy | 0.35 | 0.10 | 0.50 | 0.05 | Landmarks / surveys |
+| Custom | *yours* | | | | Any mix that is not a preset |
+
+If your numbers match a preset within ~0.01, the UI notes that. Otherwise ranking runs in **Custom**.
+
+**Top-k (rank list)** — how many library papers to *show* after ranking (not the same as Ask passages).
+
+---
+
+### Ingest (full text)
+
+- **Ingest top-N** is limited by the **current ranked list** (if you ranked 25, max is 25).
+- **Rough time per paper (first time, EmbeddingGemma):** download ~2–10s · OCR/convert ~10–60s+ · embed ~5–30s → often **~30–90s/paper**; OCR-heavy PDFs can take several minutes.
+- **RAM:** large batches (10+) on a 16 GB Mac can stress MPS/unified memory. Prefer batches of **5–10**, use **Low memory mode**, or ingest in waves.
+- **Force re-download** only when you need to refresh a PDF/Markdown/embedding.
+- Progress shows **i/N**, elapsed time, and **ETA** from this run’s average.
+
+---
+
+### Ask — passages, cache, filters
+
+**Passages (top-k)** = how many *retrieved chunks* are sent to the LLM — **not** how many chunks exist in the index.
+
+Retrieval still searches the whole full-text index (e.g. 2000+ chunks). The model only sees the top-k snippets.
+
+| Situation | Suggested top-k |
+|-----------|-----------------|
+| Short definition / fact | **4–6** |
+| Typical research question | **6–8** (default **6** is solid) |
+| Compare methods / multi-paper | **8–12** |
+| Broad survey-style question | **10–15** |
+| Rarely needed | **>15** — usually noise + cost; improve ingest set first |
+
+**Does top-k need to grow with the library?**  
+No. 200 vs 2000 chunks: still start at **6–8**. A bigger index needs *better ranking and more relevant ingest*, not automatically larger k.
+
+**Coverage** on the answer is from retrieval scores, not a calibrated probability:
+
+- **high** — strong top hits; k is probably enough  
+- **partial** — answer may be incomplete; try a narrower question or ingest more  
+- **low / none** — topic likely missing from full-text  
+
+**Semantic cache** — reuses near-duplicate questions (faster, free). Turn **off** for a fresh LLM call.
+
+**Restrict to papers** — limit retrieval to selected arXiv IDs (useful when one paper dominates the hits).
+
+Typical **LLM** answer time: **~8–20 seconds** (plus retrieval).
+
+---
+
+### Time & performance expectations
+
+| Step | Typical wait |
+|------|----------------|
+| First embedder load | **1–2 min** (then reused in-session) |
+| Rank ~20–50 library papers | ~5–30s after model is warm |
+| Ingest 1 paper | ~30–90s (wide range) |
+| Ask (Gemini) | ~8–20s |
+
+Open the **Activity log** if something feels stuck; the terminal shows the same events.
+
+---
+
+### Appearance & CLI
+
+- **Dark / Light** buttons top-right of the title.
+- Full CLI path: `WORKFLOW.md`. Short version:
 
 ```bash
 uv sync
-# optional: cp .env.example .env  and set GEMINI_API_KEY
+# optional: .env with GEMINI_API_KEY and GEMINI_MODEL=gemini-3.8-flash
 
-uv run python src/corpus_builder.py search "mechanistic interpretability" -n 12 --build-index
-uv run python src/recommend.py "mechanistic interpretability circuits" -k 8
-uv run python -m src.rag.cli ingest 1806.07572 2501.16496 2304.14997
-uv run python -m src.rag.cli status
-uv run python -m src.rag.cli ask "What is the neural tangent kernel?"
+uv run python src/corpus_builder.py search "your topic" -n 12 --build-index
+uv run python src/recommend.py "your interest" -k 8
+uv run python -m src.rag.cli ingest <arxiv_id> ...
+uv run python -m src.rag.cli ask "Your question"
 uv run python -m streamlit run src/app.py
 ```
 """

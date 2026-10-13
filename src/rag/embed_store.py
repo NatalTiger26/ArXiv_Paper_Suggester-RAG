@@ -205,8 +205,15 @@ def get_collection(create: bool = True):
 def embed_texts(texts: list[str], model=None) -> list[list[float]]:
     if model is None:
         model = load_embedding_model()
+    batch = 32
+    try:
+        batch = int(__import__("os").environ.get("RAG_EMBED_BATCH") or 32)
+    except ValueError:
+        batch = 32
+    batch = max(4, min(batch, 64))
     vectors = model.encode(
         texts,
+        batch_size=batch,
         normalize_embeddings=True,
         show_progress_bar=len(texts) > 8,
         convert_to_numpy=True,
