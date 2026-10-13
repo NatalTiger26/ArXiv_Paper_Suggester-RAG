@@ -103,7 +103,17 @@ def load_embedding_model(model_name: str | None = None):
 
 def _active_dim() -> int:
     """Resolved embedding dimension after Matryoshka truncate."""
-    full = _model_full_dim or 768
+    if _model_full_dim:
+        full = int(_model_full_dim)
+    else:
+        # Before the model is loaded, infer from configured name (avoid false 768 vs 384 resets).
+        name = (_model_name_loaded or EMBEDDING_MODEL or "").lower()
+        if "minilm" in name:
+            full = 384
+        elif "embeddinggemma" in name or "gemma" in name:
+            full = 768
+        else:
+            full = 768
     if EMBEDDING_DIM and 0 < EMBEDDING_DIM < full:
         return int(EMBEDDING_DIM)
     return int(full)

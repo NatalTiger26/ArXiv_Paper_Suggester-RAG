@@ -413,6 +413,127 @@ def log(msg: str) -> None:
     print(line, flush=True)  # also terminal / streamlit console
 
 
+
+def int_with_input(
+    label: str,
+    min_v: int,
+    max_v: int,
+    default: int,
+    *,
+    key: str,
+    help: str | None = None,
+    slider_ratio: float = 0.72,
+) -> int:
+    """Integer control: slider + exact number field (kept in sync)."""
+    if max_v < min_v:
+        max_v = min_v
+    default = int(max(min_v, min(max_v, default)))
+    sk, nk = f"{key}__s", f"{key}__n"
+
+    if key not in st.session_state:
+        st.session_state[key] = default
+    # Clamp stored value if limits changed (e.g. shorter rank list)
+    st.session_state[key] = int(max(min_v, min(max_v, int(st.session_state[key]))))
+
+    if sk not in st.session_state:
+        st.session_state[sk] = int(st.session_state[key])
+    if nk not in st.session_state:
+        st.session_state[nk] = int(st.session_state[key])
+
+    def _from_slider() -> None:
+        val = int(st.session_state[sk])
+        st.session_state[key] = val
+        st.session_state[nk] = val
+
+    def _from_num() -> None:
+        val = int(st.session_state[nk])
+        val = max(min_v, min(max_v, val))
+        st.session_state[key] = val
+        st.session_state[sk] = val
+        st.session_state[nk] = val
+
+    left, right = st.columns([slider_ratio, 1.0 - slider_ratio])
+    with left:
+        st.slider(
+            label,
+            min_value=min_v,
+            max_value=max_v,
+            key=sk,
+            help=help,
+            on_change=_from_slider,
+        )
+    with right:
+        st.number_input(
+            "Exact",
+            min_value=min_v,
+            max_value=max_v,
+            step=1,
+            key=nk,
+            help=f"Type any integer from {min_v} to {max_v}",
+            on_change=_from_num,
+        )
+    return int(st.session_state[key])
+
+
+def float_with_input(
+    label: str,
+    min_v: float,
+    max_v: float,
+    default: float,
+    step: float,
+    *,
+    key: str,
+    help: str | None = None,
+) -> float:
+    """Float control: slider + exact number field (kept in sync)."""
+    default = float(max(min_v, min(max_v, default)))
+    sk, nk = f"{key}__s", f"{key}__n"
+
+    if key not in st.session_state:
+        st.session_state[key] = default
+    st.session_state[key] = float(max(min_v, min(max_v, float(st.session_state[key]))))
+
+    if sk not in st.session_state:
+        st.session_state[sk] = float(st.session_state[key])
+    if nk not in st.session_state:
+        st.session_state[nk] = float(st.session_state[key])
+
+    def _from_slider() -> None:
+        val = float(st.session_state[sk])
+        st.session_state[key] = val
+        st.session_state[nk] = val
+
+    def _from_num() -> None:
+        val = float(st.session_state[nk])
+        val = max(min_v, min(max_v, val))
+        st.session_state[key] = val
+        st.session_state[sk] = val
+        st.session_state[nk] = val
+
+    left, right = st.columns([0.72, 0.28])
+    with left:
+        st.slider(
+            label,
+            min_value=float(min_v),
+            max_value=float(max_v),
+            step=float(step),
+            key=sk,
+            help=help,
+            on_change=_from_slider,
+        )
+    with right:
+        st.number_input(
+            "Exact",
+            min_value=float(min_v),
+            max_value=float(max_v),
+            step=float(step),
+            key=nk,
+            help=f"Type any value from {min_v} to {max_v}",
+            on_change=_from_num,
+        )
+    return float(st.session_state[key])
+
+
 def render_activity_log(expanded: bool = False) -> None:
     _ensure_log()
     with st.expander("Activity log (if something feels stuck, open this)", expanded=expanded):
@@ -874,7 +995,14 @@ with tab_home:
             value="What are open problems in mechanistic interpretability?",
             key="home_demo_q",
         )
-    demo_k = st.slider("Top papers to ingest", 1, 6, 3, key="home_demo_k")
+    demo_k = int_with_input(
+        "Top papers to ingest",
+        1,
+        15,
+        3,
+        key="home_demo_k",
+        help="How many ranked papers to download and embed (1–15).",
+    )
 
     if st.button("Run quick demo", type="primary", key="home_demo_btn"):
         log("=== Quick demo start ===")
@@ -978,7 +1106,15 @@ with tab_lib:
         q = st.text_input("Keywords", key="lib_q")
         c1, c2, c3 = st.columns(3)
         with c1:
-            n = st.number_input("Max results", 5, 40, 12, key="lib_n")
+            n = st.number_input(
+                "Max results",
+                min_value=1,
+                max_value=50,
+                value=12,
+                step=1,
+                key="lib_n",
+                help="How many arXiv hits to add to the library (1–50).",
+            )
         with c2:
             cat = st.text_input("Category", placeholder="cs.LG", key="lib_cat")
         with c3:
@@ -1097,9 +1233,22 @@ with tab_lib:
 
     elif mode == "Ingest from personal ranking":
         st.write("Uses `rankings/personal_importance.csv` if present.")
-        top_n = st.slider("Top-N", 1, 15, 5, key="lib_rank_n")
-        min_score = st.slider(
-            "Min personal score", 1.0, 5.0, 4.0, 0.5, key="lib_rank_min"
+        top_n = int_with_input(
+            "Top-N",
+            1,
+            30,
+            5,
+            key="lib_rank_n",
+            help="How many top personal-ranking papers to ingest (1–30).",
+        )
+        min_score = float_with_input(
+            "Min personal score",
+            1.0,
+            5.0,
+            4.0,
+            0.5,
+            key="lib_rank_min",
+            help="Only papers at or above this personal score.",
         )
         if st.button("Ingest from personal ranking", type="primary", key="lib_rank_btn"):
             log(f"Ingest personal ranking top_n={top_n} min={min_score}")
@@ -1154,7 +1303,14 @@ with tab_rec:
 
     c1, c2 = st.columns(2)
     with c1:
-        k = st.slider("Top-k", 3, 20, 8, key="rec_k")
+        k = int_with_input(
+            "Top-k",
+            1,
+            30,
+            8,
+            key="rec_k",
+            help="How many ranked library papers to show (1–30).",
+        )
     with c2:
         preset_name = st.selectbox(
             "Weight preset",
@@ -1197,12 +1353,13 @@ with tab_rec:
 
         st.markdown("#### Ingest for Q&A")
         st.write("Downloads PDFs, converts to Markdown, chunks, embeds into RAG.")
-        ingest_n = st.slider(
+        ingest_n = int_with_input(
             "Ingest top-N",
             1,
-            max(1, min(len(ids_order), 10)),
+            max(1, min(len(ids_order), 20)),
             min(5, max(1, len(ids_order))),
             key="rec_ingest_n",
+            help="How many of the ranked hits to fully ingest for Ask (1–20).",
         )
         force = st.checkbox("Force re-download / re-embed", value=False, key="rec_force")
         if st.button(
@@ -1248,7 +1405,14 @@ with tab_ask:
             st.rerun()
 
     with st.expander("Advanced", expanded=False):
-        top_k = st.slider("Passages (top-k)", 3, 12, 6, key="ask_k")
+        top_k = int_with_input(
+            "Passages (top-k)",
+            1,
+            20,
+            6,
+            key="ask_k",
+            help="How many retrieved passages to send to the LLM (1–20).",
+        )
         use_cache = st.checkbox(
             "Use semantic answer cache",
             value=True,

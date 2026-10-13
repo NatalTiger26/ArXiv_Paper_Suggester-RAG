@@ -157,14 +157,38 @@ def build(args: argparse.Namespace) -> None:
 
     CHROMA_DIR.mkdir(parents=True, exist_ok=True)
     client = chromadb.PersistentClient(path=str(CHROMA_DIR), settings=Settings(anonymized_telemetry=False))
+    # Drop existing collection if present (Cloud demos rebuild often).
+    for _ in range(2):
+        try:
+            client.delete_collection(COLLECTION_NAME)
+        except Exception:
+            pass
+    meta_model = args.model or DEFAULT_MODEL
+    want_dim = len(vectors[0]) if vectors else 0
     try:
-        client.delete_collection(COLLECTION_NAME)
-    except Exception:
-        pass
-    collection = client.create_collection(
-        name=COLLECTION_NAME,
-        metadata={"hnsw:space": "cosine", "model": args.model},
-    )
+        collection = client.create_collection(
+            name=COLLECTION_NAME,
+            metadata={
+                "hnsw:space": "cosine",
+                "model": str(meta_model),
+                "embedding_dim": str(want_dim),
+            },
+        )
+    except Exception as e:
+        # Race / residual collection on Cloud
+        print(f"[corpus_index] create_collection retry after: {e}", flush=True)
+        try:
+            client.delete_collection(COLLECTION_NAME)
+        except Exception:
+            pass
+        collection = client.get_or_create_collection(
+            name=COLLECTION_NAME,
+            metadata={
+                "hnsw:space": "cosine",
+                "model": str(meta_model),
+                "embedding_dim": str(want_dim),
+            },
+        )
     metadatas, documents = [], []
     for p, text in zip(corpus, texts):
         metadatas.append({

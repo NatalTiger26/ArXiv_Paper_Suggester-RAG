@@ -13,7 +13,7 @@ uv sync
 
 # Create .env if needed (do not commit secrets)
 # GEMINI_API_KEY=your_key_here
-# GEMINI_MODEL=gemini-2.0-flash   # or whatever your key supports
+# GEMINI_MODEL=gemini-3.8-flash   # or whatever your key supports
 # EMBEDDING_DIM=0                # 0 = full 768; use 512 only after reset-index
 
 # Confirm Streamlit is installed

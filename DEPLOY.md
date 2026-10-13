@@ -28,7 +28,7 @@ Push these files (already updated in the project):
 
 ```toml
 GEMINI_API_KEY = "your-key"
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemini-3.8-flash"
 HF_TOKEN = ""
 # Optional failsafe:
 # FALLBACK_LLM_API_KEY = "..."
@@ -61,7 +61,7 @@ HF_TOKEN = ""
 
 ```bash
 uv sync
-# .env: GEMINI_API_KEY=...  GEMINI_MODEL=gemini-2.0-flash
+# .env: GEMINI_API_KEY=...  GEMINI_MODEL=gemini-3.8-flash
 # default embedder stays google/embeddinggemma-2
 uv run python -m streamlit run src/app.py
 ```
