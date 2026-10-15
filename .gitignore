@@ -34,9 +34,11 @@ data/chroma_rag/
 data/chroma_corpus/
 data/embeddings/
 data/rag_cache/
+Data/rag_ingest_progress
 data/papers.db
 data/corpus_all.jsonl
 data/corpus_100.csv
+data/chroma_rag/chroma.sqlite3
 
 # Keep corpus JSON if you want offline recommend out of the box;
 # comment the next line to ship corpus_100.json in the repo.

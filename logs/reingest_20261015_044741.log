@@ -1,0 +1,44 @@
+[init] loading ingest modules (Streamlit noise filtered)…
+2026-10-15 04:47:41.955 
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+connection, because Streamlit does not need a valid XSRF token to open one.
+To limit cross-origin access, do these steps:
+WebSocket connection.
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[mem] startup avail=9.6/16.0GiB → batch=32 usable=8.6GiB
+[init] loading embedding model once…
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  95%|█████████▌| 1309/1376 [00:00<00:00, 13087.80it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12984.32it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[init] model ready
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+[plan] library=4479 done_file=109 indexed=54
+[plan] pending_total=4370 session=4370 skipped=109 force=False
+[plan] rough session ~1748–5244 min (model kept warm)
+
+
+===== [1/4370] 2602.18846  elapsed=0.0m  eta~3277.5m  avg=45s/paper =====
+[mem] avail=7.3GiB total=16.0GiB reserve=1.0GiB usable=6.3GiB → batch=24
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:04<00:12,  4.27s/it]Batches:  50%|█████     | 2/4 [00:08<00:08,  4.19s/it]Batches:  75%|███████▌  | 3/4 [00:10<00:03,  3.11s/it]Batches: 100%|██████████| 4/4 [00:10<00:00,  2.12s/it]Batches: 100%|██████████| 4/4 [00:10<00:00,  2.71s/it]
+[ok] 2602.18846 chunks=81 in 11.5s  DUET-VLM: Dual stage Unified Efficient Token reduction for V
+
+===== [2/4370] 2505.20279  elapsed=0.2m  eta~839.3m  avg=12s/paper =====
+[mem] avail=8.8GiB total=16.0GiB reserve=1.0GiB usable=7.8GiB → batch=24
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:04<00:16,  4.20s/it]Batches:  40%|████      | 2/5 [00:08<00:13,  4.44s/it]Batches:  60%|██████    | 3/5 [00:12<00:08,  4.10s/it]Batches:  80%|████████  | 4/5 [00:13<00:03,  3.07s/it]Batches: 100%|██████████| 5/5 [00:14<00:00,  2.11s/it]Batches: 100%|██████████| 5/5 [00:14<00:00,  2.88s/it]
+[ok] 2505.20279 chunks=107 in 15.1s  VLM-3R: Vision-Language Models Augmented with Instruction-Al
+
+===== [3/4370] 2603.19209  elapsed=0.4m  eta~968.6m  avg=13s/paper =====
+[mem] avail=8.9GiB total=16.0GiB reserve=1.0GiB usable=7.9GiB → batch=24
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:05<00:34,  5.81s/it]Batches:  29%|██▊       | 2/7 [00:11<00:28,  5.72s/it]Batches:  43%|████▎     | 3/7 [00:17<00:23,  5.88s/it]Batches:  57%|█████▋    | 4/7 [00:22<00:17,  5.67s/it]Batches:  71%|███████▏  | 5/7 [00:27<00:10,  5.21s/it]Batches:  86%|████████▌ | 6/7 [00:29<00:04,  4.32s/it]Batches: 100%|██████████| 7/7 [00:31<00:00,  3.52s/it]Batches: 100%|██████████| 7/7 [00:31<00:00,  4.53s/it]
+[ok] 2603.19209 chunks=161 in 33.2s  Do VLMs Need Vision Transformers? Evaluating State Space Mod
+
+===== [4/4370] 2604.00314  elapsed=1.0m  eta~1450.2m  avg=20s/paper =====
+[mem] avail=8.6GiB total=16.0GiB reserve=1.0GiB usable=7.6GiB → batch=24
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:03<00:06,  3.28s/it]Batches:  67%|██████▋   | 2/3 [00:05<00:02,  2.73s/it]Batches: 100%|██████████| 3/3 [00:05<00:00,  1.91s/it]
+[ok] 2604.00314 chunks=51 in 6.5s  Prompt-Guided Prefiltering for VLM Image Compression
+
+===== [5/4370] 2403.18406  elapsed=1.1m  eta~1204.8m  avg=17s/paper =====
+[mem] avail=7.8GiB total=16.0GiB reserve=1.0GiB usable=6.8GiB → batch=24
+Downloading 2403.18406 (try 1):   0%|          | 0.00/21.4M [00:00<?, ?B/s]Downloading 2403.18406 (try 1):   1%|          | 123k/21.4M [00:00<00:17, 1.19MB/s]Downloading 2403.18406 (try 1):   3%|▎         | 614k/21.4M [00:00<00:06, 3.25MB/s]Downloading 2403.18406 (try 1):   5%|▍         | 1.06M/21.4M [00:00<00:08, 2.46MB/s]Downloading 2403.18406 (try 1):  10%|▉         | 2.11M/21.4M [00:01<00:20, 920kB/s] Downloading 2403.18406 (try 1):  15%|█▍        | 3.15M/21.4M [00:03<00:21, 852kB/s]Downloading 2403.18406 (try 1):  20%|█▉        | 4.20M/21.4M [00:03<00:13, 1.25MB/s]Downloading 2403.18406 (try 1):  25%|██▍       | 5.25M/21.4M [00:04<00:12, 1.27MB/s]Downloading 2403.18406 (try 1):  29%|██▉       | 6.30M/21.4M [00:05<00:12, 1.17MB/s]Downloading 2403.18406 (try 1):  32%|███▏      | 6.91M/21.4M [00:05<00:10, 1.43MB/s]Downloading 2403.18406 (try 1):  34%|███▍      | 7.35M/21.4M [00:07<00:18, 764kB/s] Downloading 2403.18406 (try 1):  38%|███▊      | 8.20M/21.4M [00:07<00:11, 1.11MB/s]Downloading 2403.18406 (try 1):  40%|████      | 8.61M/21.4M [00:07<00:13, 974kB/s] Downloading 2403.18406 (try 1):  44%|████▍     | 9.45M/21.4M [00:08<00:11, 1.03MB/s]Downloading 2403.18406 (try 1):  49%|████▊     | 10.4M/21.4M [00:08<00:07, 1.51MB/s]Downloading 2403.18406 (try 1):  51%|█████     | 10.8M/21.4M [00:09<00:07, 1.41MB/s]Downloading 2403.18406 (try 1):  54%|█████▍    | 11.5M/21.4M [00:09<00:06, 1.50MB/s]Downloading 2403.18406 (try 1):  58%|█████▊    | 12.5M/21.4M [00:09<00:04, 2.15MB/s]Downloading 2403.18406 (try 1):  61%|██████    | 12.9M/21.4M [00:11<00:09, 915kB/s] 

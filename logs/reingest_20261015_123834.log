@@ -1,0 +1,798 @@
+[mem] startup avail=7.2/16.0GiB → batch=16 usable=4.2GiB
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+2026-10-15 12:38:34.968 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[plan] library=4479 done_file=531 indexed=54
+[plan] pending_total=3948 session=3948 skipped=531 force=False
+[plan] each paper = isolated process + hard kill after 60s
+[plan] rough session ~1974–5922 min (hangs cannot freeze the job)
+
+
+===== [1/3948] 2403.15603  elapsed=0.0m  eta~2632.0m  avg=40s/paper =====
+[mem] avail=6.9GiB total=16.0GiB reserve=3.0GiB usable=3.9GiB → batch=16
+[run] subprocess batch=16 timeout=60s
+  [worker] start 2403.15603 force=False batch=16
+[warn] 2403.15603: Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+[retry] 2403.15603 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2403.15603 force=False batch=4
+[warn] 2403.15603: Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+[fail] 2403.15603 after 5.1s — Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+
+===== [2/3948] 2209.11222  elapsed=0.1m  eta~332.7m  avg=5s/paper =====
+[mem] avail=6.9GiB total=16.0GiB reserve=3.0GiB usable=3.9GiB → batch=16
+[run] subprocess batch=16 timeout=60s
+  [worker] start 2209.11222 force=False batch=16
+[timeout] 2209.11222 exceeded 60s — killing worker+children
+[warn] 2209.11222: hard timeout after 60s (killed)
+[retry] 2209.11222 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2209.11222 force=False batch=4
+[timeout] 2209.11222 exceeded 60s — killing worker+children
+[warn] 2209.11222: hard timeout after 60s (killed)
+[retry] 2209.11222 attempt 3/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2209.11222 force=False batch=4
+[timeout] 2209.11222 exceeded 60s — killing worker+children
+[warn] 2209.11222: hard timeout after 60s (killed)
+[fail] 2209.11222 after 60.6s — hard timeout after 60s (killed)
+
+===== [3/3948] 2107.11889  elapsed=1.1m  eta~2160.4m  avg=33s/paper =====
+[mem] avail=6.8GiB total=16.0GiB reserve=3.0GiB usable=3.8GiB → batch=16
+[run] subprocess batch=16 timeout=60s
+  [worker] start 2107.11889 force=False batch=16
+  Downloading 2107.11889 (try 1):   0%|          | 0.00/9.79M [00:00<?, ?B/s]
+  Downloading 2107.11889 (try 1):  11%|█         | 1.06M/9.79M [00:00<00:03, 2.67MB/s]
+  Downloading 2107.11889 (try 1):  22%|██▏       | 2.11M/9.79M [00:00<00:02, 3.04MB/s]
+  Downloading 2107.11889 (try 1):  32%|███▏      | 3.15M/9.79M [00:01<00:03, 2.21MB/s]
+  Downloading 2107.11889 (try 1):  43%|████▎     | 4.20M/9.79M [00:01<00:02, 2.52MB/s]
+  Downloading 2107.11889 (try 1):  54%|█████▎    | 5.25M/9.79M [00:02<00:01, 2.70MB/s]
+  Downloading 2107.11889 (try 1):  64%|██████▍   | 6.30M/9.79M [00:02<00:01, 2.88MB/s]
+  Downloading 2107.11889 (try 1):  75%|███████▌  | 7.35M/9.79M [00:02<00:00, 3.00MB/s]
+  Downloading 2107.11889 (try 1):  86%|████████▌ | 8.40M/9.79M [00:02<00:00, 3.05MB/s]
+  Downloading 2107.11889 (try 1):  97%|█████████▋| 9.45M/9.79M [00:03<00:00, 3.24MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=12/13.
+  OCR on page.number=13/14.
+  OCR on page.number=14/15.
+  OCR on page.number=15/16.
+  OCR on page.number=16/17.
+  OCR on page.number=21/22.
+  OCR on page.number=22/23.
+  OCR on page.number=23/24.
+  OCR on page.number=24/25.
+  OCR on page.number=25/26.
+  OCR on page.number=26/27.
+  OCR on page.number=27/28.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11670.40it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:03<00:33,  3.32s/it]
+  Batches:  18%|█▊        | 2/11 [00:04<00:20,  2.28s/it]
+  Batches:  27%|██▋       | 3/11 [00:07<00:20,  2.53s/it]
+  Batches:  36%|███▋      | 4/11 [00:10<00:17,  2.55s/it]
+  Batches:  45%|████▌     | 5/11 [00:11<00:12,  2.11s/it]
+  Batches:  55%|█████▍    | 6/11 [00:13<00:09,  1.87s/it]
+  Batches:  64%|██████▎   | 7/11 [00:14<00:07,  1.78s/it]
+  Batches:  73%|███████▎  | 8/11 [00:15<00:04,  1.64s/it]
+  Batches:  82%|████████▏ | 9/11 [00:18<00:03,  1.78s/it]
+  Batches:  91%|█████████ | 10/11 [00:19<00:01,  1.73s/it]
+  Batches: 100%|██████████| 11/11 [00:19<00:00,  1.23s/it]
+  Batches: 100%|██████████| 11/11 [00:19<00:00,  1.80s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2107.11889", "chunks": 165, "title": "GCExplainer: Human-in-the-Loop Concept-based Explanations for Graph Neural Netwo", "error": null}
+[warn] 2107.11889: worker exit=0 with no result line
+[retry] 2107.11889 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2107.11889 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11801.94it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/42 [00:00<?, ?it/s]
+  Batches:   2%|▏         | 1/42 [00:00<00:32,  1.24it/s]
+  Batches:   5%|▍         | 2/42 [00:01<00:23,  1.70it/s]
+  Batches:   7%|▋         | 3/42 [00:01<00:17,  2.29it/s]
+  Batches:  10%|▉         | 4/42 [00:02<00:18,  2.01it/s]
+  Batches:  12%|█▏        | 5/42 [00:02<00:15,  2.37it/s]
+  Batches:  14%|█▍        | 6/42 [00:02<00:12,  2.86it/s]
+  Batches:  17%|█▋        | 7/42 [00:02<00:10,  3.23it/s]
+  Batches:  19%|█▉        | 8/42 [00:03<00:11,  3.00it/s]
+  Batches:  21%|██▏       | 9/42 [00:03<00:09,  3.41it/s]
+  Batches:  24%|██▍       | 10/42 [00:03<00:08,  3.81it/s]
+  Batches:  26%|██▌       | 11/42 [00:04<00:12,  2.57it/s]
+  Batches:  29%|██▊       | 12/42 [00:04<00:10,  2.96it/s]
+  Batches:  31%|███       | 13/42 [00:05<00:12,  2.33it/s]
+  Batches:  33%|███▎      | 14/42 [00:05<00:11,  2.39it/s]
+  Batches:  36%|███▌      | 15/42 [00:05<00:09,  2.73it/s]
+  Batches:  38%|███▊      | 16/42 [00:06<00:11,  2.30it/s]
+  Batches:  40%|████      | 17/42 [00:06<00:09,  2.72it/s]
+  Batches:  43%|████▎     | 18/42 [00:06<00:08,  2.81it/s]
+  Batches:  45%|████▌     | 19/42 [00:07<00:07,  3.17it/s]
+  Batches:  48%|████▊     | 20/42 [00:07<00:06,  3.57it/s]
+  Batches:  50%|█████     | 21/42 [00:07<00:05,  3.54it/s]
+  Batches:  52%|█████▏    | 22/42 [00:07<00:06,  3.32it/s]
+  Batches:  55%|█████▍    | 23/42 [00:08<00:05,  3.72it/s]
+  Batches:  57%|█████▋    | 24/42 [00:08<00:04,  3.85it/s]
+  Batches:  60%|█████▉    | 25/42 [00:08<00:05,  3.36it/s]
+  Batches:  62%|██████▏   | 26/42 [00:09<00:04,  3.49it/s]
+  Batches:  64%|██████▍   | 27/42 [00:09<00:03,  3.87it/s]
+  Batches:  67%|██████▋   | 28/42 [00:09<00:03,  3.68it/s]
+  Batches:  69%|██████▉   | 29/42 [00:09<00:03,  3.76it/s]
+  Batches:  71%|███████▏  | 30/42 [00:10<00:03,  3.99it/s]
+  Batches:  74%|███████▍  | 31/42 [00:10<00:02,  4.40it/s]
+  Batches:  76%|███████▌  | 32/42 [00:10<00:02,  3.84it/s]
+  Batches:  79%|███████▊  | 33/42 [00:10<00:02,  3.62it/s]
+  Batches:  81%|████████  | 34/42 [00:10<00:01,  4.20it/s]
+  Batches:  83%|████████▎ | 35/42 [00:11<00:02,  3.11it/s]
+  Batches:  86%|████████▌ | 36/42 [00:11<00:01,  3.51it/s]
+  Batches:  88%|████████▊ | 37/42 [00:12<00:01,  3.12it/s]
+  Batches:  90%|█████████ | 38/42 [00:12<00:01,  3.61it/s]
+  Batches:  95%|█████████▌| 40/42 [00:12<00:00,  5.27it/s]
+  Batches: 100%|██████████| 42/42 [00:12<00:00,  7.15it/s]
+  Batches: 100%|██████████| 42/42 [00:12<00:00,  3.34it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2107.11889", "chunks": 165, "title": "GCExplainer: Human-in-the-Loop Concept-based Explanations for Graph Neural Netwo", "error": null}
+[warn] 2107.11889: worker exit=0 with no result line
+[fail] 2107.11889 after 25.6s — worker exit=0 with no result line
+
+===== [4/3948] 2007.11500  elapsed=1.5m  eta~2000.4m  avg=30s/paper =====
+[mem] avail=8.7GiB total=16.0GiB reserve=3.0GiB usable=5.7GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2007.11500 force=False batch=24
+  Downloading 2007.11500 (try 1):   0%|          | 0.00/3.52M [00:00<?, ?B/s]
+  Downloading 2007.11500 (try 1):  15%|█▍        | 524k/3.52M [00:00<00:00, 5.15MB/s]
+  Downloading 2007.11500 (try 1):  30%|███       | 1.06M/3.52M [00:00<00:01, 1.95MB/s]
+  Downloading 2007.11500 (try 1):  60%|█████▉    | 2.11M/3.52M [00:01<00:00, 1.47MB/s]
+  Downloading 2007.11500 (try 1):  90%|████████▉ | 3.15M/3.52M [00:02<00:00, 1.34MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=7/8.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24390.23it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:02<00:04,  2.11s/it]
+  Batches:  67%|██████▋   | 2/3 [00:04<00:02,  2.31s/it]
+  Batches: 100%|██████████| 3/3 [00:05<00:00,  1.50s/it]
+  Batches: 100%|██████████| 3/3 [00:05<00:00,  1.70s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2007.11500", "chunks": 61, "title": "Debiasing Concept-based Explanations with Causal Analysis", "error": null}
+[warn] 2007.11500: worker exit=0 with no result line
+[retry] 2007.11500 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2007.11500 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23566.87it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/16 [00:00<?, ?it/s]
+  Batches:   6%|▋         | 1/16 [00:00<00:05,  2.69it/s]
+  Batches:  12%|█▎        | 2/16 [00:00<00:04,  3.41it/s]
+  Batches:  19%|█▉        | 3/16 [00:00<00:03,  3.74it/s]
+  Batches:  25%|██▌       | 4/16 [00:01<00:03,  3.57it/s]
+  Batches:  31%|███▏      | 5/16 [00:01<00:03,  3.36it/s]
+  Batches:  38%|███▊      | 6/16 [00:01<00:02,  3.39it/s]
+  Batches:  44%|████▍     | 7/16 [00:02<00:02,  3.37it/s]
+  Batches:  50%|█████     | 8/16 [00:02<00:02,  3.05it/s]
+  Batches:  56%|█████▋    | 9/16 [00:02<00:02,  3.21it/s]
+  Batches:  62%|██████▎   | 10/16 [00:02<00:01,  3.47it/s]
+  Batches:  69%|██████▉   | 11/16 [00:03<00:01,  3.77it/s]
+  Batches:  75%|███████▌  | 12/16 [00:03<00:00,  4.01it/s]
+  Batches:  81%|████████▏ | 13/16 [00:03<00:00,  4.43it/s]
+  Batches:  88%|████████▊ | 14/16 [00:03<00:00,  4.80it/s]
+  Batches:  94%|█████████▍| 15/16 [00:03<00:00,  5.30it/s]
+  Batches: 100%|██████████| 16/16 [00:03<00:00,  4.09it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2007.11500", "chunks": 61, "title": "Debiasing Concept-based Explanations with Causal Analysis", "error": null}
+[warn] 2007.11500: worker exit=0 with no result line
+[fail] 2007.11500 after 16.0s — worker exit=0 with no result line
+
+===== [5/3948] 2004.13003  elapsed=1.8m  eta~1762.1m  avg=27s/paper =====
+[mem] avail=8.5GiB total=16.0GiB reserve=3.0GiB usable=5.5GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2004.13003 force=False batch=24
+  Downloading 2004.13003 (try 1):   0%|          | 0.00/923k [00:00<?, ?B/s]
+  Downloading 2004.13003 (try 1):  14%|█▍        | 131k/923k [00:00<00:00, 1.27MB/s]
+  Downloading 2004.13003 (try 1):  67%|██████▋   | 623k/923k [00:00<00:00, 3.37MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=8/9.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24344.55it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:02<00:05,  2.78s/it]
+  Batches:  67%|██████▋   | 2/3 [00:06<00:03,  3.35s/it]
+  Batches: 100%|██████████| 3/3 [00:07<00:00,  2.28s/it]
+  Batches: 100%|██████████| 3/3 [00:07<00:00,  2.51s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2004.13003", "chunks": 66, "title": "Corpus-level and Concept-based Explanations for Interpretable Document Classific", "error": null}
+[warn] 2004.13003: worker exit=0 with no result line
+[retry] 2004.13003 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2004.13003 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 22450.64it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/17 [00:00<?, ?it/s]
+  Batches:   6%|▌         | 1/17 [00:00<00:07,  2.10it/s]
+  Batches:  12%|█▏        | 2/17 [00:00<00:05,  2.53it/s]
+  Batches:  18%|█▊        | 3/17 [00:01<00:05,  2.41it/s]
+  Batches:  24%|██▎       | 4/17 [00:01<00:04,  2.70it/s]
+  Batches:  29%|██▉       | 5/17 [00:01<00:03,  3.07it/s]
+  Batches:  35%|███▌      | 6/17 [00:02<00:03,  3.05it/s]
+  Batches:  41%|████      | 7/17 [00:02<00:03,  3.22it/s]
+  Batches:  47%|████▋     | 8/17 [00:02<00:03,  2.86it/s]
+  Batches:  53%|█████▎    | 9/17 [00:03<00:02,  3.20it/s]
+  Batches:  59%|█████▉    | 10/17 [00:03<00:02,  2.56it/s]
+  Batches:  65%|██████▍   | 11/17 [00:03<00:01,  3.08it/s]
+  Batches:  71%|███████   | 12/17 [00:04<00:01,  3.28it/s]
+  Batches:  76%|███████▋  | 13/17 [00:04<00:01,  3.66it/s]
+  Batches:  82%|████████▏ | 14/17 [00:04<00:00,  3.88it/s]
+  Batches:  88%|████████▊ | 15/17 [00:04<00:00,  4.12it/s]
+  Batches:  94%|█████████▍| 16/17 [00:04<00:00,  4.69it/s]
+  Batches: 100%|██████████| 17/17 [00:04<00:00,  3.47it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2004.13003", "chunks": 66, "title": "Corpus-level and Concept-based Explanations for Interpretable Document Classific", "error": null}
+[warn] 2004.13003: worker exit=0 with no result line
+[fail] 2004.13003 after 17.7s — worker exit=0 with no result line
+
+===== [6/3948] 2601.10700  elapsed=2.1m  eta~1642.2m  avg=25s/paper =====
+[mem] avail=8.6GiB total=16.0GiB reserve=3.0GiB usable=5.6GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2601.10700 force=False batch=24
+  Downloading 2601.10700 (try 1):   0%|          | 0.00/1.59M [00:00<?, ?B/s]
+  Downloading 2601.10700 (try 1):   9%|▉         | 139k/1.59M [00:00<00:01, 1.37MB/s]
+  Downloading 2601.10700 (try 1):  44%|████▍     | 705k/1.59M [00:00<00:00, 3.86MB/s]
+  Downloading 2601.10700 (try 1):  69%|██████▉   | 1.10M/1.59M [00:00<00:00, 1.03MB/s]
+  Using Tesseract for OCR processing.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24241.48it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/9 [00:00<?, ?it/s]
+  Batches:  11%|█         | 1/9 [00:04<00:36,  4.51s/it]
+  Batches:  22%|██▏       | 2/9 [00:08<00:27,  3.98s/it]
+  Batches:  33%|███▎      | 3/9 [00:13<00:26,  4.42s/it]
+  Batches:  44%|████▍     | 4/9 [00:18<00:23,  4.70s/it]
+  Batches:  56%|█████▌    | 5/9 [00:20<00:15,  3.89s/it]
+  Batches:  67%|██████▋   | 6/9 [00:22<00:09,  3.16s/it]
+  Batches:  78%|███████▊  | 7/9 [00:23<00:05,  2.53s/it]
+  Batches:  89%|████████▉ | 8/9 [00:25<00:02,  2.45s/it]
+  Batches: 100%|██████████| 9/9 [00:26<00:00,  1.88s/it]
+  Batches: 100%|██████████| 9/9 [00:26<00:00,  2.95s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2601.10700", "chunks": 210, "title": "LIBERTy: A Causal Framework for Benchmarking Concept-Based Explanations of LLMs ", "error": null}
+[warn] 2601.10700: worker exit=0 with no result line
+[retry] 2601.10700 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2601.10700 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11869.83it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/53 [00:00<?, ?it/s]
+  Batches:   2%|▏         | 1/53 [00:00<00:44,  1.17it/s]
+  Batches:   4%|▍         | 2/53 [00:01<00:24,  2.09it/s]
+  Batches:   6%|▌         | 3/53 [00:01<00:18,  2.65it/s]
+  Batches:   8%|▊         | 4/53 [00:01<00:22,  2.19it/s]
+  Batches:   9%|▉         | 5/53 [00:02<00:17,  2.68it/s]
+  Batches:  11%|█▏        | 6/53 [00:02<00:23,  2.03it/s]
+  Batches:  13%|█▎        | 7/53 [00:03<00:22,  2.05it/s]
+  Batches:  15%|█▌        | 8/53 [00:03<00:23,  1.95it/s]
+  Batches:  17%|█▋        | 9/53 [00:04<00:19,  2.24it/s]
+  Batches:  19%|█▉        | 10/53 [00:04<00:16,  2.68it/s]
+  Batches:  21%|██        | 11/53 [00:04<00:13,  3.01it/s]
+  Batches:  23%|██▎       | 12/53 [00:05<00:16,  2.45it/s]
+  Batches:  25%|██▍       | 13/53 [00:05<00:20,  1.99it/s]
+  Batches:  26%|██▋       | 14/53 [00:06<00:18,  2.15it/s]
+  Batches:  28%|██▊       | 15/53 [00:06<00:18,  2.01it/s]
+  Batches:  30%|███       | 16/53 [00:07<00:17,  2.09it/s]
+  Batches:  32%|███▏      | 17/53 [00:07<00:14,  2.47it/s]
+  Batches:  34%|███▍      | 18/53 [00:07<00:11,  2.93it/s]
+  Batches:  36%|███▌      | 19/53 [00:08<00:15,  2.17it/s]
+  Batches:  38%|███▊      | 20/53 [00:09<00:15,  2.08it/s]
+  Batches:  40%|███▉      | 21/53 [00:09<00:13,  2.43it/s]
+  Batches:  42%|████▏     | 22/53 [00:09<00:10,  2.86it/s]
+  Batches:  43%|████▎     | 23/53 [00:09<00:11,  2.61it/s]
+  Batches:  45%|████▌     | 24/53 [00:10<00:13,  2.12it/s]
+  Batches:  47%|████▋     | 25/53 [00:10<00:11,  2.49it/s]
+  Batches:  49%|████▉     | 26/53 [00:11<00:09,  2.87it/s]
+  Batches:  51%|█████     | 27/53 [00:11<00:08,  3.13it/s]
+  Batches:  53%|█████▎    | 28/53 [00:11<00:08,  3.08it/s]
+  Batches:  55%|█████▍    | 29/53 [00:11<00:06,  3.53it/s]
+  Batches:  57%|█████▋    | 30/53 [00:12<00:07,  3.13it/s]
+  Batches:  58%|█████▊    | 31/53 [00:12<00:06,  3.24it/s]
+  Batches:  60%|██████    | 32/53 [00:12<00:05,  3.74it/s]
+  Batches:  62%|██████▏   | 33/53 [00:12<00:05,  3.91it/s]
+  Batches:  64%|██████▍   | 34/53 [00:13<00:04,  4.40it/s]
+  Batches:  66%|██████▌   | 35/53 [00:13<00:04,  4.48it/s]
+  Batches:  68%|██████▊   | 36/53 [00:13<00:03,  4.36it/s]
+  Batches:  70%|██████▉   | 37/53 [00:13<00:03,  4.73it/s]
+  Batches:  72%|███████▏  | 38/53 [00:13<00:02,  5.05it/s]
+  Batches:  74%|███████▎  | 39/53 [00:14<00:02,  4.99it/s]
+  Batches:  75%|███████▌  | 40/53 [00:14<00:02,  5.06it/s]
+  Batches:  77%|███████▋  | 41/53 [00:14<00:02,  5.27it/s]
+  Batches:  79%|███████▉  | 42/53 [00:14<00:02,  5.28it/s]
+  Batches:  81%|████████  | 43/53 [00:15<00:02,  4.21it/s]
+  Batches:  83%|████████▎ | 44/53 [00:15<00:02,  3.60it/s]
+  Batches:  85%|████████▍ | 45/53 [00:15<00:01,  4.10it/s]
+  Batches:  87%|████████▋ | 46/53 [00:15<00:01,  4.48it/s]
+  Batches:  89%|████████▊ | 47/53 [00:15<00:01,  4.54it/s]
+  Batches:  91%|█████████ | 48/53 [00:16<00:00,  5.07it/s]
+  Batches:  92%|█████████▏| 49/53 [00:16<00:00,  5.58it/s]
+  Batches:  94%|█████████▍| 50/53 [00:16<00:00,  5.86it/s]
+  Batches:  96%|█████████▌| 51/53 [00:16<00:00,  6.33it/s]
+  Batches:  98%|█████████▊| 52/53 [00:16<00:00,  7.06it/s]
+  Batches: 100%|██████████| 53/53 [00:16<00:00,  3.18it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2601.10700", "chunks": 210, "title": "LIBERTy: A Causal Framework for Benchmarking Concept-Based Explanations of LLMs ", "error": null}
+[warn] 2601.10700: worker exit=0 with no result line
+[fail] 2601.10700 after 30.5s — worker exit=0 with no result line
+
+===== [7/3948] 2203.02586  elapsed=2.6m  eta~1702.3m  avg=26s/paper =====
+[mem] avail=10.0GiB total=16.0GiB reserve=3.0GiB usable=7.0GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2203.02586 force=False batch=24
+  Downloading 2203.02586 (try 1):   0%|          | 0.00/4.09M [00:00<?, ?B/s]
+  Downloading 2203.02586 (try 1):   3%|▎         | 123k/4.09M [00:00<00:03, 1.17MB/s]
+  Downloading 2203.02586 (try 1):  13%|█▎        | 541k/4.09M [00:00<00:01, 2.89MB/s]
+  Downloading 2203.02586 (try 1):  26%|██▌       | 1.06M/4.09M [00:00<00:01, 1.83MB/s]
+  Downloading 2203.02586 (try 1):  52%|█████▏    | 2.11M/4.09M [00:01<00:01, 1.98MB/s]
+  Downloading 2203.02586 (try 1):  77%|███████▋  | 3.15M/4.09M [00:01<00:00, 2.51MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=2/3.
+  OCR on page.number=6/7.
+  OCR on page.number=7/8.
+  OCR on page.number=14/15.
+  OCR on page.number=16/17.
+  OCR on page.number=17/18.
+  OCR on page.number=18/19.
+  OCR on page.number=19/20.
+  OCR on page.number=20/21.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24895.02it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/6 [00:00<?, ?it/s]
+  Batches:  17%|█▋        | 1/6 [00:02<00:14,  2.92s/it]
+  Batches:  33%|███▎      | 2/6 [00:07<00:16,  4.19s/it]
+  Batches:  50%|█████     | 3/6 [00:10<00:09,  3.20s/it]
+  Batches:  67%|██████▋   | 4/6 [00:14<00:07,  3.56s/it]
+  Batches:  83%|████████▎ | 5/6 [00:15<00:02,  2.79s/it]
+  Batches: 100%|██████████| 6/6 [00:15<00:00,  1.91s/it]
+  Batches: 100%|██████████| 6/6 [00:15<00:00,  2.63s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2203.02586", "chunks": 125, "title": "Concept-based Explanations for Out-Of-Distribution Detectors", "error": null}
+[warn] 2203.02586: worker exit=0 with no result line
+[retry] 2203.02586 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2203.02586 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11861.86it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/32 [00:00<?, ?it/s]
+  Batches:   3%|▎         | 1/32 [00:00<00:13,  2.30it/s]
+  Batches:   6%|▋         | 2/32 [00:00<00:11,  2.51it/s]
+  Batches:   9%|▉         | 3/32 [00:01<00:12,  2.33it/s]
+  Batches:  12%|█▎        | 4/32 [00:01<00:10,  2.59it/s]
+  Batches:  16%|█▌        | 5/32 [00:02<00:10,  2.45it/s]
+  Batches:  19%|█▉        | 6/32 [00:02<00:09,  2.62it/s]
+  Batches:  22%|██▏       | 7/32 [00:03<00:13,  1.92it/s]
+  Batches:  25%|██▌       | 8/32 [00:03<00:11,  2.11it/s]
+  Batches:  28%|██▊       | 9/32 [00:04<00:13,  1.71it/s]
+  Batches:  31%|███▏      | 10/32 [00:05<00:14,  1.53it/s]
+  Batches:  34%|███▍      | 11/32 [00:05<00:11,  1.86it/s]
+  Batches:  38%|███▊      | 12/32 [00:05<00:09,  2.15it/s]
+  Batches:  41%|████      | 13/32 [00:06<00:07,  2.40it/s]
+  Batches:  44%|████▍     | 14/32 [00:06<00:06,  2.66it/s]
+  Batches:  47%|████▋     | 15/32 [00:06<00:05,  2.87it/s]
+  Batches:  50%|█████     | 16/32 [00:06<00:05,  2.97it/s]
+  Batches:  53%|█████▎    | 17/32 [00:07<00:05,  2.96it/s]
+  Batches:  56%|█████▋    | 18/32 [00:07<00:04,  3.16it/s]
+  Batches:  59%|█████▉    | 19/32 [00:07<00:03,  3.47it/s]
+  Batches:  62%|██████▎   | 20/32 [00:08<00:03,  3.21it/s]
+  Batches:  66%|██████▌   | 21/32 [00:08<00:04,  2.38it/s]
+  Batches:  69%|██████▉   | 22/32 [00:09<00:03,  2.59it/s]
+  Batches:  72%|███████▏  | 23/32 [00:09<00:02,  3.15it/s]
+  Batches:  75%|███████▌  | 24/32 [00:09<00:02,  3.36it/s]
+  Batches:  78%|███████▊  | 25/32 [00:09<00:01,  3.56it/s]
+  Batches:  81%|████████▏ | 26/32 [00:09<00:01,  4.03it/s]
+  Batches:  84%|████████▍ | 27/32 [00:10<00:01,  4.34it/s]
+  Batches:  88%|████████▊ | 28/32 [00:10<00:00,  4.95it/s]
+  Batches:  91%|█████████ | 29/32 [00:10<00:00,  5.49it/s]
+  Batches:  94%|█████████▍| 30/32 [00:10<00:00,  5.85it/s]
+  Batches:  97%|█████████▋| 31/32 [00:10<00:00,  6.00it/s]
+  Batches: 100%|██████████| 32/32 [00:10<00:00,  2.98it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2203.02586", "chunks": 125, "title": "Concept-based Explanations for Out-Of-Distribution Detectors", "error": null}
+[warn] 2203.02586: worker exit=0 with no result line
+[fail] 2203.02586 after 25.0s — worker exit=0 with no result line
+
+===== [8/3948] 2207.09615  elapsed=3.0m  eta~1693.1m  avg=26s/paper =====
+[mem] avail=9.9GiB total=16.0GiB reserve=3.0GiB usable=6.9GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2207.09615 force=False batch=24
+  Downloading 2207.09615 (try 1):   0%|          | 0.00/17.5M [00:00<?, ?B/s]
+  Downloading 2207.09615 (try 1):   1%|          | 139k/17.5M [00:00<00:12, 1.39MB/s]
+  Downloading 2207.09615 (try 1):   4%|▍         | 664k/17.5M [00:00<00:04, 3.63MB/s]
+  Downloading 2207.09615 (try 1):   6%|▌         | 1.06M/17.5M [00:01<00:30, 540kB/s]
+  Downloading 2207.09615 (try 1):  12%|█▏        | 2.11M/17.5M [00:01<00:13, 1.13MB/s]
+  Downloading 2207.09615 (try 1):  18%|█▊        | 3.15M/17.5M [00:02<00:07, 1.80MB/s]
+  Downloading 2207.09615 (try 1):  24%|██▍       | 4.20M/17.5M [00:03<00:10, 1.32MB/s]
+  Downloading 2207.09615 (try 1):  25%|██▌       | 4.46M/17.5M [00:03<00:09, 1.39MB/s]
+  Downloading 2207.09615 (try 1):  28%|██▊       | 4.93M/17.5M [00:03<00:07, 1.67MB/s]
+  Downloading 2207.09615 (try 1):  30%|███       | 5.25M/17.5M [00:03<00:07, 1.54MB/s]
+  Downloading 2207.09615 (try 1):  36%|███▌      | 6.30M/17.5M [00:04<00:08, 1.32MB/s]
+  Downloading 2207.09615 (try 1):  42%|████▏     | 7.35M/17.5M [00:05<00:08, 1.13MB/s]
+  Downloading 2207.09615 (try 1):  48%|████▊     | 8.40M/17.5M [00:07<00:09, 954kB/s] 
+  Downloading 2207.09615 (try 1):  54%|█████▍    | 9.45M/17.5M [00:07<00:06, 1.29MB/s]
+  Downloading 2207.09615 (try 1):  60%|██████    | 10.5M/17.5M [00:07<00:04, 1.67MB/s]
+  Downloading 2207.09615 (try 1):  66%|██████▌   | 11.5M/17.5M [00:08<00:03, 1.63MB/s]
+  Downloading 2207.09615 (try 1):  72%|███████▏  | 12.6M/17.5M [00:09<00:03, 1.61MB/s]
+  Downloading 2207.09615 (try 1):  78%|███████▊  | 13.6M/17.5M [00:09<00:01, 1.96MB/s]
+  Downloading 2207.09615 (try 1):  84%|████████▍ | 14.7M/17.5M [00:10<00:02, 1.28MB/s]
+  Downloading 2207.09615 (try 1):  90%|████████▉ | 15.7M/17.5M [00:11<00:01, 1.61MB/s]
+  Downloading 2207.09615 (try 1):  96%|█████████▌| 16.8M/17.5M [00:11<00:00, 1.58MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=3/4.
+  OCR on page.number=4/5.
+  OCR on page.number=6/7.
+  OCR on page.number=12/13.
+  OCR on page.number=14/15.
+  OCR on page.number=17/18.
+  OCR on page.number=18/19.
+  OCR on page.number=19/20.
+  OCR on page.number=20/21.
+  OCR on page.number=21/22.
+  OCR on page.number=22/23.
+  OCR on page.number=23/24.
+  OCR on page.number=24/25.
+  OCR on page.number=25/26.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23833.34it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/6 [00:00<?, ?it/s]
+  Batches:  17%|█▋        | 1/6 [00:04<00:22,  4.57s/it]
+  Batches:  33%|███▎      | 2/6 [00:08<00:16,  4.06s/it]
+  Batches:  50%|█████     | 3/6 [00:12<00:12,  4.19s/it]
+  Batches:  67%|██████▋   | 4/6 [00:14<00:06,  3.33s/it]
+  Batches:  83%|████████▎ | 5/6 [00:17<00:03,  3.08s/it]
+  Batches: 100%|██████████| 6/6 [00:17<00:00,  2.22s/it]
+  Batches: 100%|██████████| 6/6 [00:17<00:00,  2.97s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2207.09615", "chunks": 131, "title": "Overlooked factors in concept-based explanations: Dataset choice, concept learna", "error": null}
+[warn] 2207.09615: worker exit=0 with no result line
+[retry] 2207.09615 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2207.09615 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11783.12it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/33 [00:00<?, ?it/s]
+  Batches:   3%|▎         | 1/33 [00:00<00:24,  1.31it/s]
+  Batches:   6%|▌         | 2/33 [00:01<00:18,  1.69it/s]
+  Batches:   9%|▉         | 3/33 [00:01<00:19,  1.51it/s]
+  Batches:  12%|█▏        | 4/33 [00:02<00:19,  1.46it/s]
+  Batches:  15%|█▌        | 5/33 [00:03<00:17,  1.62it/s]
+  Batches:  18%|█▊        | 6/33 [00:03<00:17,  1.53it/s]
+  Batches:  21%|██        | 7/33 [00:04<00:16,  1.57it/s]
+  Batches:  24%|██▍       | 8/33 [00:05<00:15,  1.66it/s]
+  Batches:  27%|██▋       | 9/33 [00:05<00:12,  1.91it/s]
+  Batches:  30%|███       | 10/33 [00:05<00:10,  2.17it/s]
+  Batches:  33%|███▎      | 11/33 [00:06<00:10,  2.02it/s]
+  Batches:  36%|███▋      | 12/33 [00:06<00:09,  2.27it/s]
+  Batches:  39%|███▉      | 13/33 [00:06<00:07,  2.62it/s]
+  Batches:  42%|████▏     | 14/33 [00:07<00:06,  2.79it/s]
+  Batches:  45%|████▌     | 15/33 [00:07<00:08,  2.23it/s]
+  Batches:  48%|████▊     | 16/33 [00:08<00:06,  2.48it/s]
+  Batches:  52%|█████▏    | 17/33 [00:08<00:05,  2.74it/s]
+  Batches:  55%|█████▍    | 18/33 [00:08<00:04,  3.03it/s]
+  Batches:  58%|█████▊    | 19/33 [00:08<00:04,  3.04it/s]
+  Batches:  61%|██████    | 20/33 [00:09<00:04,  3.03it/s]
+  Batches:  64%|██████▎   | 21/33 [00:09<00:03,  3.06it/s]
+  Batches:  67%|██████▋   | 22/33 [00:09<00:03,  3.44it/s]
+  Batches:  70%|██████▉   | 23/33 [00:10<00:02,  3.85it/s]
+  Batches:  73%|███████▎  | 24/33 [00:10<00:02,  4.05it/s]
+  Batches:  76%|███████▌  | 25/33 [00:10<00:02,  3.74it/s]
+  Batches:  79%|███████▉  | 26/33 [00:10<00:02,  3.14it/s]
+  Batches:  82%|████████▏ | 27/33 [00:11<00:01,  3.70it/s]
+  Batches:  85%|████████▍ | 28/33 [00:11<00:01,  4.21it/s]
+  Batches:  88%|████████▊ | 29/33 [00:11<00:00,  4.89it/s]
+  Batches:  91%|█████████ | 30/33 [00:11<00:00,  4.37it/s]
+  Batches:  94%|█████████▍| 31/33 [00:11<00:00,  4.54it/s]
+  Batches:  97%|█████████▋| 32/33 [00:12<00:00,  5.19it/s]
+  Batches: 100%|██████████| 33/33 [00:12<00:00,  2.72it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2207.09615", "chunks": 131, "title": "Overlooked factors in concept-based explanations: Dataset choice, concept learna", "error": null}
+[warn] 2207.09615: worker exit=0 with no result line
+[fail] 2207.09615 after 25.7s — worker exit=0 with no result line
+
+===== [9/3948] 2211.10807  elapsed=3.4m  eta~1692.2m  avg=26s/paper =====
+[mem] avail=10.0GiB total=16.0GiB reserve=3.0GiB usable=7.0GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2211.10807 force=False batch=24
+  Downloading 2211.10807 (try 1):   0%|          | 0.00/7.49M [00:00<?, ?B/s]
+  Downloading 2211.10807 (try 1):  14%|█▍        | 1.06M/7.49M [00:01<00:09, 695kB/s]
+  Downloading 2211.10807 (try 1):  28%|██▊       | 2.11M/7.49M [00:01<00:04, 1.26MB/s]
+  Downloading 2211.10807 (try 1):  42%|████▏     | 3.15M/7.49M [00:02<00:02, 1.70MB/s]
+  Downloading 2211.10807 (try 1):  56%|█████▌    | 4.20M/7.49M [00:02<00:02, 1.60MB/s]
+  Downloading 2211.10807 (try 1):  70%|███████   | 5.25M/7.49M [00:03<00:01, 1.97MB/s]
+  Downloading 2211.10807 (try 1):  84%|████████▍ | 6.30M/7.49M [00:03<00:00, 1.83MB/s]
+  Downloading 2211.10807 (try 1):  98%|█████████▊| 7.35M/7.49M [00:04<00:00, 2.08MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=10/11.
+  OCR on page.number=14/15.
+  OCR on page.number=17/18.
+  OCR on page.number=18/19.
+  OCR on page.number=19/20.
+  OCR on page.number=25/26.
+  OCR on page.number=31/32.
+  OCR on page.number=32/33.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24001.04it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/7 [00:00<?, ?it/s]
+  Batches:  14%|█▍        | 1/7 [00:02<00:17,  2.95s/it]
+  Batches:  29%|██▊       | 2/7 [00:05<00:13,  2.61s/it]
+  Batches:  43%|████▎     | 3/7 [00:07<00:10,  2.54s/it]
+  Batches:  57%|█████▋    | 4/7 [00:10<00:07,  2.66s/it]
+  Batches:  71%|███████▏  | 5/7 [00:12<00:04,  2.39s/it]
+  Batches:  86%|████████▌ | 6/7 [00:13<00:01,  1.95s/it]
+  Batches: 100%|██████████| 7/7 [00:13<00:00,  1.38s/it]
+  Batches: 100%|██████████| 7/7 [00:13<00:00,  1.98s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2211.10807", "chunks": 154, "title": "Concept-based Explanations using Non-negative Concept Activation Vectors and Dec", "error": null}
+[warn] 2211.10807: worker exit=0 with no result line
+[retry] 2211.10807 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2211.10807 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 22776.60it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/39 [00:00<?, ?it/s]
+  Batches:   3%|▎         | 1/39 [00:00<00:22,  1.72it/s]
+  Batches:   5%|▌         | 2/39 [00:00<00:16,  2.20it/s]
+  Batches:   8%|▊         | 3/39 [00:01<00:12,  2.84it/s]
+  Batches:  10%|█         | 4/39 [00:01<00:10,  3.37it/s]
+  Batches:  13%|█▎        | 5/39 [00:01<00:09,  3.44it/s]
+  Batches:  15%|█▌        | 6/39 [00:01<00:09,  3.63it/s]
+  Batches:  18%|█▊        | 7/39 [00:02<00:07,  4.13it/s]
+  Batches:  21%|██        | 8/39 [00:02<00:06,  4.49it/s]
+  Batches:  23%|██▎       | 9/39 [00:02<00:06,  4.81it/s]
+  Batches:  26%|██▌       | 10/39 [00:02<00:05,  4.98it/s]
+  Batches:  28%|██▊       | 11/39 [00:02<00:06,  4.54it/s]
+  Batches:  31%|███       | 12/39 [00:03<00:07,  3.66it/s]
+  Batches:  33%|███▎      | 13/39 [00:03<00:08,  3.20it/s]
+  Batches:  36%|███▌      | 14/39 [00:03<00:06,  3.64it/s]
+  Batches:  38%|███▊      | 15/39 [00:04<00:06,  3.83it/s]
+  Batches:  41%|████      | 16/39 [00:04<00:06,  3.60it/s]
+  Batches:  44%|████▎     | 17/39 [00:04<00:06,  3.65it/s]
+  Batches:  46%|████▌     | 18/39 [00:04<00:05,  3.87it/s]
+  Batches:  49%|████▊     | 19/39 [00:05<00:05,  3.73it/s]
+  Batches:  51%|█████▏    | 20/39 [00:05<00:04,  4.15it/s]
+  Batches:  54%|█████▍    | 21/39 [00:05<00:04,  4.11it/s]
+  Batches:  56%|█████▋    | 22/39 [00:05<00:03,  4.42it/s]
+  Batches:  59%|█████▉    | 23/39 [00:06<00:04,  3.30it/s]
+  Batches:  62%|██████▏   | 24/39 [00:06<00:03,  3.90it/s]
+  Batches:  64%|██████▍   | 25/39 [00:06<00:03,  4.11it/s]
+  Batches:  67%|██████▋   | 26/39 [00:06<00:03,  4.11it/s]
+  Batches:  69%|██████▉   | 27/39 [00:07<00:03,  3.71it/s]
+  Batches:  72%|███████▏  | 28/39 [00:07<00:02,  4.01it/s]
+  Batches:  74%|███████▍  | 29/39 [00:07<00:02,  4.63it/s]
+  Batches:  77%|███████▋  | 30/39 [00:07<00:02,  4.19it/s]
+  Batches:  79%|███████▉  | 31/39 [00:08<00:01,  4.31it/s]
+  Batches:  82%|████████▏ | 32/39 [00:08<00:01,  4.61it/s]
+  Batches:  85%|████████▍ | 33/39 [00:08<00:01,  4.78it/s]
+  Batches:  87%|████████▋ | 34/39 [00:08<00:00,  5.38it/s]
+  Batches:  90%|████████▉ | 35/39 [00:08<00:00,  5.91it/s]
+  Batches:  92%|█████████▏| 36/39 [00:08<00:00,  6.47it/s]
+  Batches:  95%|█████████▍| 37/39 [00:08<00:00,  6.38it/s]
+  Batches: 100%|██████████| 39/39 [00:09<00:00,  8.34it/s]
+  Batches: 100%|██████████| 39/39 [00:09<00:00,  4.26it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2211.10807", "chunks": 154, "title": "Concept-based Explanations using Non-negative Concept Activation Vectors and Dec", "error": null}
+[warn] 2211.10807: worker exit=0 with no result line
+[fail] 2211.10807 after 22.0s — worker exit=0 with no result line
+
+===== [10/3948] 2501.05855  elapsed=3.8m  eta~1664.3m  avg=25s/paper =====
+[mem] avail=9.2GiB total=16.0GiB reserve=3.0GiB usable=6.2GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2501.05855 force=False batch=24
+  Downloading 2501.05855 (try 1):   0%|          | 0.00/2.73M [00:00<?, ?B/s]
+  Downloading 2501.05855 (try 1):   4%|▍         | 123k/2.73M [00:00<00:02, 989kB/s]
+  Downloading 2501.05855 (try 1):  23%|██▎       | 631k/2.73M [00:00<00:00, 3.07MB/s]
+  Downloading 2501.05855 (try 1):  39%|███▊      | 1.06M/2.73M [00:01<00:02, 802kB/s]
+  Downloading 2501.05855 (try 1):  77%|███████▋  | 2.11M/2.73M [00:02<00:00, 1.01MB/s]
+  Using Tesseract for OCR processing.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 26742.30it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/5 [00:00<?, ?it/s]
+  Batches:  20%|██        | 1/5 [00:04<00:18,  4.65s/it]
+  Batches:  40%|████      | 2/5 [00:07<00:10,  3.41s/it]
+  Batches:  60%|██████    | 3/5 [00:09<00:05,  2.74s/it]
+  Batches:  80%|████████  | 4/5 [00:12<00:03,  3.02s/it]
+  Batches: 100%|██████████| 5/5 [00:12<00:00,  2.07s/it]
+  Batches: 100%|██████████| 5/5 [00:12<00:00,  2.59s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2501.05855", "chunks": 107, "title": "ConSim: Measuring Concept-Based Explanations' Effectiveness with Automated Simul", "error": null}
+  libc++abi: terminating due to uncaught exception of type std::__1::system_error: recursive_mutex lock failed: Invalid argument
+[warn] 2501.05855: worker exit=134 with no result line
+[retry] 2501.05855 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2501.05855 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12063.18it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/27 [00:00<?, ?it/s]
+  Batches:   4%|▎         | 1/27 [00:00<00:21,  1.23it/s]
+  Batches:   7%|▋         | 2/27 [00:01<00:18,  1.36it/s]
+  Batches:  11%|█         | 3/27 [00:01<00:12,  1.87it/s]
+  Batches:  15%|█▍        | 4/27 [00:02<00:10,  2.20it/s]
+  Batches:  19%|█▊        | 5/27 [00:02<00:08,  2.45it/s]
+  Batches:  22%|██▏       | 6/27 [00:02<00:07,  2.74it/s]
+  Batches:  26%|██▌       | 7/27 [00:03<00:06,  2.96it/s]
+  Batches:  30%|██▉       | 8/27 [00:03<00:05,  3.36it/s]
+  Batches:  33%|███▎      | 9/27 [00:03<00:05,  3.41it/s]
+  Batches:  37%|███▋      | 10/27 [00:03<00:04,  3.55it/s]
+  Batches:  41%|████      | 11/27 [00:04<00:05,  3.13it/s]
+  Batches:  44%|████▍     | 12/27 [00:04<00:04,  3.10it/s]
+  Batches:  48%|████▊     | 13/27 [00:04<00:04,  3.14it/s]
+  Batches:  52%|█████▏    | 14/27 [00:05<00:03,  3.47it/s]
+  Batches:  56%|█████▌    | 15/27 [00:05<00:03,  3.76it/s]
+  Batches:  59%|█████▉    | 16/27 [00:05<00:02,  4.08it/s]
+  Batches:  63%|██████▎   | 17/27 [00:05<00:02,  4.28it/s]
+  Batches:  67%|██████▋   | 18/27 [00:05<00:02,  4.17it/s]
+  Batches:  70%|███████   | 19/27 [00:06<00:01,  4.30it/s]
+  Batches:  74%|███████▍  | 20/27 [00:06<00:02,  3.20it/s]
+  Batches:  78%|███████▊  | 21/27 [00:06<00:01,  3.63it/s]
+  Batches:  81%|████████▏ | 22/27 [00:07<00:01,  3.94it/s]
+  Batches:  85%|████████▌ | 23/27 [00:07<00:00,  4.45it/s]
+  Batches:  89%|████████▉ | 24/27 [00:07<00:00,  4.98it/s]
+  Batches:  93%|█████████▎| 25/27 [00:07<00:00,  5.68it/s]
+  Batches:  96%|█████████▋| 26/27 [00:07<00:00,  6.10it/s]
+  Batches: 100%|██████████| 27/27 [00:07<00:00,  3.54it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2501.05855", "chunks": 107, "title": "ConSim: Measuring Concept-Based Explanations' Effectiveness with Automated Simul", "error": null}
+[warn] 2501.05855: worker exit=0 with no result line
+[fail] 2501.05855 after 20.6s — worker exit=0 with no result line
+
+===== [11/3948] 2505.15626  elapsed=4.1m  eta~1633.0m  avg=25s/paper =====
+[mem] avail=9.2GiB total=16.0GiB reserve=3.0GiB usable=6.2GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2505.15626 force=False batch=24
+  Downloading 2505.15626 (try 1):   0%|          | 0.00/6.51M [00:00<?, ?B/s]
+  Downloading 2505.15626 (try 1):  16%|█▌        | 1.06M/6.51M [00:01<00:07, 765kB/s]
+  Downloading 2505.15626 (try 1):  32%|███▏      | 2.11M/6.51M [00:01<00:03, 1.43MB/s]
+  Downloading 2505.15626 (try 1):  48%|████▊     | 3.15M/6.51M [00:01<00:01, 1.90MB/s]
+  Downloading 2505.15626 (try 1):  65%|██████▍   | 4.20M/6.51M [00:02<00:01, 1.49MB/s]
+  Downloading 2505.15626 (try 1):  81%|████████  | 5.25M/6.51M [00:03<00:00, 1.55MB/s]
+  Downloading 2505.15626 (try 1):  97%|█████████▋| 6.30M/6.51M [00:03<00:00, 1.93MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=9/10.
+  OCR on page.number=24/25.
+  OCR on page.number=30/31.
+  OCR on page.number=31/32.
+  OCR on page.number=32/33.
+  OCR on page.number=33/34.
+  OCR on page.number=34/35.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24377.35it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/7 [00:00<?, ?it/s]
+  Batches:  14%|█▍        | 1/7 [00:04<00:26,  4.37s/it]
+  Batches:  29%|██▊       | 2/7 [00:06<00:15,  3.04s/it]
+  Batches:  43%|████▎     | 3/7 [00:08<00:10,  2.65s/it]
+  Batches:  57%|█████▋    | 4/7 [00:11<00:07,  2.63s/it]
+  Batches:  71%|███████▏  | 5/7 [00:13<00:04,  2.37s/it]
+  Batches:  86%|████████▌ | 6/7 [00:14<00:01,  1.96s/it]
+  Batches: 100%|██████████| 7/7 [00:14<00:00,  1.42s/it]
+  Batches: 100%|██████████| 7/7 [00:14<00:00,  2.09s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2505.15626", "chunks": 155, "title": "Direct Preference Optimization for Adaptive Concept-based Explanations", "error": null}
+[warn] 2505.15626: worker exit=0 with no result line
+[retry] 2505.15626 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2505.15626 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 22235.95it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/39 [00:00<?, ?it/s]
+  Batches:   3%|▎         | 1/39 [00:00<00:31,  1.22it/s]
+  Batches:   5%|▌         | 2/39 [00:01<00:22,  1.67it/s]
+  Batches:   8%|▊         | 3/39 [00:01<00:18,  1.97it/s]
+  Batches:  10%|█         | 4/39 [00:02<00:15,  2.24it/s]
+  Batches:  13%|█▎        | 5/39 [00:02<00:14,  2.27it/s]
+  Batches:  15%|█▌        | 6/39 [00:02<00:13,  2.42it/s]
+  Batches:  18%|█▊        | 7/39 [00:03<00:11,  2.83it/s]
+  Batches:  21%|██        | 8/39 [00:03<00:10,  3.09it/s]
+  Batches:  23%|██▎       | 9/39 [00:03<00:10,  3.00it/s]
+  Batches:  26%|██▌       | 10/39 [00:03<00:08,  3.40it/s]
+  Batches:  28%|██▊       | 11/39 [00:04<00:08,  3.44it/s]
+  Batches:  31%|███       | 12/39 [00:04<00:08,  3.33it/s]
+  Batches:  33%|███▎      | 13/39 [00:04<00:08,  3.16it/s]
+  Batches:  36%|███▌      | 14/39 [00:05<00:06,  3.59it/s]
+  Batches:  38%|███▊      | 15/39 [00:05<00:07,  3.34it/s]
+  Batches:  41%|████      | 16/39 [00:05<00:06,  3.30it/s]
+  Batches:  44%|████▎     | 17/39 [00:06<00:06,  3.17it/s]
+  Batches:  46%|████▌     | 18/39 [00:06<00:06,  3.41it/s]
+  Batches:  49%|████▊     | 19/39 [00:06<00:05,  3.39it/s]
+  Batches:  51%|█████▏    | 20/39 [00:06<00:05,  3.70it/s]
+  Batches:  54%|█████▍    | 21/39 [00:07<00:04,  3.83it/s]
+  Batches:  56%|█████▋    | 22/39 [00:07<00:04,  3.40it/s]
+  Batches:  59%|█████▉    | 23/39 [00:07<00:04,  3.63it/s]
+  Batches:  62%|██████▏   | 24/39 [00:08<00:04,  3.10it/s]
+  Batches:  64%|██████▍   | 25/39 [00:08<00:03,  3.66it/s]
+  Batches:  67%|██████▋   | 26/39 [00:08<00:03,  3.48it/s]
+  Batches:  69%|██████▉   | 27/39 [00:08<00:03,  3.75it/s]
+  Batches:  72%|███████▏  | 28/39 [00:08<00:02,  3.94it/s]
+  Batches:  74%|███████▍  | 29/39 [00:09<00:02,  3.78it/s]
+  Batches:  77%|███████▋  | 30/39 [00:09<00:02,  4.06it/s]
+  Batches:  79%|███████▉  | 31/39 [00:09<00:01,  4.49it/s]
+  Batches:  82%|████████▏ | 32/39 [00:09<00:01,  4.62it/s]
+  Batches:  85%|████████▍ | 33/39 [00:09<00:01,  5.11it/s]
+  Batches:  87%|████████▋ | 34/39 [00:10<00:00,  5.54it/s]
+  Batches:  90%|████████▉ | 35/39 [00:10<00:00,  5.74it/s]
+  Batches:  92%|█████████▏| 36/39 [00:10<00:00,  5.58it/s]
+  Batches:  95%|█████████▍| 37/39 [00:10<00:00,  6.19it/s]
+  Batches: 100%|██████████| 39/39 [00:10<00:00,  8.36it/s]
+  Batches: 100%|██████████| 39/39 [00:10<00:00,  3.63it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2505.15626", "chunks": 155, "title": "Direct Preference Optimization for Adaptive Concept-based Explanations", "error": null}
+[warn] 2505.15626: worker exit=0 with no result line
+[fail] 2505.15626 after 23.3s — worker exit=0 with no result line
+
+===== [12/3948] 2509.23849  elapsed=4.5m  eta~1623.4m  avg=25s/paper =====
+[mem] avail=8.9GiB total=16.0GiB reserve=3.0GiB usable=5.9GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2509.23849 force=False batch=24
+  Downloading 2509.23849 (try 1):   0%|          | 0.00/1.99M [00:00<?, ?B/s]
+  Downloading 2509.23849 (try 1):   7%|▋         | 139k/1.99M [00:00<00:01, 1.35MB/s]
+  Downloading 2509.23849 (try 1):  32%|███▏      | 639k/1.99M [00:00<00:00, 3.45MB/s]
+  Downloading 2509.23849 (try 1):  53%|█████▎    | 1.06M/1.99M [00:00<00:00, 2.23MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=3/4.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=7/8.
+  OCR on page.number=10/11.
+  OCR on page.number=12/13.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24196.45it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+  Batches:  25%|██▌       | 1/4 [00:02<00:07,  2.59s/it]
+  Batches:  50%|█████     | 2/4 [00:07<00:07,  3.74s/it]
+  Batches:  75%|███████▌  | 3/4 [00:09<00:03,  3.25s/it]
+  Batches: 100%|██████████| 4/4 [00:10<00:00,  2.40s/it]
+  Batches: 100%|██████████| 4/4 [00:10<00:00,  2.73s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2509.23849", "chunks": 89, "title": "CE-FAM: Concept-Based Explanation via Fusion of Activation Maps", "error": null}
+[warn] 2509.23849: worker exit=0 with no result line
+[retry] 2509.23849 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2509.23849 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11490.42it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/23 [00:00<?, ?it/s]
+  Batches:   4%|▍         | 1/23 [00:00<00:07,  3.04it/s]
+  Batches:   9%|▊         | 2/23 [00:00<00:05,  3.59it/s]
+  Batches:  13%|█▎        | 3/23 [00:00<00:05,  3.56it/s]
+  Batches:  17%|█▋        | 4/23 [00:01<00:06,  3.06it/s]
+  Batches:  22%|██▏       | 5/23 [00:01<00:05,  3.50it/s]
+  Batches:  26%|██▌       | 6/23 [00:01<00:04,  3.44it/s]
+  Batches:  30%|███       | 7/23 [00:02<00:06,  2.34it/s]
+  Batches:  35%|███▍      | 8/23 [00:03<00:06,  2.15it/s]
+  Batches:  39%|███▉      | 9/23 [00:03<00:05,  2.39it/s]
+  Batches:  43%|████▎     | 10/23 [00:03<00:04,  2.82it/s]
+  Batches:  48%|████▊     | 11/23 [00:03<00:03,  3.17it/s]
+  Batches:  52%|█████▏    | 12/23 [00:04<00:03,  3.46it/s]
+  Batches:  57%|█████▋    | 13/23 [00:04<00:03,  3.21it/s]
+  Batches:  61%|██████    | 14/23 [00:04<00:02,  3.53it/s]
+  Batches:  65%|██████▌   | 15/23 [00:05<00:02,  3.02it/s]
+  Batches:  70%|██████▉   | 16/23 [00:05<00:02,  2.96it/s]
+  Batches:  74%|███████▍  | 17/23 [00:05<00:02,  2.78it/s]
+  Batches:  78%|███████▊  | 18/23 [00:05<00:01,  3.41it/s]
+  Batches:  83%|████████▎ | 19/23 [00:06<00:01,  3.82it/s]
+  Batches:  87%|████████▋ | 20/23 [00:06<00:00,  3.82it/s]
+  Batches:  91%|█████████▏| 21/23 [00:06<00:00,  4.60it/s]
+  Batches: 100%|██████████| 23/23 [00:06<00:00,  6.83it/s]
+  Batches: 100%|██████████| 23/23 [00:06<00:00,  3.47it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2509.23849", "chunks": 89, "title": "CE-FAM: Concept-Based Explanation via Fusion of Activation Maps", "error": null}
+[warn] 2509.23849: worker exit=0 with no result line
+[fail] 2509.23849 after 19.8s — worker exit=0 with no result line
+
+===== [13/3948] 2206.05275  elapsed=4.9m  eta~1596.1m  avg=24s/paper =====
+[mem] avail=8.6GiB total=16.0GiB reserve=3.0GiB usable=5.6GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2206.05275 force=False batch=24
+  Downloading 2206.05275 (try 1):   0%|          | 0.00/1.14M [00:00<?, ?B/s]
+  Downloading 2206.05275 (try 1):  10%|█         | 115k/1.14M [00:00<00:00, 1.14MB/s]
+  Downloading 2206.05275 (try 1):  49%|████▉     | 557k/1.14M [00:00<00:00, 2.95MB/s]
+  Downloading 2206.05275 (try 1):  93%|█████████▎| 1.06M/1.14M [00:00<00:00, 2.90MB/s]
+  Using Tesseract for OCR processing.
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24469.13it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it]
+  Batches: 100%|██████████| 1/1 [00:01<00:00,  1.48s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2206.05275", "chunks": 16, "title": "Spatial-temporal Concept based Explanation of 3D ConvNets", "error": null}
+[warn] 2206.05275: worker exit=0 with no result line
+[retry] 2206.05275 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=60s
+  [worker] start 2206.05275 force=False batch=4
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23392.55it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+  Batches:  25%|██▌       | 1/4 [00:00<00:01,  2.79it/s]
+  Batches:  50%|█████     | 2/4 [00:00<00:00,  3.79it/s]
+  Batches:  75%|███████▌  | 3/4 [00:00<00:00,  3.33it/s]
+  Batches: 100%|██████████| 4/4 [00:01<00:00,  4.35it/s]
+  Batches: 100%|██████████| 4/4 [00:01<00:00,  3.91it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2206.05275", "chunks": 16, "title": "Spatial-temporal Concept based Explanation of 3D ConvNets", "error": null}
+[warn] 2206.05275: worker exit=0 with no result line
+[fail] 2206.05275 after 12.5s — worker exit=0 with no result line
+
+===== [14/3948] 2504.10833  elapsed=5.1m  eta~1535.8m  avg=23s/paper =====
+[mem] avail=8.8GiB total=16.0GiB reserve=3.0GiB usable=5.8GiB → batch=24
+[run] subprocess batch=24 timeout=60s
+  [worker] start 2504.10833 force=False batch=24

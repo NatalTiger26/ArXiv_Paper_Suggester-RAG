@@ -1,0 +1,1389 @@
+Project  : /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester
+Log      : logs/library_build_vlm_xai_20261015_025839.log
+N        : 20
+SLEEP    : 3s
+CATEGORY : (none)
+Started  : 2026-10-15T02:58:39+05:30
+
+=== 163 keyword searches × n=20 (merge into library) ===
+
+----------------------------------------------------------------
+>>> [1/163] Vision-language model explainability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 402 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [2/163] multimodal explainability
+----------------------------------------------------------------
+Found 20 papers
+  2606.14740	GridVQA-X: A Framework for Evaluating Multimodal Explainability Method
+  2412.14056	A Review of Multimodal Explainable Artificial Intelligence: Past, Pres
+  2212.14084	Multimodal Explainability via Latent Shift applied to COVID-19 stratif
+  2504.05477	Trust Through Transparency: Explainable Social Navigation for Autonomo
+  2610.13783	UkrMeme: Multimodal Explainable Persuasion Detection in Ukrainian Meme
+  2508.00665	Transparent Adaptive Learning via Data-Centric Multimodal Explainable 
+  2609.08029	BanglaMemeX: Advancing Cultural Metaphoric Image Interpretation in Ban
+  2602.07179	An Information-Theoretic Framework for Comparing Voice and Text Explai
+  2512.22197	Quadrant Segmentation VLM with Few-Shot Adaptation and OCT Learning-ba
+  2306.05731	Multimodal Explainable Artificial Intelligence: A Comprehensive Review
+  … and 10 more
+Corpus now has 421 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [3/163] XAI multimodal
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 421 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [4/163] explainable AI multimodal
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 421 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [5/163] multimodal interpretability
+----------------------------------------------------------------
+Found 20 papers
+  2501.05322	"What's Happening"- A Human-centered Multimodal Interpreter Explaining
+  2512.02530	Aetheria: A multimodal interpretable content safety framework based on
+  1109.6361	Cognitive Principles in Robust Multimodal Interpretation
+  2511.05912	RadioSim Agent: Combining Large Language Models and Deterministic EM S
+  2603.20887	Scene Graph-guided SegCaptioning Transformer with Fine-grained Alignme
+  2411.17471	Learning New Concepts, Remembering the Old: Continual Learning for Mul
+  2402.06295	Multimodal Interpretable Data-Driven Models for Early Prediction of An
+  cond-mat/0301628	Vortex crystallisation in classical field theory
+  2405.04671	Interpretable Tensor Fusion
+  2303.04388	Interpretable Visual Question Answering Referring to Outside Knowledge
+  … and 10 more
+Corpus now has 440 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [6/163] VLM explainability
+----------------------------------------------------------------
+Found 3 papers
+  2605.22168	Measuring Cross-Modal Synergy: A Benchmark for VLM Explainability
+  2412.05725	Black Swan: Abductive and Defeasible Video Reasoning in Unpredictable 
+  2504.11368	From Gaze to Insight: Bridging Human Visual Attention and Vision Langu
+Corpus now has 443 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [7/163] Vision-language model interpretability
+----------------------------------------------------------------
+Found 5 papers
+  2312.17345	3VL: Using Trees to Improve Vision-Language Models' Interpretability
+  2411.16724	Devils in Middle Layers of Large Vision-Language Models: Interpreting,
+  2511.16816	Trust-Aware Multimodal Data Fusion for Yield Estimation: A Case Study 
+  2607.22721	An Interactive Vision Language Platform for Cognitive Remediation in S
+  2608.05803	Vorch-Omni: Multi-Task Orchestration of Sight and Sound
+Corpus now has 448 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [8/163] Mechanistic interpretability
+----------------------------------------------------------------
+Found 20 papers
+  2506.18852	Mechanistic Interpretability Needs Philosophy
+  2404.14082	Mechanistic Interpretability for AI Safety -- A Review
+  2501.16496	Open Problems in Mechanistic Interpretability
+  2504.13151	MIB: A Mechanistic Interpretability Benchmark
+  2602.21442	MINAR: Mechanistic Interpretability for Neural Algorithmic Reasoning
+  2505.00808	A Mathematical Philosophy of Explanations in Mechanistic Interpretabil
+  2605.09881	Dissecting Jet-Tagger Through Mechanistic Interpretability
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2406.11779	Compact Proofs of Model Performance via Mechanistic Interpretability
+  2407.13594	Validating Mechanistic Interpretations: An Axiomatic Approach
+  … and 10 more
+Corpus now has 468 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [9/163] feature attribution
+----------------------------------------------------------------
+Found 20 papers
+  2211.12702	Evaluating Feature Attribution Methods for Electrocardiogram
+  2310.16157	Context-aware feature attribution through argumentation
+  2505.24729	Feature Attribution from First Principles
+  2307.03380	On Formal Feature Attribution and Its Approximation
+  2505.16406	On the reliability of feature attribution methods for speech classific
+  2212.11870	Impossibility Theorems for Feature Attribution
+  2510.09135	Training Feature Attribution for Vision Models
+  2605.15154	RoSHAP: A Distributional Framework and Robust Metric for Stable Featur
+  2511.09332	Distribution-Based Feature Attribution for Explaining the Predictions 
+  2310.17945	A Comprehensive and Reliable Feature Attribution Method: Double-sided 
+  … and 10 more
+Corpus now has 487 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [10/163] model transparency
+----------------------------------------------------------------
+Found 20 papers
+  2402.16268	Foundation Model Transparency Reports
+  2310.12941	The Foundation Model Transparency Index
+  2407.12929	The 2024 Foundation Model Transparency Index
+  2512.10169	The 2025 Foundation Model Transparency Index
+  2111.09744	Covered Information Disentanglement: Model Transparency via Unbiased P
+  2302.10395	Designerly Understanding: Information Needs for Model Transparency to 
+  2209.00562	Model Transparency and Interpretability : Survey and Application to th
+  2403.01451	Enhancing Data Provenance and Model Transparency in Federated Learning
+  0909.2452	Excel Modelling - Transparency, Auditing and Business Use
+  2002.10248	Bayes-TrEx: a Bayesian Sampling Approach to Model Transparency by Exam
+  … and 10 more
+Corpus now has 507 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [11/163] representation interpretability
+----------------------------------------------------------------
+Found 20 papers
+  2411.00653	Rethinking Node Representation Interpretation through Relation Coheren
+  2510.24105	Enhancing Pre-trained Representation Classifiability can Boost its Int
+  2501.18805	Are Representation Disentanglement and Interpretability Linked in Reco
+  2607.27404	ECG-InterpBench: Benchmarking the Interpretability of ECG Foundation M
+  2609.34033	Faithful Activation Verbalization: Reducing Hallucinations in LLM Repr
+  2510.03741	Désentrelacement Fréquentiel Doux pour les Codecs Audio Neuronaux
+  2502.14889	Narrowing Information Bottleneck Theory for Multimodal Image-Text Repr
+  2608.12194	HYDRA: Hyperbolic Dynamic Representation Architecture for Kolmogorov-A
+  2204.03122	Ogden Material Calibration via Magnetic Resonance Cartography, Paramet
+  2408.06273	FuxiTranyu: A Multilingual Large Language Model Trained with Balanced 
+  … and 10 more
+Corpus now has 527 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [12/163] concept-based explanations
+----------------------------------------------------------------
+Found 20 papers
+  2502.03422	Concept Based Explanations and Class Contrasting
+  2309.12482	State2Explanation: Concept-Based Explanations to Benefit Agent Learnin
+  2404.18533	Evaluating Readability and Faithfulness of Concept-based Explanations
+  2303.15632	UFO: A unified method for controlling Understandability and Faithfulne
+  1902.03129	Towards Automatic Concept-based Explanations
+  2209.11222	Concept Activation Regions: A Generalized Framework For Concept-Based 
+  2107.11889	GCExplainer: Human-in-the-Loop Concept-based Explanations for Graph Ne
+  2007.11500	Debiasing Concept-based Explanations with Causal Analysis
+  2004.13003	Corpus-level and Concept-based Explanations for Interpretable Document
+  2601.10700	LIBERTy: A Causal Framework for Benchmarking Concept-Based Explanation
+  … and 10 more
+Corpus now has 547 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [13/163] Score-CAM
+----------------------------------------------------------------
+Found 20 papers
+  2103.13859	Group-CAM: Group Score-Weighted Visual Explanations for Deep Convoluti
+  2010.03023	IS-CAM: Integrated Score-CAM for axiomatic-based explanations
+  2006.14255	SS-CAM: Smoothed Score-CAM for Sharper Visual Feature Localization
+  1910.01279	Score-CAM: Score-Weighted Visual Explanations for Convolutional Neural
+  2607.19372	endoExplain: A reproducible protocol for auditing score-localisation d
+  2605.02007	How Can One Choose the Best CAM-Based Explainability Method for a CNN 
+  2209.14074	Recipro-CAM: Fast gradient-free visual explanations for convolutional 
+  2410.21557	A Novel Score-CAM based Denoiser for Spectrographic Signature Extracti
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2604.08502	Quantifying Explanation Consistency: The C-Score Metric for CAM-Based 
+  … and 10 more
+Corpus now has 547 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [14/163] class activation mapping
+----------------------------------------------------------------
+Found 20 papers
+  2001.05153	Extending Class Activation Mapping Using Gaussian Receptive Field
+  2209.09104	VS-CAM: Vertex Semantic Class Activation Mapping to Interpret Vision G
+  2206.12943	Multi-view Feature Augmentation with Adaptive Class Activation Mapping
+  2102.05228	Towards Better Explanations of Class Activation Mapping
+  2504.09998	Metric-Guided Synthesis of Class Activation Mapping
+  2509.12496	Localized Region Guidance for Class Activation Mapping in WSSS
+  2201.08636	Conceptor Learning for Class Activation Mapping
+  2306.03400	G-CAME: Gaussian-Class Activation Mapping Explainer for Object Detecto
+  2106.10472	Informative Class Activation Maps
+  2404.13417	Efficient and Concise Explanations for Object Detection with Gaussian-
+  … and 10 more
+Corpus now has 567 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [15/163] Grad-CAM
+----------------------------------------------------------------
+Found 20 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  2205.10838	Grad-CAM++ is Equivalent to Grad-CAM With Positive Gradients
+  2001.06538	Adapting Grad-CAM for Embedding Networks
+  2307.10506	Is Grad-CAM Explainable in Medical Images?
+  2204.05427	Generalizing Adversarial Explanations with Grad-CAM
+  2608.05258	Grad-CAM for Vision Transformers: A Systematic Taxonomy and Audit of M
+  2005.05768	Interpreting Neural Ranking Models using Grad-CAM
+  1611.07450	Grad-CAM: Why did you say that?
+  1805.11393	Robust Tumor Localization with Pyramid Grad-CAM
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  … and 10 more
+Corpus now has 585 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [16/163] gradient-free attribution
+----------------------------------------------------------------
+Found 3 papers
+  2604.15780	Pruning Unsafe Tickets: A Resource-Efficient Framework for Safer and M
+  2407.14097	Forward-Forward Learning achieves Highly Selective Latent Representati
+  2501.00743	AttriReBoost: A Gradient-Free Propagation Optimization Method for Cold
+Corpus now has 588 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [17/163] activation-based localization
+----------------------------------------------------------------
+Found 1 papers
+  2609.06232	Spatial Attention Supervision for Defect Localization: Exploiting Grou
+Corpus now has 589 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [18/163] CAM localization
+----------------------------------------------------------------
+Found 12 papers
+  2106.08366	Explaining decision of model from its prediction
+  2607.27122	Towards Grounded GI Endoscopy VQA via Multi-Task Learning on Small VLM
+  2109.07069	F-CAM: Full Resolution Class Activation Maps via Guided Parametric Ups
+  1507.00832	The Efficiency of Density Deconvolution
+  2303.07673	Kullback-Leibler Divergence and Akaike Information Criterion in Genera
+  2002.03509	A New Perspective for Flexible Feature Gathering in Scene Text Recogni
+  2405.06437	Generalized van Trees inequality: Local minimax bounds for non-smooth 
+  2608.13343	AmalthAI: An Open-Source Computer Vision Platform for Cultural Heritag
+  2605.13730	Robust and Explainable Bicuspid Aortic Valve Diagnosis Using Stacked E
+  2605.00363	Profile Likelihood Inference for Anisotropic Hyperbolic Wrapped Normal
+  … and 2 more
+Corpus now has 601 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [19/163] Explanation stability
+----------------------------------------------------------------
+Found 20 papers
+  2608.07062	Explanation Stability of Test-Time Adaptation in Computational Patholo
+  2607.16652	Position: Explanation Stability Is a Property of the Model Method Pair
+  2603.05024	Measuring the Fragility of Trust: Devising Credibility Index via Expla
+  2306.06716	On Minimizing the Impact of Dataset Shifts on Actionable Explanations
+  2111.04303	Defense Against Explanation Manipulation
+  2609.24280	Temporal Generalization and Explanation Stability of Control Flow Grap
+  2609.07803	Understanding the Impact of Model Pruning on Long-Tail Forgetting and 
+  2608.10349	Beyond Detection Accuracy: Measuring Explanation Cost, Stability, and 
+  2506.14217	TriGuard: Testing Model Safety with Attribution Entropy, Verification,
+  2208.06175	The Weighting Game: Evaluating Quality of Explainability Methods
+  … and 10 more
+Corpus now has 621 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [20/163] attribution robustness
+----------------------------------------------------------------
+Found 20 papers
+  2012.14395	Enhanced Regularizers for Attributional Robustness
+  2010.07393	FAR: A General Framework for Attributional Robustness
+  1911.13073	Attributional Robustness Training using Input-Gradient Spatial Alignme
+  1712.05799	Multi-Attribute Robust Component Analysis for Facial UV Maps
+  2405.06361	Certified $\ell_2$ Attribution Robustness via Uniformly Smoothed Attri
+  2306.07462	On the Robustness of Removal-Based Feature Attributions
+  2212.09155	Estimating the Adversarial Robustness of Attributions in Text with Tra
+  2307.02094	DARE: Towards Robust Text Explanations in Biomedical and Healthcare Ap
+  2605.29983	Improving Adversarial Robustness of Attribution via Implicit Regulariz
+  2006.06643	Smoothed Geometry for Robust Attribution
+  … and 10 more
+Corpus now has 641 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [21/163] stability bounds explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 641 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [22/163] formal guarantees explanation
+----------------------------------------------------------------
+Found 1 papers
+  2604.14209	Towards Verified and Targeted Explanations through Formal Methods
+Corpus now has 642 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [23/163] Lipschitz continuity explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 642 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [24/163] perturbation invariance explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 642 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [25/163] Attention interpretability
+----------------------------------------------------------------
+Found 20 papers
+  1909.11218	Attention Interpretability Across NLP Tasks
+  1902.07494	NAIRS: A Neural Attentive Interpretable Recommendation System
+  2609.05846	Functional Attentive Interpretable Regression
+  1906.03731	Is Attention Interpretable?
+  2303.15190	Evaluating self-attention interpretability through human-grounded expe
+  2207.13018	Is Attention Interpretation? A Quantitative Assessment On Sets
+  1908.07442	TabNet: Attentive Interpretable Tabular Learning
+  1501.07716	Attention Please! A Hybrid Resource Recommender Mimicking Attention-In
+  2309.13476	Hierarchical attention interpretation: an interpretable speech-level t
+  2608.06776	Faster Query-Key Learning Sharpens Attention in Self-Attention Models
+  … and 10 more
+Corpus now has 662 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [26/163] attention attribution
+----------------------------------------------------------------
+Found 20 papers
+  2004.11207	Self-Attention Attribution: Interpreting Information Interactions Insi
+  2606.20532	How Do Instructions Shape Speech? Cross-Attention Attribution for Styl
+  2411.00630	STAA: Spatio-Temporal Attention Attribution for Real-Time Interpreting
+  1811.07544	CA3Net: Contextual-Attentional Attribute-Appearance Network for Person
+  2406.04612	Faithful and Accurate Self-Attention Attribution for Message Passing N
+  2512.09894	Exploring Protein Language Model Architecture-Induced Biases for Antib
+  2210.05883	AD-DROP: Attribution-Driven Dropout for Robust Language Model Fine-Tun
+  2512.05865	Intrinsically Interpretable Attention via Sparse Post-Training
+  2509.13496	BiasMap: Leveraging Cross-Attentions to Discover and Mitigate Hidden S
+  2607.13508	CDS: Counterfactual Directionality Score for Structured Interventions 
+  … and 10 more
+Corpus now has 682 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [27/163] cross-attention
+----------------------------------------------------------------
+Found 20 papers
+  2303.17696	Dual Cross-Attention for Medical Image Segmentation
+  2311.03335	Cross-Image Attention for Zero-Shot Appearance Transfer
+  2204.00452	Vision Transformer with Cross-attention by Temporal Shift for Efficien
+  2505.08426	DHECA-SuperGaze: Dual Head-Eye Cross-Attention and Super-Resolution fo
+  2511.09137	xHAP: Cross-Modal Attention for Haptic Feedback Estimation in the Tact
+  2106.13552	Graph Pattern Loss based Diversified Attention Network for Cross-Modal
+  2607.07953	Linear Attention Architectures: Mechanisms, Trade-offs, and Cross-Laye
+  2309.01692	Mask-Attention-Free Transformer for 3D Instance Segmentation
+  2403.19554	Cross-Attention is Not Always Needed: Dynamic Cross-Attention for Audi
+  2306.05427	Grounded Text-to-Image Synthesis with Attention Refocusing
+  … and 10 more
+Corpus now has 702 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [28/163] self-attention interpretability
+----------------------------------------------------------------
+Found 1 papers
+  2303.15190	Evaluating self-attention interpretability through human-grounded expe
+Corpus now has 702 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [29/163] attention rollout
+----------------------------------------------------------------
+Found 20 papers
+  2607.22367	Interior interpretability with attention rollout: contraction and prop
+  2504.19414	GMAR: Gradient-Driven Multi-Head Attention Rollout for Vision Transfor
+  2610.05558	An equality condition for the Dobrushin bound on attention rollout and
+  2609.25978	Faithful Faithfulness Evaluations: Challenges & Pitfalls Learned from 
+  2510.12021	Evaluating the Explainability of Vision Transformers in Medical Imagin
+  2501.07044	Protego: Detecting Adversarial Examples for Vision Transformers via In
+  2606.13839	Explaining RhythmFormer: A Systematic XAI Analysis of Periodic Sparse 
+  2610.16349	RIFT: Token Influence Follows the Path of Least Resistance
+  2609.24770	XSQ-AST: An Explainable Audio Spectrogram Transformer Framework for Lo
+  2601.11666	MATEX: Multi-scale Attention and Text-guided Explainability of Medical
+  … and 10 more
+Corpus now has 722 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [30/163] attention faithfulness
+----------------------------------------------------------------
+Found 2 papers
+  2609.00830	Visual Attention Faithfulness in Vision-Language Models is Heterogeneo
+  2605.08325	CAMAL: Improving Attention Alignment and Faithfulness with Segmentatio
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [31/163] Saliency maps
+----------------------------------------------------------------
+Found 20 papers
+  1812.01687	PointCloud Saliency Maps
+  1902.04893	Why are Saliency Maps Noisy? Cause of and Solution to Noisy Saliency M
+  2006.07828	On Saliency Maps and Adversarial Robustness
+  2304.07609	ODSmoothGrad: Generating Saliency Maps for Object Detectors
+  1811.04544	Visual Saliency Maps Can Apply to Facial Expression Recognition
+  2406.10422	Phoneme Discretized Saliency Maps for Explainable Detection of AI-Gene
+  2105.01386	Canonical Saliency Maps: Decoding Deep Face Models
+  1910.13140	Concept Saliency Maps to Visualize Relevant Features in Deep Generativ
+  1912.05743	Exploratory Not Explanatory: Counterfactual Analysis of Saliency Maps 
+  1508.04586	Saliency maps on image hierarchies
+  … and 10 more
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [32/163] Visual attribution
+----------------------------------------------------------------
+Found 20 papers
+  2505.19360	ChartLens: Fine-grained Visual Attribution in Charts
+  2604.16587	Real-Time Visual Attribution Streaming in Thinking Model
+  2401.01414	VALD-MD: Visual Attribution via Latent Diffusion for Medical Diagnosti
+  2606.18008	PhaseWin: An Efficient Search Algorithm for Faithful Visual Attributio
+  2609.14441	From Visual Attribution to Clinical Reasoning: Explainable Parkinson's
+  2104.04362	Multimodal Face Synthesis from Visual Attributes
+  1805.02860	Visual Attribute-augmented Three-dimensional Convolutional Neural Netw
+  2412.07674	FiVA: Fine-grained Visual Attribute Dataset for Text-to-Image Diffusio
+  2510.21704	Automated Detection of Visual Attribute Reliance with a Self-Reflectiv
+  2106.09707	Learning to Predict Visual Attributes in the Wild
+  … and 10 more
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [33/163] Feature importance estimation
+----------------------------------------------------------------
+Found 20 papers
+  2002.04464	Feature Importance Estimation with Self-Attention Networks
+  2009.14454	Accurate and Robust Feature Importance Estimation under Distribution S
+  2602.11760	Aggregate Models, Not Explanations: Improving Feature Importance Estim
+  2602.20001	FairFS: Addressing Deep Feature Selection Biases for Recommender Syste
+  2601.23068	ExplainerPFN: Towards tabular foundation models for model-free zero-sh
+  2206.12002	STREAMLINE: A Simple, Transparent, End-To-End Automated Machine Learni
+  2310.10427	DANAA: Towards transferable attacks with double adversarial neuron att
+  2508.00626	Deep Learning-Based Rate-Adaptive CSI Feedback for Wideband XL-MIMO Sy
+  2506.20988	Segment Anything in Pathology Images with Natural Language
+  2308.13187	MMBAttn: Max-Mean and Bit-wise Attention for CTR Prediction
+  … and 10 more
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [34/163] Pixel-level attribution
+----------------------------------------------------------------
+Found 10 papers
+  2608.23593	Fidelity Preference, Not Demographic Preference: A Pixel-Level Attribu
+  2506.15499	Pixel-level Certified Explanations via Randomized Smoothing
+  2210.04885	What the DAAM: Interpreting Stable Diffusion Using Cross Attention
+  2109.02436	ReLaX: Retinal Layer Attribution for Guided Explanations of Automated 
+  2412.02275	PCIM: Learning Pixel Attributions via Pixel-wise Channel Isolation Mix
+  2409.18260	PCEvE: Part Contribution Evaluation Based Model Explanation for Human 
+  2309.14755	Image Denoising via Style Disentanglement
+  2604.05819	Learn to Rank: Visual Attribution by Learning Importance Ranking
+  2508.09476	Collaborative Face Experts Fusion in Video Generation: Boosting Identi
+  2605.12017	FAME: Feature Activation Map Explanation on Image Classification and F
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [35/163] Gradient-based explanations
+----------------------------------------------------------------
+Found 20 papers
+  2508.10490	On the Complexity-Faithfulness Trade-off of Gradient-Based Explanation
+  2206.07387	The Manifold Hypothesis for Gradient-Based Explanations
+  2502.04970	Gradient-based Explanations for Deep Learning Survival Models
+  2206.15462	Improving Visual Grounding by Encouraging Consistent Gradient-based Ex
+  2305.12178	Model Debiasing via Gradient-based Explanation on Representation
+  2508.10595	On Spectral Properties of Gradient-based Explanation Methods
+  2403.17224	Uncertainty Quantification for Gradient-based Explanations in Neural N
+  2102.10618	Towards the Unification and Robustness of Perturbation and Gradient Ba
+  2005.01452	Do Gradient-based Explanations Tell Anything About Adversarial Robustn
+  2407.07639	Explaining Graph Neural Networks for Node Similarity on Graphs
+  … and 10 more
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [36/163] Perturbation-based explanations
+----------------------------------------------------------------
+Found 20 papers
+  2506.19630	Why Uncertainty Calibration Matters for Reliable Perturbation-based Ex
+  2511.10439	Improving Perturbation-based Explanations by Understanding the Role of
+  2510.03317	Photorealistic Inpainting for Perturbation-based Explanations in Ecolo
+  2502.14001	Towards a perturbation-based explanation for medical AI as differentia
+  2502.03957	Improving the Perturbation-Based Explanation of Deepfake Detectors Thr
+  2507.18607	Explainable Mapper: Charting LLM Embedding Spaces Using Perturbation-B
+  2212.00952	On the Limit of Explaining Black-box Temporal Graph Neural Networks
+  2607.15482	Inpainting Insights: Elevating Visual XAI with Photorealistic Perturba
+  2410.05476	Manipulating quasi-bound states in a photonic crystal with periodic im
+  2407.16653	Aggregated Attributions for Explanatory Analysis of 3D Segmentation Mo
+  … and 10 more
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [37/163] Occlusion sensitivity
+----------------------------------------------------------------
+Found 20 papers
+  2207.12859	Adaptive occlusion sensitivity analysis for visually explaining video 
+  2311.15022	Occlusion Sensitivity Analysis with Augmentation Subspace Perturbation
+  2309.10563	A Hierarchical Neural Framework for Classification and its Explanation
+  2304.02407	Explaining Multimodal Data Fusion: Occlusion Analysis for Wilderness M
+  2108.05798	Deep Learning for Real-Time Aerodynamic Evaluations of Arbitrary Vehic
+  2101.05791	U-Noise: Learnable Noise Masks for Interpretable Image Segmentation
+  2605.27964	DRIFT: Driving Risk Inference via Field Transmission for Human-like Au
+  2211.01210	Transfer learning, alternative approaches, and visualization of a conv
+  2508.09328	Dynamic Survival Prediction using Longitudinal Images based on Transfo
+  2605.02230	InfiltrNet: Dual-Branch CNN-Transformer Architecture for Brain Tumor I
+  … and 10 more
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [38/163] Input-output attribution
+----------------------------------------------------------------
+Found 2 papers
+  2310.00492	From Language Modeling to Instruction Following: Understanding the Beh
+  2511.21514	Mechanistic Interpretability for Transformer-based Time Series Classif
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [39/163] Class-specific localization
+----------------------------------------------------------------
+Found 6 papers
+  1810.07050	Generating Self-Guided Dense Annotations for Weakly Supervised Semanti
+  2512.16700	CLARiTy: A Vision Transformer for Multi-Label Classification and Weakl
+  2403.01156	Auxiliary Tasks Enhanced Dual-affinity Learning for Weakly Supervised 
+  2603.08347	Local-Global Prompt Learning via Sparse Optimal Transport
+  1902.07511	Dense 3D Visual Mapping via Semantic Simplification
+  2610.15669	ProtoPur: Prototype-Purity Pseudo-Labeling for Weakly Supervised Insta
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [40/163] Multimodal feature attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [41/163] Attribution robustness
+----------------------------------------------------------------
+Found 20 papers
+  2012.14395	Enhanced Regularizers for Attributional Robustness
+  2010.07393	FAR: A General Framework for Attributional Robustness
+  1911.13073	Attributional Robustness Training using Input-Gradient Spatial Alignme
+  1712.05799	Multi-Attribute Robust Component Analysis for Facial UV Maps
+  2405.06361	Certified $\ell_2$ Attribution Robustness via Uniformly Smoothed Attri
+  2306.07462	On the Robustness of Removal-Based Feature Attributions
+  2212.09155	Estimating the Adversarial Robustness of Attributions in Text with Tra
+  2307.02094	DARE: Towards Robust Text Explanations in Biomedical and Healthcare Ap
+  2605.29983	Improving Adversarial Robustness of Attribution via Implicit Regulariz
+  2006.06643	Smoothed Geometry for Robust Attribution
+  … and 10 more
+Corpus now has 724 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [42/163] Explanation consistency
+----------------------------------------------------------------
+Found 20 papers
+  2408.04600	Improving Network Interpretability via Explanation Consistency Evaluat
+  2401.13986	Towards Consistent Natural-Language Explanations via Explanation-Consi
+  2605.12701	Do Fair Models Reason Fairly? Counterfactual Explanation Consistency f
+  2605.28609	JECA^2: Judgment-Explanation Consistent Adversarial Attack against For
+  2608.18759	Beyond Predictive Fairness: Quantifying Attribution Consistency Across
+  2312.05778	Guiding ChatGPT to Fix Web UI Tests via Explanation-Consistency Checki
+  2505.07910	Tuning for Trustworthiness -- Balancing Performance and Explanation Co
+  2606.30550	SIGMA: Saliency-Guided Sparse Mask Attacks for Speech Emotion Recognit
+  2604.08502	Quantifying Explanation Consistency: The C-Score Metric for CAM-Based 
+  2105.06791	Agree to Disagree: When Deep Learning Models With Identical Architectu
+  … and 10 more
+Corpus now has 743 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [43/163] Saliency map invariance
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 743 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [44/163] Explanation sensitivity
+----------------------------------------------------------------
+Found 4 papers
+  2410.05085	Explanation sensitivity to the randomness of large language models: th
+  2603.08241	Sensivity of LLMs' Explanations to the Training Randomness:Context, Cl
+  2208.02555	Multi-modal volumetric concept activation to explain detection and cla
+  2504.19027	DiCE-Extended: A Robust Approach to Counterfactual Explanations in Mac
+Corpus now has 747 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [45/163] Adversarial robustness of explanations
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 747 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [46/163] Perturbation stability explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 747 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [47/163] Certified robustness explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 747 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [48/163] Certified explanations
+----------------------------------------------------------------
+Found 3 papers
+  2506.15499	Pixel-level Certified Explanations via Randomized Smoothing
+  2509.09312	Explaining Tournament Solutions with Minimal Supports
+  2605.09852	Fairness of Explanations in Artificial Intelligence (AI): A Unifying F
+Corpus now has 749 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [49/163] Formal verification of explanations
+----------------------------------------------------------------
+Found 2 papers
+  1608.07879	Causality and Responsibility for Formal Verification and Beyond
+  2603.02396	COOL-MC: Verifying and Explaining RL Policies for Platelet Inventory M
+Corpus now has 751 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [50/163] Stability under distribution shift explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 751 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [51/163] Randomization robustness saliency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 751 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [52/163] Statistical confidence bounds explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 751 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [53/163] Cross-modal attention
+----------------------------------------------------------------
+Found 20 papers
+  2501.01926	Cross-Modal Attention Calibration for LVLM Hallucination Mitigation
+  2212.10549	Cross-modal Attention Congruence Regularization for Vision-Language Re
+  2107.04548	Cross-modal Attention for MRI and Ultrasound Volume Registration
+  2105.09597	More Than Just Attention: Improving Cross-Modal Attentions with Contra
+  2411.18659	DHCP: Detecting Hallucinations by Cross-modal Attention Pattern in Lar
+  2604.07741	MSCT: Differential Cross-Modal Attention for Deepfake Detection
+  2510.07567	Cross-Modal Attention Guided Unlearning in Vision-Language Models
+  2610.07243	Hybrid Cross-Modal Attention Network for Early Breast Cancer Detection
+  1912.07872	Cross-Modality Attention with Semantic Graph Embedding for Multi-Label
+  2108.09669	Using Large Pre-Trained Models with Cross-Modal Attention for Multi-Mo
+  … and 10 more
+Corpus now has 771 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [54/163] Vision-language alignment
+----------------------------------------------------------------
+Found 20 papers
+  2502.17028	Distributional Vision-Language Alignment by Cauchy-Schwarz Divergence
+  2506.08990	Efficient Medical Vision-Language Alignment Through Adapting Masked Vi
+  2502.19672	Improving Adversarial Transferability in MLLMs via Dynamic Vision-Lang
+  2512.23243	RAH-VLA: Resolution-Adaptive Hierarchical Vision-Language Alignment fo
+  2410.14148	Fine-Grained Verifiers: Preference Modeling as Next-token Prediction i
+  2601.22666	ExpAlign: Expectation-Guided Vision-Language Alignment for Open-Vocabu
+  2510.18795	ProCLIP: Progressive Vision-Language Alignment via LLM-based Embedder
+  2511.18444	SineProject: Machine Unlearning for Stable Vision Language Alignment
+  2303.00279	Coarse-to-Fine Covid-19 Segmentation via Vision-Language Alignment
+  2207.14525	Curriculum Learning for Data-Efficient Vision-Language Alignment
+  … and 10 more
+Corpus now has 791 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [55/163] Token-to-region alignment
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 791 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [56/163] Attention faithfulness
+----------------------------------------------------------------
+Found 2 papers
+  2609.00830	Visual Attention Faithfulness in Vision-Language Models is Heterogeneo
+  2605.08325	CAMAL: Improving Attention Alignment and Faithfulness with Segmentatio
+Corpus now has 791 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [57/163] Attention flow
+----------------------------------------------------------------
+Found 20 papers
+  1811.00497	Modeling Attention Flow on Graphs
+  1611.01603	Bidirectional Attention Flow for Machine Comprehension
+  2205.15389	Attention Flows for General Transformers
+  2105.14652	Attention Flows are Shapley Value Explanations
+  2005.00928	Quantifying Attention Flow in Transformers
+  2502.15765	Generalized Attention Flow: Feature Attribution for Transformer Models
+  2009.07053	Attention Flows: Analyzing and Comparing Attention Mechanisms in Langu
+  2308.14570	SAAN: Similarity-aware attention flow network for change detection wit
+  2001.03960	Attention Flow: End-to-End Joint Attention Estimation
+  2412.01202	Neuron Abandoning Attention Flow: Visual Explanation of Dynamics insid
+  … and 10 more
+Corpus now has 810 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [58/163] Attention rollout
+----------------------------------------------------------------
+Found 20 papers
+  2607.22367	Interior interpretability with attention rollout: contraction and prop
+  2504.19414	GMAR: Gradient-Driven Multi-Head Attention Rollout for Vision Transfor
+  2610.05558	An equality condition for the Dobrushin bound on attention rollout and
+  2609.25978	Faithful Faithfulness Evaluations: Challenges & Pitfalls Learned from 
+  2510.12021	Evaluating the Explainability of Vision Transformers in Medical Imagin
+  2501.07044	Protego: Detecting Adversarial Examples for Vision Transformers via In
+  2606.13839	Explaining RhythmFormer: A Systematic XAI Analysis of Periodic Sparse 
+  2610.16349	RIFT: Token Influence Follows the Path of Least Resistance
+  2609.24770	XSQ-AST: An Explainable Audio Spectrogram Transformer Framework for Lo
+  2601.11666	MATEX: Multi-scale Attention and Text-guided Explainability of Medical
+  … and 10 more
+Corpus now has 810 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [59/163] Cross-attention visualization
+----------------------------------------------------------------
+Found 4 papers
+  2604.02583	FusionBERT: Multi-View Image--3D Retrieval via Cross-Attention Visual 
+  2506.13166	GreedyPrune: Retenting Critical Visual Token Set for Large Vision Lang
+  2606.31054	ADAPT: Attention Dynamics Alignment with Preference Tuning for Faithfu
+  2607.03831	How Do Diffusion Classifiers Decide? A Bias-Centric Evaluation
+Corpus now has 814 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [60/163] Image-text grounding
+----------------------------------------------------------------
+Found 2 papers
+  2010.16363	Domain-Specific Lexical Grounding in Noisy Visual-Textual Documents
+  2410.09999	Leveraging Customer Feedback for Multi-modal Insight Extraction
+Corpus now has 816 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [61/163] Token-level attribution
+----------------------------------------------------------------
+Found 20 papers
+  2601.19672	ProToken: Token-Level Attribution for Federated Large Language Models
+  2605.00364	Unlearning What Matters: Token-Level Attribution for Precise Language 
+  2511.15886	What Really Counts? Examining Step and Token Level Attribution in Mult
+  2507.05261	TokenShapley: Token Level Context Attribution with Shapley Value
+  2306.00374	CFL: Causally Fair Language Models Through Token-level Attribute Contr
+  2512.05012	Factuality and Transparency Are All RAG Needs! Self-Explaining Contras
+  2104.04515	Connecting Attributions and QA Model Behavior on Realistic Counterfact
+  2509.00190	Explainable Chain-of-Thought Reasoning: An Empirical Analysis on State
+  2606.28153	Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence 
+  2506.16052	A Hybrid DeBERTa and Gated Broad Learning System for Cyberbullying Det
+  … and 10 more
+Corpus now has 836 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [62/163] Attention-based localization
+----------------------------------------------------------------
+Found 15 papers
+  1711.09550	Attention Clusters: Purely Attention Based Local Feature Integration f
+  1806.08840	Deep SNP: An End-to-end Deep Neural Network with Attention-based Local
+  2605.26756	Localizing Memorized Regions in Diffusion Models via Coordinate-Wise C
+  1710.00343	Large-scale weakly supervised audio classification using gated convolu
+  2511.01610	DINO-MX: A Modular & Flexible Framework for Self-Supervised Learning
+  2606.24292	ActiveScope: Actively Seeking and Correcting Perception for MLLMs
+  2412.10011	Enhanced Speech Emotion Recognition with Efficient Channel Attention G
+  2603.11403	DeepHistoViT: An Interpretable Vision Transformer Framework for Histop
+  2304.12425	TIGTEC : Token Importance Guided TExt Counterfactuals
+  2609.33344	ReLoc: Rethinking Scene Coordinate Regression Architecture for Robust 
+  … and 5 more
+Corpus now has 851 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [63/163] Attention intervention
+----------------------------------------------------------------
+Found 20 papers
+  2506.12609	Not All Tokens and Heads Are Equally Important: Dual-Level Attention I
+  2109.03952	Attributing Fair Decisions with Attention Interventions
+  2511.09018	Causally-Grounded Dual-Path Attention Intervention for Object Hallucin
+  2506.23590	CAI: Caption-Sensitive Attention Intervention for Mitigating Object Ha
+  2606.29847	See Only When Needed: Context-Aware Attention Intervention for Mitigat
+  2506.11073	CLAIM: Mitigating Multilingual Object Hallucination in Large Vision-La
+  2503.11154	Don't Take Things Out of Context: Attention Intervention for Enhancing
+  2609.09700	AppetiteCheck: Feasibility of Momentary Vagus Nerve Stimulation as an 
+  2406.10392	Advancing Robot-Assisted Autism Therapy: A Novel Algorithm for Enhanci
+  2509.22244	FlashEdit: Decoupling Speed, Structure, and Semantics for Precise Imag
+  … and 10 more
+Corpus now has 871 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [64/163] Causal attention analysis
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 871 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [65/163] Faithfulness metrics explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 871 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [66/163] Explanation fidelity
+----------------------------------------------------------------
+Found 20 papers
+  1907.12652	How model accuracy and explanation fidelity influence user trust
+  2609.03851	Pushing the (Decision) Boundaries: Dynamically Calibrating Differentia
+  1905.00122	To believe or not to believe: Validating explanation fidelity for dyna
+  2509.20767	ExpIDS: A Drift-adaptable Network Intrusion Detection System With Impr
+  2106.08492	Developing a Fidelity Evaluation Approach for Interpretable Machine Le
+  2607.09502	All Explanations are Wrong, But Many Are Useful: Exploring the Rashomo
+  1810.02678	Local Interpretable Model-agnostic Explanations of Bayesian Predictive
+  2506.04608	Ignoring Directionality Leads to Compromised Graph Neural Network Expl
+  2610.05379	Does Explainability Survive Data Drift?
+  1907.12669	The Challenge of Imputation in Explainable Artificial Intelligence Mod
+  … and 10 more
+Corpus now has 891 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [67/163] Deletion and insertion metrics
+----------------------------------------------------------------
+Found 3 papers
+  0810.3729	Optimal codes in deletion and insertion metric
+  1003.4057	Construction of optimal codes in deletion and insertion metric
+  2604.05819	Learn to Rank: Visual Attribution by Learning Importance Ranking
+Corpus now has 893 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [68/163] Infidelity and sensitivity saliency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 893 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [69/163] Localization accuracy explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 893 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [70/163] Explanation reproducibility
+----------------------------------------------------------------
+Found 3 papers
+  2604.08502	Quantifying Explanation Consistency: The C-Score Metric for CAM-Based 
+  2603.14894	Informative Perturbation Selection for Uncertainty-Aware Post-hoc Expl
+  2609.30397	A Synthetic Ground-Truth Framework for the Evaluation of Explainable A
+Corpus now has 895 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [71/163] Sanity checks for saliency maps
+----------------------------------------------------------------
+Found 5 papers
+  1810.03292	Sanity Checks for Saliency Maps
+  2110.14297	Revisiting Sanity Checks for Saliency Maps
+  2405.02383	A Fresh Look at Sanity Checks for Saliency Maps
+  2106.07475	Investigating sanity checks for saliency maps with image and text clas
+  1810.03307	Local Explanation Methods for Deep Neural Networks Lack Sensitivity to
+Corpus now has 899 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [72/163] Human-grounded interpretability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 899 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [73/163] Explanation completeness
+----------------------------------------------------------------
+Found 1 papers
+  2607.21210	Explainable Belief Harmonization under Dynamic Epistemic Partitions
+Corpus now has 900 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [74/163] Counterfactual evaluation explanation
+----------------------------------------------------------------
+Found 1 papers
+  2203.01310	Counterfactually Evaluating Explanations in Recommender Systems
+Corpus now has 901 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [75/163] Multimodal attribution consistency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 901 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [76/163] Cross-modal explanation consistency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 901 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [77/163] Vision-language grounding
+----------------------------------------------------------------
+Found 20 papers
+  2608.07886	Vision-Language Grounding as Bidirectional Concept Correspondence
+  2608.03322	LocAnyMed: Vision-Language Grounding for Multimodal Medical Images
+  2609.12285	AnchorVLN: Geometry-Anchored Vision-Language Grounding Reasoning for O
+  2602.09701	GenSeg-R1: RL-Driven Vision-Language Grounding for Fine-Grained Referr
+  2605.07141	Qwen3-VL-Seg: Unlocking Open-World Referring Segmentation with Vision-
+  2608.25299	PointRL: Learning Point-Level Vision-Language Grounding from Verifiabl
+  2605.27365	LocateAnything: Fast and High-Quality Vision-Language Grounding with P
+  2203.09067	UNIMO-2: End-to-End Unified Vision-Language Grounded Learning
+  2609.17035	SWIM: Vision-Language-Grounded Soft Whole-Body Interactive Manipulatio
+  2604.17126	Prompt Sensitivity in Vision-Language Grounding: How Small Changes in 
+  … and 10 more
+Corpus now has 921 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [78/163] Text-conditioned visual explanations
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 921 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [79/163] Image-text similarity attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 921 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [80/163] Contrastive explanation methods
+----------------------------------------------------------------
+Found 7 papers
+  2210.08902	Beyond Model Interpretability: On the Faithfulness and Adversarial Rob
+  2009.12199	Explaining Chemical Toxicity using Missing Features
+  2506.07327	CASE: Contrastive Activation for Class-Sensitive Explanations
+  2406.11785	CELL your Model: Contrastive Explanations for Large Language Models
+  1906.00117	Model Agnostic Contrastive Explanations for Structured Data
+  2103.07110	Explaining Network Intrusion Detection System Using Explainable AI Fra
+  2204.06614	Accurate Clinical Toxicity Prediction using Multi-task Deep Neural Net
+Corpus now has 928 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [81/163] Vision-language model robustness
+----------------------------------------------------------------
+Found 6 papers
+  2505.11804	Are vision language models robust to uncertain inputs?
+  2606.08894	Are Reasoning Vision-Language Models Robust to Semantic Visual Distrac
+  2402.03627	Partially Recentralization Softmax Loss for Vision-Language Models Rob
+  2307.11978	Why Is Prompt Tuning for Vision-Language Models Robust to Noisy Labels
+  2501.09446	Double Visual Defense: Adversarial Pre-training and Instruction Tuning
+  2604.04473	Beyond Standard Benchmarks: A Systematic Audit of Vision-Language Mode
+Corpus now has 934 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [82/163] Multimodal feature disentanglement
+----------------------------------------------------------------
+Found 1 papers
+  2308.04502	Revisiting Disentanglement and Fusion on Modality and Context in Conve
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [83/163] Visual token attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [84/163] Patch-level relevance propagation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [85/163] Language-conditioned saliency maps
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [86/163] Explanation alignment textual rationales
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [87/163] Causal interventions in vision-language models
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [88/163] Representation similarity interpretability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [89/163] Prompt sensitivity explanation stability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [90/163] Concept-based multimodal explanations
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [91/163] Faithfulness of vision-language explanations
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 935 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [92/163] CLIP interpretability
+----------------------------------------------------------------
+Found 5 papers
+  2505.17425	Debiasing CLIP: Interpreting and Correcting Bias in Attention Heads
+  2409.06579	Quantifying and Enabling the Interpretability of CLIP-like Models
+  2407.00592	Unveiling Glitches: A Deep Dive into Image Encoding Bugs within CLIP
+  2502.14889	Narrowing Information Bottleneck Theory for Multimodal Image-Text Repr
+  2505.18819	Parameter-Efficient CLIP Adaptation for 3D Understanding via Unified T
+Corpus now has 939 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [93/163] BLIP interpretability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 939 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [94/163] Provable explainability
+----------------------------------------------------------------
+Found 3 papers
+  2602.17530	Provably Explaining Neural Additive Models
+  2105.05473	Interpretable performance analysis towards offline reinforcement learn
+  2605.15348	Clifford-deformed zero-rate LDPC codes with 50% biased noise threshold
+Corpus now has 942 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [95/163] Certified explanations
+----------------------------------------------------------------
+Found 3 papers
+  2506.15499	Pixel-level Certified Explanations via Randomized Smoothing
+  2509.09312	Explaining Tournament Solutions with Minimal Supports
+  2605.09852	Fairness of Explanations in Artificial Intelligence (AI): A Unifying F
+Corpus now has 942 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [96/163] Formal guarantees for attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 942 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [97/163] Lipschitz continuity saliency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 942 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [98/163] Local smoothness saliency maps
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 942 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [99/163] Continuity of saliency maps
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 942 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [100/163] Input perturbation bounds explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 942 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [101/163] Adversarial perturbations explanation
+----------------------------------------------------------------
+Found 1 papers
+  1811.07311	Regularized adversarial examples for model interpretability
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [102/163] Sensitivity analysis saliency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [103/163] Confidence intervals attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [104/163] Concentration bounds explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [105/163] Bootstrap stability explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [106/163] Convergence guarantees attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [107/163] Approximation error attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [108/163] Estimator consistency attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [109/163] Certified attribution robustness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 943 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [110/163] Robust saliency
+----------------------------------------------------------------
+Found 13 papers
+  2305.07180	Robust Saliency-Aware Distillation for Few-shot Fine-grained Visual Re
+  2212.14106	Provable Robust Saliency-based Explanations
+  1711.00322	Robust Saliency Detection via Fusing Foreground and Background Priors
+  2103.05108	Believe The HiPe: Hierarchical Perturbation for Fast, Robust, and Mode
+  1910.02618	CrowdFix: An Eyetracking Dataset of Real Life Crowd Videos
+  1302.6557	Geodesic-based Salient Object Detection
+  2004.08515	JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RG
+  2210.15392	LeNo: Adversarial Robust Salient Object Detection Networks with Learna
+  2112.03650	Activation to Saliency: Forming High-Quality Labels for Completely Uns
+  2604.00549	TF-SSD: A Strong Pipeline via Synergic Mask Filter for Training-free C
+  … and 3 more
+Corpus now has 955 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [111/163] Invariant explanations
+----------------------------------------------------------------
+Found 4 papers
+  2607.02903	TIER: Trajectory-Invariant Explanation Regularization for Membership P
+  2201.12143	Locally Invariant Explanations: Towards Stable and Unidirectional Expl
+  1701.06424	Scheming in the SMEFT... and a reparameterization invariance!
+  1002.0906	Does Time-Symmetry Imply Retrocausality? How the Quantum World Says "M
+Corpus now has 959 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [112/163] Causal feature attribution
+----------------------------------------------------------------
+Found 1 papers
+  2312.16113	Task-Driven Causal Feature Distillation: Towards Trustworthy Risk Pred
+Corpus now has 960 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [113/163] Intervention-based explanations
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 960 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [114/163] Counterfactual faithfulness
+----------------------------------------------------------------
+Found 9 papers
+  2605.17160	When Bits Break Recourse: Counterfactual-Faithful Quantization
+  2606.15779	Faithful Action-unit Causal Reasoning for Counterfactually Faithful Em
+  2608.20632	Sparse Token Routing in Efficient Transformers
+  2503.13445	Verbosity Tradeoffs and the Impact of Scale on the Faithfulness of LLM
+  1910.09398	Learning Model-Agnostic Counterfactual Explanations for Tabular Data
+  2607.20833	REFACT: Adaptive Fact Restatement for Compact and Faithful Chain-of-Th
+  2605.30011	VisualThink-VLA: Visual Intermediate Reasoning for Effective and Low-L
+  2604.19755	Explainable AML Triage with LLMs: Evidence Retrieval and Counterfactua
+  2103.00887	Counterfactual Zero-Shot and Open-Set Visual Recognition
+Corpus now has 969 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [115/163] Attribution uncertainty
+----------------------------------------------------------------
+Found 20 papers
+  2101.09498	Show or Suppress? Managing Input Uncertainty in Machine Learning Model
+  2008.12614	Attributing Uncertainties in the Identification of Hotspots in SPECT I
+  2402.04211	Probabilistic Shapley Value Modeling and Inference
+  2108.04742	The information of attribute uncertainties: what convolutional neural 
+  2512.12506	Explainable Artificial Intelligence for Economic Time Series: A Compre
+  2110.00552	Stochastic Contrastive Learning
+  2605.15753	Hierarchical and Holistic Open-Vocabulary Functional 3D Scene Graphs f
+  2605.26147	Neural Bayesian Sequential Routing
+  2607.16378	Disentangling Model and Human Data Uncertainty in Apparent Facial Age 
+  2606.19846	What Capital After Labor? Forecasting the Talent ROI Transition in the
+  … and 10 more
+Corpus now has 989 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [116/163] Explanation confidence
+----------------------------------------------------------------
+Found 4 papers
+  2510.26518	Human-AI Complementarity: A Goal for Amplified Oversight
+  2603.21296	DeepXplain: XAI-Guided Autonomous Defense Against Multi-Stage APT Camp
+  2311.03533	Quantifying Uncertainty in Natural Language Explanations of Large Lang
+  2006.09000	How Much Can I Trust You? -- Quantifying Uncertainties in Explaining N
+Corpus now has 993 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [117/163] Epistemic uncertainty explanation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 993 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [118/163] Stability of attribution optimization
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 993 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [119/163] Regularized explanations
+----------------------------------------------------------------
+Found 2 papers
+  2105.02653	Regularizing Explanations in Bayesian Convolutional Neural Networks
+  2610.00121	Label Cuts in Layered Automata: Short Explanations for the Regular Con
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [120/163] Stability-regularized saliency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [121/163] vision-language model explainability stability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [122/163] vision-language model interpretability robustness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [123/163] CLIP explainability interpretability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [124/163] Score-CAM stability formal guarantees
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [125/163] Score-CAM robustness certification
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [126/163] class activation mapping stability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [127/163] attention faithfulness multimodal
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [128/163] attention attribution vision-language
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [129/163] attention rollout vision-language
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [130/163] saliency maps certified robustness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [131/163] feature attribution stability bounds
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [132/163] feature attribution provable guarantees
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [133/163] cross-modal attribution faithfulness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [134/163] multimodal explanations stability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [135/163] multimodal explanations robustness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [136/163] Grad-CAM explanation consistency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [137/163] Score-CAM perturbation stability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [138/163] CLIP causal attribution interpretability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [139/163] vision-language model counterfactual interpretability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [140/163] CLIP prompt sensitivity explanation stability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [141/163] CLIP attribution consistency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [142/163] Score-CAM Lipschitz continuity attribution robustness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [143/163] vision-language models certified explanations cross-attention
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [144/163] CLIP saliency consistency adversarial perturbations
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [145/163] multimodal interpretability causal attribution faithfulness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [146/163] class activation mapping explanation invariance formal verification
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [147/163] cross-modal attention token-level attribution stability bounds
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [148/163] visual grounding attention faithfulness explanation evaluation
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [149/163] gradient-free attribution perturbation robustness vision transformers
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [150/163] prompt sensitivity saliency maps vision-language alignment
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [151/163] attention rollout causal interventions multimodal transformers
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [152/163] Certified attribution robustness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [153/163] Vision-language model interpretability
+----------------------------------------------------------------
+Found 5 papers
+  2312.17345	3VL: Using Trees to Improve Vision-Language Models' Interpretability
+  2411.16724	Devils in Middle Layers of Large Vision-Language Models: Interpreting,
+  2511.16816	Trust-Aware Multimodal Data Fusion for Yield Estimation: A Case Study 
+  2607.22721	An Interactive Vision Language Platform for Cognitive Remediation in S
+  2608.05803	Vorch-Omni: Multi-Task Orchestration of Sight and Sound
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [154/163] Score-CAM stability
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [155/163] Multimodal explanation faithfulness
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [156/163] Cross-modal attribution consistency
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [157/163] Attention faithfulness
+----------------------------------------------------------------
+Found 2 papers
+  2609.00830	Visual Attention Faithfulness in Vision-Language Models is Heterogeneo
+  2605.08325	CAMAL: Improving Attention Alignment and Faithfulness with Segmentatio
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [158/163] Perturbation-invariant saliency maps
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [159/163] Formal guarantees for feature attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [160/163] Vision-language grounding explanations
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [161/163] Prompt sensitivity in CLIP
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [162/163] Causal attention attribution
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [163/163] Lipschitz bounds for saliency maps
+----------------------------------------------------------------
+Found 0 papers
+Corpus now has 995 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+
+=== Search summary: ok=163 fail=0 / 163 ===
+
+=== Rebuild recommend index ===
+2026-10-15 03:09:16.607 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+Loading model: google/embeddinggemma-2  (device=mps)
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  95%|█████████▍| 1303/1376 [00:00<00:00, 12926.46it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12892.98it/s]
+  loaded in 7.7s
+Embedding 995 papers...
+Batches:   0%|          | 0/32 [00:00<?, ?it/s]Batches:   3%|▎         | 1/32 [00:04<02:20,  4.54s/it]Batches:   6%|▋         | 2/32 [00:07<01:55,  3.84s/it]Batches:   9%|▉         | 3/32 [00:12<01:59,  4.13s/it]Batches:  12%|█▎        | 4/32 [00:15<01:48,  3.89s/it]Batches:  16%|█▌        | 5/32 [00:18<01:36,  3.57s/it]Batches:  19%|█▉        | 6/32 [00:21<01:28,  3.41s/it]Batches:  22%|██▏       | 7/32 [00:24<01:19,  3.17s/it]Batches:  25%|██▌       | 8/32 [00:27<01:12,  3.03s/it]Batches:  28%|██▊       | 9/32 [00:29<01:06,  2.89s/it]Batches:  31%|███▏      | 10/32 [00:32<01:02,  2.82s/it]Batches:  34%|███▍      | 11/32 [00:35<00:58,  2.78s/it]Batches:  38%|███▊      | 12/32 [00:37<00:52,  2.64s/it]Batches:  41%|████      | 13/32 [00:40<00:48,  2.57s/it]Batches:  44%|████▍     | 14/32 [00:42<00:45,  2.55s/it]Batches:  47%|████▋     | 15/32 [00:45<00:47,  2.81s/it]Batches:  50%|█████     | 16/32 [00:48<00:42,  2.63s/it]Batches:  53%|█████▎    | 17/32 [00:50<00:38,  2.57s/it]Batches:  56%|█████▋    | 18/32 [00:52<00:35,  2.50s/it]Batches:  59%|█████▉    | 19/32 [00:55<00:32,  2.46s/it]Batches:  62%|██████▎   | 20/32 [00:57<00:29,  2.45s/it]Batches:  66%|██████▌   | 21/32 [00:59<00:25,  2.29s/it]Batches:  69%|██████▉   | 22/32 [01:01<00:21,  2.20s/it]Batches:  72%|███████▏  | 23/32 [01:03<00:18,  2.10s/it]Batches:  75%|███████▌  | 24/32 [01:05<00:16,  2.11s/it]Batches:  78%|███████▊  | 25/32 [01:07<00:14,  2.00s/it]Batches:  81%|████████▏ | 26/32 [01:09<00:11,  1.97s/it]Batches:  84%|████████▍ | 27/32 [01:10<00:09,  1.88s/it]Batches:  88%|████████▊ | 28/32 [01:12<00:07,  1.85s/it]Batches:  91%|█████████ | 29/32 [01:14<00:05,  1.75s/it]Batches:  94%|█████████▍| 30/32 [01:15<00:03,  1.65s/it]Batches:  97%|█████████▋| 31/32 [01:16<00:01,  1.52s/it]Batches: 100%|██████████| 32/32 [01:16<00:00,  2.41s/it]
+  embedded in 77.0s  dim=768
+Cached embeddings -> /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/embeddings/corpus_embeddings.json
+Chroma index ready  n=995
+Try: python src/corpus_index.py query "mechanistic interpretability circuits"
+[ok] index rebuilt
+
+{
+  "corpus_path": "data/corpus.json",
+  "n_papers": 995,
+  "chroma_exists": true,
+  "sample_ids": [
+    "2103.13859",
+    "2010.03023",
+    "2006.14255",
+    "1910.01279",
+    "2607.19372",
+    "2605.02007",
+    "2209.14074",
+    "2410.21557"
+  ]
+}
+
+Finished: 2026-10-15T03:10:49+05:30
+Log: logs/library_build_vlm_xai_20261015_025839.log
+Note: this only fills the library (rank). Full-text RAG still needs ingest.

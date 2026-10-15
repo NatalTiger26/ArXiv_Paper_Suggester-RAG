@@ -1,0 +1,47 @@
+[mem] startup avail=7.4/16.0GiB → batch=16 usable=4.4GiB
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+2026-10-15 12:30:28.000 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[plan] library=4479 done_file=531 indexed=54
+[plan] pending_total=3948 session=3948 skipped=531 force=False
+[plan] each paper = isolated process + hard kill after 900s
+[plan] rough session ~1974–5922 min (hangs cannot freeze the job)
+
+
+===== [1/3948] 2403.15603  elapsed=0.0m  eta~2632.0m  avg=40s/paper =====
+[mem] avail=7.2GiB total=16.0GiB reserve=3.0GiB usable=4.2GiB → batch=16
+[run] subprocess batch=16 timeout=900s
+  [worker] start 2403.15603 force=False batch=16
+[warn] 2403.15603: Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+[retry] 2403.15603 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=900s
+  [worker] start 2403.15603 force=False batch=4
+[warn] 2403.15603: Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+[fail] 2403.15603 after 5.5s — Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+
+===== [2/3948] 2209.11222  elapsed=0.1m  eta~361.5m  avg=5s/paper =====
+[mem] avail=7.7GiB total=16.0GiB reserve=3.0GiB usable=4.7GiB → batch=16
+[run] subprocess batch=16 timeout=900s
+  [worker] start 2209.11222 force=False batch=16
+[heartbeat] 2209.11222 still running… 60s / 900s limit
+[heartbeat] 2209.11222 still running… 121s / 900s limit
+[heartbeat] 2209.11222 still running… 181s / 900s limit
+[heartbeat] 2209.11222 still running… 241s / 900s limit
+[heartbeat] 2209.11222 still running… 302s / 900s limit
+[heartbeat] 2209.11222 still running… 362s / 900s limit

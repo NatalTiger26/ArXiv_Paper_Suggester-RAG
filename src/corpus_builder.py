@@ -130,6 +130,39 @@ def fetch_by_ids(ids: list[str]) -> list[dict[str, Any]]:
     return out
 
 
+
+_ARXIV_STOP = frozenset({
+    "a", "an", "the", "of", "for", "in", "on", "to", "and", "or", "via", "with",
+    "from", "by", "as", "at", "into", "over", "under", "between", "than", "that",
+    "this", "these", "those", "is", "are", "be", "can", "its", "their",
+})
+
+
+def _arxiv_text_clause(query: str) -> str:
+    """Build an arXiv API text clause that is not limited to exact full phrases.
+
+    Multi-word Scholar-style strings rarely match as a single ti/abs phrase.
+    We AND significant terms (all:field) and also try a short phrase match.
+    """
+    q = " ".join(query.strip().split())
+    if not q:
+        return ""
+    # Keep hyphenated tokens (Score-CAM, vision-language) intact
+    raw_tokens = q.replace(",", " ").split()
+    tokens = [t for t in raw_tokens if t.lower() not in _ARXIV_STOP and len(t) > 1]
+    if not tokens:
+        tokens = raw_tokens
+    if len(tokens) == 1:
+        return f"all:{tokens[0]}"
+    # Cap width so the API query stays usable
+    tokens = tokens[:6]
+    and_all = " AND ".join(f"all:{t}" for t in tokens)
+    if len(tokens) <= 4:
+        phrase = " ".join(tokens)
+        return f'((ti:"{phrase}" OR abs:"{phrase}") OR ({and_all}))'
+    return f"({and_all})"
+
+
 def search_arxiv(
     query: str,
     max_results: int = 20,
@@ -143,10 +176,9 @@ def search_arxiv(
     parts = []
     if category:
         parts.append(f"cat:{category}")
-    if query.strip():
-        # search title + abstract
-        q = query.strip()
-        parts.append(f"(ti:\"{q}\" OR abs:\"{q}\")" if " " in q else f"all:{q}")
+    clause = _arxiv_text_clause(query)
+    if clause:
+        parts.append(clause)
     if not parts:
         raise ValueError("Provide a query and/or category")
 
@@ -263,6 +295,9 @@ def cmd_search(args: argparse.Namespace) -> None:
         category=args.category,
         sort_by=args.sort,
     )
+    clause = _arxiv_text_clause(args.query or "")
+    cat = f" cat:{args.category}" if args.category else ""
+    print(f"Query clause:{cat} {clause}".rstrip())
     print(f"Found {len(papers)} papers")
     for p in papers[:10]:
         print(f"  {p.get('arxiv_id')}\t{(p.get('title') or '')[:70]}")

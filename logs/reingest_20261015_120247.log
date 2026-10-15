@@ -1,0 +1,76 @@
+[mem] startup avail=8.4/16.0GiB → batch=24 usable=5.4GiB
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+2026-10-15 12:02:48.129 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[plan] library=4479 done_file=531 indexed=54
+[plan] pending_total=3948 session=3948 skipped=531 force=False
+[plan] each paper = isolated process + hard kill after 900s
+[plan] rough session ~1974–5922 min (hangs cannot freeze the job)
+
+
+===== [1/3948] 2403.15603  elapsed=0.0m  eta~2632.0m  avg=40s/paper =====
+[mem] avail=8.2GiB total=16.0GiB reserve=3.0GiB usable=5.2GiB → batch=24
+[run] subprocess batch=24 timeout=900s
+  [worker] start 2403.15603 force=False batch=24
+[warn] 2403.15603: No module named 'src'
+[retry] 2403.15603 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=900s
+  [worker] start 2403.15603 force=False batch=4
+[warn] 2403.15603: No module named 'src'
+[fail] 2403.15603 after 0.1s — No module named 'src'
+
+===== [2/3948] 2209.11222  elapsed=0.0m  eta~4.9m  avg=0s/paper =====
+[mem] avail=8.0GiB total=16.0GiB reserve=3.0GiB usable=5.0GiB → batch=24
+[run] subprocess batch=24 timeout=900s
+  [worker] start 2209.11222 force=False batch=24
+[warn] 2209.11222: No module named 'src'
+[retry] 2209.11222 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=900s
+  [worker] start 2209.11222 force=False batch=4
+[warn] 2209.11222: No module named 'src'
+[fail] 2209.11222 after 0.1s — No module named 'src'
+
+===== [3/3948] 2107.11889  elapsed=0.0m  eta~4.7m  avg=0s/paper =====
+[mem] avail=8.1GiB total=16.0GiB reserve=3.0GiB usable=5.1GiB → batch=24
+[run] subprocess batch=24 timeout=900s
+  [worker] start 2107.11889 force=False batch=24
+[warn] 2107.11889: No module named 'src'
+[retry] 2107.11889 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=900s
+  [worker] start 2107.11889 force=False batch=4
+[warn] 2107.11889: No module named 'src'
+[fail] 2107.11889 after 0.1s — No module named 'src'
+
+===== [4/3948] 2007.11500  elapsed=0.0m  eta~4.8m  avg=0s/paper =====
+[mem] avail=8.1GiB total=16.0GiB reserve=3.0GiB usable=5.1GiB → batch=24
+[run] subprocess batch=24 timeout=900s
+  [worker] start 2007.11500 force=False batch=24
+[warn] 2007.11500: No module named 'src'
+[retry] 2007.11500 attempt 2/3 batch=4
+[run] subprocess batch=4 timeout=900s
+  [worker] start 2007.11500 force=False batch=4
+[warn] 2007.11500: No module named 'src'
+[fail] 2007.11500 after 0.1s — No module named 'src'
+
+===== [5/3948] 2004.13003  elapsed=0.0m  eta~4.8m  avg=0s/paper =====
+[mem] avail=8.1GiB total=16.0GiB reserve=3.0GiB usable=5.1GiB → batch=24
+[run] subprocess batch=24 timeout=900s
+  [worker] start 2004.13003 force=False batch=24
+[warn] 2004.13003: No module named 'src'
+[retry] 2004.13003 attempt 2/3 batch=4

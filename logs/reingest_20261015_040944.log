@@ -1,0 +1,1261 @@
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+2026-10-15 04:09:44.975 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[plan] library ids     : 4479
+[plan] progress done   : 0  (data/rag_ingest_progress/done.txt)
+[plan] already in RAG  : 54
+[plan] force=False redo_done=False redo_indexed=False
+[plan] low-RAM batch   : 8
+[plan] pending total=4450  this session=4450  skipped done/indexed=29
+[plan] rough remaining wall time ~2225–6675 min (very rough; OCR varies)
+
+
+===== [1/4450] 2103.13859  elapsed=0.0m  eta~6675.0m  avg=90s/paper =====
+2026-10-15 04:09:46.174 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  95%|█████████▍| 1302/1376 [00:00<00:00, 13017.65it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12890.16it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2103.13859 …
+Downloading 2103.13859 (try 1):   0%|          | 0.00/14.2M [00:00<?, ?B/s]Downloading 2103.13859 (try 1):   1%|▏         | 188k/14.2M [00:00<00:07, 1.85MB/s]Downloading 2103.13859 (try 1):   5%|▌         | 721k/14.2M [00:00<00:03, 3.84MB/s]Downloading 2103.13859 (try 1):   8%|▊         | 1.11M/14.2M [00:01<00:19, 682kB/s]Downloading 2103.13859 (try 1):   9%|▉         | 1.34M/14.2M [00:01<00:15, 823kB/s]Downloading 2103.13859 (try 1):  13%|█▎        | 1.78M/14.2M [00:01<00:09, 1.27MB/s]Downloading 2103.13859 (try 1):  15%|█▍        | 2.11M/14.2M [00:02<00:18, 670kB/s] Downloading 2103.13859 (try 1):  20%|█▉        | 2.77M/14.2M [00:02<00:09, 1.17MB/s]Downloading 2103.13859 (try 1):  22%|██▏       | 3.15M/14.2M [00:03<00:15, 708kB/s] Downloading 2103.13859 (try 1):  29%|██▉       | 4.10M/14.2M [00:03<00:07, 1.31MB/s]Downloading 2103.13859 (try 1):  32%|███▏      | 4.57M/14.2M [00:05<00:13, 716kB/s] Downloading 2103.13859 (try 1):  35%|███▍      | 4.91M/14.2M [00:05<00:11, 831kB/s]Downloading 2103.13859 (try 1):  42%|████▏     | 6.00M/14.2M [00:05<00:05, 1.53MB/s]Downloading 2103.13859 (try 1):  46%|████▌     | 6.55M/14.2M [00:06<00:07, 1.07MB/s]Downloading 2103.13859 (try 1):  51%|█████     | 7.24M/14.2M [00:06<00:04, 1.47MB/s]Downloading 2103.13859 (try 1):  54%|█████▍    | 7.71M/14.2M [00:08<00:07, 830kB/s] Downloading 2103.13859 (try 1):  59%|█████▉    | 8.40M/14.2M [00:09<00:07, 747kB/s]Downloading 2103.13859 (try 1):  67%|██████▋   | 9.45M/14.2M [00:10<00:06, 719kB/s]Downloading 2103.13859 (try 1):  71%|███████   | 10.1M/14.2M [00:10<00:04, 937kB/s]Downloading 2103.13859 (try 1):  74%|███████▍  | 10.5M/14.2M [00:12<00:05, 626kB/s]Downloading 2103.13859 (try 1):  79%|███████▉  | 11.2M/14.2M [00:12<00:03, 879kB/s]Downloading 2103.13859 (try 1):  81%|████████▏ | 11.5M/14.2M [00:13<00:04, 654kB/s]Downloading 2103.13859 (try 1):  89%|████████▉ | 12.6M/14.2M [00:15<00:02, 653kB/s]Downloading 2103.13859 (try 1):  96%|█████████▌| 13.6M/14.2M [00:16<00:00, 683kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+OCR on page.number=4/5.
+OCR on page.number=5/6.
+OCR on page.number=6/7.
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:01<00:05,  1.13s/it]Batches:  33%|███▎      | 2/6 [00:02<00:03,  1.01it/s]Batches:  50%|█████     | 3/6 [00:02<00:02,  1.22it/s]Batches:  67%|██████▋   | 4/6 [00:03<00:01,  1.30it/s]Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.59it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.96it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.51it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2103.13859  (48 chunks)  Group-CAM: Group Score-Weighted Visual Explanations for Deep
+[ok] 2103.13859 in 46.8s  (saved to done.txt)
+
+===== [2/4450] 2010.03023  elapsed=0.8m  eta~3468.5m  avg=47s/paper =====
+2026-10-15 04:10:33.007 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28847.00it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2010.03023 …
+Downloading 2010.03023 (try 1):   0%|          | 0.00/1.02M [00:00<?, ?B/s]Downloading 2010.03023 (try 1):  19%|█▊        | 188k/1.02M [00:00<00:00, 1.86MB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=3/4.
+OCR on page.number=4/5.
+OCR on page.number=5/6.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:00<00:02,  1.13it/s]Batches:  50%|█████     | 2/4 [00:01<00:01,  1.45it/s]Batches:  75%|███████▌  | 3/4 [00:01<00:00,  1.70it/s]Batches: 100%|██████████| 4/4 [00:01<00:00,  2.00it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2010.03023  (26 chunks)  IS-CAM: Integrated Score-CAM for axiomatic-based explanation
+[ok] 2010.03023 in 20.2s  (saved to done.txt)
+
+===== [3/4450] 2006.14255  elapsed=1.1m  eta~2480.9m  avg=33s/paper =====
+2026-10-15 04:10:53.092 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 29027.06it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2006.14255 …
+Downloading 2006.14255 (try 1):   0%|          | 0.00/1.02M [00:00<?, ?B/s]Downloading 2006.14255 (try 1):   3%|▎         | 32.8k/1.02M [00:00<00:03, 299kB/s]Downloading 2006.14255 (try 1):  52%|█████▏    | 532k/1.02M [00:00<00:00, 2.80MB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=2/3.
+OCR on page.number=3/4.
+OCR on page.number=5/6.
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:00<00:04,  1.19it/s]Batches:  33%|███▎      | 2/6 [00:01<00:02,  1.34it/s]Batches:  50%|█████     | 3/6 [00:02<00:01,  1.54it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.75it/s]Batches:  83%|████████▎ | 5/6 [00:02<00:00,  2.10it/s]Batches: 100%|██████████| 6/6 [00:02<00:00,  2.07it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2006.14255  (43 chunks)  SS-CAM: Smoothed Score-CAM for Sharper Visual Feature Locali
+[ok] 2006.14255 in 22.8s  (saved to done.txt)
+
+===== [4/4450] 1910.01279  elapsed=1.5m  eta~2215.8m  avg=30s/paper =====
+2026-10-15 04:11:15.852 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27937.39it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1910.01279 …
+Downloading 1910.01279 (try 1):   0%|          | 0.00/8.52M [00:00<?, ?B/s]Downloading 1910.01279 (try 1):   2%|▏         | 156k/8.52M [00:00<00:05, 1.53MB/s]Downloading 1910.01279 (try 1):  12%|█▏        | 1.06M/8.52M [00:01<00:07, 1.00MB/s]Downloading 1910.01279 (try 1):  25%|██▍       | 2.11M/8.52M [00:01<00:05, 1.08MB/s]Downloading 1910.01279 (try 1):  37%|███▋      | 3.15M/8.52M [00:02<00:04, 1.30MB/s]Downloading 1910.01279 (try 1):  49%|████▉     | 4.20M/8.52M [00:03<00:03, 1.17MB/s]Downloading 1910.01279 (try 1):  62%|██████▏   | 5.25M/8.52M [00:05<00:03, 915kB/s] Downloading 1910.01279 (try 1):  77%|███████▋  | 6.59M/8.52M [00:05<00:01, 1.45MB/s]Downloading 1910.01279 (try 1):  86%|████████▋ | 7.35M/8.52M [00:06<00:01, 1.11MB/s]Downloading 1910.01279 (try 1):  98%|█████████▊| 8.36M/8.52M [00:06<00:00, 1.55MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=0/1.
+OCR on page.number=2/3.
+OCR on page.number=3/4.
+OCR on page.number=4/5.
+OCR on page.number=5/6.
+OCR on page.number=6/7.
+OCR on page.number=7/8.
+OCR on page.number=9/10.
+OCR on page.number=10/11.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:00<00:04,  1.40it/s]Batches:  29%|██▊       | 2/7 [00:01<00:03,  1.39it/s]Batches:  43%|████▎     | 3/7 [00:01<00:02,  1.69it/s]Batches:  57%|█████▋    | 4/7 [00:02<00:01,  1.90it/s]Batches:  71%|███████▏  | 5/7 [00:02<00:01,  1.94it/s]Batches:  86%|████████▌ | 6/7 [00:03<00:00,  2.17it/s]Batches: 100%|██████████| 7/7 [00:03<00:00,  2.56it/s]Batches: 100%|██████████| 7/7 [00:03<00:00,  2.06it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1910.01279  (54 chunks)  Score-CAM: Score-Weighted Visual Explanations for Convolutio
+[ok] 1910.01279 in 31.2s  (saved to done.txt)
+
+===== [5/4450] 2209.14074  elapsed=2.0m  eta~2240.0m  avg=30s/paper =====
+2026-10-15 04:11:47.156 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  96%|█████████▌| 1319/1376 [00:00<00:00, 13150.95it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 13094.29it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2209.14074 …
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:01<00:07,  1.57s/it]Batches:  33%|███▎      | 2/6 [00:03<00:06,  1.67s/it]Batches:  50%|█████     | 3/6 [00:03<00:03,  1.16s/it]Batches:  67%|██████▋   | 4/6 [00:04<00:01,  1.16it/s]Batches:  83%|████████▎ | 5/6 [00:04<00:00,  1.53it/s]Batches: 100%|██████████| 6/6 [00:04<00:00,  1.79it/s]Batches: 100%|██████████| 6/6 [00:04<00:00,  1.22it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2209.14074  (48 chunks)  Recipro-CAM: Fast gradient-free visual explanations for conv
+[ok] 2209.14074 in 22.4s  (saved to done.txt)
+
+===== [6/4450] 2410.21557  elapsed=2.4m  eta~2124.2m  avg=29s/paper =====
+2026-10-15 04:12:09.599 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27830.16it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2410.21557 …
+Downloading 2410.21557 (try 1):   0%|          | 0.00/1.54M [00:00<?, ?B/s]Downloading 2410.21557 (try 1):   1%|          | 16.4k/1.54M [00:00<00:10, 139kB/s]Downloading 2410.21557 (try 1):   2%|▏         | 32.8k/1.54M [00:00<00:10, 149kB/s]Downloading 2410.21557 (try 1):   4%|▍         | 65.5k/1.54M [00:00<00:07, 193kB/s]Downloading 2410.21557 (try 1):   7%|▋         | 115k/1.54M [00:00<00:04, 286kB/s] Downloading 2410.21557 (try 1):  13%|█▎        | 197k/1.54M [00:00<00:03, 430kB/s]Downloading 2410.21557 (try 1):  18%|█▊        | 279k/1.54M [00:00<00:02, 519kB/s]Downloading 2410.21557 (try 1):  24%|██▍       | 377k/1.54M [00:00<00:01, 634kB/s]Downloading 2410.21557 (try 1):  32%|███▏      | 492k/1.54M [00:00<00:01, 771kB/s]Downloading 2410.21557 (try 1):  40%|████      | 623k/1.54M [00:01<00:01, 870kB/s]Downloading 2410.21557 (try 1):  49%|████▉     | 754k/1.54M [00:01<00:00, 970kB/s]Downloading 2410.21557 (try 1):  57%|█████▋    | 885k/1.54M [00:01<00:00, 1.04MB/s]Downloading 2410.21557 (try 1):  67%|██████▋   | 1.03M/1.54M [00:01<00:00, 1.15MB/s]Downloading 2410.21557 (try 1):  75%|███████▍  | 1.16M/1.54M [00:02<00:01, 261kB/s] Downloading 2410.21557 (try 1):  81%|████████  | 1.25M/1.54M [00:02<00:00, 312kB/s]Downloading 2410.21557 (try 1):  87%|████████▋ | 1.34M/1.54M [00:02<00:00, 366kB/s]Downloading 2410.21557 (try 1):  92%|█████████▏| 1.42M/1.54M [00:03<00:00, 415kB/s]Downloading 2410.21557 (try 1):  97%|█████████▋| 1.50M/1.54M [00:03<00:00, 475kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=2/3.
+OCR on page.number=4/5.
+OCR on page.number=5/6.
+OCR on page.number=6/7.
+Batches:   0%|          | 0/8 [00:00<?, ?it/s]Batches:  12%|█▎        | 1/8 [00:00<00:05,  1.33it/s]Batches:  25%|██▌       | 2/8 [00:01<00:03,  1.63it/s]Batches:  38%|███▊      | 3/8 [00:01<00:02,  2.01it/s]Batches:  50%|█████     | 4/8 [00:02<00:02,  1.89it/s]Batches:  62%|██████▎   | 5/8 [00:02<00:01,  2.01it/s]Batches:  75%|███████▌  | 6/8 [00:02<00:00,  2.40it/s]Batches:  88%|████████▊ | 7/8 [00:03<00:00,  2.51it/s]Batches: 100%|██████████| 8/8 [00:03<00:00,  3.03it/s]Batches: 100%|██████████| 8/8 [00:03<00:00,  2.32it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2410.21557  (62 chunks)  A Novel Score-CAM based Denoiser for Spectrographic Signatur
+[ok] 2410.21557 in 28.3s  (saved to done.txt)
+
+===== [7/4450] 2211.13126  elapsed=2.9m  eta~2118.9m  avg=29s/paper =====
+2026-10-15 04:12:37.813 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28661.34it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2211.13126 …
+Downloading 2211.13126 (try 1):   0%|          | 0.00/24.0M [00:00<?, ?B/s]Downloading 2211.13126 (try 1):   1%|          | 172k/24.0M [00:00<00:14, 1.69MB/s]Downloading 2211.13126 (try 1):   4%|▍         | 975k/24.0M [00:00<00:04, 5.34MB/s]Downloading 2211.13126 (try 1):   6%|▋         | 1.52M/24.0M [00:02<00:44, 501kB/s]Downloading 2211.13126 (try 1):   9%|▉         | 2.11M/24.0M [00:03<00:42, 514kB/s]Downloading 2211.13126 (try 1):  10%|█         | 2.45M/24.0M [00:03<00:33, 650kB/s]Downloading 2211.13126 (try 1):  13%|█▎        | 3.10M/24.0M [00:03<00:20, 1.03MB/s]Downloading 2211.13126 (try 1):  14%|█▍        | 3.47M/24.0M [00:04<00:24, 842kB/s] Downloading 2211.13126 (try 1):  17%|█▋        | 4.20M/24.0M [00:05<00:26, 735kB/s]Downloading 2211.13126 (try 1):  19%|█▉        | 4.64M/24.0M [00:05<00:20, 940kB/s]Downloading 2211.13126 (try 1):  22%|██▏       | 5.23M/24.0M [00:05<00:14, 1.29MB/s]Downloading 2211.13126 (try 1):  23%|██▎       | 5.59M/24.0M [00:06<00:13, 1.32MB/s]Downloading 2211.13126 (try 1):  26%|██▌       | 6.30M/24.0M [00:07<00:21, 830kB/s] Downloading 2211.13126 (try 1):  28%|██▊       | 6.80M/24.0M [00:07<00:15, 1.08MB/s]Downloading 2211.13126 (try 1):  31%|███       | 7.35M/24.0M [00:08<00:18, 912kB/s] Downloading 2211.13126 (try 1):  33%|███▎      | 7.87M/24.0M [00:08<00:13, 1.20MB/s]Downloading 2211.13126 (try 1):  35%|███▍      | 8.37M/24.0M [00:08<00:10, 1.54MB/s]Downloading 2211.13126 (try 1):  36%|███▋      | 8.74M/24.0M [00:09<00:15, 974kB/s] Downloading 2211.13126 (try 1):  37%|███▋      | 9.01M/24.0M [00:09<00:13, 1.09MB/s]Downloading 2211.13126 (try 1):  39%|███▉      | 9.45M/24.0M [00:09<00:13, 1.12MB/s]Downloading 2211.13126 (try 1):  43%|████▎     | 10.4M/24.0M [00:10<00:07, 1.95MB/s]Downloading 2211.13126 (try 1):  45%|████▍     | 10.8M/24.0M [00:11<00:15, 866kB/s] Downloading 2211.13126 (try 1):  48%|████▊     | 11.5M/24.0M [00:12<00:16, 779kB/s]Downloading 2211.13126 (try 1):  52%|█████▏    | 12.4M/24.0M [00:12<00:09, 1.19MB/s]Downloading 2211.13126 (try 1):  53%|█████▎    | 12.8M/24.0M [00:14<00:15, 717kB/s] Downloading 2211.13126 (try 1):  55%|█████▌    | 13.3M/24.0M [00:14<00:11, 936kB/s]Downloading 2211.13126 (try 1):  57%|█████▋    | 13.7M/24.0M [00:15<00:16, 623kB/s]Downloading 2211.13126 (try 1):  61%|██████    | 14.7M/24.0M [00:16<00:13, 691kB/s]Downloading 2211.13126 (try 1):  64%|██████▍   | 15.5M/24.0M [00:16<00:08, 991kB/s]Downloading 2211.13126 (try 1):  66%|██████▌   | 15.8M/24.0M [00:18<00:11, 692kB/s]Downloading 2211.13126 (try 1):  69%|██████▉   | 16.6M/24.0M [00:18<00:07, 1.05MB/s]Downloading 2211.13126 (try 1):  71%|███████   | 17.1M/24.0M [00:19<00:10, 645kB/s] Downloading 2211.13126 (try 1):  74%|███████▍  | 17.8M/24.0M [00:20<00:07, 860kB/s]Downloading 2211.13126 (try 1):  79%|███████▊  | 18.9M/24.0M [00:21<00:06, 771kB/s]Downloading 2211.13126 (try 1):  83%|████████▎ | 19.9M/24.0M [00:23<00:05, 741kB/s]Downloading 2211.13126 (try 1):  85%|████████▍ | 20.4M/24.0M [00:23<00:04, 886kB/s]Downloading 2211.13126 (try 1):  87%|████████▋ | 21.0M/24.0M [00:24<00:03, 799kB/s]Downloading 2211.13126 (try 1):  91%|█████████ | 21.9M/24.0M [00:24<00:01, 1.20MB/s]Downloading 2211.13126 (try 1):  93%|█████████▎| 22.3M/24.0M [00:25<00:01, 905kB/s] Downloading 2211.13126 (try 1):  96%|█████████▌| 23.0M/24.0M [00:25<00:00, 1.24MB/s]Downloading 2211.13126 (try 1):  97%|█████████▋| 23.4M/24.0M [00:25<00:00, 1.10MB/s]Downloading 2211.13126 (try 1):  99%|█████████▊| 23.7M/24.0M [00:25<00:00, 1.24MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:00<00:02,  1.74it/s]Batches:  33%|███▎      | 2/6 [00:01<00:02,  1.66it/s]Batches:  50%|█████     | 3/6 [00:01<00:02,  1.47it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.61it/s]Batches:  83%|████████▎ | 5/6 [00:02<00:00,  1.91it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  2.02it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.82it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2211.13126  (47 chunks)  Crown-CAM: Interpretable Visual Explanations for Tree Crown 
+[ok] 2211.13126 in 50.7s  (saved to done.txt)
+
+===== [8/4450] 2206.08792  elapsed=3.7m  eta~2352.2m  avg=32s/paper =====
+2026-10-15 04:13:28.529 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27381.89it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2206.08792 …
+Batches:   0%|          | 0/8 [00:00<?, ?it/s]Batches:  12%|█▎        | 1/8 [00:01<00:08,  1.17s/it]Batches:  25%|██▌       | 2/8 [00:01<00:04,  1.22it/s]Batches:  38%|███▊      | 3/8 [00:02<00:03,  1.36it/s]Batches:  50%|█████     | 4/8 [00:03<00:02,  1.44it/s]Batches:  62%|██████▎   | 5/8 [00:03<00:01,  1.66it/s]Batches:  75%|███████▌  | 6/8 [00:03<00:01,  1.98it/s]Batches:  88%|████████▊ | 7/8 [00:04<00:00,  2.18it/s]Batches: 100%|██████████| 8/8 [00:04<00:00,  1.91it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2206.08792  (57 chunks)  FD-CAM: Improving Faithfulness and Discriminability of Visua
+[ok] 2206.08792 in 18.7s  (saved to done.txt)
+
+===== [9/4450] 2412.01354  elapsed=4.0m  eta~2231.1m  avg=30s/paper =====
+2026-10-15 04:13:47.259 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28405.59it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2412.01354 …
+Batches:   0%|          | 0/12 [00:00<?, ?it/s]Batches:   8%|▊         | 1/12 [00:01<00:11,  1.02s/it]Batches:  17%|█▋        | 2/12 [00:01<00:07,  1.28it/s]Batches:  25%|██▌       | 3/12 [00:02<00:05,  1.51it/s]Batches:  33%|███▎      | 4/12 [00:02<00:04,  1.68it/s]Batches:  42%|████▏     | 5/12 [00:03<00:03,  1.89it/s]Batches:  50%|█████     | 6/12 [00:03<00:03,  1.93it/s]Batches:  58%|█████▊    | 7/12 [00:04<00:02,  1.69it/s]Batches:  67%|██████▋   | 8/12 [00:04<00:02,  1.89it/s]Batches:  75%|███████▌  | 9/12 [00:05<00:01,  1.98it/s]Batches:  83%|████████▎ | 10/12 [00:05<00:00,  2.07it/s]Batches:  92%|█████████▏| 11/12 [00:05<00:00,  2.38it/s]Batches: 100%|██████████| 12/12 [00:05<00:00,  2.02it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2412.01354  (90 chunks)  Integrative CAM: Adaptive Layer Fusion for Comprehensive Int
+[ok] 2412.01354 in 20.3s  (saved to done.txt)
+
+===== [10/4450] 1806.00102  elapsed=4.4m  eta~2149.8m  avg=29s/paper =====
+2026-10-15 04:14:07.578 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27376.43it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1806.00102 …
+Downloading 1806.00102 (try 1):   0%|          | 0.00/1.70M [00:00<?, ?B/s]Downloading 1806.00102 (try 1):   2%|▏         | 41.0k/1.70M [00:00<00:06, 247kB/s]Downloading 1806.00102 (try 1):   4%|▍         | 73.7k/1.70M [00:00<00:06, 237kB/s]Downloading 1806.00102 (try 1):   7%|▋         | 123k/1.70M [00:00<00:05, 297kB/s] Downloading 1806.00102 (try 1):  10%|█         | 172k/1.70M [00:00<00:04, 339kB/s]Downloading 1806.00102 (try 1):  13%|█▎        | 221k/1.70M [00:00<00:03, 376kB/s]Downloading 1806.00102 (try 1):  16%|█▌        | 270k/1.70M [00:00<00:03, 388kB/s]Downloading 1806.00102 (try 1):  21%|██        | 352k/1.70M [00:00<00:02, 495kB/s]Downloading 1806.00102 (try 1):  26%|██▋       | 451k/1.70M [00:01<00:02, 593kB/s]Downloading 1806.00102 (try 1):  32%|███▏      | 549k/1.70M [00:01<00:01, 680kB/s]Downloading 1806.00102 (try 1):  39%|███▉      | 664k/1.70M [00:01<00:01, 793kB/s]Downloading 1806.00102 (try 1):  47%|████▋     | 803k/1.70M [00:01<00:00, 948kB/s]Downloading 1806.00102 (try 1):  55%|█████▍    | 934k/1.70M [00:01<00:00, 1.02MB/s]Downloading 1806.00102 (try 1):  62%|██████▏   | 1.06M/1.70M [00:02<00:02, 232kB/s]Downloading 1806.00102 (try 1):  67%|██████▋   | 1.14M/1.70M [00:03<00:02, 264kB/s]Downloading 1806.00102 (try 1):  76%|███████▋  | 1.30M/1.70M [00:03<00:01, 397kB/s]Downloading 1806.00102 (try 1):  86%|████████▌ | 1.47M/1.70M [00:03<00:00, 543kB/s]Downloading 1806.00102 (try 1):  99%|█████████▊| 1.68M/1.70M [00:03<00:00, 770kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:00<00:02,  1.53it/s]Batches:  40%|████      | 2/5 [00:01<00:01,  1.83it/s]Batches:  60%|██████    | 3/5 [00:01<00:01,  1.64it/s]Batches:  80%|████████  | 4/5 [00:02<00:00,  1.53it/s]Batches: 100%|██████████| 5/5 [00:02<00:00,  2.07it/s]Batches: 100%|██████████| 5/5 [00:02<00:00,  1.84it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1806.00102  (38 chunks)  Respond-CAM: Analyzing Deep Models for 3D Imaging Data by Vi
+[ok] 1806.00102 in 24.2s  (saved to done.txt)
+
+===== [11/4450] 1911.07160  elapsed=4.8m  eta~2113.3m  avg=29s/paper =====
+2026-10-15 04:14:31.743 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27020.62it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1911.07160 …
+Downloading 1911.07160 (try 1):   0%|          | 0.00/9.86M [00:00<?, ?B/s]Downloading 1911.07160 (try 1):   0%|          | 32.8k/9.86M [00:00<00:32, 307kB/s]Downloading 1911.07160 (try 1):   1%|          | 73.7k/9.86M [00:00<00:29, 334kB/s]Downloading 1911.07160 (try 1):   1%|▏         | 139k/9.86M [00:00<00:22, 425kB/s] Downloading 1911.07160 (try 1):   2%|▏         | 221k/9.86M [00:00<00:17, 549kB/s]Downloading 1911.07160 (try 1):   3%|▎         | 303k/9.86M [00:00<00:15, 607kB/s]Downloading 1911.07160 (try 1):   4%|▍         | 401k/9.86M [00:00<00:13, 687kB/s]Downloading 1911.07160 (try 1):   5%|▌         | 500k/9.86M [00:00<00:12, 746kB/s]Downloading 1911.07160 (try 1):   6%|▌         | 614k/9.86M [00:00<00:11, 810kB/s]Downloading 1911.07160 (try 1):   7%|▋         | 713k/9.86M [00:01<00:11, 819kB/s]Downloading 1911.07160 (try 1):   8%|▊         | 811k/9.86M [00:01<00:10, 848kB/s]Downloading 1911.07160 (try 1):  10%|▉         | 958k/9.86M [00:01<00:09, 975kB/s]Downloading 1911.07160 (try 1):  11%|█         | 1.06M/9.86M [00:02<00:28, 309kB/s]Downloading 1911.07160 (try 1):  12%|█▏        | 1.14M/9.86M [00:02<00:24, 361kB/s]Downloading 1911.07160 (try 1):  13%|█▎        | 1.27M/9.86M [00:02<00:17, 488kB/s]Downloading 1911.07160 (try 1):  15%|█▍        | 1.43M/9.86M [00:02<00:12, 663kB/s]Downloading 1911.07160 (try 1):  16%|█▋        | 1.61M/9.86M [00:02<00:09, 864kB/s]Downloading 1911.07160 (try 1):  18%|█▊        | 1.78M/9.86M [00:02<00:07, 1.02MB/s]Downloading 1911.07160 (try 1):  20%|██        | 1.97M/9.86M [00:02<00:06, 1.23MB/s]Downloading 1911.07160 (try 1):  22%|██▏       | 2.13M/9.86M [00:04<00:24, 311kB/s] Downloading 1911.07160 (try 1):  23%|██▎       | 2.24M/9.86M [00:04<00:20, 372kB/s]Downloading 1911.07160 (try 1):  25%|██▌       | 2.47M/9.86M [00:04<00:13, 552kB/s]Downloading 1911.07160 (try 1):  27%|██▋       | 2.68M/9.86M [00:04<00:09, 741kB/s]Downloading 1911.07160 (try 1):  29%|██▉       | 2.90M/9.86M [00:04<00:07, 946kB/s]Downloading 1911.07160 (try 1):  31%|███▏      | 3.08M/9.86M [00:04<00:06, 1.09MB/s]Downloading 1911.07160 (try 1):  33%|███▎      | 3.26M/9.86M [00:06<00:23, 278kB/s] Downloading 1911.07160 (try 1):  35%|███▍      | 3.45M/9.86M [00:06<00:17, 372kB/s]Downloading 1911.07160 (try 1):  37%|███▋      | 3.68M/9.86M [00:06<00:11, 523kB/s]Downloading 1911.07160 (try 1):  40%|███▉      | 3.93M/9.86M [00:06<00:08, 719kB/s]Downloading 1911.07160 (try 1):  43%|████▎     | 4.19M/9.86M [00:06<00:05, 944kB/s]Downloading 1911.07160 (try 1):  45%|████▍     | 4.40M/9.86M [00:08<00:17, 305kB/s]Downloading 1911.07160 (try 1):  47%|████▋     | 4.60M/9.86M [00:08<00:13, 397kB/s]Downloading 1911.07160 (try 1):  49%|████▊     | 4.79M/9.86M [00:09<00:09, 512kB/s]Downloading 1911.07160 (try 1):  52%|█████▏    | 5.11M/9.86M [00:09<00:06, 760kB/s]Downloading 1911.07160 (try 1):  54%|█████▍    | 5.32M/9.86M [00:10<00:14, 318kB/s]Downloading 1911.07160 (try 1):  57%|█████▋    | 5.60M/9.86M [00:10<00:09, 448kB/s]Downloading 1911.07160 (try 1):  60%|█████▉    | 5.87M/9.86M [00:11<00:06, 611kB/s]Downloading 1911.07160 (try 1):  63%|██████▎   | 6.19M/9.86M [00:11<00:04, 855kB/s]Downloading 1911.07160 (try 1):  65%|██████▌   | 6.43M/9.86M [00:13<00:10, 341kB/s]Downloading 1911.07160 (try 1):  68%|██████▊   | 6.74M/9.86M [00:13<00:06, 487kB/s]Downloading 1911.07160 (try 1):  72%|███████▏  | 7.10M/9.86M [00:13<00:03, 704kB/s]Downloading 1911.07160 (try 1):  75%|███████▍  | 7.36M/9.86M [00:14<00:06, 396kB/s]Downloading 1911.07160 (try 1):  79%|███████▊  | 7.75M/9.86M [00:14<00:03, 586kB/s]Downloading 1911.07160 (try 1):  82%|████████▏ | 8.11M/9.86M [00:14<00:02, 806kB/s]Downloading 1911.07160 (try 1):  85%|████████▌ | 8.40M/9.86M [00:15<00:02, 517kB/s]Downloading 1911.07160 (try 1):  88%|████████▊ | 8.68M/9.86M [00:16<00:01, 664kB/s]Downloading 1911.07160 (try 1):  92%|█████████▏| 9.04M/9.86M [00:16<00:00, 912kB/s]Downloading 1911.07160 (try 1):  95%|█████████▌| 9.36M/9.86M [00:16<00:00, 1.16MB/s]Downloading 1911.07160 (try 1):  98%|█████████▊| 9.64M/9.86M [00:16<00:00, 815kB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+OCR on page.number=3/4.
+OCR on page.number=7/8.
+Batches:   0%|          | 0/8 [00:00<?, ?it/s]Batches:  12%|█▎        | 1/8 [00:00<00:06,  1.11it/s]Batches:  25%|██▌       | 2/8 [00:01<00:05,  1.10it/s]Batches:  38%|███▊      | 3/8 [00:02<00:03,  1.38it/s]Batches:  50%|█████     | 4/8 [00:03<00:03,  1.22it/s]Batches:  62%|██████▎   | 5/8 [00:03<00:01,  1.58it/s]Batches:  75%|███████▌  | 6/8 [00:04<00:01,  1.79it/s]Batches:  88%|████████▊ | 7/8 [00:04<00:00,  1.80it/s]Batches: 100%|██████████| 8/8 [00:04<00:00,  1.72it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1911.07160  (59 chunks)  Improve CAM with Auto-adapted Segmentation and Co-supervised
+[ok] 1911.07160 in 41.2s  (saved to done.txt)
+
+===== [12/4450] 2008.00299  elapsed=5.4m  eta~2198.0m  avg=30s/paper =====
+2026-10-15 04:15:12.970 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27748.13it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2008.00299 …
+Downloading 2008.00299 (try 1):   0%|          | 0.00/2.21M [00:00<?, ?B/s]Downloading 2008.00299 (try 1):   8%|▊         | 172k/2.21M [00:00<00:01, 1.70MB/s]Downloading 2008.00299 (try 1):  40%|████      | 885k/2.21M [00:00<00:00, 4.76MB/s]Downloading 2008.00299 (try 1):  62%|██████▏   | 1.36M/2.21M [00:01<00:01, 646kB/s]Downloading 2008.00299 (try 1):  83%|████████▎ | 1.84M/2.21M [00:01<00:00, 981kB/s]Downloading 2008.00299 (try 1): 100%|█████████▉| 2.20M/2.21M [00:02<00:00, 756kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+OCR on page.number=3/4.
+OCR on page.number=4/5.
+OCR on page.number=5/6.
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:00<00:04,  1.13it/s]Batches:  33%|███▎      | 2/6 [00:01<00:03,  1.16it/s]Batches:  50%|█████     | 3/6 [00:02<00:02,  1.45it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.53it/s]Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.95it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.92it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2008.00299  (41 chunks)  Eigen-CAM: Class Activation Map using Principal Components
+[ok] 2008.00299 in 25.1s  (saved to done.txt)
+
+===== [13/4450] 2308.11052  elapsed=5.9m  eta~2169.1m  avg=29s/paper =====
+2026-10-15 04:15:38.074 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27351.52it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2308.11052 …
+Batches:   0%|          | 0/13 [00:00<?, ?it/s]Batches:   8%|▊         | 1/13 [00:00<00:11,  1.04it/s]Batches:  15%|█▌        | 2/13 [00:01<00:09,  1.11it/s]Batches:  23%|██▎       | 3/13 [00:02<00:07,  1.38it/s]Batches:  31%|███       | 4/13 [00:02<00:06,  1.49it/s]Batches:  38%|███▊      | 5/13 [00:03<00:05,  1.55it/s]Batches:  46%|████▌     | 6/13 [00:04<00:04,  1.64it/s]Batches:  54%|█████▍    | 7/13 [00:04<00:03,  1.70it/s]Batches:  62%|██████▏   | 8/13 [00:05<00:02,  1.74it/s]Batches:  69%|██████▉   | 9/13 [00:05<00:02,  1.62it/s]Batches:  77%|███████▋  | 10/13 [00:06<00:01,  1.52it/s]Batches:  85%|████████▍ | 11/13 [00:06<00:01,  1.88it/s]Batches:  92%|█████████▏| 12/13 [00:07<00:00,  2.36it/s]Batches: 100%|██████████| 13/13 [00:07<00:00,  3.04it/s]Batches: 100%|██████████| 13/13 [00:07<00:00,  1.82it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2308.11052  (101 chunks)  Beyond Discriminative Regions: Saliency Maps as Alternatives
+[ok] 2308.11052 in 22.1s  (saved to done.txt)
+
+===== [14/4450] 1507.07307  elapsed=6.2m  eta~2127.4m  avg=29s/paper =====
+2026-10-15 04:16:00.154 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27646.05it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1507.07307 …
+Downloading 1507.07307 (try 1):   0%|          | 0.00/585k [00:00<?, ?B/s]Downloading 1507.07307 (try 1):   4%|▍         | 24.6k/585k [00:00<00:02, 241kB/s]Downloading 1507.07307 (try 1):  53%|█████▎    | 311k/585k [00:00<00:00, 1.74MB/s]                                                                                  /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/.venv/lib/python3.12/site-packages/pymupdf4llm/ocr/compute_ocr_features.py:236: RuntimeWarning: Mean of empty slice
+  fft_ratio = magnitude[magnitude > magnitude.mean()].mean() / (
+/Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:00<00:01,  1.39it/s]Batches:  67%|██████▋   | 2/3 [00:01<00:00,  1.35it/s]Batches: 100%|██████████| 3/3 [00:01<00:00,  2.08it/s]Batches: 100%|██████████| 3/3 [00:01<00:00,  1.82it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1507.07307  (20 chunks)  The Multiperiodic Pulsating Star Y Cam A as a Musical Instru
+[ok] 1507.07307 in 20.3s  (saved to done.txt)
+
+===== [15/4450] 2005.05768  elapsed=6.6m  eta~2082.3m  avg=28s/paper =====
+2026-10-15 04:16:20.470 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28862.73it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2005.05768 …
+Downloading 2005.05768 (try 1):   0%|          | 0.00/1.54M [00:00<?, ?B/s]Downloading 2005.05768 (try 1):   1%|          | 16.4k/1.54M [00:00<00:11, 128kB/s]Downloading 2005.05768 (try 1):  12%|█▏        | 188k/1.54M [00:00<00:01, 951kB/s] Downloading 2005.05768 (try 1):  69%|██████▉   | 1.06M/1.54M [00:00<00:00, 1.61MB/s]Downloading 2005.05768 (try 1): 100%|█████████▉| 1.53M/1.54M [00:00<00:00, 2.20MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+OCR on page.number=2/3.
+OCR on page.number=3/4.
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:00<00:02,  1.48it/s]Batches:  40%|████      | 2/5 [00:01<00:01,  1.85it/s]Batches:  60%|██████    | 3/5 [00:01<00:00,  2.08it/s]Batches:  80%|████████  | 4/5 [00:01<00:00,  2.48it/s]Batches: 100%|██████████| 5/5 [00:01<00:00,  2.69it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2005.05768  (34 chunks)  Interpreting Neural Ranking Models using Grad-CAM
+[ok] 2005.05768 in 21.7s  (saved to done.txt)
+
+===== [16/4450] 1710.11063  elapsed=6.9m  eta~2050.1m  avg=28s/paper =====
+2026-10-15 04:16:42.202 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27364.62it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1710.11063 …
+Downloading 1710.11063 (try 1):   0%|          | 0.00/5.49M [00:00<?, ?B/s]Downloading 1710.11063 (try 1):   3%|▎         | 156k/5.49M [00:00<00:03, 1.46MB/s]Downloading 1710.11063 (try 1):  19%|█▉        | 1.06M/5.49M [00:01<00:05, 782kB/s]Downloading 1710.11063 (try 1):  28%|██▊       | 1.52M/5.49M [00:01<00:03, 1.16MB/s]Downloading 1710.11063 (try 1):  38%|███▊      | 2.11M/5.49M [00:02<00:05, 657kB/s] Downloading 1710.11063 (try 1):  56%|█████▌    | 3.06M/5.49M [00:02<00:02, 1.21MB/s]Downloading 1710.11063 (try 1):  64%|██████▍   | 3.51M/5.49M [00:04<00:02, 703kB/s] Downloading 1710.11063 (try 1):  69%|██████▉   | 3.82M/5.49M [00:04<00:02, 827kB/s]Downloading 1710.11063 (try 1):  76%|███████▋  | 4.20M/5.49M [00:05<00:02, 585kB/s]Downloading 1710.11063 (try 1):  96%|█████████▌| 5.25M/5.49M [00:06<00:00, 716kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=2/3.
+OCR on page.number=4/5.
+OCR on page.number=7/8.
+OCR on page.number=9/10.
+OCR on page.number=14/15.
+OCR on page.number=15/16.
+OCR on page.number=16/17.
+Batches:   0%|          | 0/12 [00:00<?, ?it/s]Batches:   8%|▊         | 1/12 [00:00<00:10,  1.09it/s]Batches:  17%|█▋        | 2/12 [00:01<00:07,  1.31it/s]Batches:  25%|██▌       | 3/12 [00:02<00:06,  1.50it/s]Batches:  33%|███▎      | 4/12 [00:02<00:04,  1.61it/s]Batches:  42%|████▏     | 5/12 [00:03<00:04,  1.67it/s]Batches:  50%|█████     | 6/12 [00:03<00:03,  1.67it/s]Batches:  58%|█████▊    | 7/12 [00:04<00:02,  1.70it/s]Batches:  67%|██████▋   | 8/12 [00:05<00:02,  1.68it/s]Batches:  75%|███████▌  | 9/12 [00:05<00:01,  1.78it/s]Batches:  83%|████████▎ | 10/12 [00:05<00:01,  1.92it/s]Batches:  92%|█████████▏| 11/12 [00:06<00:00,  2.06it/s]Batches: 100%|██████████| 12/12 [00:06<00:00,  2.44it/s]Batches: 100%|██████████| 12/12 [00:06<00:00,  1.83it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1710.11063  (96 chunks)  Grad-CAM++: Improved Visual Explanations for Deep Convolutio
+[ok] 1710.11063 in 37.7s  (saved to done.txt)
+
+===== [17/4450] 2404.01964  elapsed=7.6m  eta~2095.5m  avg=28s/paper =====
+2026-10-15 04:17:19.938 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 26907.00it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2404.01964 …
+Batches:   0%|          | 0/9 [00:00<?, ?it/s]Batches:  11%|█         | 1/9 [00:00<00:07,  1.07it/s]Batches:  22%|██▏       | 2/9 [00:01<00:04,  1.41it/s]Batches:  33%|███▎      | 3/9 [00:02<00:04,  1.44it/s]Batches:  44%|████▍     | 4/9 [00:02<00:03,  1.40it/s]Batches:  56%|█████▌    | 5/9 [00:03<00:02,  1.49it/s]Batches:  67%|██████▋   | 6/9 [00:03<00:01,  1.64it/s]Batches:  78%|███████▊  | 7/9 [00:04<00:01,  1.82it/s]Batches:  89%|████████▉ | 8/9 [00:04<00:00,  1.81it/s]Batches: 100%|██████████| 9/9 [00:05<00:00,  2.08it/s]Batches: 100%|██████████| 9/9 [00:05<00:00,  1.70it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2404.01964  (71 chunks)  CAM-Based Methods Can See through Walls
+[ok] 2404.01964 in 20.9s  (saved to done.txt)
+
+===== [18/4450] 1806.04838  elapsed=7.9m  eta~2062.5m  avg=28s/paper =====
+2026-10-15 04:17:40.765 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27644.86it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1806.04838 …
+Downloading 1806.04838 (try 1):   0%|          | 0.00/121k [00:00<?, ?B/s]Downloading 1806.04838 (try 1): 100%|██████████| 121k/121k [00:00<00:00, 1.20MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:01<00:06,  1.53s/it]Batches:  40%|████      | 2/5 [00:02<00:02,  1.09it/s]Batches:  60%|██████    | 3/5 [00:02<00:01,  1.44it/s]Batches:  80%|████████  | 4/5 [00:03<00:00,  1.56it/s]Batches: 100%|██████████| 5/5 [00:03<00:00,  1.63it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1806.04838  (35 chunks)  Partial AUC Maximization via Nonlinear Scoring Functions
+[ok] 1806.04838 in 20.0s  (saved to done.txt)
+
+===== [19/4450] 2311.11176  elapsed=8.2m  eta~2029.6m  avg=27s/paper =====
+2026-10-15 04:18:00.821 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 25146.23it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2311.11176 …
+Downloading 2311.11176 (try 1):   0%|          | 0.00/1.78M [00:00<?, ?B/s]Downloading 2311.11176 (try 1):   8%|▊         | 139k/1.78M [00:00<00:01, 1.38MB/s]Downloading 2311.11176 (try 1):  21%|██        | 369k/1.78M [00:00<00:00, 1.90MB/s]Downloading 2311.11176 (try 1):  35%|███▌      | 631k/1.78M [00:00<00:00, 2.20MB/s]Downloading 2311.11176 (try 1):  56%|█████▌    | 999k/1.78M [00:00<00:00, 2.77MB/s]Downloading 2311.11176 (try 1):  72%|███████▏  | 1.28M/1.78M [00:00<00:00, 1.14MB/s]Downloading 2311.11176 (try 1):  99%|█████████▉| 1.76M/1.78M [00:01<00:00, 1.77MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=4/5.
+OCR on page.number=10/11.
+OCR on page.number=13/14.
+OCR on page.number=15/16.
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:   9%|▉         | 1/11 [00:01<00:12,  1.23s/it]Batches:  18%|█▊        | 2/11 [00:02<00:13,  1.46s/it]Batches:  27%|██▋       | 3/11 [00:03<00:07,  1.01it/s]Batches:  36%|███▋      | 4/11 [00:04<00:07,  1.05s/it]Batches:  45%|████▌     | 5/11 [00:05<00:06,  1.11s/it]Batches:  55%|█████▍    | 6/11 [00:06<00:04,  1.15it/s]Batches:  64%|██████▎   | 7/11 [00:06<00:02,  1.43it/s]Batches:  73%|███████▎  | 8/11 [00:06<00:01,  1.78it/s]Batches:  82%|████████▏ | 9/11 [00:06<00:00,  2.09it/s]Batches:  91%|█████████ | 10/11 [00:07<00:00,  2.04it/s]Batches: 100%|██████████| 11/11 [00:07<00:00,  2.53it/s]Batches: 100%|██████████| 11/11 [00:07<00:00,  1.44it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2311.11176  (86 chunks)  Morphology-Enhanced CAM-Guided SAM for weakly supervised Bre
+libc++abi: terminating due to uncaught exception of type std::__1::system_error: recursive_mutex lock failed: Invalid argument
+[fail] 2311.11176 exit=134 after 28.9s  (logged in failed.txt)
+
+===== [20/4450] 2102.07805  elapsed=8.7m  eta~2034.8m  avg=28s/paper =====
+2026-10-15 04:18:29.766 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  97%|█████████▋| 1328/1376 [00:00<00:00, 13248.21it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 13204.48it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2102.07805 …
+Downloading 2102.07805 (try 1):   0%|          | 0.00/4.46M [00:00<?, ?B/s]Downloading 2102.07805 (try 1):   1%|          | 24.6k/4.46M [00:00<00:20, 214kB/s]Downloading 2102.07805 (try 1):   1%|          | 49.2k/4.46M [00:00<00:21, 204kB/s]Downloading 2102.07805 (try 1):   2%|▏         | 90.1k/4.46M [00:00<00:16, 269kB/s]Downloading 2102.07805 (try 1):   3%|▎         | 156k/4.46M [00:00<00:11, 389kB/s] Downloading 2102.07805 (try 1):   5%|▍         | 221k/4.46M [00:00<00:09, 445kB/s]Downloading 2102.07805 (try 1):   7%|▋         | 303k/4.46M [00:00<00:08, 514kB/s]Downloading 2102.07805 (try 1):   9%|▊         | 385k/4.46M [00:00<00:06, 586kB/s]Downloading 2102.07805 (try 1):  10%|█         | 467k/4.46M [00:00<00:06, 648kB/s]Downloading 2102.07805 (try 1):  13%|█▎        | 565k/4.46M [00:01<00:05, 717kB/s]Downloading 2102.07805 (try 1):  15%|█▌        | 680k/4.46M [00:01<00:04, 822kB/s]Downloading 2102.07805 (try 1):  18%|█▊        | 786k/4.46M [00:01<00:04, 874kB/s]Downloading 2102.07805 (try 1):  20%|█▉        | 885k/4.46M [00:01<00:03, 894kB/s]Downloading 2102.07805 (try 1):  23%|██▎       | 1.03M/4.46M [00:01<00:03, 1.05MB/s]Downloading 2102.07805 (try 1):  26%|██▌       | 1.14M/4.46M [00:03<00:16, 198kB/s] Downloading 2102.07805 (try 1):  29%|██▉       | 1.29M/4.46M [00:03<00:10, 290kB/s]Downloading 2102.07805 (try 1):  33%|███▎      | 1.46M/4.46M [00:03<00:07, 421kB/s]Downloading 2102.07805 (try 1):  36%|███▋      | 1.62M/4.46M [00:03<00:05, 558kB/s]Downloading 2102.07805 (try 1):  40%|████      | 1.79M/4.46M [00:03<00:03, 711kB/s]Downloading 2102.07805 (try 1):  44%|████▍     | 1.98M/4.46M [00:03<00:02, 918kB/s]Downloading 2102.07805 (try 1):  48%|████▊     | 2.14M/4.46M [00:04<00:04, 474kB/s]Downloading 2102.07805 (try 1):  51%|█████     | 2.25M/4.46M [00:04<00:04, 527kB/s]Downloading 2102.07805 (try 1):  55%|█████▍    | 2.45M/4.46M [00:04<00:02, 716kB/s]Downloading 2102.07805 (try 1):  61%|██████    | 2.73M/4.46M [00:04<00:01, 1.04MB/s]Downloading 2102.07805 (try 1):  68%|██████▊   | 3.05M/4.46M [00:04<00:00, 1.42MB/s]Downloading 2102.07805 (try 1):  73%|███████▎  | 3.26M/4.46M [00:06<00:03, 394kB/s] Downloading 2102.07805 (try 1):  80%|████████  | 3.57M/4.46M [00:06<00:01, 582kB/s]Downloading 2102.07805 (try 1):  88%|████████▊ | 3.92M/4.46M [00:06<00:00, 837kB/s]Downloading 2102.07805 (try 1):  94%|█████████▍| 4.20M/4.46M [00:07<00:00, 430kB/s]Downloading 2102.07805 (try 1):  99%|█████████▉| 4.42M/4.46M [00:08<00:00, 533kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=2/3.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:00<00:01,  1.52it/s]Batches:  50%|█████     | 2/4 [00:01<00:01,  1.45it/s]Batches:  75%|███████▌  | 3/4 [00:01<00:00,  1.64it/s]Batches: 100%|██████████| 4/4 [00:02<00:00,  2.13it/s]Batches: 100%|██████████| 4/4 [00:02<00:00,  1.87it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2102.07805  (32 chunks)  Integrated Grad-CAM: Sensitivity-Aware Visual Explanation of
+[ok] 2102.07805 in 31.7s  (saved to done.txt)
+
+===== [21/4450] 2308.13150  elapsed=9.3m  eta~2049.5m  avg=28s/paper =====
+2026-10-15 04:19:01.420 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27613.38it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2308.13150 …
+Downloading 2308.13150 (try 1):   0%|          | 0.00/25.1M [00:00<?, ?B/s]Downloading 2308.13150 (try 1):   0%|          | 24.6k/25.1M [00:00<02:01, 206kB/s]Downloading 2308.13150 (try 1):   2%|▏         | 385k/25.1M [00:00<00:12, 1.97MB/s]Downloading 2308.13150 (try 1):   4%|▍         | 1.06M/25.1M [00:00<00:16, 1.49MB/s]Downloading 2308.13150 (try 1):   6%|▌         | 1.43M/25.1M [00:00<00:12, 1.84MB/s]Downloading 2308.13150 (try 1):   8%|▊         | 2.04M/25.1M [00:00<00:08, 2.69MB/s]Downloading 2308.13150 (try 1):  10%|▉         | 2.40M/25.1M [00:01<00:20, 1.12MB/s]Downloading 2308.13150 (try 1):  11%|█         | 2.65M/25.1M [00:01<00:18, 1.20MB/s]Downloading 2308.13150 (try 1):  15%|█▍        | 3.68M/25.1M [00:02<00:09, 2.37MB/s]Downloading 2308.13150 (try 1):  17%|█▋        | 4.20M/25.1M [00:03<00:24, 849kB/s] Downloading 2308.13150 (try 1):  19%|█▊        | 4.69M/25.1M [00:03<00:18, 1.09MB/s]Downloading 2308.13150 (try 1):  22%|██▏       | 5.47M/25.1M [00:03<00:12, 1.63MB/s]Downloading 2308.13150 (try 1):  25%|██▌       | 6.30M/25.1M [00:05<00:21, 862kB/s] Downloading 2308.13150 (try 1):  29%|██▉       | 7.35M/25.1M [00:06<00:21, 809kB/s]Downloading 2308.13150 (try 1):  33%|███▎      | 8.40M/25.1M [00:08<00:22, 739kB/s]Downloading 2308.13150 (try 1):  36%|███▌      | 9.03M/25.1M [00:08<00:17, 934kB/s]Downloading 2308.13150 (try 1):  38%|███▊      | 9.45M/25.1M [00:10<00:24, 627kB/s]Downloading 2308.13150 (try 1):  42%|████▏     | 10.5M/25.1M [00:11<00:17, 820kB/s]Downloading 2308.13150 (try 1):  46%|████▌     | 11.5M/25.1M [00:12<00:18, 738kB/s]Downloading 2308.13150 (try 1):  50%|█████     | 12.6M/25.1M [00:13<00:15, 816kB/s]Downloading 2308.13150 (try 1):  53%|█████▎    | 13.4M/25.1M [00:13<00:11, 1.06MB/s]Downloading 2308.13150 (try 1):  54%|█████▍    | 13.7M/25.1M [00:14<00:12, 917kB/s] Downloading 2308.13150 (try 1):  58%|█████▊    | 14.7M/25.1M [00:15<00:10, 1.03MB/s]Downloading 2308.13150 (try 1):  61%|██████▏   | 15.4M/25.1M [00:15<00:07, 1.37MB/s]Downloading 2308.13150 (try 1):  64%|██████▍   | 16.0M/25.1M [00:15<00:05, 1.69MB/s]Downloading 2308.13150 (try 1):  67%|██████▋   | 16.8M/25.1M [00:17<00:09, 892kB/s] Downloading 2308.13150 (try 1):  69%|██████▉   | 17.4M/25.1M [00:17<00:06, 1.13MB/s]Downloading 2308.13150 (try 1):  71%|███████   | 17.8M/25.1M [00:18<00:09, 753kB/s] Downloading 2308.13150 (try 1):  75%|███████▌  | 18.9M/25.1M [00:20<00:08, 701kB/s]Downloading 2308.13150 (try 1):  76%|███████▌  | 19.1M/25.1M [00:20<00:08, 752kB/s]Downloading 2308.13150 (try 1):  79%|███████▉  | 19.9M/25.1M [00:21<00:06, 838kB/s]Downloading 2308.13150 (try 1):  83%|████████▎ | 20.9M/25.1M [00:21<00:03, 1.31MB/s]Downloading 2308.13150 (try 1):  85%|████████▌ | 21.4M/25.1M [00:22<00:04, 812kB/s] Downloading 2308.13150 (try 1):  88%|████████▊ | 22.0M/25.1M [00:24<00:05, 605kB/s]Downloading 2308.13150 (try 1):  92%|█████████▏| 23.2M/25.1M [00:24<00:01, 1.03MB/s]Downloading 2308.13150 (try 1):  96%|█████████▌| 24.1M/25.1M [00:26<00:01, 792kB/s] Downloading 2308.13150 (try 1):  98%|█████████▊| 24.6M/25.1M [00:26<00:00, 952kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=3/4.
+OCR on page.number=5/6.
+OCR on page.number=7/8.
+OCR on page.number=9/10.
+Batches:   0%|          | 0/10 [00:00<?, ?it/s]Batches:  10%|█         | 1/10 [00:01<00:11,  1.31s/it]Batches:  20%|██        | 2/10 [00:02<00:11,  1.49s/it]Batches:  30%|███       | 3/10 [00:04<00:09,  1.33s/it]Batches:  40%|████      | 4/10 [00:04<00:07,  1.17s/it]Batches:  50%|█████     | 5/10 [00:05<00:04,  1.09it/s]Batches:  60%|██████    | 6/10 [00:05<00:03,  1.32it/s]Batches:  70%|███████   | 7/10 [00:06<00:02,  1.28it/s]Batches:  80%|████████  | 8/10 [00:07<00:01,  1.48it/s]Batches:  90%|█████████ | 9/10 [00:07<00:00,  1.47it/s]Batches: 100%|██████████| 10/10 [00:07<00:00,  1.99it/s]Batches: 100%|██████████| 10/10 [00:07<00:00,  1.25it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2308.13150  (79 chunks)  Breast Cancer Classification with Enhanced Interpretability:
+[ok] 2308.13150 in 65.6s  (saved to done.txt)
+
+===== [22/4450] 2406.09980  elapsed=10.3m  eta~2182.0m  avg=30s/paper =====
+2026-10-15 04:20:07.014 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  96%|█████████▌| 1322/1376 [00:00<00:00, 13185.43it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 13115.75it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2406.09980 …
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:01<00:08,  1.35s/it]Batches:  29%|██▊       | 2/7 [00:02<00:06,  1.32s/it]Batches:  43%|████▎     | 3/7 [00:03<00:03,  1.06it/s]Batches:  57%|█████▋    | 4/7 [00:03<00:02,  1.26it/s]Batches:  71%|███████▏  | 5/7 [00:04<00:01,  1.46it/s]Batches:  86%|████████▌ | 6/7 [00:04<00:00,  1.40it/s]Batches: 100%|██████████| 7/7 [00:05<00:00,  1.81it/s]Batches: 100%|██████████| 7/7 [00:05<00:00,  1.35it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2406.09980  (54 chunks)  Deep Learning Models to Automate the Scoring of Hand Radiogr
+[ok] 2406.09980 in 21.4s  (saved to done.txt)
+
+===== [23/4450] 2403.05658  elapsed=10.7m  eta~2154.1m  avg=29s/paper =====
+2026-10-15 04:20:28.391 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28768.64it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2403.05658 …
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:00<00:04,  1.48it/s]Batches:  29%|██▊       | 2/7 [00:01<00:04,  1.24it/s]Batches:  43%|████▎     | 3/7 [00:02<00:02,  1.46it/s]Batches:  57%|█████▋    | 4/7 [00:02<00:02,  1.36it/s]Batches:  71%|███████▏  | 5/7 [00:03<00:01,  1.70it/s]Batches:  86%|████████▌ | 6/7 [00:03<00:00,  2.09it/s]Batches: 100%|██████████| 7/7 [00:03<00:00,  1.97it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2403.05658  (49 chunks)  Feature CAM: Interpretable AI in Image Classification
+[ok] 2403.05658 in 19.9s  (saved to done.txt)
+
+===== [24/4450] 2310.07678  elapsed=11.0m  eta~2123.9m  avg=29s/paper =====
+2026-10-15 04:20:48.250 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28177.59it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2310.07678 …
+Batches:   0%|          | 0/9 [00:00<?, ?it/s]Batches:  11%|█         | 1/9 [00:00<00:04,  1.79it/s]Batches:  22%|██▏       | 2/9 [00:01<00:03,  1.86it/s]Batches:  33%|███▎      | 3/9 [00:01<00:02,  2.12it/s]Batches:  44%|████▍     | 4/9 [00:01<00:02,  2.14it/s]Batches:  56%|█████▌    | 5/9 [00:02<00:01,  2.24it/s]Batches:  67%|██████▋   | 6/9 [00:02<00:01,  2.29it/s]Batches:  78%|███████▊  | 7/9 [00:03<00:00,  2.61it/s]Batches:  89%|████████▉ | 8/9 [00:03<00:00,  2.64it/s]Batches: 100%|██████████| 9/9 [00:03<00:00,  3.36it/s]Batches: 100%|██████████| 9/9 [00:03<00:00,  2.55it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2310.07678  (68 chunks)  Explainable Image Similarity: Integrating Siamese Networks a
+[ok] 2310.07678 in 18.5s  (saved to done.txt)
+
+===== [25/4450] 2407.20427  elapsed=11.3m  eta~2091.8m  avg=28s/paper =====
+2026-10-15 04:21:06.748 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27995.80it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2407.20427 …
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:00<00:04,  1.35it/s]Batches:  29%|██▊       | 2/7 [00:01<00:04,  1.20it/s]Batches:  43%|████▎     | 3/7 [00:02<00:02,  1.55it/s]Batches:  57%|█████▋    | 4/7 [00:02<00:02,  1.42it/s]Batches:  71%|███████▏  | 5/7 [00:03<00:01,  1.64it/s]Batches:  86%|████████▌ | 6/7 [00:03<00:00,  1.91it/s]Batches: 100%|██████████| 7/7 [00:03<00:00,  2.46it/s]Batches: 100%|██████████| 7/7 [00:03<00:00,  1.84it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2407.20427  (52 chunks)  Mean Opinion Score as a New Metric for User-Evaluation of XA
+[ok] 2407.20427 in 19.7s  (saved to done.txt)
+
+===== [26/4450] 2504.08364  elapsed=11.7m  eta~2065.8m  avg=28s/paper =====
+2026-10-15 04:21:26.435 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27981.28it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2504.08364 …
+Batches:   0%|          | 0/10 [00:00<?, ?it/s]Batches:  10%|█         | 1/10 [00:00<00:08,  1.05it/s]Batches:  20%|██        | 2/10 [00:01<00:04,  1.62it/s]Batches:  30%|███       | 3/10 [00:01<00:04,  1.58it/s]Batches:  40%|████      | 4/10 [00:02<00:03,  1.69it/s]Batches:  50%|█████     | 5/10 [00:02<00:02,  1.81it/s]Batches:  60%|██████    | 6/10 [00:03<00:01,  2.10it/s]Batches:  70%|███████   | 7/10 [00:03<00:01,  2.19it/s]Batches:  80%|████████  | 8/10 [00:03<00:00,  2.69it/s]Batches:  90%|█████████ | 9/10 [00:04<00:00,  3.33it/s]Batches: 100%|██████████| 10/10 [00:04<00:00,  2.44it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2504.08364  (73 chunks)  DRIP: DRop unImportant data Points -- Enhancing Machine Lear
+[ok] 2504.08364 in 18.6s  (saved to done.txt)
+
+===== [27/4450] 2105.02434  elapsed=12.0m  eta~2038.5m  avg=28s/paper =====
+2026-10-15 04:21:45.011 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28735.69it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2105.02434 …
+Downloading 2105.02434 (try 1):   0%|          | 0.00/31.6M [00:00<?, ?B/s]Downloading 2105.02434 (try 1):   0%|          | 139k/31.6M [00:00<00:23, 1.33MB/s]Downloading 2105.02434 (try 1):   3%|▎         | 1.06M/31.6M [00:00<00:24, 1.23MB/s]Downloading 2105.02434 (try 1):   5%|▌         | 1.64M/31.6M [00:00<00:15, 1.91MB/s]Downloading 2105.02434 (try 1):   7%|▋         | 2.11M/31.6M [00:01<00:31, 936kB/s] Downloading 2105.02434 (try 1):   8%|▊         | 2.48M/31.6M [00:02<00:25, 1.15MB/s]Downloading 2105.02434 (try 1):  10%|▉         | 3.11M/31.6M [00:02<00:16, 1.72MB/s]Downloading 2105.02434 (try 1):  13%|█▎        | 4.20M/31.6M [00:03<00:29, 931kB/s] Downloading 2105.02434 (try 1):  15%|█▍        | 4.58M/31.6M [00:04<00:24, 1.09MB/s]Downloading 2105.02434 (try 1):  17%|█▋        | 5.25M/31.6M [00:05<00:36, 730kB/s] Downloading 2105.02434 (try 1):  18%|█▊        | 5.65M/31.6M [00:05<00:29, 891kB/s]Downloading 2105.02434 (try 1):  20%|█▉        | 6.30M/31.6M [00:06<00:36, 694kB/s]Downloading 2105.02434 (try 1):  21%|██        | 6.68M/31.6M [00:07<00:29, 840kB/s]Downloading 2105.02434 (try 1):  23%|██▎       | 7.27M/31.6M [00:07<00:20, 1.18MB/s]Downloading 2105.02434 (try 1):  24%|██▍       | 7.63M/31.6M [00:08<00:34, 692kB/s] Downloading 2105.02434 (try 1):  25%|██▍       | 7.88M/31.6M [00:08<00:30, 782kB/s]Downloading 2105.02434 (try 1):  27%|██▋       | 8.40M/31.6M [00:09<00:31, 746kB/s]Downloading 2105.02434 (try 1):  28%|██▊       | 8.77M/31.6M [00:09<00:24, 936kB/s]Downloading 2105.02434 (try 1):  30%|██▉       | 9.34M/31.6M [00:09<00:16, 1.34MB/s]Downloading 2105.02434 (try 1):  33%|███▎      | 10.4M/31.6M [00:09<00:09, 2.29MB/s]Downloading 2105.02434 (try 1):  34%|███▍      | 10.9M/31.6M [00:10<00:13, 1.54MB/s]Downloading 2105.02434 (try 1):  36%|███▌      | 11.2M/31.6M [00:10<00:11, 1.76MB/s]Downloading 2105.02434 (try 1):  37%|███▋      | 11.6M/31.6M [00:11<00:23, 840kB/s] Downloading 2105.02434 (try 1):  39%|███▉      | 12.4M/31.6M [00:11<00:14, 1.33MB/s]Downloading 2105.02434 (try 1):  41%|████      | 12.9M/31.6M [00:13<00:25, 736kB/s] Downloading 2105.02434 (try 1):  43%|████▎     | 13.4M/31.6M [00:13<00:17, 1.01MB/s]Downloading 2105.02434 (try 1):  44%|████▎     | 13.8M/31.6M [00:14<00:24, 725kB/s] Downloading 2105.02434 (try 1):  45%|████▌     | 14.2M/31.6M [00:14<00:18, 926kB/s]Downloading 2105.02434 (try 1):  47%|████▋     | 14.7M/31.6M [00:15<00:29, 579kB/s]Downloading 2105.02434 (try 1):  47%|████▋     | 15.0M/31.6M [00:15<00:24, 683kB/s]Downloading 2105.02434 (try 1):  48%|████▊     | 15.3M/31.6M [00:16<00:19, 849kB/s]Downloading 2105.02434 (try 1):  50%|████▉     | 15.7M/31.6M [00:16<00:17, 921kB/s]Downloading 2105.02434 (try 1):  51%|█████▏    | 16.2M/31.6M [00:16<00:11, 1.29MB/s]Downloading 2105.02434 (try 1):  53%|█████▎    | 16.8M/31.6M [00:17<00:18, 813kB/s] Downloading 2105.02434 (try 1):  54%|█████▍    | 17.1M/31.6M [00:17<00:15, 960kB/s]Downloading 2105.02434 (try 1):  55%|█████▌    | 17.5M/31.6M [00:17<00:11, 1.26MB/s]Downloading 2105.02434 (try 1):  56%|█████▋    | 17.8M/31.6M [00:18<00:12, 1.09MB/s]Downloading 2105.02434 (try 1):  58%|█████▊    | 18.2M/31.6M [00:18<00:09, 1.36MB/s]Downloading 2105.02434 (try 1):  60%|█████▉    | 18.9M/31.6M [00:19<00:15, 799kB/s] Downloading 2105.02434 (try 1):  62%|██████▏   | 19.5M/31.6M [00:19<00:10, 1.13MB/s]Downloading 2105.02434 (try 1):  63%|██████▎   | 19.9M/31.6M [00:21<00:17, 666kB/s] Downloading 2105.02434 (try 1):  66%|██████▌   | 20.7M/31.6M [00:21<00:10, 1.06MB/s]Downloading 2105.02434 (try 1):  67%|██████▋   | 21.1M/31.6M [00:22<00:15, 669kB/s] Downloading 2105.02434 (try 1):  68%|██████▊   | 21.4M/31.6M [00:22<00:12, 786kB/s]Downloading 2105.02434 (try 1):  70%|██████▉   | 22.0M/31.6M [00:24<00:15, 629kB/s]Downloading 2105.02434 (try 1):  71%|███████   | 22.5M/31.6M [00:24<00:11, 819kB/s]Downloading 2105.02434 (try 1):  73%|███████▎  | 23.1M/31.6M [00:25<00:11, 757kB/s]Downloading 2105.02434 (try 1):  76%|███████▋  | 24.1M/31.6M [00:26<00:09, 798kB/s]Downloading 2105.02434 (try 1):  78%|███████▊  | 24.7M/31.6M [00:26<00:06, 1.03MB/s]Downloading 2105.02434 (try 1):  80%|███████▉  | 25.2M/31.6M [00:27<00:08, 794kB/s] Downloading 2105.02434 (try 1):  84%|████████▎ | 26.4M/31.6M [00:27<00:03, 1.43MB/s]Downloading 2105.02434 (try 1):  86%|████████▋ | 27.3M/31.6M [00:28<00:02, 1.50MB/s]Downloading 2105.02434 (try 1):  89%|████████▊ | 28.0M/31.6M [00:28<00:01, 1.91MB/s]Downloading 2105.02434 (try 1):  90%|█████████ | 28.5M/31.6M [00:29<00:03, 973kB/s] Downloading 2105.02434 (try 1):  91%|█████████▏| 28.9M/31.6M [00:29<00:02, 1.10MB/s]Downloading 2105.02434 (try 1):  93%|█████████▎| 29.4M/31.6M [00:31<00:02, 772kB/s] Downloading 2105.02434 (try 1):  96%|█████████▌| 30.2M/31.6M [00:31<00:01, 1.17MB/s]Downloading 2105.02434 (try 1):  97%|█████████▋| 30.8M/31.6M [00:31<00:00, 1.51MB/s]Downloading 2105.02434 (try 1): 100%|█████████▉| 31.5M/31.6M [00:32<00:00, 1.22MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=4/5.
+OCR on page.number=6/7.
+OCR on page.number=8/9.
+OCR on page.number=10/11.
+OCR on page.number=12/13.
+OCR on page.number=16/17.
+OCR on page.number=17/18.
+Batches:   0%|          | 0/17 [00:00<?, ?it/s]Batches:   6%|▌         | 1/17 [00:00<00:13,  1.15it/s]Batches:  12%|█▏        | 2/17 [00:01<00:11,  1.29it/s]Batches:  18%|█▊        | 3/17 [00:02<00:09,  1.46it/s]Batches:  24%|██▎       | 4/17 [00:02<00:07,  1.66it/s]Batches:  29%|██▉       | 5/17 [00:03<00:08,  1.47it/s]Batches:  35%|███▌      | 6/17 [00:03<00:06,  1.64it/s]Batches:  41%|████      | 7/17 [00:04<00:05,  1.78it/s]Batches:  47%|████▋     | 8/17 [00:05<00:05,  1.54it/s]Batches:  53%|█████▎    | 9/17 [00:05<00:04,  1.68it/s]Batches:  59%|█████▉    | 10/17 [00:06<00:03,  1.81it/s]Batches:  65%|██████▍   | 11/17 [00:06<00:03,  1.93it/s]Batches:  71%|███████   | 12/17 [00:06<00:02,  2.08it/s]Batches:  76%|███████▋  | 13/17 [00:07<00:01,  2.02it/s]Batches:  82%|████████▏ | 14/17 [00:08<00:01,  2.01it/s]Batches:  88%|████████▊ | 15/17 [00:08<00:00,  2.25it/s]Batches:  94%|█████████▍| 16/17 [00:08<00:00,  2.57it/s]Batches: 100%|██████████| 17/17 [00:08<00:00,  1.96it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2105.02434  (131 chunks)  Anomaly detection in Hyper Suprime-Cam galaxy images with ge
+[ok] 2105.02434 in 67.3s  (saved to done.txt)
+
+===== [28/4450] 2308.15712  elapsed=13.1m  eta~2146.4m  avg=29s/paper =====
+2026-10-15 04:22:52.403 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  95%|█████████▌| 1314/1376 [00:00<00:00, 13118.46it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 13019.32it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2308.15712 …
+Downloading 2308.15712 (try 1):   0%|          | 0.00/2.33M [00:00<?, ?B/s]Downloading 2308.15712 (try 1):   1%|▏         | 32.8k/2.33M [00:00<00:07, 292kB/s]Downloading 2308.15712 (try 1):  15%|█▌        | 352k/2.33M [00:00<00:01, 1.85MB/s]Downloading 2308.15712 (try 1):  45%|████▌     | 1.06M/2.33M [00:01<00:02, 540kB/s]Downloading 2308.15712 (try 1):  90%|█████████ | 2.11M/2.33M [00:02<00:00, 881kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=5/6.
+OCR on page.number=6/7.
+Batches:   0%|          | 0/9 [00:00<?, ?it/s]Batches:  11%|█         | 1/9 [00:00<00:06,  1.20it/s]Batches:  22%|██▏       | 2/9 [00:01<00:04,  1.43it/s]Batches:  33%|███▎      | 3/9 [00:02<00:04,  1.50it/s]Batches:  44%|████▍     | 4/9 [00:02<00:03,  1.62it/s]Batches:  56%|█████▌    | 5/9 [00:03<00:02,  1.63it/s]Batches:  67%|██████▋   | 6/9 [00:04<00:02,  1.46it/s]Batches:  78%|███████▊  | 7/9 [00:04<00:01,  1.65it/s]Batches:  89%|████████▉ | 8/9 [00:04<00:00,  1.78it/s]Batches: 100%|██████████| 9/9 [00:05<00:00,  2.22it/s]Batches: 100%|██████████| 9/9 [00:05<00:00,  1.75it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2308.15712  (72 chunks)  Exploring Deep Learning for Full-disk Solar Flare Prediction
+[ok] 2308.15712 in 31.1s  (saved to done.txt)
+
+===== [29/4450] 2204.03852  elapsed=13.6m  eta~2151.2m  avg=29s/paper =====
+2026-10-15 04:23:23.463 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27979.38it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2204.03852 …
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:01<00:06,  1.59s/it]Batches:  40%|████      | 2/5 [00:02<00:03,  1.06s/it]Batches:  60%|██████    | 3/5 [00:02<00:01,  1.29it/s]Batches:  80%|████████  | 4/5 [00:03<00:00,  1.64it/s]Batches: 100%|██████████| 5/5 [00:03<00:00,  2.17it/s]Batches: 100%|██████████| 5/5 [00:03<00:00,  1.53it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2204.03852  (35 chunks)  Reliable Visualization for Deep Speaker Recognition
+[ok] 2204.03852 in 18.6s  (saved to done.txt)
+
+===== [30/4450] 2405.07338  elapsed=13.9m  eta~2123.8m  avg=29s/paper =====
+2026-10-15 04:23:42.049 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27310.75it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2405.07338 …
+Batches:   0%|          | 0/18 [00:00<?, ?it/s]Batches:   6%|▌         | 1/18 [00:01<00:19,  1.13s/it]Batches:  11%|█         | 2/18 [00:02<00:16,  1.06s/it]Batches:  17%|█▋        | 3/18 [00:03<00:15,  1.03s/it]Batches:  22%|██▏       | 4/18 [00:03<00:12,  1.11it/s]Batches:  28%|██▊       | 5/18 [00:04<00:09,  1.40it/s]Batches:  33%|███▎      | 6/18 [00:04<00:07,  1.59it/s]Batches:  39%|███▉      | 7/18 [00:05<00:06,  1.82it/s]Batches:  44%|████▍     | 8/18 [00:05<00:06,  1.61it/s]Batches:  50%|█████     | 9/18 [00:06<00:06,  1.35it/s]Batches:  56%|█████▌    | 10/18 [00:07<00:05,  1.50it/s]Batches:  61%|██████    | 11/18 [00:07<00:04,  1.72it/s]Batches:  67%|██████▋   | 12/18 [00:08<00:03,  1.81it/s]Batches:  72%|███████▏  | 13/18 [00:08<00:02,  1.89it/s]Batches:  78%|███████▊  | 14/18 [00:09<00:01,  2.15it/s]Batches:  83%|████████▎ | 15/18 [00:09<00:01,  2.08it/s]Batches:  89%|████████▉ | 16/18 [00:09<00:00,  2.56it/s]Batches:  94%|█████████▍| 17/18 [00:10<00:00,  2.77it/s]Batches: 100%|██████████| 18/18 [00:10<00:00,  3.35it/s]Batches: 100%|██████████| 18/18 [00:10<00:00,  1.77it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2405.07338  (143 chunks)  Explainable Convolutional Neural Networks for Retinal Fundus
+[ok] 2405.07338 in 25.9s  (saved to done.txt)
+
+===== [31/4450] 2501.05449  elapsed=14.4m  eta~2116.1m  avg=29s/paper =====
+2026-10-15 04:24:07.928 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 26754.20it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2501.05449 …
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:01<00:05,  1.00s/it]Batches:  33%|███▎      | 2/6 [00:01<00:03,  1.27it/s]Batches:  50%|█████     | 3/6 [00:02<00:01,  1.63it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.89it/s]Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.86it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.97it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2501.05449  (42 chunks)  Explainable AI-Enhanced Deep Learning for Pumpkin Leaf Disea
+[ok] 2501.05449 in 16.4s  (saved to done.txt)
+
+===== [32/4450] 2510.23363  elapsed=14.6m  eta~2086.3m  avg=28s/paper =====
+2026-10-15 04:24:24.315 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28470.33it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2510.23363 …
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:00<00:03,  1.37it/s]Batches:  33%|███▎      | 2/6 [00:01<00:02,  1.64it/s]Batches:  50%|█████     | 3/6 [00:01<00:01,  1.77it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.92it/s]Batches:  83%|████████▎ | 5/6 [00:02<00:00,  2.25it/s]Batches: 100%|██████████| 6/6 [00:02<00:00,  2.32it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2510.23363  (43 chunks)  Interpretable Tile-Based Classification of Paclitaxel Exposu
+[ok] 2510.23363 in 17.1s  (saved to done.txt)
+
+===== [33/4450] 2310.02588  elapsed=14.9m  eta~2060.0m  avg=28s/paper =====
+2026-10-15 04:24:41.408 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 26949.71it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2310.02588 …
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:00<00:03,  1.64it/s]Batches:  33%|███▎      | 2/6 [00:01<00:03,  1.22it/s]Batches:  50%|█████     | 3/6 [00:02<00:02,  1.38it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.36it/s]Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.77it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  2.17it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.74it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2310.02588  (45 chunks)  ViT-ReciproCAM: Gradient and Attention-Free Visual Explanati
+[ok] 2310.02588 in 18.2s  (saved to done.txt)
+
+===== [34/4450] 2412.14003  elapsed=15.2m  eta~2037.7m  avg=28s/paper =====
+2026-10-15 04:24:59.617 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 28096.52it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2412.14003 …
+Downloading 2412.14003 (try 1):   0%|          | 0.00/1.24M [00:00<?, ?B/s]Downloading 2412.14003 (try 1):  13%|█▎        | 156k/1.24M [00:00<00:00, 1.52MB/s]Downloading 2412.14003 (try 1):  85%|████████▍ | 1.06M/1.24M [00:00<00:00, 1.23MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=2/3.
+OCR on page.number=5/6.
+OCR on page.number=6/7.
+OCR on page.number=7/8.
+OCR on page.number=8/9.
+OCR on page.number=9/10.
+OCR on page.number=10/11.
+Batches:   0%|          | 0/9 [00:00<?, ?it/s]Batches:  11%|█         | 1/9 [00:00<00:05,  1.41it/s]Batches:  22%|██▏       | 2/9 [00:01<00:04,  1.60it/s]Batches:  33%|███▎      | 3/9 [00:01<00:03,  1.76it/s]Batches:  44%|████▍     | 4/9 [00:02<00:02,  1.96it/s]Batches:  56%|█████▌    | 5/9 [00:02<00:02,  1.96it/s]Batches:  67%|██████▋   | 6/9 [00:03<00:01,  1.68it/s]Batches:  78%|███████▊  | 7/9 [00:03<00:01,  1.83it/s]Batches:  89%|████████▉ | 8/9 [00:04<00:00,  2.13it/s]Batches: 100%|██████████| 9/9 [00:04<00:00,  2.80it/s]Batches: 100%|██████████| 9/9 [00:04<00:00,  2.08it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2412.14003  (69 chunks)  Robust Optimal Safe and Stability Guaranteeing Reinforcement
+[ok] 2412.14003 in 26.8s  (saved to done.txt)
+
+===== [35/4450] 2302.05249  elapsed=15.7m  eta~2035.4m  avg=28s/paper =====
+2026-10-15 04:25:26.499 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 25578.99it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 2302.05249 …
+Downloading 2302.05249 (try 1):   0%|          | 0.00/654k [00:00<?, ?B/s]Downloading 2302.05249 (try 1):  16%|█▋        | 106k/654k [00:00<00:00, 1.00MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=15/16.
+OCR on page.number=16/17.
+Batches:   0%|          | 0/10 [00:00<?, ?it/s]Batches:  10%|█         | 1/10 [00:00<00:08,  1.09it/s]Batches:  20%|██        | 2/10 [00:01<00:07,  1.13it/s]Batches:  30%|███       | 3/10 [00:02<00:05,  1.20it/s]Batches:  40%|████      | 4/10 [00:03<00:04,  1.25it/s]Batches:  50%|█████     | 5/10 [00:04<00:04,  1.24it/s]Batches:  60%|██████    | 6/10 [00:04<00:03,  1.27it/s]Batches:  70%|███████   | 7/10 [00:05<00:02,  1.35it/s]Batches:  80%|████████  | 8/10 [00:06<00:01,  1.42it/s]Batches:  90%|█████████ | 9/10 [00:06<00:00,  1.52it/s]Batches: 100%|██████████| 10/10 [00:06<00:00,  2.05it/s]Batches: 100%|██████████| 10/10 [00:06<00:00,  1.47it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 2302.05249  (75 chunks)  Learning stability guarantees for constrained switching line
+libc++abi: terminating due to uncaught exception of type std::__1::system_error: recursive_mutex lock failed: Invalid argument
+[fail] 2302.05249 exit=134 after 26.5s  (logged in failed.txt)
+
+===== [36/4450] 1701.07590  elapsed=16.1m  eta~2032.5m  avg=28s/paper =====
+2026-10-15 04:25:53.106 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 29005.61it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1701.07590 …
+Downloading 1701.07590 (try 1):   0%|          | 0.00/421k [00:00<?, ?B/s]Downloading 1701.07590 (try 1):   4%|▍         | 16.4k/421k [00:00<00:02, 154kB/s]Downloading 1701.07590 (try 1):  49%|████▊     | 205k/421k [00:00<00:00, 1.14MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/16 [00:00<?, ?it/s]Batches:   6%|▋         | 1/16 [00:01<00:15,  1.03s/it]Batches:  12%|█▎        | 2/16 [00:01<00:12,  1.11it/s]Batches:  19%|█▉        | 3/16 [00:02<00:12,  1.05it/s]Batches:  25%|██▌       | 4/16 [00:03<00:11,  1.07it/s]Batches:  31%|███▏      | 5/16 [00:04<00:09,  1.15it/s]Batches:  38%|███▊      | 6/16 [00:05<00:08,  1.20it/s]Batches:  44%|████▍     | 7/16 [00:05<00:07,  1.26it/s]Batches:  50%|█████     | 8/16 [00:06<00:06,  1.27it/s]Batches:  56%|█████▋    | 9/16 [00:07<00:05,  1.33it/s]Batches:  62%|██████▎   | 10/16 [00:08<00:04,  1.39it/s]Batches:  69%|██████▉   | 11/16 [00:08<00:03,  1.45it/s]Batches:  75%|███████▌  | 12/16 [00:09<00:02,  1.50it/s]Batches:  81%|████████▏ | 13/16 [00:09<00:01,  1.53it/s]Batches:  88%|████████▊ | 14/16 [00:10<00:01,  1.59it/s]Batches:  94%|█████████▍| 15/16 [00:11<00:00,  1.68it/s]Batches: 100%|██████████| 16/16 [00:11<00:00,  1.44it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1701.07590  (122 chunks)  Analysis of stochastic approximation schemes with set-valued
+[ok] 1701.07590 in 32.4s  (saved to done.txt)
+
+===== [37/4450] 1911.02875  elapsed=16.7m  eta~2041.8m  avg=28s/paper =====
+2026-10-15 04:26:25.441 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 30066.70it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[ingest] 1911.02875 …
+Downloading 1911.02875 (try 1):   0%|          | 0.00/669k [00:00<?, ?B/s]Downloading 1911.02875 (try 1):   2%|▏         | 16.4k/669k [00:00<00:04, 157kB/s]Downloading 1911.02875 (try 1):  21%|██        | 139k/669k [00:00<00:00, 767kB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=4/5.
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:01<00:04,  1.02s/it]Batches:  40%|████      | 2/5 [00:01<00:02,  1.34it/s]Batches:  60%|██████    | 3/5 [00:02<00:01,  1.59it/s]Batches:  80%|████████  | 4/5 [00:02<00:00,  1.82it/s]Batches: 100%|██████████| 5/5 [00:02<00:00,  1.97it/s]
+
+Done. 1/1 papers ingested successfully.
+  ✓ 1911.02875  (34 chunks)  $H_\infty$ Model-free Reinforcement Learning with Robust Sta
+[ok] 1911.02875 in 21.9s  (saved to done.txt)
+
+===== [38/4450] 2004.10886  elapsed=17.0m  eta~2029.8m  avg=28s/paper =====
+2026-10-15 04:26:47.315 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'

@@ -1,0 +1,236 @@
+[init] loading ingest modules (Streamlit noise filtered)…
+2026-10-15 04:41:27.122 
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+connection, because Streamlit does not need a valid XSRF token to open one.
+To limit cross-origin access, do these steps:
+WebSocket connection.
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[mem] startup avail=7.0/16.0GiB → batch=16 usable=4.0GiB
+[init] loading embedding model once…
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  93%|█████████▎| 1276/1376 [00:00<00:00, 12750.71it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12545.02it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[init] model ready
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+[plan] library=4479 done_file=85 indexed=54
+[plan] pending_total=4394 session=4394 skipped=85 force=False
+[plan] rough session ~1758–5273 min (model kept warm)
+
+
+===== [1/4394] 2505.10723  elapsed=0.0m  eta~3295.5m  avg=45s/paper =====
+[mem] avail=6.5GiB total=16.0GiB reserve=3.0GiB usable=3.5GiB → batch=16
+Downloading 2505.10723 (try 1):   0%|          | 0.00/2.94M [00:00<?, ?B/s]Downloading 2505.10723 (try 1):  32%|███▏      | 942k/2.94M [00:00<00:00, 9.30MB/s]Downloading 2505.10723 (try 1):  64%|██████▍   | 1.88M/2.94M [00:00<00:00, 3.01MB/s]Downloading 2505.10723 (try 1):  81%|████████  | 2.38M/2.94M [00:00<00:00, 2.64MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=4/5.
+OCR on page.number=7/8.
+OCR on page.number=8/9.
+OCR on page.number=9/10.
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:02<00:12,  2.57s/it]Batches:  33%|███▎      | 2/6 [00:04<00:08,  2.24s/it]Batches:  50%|█████     | 3/6 [00:06<00:05,  1.97s/it]Batches:  67%|██████▋   | 4/6 [00:07<00:03,  1.72s/it]Batches:  83%|████████▎ | 5/6 [00:08<00:01,  1.48s/it]Batches: 100%|██████████| 6/6 [00:08<00:00,  1.02s/it]Batches: 100%|██████████| 6/6 [00:08<00:00,  1.46s/it]
+[ok] 2505.10723 chunks=84 in 15.8s  Mesh Stability Guaranteed Rigid Body Networks Using Control 
+
+===== [2/4394] 2203.00088  elapsed=0.3m  eta~1158.2m  avg=16s/paper =====
+[mem] avail=4.8GiB total=16.0GiB reserve=3.0GiB usable=1.8GiB → batch=8
+Downloading 2203.00088 (try 1):   0%|          | 0.00/1.06M [00:00<?, ?B/s]Downloading 2203.00088 (try 1): 100%|█████████▉| 1.06M/1.06M [00:00<00:00, 2.58MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=13/14.
+OCR on page.number=18/19.
+on page.number=8/9.
+OCR on page.number=9/10.
+Batches:   0%|          | 0/12 [00:00<?, ?it/s]Batches:   8%|▊         | 1/12 [00:00<00:10,  1.04it/s]Batches:  17%|█▋        | 2/12 [00:01<00:08,  1.18it/s]Batches:  25%|██▌       | 3/12 [00:02<00:06,  1.37it/s]Batches:  33%|███▎      | 4/12 [00:03<00:05,  1.39it/s]Batches:  42%|████▏     | 5/12 [00:03<00:04,  1.43it/s]Batches:  50%|█████     | 6/12 [00:04<00:04,  1.45it/s]Batches:  58%|█████▊    | 7/12 [00:05<00:03,  1.41it/s]Batches:  67%|██████▋   | 8/12 [00:05<00:02,  1.47it/s]Batches:  75%|███████▌  | 9/12 [00:06<00:01,  1.68it/s]Batches:  83%|████████▎ | 10/12 [00:06<00:01,  1.92it/s]Batches:  92%|█████████▏| 11/12 [00:06<00:00,  2.29it/s]Batches: 100%|██████████| 12/12 [00:06<00:00,  1.77it/s]
+[ok] 2203.00088 chunks=91 in 12.8s  Virtual Reference Feedback Tuning for linear discrete-time s
+
+===== [3/4394] 1812.09582  elapsed=0.5m  eta~1046.8m  avg=14s/paper =====
+[mem] avail=6.4GiB total=16.0GiB reserve=3.0GiB usable=3.4GiB → batch=16
+Downloading 1812.09582 (try 1):   0%|          | 0.00/1.04M [00:00<?, ?B/s]                                                                           
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=13/14.
+OCR on page.number=18/19.
+Batches:   0%|          | 0/8 [00:00<?, ?it/s]Batches:  12%|█▎        | 1/8 [00:01<00:11,  1.65s/it]Batches:  25%|██▌       | 2/8 [00:03<00:10,  1.80s/it]Batches:  38%|███▊      | 3/8 [00:05<00:09,  1.82s/it]Batches:  50%|█████     | 4/8 [00:07<00:06,  1.74s/it]Batches:  62%|██████▎   | 5/8 [00:08<00:04,  1.57s/it]Batches:  75%|███████▌  | 6/8 [00:09<00:03,  1.55s/it]Batches:  88%|████████▊ | 7/8 [00:10<00:01,  1.42s/it]Batches: 100%|██████████| 8/8 [00:12<00:00,  1.35s/it]Batches: 100%|██████████| 8/8 [00:12<00:00,  1.52s/it]
+[ok] 1812.09582 chunks=128 in 17.5s  Online learning with stability guarantees: A memory-based re
+
+===== [4/4394] 2407.07615  elapsed=0.8m  eta~1125.8m  avg=15s/paper =====
+[mem] avail=5.0GiB total=16.0GiB reserve=3.0GiB usable=2.0GiB → batch=8
+Downloading 2407.07615 (try 1):   0%|          | 0.00/1.92M [00:00<?, ?B/s]Downloading 2407.07615 (try 1):   7%|▋         | 139k/1.92M [00:00<00:01, 1.32MB/s]Downloading 2407.07615 (try 1):  35%|███▌      | 672k/1.92M [00:00<00:00, 3.61MB/s]Downloading 2407.07615 (try 1):  55%|█████▌    | 1.06M/1.92M [00:00<00:00, 2.52MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=10/11.
+OCR on page.number=12/13.
+Batches:   0%|          | 0/9 [00:00<?, ?it/s]Batches:  11%|█         | 1/9 [00:00<00:06,  1.19it/s]Batches:  22%|██▏       | 2/9 [00:01<00:05,  1.34it/s]Batches:  33%|███▎      | 3/9 [00:02<00:04,  1.46it/s]Batches:  44%|████▍     | 4/9 [00:02<00:03,  1.39it/s]Batches:  56%|█████▌    | 5/9 [00:03<00:02,  1.51it/s]Batches:  67%|██████▋   | 6/9 [00:04<00:01,  1.54it/s]Batches:  78%|███████▊  | 7/9 [00:04<00:01,  1.64it/s]Batches:  89%|████████▉ | 8/9 [00:05<00:00,  1.75it/s]Batches: 100%|██████████| 9/9 [00:05<00:00,  1.74it/s]
+[ok] 2407.07615 chunks=68 in 13.6s  Finite Control Set Model Predictive Control with Limit Cycle
+
+===== [5/4394] 2410.07575  elapsed=1.0m  eta~1092.0m  avg=15s/paper =====
+[mem] avail=5.8GiB total=16.0GiB reserve=3.0GiB usable=2.8GiB → batch=8
+Downloading 2410.07575 (try 1):   0%|          | 0.00/51.6M [00:00<?, ?B/s]Downloading 2410.07575 (try 1):   1%|          | 500k/51.6M [00:00<00:12, 4.17MB/s]Downloading 2410.07575 (try 1):   2%|▏         | 1.06M/51.6M [00:00<00:19, 2.65MB/s]Downloading 2410.07575 (try 1):   4%|▍         | 2.11M/51.6M [00:02<01:10, 699kB/s] Downloading 2410.07575 (try 1):   6%|▌         | 3.15M/51.6M [00:02<00:45, 1.06MB/s]Downloading 2410.07575 (try 1):   8%|▊         | 4.20M/51.6M [00:04<00:49, 966kB/s] Downloading 2410.07575 (try 1):  10%|█         | 5.25M/51.6M [00:04<00:35, 1.32MB/s]Downloading 2410.07575 (try 1):  12%|█▏        | 6.30M/51.6M [00:04<00:27, 1.65MB/s]Downloading 2410.07575 (try 1):  14%|█▍        | 7.33M/51.6M [00:04<00:19, 2.27MB/s]Downloading 2410.07575 (try 1):  15%|█▌        | 7.84M/51.6M [00:05<00:21, 2.05MB/s]Downloading 2410.07575 (try 1):  16%|█▋        | 8.40M/51.6M [00:05<00:20, 2.08MB/s]Downloading 2410.07575 (try 1):  18%|█▊        | 9.45M/51.6M [00:05<00:18, 2.32MB/s]Downloading 2410.07575 (try 1):  20%|██        | 10.5M/51.6M [00:06<00:16, 2.55MB/s]Downloading 2410.07575 (try 1):  22%|██▏       | 11.5M/51.6M [00:06<00:14, 2.73MB/s]Downloading 2410.07575 (try 1):  24%|██▍       | 12.6M/51.6M [00:08<00:29, 1.33MB/s]Downloading 2410.07575 (try 1):  26%|██▋       | 13.6M/51.6M [00:08<00:22, 1.69MB/s]Downloading 2410.07575 (try 1):  28%|██▊       | 14.7M/51.6M [00:08<00:18, 1.98MB/s]Downloading 2410.07575 (try 1):  31%|███       | 15.7M/51.6M [00:09<00:15, 2.25MB/s]Downloading 2410.07575 (try 1):  33%|███▎      | 16.8M/51.6M [00:10<00:28, 1.21MB/s]Downloading 2410.07575 (try 1):  34%|███▍      | 17.8M/51.6M [00:10<00:20, 1.61MB/s]Downloading 2410.07575 (try 1):  35%|███▌      | 18.2M/51.6M [00:11<00:21, 1.57MB/s]Downloading 2410.07575 (try 1):  36%|███▋      | 18.7M/51.6M [00:11<00:18, 1.81MB/s]Downloading 2410.07575 (try 1):  37%|███▋      | 19.1M/51.6M [00:11<00:16, 1.92MB/s]Downloading 2410.07575 (try 1):  39%|███▊      | 19.9M/51.6M [00:11<00:14, 2.13MB/s]Downloading 2410.07575 (try 1):  40%|████      | 20.8M/51.6M [00:11<00:10, 2.92MB/s]Downloading 2410.07575 (try 1):  41%|████▏     | 21.3M/51.6M [00:12<00:12, 2.36MB/s]Downloading 2410.07575 (try 1):  43%|████▎     | 22.0M/51.6M [00:12<00:11, 2.64MB/s]Downloading 2410.07575 (try 1):  45%|████▍     | 23.0M/51.6M [00:12<00:07, 3.66MB/s]Downloading 2410.07575 (try 1):  46%|████▌     | 23.6M/51.6M [00:12<00:09, 3.10MB/s]Downloading 2410.07575 (try 1):  47%|████▋     | 24.1M/51.6M [00:13<00:10, 2.71MB/s]Downloading 2410.07575 (try 1):  49%|████▉     | 25.2M/51.6M [00:13<00:08, 2.94MB/s]Downloading 2410.07575 (try 1):  51%|█████     | 26.2M/51.6M [00:13<00:08, 2.97MB/s]Downloading 2410.07575 (try 1):  53%|█████▎    | 27.1M/51.6M [00:13<00:06, 3.73MB/s]Downloading 2410.07575 (try 1):  54%|█████▎    | 27.6M/51.6M [00:14<00:10, 2.29MB/s]Downloading 2410.07575 (try 1):  55%|█████▍    | 28.3M/51.6M [00:14<00:10, 2.25MB/s]Downloading 2410.07575 (try 1):  57%|█████▋    | 29.3M/51.6M [00:14<00:07, 3.08MB/s]Downloading 2410.07575 (try 1):  58%|█████▊    | 29.8M/51.6M [00:15<00:07, 2.73MB/s]Downloading 2410.07575 (try 1):  59%|█████▉    | 30.4M/51.6M [00:15<00:08, 2.36MB/s]Downloading 2410.07575 (try 1):  61%|██████    | 31.3M/51.6M [00:15<00:06, 3.15MB/s]Downloading 2410.07575 (try 1):  62%|██████▏   | 31.8M/51.6M [00:15<00:06, 3.07MB/s]Downloading 2410.07575 (try 1):  63%|██████▎   | 32.5M/51.6M [00:17<00:17, 1.11MB/s]Downloading 2410.07575 (try 1):  65%|██████▍   | 33.5M/51.6M [00:17<00:10, 1.66MB/s]Downloading 2410.07575 (try 1):  66%|██████▌   | 34.0M/51.6M [00:17<00:09, 1.76MB/s]Downloading 2410.07575 (try 1):  67%|██████▋   | 34.6M/51.6M [00:20<00:29, 569kB/s] Downloading 2410.07575 (try 1):  69%|██████▉   | 35.6M/51.6M [00:20<00:17, 907kB/s]Downloading 2410.07575 (try 1):  70%|███████   | 36.2M/51.6M [00:21<00:14, 1.04MB/s]Downloading 2410.07575 (try 1):  71%|███████   | 36.7M/51.6M [00:21<00:12, 1.18MB/s]Downloading 2410.07575 (try 1):  72%|███████▏  | 37.4M/51.6M [00:21<00:09, 1.56MB/s]Downloading 2410.07575 (try 1):  73%|███████▎  | 37.8M/51.6M [00:21<00:08, 1.64MB/s]Downloading 2410.07575 (try 1):  75%|███████▍  | 38.5M/51.6M [00:21<00:06, 2.18MB/s]Downloading 2410.07575 (try 1):  75%|███████▌  | 38.9M/51.6M [00:22<00:05, 2.11MB/s]Downloading 2410.07575 (try 1):  77%|███████▋  | 39.6M/51.6M [00:22<00:04, 2.71MB/s]Downloading 2410.07575 (try 1):  78%|███████▊  | 40.0M/51.6M [00:22<00:05, 2.23MB/s]Downloading 2410.07575 (try 1):  79%|███████▉  | 40.8M/51.6M [00:22<00:03, 3.03MB/s]Downloading 2410.07575 (try 1):  80%|████████  | 41.3M/51.6M [00:22<00:03, 2.76MB/s]Downloading 2410.07575 (try 1):  81%|████████▏ | 41.9M/51.6M [00:22<00:02, 3.32MB/s]Downloading 2410.07575 (try 1):  82%|████████▏ | 42.4M/51.6M [00:23<00:03, 2.90MB/s]Downloading 2410.07575 (try 1):  83%|████████▎ | 42.8M/51.6M [00:23<00:02, 3.16MB/s]Downloading 2410.07575 (try 1):  84%|████████▍ | 43.2M/51.6M [00:23<00:03, 2.58MB/s]Downloading 2410.07575 (try 1):  85%|████████▌ | 43.8M/51.6M [00:23<00:02, 3.23MB/s]Downloading 2410.07575 (try 1):  86%|████████▌ | 44.3M/51.6M [00:23<00:02, 2.82MB/s]Downloading 2410.07575 (try 1):  87%|████████▋ | 44.9M/51.6M [00:23<00:01, 3.60MB/s]Downloading 2410.07575 (try 1):  88%|████████▊ | 45.4M/51.6M [00:24<00:03, 1.60MB/s]Downloading 2410.07575 (try 1):  89%|████████▉ | 46.1M/51.6M [00:24<00:02, 1.91MB/s]Downloading 2410.07575 (try 1):  90%|█████████ | 46.6M/51.6M [00:24<00:02, 2.20MB/s]Downloading 2410.07575 (try 1):  92%|█████████▏| 47.2M/51.6M [00:25<00:01, 2.32MB/s]Downloading 2410.07575 (try 1):  93%|█████████▎| 47.9M/51.6M [00:25<00:01, 3.08MB/s]Downloading 2410.07575 (try 1):  94%|█████████▍| 48.4M/51.6M [00:26<00:02, 1.16MB/s]Downloading 2410.07575 (try 1):  95%|█████████▍| 49.0M/51.6M [00:26<00:01, 1.55MB/s]Downloading 2410.07575 (try 1):  96%|█████████▌| 49.4M/51.6M [00:26<00:01, 1.74MB/s]Downloading 2410.07575 (try 1):  97%|█████████▋| 50.1M/51.6M [00:26<00:00, 2.33MB/s]Downloading 2410.07575 (try 1):  98%|█████████▊| 50.5M/51.6M [00:27<00:00, 2.21MB/s]Downloading 2410.07575 (try 1):  99%|█████████▉| 51.2M/51.6M [00:27<00:00, 2.86MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=10/11.
+OCR on page.number=12/13.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:00<00:04,  1.34it/s]Batches:  29%|██▊       | 2/7 [00:01<00:03,  1.44it/s]Batches:  43%|████▎     | 3/7 [00:02<00:02,  1.53it/s]Batches:  57%|█████▋    | 4/7 [00:02<00:01,  1.63it/s]Batches:  71%|███████▏  | 5/7 [00:03<00:01,  1.45it/s]Batches:  86%|████████▌ | 6/7 [00:03<00:00,  1.70it/s]Batches: 100%|██████████| 7/7 [00:03<00:00,  2.19it/s]Batches: 100%|██████████| 7/7 [00:03<00:00,  1.77it/s]
+[ok] 2410.07575 chunks=54 in 47.5s  Self-Supervised Meta-Learning for All-Layer DNN-Based Adapti
+
+===== [6/4394] 2511.10380  elapsed=1.8m  eta~1568.7m  avg=21s/paper =====
+[mem] avail=5.6GiB total=16.0GiB reserve=3.0GiB usable=2.6GiB → batch=8
+Downloading 2511.10380 (try 1):   0%|          | 0.00/2.36M [00:00<?, ?B/s]Downloading 2511.10380 (try 1):  45%|████▍     | 1.06M/2.36M [00:00<00:00, 3.06MB/s]Downloading 2511.10380 (try 1):  89%|████████▉ | 2.11M/2.36M [00:00<00:00, 2.20MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=2/3.
+OCR on page.number=6/7.
+OCR on page.number=9/10.
+Batches:   0%|          | 0/13 [00:00<?, ?it/s]Batches:   8%|▊         | 1/13 [00:00<00:10,  1.10it/s]Batches:  15%|█▌        | 2/13 [00:01<00:10,  1.02it/s]Batches:  23%|██▎       | 3/13 [00:02<00:10,  1.00s/it]Batches:  31%|███       | 4/13 [00:03<00:07,  1.19it/s]Batches:  38%|███▊      | 5/13 [00:04<00:06,  1.29it/s]Batches:  46%|████▌     | 6/13 [00:04<00:04,  1.45it/s]Batches:  54%|█████▍    | 7/13 [00:05<00:03,  1.50it/s]Batches:  62%|██████▏   | 8/13 [00:05<00:02,  1.67it/s]Batches:  69%|██████▉   | 9/13 [00:06<00:02,  1.71it/s]Batches:  77%|███████▋  | 10/13 [00:06<00:01,  1.88it/s]Batches:  85%|████████▍ | 11/13 [00:07<00:00,  2.06it/s]Batches:  92%|█████████▏| 12/13 [00:07<00:00,  2.14it/s]Batches: 100%|██████████| 13/13 [00:07<00:00,  1.69it/s]
+[ok] 2511.10380 chunks=98 in 13.9s  Large-Signal Stability Guarantees for a DC Microgrid with Ne
+
+===== [7/4394] 2006.14034  elapsed=2.0m  eta~1476.9m  avg=20s/paper =====
+[mem] avail=5.6GiB total=16.0GiB reserve=3.0GiB usable=2.6GiB → batch=8
+Downloading 2006.14034 (try 1):   0%|          | 0.00/384k [00:00<?, ?B/s]                                                                          
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=5/6.
+OCR on page.number=6/7.
+OCR on page.number=9/10.
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:00<00:04,  1.09it/s]Batches:  33%|███▎      | 2/6 [00:01<00:02,  1.34it/s]Batches:  50%|█████     | 3/6 [00:02<00:02,  1.46it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.47it/s]Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.62it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  2.23it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.74it/s]
+[ok] 2006.14034 chunks=43 in 5.9s  A reinforcement learning method with closed-loop stability g
+
+===== [8/4394] 2004.14288  elapsed=2.1m  eta~1327.6m  avg=18s/paper =====
+[mem] avail=5.5GiB total=16.0GiB reserve=3.0GiB usable=2.5GiB → batch=8
+Downloading 2004.14288 (try 1):   0%|          | 0.00/5.28M [00:00<?, ?B/s]Downloading 2004.14288 (try 1):  16%|█▋        | 860k/5.28M [00:00<00:00, 8.15MB/s]Downloading 2004.14288 (try 1):  32%|███▏      | 1.68M/5.28M [00:00<00:01, 3.39MB/s]Downloading 2004.14288 (try 1):  41%|████      | 2.15M/5.28M [00:01<00:03, 936kB/s] Downloading 2004.14288 (try 1):  58%|█████▊    | 3.04M/5.28M [00:01<00:01, 1.59MB/s]Downloading 2004.14288 (try 1):  67%|██████▋   | 3.55M/5.28M [00:02<00:01, 1.62MB/s]Downloading 2004.14288 (try 1):  80%|███████▉  | 4.20M/5.28M [00:02<00:00, 1.73MB/s]Downloading 2004.14288 (try 1):  97%|█████████▋| 5.12M/5.28M [00:02<00:00, 2.57MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=8/9.
+Batches:   0%|          | 0/10 [00:00<?, ?it/s]Batches:  10%|█         | 1/10 [00:00<00:06,  1.37it/s]Batches:  20%|██        | 2/10 [00:01<00:06,  1.16it/s]Batches:  30%|███       | 3/10 [00:02<00:05,  1.38it/s]Batches:  40%|████      | 4/10 [00:02<00:03,  1.54it/s]Batches:  50%|█████     | 5/10 [00:03<00:03,  1.51it/s]Batches:  60%|██████    | 6/10 [00:04<00:02,  1.60it/s]Batches:  70%|███████   | 7/10 [00:04<00:01,  1.72it/s]Batches:  80%|████████  | 8/10 [00:04<00:01,  1.97it/s]Batches:  90%|█████████ | 9/10 [00:05<00:00,  2.27it/s]Batches: 100%|██████████| 10/10 [00:05<00:00,  2.98it/s]Batches: 100%|██████████| 10/10 [00:05<00:00,  1.90it/s]
+[ok] 2004.14288 chunks=77 in 12.8s  Actor-Critic Reinforcement Learning for Control with Stabili
+
+===== [9/4394] 2412.10844  elapsed=2.3m  eta~1278.1m  avg=17s/paper =====
+[mem] avail=6.8GiB total=16.0GiB reserve=3.0GiB usable=3.8GiB → batch=16
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:03<00:12,  3.01s/it]Batches:  40%|████      | 2/5 [00:04<00:07,  2.39s/it]Batches:  60%|██████    | 3/5 [00:07<00:04,  2.23s/it]Batches:  80%|████████  | 4/5 [00:08<00:02,  2.06s/it]Batches: 100%|██████████| 5/5 [00:09<00:00,  1.52s/it]Batches: 100%|██████████| 5/5 [00:09<00:00,  1.87s/it]
+[ok] 2412.10844 chunks=78 in 27.8s  Lyapunov-based reinforcement learning for distributed contro
+
+===== [10/4394] 2208.13006  elapsed=2.8m  eta~1361.8m  avg=19s/paper =====
+[mem] avail=4.8GiB total=16.0GiB reserve=3.0GiB usable=1.8GiB → batch=8
+Downloading 2208.13006 (try 1):   0%|          | 0.00/3.46M [00:00<?, ?B/s]Downloading 2208.13006 (try 1):   4%|▍         | 139k/3.46M [00:00<00:02, 1.38MB/s]Downloading 2208.13006 (try 1):  18%|█▊        | 631k/3.46M [00:00<00:00, 3.41MB/s]Downloading 2208.13006 (try 1):  30%|███       | 1.06M/3.46M [00:00<00:01, 1.44MB/s]Downloading 2208.13006 (try 1):  61%|██████    | 2.11M/3.46M [00:01<00:01, 1.17MB/s]Downloading 2208.13006 (try 1):  91%|█████████ | 3.15M/3.46M [00:02<00:00, 1.58MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=8/9.
+Batches:   0%|          | 0/13 [00:00<?, ?it/s]Batches:   8%|▊         | 1/13 [00:00<00:10,  1.18it/s]Batches:  15%|█▌        | 2/13 [00:01<00:09,  1.21it/s]Batches:  23%|██▎       | 3/13 [00:02<00:08,  1.24it/s]Batches:  31%|███       | 4/13 [00:03<00:07,  1.28it/s]Batches:  38%|███▊      | 5/13 [00:03<00:05,  1.33it/s]Batches:  46%|████▌     | 6/13 [00:04<00:04,  1.44it/s]Batches:  54%|█████▍    | 7/13 [00:05<00:03,  1.56it/s]Batches:  62%|██████▏   | 8/13 [00:05<00:03,  1.66it/s]Batches:  69%|██████▉   | 9/13 [00:06<00:02,  1.64it/s]Batches:  77%|███████▋  | 10/13 [00:06<00:01,  1.64it/s]Batches:  85%|████████▍ | 11/13 [00:07<00:01,  1.66it/s]Batches:  92%|█████████▏| 12/13 [00:07<00:00,  1.77it/s]Batches: 100%|██████████| 13/13 [00:07<00:00,  2.36it/s]Batches: 100%|██████████| 13/13 [00:07<00:00,  1.64it/s]
+[ok] 2208.13006 chunks=100 in 18.9s  Neural Observer with Lyapunov Stability Guarantee for Uncert
+
+===== [11/4394] 1701.05637  elapsed=3.1m  eta~1363.7m  avg=19s/paper =====
+[mem] avail=6.1GiB total=16.0GiB reserve=3.0GiB usable=3.1GiB → batch=16
+Downloading 1701.05637 (try 1):   0%|          | 0.00/962k [00:00<?, ?B/s]Downloading 1701.05637 (try 1):  16%|█▌        | 156k/962k [00:00<00:00, 1.53MB/s]Downloading 1701.05637 (try 1):  70%|██████▉   | 672k/962k [00:00<00:00, 3.49MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=0/1.
+OCR on page.number=2/3.
+OCR on page.number=3/4.
+OCR on page.number=7/8.
+OCR on page.number=8/9.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:01<00:08,  1.47s/it]Batches:  29%|██▊       | 2/7 [00:03<00:07,  1.59s/it]Batches:  43%|████▎     | 3/7 [00:04<00:06,  1.53s/it]Batches:  57%|█████▋    | 4/7 [00:05<00:04,  1.43s/it]Batches:  71%|███████▏  | 5/7 [00:06<00:02,  1.27s/it]Batches:  86%|████████▌ | 6/7 [00:07<00:01,  1.10s/it]Batches: 100%|██████████| 7/7 [00:07<00:00,  1.17it/s]Batches: 100%|██████████| 7/7 [00:07<00:00,  1.14s/it]
+[ok] 1701.05637 chunks=105 in 13.7s  Design and Analysis of Stability-Guaranteed PUFs
+
+===== [12/4394] 1707.06240  elapsed=3.3m  eta~1330.1m  avg=18s/paper =====
+[mem] avail=6.5GiB total=16.0GiB reserve=3.0GiB usable=3.5GiB → batch=16
+Downloading 1707.06240 (try 1):   0%|          | 0.00/697k [00:00<?, ?B/s]                                                                          
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=18/19.
+R on page.number=2/3.
+OCR on page.number=3/4.
+OCR on page.number=7/8.
+OCR on page.number=8/9.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:02<00:12,  2.15s/it]Batches:  29%|██▊       | 2/7 [00:03<00:09,  1.92s/it]Batches:  43%|████▎     | 3/7 [00:05<00:07,  1.76s/it]Batches:  57%|█████▋    | 4/7 [00:06<00:04,  1.66s/it]Batches:  71%|███████▏  | 5/7 [00:08<00:03,  1.58s/it]Batches:  86%|████████▌ | 6/7 [00:09<00:01,  1.39s/it]Batches: 100%|██████████| 7/7 [00:09<00:00,  1.05s/it]Batches: 100%|██████████| 7/7 [00:09<00:00,  1.40s/it]
+[ok] 1707.06240 chunks=104 in 15.2s  Second-Order Sampling-Based Stability Guarantee for Data-Dri
+
+===== [13/4394] 2509.17827  elapsed=3.6m  eta~1311.8m  avg=18s/paper =====
+[mem] avail=4.8GiB total=16.0GiB reserve=3.0GiB usable=1.8GiB → batch=8
+Batches:   0%|          | 0/18 [00:00<?, ?it/s]Batches:   6%|▌         | 1/18 [00:01<00:19,  1.13s/it]Batches:  11%|█         | 2/18 [00:02<00:16,  1.03s/it]Batches:  17%|█▋        | 3/18 [00:02<00:13,  1.10it/s]Batches:  22%|██▏       | 4/18 [00:03<00:11,  1.21it/s]Batches:  28%|██▊       | 5/18 [00:04<00:10,  1.25it/s]Batches:  33%|███▎      | 6/18 [00:05<00:10,  1.14it/s]Batches:  39%|███▉      | 7/18 [00:05<00:08,  1.25it/s]Batches:  44%|████▍     | 8/18 [00:06<00:07,  1.36it/s]Batches:  50%|█████     | 9/18 [00:07<00:08,  1.09it/s]Batches:  56%|█████▌    | 10/18 [00:08<00:07,  1.10it/s]Batches:  61%|██████    | 11/18 [00:09<00:06,  1.10it/s]Batches:  67%|██████▋   | 12/18 [00:10<00:04,  1.25it/s]Batches:  72%|███████▏  | 13/18 [00:10<00:03,  1.35it/s]Batches:  78%|███████▊  | 14/18 [00:11<00:02,  1.46it/s]Batches:  83%|████████▎ | 15/18 [00:12<00:02,  1.49it/s]Batches:  89%|████████▉ | 16/18 [00:12<00:01,  1.59it/s]Batches:  94%|█████████▍| 17/18 [00:12<00:00,  1.83it/s]Batches: 100%|██████████| 18/18 [00:13<00:00,  2.08it/s]Batches: 100%|██████████| 18/18 [00:13<00:00,  1.36it/s]
+[ok] 2509.17827 chunks=142 in 14.1s  On Fast Attitude Filtering Using Matrix Fisher Distributions
+
+===== [14/4394] 2102.01901  elapsed=3.8m  eta~1289.9m  avg=18s/paper =====
+[mem] avail=5.9GiB total=16.0GiB reserve=3.0GiB usable=2.9GiB → batch=8
+Downloading 2102.01901 (try 1):   0%|          | 0.00/381k [00:00<?, ?B/s]                                                                          
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=2/3.
+OCR on page.number=3/4.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:00<00:02,  1.05it/s]Batches:  50%|█████     | 2/4 [00:01<00:01,  1.20it/s]Batches:  75%|███████▌  | 3/4 [00:02<00:00,  1.51it/s]Batches: 100%|██████████| 4/4 [00:02<00:00,  1.80it/s]
+[ok] 2102.01901 chunks=26 in 5.0s  Linear Continuous Sliding Mode-based Attitude Controller wit
+
+===== [15/4394] 2310.20568  elapsed=3.9m  eta~1223.5m  avg=17s/paper =====
+[mem] avail=6.8GiB total=16.0GiB reserve=3.0GiB usable=3.8GiB → batch=16
+Downloading 2310.20568 (try 1):   0%|          | 0.00/1.21M [00:00<?, ?B/s]Downloading 2310.20568 (try 1):  88%|████████▊ | 1.06M/1.21M [00:00<00:00, 3.43MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=5/6.
+OCR on page.number=3/4.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:01<00:04,  1.63s/it]Batches:  50%|█████     | 2/4 [00:02<00:02,  1.43s/it]Batches:  75%|███████▌  | 3/4 [00:04<00:01,  1.38s/it]Batches: 100%|██████████| 4/4 [00:04<00:00,  1.00s/it]Batches: 100%|██████████| 4/4 [00:04<00:00,  1.17s/it]
+[ok] 2310.20568 chunks=60 in 8.6s  Uncertainty Learning for LTI Systems with Stability Guarante
+
+===== [16/4394] 2104.07171  elapsed=4.1m  eta~1183.6m  avg=16s/paper =====
+[mem] avail=8.3GiB total=16.0GiB reserve=3.0GiB usable=5.3GiB → batch=24
+Downloading 2104.07171 (try 1):   0%|          | 0.00/369k [00:00<?, ?B/s]                                                                          
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=7/8.
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:04<00:08,  4.35s/it]Batches:  67%|██████▋   | 2/3 [00:08<00:04,  4.03s/it]Batches: 100%|██████████| 3/3 [00:10<00:00,  3.24s/it]Batches: 100%|██████████| 3/3 [00:10<00:00,  3.49s/it]
+[ok] 2104.07171 chunks=70 in 14.1s  Deep Model Predictive Control with Stability Guarantees
+
+===== [17/4394] 2106.01282  elapsed=4.3m  eta~1173.8m  avg=16s/paper =====
+[mem] avail=7.1GiB total=16.0GiB reserve=3.0GiB usable=4.1GiB → batch=16
+Downloading 2106.01282 (try 1):   0%|          | 0.00/948k [00:00<?, ?B/s]Downloading 2106.01282 (try 1):  13%|█▎        | 123k/948k [00:00<00:00, 1.14MB/s]Downloading 2106.01282 (try 1):  65%|██████▍   | 614k/948k [00:00<00:00, 2.68MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=18/19.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:01<00:11,  1.95s/it]Batches:  29%|██▊       | 2/7 [00:04<00:11,  2.40s/it]Batches:  43%|████▎     | 3/7 [00:06<00:09,  2.27s/it]Batches:  57%|█████▋    | 4/7 [00:08<00:05,  1.88s/it]Batches:  71%|███████▏  | 5/7 [00:09<00:03,  1.65s/it]Batches:  86%|████████▌ | 6/7 [00:11<00:01,  1.72s/it]Batches: 100%|██████████| 7/7 [00:11<00:00,  1.60s/it]
+[ok] 2106.01282 chunks=97 in 18.8s  Spectral embedding for dynamic networks with stability guara
+
+===== [18/4394] 2501.15373  elapsed=4.6m  eta~1185.1m  avg=16s/paper =====
+[mem] avail=7.2GiB total=16.0GiB reserve=3.0GiB usable=4.2GiB → batch=16
+Batches:   0%|          | 0/8 [00:00<?, ?it/s]Batches:  12%|█▎        | 1/8 [00:02<00:14,  2.06s/it]Batches:  25%|██▌       | 2/8 [00:03<00:11,  1.90s/it]Batches:  38%|███▊      | 3/8 [00:05<00:09,  1.99s/it]Batches:  50%|█████     | 4/8 [00:07<00:07,  1.85s/it]Batches:  62%|██████▎   | 5/8 [00:09<00:05,  1.79s/it]Batches:  75%|███████▌  | 6/8 [00:10<00:03,  1.71s/it]Batches:  88%|████████▊ | 7/8 [00:11<00:01,  1.53s/it]Batches: 100%|██████████| 8/8 [00:12<00:00,  1.07s/it]Batches: 100%|██████████| 8/8 [00:12<00:00,  1.51s/it]
+[ok] 2501.15373 chunks=115 in 12.8s  Safe Learning Control with Optimality and Stability Guarante
+
+===== [19/4394] 2406.06116  elapsed=4.8m  eta~1170.8m  avg=16s/paper =====
+[mem] avail=5.3GiB total=16.0GiB reserve=3.0GiB usable=2.3GiB → batch=8
+Downloading 2406.06116 (try 1):   0%|          | 0.00/1.04M [00:00<?, ?B/s]Downloading 2406.06116 (try 1):  62%|██████▏   | 647k/1.04M [00:00<00:00, 6.46MB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=6/7.
+.
+Batches:   0%|          | 0/14 [00:00<?, ?it/s]Batches:   7%|▋         | 1/14 [00:00<00:10,  1.19it/s]Batches:  14%|█▍        | 2/14 [00:01<00:08,  1.39it/s]Batches:  21%|██▏       | 3/14 [00:02<00:07,  1.49it/s]Batches:  29%|██▊       | 4/14 [00:02<00:06,  1.48it/s]Batches:  36%|███▌      | 5/14 [00:03<00:05,  1.60it/s]Batches:  43%|████▎     | 6/14 [00:03<00:05,  1.58it/s]Batches:  50%|█████     | 7/14 [00:04<00:04,  1.60it/s]Batches:  57%|█████▋    | 8/14 [00:05<00:03,  1.63it/s]Batches:  64%|██████▍   | 9/14 [00:05<00:02,  1.70it/s]Batches:  71%|███████▏  | 10/14 [00:06<00:02,  1.80it/s]Batches:  79%|███████▊  | 11/14 [00:06<00:01,  1.66it/s]Batches:  86%|████████▌ | 12/14 [00:07<00:01,  1.89it/s]Batches:  93%|█████████▎| 13/14 [00:07<00:00,  2.14it/s]Batches: 100%|██████████| 14/14 [00:07<00:00,  2.49it/s]Batches: 100%|██████████| 14/14 [00:07<00:00,  1.79it/s]
+[ok] 2406.06116 chunks=112 in 12.4s  Model Updating for Nonlinear Systems with Stability Guarante
+
+===== [20/4394] 2011.06882  elapsed=5.0m  eta~1156.7m  avg=16s/paper =====
+[mem] avail=6.3GiB total=16.0GiB reserve=3.0GiB usable=3.3GiB → batch=16
+Downloading 2011.06882 (try 1):   0%|          | 0.00/2.99M [00:00<?, ?B/s]Downloading 2011.06882 (try 1):  29%|██▉       | 877k/2.99M [00:00<00:00, 8.68MB/s]Downloading 2011.06882 (try 1):  58%|█████▊    | 1.74M/2.99M [00:00<00:00, 2.65MB/s]Downloading 2011.06882 (try 1):  74%|███████▍  | 2.21M/2.99M [00:00<00:00, 2.74MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=9/10.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:01<00:08,  1.40s/it]Batches:  29%|██▊       | 2/7 [00:02<00:06,  1.37s/it]Batches:  43%|████▎     | 3/7 [00:04<00:05,  1.38s/it]Batches:  57%|█████▋    | 4/7 [00:05<00:04,  1.34s/it]Batches:  71%|███████▏  | 5/7 [00:06<00:02,  1.17s/it]Batches:  86%|████████▌ | 6/7 [00:07<00:01,  1.07s/it]Batches: 100%|██████████| 7/7 [00:07<00:00,  1.21it/s]Batches: 100%|██████████| 7/7 [00:07<00:00,  1.07s/it]
+[ok] 2011.06882 chunks=103 in 14.1s  Reinforcement Learning Control of Constrained Dynamic System
+
+===== [21/4394] 2405.13032  elapsed=5.3m  eta~1149.8m  avg=16s/paper =====
+[mem] avail=7.3GiB total=16.0GiB reserve=3.0GiB usable=4.3GiB → batch=16
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|█████     | 1/2 [00:01<00:01,  1.95s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.41s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.49s/it]
+[ok] 2405.13032 chunks=32 in 3.7s  Faithful Attention Explainer: Verbalizing Decisions Based on
+
+===== [22/4394] 2408.00906  elapsed=5.3m  eta~1107.7m  avg=15s/paper =====
+[mem] avail=6.2GiB total=16.0GiB reserve=3.0GiB usable=3.2GiB → batch=16
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:02<00:04,  2.07s/it]Batches:  67%|██████▋   | 2/3 [00:03<00:01,  1.40s/it]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.21it/s]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.05s/it]
+[ok] 2408.00906 chunks=36 in 3.7s  Parkinson's Disease Detection from Resting State EEG using M
+
+===== [23/4394] 2608.07435  elapsed=5.4m  eta~1069.4m  avg=15s/paper =====
+[mem] avail=7.2GiB total=16.0GiB reserve=3.0GiB usable=4.2GiB → batch=16
+Batches:   0%|          | 0/8 [00:00<?, ?it/s]Batches:  12%|█▎        | 1/8 [00:01<00:09,  1.43s/it]Batches:  25%|██▌       | 2/8 [00:03<00:10,  1.80s/it]Batches:  38%|███▊      | 3/8 [00:04<00:07,  1.47s/it]Batches:  50%|█████     | 4/8 [00:05<00:04,  1.22s/it]Batches:  62%|██████▎   | 5/8 [00:06<00:03,  1.13s/it]Batches:  75%|███████▌  | 6/8 [00:07<00:02,  1.09s/it]Batches:  88%|████████▊ | 7/8 [00:08<00:00,  1.06it/s]Batches: 100%|██████████| 8/8 [00:08<00:00,  1.22it/s]Batches: 100%|██████████| 8/8 [00:08<00:00,  1.07s/it]
+[ok] 2608.07435 chunks=128 in 9.4s  SABRE: Scalable and Automated Benchmarking of VLMs under Str
+
+===== [24/4394] 2606.02564  elapsed=5.5m  eta~1052.5m  avg=14s/paper =====
+[mem] avail=7.2GiB total=16.0GiB reserve=3.0GiB usable=4.2GiB → batch=16
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:03<00:22,  3.83s/it]Batches:  29%|██▊       | 2/7 [00:07<00:18,  3.65s/it]Batches:  43%|████▎     | 3/7 [00:10<00:13,  3.30s/it]Batches:  57%|█████▋    | 4/7 [00:13<00:09,  3.12s/it]Batches:  71%|███████▏  | 5/7 [00:14<00:04,  2.37s/it]Batches:  86%|████████▌ | 6/7 [00:15<00:02,  2.10s/it]Batches: 100%|██████████| 7/7 [00:15<00:00,  1.47s/it]Batches: 100%|██████████| 7/7 [00:15<00:00,  2.27s/it]
+[ok] 2606.02564 chunks=102 in 16.7s  VLMs are Good Teachers for Video Reasoning via Adaptive Test
+
+===== [25/4394] 2602.18846  elapsed=5.8m  eta~1059.0m  avg=15s/paper =====
+[mem] avail=4.5GiB total=16.0GiB reserve=3.0GiB usable=1.5GiB → batch=8
+Batches:   0%|          | 0/11 [00:00<?, ?it/s]Batches:   9%|▉         | 1/11 [00:01<00:12,  1.30s/it]

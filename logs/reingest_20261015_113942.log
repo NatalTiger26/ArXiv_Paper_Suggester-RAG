@@ -1,0 +1,30 @@
+[init] loading ingest modules (Streamlit noise filtered)…
+2026-10-15 11:39:42.941 
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+connection, because Streamlit does not need a valid XSRF token to open one.
+To limit cross-origin access, do these steps:
+WebSocket connection.
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[mem] startup avail=8.7/16.0GiB → batch=24 usable=7.7GiB
+[init] loading embedding model once…
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights:  89%|████████▉ | 1229/1376 [00:00<00:00, 12273.57it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12045.65it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[init] model ready
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+[plan] library=4479 done_file=531 indexed=54
+[plan] pending_total=3948 session=3948 skipped=531 force=False
+[plan] rough session ~1579–4738 min (model kept warm)
+
+
+===== [1/3948] 2403.15603  elapsed=0.0m  eta~2961.0m  avg=45s/paper =====
+[mem] avail=6.7GiB total=16.0GiB reserve=1.0GiB usable=5.7GiB → batch=24
+[warn] 2403.15603: Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+[retry] 2403.15603 attempt 2/3 batch=4
+[warn] 2403.15603: Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+[fail] 2403.15603 after 20.2s — Failed to download 2403.15603 after 3 attempts: HTTP 404 for https://arxiv.org/pdf/2403.15603.pdf
+
+===== [2/3948] 2209.11222  elapsed=0.3m  eta~1327.6m  avg=20s/paper =====
+[mem] avail=7.1GiB total=16.0GiB reserve=1.0GiB usable=6.1GiB → batch=24

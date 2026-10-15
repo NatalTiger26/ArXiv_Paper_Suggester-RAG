@@ -1,0 +1,219 @@
+[init] loading ingest modules (Streamlit noise filtered)…
+2026-10-15 04:28:04.308 
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+connection, because Streamlit does not need a valid XSRF token to open one.
+To limit cross-origin access, do these steps:
+WebSocket connection.
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[mem] startup avail=8.5/16.0GiB → batch=24 usable=5.5GiB
+[init] loading embedding model once…
+[embed] Loading google/embeddinggemma-2 on mps …
+Loading weights:   0%|          | 0/1376 [00:00<?, ?it/s]Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 27849.63it/s]
+[embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+[init] model ready
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+[plan] library=4479 done_file=64 indexed=54
+[plan] pending_total=4415 session=4415 skipped=64 force=False
+[plan] rough session ~1766–5298 min (model kept warm)
+
+
+===== [1/4415] 2311.11176  elapsed=0.0m  eta~3311.2m  avg=45s/paper =====
+[mem] avail=6.4GiB total=16.0GiB reserve=3.0GiB usable=3.4GiB → batch=16
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:03<00:16,  3.33s/it]Batches:  33%|███▎      | 2/6 [00:05<00:10,  2.70s/it]Batches:  50%|█████     | 3/6 [00:08<00:07,  2.59s/it]Batches:  67%|██████▋   | 4/6 [00:08<00:03,  1.84s/it]Batches:  83%|████████▎ | 5/6 [00:09<00:01,  1.55s/it]Batches: 100%|██████████| 6/6 [00:09<00:00,  1.08s/it]Batches: 100%|██████████| 6/6 [00:09<00:00,  1.66s/it]
+[ok] 2311.11176 chunks=86 in 10.4s  Morphology-Enhanced CAM-Guided SAM for weakly supervised Bre
+
+===== [2/4415] 2302.05249  elapsed=0.2m  eta~766.0m  avg=10s/paper =====
+[mem] avail=6.5GiB total=16.0GiB reserve=3.0GiB usable=3.5GiB → batch=16
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:01<00:06,  1.66s/it]Batches:  40%|████      | 2/5 [00:03<00:04,  1.54s/it]Batches:  60%|██████    | 3/5 [00:04<00:03,  1.55s/it]Batches:  80%|████████  | 4/5 [00:05<00:01,  1.41s/it]Batches: 100%|██████████| 5/5 [00:06<00:00,  1.16s/it]Batches: 100%|██████████| 5/5 [00:06<00:00,  1.31s/it]
+[ok] 2302.05249 chunks=75 in 6.9s  Learning stability guarantees for constrained switching line
+
+===== [3/4415] 2004.10886  elapsed=0.3m  eta~636.7m  avg=9s/paper =====
+[mem] avail=6.7GiB total=16.0GiB reserve=3.0GiB usable=3.7GiB → batch=16
+Downloading 2004.10886 (try 1):   0%|          | 0.00/3.43M [00:00<?, ?B/s]Downloading 2004.10886 (try 1):   1%|          | 32.8k/3.43M [00:00<00:11, 292kB/s]Downloading 2004.10886 (try 1):  10%|█         | 352k/3.43M [00:00<00:01, 1.87MB/s]Downloading 2004.10886 (try 1):  26%|██▌       | 877k/3.43M [00:00<00:00, 3.32MB/s]Downloading 2004.10886 (try 1):  36%|███▌      | 1.22M/3.43M [00:02<00:05, 407kB/s]Downloading 2004.10886 (try 1):  48%|████▊     | 1.65M/3.43M [00:02<00:02, 651kB/s]Downloading 2004.10886 (try 1):  61%|██████▏   | 2.11M/3.43M [00:03<00:02, 455kB/s]Downloading 2004.10886 (try 1):  67%|██████▋   | 2.31M/3.43M [00:03<00:02, 537kB/s]Downloading 2004.10886 (try 1):  81%|████████  | 2.79M/3.43M [00:04<00:00, 825kB/s]Downloading 2004.10886 (try 1):  92%|█████████▏| 3.15M/3.43M [00:05<00:00, 539kB/s]Downloading 2004.10886 (try 1): 100%|█████████▉| 3.42M/3.43M [00:05<00:00, 659kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=5/6.
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:01<00:05,  1.46s/it]Batches:  40%|████      | 2/5 [00:02<00:04,  1.34s/it]Batches:  60%|██████    | 3/5 [00:04<00:02,  1.35s/it]Batches:  80%|████████  | 4/5 [00:05<00:01,  1.32s/it]Batches: 100%|██████████| 5/5 [00:05<00:00,  1.08s/it]
+[ok] 2004.10886 chunks=65 in 17.3s  Stability-Guaranteed Reinforcement Learning for Contact-rich
+
+===== [4/4415] 2103.16432  elapsed=0.6m  eta~847.3m  avg=12s/paper =====
+[mem] avail=6.4GiB total=16.0GiB reserve=3.0GiB usable=3.4GiB → batch=16
+Downloading 2103.16432 (try 1):   0%|          | 0.00/1.96M [00:00<?, ?B/s]Downloading 2103.16432 (try 1):   9%|▉         | 172k/1.96M [00:00<00:01, 1.69MB/s]Downloading 2103.16432 (try 1):  51%|█████▏    | 1.01M/1.96M [00:00<00:00, 5.57MB/s]Downloading 2103.16432 (try 1):  80%|████████  | 1.57M/1.96M [00:00<00:00, 1.89MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=0/1.
+OCR on page.number=4/5.
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:01<00:06,  1.64s/it]Batches:  40%|████      | 2/5 [00:02<00:04,  1.43s/it]Batches:  60%|██████    | 3/5 [00:03<00:02,  1.26s/it]Batches:  80%|████████  | 4/5 [00:04<00:01,  1.07s/it]Batches: 100%|██████████| 5/5 [00:04<00:00,  1.04it/s]
+[ok] 2103.16432 chunks=65 in 10.6s  Learning Deep Energy Shaping Policies for Stability-Guarante
+
+===== [5/4415] 2307.05902  elapsed=0.8m  eta~830.8m  avg=11s/paper =====
+[mem] avail=6.3GiB total=16.0GiB reserve=3.0GiB usable=3.3GiB → batch=16
+Batches:   0%|          | 0/8 [00:00<?, ?it/s]Batches:  12%|█▎        | 1/8 [00:02<00:18,  2.60s/it]Batches:  25%|██▌       | 2/8 [00:05<00:15,  2.54s/it]Batches:  38%|███▊      | 3/8 [00:07<00:11,  2.39s/it]Batches:  50%|█████     | 4/8 [00:09<00:08,  2.23s/it]Batches:  62%|██████▎   | 5/8 [00:11<00:06,  2.09s/it]Batches:  75%|███████▌  | 6/8 [00:12<00:03,  1.97s/it]Batches:  88%|████████▊ | 7/8 [00:13<00:01,  1.68s/it]Batches: 100%|██████████| 8/8 [00:14<00:00,  1.20s/it]Batches: 100%|██████████| 8/8 [00:14<00:00,  1.77s/it]
+[ok] 2307.05902 chunks=118 in 15.0s  Stability Guarantees for Feature Attributions with Multiplic
+
+===== [6/4415] 2403.03499  elapsed=1.0m  eta~884.5m  avg=12s/paper =====
+[mem] avail=5.4GiB total=16.0GiB reserve=3.0GiB usable=2.4GiB → batch=8
+Downloading 2403.03499 (try 1):   0%|          | 0.00/508k [00:00<?, ?B/s]Downloading 2403.03499 (try 1):   5%|▍         | 24.6k/508k [00:00<00:02, 205kB/s]Downloading 2403.03499 (try 1):  24%|██▍       | 123k/508k [00:00<00:00, 615kB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+OCR on page.number=4/5.
+OCR on page.number=5/6.
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:01<00:05,  1.05s/it]Batches:  33%|███▎      | 2/6 [00:01<00:03,  1.18it/s]Batches:  50%|█████     | 3/6 [00:02<00:02,  1.21it/s]Batches:  67%|██████▋   | 4/6 [00:03<00:01,  1.36it/s]Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.52it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.93it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.53it/s]
+[ok] 2403.03499 chunks=46 in 9.8s  CNN-based End-to-End Adaptive Controller with Stability Guar
+
+===== [7/4415] 2506.06564  elapsed=1.2m  eta~857.3m  avg=12s/paper =====
+[mem] avail=7.4GiB total=16.0GiB reserve=3.0GiB usable=4.4GiB → batch=16
+Batches:   0%|          | 0/5 [00:00<?, ?it/s]Batches:  20%|██        | 1/5 [00:01<00:05,  1.34s/it]Batches:  40%|████      | 2/5 [00:02<00:04,  1.45s/it]Batches:  60%|██████    | 3/5 [00:03<00:02,  1.26s/it]Batches:  80%|████████  | 4/5 [00:04<00:01,  1.19s/it]Batches: 100%|██████████| 5/5 [00:05<00:00,  1.15it/s]Batches: 100%|██████████| 5/5 [00:05<00:00,  1.06s/it]
+[ok] 2506.06564 chunks=72 in 6.6s  Learning Neural Controllers with Optimality and Stability Gu
+
+===== [8/4415] 2312.01441  elapsed=1.3m  eta~804.2m  avg=11s/paper =====
+[mem] avail=6.3GiB total=16.0GiB reserve=3.0GiB usable=3.3GiB → batch=16
+Downloading 2312.01441 (try 1):   0%|          | 0.00/3.94M [00:00<?, ?B/s]Downloading 2312.01441 (try 1):   0%|          | 16.4k/3.94M [00:00<00:25, 156kB/s]Downloading 2312.01441 (try 1):   1%|          | 41.0k/3.94M [00:00<00:22, 172kB/s]Downloading 2312.01441 (try 1):   2%|▏         | 90.1k/3.94M [00:00<00:14, 269kB/s]Downloading 2312.01441 (try 1):   4%|▍         | 156k/3.94M [00:00<00:11, 340kB/s] Downloading 2312.01441 (try 1):   5%|▌         | 205k/3.94M [00:00<00:10, 359kB/s]Downloading 2312.01441 (try 1):   7%|▋         | 270k/3.94M [00:00<00:09, 397kB/s]Downloading 2312.01441 (try 1):   9%|▊         | 336k/3.94M [00:00<00:08, 438kB/s]Downloading 2312.01441 (try 1):  10%|█         | 401k/3.94M [00:01<00:07, 491kB/s]Downloading 2312.01441 (try 1):  13%|█▎        | 516k/3.94M [00:01<00:05, 659kB/s]Downloading 2312.01441 (try 1):  16%|█▋        | 647k/3.94M [00:01<00:04, 815kB/s]Downloading 2312.01441 (try 1):  19%|█▉        | 754k/3.94M [00:01<00:03, 882kB/s]Downloading 2312.01441 (try 1):  22%|██▏       | 885k/3.94M [00:01<00:03, 978kB/s]Downloading 2312.01441 (try 1):  26%|██▌       | 1.03M/3.94M [00:01<00:02, 1.09MB/s]Downloading 2312.01441 (try 1):  29%|██▉       | 1.15M/3.94M [00:02<00:11, 237kB/s] Downloading 2312.01441 (try 1):  33%|███▎      | 1.30M/3.94M [00:03<00:07, 341kB/s]Downloading 2312.01441 (try 1):  38%|███▊      | 1.48M/3.94M [00:03<00:05, 487kB/s]Downloading 2312.01441 (try 1):  43%|████▎     | 1.70M/3.94M [00:03<00:03, 686kB/s]Downloading 2312.01441 (try 1):  48%|████▊     | 1.88M/3.94M [00:03<00:02, 867kB/s]Downloading 2312.01441 (try 1):  53%|█████▎    | 2.10M/3.94M [00:03<00:01, 1.09MB/s]Downloading 2312.01441 (try 1):  58%|█████▊    | 2.28M/3.94M [00:04<00:04, 366kB/s] Downloading 2312.01441 (try 1):  63%|██████▎   | 2.47M/3.94M [00:04<00:03, 484kB/s]Downloading 2312.01441 (try 1):  69%|██████▉   | 2.71M/3.94M [00:04<00:01, 680kB/s]Downloading 2312.01441 (try 1):  74%|███████▎  | 2.90M/3.94M [00:05<00:01, 830kB/s]Downloading 2312.01441 (try 1):  79%|███████▉  | 3.11M/3.94M [00:05<00:00, 1.02MB/s]Downloading 2312.01441 (try 1):  84%|████████▍ | 3.30M/3.94M [00:05<00:00, 900kB/s] Downloading 2312.01441 (try 1):  90%|█████████ | 3.55M/3.94M [00:05<00:00, 1.15MB/s]Downloading 2312.01441 (try 1):  97%|█████████▋| 3.83M/3.94M [00:05<00:00, 1.45MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+OCR on page.number=4/5.
+OCR on page.number=5/6.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:01<00:09,  1.57s/it]Batches:  29%|██▊       | 2/7 [00:03<00:07,  1.59s/it]Batches:  43%|████▎     | 3/7 [00:04<00:06,  1.60s/it]Batches:  57%|█████▋    | 4/7 [00:06<00:04,  1.49s/it]Batches:  71%|███████▏  | 5/7 [00:07<00:02,  1.46s/it]Batches:  86%|████████▌ | 6/7 [00:08<00:01,  1.26s/it]Batches: 100%|██████████| 7/7 [00:08<00:00,  1.01it/s]Batches: 100%|██████████| 7/7 [00:08<00:00,  1.26s/it]
+[ok] 2312.01441 chunks=105 in 20.8s  Koopman-based feedback design with stability guarantees
+
+===== [9/4415] 2004.10883  elapsed=1.6m  eta~894.1m  avg=12s/paper =====
+[mem] avail=6.3GiB total=16.0GiB reserve=3.0GiB usable=3.3GiB → batch=16
+Downloading 2004.10883 (try 1):   0%|          | 0.00/1.11M [00:00<?, ?B/s]Downloading 2004.10883 (try 1):   2%|▏         | 24.6k/1.11M [00:00<00:08, 122kB/s]Downloading 2004.10883 (try 1):   4%|▎         | 41.0k/1.11M [00:00<00:09, 112kB/s]Downloading 2004.10883 (try 1):   5%|▌         | 57.3k/1.11M [00:00<00:08, 120kB/s]Downloading 2004.10883 (try 1):  10%|▉         | 106k/1.11M [00:00<00:04, 228kB/s] Downloading 2004.10883 (try 1):  16%|█▌        | 172k/1.11M [00:00<00:02, 343kB/s]Downloading 2004.10883 (try 1):  21%|██▏       | 238k/1.11M [00:00<00:02, 417kB/s]Downloading 2004.10883 (try 1):  29%|██▉       | 319k/1.11M [00:00<00:01, 510kB/s]Downloading 2004.10883 (try 1):  38%|███▊      | 418k/1.11M [00:01<00:01, 621kB/s]Downloading 2004.10883 (try 1):  47%|████▋     | 516k/1.11M [00:01<00:00, 714kB/s]Downloading 2004.10883 (try 1):  57%|█████▋    | 631k/1.11M [00:01<00:00, 824kB/s]Downloading 2004.10883 (try 1):  69%|██████▉   | 762k/1.11M [00:01<00:00, 940kB/s]Downloading 2004.10883 (try 1):  79%|███████▉  | 877k/1.11M [00:01<00:00, 947kB/s]Downloading 2004.10883 (try 1):  91%|█████████ | 1.01M/1.11M [00:01<00:00, 1.04MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:01<00:02,  1.27s/it]Batches:  67%|██████▋   | 2/3 [00:03<00:01,  1.65s/it]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.26s/it]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.32s/it]
+[ok] 2004.10883 chunks=41 in 12.4s  Constrained Neural Ordinary Differential Equations with Stab
+
+===== [10/4415] 2503.02859  elapsed=1.8m  eta~895.5m  avg=12s/paper =====
+[mem] avail=6.8GiB total=16.0GiB reserve=3.0GiB usable=3.8GiB → batch=16
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:02<00:17,  2.84s/it]Batches:  29%|██▊       | 2/7 [00:05<00:14,  2.94s/it]Batches:  43%|████▎     | 3/7 [00:08<00:11,  2.78s/it]Batches:  57%|█████▋    | 4/7 [00:09<00:06,  2.28s/it]Batches:  71%|███████▏  | 5/7 [00:12<00:04,  2.25s/it]Batches:  86%|████████▌ | 6/7 [00:13<00:01,  1.79s/it]Batches: 100%|██████████| 7/7 [00:13<00:00,  1.33s/it]Batches: 100%|██████████| 7/7 [00:13<00:00,  1.92s/it]
+[ok] 2503.02859 chunks=107 in 14.6s  Unsupervised Attributed Dynamic Network Embedding with Stabi
+
+===== [11/4415] 2205.00696  elapsed=2.1m  eta~913.0m  avg=12s/paper =====
+[mem] avail=4.9GiB total=16.0GiB reserve=3.0GiB usable=1.9GiB → batch=8
+Downloading 2205.00696 (try 1):   0%|          | 0.00/283k [00:00<?, ?B/s]Downloading 2205.00696 (try 1):  43%|████▎     | 123k/283k [00:00<00:00, 1.15MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:00<00:02,  1.37it/s]Batches:  50%|█████     | 2/4 [00:01<00:01,  1.52it/s]Batches:  75%|███████▌  | 3/4 [00:01<00:00,  1.76it/s]Batches: 100%|██████████| 4/4 [00:02<00:00,  2.05it/s]Batches: 100%|██████████| 4/4 [00:02<00:00,  1.85it/s]
+[ok] 2205.00696 chunks=32 in 5.6s  Learning stability guarantees for data-driven constrained sw
+
+===== [12/4415] 1707.01525  elapsed=2.2m  eta~867.1m  avg=12s/paper =====
+[mem] avail=7.1GiB total=16.0GiB reserve=3.0GiB usable=4.1GiB → batch=16
+Downloading 1707.01525 (try 1):   0%|          | 0.00/406k [00:00<?, ?B/s]Downloading 1707.01525 (try 1):  59%|█████▊    | 238k/406k [00:00<00:00, 2.13MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:01<00:02,  1.36s/it]Batches:  67%|██████▋   | 2/3 [00:02<00:01,  1.18s/it]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.03s/it]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.09s/it]
+[ok] 1707.01525 chunks=48 in 7.4s  Transient stability guarantees for ad hoc dc microgrids
+
+===== [13/4415] 2212.03923  elapsed=2.3m  eta~840.3m  avg=11s/paper =====
+[mem] avail=7.0GiB total=16.0GiB reserve=3.0GiB usable=4.0GiB → batch=16
+Downloading 2212.03923 (try 1):   0%|          | 0.00/385k [00:00<?, ?B/s]Downloading 2212.03923 (try 1):  19%|█▉        | 73.7k/385k [00:00<00:00, 691kB/s]Downloading 2212.03923 (try 1): 100%|█████████▉| 385k/385k [00:00<00:00, 1.98MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=8/9.
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:01<00:02,  1.22s/it]Batches:  67%|██████▋   | 2/3 [00:02<00:01,  1.36s/it]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.02it/s]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.07s/it]
+[ok] 2212.03923 chunks=43 in 7.9s  Designing System Level Synthesis Controllers for Nonlinear S
+
+===== [14/4415] 2103.12663  elapsed=2.4m  eta~820.3m  avg=11s/paper =====
+[mem] avail=7.0GiB total=16.0GiB reserve=3.0GiB usable=4.0GiB → batch=16
+Downloading 2103.12663 (try 1):   0%|          | 0.00/684k [00:00<?, ?B/s]Downloading 2103.12663 (try 1):  37%|███▋      | 254k/684k [00:00<00:00, 2.51MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=8/9.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:01<00:05,  1.84s/it]Batches:  50%|█████     | 2/4 [00:03<00:03,  1.63s/it]Batches:  75%|███████▌  | 3/4 [00:04<00:01,  1.49s/it]Batches: 100%|██████████| 4/4 [00:05<00:00,  1.06s/it]Batches: 100%|██████████| 4/4 [00:05<00:00,  1.26s/it]
+[ok] 2103.12663 chunks=55 in 10.3s  Direct data-driven model-reference control with Lyapunov sta
+
+===== [15/4415] 2510.12611  elapsed=2.6m  eta~815.4m  avg=11s/paper =====
+[mem] avail=6.0GiB total=16.0GiB reserve=3.0GiB usable=3.0GiB → batch=16
+Downloading 2510.12611 (try 1):   0%|          | 0.00/2.19M [00:00<?, ?B/s]Downloading 2510.12611 (try 1):   7%|▋         | 156k/2.19M [00:00<00:01, 1.52MB/s]Downloading 2510.12611 (try 1):  32%|███▏      | 705k/2.19M [00:00<00:00, 3.71MB/s]Downloading 2510.12611 (try 1):  49%|████▉     | 1.08M/2.19M [00:00<00:00, 1.15MB/s]Downloading 2510.12611 (try 1):  68%|██████▊   | 1.50M/2.19M [00:00<00:00, 1.63MB/s]Downloading 2510.12611 (try 1):  96%|█████████▌| 2.11M/2.19M [00:01<00:00, 1.23MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:01<00:05,  1.98s/it]Batches:  50%|█████     | 2/4 [00:02<00:02,  1.34s/it]Batches:  75%|███████▌  | 3/4 [00:04<00:01,  1.45s/it]Batches: 100%|██████████| 4/4 [00:04<00:00,  1.04it/s]Batches: 100%|██████████| 4/4 [00:04<00:00,  1.17s/it]
+[ok] 2510.12611 chunks=56 in 11.0s  Learning Robust Agile Flight Control with Stability Guarante
+
+===== [16/4415] 2408.14758  elapsed=2.8m  eta~814.7m  avg=11s/paper =====
+[mem] avail=8.0GiB total=16.0GiB reserve=3.0GiB usable=5.0GiB → batch=24
+Downloading 2408.14758 (try 1):   0%|          | 0.00/669k [00:00<?, ?B/s]Downloading 2408.14758 (try 1):  26%|██▌       | 172k/669k [00:00<00:00, 1.68MB/s]                                                                                  
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=0/1.
+OCR on page.number=6/7.
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:02<00:05,  2.66s/it]Batches:  67%|██████▋   | 2/3 [00:04<00:02,  2.20s/it]Batches: 100%|██████████| 3/3 [00:04<00:00,  1.32s/it]Batches: 100%|██████████| 3/3 [00:04<00:00,  1.61s/it]
+[ok] 2408.14758 chunks=58 in 11.9s  Learning-Based Adaptive Dynamic Routing with Stability Guara
+
+===== [17/4415] 1705.08551  elapsed=3.0m  eta~817.9m  avg=11s/paper =====
+[mem] avail=6.4GiB total=16.0GiB reserve=3.0GiB usable=3.4GiB → batch=16
+Downloading 1705.08551 (try 1):   0%|          | 0.00/1.13M [00:00<?, ?B/s]Downloading 1705.08551 (try 1):  18%|█▊        | 205k/1.13M [00:00<00:00, 1.97MB/s]Downloading 1705.08551 (try 1):  94%|█████████▎| 1.06M/1.13M [00:00<00:00, 1.82MB/s]                                                                                    
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=7/8.
+OCR on page.number=6/7.
+Batches:   0%|          | 0/7 [00:00<?, ?it/s]Batches:  14%|█▍        | 1/7 [00:01<00:11,  1.84s/it]Batches:  29%|██▊       | 2/7 [00:03<00:09,  1.95s/it]Batches:  43%|████▎     | 3/7 [00:05<00:06,  1.74s/it]Batches:  57%|█████▋    | 4/7 [00:06<00:04,  1.58s/it]Batches:  71%|███████▏  | 5/7 [00:07<00:02,  1.48s/it]Batches:  86%|████████▌ | 6/7 [00:09<00:01,  1.37s/it]Batches: 100%|██████████| 7/7 [00:09<00:00,  1.08s/it]Batches: 100%|██████████| 7/7 [00:09<00:00,  1.37s/it]
+[ok] 1705.08551 chunks=107 in 17.6s  Safe Model-based Reinforcement Learning with Stability Guara
+
+===== [18/4415] 2512.04885  elapsed=3.3m  eta~845.4m  avg=12s/paper =====
+[mem] avail=7.1GiB total=16.0GiB reserve=3.0GiB usable=4.1GiB → batch=16
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:01<00:03,  1.87s/it]Batches:  67%|██████▋   | 2/3 [00:03<00:01,  1.67s/it]Batches: 100%|██████████| 3/3 [00:03<00:00,  1.15s/it]
+[ok] 2512.04885 chunks=34 in 6.1s  Stability-Guaranteed Dual Kalman Filtering for Electrochemic
+
+===== [19/4415] 2205.10155  elapsed=3.4m  eta~823.1m  avg=11s/paper =====
+[mem] avail=7.0GiB total=16.0GiB reserve=3.0GiB usable=4.0GiB → batch=16
+Downloading 2205.10155 (try 1):   0%|          | 0.00/1.86M [00:00<?, ?B/s]Downloading 2205.10155 (try 1):   1%|▏         | 24.6k/1.86M [00:00<00:07, 240kB/s]Downloading 2205.10155 (try 1):  10%|█         | 188k/1.86M [00:00<00:01, 1.02MB/s]Downloading 2205.10155 (try 1):  31%|███▏      | 582k/1.86M [00:00<00:00, 2.30MB/s]Downloading 2205.10155 (try 1):  47%|████▋     | 868k/1.86M [00:00<00:00, 2.48MB/s]Downloading 2205.10155 (try 1):  60%|██████    | 1.12M/1.86M [00:02<00:01, 368kB/s]Downloading 2205.10155 (try 1):  77%|███████▋  | 1.43M/1.86M [00:02<00:00, 555kB/s]Downloading 2205.10155 (try 1):  97%|█████████▋| 1.81M/1.86M [00:02<00:00, 840kB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=3/4.
+OCR on page.number=5/6.
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|█████     | 1/2 [00:01<00:01,  1.58s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.21s/it]Batches: 100%|██████████| 2/2 [00:02<00:00,  1.26s/it]
+[ok] 2205.10155 chunks=31 in 11.6s  Large-Signal Stability Guarantees for Cycle-by-Cycle Control
+
+===== [20/4415] 2504.19497  elapsed=3.6m  eta~824.2m  avg=11s/paper =====
+[mem] avail=5.9GiB total=16.0GiB reserve=3.0GiB usable=2.9GiB → batch=8
+Batches:   0%|          | 0/6 [00:00<?, ?it/s]Batches:  17%|█▋        | 1/6 [00:00<00:03,  1.39it/s]Batches:  33%|███▎      | 2/6 [00:01<00:03,  1.19it/s]Batches:  50%|█████     | 3/6 [00:02<00:02,  1.29it/s]Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.40it/s]Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.60it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.85it/s]Batches: 100%|██████████| 6/6 [00:03<00:00,  1.58it/s]
+[ok] 2504.19497 chunks=47 in 6.7s  Negative Imaginary Neural ODEs: Learning to Control Mechanic
+
+===== [21/4415] 1902.08163  elapsed=3.7m  eta~807.3m  avg=11s/paper =====
+[mem] avail=8.0GiB total=16.0GiB reserve=3.0GiB usable=5.0GiB → batch=24
+Downloading 1902.08163 (try 1):   0%|          | 0.00/1.06M [00:00<?, ?B/s]Downloading 1902.08163 (try 1):  16%|█▋        | 172k/1.06M [00:00<00:00, 1.71MB/s]Downloading 1902.08163 (try 1):  81%|████████▏ | 860k/1.06M [00:00<00:00, 4.69MB/s]                                                                                   
+=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=1/2.
+OCR on page.number=2/3.
+OCR on page.number=9/10.
+Batches:   0%|          | 0/4 [00:00<?, ?it/s]Batches:  25%|██▌       | 1/4 [00:02<00:06,  2.32s/it]Batches:  50%|█████     | 2/4 [00:04<00:04,  2.06s/it]Batches:  75%|███████▌  | 3/4 [00:06<00:02,  2.10s/it]Batches: 100%|██████████| 4/4 [00:07<00:00,  1.78s/it]Batches: 100%|██████████| 4/4 [00:07<00:00,  1.91s/it]
+[ok] 1902.08163 chunks=96 in 16.9s  Optimal Power Flow for DC Networks with Robust Feasibility a
+
+===== [22/4415] 2505.10723  elapsed=4.0m  eta~827.6m  avg=11s/paper =====
+[mem] avail=6.0GiB total=16.0GiB reserve=3.0GiB usable=3.0GiB → batch=8
+[warn] 2505.10723: Failed to download 2505.10723 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2505.10723.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[retry] 2505.10723 attempt 2/3 batch=4
+[warn] 2505.10723: Failed to download 2505.10723 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2505.10723.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[retry] 2505.10723 attempt 3/3 batch=4
+[warn] 2505.10723: Failed to download 2505.10723 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2505.10723.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[fail] 2505.10723 after 142.7s — Failed to download 2505.10723 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2505.10723.pdf (Caused by N
+
+===== [23/4415] 2203.00088  elapsed=6.3m  eta~1264.7m  avg=17s/paper =====
+[mem] avail=8.4GiB total=16.0GiB reserve=3.0GiB usable=5.4GiB → batch=24
+[warn] 2203.00088: Failed to download 2203.00088 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2203.00088.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[retry] 2203.00088 attempt 2/3 batch=4
+[warn] 2203.00088: Failed to download 2203.00088 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2203.00088.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[retry] 2203.00088 attempt 3/3 batch=4
+[warn] 2203.00088: Failed to download 2203.00088 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2203.00088.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[fail] 2203.00088 after 38.7s — Failed to download 2203.00088 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2203.00088.pdf (Caused by N
+
+===== [24/4415] 1812.09582  elapsed=7.0m  eta~1332.8m  avg=18s/paper =====
+[mem] avail=8.4GiB total=16.0GiB reserve=3.0GiB usable=5.4GiB → batch=24
+[warn] 1812.09582: Failed to download 1812.09582 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/1812.09582.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[retry] 1812.09582 attempt 2/3 batch=4
+[warn] 1812.09582: Failed to download 1812.09582 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/1812.09582.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[retry] 1812.09582 attempt 3/3 batch=4
+[warn] 1812.09582: Failed to download 1812.09582 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/1812.09582.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[fail] 1812.09582 after 38.8s — Failed to download 1812.09582 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/1812.09582.pdf (Caused by N
+
+===== [25/4415] 2407.07615  elapsed=7.6m  eta~1395.4m  avg=19s/paper =====
+[mem] avail=8.3GiB total=16.0GiB reserve=3.0GiB usable=5.3GiB → batch=24
+[warn] 2407.07615: Failed to download 2407.07615 after 3 attempts: HTTPSConnectionPool(host='arxiv.org', port=443): Max retries exceeded with url: /pdf/2407.07615.pdf (Caused by NameResolutionError("HTTPSConnection(host
+[retry] 2407.07615 attempt 2/3 batch=4
