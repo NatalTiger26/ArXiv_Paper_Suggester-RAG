@@ -1,0 +1,1332 @@
+Project     : /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester
+Log         : logs/library_build_vlm_xai_20261016_154310.log
+N           : 40
+SLEEP       : 3s
+CATEGORIES  : cs.CV cs.LG cs.AI cs.CL
+NO_CATEGORY : 1
+Started     : 2026-10-16T15:43:10+05:30
+
+=== 79 base queries × categories → 395 API calls (n=40) ===
+=== Merges into existing library (does not wipe) ===
+
+----------------------------------------------------------------
+>>> [1/395] [cs.CV] vision-language explainability
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"vision-language explainability" OR abs:"vision-language explainability") OR (all:vision-language AND all:explainability))
+Found 40 papers
+  2508.19294	Object Detection with Multimodal Large Vision-Language Models: An In-d
+  2608.17095	Inference-Time Attention Steering for Vision-Language-Action Driving M
+  2309.08612	Explaining Vision and Language through Graphs of Events in Space and T
+  2510.02780	Reasoning Riddles: How Explainability Reveals Cognitive Limits in Visi
+  2506.18985	GLIMPSE: Holistic Cross-Modal Explainability for Large Vision-Language
+  2508.20227	A Novel Framework for Automated Explain Vision Model Using Vision-Lang
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2501.01346	Large Vision-Language Model Alignment and Misalignment: A Survey Throu
+  2403.18996	Envisioning MedCLIP: A Deep Dive into Explainability for Medical Visio
+  2601.05143	A Two-Stage Multitask Vision-Language Framework for Explainable Crop D
+  … and 30 more
+Corpus now has 65 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [2/395] [cs.LG] vision-language explainability
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"vision-language explainability" OR abs:"vision-language explainability") OR (all:vision-language AND all:explainability))
+Found 40 papers
+  2508.20227	A Novel Framework for Automated Explain Vision Model Using Vision-Lang
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2302.14383	Linear Spaces of Meanings: Compositional Structures in Vision-Language
+  2601.03534	Persona-aware and Explainable Bikeability Assessment: A Vision-Languag
+  2412.01095	VERA: Explainable Video Anomaly Detection via Verbalized Learning of V
+  2504.07416	RadZero: Similarity-Based Cross-Attention for Explainable Vision-Langu
+  2111.07180	Explainable Semantic Space by Grounding Language to Vision with Cross-
+  2608.13570	Think in Latent, Explain in Language: Self-Explainable Latent Reasonin
+  2105.03761	e-ViL: A Dataset and Benchmark for Natural Language Explanations in Vi
+  2205.10238	Visualizing and Explaining Language Models
+  … and 30 more
+Corpus now has 98 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [3/395] [cs.AI] vision-language explainability
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"vision-language explainability" OR abs:"vision-language explainability") OR (all:vision-language AND all:explainability))
+Found 40 papers
+  2508.19294	Object Detection with Multimodal Large Vision-Language Models: An In-d
+  2309.08612	Explaining Vision and Language through Graphs of Events in Space and T
+  2506.18985	GLIMPSE: Holistic Cross-Modal Explainability for Large Vision-Language
+  2508.20227	A Novel Framework for Automated Explain Vision Model Using Vision-Lang
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2603.06302	DEX-AR: A Dynamic Explainability Method for Autoregressive Vision-Lang
+  2412.14672	FiVL: A Framework for Improved Vision-Language Alignment through the L
+  2403.11073	Tokensome: Towards a Genetic Vision-Language GPT for Explainable and C
+  2302.14383	Linear Spaces of Meanings: Compositional Structures in Vision-Language
+  2607.01086	LongVQUBench: Benchmarking Long-Term Video Quality Understanding of Vi
+  … and 30 more
+Corpus now has 115 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [4/395] [cs.CL] vision-language explainability
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"vision-language explainability" OR abs:"vision-language explainability") OR (all:vision-language AND all:explainability))
+Found 40 papers
+  2508.19294	Object Detection with Multimodal Large Vision-Language Models: An In-d
+  2309.08612	Explaining Vision and Language through Graphs of Events in Space and T
+  2508.20227	A Novel Framework for Automated Explain Vision Model Using Vision-Lang
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2501.01346	Large Vision-Language Model Alignment and Misalignment: A Survey Throu
+  2601.05143	A Two-Stage Multitask Vision-Language Framework for Explainable Crop D
+  2302.14383	Linear Spaces of Meanings: Compositional Structures in Vision-Language
+  2601.03534	Persona-aware and Explainable Bikeability Assessment: A Vision-Languag
+  2507.04815	From Vision To Language through Graph of Events in Space and Time: An 
+  2203.05081	NLX-GPT: A Model for Natural Language Explanations in Vision and Visio
+  … and 30 more
+Corpus now has 127 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [5/395] [all-cats] vision-language explainability
+----------------------------------------------------------------
+Query clause: ((ti:"vision-language explainability" OR abs:"vision-language explainability") OR (all:vision-language AND all:explainability))
+Found 40 papers
+  2508.19294	Object Detection with Multimodal Large Vision-Language Models: An In-d
+  2608.17095	Inference-Time Attention Steering for Vision-Language-Action Driving M
+  2309.08612	Explaining Vision and Language through Graphs of Events in Space and T
+  2510.02780	Reasoning Riddles: How Explainability Reveals Cognitive Limits in Visi
+  2506.18985	GLIMPSE: Holistic Cross-Modal Explainability for Large Vision-Language
+  2508.20227	A Novel Framework for Automated Explain Vision Model Using Vision-Lang
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2501.01346	Large Vision-Language Model Alignment and Misalignment: A Survey Throu
+  2403.18996	Envisioning MedCLIP: A Deep Dive into Explainability for Medical Visio
+  2601.05143	A Two-Stage Multitask Vision-Language Framework for Explainable Crop D
+  … and 30 more
+Corpus now has 128 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [6/395] [cs.CV] vision-language interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"vision-language interpretability" OR abs:"vision-language interpretability") OR (all:vision-language AND all:interpretability))
+Found 40 papers
+  2308.14179	Towards Vision-Language Mechanistic Interpretability: A Causal Tracing
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2506.18985	GLIMPSE: Holistic Cross-Modal Explainability for Large Vision-Language
+  2104.04167	The Road to Know-Where: An Object-and-Room Informed Sequential BERT fo
+  2403.19838	Multi-Frame, Lightweight & Efficient Vision-Language Models for Questi
+  2511.08402	Anatomy-VLM: A Fine-grained Vision-Language Model for Medical Interpre
+  2509.15243	Multi-Modal Interpretability for Enhanced Localization in Vision-Langu
+  2607.10797	Compositional Context Fine-Tuning Vision-Language Model for Complex As
+  2203.17247	VL-InterpreT: An Interactive Visualization Tool for Interpreting Visio
+  2505.12835	FlightGPT: Towards Generalizable and Interpretable UAV Vision-and-Lang
+  … and 30 more
+Corpus now has 163 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [7/395] [cs.LG] vision-language interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"vision-language interpretability" OR abs:"vision-language interpretability") OR (all:vision-language AND all:interpretability))
+Found 40 papers
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2511.08402	Anatomy-VLM: A Fine-grained Vision-Language Model for Medical Interpre
+  2203.17247	VL-InterpreT: An Interactive Visualization Tool for Interpreting Visio
+  2505.24360	Interpreting Large Text-to-Image Diffusion Models with Dictionary Lear
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2510.21323	VL-SAE: Interpreting and Enhancing Vision-Language Alignment with a Un
+  2410.15397	IPO: Interpretable Prompt Optimization for Vision-Language Models
+  2409.00543	How Does Diverse Interpretability of Textual Prompts Impact Medical Vi
+  2410.07149	Towards Interpreting Visual Information Processing in Vision-Language 
+  2302.14383	Linear Spaces of Meanings: Compositional Structures in Vision-Language
+  … and 30 more
+Corpus now has 192 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [8/395] [cs.AI] vision-language interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"vision-language interpretability" OR abs:"vision-language interpretability") OR (all:vision-language AND all:interpretability))
+Found 40 papers
+  2308.14179	Towards Vision-Language Mechanistic Interpretability: A Causal Tracing
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2506.18985	GLIMPSE: Holistic Cross-Modal Explainability for Large Vision-Language
+  2403.19838	Multi-Frame, Lightweight & Efficient Vision-Language Models for Questi
+  2511.08402	Anatomy-VLM: A Fine-grained Vision-Language Model for Medical Interpre
+  2203.17247	VL-InterpreT: An Interactive Visualization Tool for Interpreting Visio
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2507.17467	Probing Vision-Language Understanding through the Visual Entailment Ta
+  2603.09625	Grounding Synthetic Data Generation With Vision and Language Models
+  2311.00967	Vision-Language Interpreter for Robot Task Planning
+  … and 30 more
+Corpus now has 209 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [9/395] [cs.CL] vision-language interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"vision-language interpretability" OR abs:"vision-language interpretability") OR (all:vision-language AND all:interpretability))
+Found 40 papers
+  2308.14179	Towards Vision-Language Mechanistic Interpretability: A Causal Tracing
+  2104.04167	The Road to Know-Where: An Object-and-Room Informed Sequential BERT fo
+  2203.17247	VL-InterpreT: An Interactive Visualization Tool for Interpreting Visio
+  2505.12835	FlightGPT: Towards Generalizable and Interpretable UAV Vision-and-Lang
+  2407.21788	Vision-Language Model Based Handwriting Verification
+  2311.00967	Vision-Language Interpreter for Robot Task Planning
+  2410.15397	IPO: Interpretable Prompt Optimization for Vision-Language Models
+  2509.03740	CLIP-SVD: Efficient and Interpretable Vision-Language Adaptation via S
+  1711.07280	Vision-and-Language Navigation: Interpreting visually-grounded navigat
+  2606.00095	Bridging the 2D-3D Gap: A Hierarchical Semantic-Geometric Map for Visi
+  … and 30 more
+Corpus now has 221 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [10/395] [all-cats] vision-language interpretability
+----------------------------------------------------------------
+Query clause: ((ti:"vision-language interpretability" OR abs:"vision-language interpretability") OR (all:vision-language AND all:interpretability))
+Found 40 papers
+  2308.14179	Towards Vision-Language Mechanistic Interpretability: A Causal Tracing
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2506.18985	GLIMPSE: Holistic Cross-Modal Explainability for Large Vision-Language
+  2104.04167	The Road to Know-Where: An Object-and-Room Informed Sequential BERT fo
+  2403.19838	Multi-Frame, Lightweight & Efficient Vision-Language Models for Questi
+  2511.08402	Anatomy-VLM: A Fine-grained Vision-Language Model for Medical Interpre
+  2509.15243	Multi-Modal Interpretability for Enhanced Localization in Vision-Langu
+  2607.10797	Compositional Context Fine-Tuning Vision-Language Model for Complex As
+  2203.17247	VL-InterpreT: An Interactive Visualization Tool for Interpreting Visio
+  2505.24360	Interpreting Large Text-to-Image Diffusion Models with Dictionary Lear
+  … and 30 more
+Corpus now has 221 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [11/395] [cs.CV] multimodal explainability
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"multimodal explainability" OR abs:"multimodal explainability") OR (all:multimodal AND all:explainability))
+Found 40 papers
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2103.06304	What is Multimodality?
+  2105.07878	A Review on Explainability in Multimodal Deep Neural Nets
+  2510.02780	Reasoning Riddles: How Explainability Reveals Cognitive Limits in Visi
+  2606.14740	GridVQA-X: A Framework for Evaluating Multimodal Explainability Method
+  2412.10510	DEFAME: Dynamic Evidence-based FAct-checking with Multimodal Experts
+  2609.05174	SMILE: Self-Explainable Multimodal Information Bottleneck for Medical 
+  2306.05523	FACTIFY3M: A Benchmark for Multimodal Fact Verification with Explainab
+  2603.02162	Bridging the gap between Performance and Interpretability: An Explaina
+  2405.12222	Influence based explainability of brain tumors segmentation in multimo
+  … and 30 more
+Corpus now has 259 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [12/395] [cs.LG] multimodal explainability
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"multimodal explainability" OR abs:"multimodal explainability") OR (all:multimodal AND all:explainability))
+Found 40 papers
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2508.04427	Decoding the Multimodal Maze: A Systematic Review on the Adoption of E
+  2506.13060	Rethinking Explainability in the Era of Multimodal AI
+  2609.05174	SMILE: Self-Explainable Multimodal Information Bottleneck for Medical 
+  2107.08264	M2Lens: Visualizing and Explaining Multimodal Models for Sentiment Ana
+  2409.10496	MusicLIME: Explainable Multimodal Music Understanding
+  2508.06939	Intrinsic Explainability of Multimodal Learning for Crop Yield Predict
+  2511.14265	Unified Multimodal Vessel Trajectory Prediction with Explainable Navig
+  2609.33685	T-MoXAI: A Hierarchical Explainability Framework for Temporal Multimod
+  2508.00665	Transparent Adaptive Learning via Data-Centric Multimodal Explainable 
+  … and 30 more
+Corpus now has 286 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [13/395] [cs.AI] multimodal explainability
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"multimodal explainability" OR abs:"multimodal explainability") OR (all:multimodal AND all:explainability))
+Found 40 papers
+  2503.16467	Enhancing Explainability with Multimodal Context Representations for S
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2508.04427	Decoding the Multimodal Maze: A Systematic Review on the Adoption of E
+  2103.06304	What is Multimodality?
+  2105.07878	A Review on Explainability in Multimodal Deep Neural Nets
+  2604.08140	Multimodal Reasoning with LLM for Encrypted Traffic Interpretation: A 
+  2506.13060	Rethinking Explainability in the Era of Multimodal AI
+  2409.10496	MusicLIME: Explainable Multimodal Music Understanding
+  2410.16795	Scene-Aware Explainable Multimodal Trajectory Prediction
+  2512.11067	KathDB: Explainable Multimodal Database Management System with Human-A
+  … and 30 more
+Corpus now has 300 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [14/395] [cs.CL] multimodal explainability
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"multimodal explainability" OR abs:"multimodal explainability") OR (all:multimodal AND all:explainability))
+Found 40 papers
+  2103.06304	What is Multimodality?
+  2412.02104	Explainable and Interpretable Multimodal Large Language Models: A Comp
+  2412.10510	DEFAME: Dynamic Evidence-based FAct-checking with Multimodal Experts
+  2107.08264	M2Lens: Visualizing and Explaining Multimodal Models for Sentiment Ana
+  2601.06848	Explainable Multimodal Aspect-Based Sentiment Analysis with Dependency
+  2306.05523	FACTIFY3M: A Benchmark for Multimodal Fact Verification with Explainab
+  2502.11073	Demystifying Hateful Content: Leveraging Large Multimodal Models for H
+  2402.01858	Explaining latent representations of generative models with large mult
+  2606.07533	Bridging Traditional Explainability Methods and Multimodal Multilingua
+  2606.07531	mllm-shap: A Shapley Value Explainability Platform for Text-Audio Mult
+  … and 30 more
+Corpus now has 320 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [15/395] [all-cats] multimodal explainability
+----------------------------------------------------------------
+Query clause: ((ti:"multimodal explainability" OR abs:"multimodal explainability") OR (all:multimodal AND all:explainability))
+Found 40 papers
+  2503.16467	Enhancing Explainability with Multimodal Context Representations for S
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2508.04427	Decoding the Multimodal Maze: A Systematic Review on the Adoption of E
+  2103.06304	What is Multimodality?
+  2105.07878	A Review on Explainability in Multimodal Deep Neural Nets
+  2604.08140	Multimodal Reasoning with LLM for Encrypted Traffic Interpretation: A 
+  2510.02780	Reasoning Riddles: How Explainability Reveals Cognitive Limits in Visi
+  2506.13060	Rethinking Explainability in the Era of Multimodal AI
+  2606.14740	GridVQA-X: A Framework for Evaluating Multimodal Explainability Method
+  2412.02104	Explainable and Interpretable Multimodal Large Language Models: A Comp
+  … and 30 more
+Corpus now has 323 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [16/395] [cs.CV] multimodal interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"multimodal interpretability" OR abs:"multimodal interpretability") OR (all:multimodal AND all:interpretability))
+Found 40 papers
+  2008.13369	Introducing Representations of Facial Affect in Automated Multimodal D
+  2309.10783	Language as the Medium: Multimodal Video Classification through text o
+  2210.02884	Vision+X: A Survey on Multimodal Learning in the Light of Data
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2403.06024	Semi-Supervised Multimodal Multi-Instance Learning for Aortic Stenosis
+  2606.19882	Multimodal Concept Bottleneck Models
+  2609.22271	Enabling Vision and Cross-Modal Learning for Multimodal Stroke Recurre
+  2505.19190	I2MoE: Interpretable Multimodal Interaction-aware Mixture-of-Experts
+  2404.14394	A Multimodal Automated Interpretability Agent
+  2502.14889	Narrowing Information Bottleneck Theory for Multimodal Image-Text Repr
+  … and 30 more
+Corpus now has 361 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [17/395] [cs.LG] multimodal interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"multimodal interpretability" OR abs:"multimodal interpretability") OR (all:multimodal AND all:interpretability))
+Found 40 papers
+  2008.13369	Introducing Representations of Facial Affect in Automated Multimodal D
+  2404.15349	A Survey on Multimodal Wearable Sensor-based Human Action Recognition
+  2112.01938	Shapes of Emotions: Multimodal Emotion Recognition in Conversations vi
+  2412.01215	EsurvFusion: An evidential multimodal survival fusion model based on G
+  1905.13570	Factorized Inference in Deep Markov Models for Incomplete Multimodal T
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2403.06024	Semi-Supervised Multimodal Multi-Instance Learning for Aortic Stenosis
+  2606.19882	Multimodal Concept Bottleneck Models
+  2608.17164	SCENARIODIFF: A Scenario-level Guidance Framework for Multimodal Time 
+  2505.19190	I2MoE: Interpretable Multimodal Interaction-aware Mixture-of-Experts
+  … and 30 more
+Corpus now has 393 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [18/395] [cs.AI] multimodal interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"multimodal interpretability" OR abs:"multimodal interpretability") OR (all:multimodal AND all:interpretability))
+Found 40 papers
+  2604.08140	Multimodal Reasoning with LLM for Encrypted Traffic Interpretation: A 
+  2309.10783	Language as the Medium: Multimodal Video Classification through text o
+  2112.01938	Shapes of Emotions: Multimodal Emotion Recognition in Conversations vi
+  1905.13570	Factorized Inference in Deep Markov Models for Incomplete Multimodal T
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2609.22271	Enabling Vision and Cross-Modal Learning for Multimodal Stroke Recurre
+  2505.19190	I2MoE: Interpretable Multimodal Interaction-aware Mixture-of-Experts
+  2609.11341	Exploring Diffusion Transformers for Cross-Modal Augmentation in Multi
+  1109.6361	Cognitive Principles in Robust Multimodal Interpretation
+  2608.20384	Interpretable Multimodal Classification with Linear Discriminant Tree 
+  … and 30 more
+Corpus now has 406 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [19/395] [cs.CL] multimodal interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"multimodal interpretability" OR abs:"multimodal interpretability") OR (all:multimodal AND all:interpretability))
+Found 40 papers
+  2309.10783	Language as the Medium: Multimodal Video Classification through text o
+  2112.01938	Shapes of Emotions: Multimodal Emotion Recognition in Conversations vi
+  2412.02104	Explainable and Interpretable Multimodal Large Language Models: A Comp
+  2004.14198	Multimodal Routing: Improving Local and Global Interpretability of Mul
+  2404.14394	A Multimodal Automated Interpretability Agent
+  2510.04514	ChartAgent: A Multimodal Agent for Visually Grounded Reasoning in Comp
+  2502.17514	SAE-V: Interpreting Multimodal Models for Enhanced Alignment
+  2305.05964	Interpretable Multimodal Misinformation Detection with Logic Reasoning
+  2305.06162	Interpretable multimodal sentiment analysis based on textual modality 
+  2604.03586	MultiPress: A Multi-Agent Framework for Interpretable Multimodal News 
+  … and 30 more
+Corpus now has 431 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [20/395] [all-cats] multimodal interpretability
+----------------------------------------------------------------
+Query clause: ((ti:"multimodal interpretability" OR abs:"multimodal interpretability") OR (all:multimodal AND all:interpretability))
+Found 40 papers
+  2008.13369	Introducing Representations of Facial Affect in Automated Multimodal D
+  2604.08140	Multimodal Reasoning with LLM for Encrypted Traffic Interpretation: A 
+  2404.15349	A Survey on Multimodal Wearable Sensor-based Human Action Recognition
+  2309.10783	Language as the Medium: Multimodal Video Classification through text o
+  2112.01938	Shapes of Emotions: Multimodal Emotion Recognition in Conversations vi
+  2412.01215	EsurvFusion: An evidential multimodal survival fusion model based on G
+  2210.02884	Vision+X: A Survey on Multimodal Learning in the Light of Data
+  1905.13570	Factorized Inference in Deep Markov Models for Incomplete Multimodal T
+  2504.19475	Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vis
+  2403.06024	Semi-Supervised Multimodal Multi-Instance Learning for Aortic Stenosis
+  … and 30 more
+Corpus now has 432 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [21/395] [cs.CV] VLM explainability
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"VLM explainability" OR abs:"VLM explainability") OR (all:VLM AND all:explainability))
+Found 40 papers
+  2407.00557	Explaining Chest X-ray Pathology Models using Textual Concepts
+  2510.02780	Reasoning Riddles: How Explainability Reveals Cognitive Limits in Visi
+  2606.14803	HSQ-VLM: A Novel Spatially-Constrained Quadrant Segmentation VLM Model
+  2512.22197	Quadrant Segmentation VLM with Few-Shot Adaptation and OCT Learning-ba
+  2512.05482	Concept-based Explainable Data Mining with VLM for 3D Detection
+  2412.11917	Does VLM Classification Benefit from LLM Description Semantics?
+  2512.05740	Distilling Expert Surgical Knowledge: How to train local surgical VLMs
+  2505.17835	VLM Models and Automated Grading of Atopic Dermatitis
+  2410.08792	VLM See, Robot Do: Human Demo Video to Robot Action Plan via Vision La
+  2505.15925	VERDI: VLM-Embedded Reasoning for Autonomous Driving
+  … and 30 more
+Corpus now has 459 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [22/395] [cs.LG] VLM explainability
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"VLM explainability" OR abs:"VLM explainability") OR (all:VLM AND all:explainability))
+Found 40 papers
+  2605.22168	Measuring Cross-Modal Synergy: A Benchmark for VLM Explainability
+  2410.08792	VLM See, Robot Do: Human Demo Video to Robot Action Plan via Vision La
+  2501.09967	Explainable artificial intelligence (XAI): from inherent explainabilit
+  2508.13229	RISE: Enhancing VLM Image Annotation with Self-Supervised Reasoning
+  2608.08904	From Recovery to Drop-off: How Action Post-training Reduces a VLM's La
+  2404.12839	ECOR: Explainable CLIP for Object Recognition
+  2407.14412	DEAL: Disentangle and Localize Concept-level Explanations for VLMs
+  2608.13570	Think in Latent, Explain in Language: Self-Explainable Latent Reasonin
+  2608.30750	Do VLMs Share Safety Neurons Across Modalities?
+  2503.15108	VIPER: Visual Perception and Explainable Reasoning for Sequential Deci
+  … and 30 more
+Corpus now has 477 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [23/395] [cs.AI] VLM explainability
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"VLM explainability" OR abs:"VLM explainability") OR (all:VLM AND all:explainability))
+Found 40 papers
+  2605.22168	Measuring Cross-Modal Synergy: A Benchmark for VLM Explainability
+  2509.25142	Visual serial processing deficits explain divergences in human and VLM
+  2601.07315	VLM-CAD: VLM-Optimized Collaborative Agent Design Workflow for Analog 
+  2410.08792	VLM See, Robot Do: Human Demo Video to Robot Action Plan via Vision La
+  2505.15925	VERDI: VLM-Embedded Reasoning for Autonomous Driving
+  2501.09967	Explainable artificial intelligence (XAI): from inherent explainabilit
+  2503.19948	Test-Time Reasoning Through Visual Human Preferences with VLMs and Sof
+  2608.08904	From Recovery to Drop-off: How Action Post-training Reduces a VLM's La
+  2411.11543	PSA-VLM: Enhancing Vision-Language Model Safety through Progressive Co
+  2404.14755	SkinGEN: an Explainable Dermatology Diagnosis-to-Generation Framework 
+  … and 30 more
+Corpus now has 486 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [24/395] [cs.CL] VLM explainability
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"VLM explainability" OR abs:"VLM explainability") OR (all:VLM AND all:explainability))
+Found 40 papers
+  2412.16420	Beyond End-to-End VLMs: Leveraging Intermediate Text Representations f
+  2604.06422	When to Call an Apple Red: Humans Follow Introspective Rules, VLMs Don
+  2608.13570	Think in Latent, Explain in Language: Self-Explainable Latent Reasonin
+  2407.01863	VSP: Assessing the dual challenges of perception and reasoning in spat
+  2502.11073	Demystifying Hateful Content: Leveraging Large Multimodal Models for H
+  2605.15864	Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Re-e
+  2601.04692	PEST: Parameter Efficient Steering of Blackbox VLMs via Agentic Few-sh
+  2405.01474	Understanding Figurative Meaning through Explainable Visual Entailment
+  2510.26006	CAVE: Detecting and Explaining Commonsense Anomalies in Visual Environ
+  2311.11904	LLMs as Visual Explainers: Advancing Image Classification with Evolvin
+  … and 30 more
+Corpus now has 504 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [25/395] [all-cats] VLM explainability
+----------------------------------------------------------------
+Query clause: ((ti:"VLM explainability" OR abs:"VLM explainability") OR (all:VLM AND all:explainability))
+Found 40 papers
+  2605.22168	Measuring Cross-Modal Synergy: A Benchmark for VLM Explainability
+  2407.00557	Explaining Chest X-ray Pathology Models using Textual Concepts
+  2510.02780	Reasoning Riddles: How Explainability Reveals Cognitive Limits in Visi
+  2606.14803	HSQ-VLM: A Novel Spatially-Constrained Quadrant Segmentation VLM Model
+  2512.22197	Quadrant Segmentation VLM with Few-Shot Adaptation and OCT Learning-ba
+  2512.05482	Concept-based Explainable Data Mining with VLM for 3D Detection
+  2412.11917	Does VLM Classification Benefit from LLM Description Semantics?
+  2509.25142	Visual serial processing deficits explain divergences in human and VLM
+  2512.05740	Distilling Expert Surgical Knowledge: How to train local surgical VLMs
+  2601.07315	VLM-CAD: VLM-Optimized Collaborative Agent Design Workflow for Analog 
+  … and 30 more
+Corpus now has 506 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [26/395] [cs.CV] VLM interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"VLM interpretability" OR abs:"VLM interpretability") OR (all:VLM AND all:interpretability))
+Found 40 papers
+  2510.02292	From Behavioral Performance to Internal Competence: Interpreting Visio
+  2607.06445	Analysis-by-Proxy: Localization Signals in VLMs Operating as Condition
+  2604.11868	MedConcept: Unsupervised Concept Discovery for Interpretability in Med
+  2508.13073	Large VLM-based Vision-Language-Action Models for Robotic Manipulation
+  2411.18038	VLM-HOI: Vision Language Models for Interpretable Human-Object Interac
+  2609.35247	AnswerMap: Faithful Spatial Interpretability of VLMs from Answer Poste
+  2606.20419	Spectral Query-Key Product Weight Steering for Training-Free VLM Hallu
+  2506.11604	VLM@school -- Evaluation of AI image understanding on German middle sc
+  2507.01284	VLAD: A VLM-Augmented Autonomous Driving Framework with Hierarchical P
+  2508.16652	Do VLMs Have Bad Eyes? Diagnosing Compositional Failures via Mechanist
+  … and 30 more
+Corpus now has 542 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [27/395] [cs.LG] VLM interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"VLM interpretability" OR abs:"VLM interpretability") OR (all:VLM AND all:interpretability))
+Found 40 papers
+  2605.12674	Revealing Interpretable Failure Modes of VLMs
+  2609.35247	AnswerMap: Faithful Spatial Interpretability of VLMs from Answer Poste
+  2507.01284	VLAD: A VLM-Augmented Autonomous Driving Framework with Hierarchical P
+  2511.08402	Anatomy-VLM: A Fine-grained Vision-Language Model for Medical Interpre
+  2602.01915	VLM-Guided Experience Replay
+  2605.22168	Measuring Cross-Modal Synergy: A Benchmark for VLM Explainability
+  2506.08399	SafeCoT: Improving VLM Safety with Minimal Reasoning
+  2410.08792	VLM See, Robot Do: Human Demo Video to Robot Action Plan via Vision La
+  2503.01062	Offline RLAIF: Piloting VLM Feedback for RL via SFO
+  2511.19418	Chain-of-Visual-Thought: Teaching VLMs to See and Think Better with Co
+  … and 30 more
+Corpus now has 568 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [28/395] [cs.AI] VLM interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"VLM interpretability" OR abs:"VLM interpretability") OR (all:VLM AND all:interpretability))
+Found 40 papers
+  2607.06445	Analysis-by-Proxy: Localization Signals in VLMs Operating as Condition
+  2605.12674	Revealing Interpretable Failure Modes of VLMs
+  2509.22378	Zero-Effort Image-to-Music Generation: An Interpretable RAG-based VLM 
+  2411.18038	VLM-HOI: Vision Language Models for Interpretable Human-Object Interac
+  2506.11604	VLM@school -- Evaluation of AI image understanding on German middle sc
+  2507.01284	VLAD: A VLM-Augmented Autonomous Driving Framework with Hierarchical P
+  2511.08402	Anatomy-VLM: A Fine-grained Vision-Language Model for Medical Interpre
+  2602.01915	VLM-Guided Experience Replay
+  2605.22168	Measuring Cross-Modal Synergy: A Benchmark for VLM Explainability
+  2609.17921	Collaborative Memory for Multi-Agent VLM Systems
+  … and 30 more
+Corpus now has 588 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [29/395] [cs.CL] VLM interpretability
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"VLM interpretability" OR abs:"VLM interpretability") OR (all:VLM AND all:interpretability))
+Found 40 papers
+  2510.02292	From Behavioral Performance to Internal Competence: Interpreting Visio
+  2506.11604	VLM@school -- Evaluation of AI image understanding on German middle sc
+  2509.10129	Towards Reliable and Interpretable Document Question Answering via VLM
+  2406.16320	What Do VLMs NOTICE? A Mechanistic Interpretability Pipeline for Gauss
+  2505.20937	On VLMs for Diverse Tasks in Multimodal Meme Classification
+  2601.16690	EMemBench: Interactive Benchmarking of Episodic Memory for VLM Agents
+  2604.26148	Beyond Screenshots: Evaluating VLMs' Understanding of UI Animations
+  2406.16469	Evaluating Visual and Cultural Interpretation: The K-Viscuit Benchmark
+  2605.31387	Multi-Turn Multi-Agent Dialogue for Collaborative Reconstruction Impro
+  2504.12661	VLMGuard-R1: Proactive Safety Alignment for VLMs via Reasoning-Driven 
+  … and 30 more
+Corpus now has 612 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [30/395] [all-cats] VLM interpretability
+----------------------------------------------------------------
+Query clause: ((ti:"VLM interpretability" OR abs:"VLM interpretability") OR (all:VLM AND all:interpretability))
+Found 40 papers
+  2510.02292	From Behavioral Performance to Internal Competence: Interpreting Visio
+  2607.00483	VLM-AR3L: Vision-Language Models for Absolute and Relative Rewards in 
+  2609.37681	ProAct-VLM: Pre-Failure Vision-Language Task Replanning with Continuou
+  2607.06445	Analysis-by-Proxy: Localization Signals in VLMs Operating as Condition
+  2604.11868	MedConcept: Unsupervised Concept Discovery for Interpretability in Med
+  2508.13073	Large VLM-based Vision-Language-Action Models for Robotic Manipulation
+  2605.12674	Revealing Interpretable Failure Modes of VLMs
+  2509.22378	Zero-Effort Image-to-Music Generation: An Interpretable RAG-based VLM 
+  2411.18038	VLM-HOI: Vision Language Models for Interpretable Human-Object Interac
+  2609.35247	AnswerMap: Faithful Spatial Interpretability of VLMs from Answer Poste
+  … and 30 more
+Corpus now has 615 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [31/395] [cs.CV] explainable AI multimodal
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"explainable AI multimodal" OR abs:"explainable AI multimodal") OR (all:explainable AND all:AI AND all:multimodal))
+Found 40 papers
+  2605.02903	A User-Centric Analysis of Explainability in AI-Based Medical Image Di
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2404.09917	Evaluating the Explainability of Attributes and Prototypes for a Medic
+  2412.14056	A Review of Multimodal Explainable Artificial Intelligence: Past, Pres
+  2606.14740	GridVQA-X: A Framework for Evaluating Multimodal Explainability Method
+  2508.01402	ForenX: Towards Explainable AI-Generated Image Detection with Multimod
+  2408.12808	VALE: A Multimodal Visual and Language Explanation Framework for Image
+  2105.07878	A Review on Explainability in Multimodal Deep Neural Nets
+  2412.10510	DEFAME: Dynamic Evidence-based FAct-checking with Multimodal Experts
+  2608.00074	Explainable Multimodal AI for Adaptive Calibration of Archaeological S
+  … and 30 more
+Corpus now has 634 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [32/395] [cs.LG] explainable AI multimodal
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"explainable AI multimodal" OR abs:"explainable AI multimodal") OR (all:explainable AND all:AI AND all:multimodal))
+Found 40 papers
+  2508.00665	Transparent Adaptive Learning via Data-Centric Multimodal Explainable 
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2506.13060	Rethinking Explainability in the Era of Multimodal AI
+  2507.20714	Prostate Cancer Classification Using Multimodal Feature Fusion and Exp
+  2412.14056	A Review of Multimodal Explainable Artificial Intelligence: Past, Pres
+  2508.04427	Decoding the Multimodal Maze: A Systematic Review on the Adoption of E
+  2408.12808	VALE: A Multimodal Visual and Language Explanation Framework for Image
+  2505.22541	A Human-Centric Approach to Explainable AI for Personalized Education
+  2609.33685	T-MoXAI: A Hierarchical Explainability Framework for Temporal Multimod
+  2511.14265	Unified Multimodal Vessel Trajectory Prediction with Explainable Navig
+  … and 30 more
+Corpus now has 646 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [33/395] [cs.AI] explainable AI multimodal
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"explainable AI multimodal" OR abs:"explainable AI multimodal") OR (all:explainable AND all:AI AND all:multimodal))
+Found 40 papers
+  2604.00187	Explainable AI for Blind and Low-Vision Users: Navigating Trust, Modal
+  2503.16466	ACE, Action and Control via Explanations: A Proposal for LLMs to Provi
+  2605.02903	A User-Centric Analysis of Explainability in AI-Based Medical Image Di
+  2508.00665	Transparent Adaptive Learning via Data-Centric Multimodal Explainable 
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2506.13060	Rethinking Explainability in the Era of Multimodal AI
+  2512.11067	KathDB: Explainable Multimodal Database Management System with Human-A
+  2507.20714	Prostate Cancer Classification Using Multimodal Feature Fusion and Exp
+  2508.00576	MultiSHAP: A Shapley-Based Framework for Explaining Cross-Modal Intera
+  2508.00160	DeformTune: A Deformable XAI Music Prototype for Non-Musicians
+  … and 30 more
+Corpus now has 661 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [34/395] [cs.CL] explainable AI multimodal
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"explainable AI multimodal" OR abs:"explainable AI multimodal") OR (all:explainable AND all:AI AND all:multimodal))
+Found 40 papers
+  2412.14056	A Review of Multimodal Explainable Artificial Intelligence: Past, Pres
+  2412.02104	Explainable and Interpretable Multimodal Large Language Models: A Comp
+  2609.33441	MIC: Explaining Image-Claim Inconsistencies in AI-Generated Multimodal
+  2408.12808	VALE: A Multimodal Visual and Language Explanation Framework for Image
+  2501.16106	Explainable Multimodal Depression Recognition in Clinical Interviews v
+  2412.10510	DEFAME: Dynamic Evidence-based FAct-checking with Multimodal Experts
+  2504.04279	Could AI Trace and Explain the Origins of AI-Generated Images and Text
+  2406.14862	LatentExplainer: Explaining Latent Representations in Deep Generative 
+  2603.14170	Citation-Enforced RAG for Fiscal Document Intelligence: Cited, Explain
+  2507.14579	Exploring Human-AI Complementarity in CPS Diagnosis Using Unimodal and
+  … and 30 more
+Corpus now has 680 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [35/395] [all-cats] explainable AI multimodal
+----------------------------------------------------------------
+Query clause: ((ti:"explainable AI multimodal" OR abs:"explainable AI multimodal") OR (all:explainable AND all:AI AND all:multimodal))
+Found 40 papers
+  2604.00187	Explainable AI for Blind and Low-Vision Users: Navigating Trust, Modal
+  2503.16466	ACE, Action and Control via Explanations: A Proposal for LLMs to Provi
+  2605.02903	A User-Centric Analysis of Explainability in AI-Based Medical Image Di
+  2508.00665	Transparent Adaptive Learning via Data-Centric Multimodal Explainable 
+  2509.14830	ProtoMedX: Towards Explainable Multi-Modal Prototype Learning for Bone
+  2506.13060	Rethinking Explainability in the Era of Multimodal AI
+  2512.11067	KathDB: Explainable Multimodal Database Management System with Human-A
+  2507.20714	Prostate Cancer Classification Using Multimodal Feature Fusion and Exp
+  2404.09917	Evaluating the Explainability of Attributes and Prototypes for a Medic
+  2508.00576	MultiSHAP: A Shapley-Based Framework for Explaining Cross-Modal Intera
+  … and 30 more
+Corpus now has 681 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [36/395] [cs.CV] multimodal XAI
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"multimodal XAI" OR abs:"multimodal XAI") OR (all:multimodal AND all:XAI))
+Found 31 papers
+  2602.07017	XAI-CLIP: ROI-Guided Perturbation Framework for Explainable Medical Im
+  2507.15915	An empirical study for the early detection of Mpox from skin lesion im
+  2608.00074	Explainable Multimodal AI for Adaptive Calibration of Archaeological S
+  2411.13053	MEGL: Multimodal Explanation-Guided Learning
+  2401.09446	Explainable Multimodal Sentiment Analysis on Bengali Memes
+  2407.14277	Patch-based Intuitive Multimodal Prototypes Network (PIMPNet) for Alzh
+  2412.14056	A Review of Multimodal Explainable Artificial Intelligence: Past, Pres
+  2408.12808	VALE: A Multimodal Visual and Language Explanation Framework for Image
+  2504.08824	ColonScopeX: Leveraging Explainable Expert Systems with Multimodal Dat
+  2310.00503	Black-box Attacks on Image Activity Prediction and its Natural Languag
+  … and 21 more
+Corpus now has 698 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [37/395] [cs.LG] multimodal XAI
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"multimodal XAI" OR abs:"multimodal XAI") OR (all:multimodal AND all:XAI))
+Found 33 papers
+  2310.13787	Enhancing Illicit Activity Detection using XAI: A Multimodal Graph-LLM
+  2508.04427	Decoding the Multimodal Maze: A Systematic Review on the Adoption of E
+  2312.17624	XAI for In-hospital Mortality Prediction via Multimodal ICU Data
+  2412.15828	Measuring Cross-Modal Interactions in Multimodal Models
+  2508.00665	Transparent Adaptive Learning via Data-Centric Multimodal Explainable 
+  2609.33685	T-MoXAI: A Hierarchical Explainability Framework for Temporal Multimod
+  2411.13053	MEGL: Multimodal Explanation-Guided Learning
+  2603.29977	Quantifying Cross-Modal Interactions in Multimodal Glioma Survival Pre
+  2401.09446	Explainable Multimodal Sentiment Analysis on Bengali Memes
+  2412.14056	A Review of Multimodal Explainable Artificial Intelligence: Past, Pres
+  … and 23 more
+Corpus now has 709 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [38/395] [cs.AI] multimodal XAI
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"multimodal XAI" OR abs:"multimodal XAI") OR (all:multimodal AND all:XAI))
+Found 40 papers
+  2507.21158	Adaptive XAI in High Stakes Environments: Modeling Swift Trust with Mu
+  2606.16137	XAI-Grounded Explanation Generation for Speech Deepfake Detection with
+  2602.07017	XAI-CLIP: ROI-Guided Perturbation Framework for Explainable Medical Im
+  2310.13787	Enhancing Illicit Activity Detection using XAI: A Multimodal Graph-LLM
+  2508.10806	Who Benefits from AI Explanations? Towards Accessible and Interpretabl
+  2508.04427	Decoding the Multimodal Maze: A Systematic Review on the Adoption of E
+  2512.21066	Agentic Explainable Artificial Intelligence (Agentic XAI) Approach To 
+  2312.17624	XAI for In-hospital Mortality Prediction via Multimodal ICU Data
+  2508.00665	Transparent Adaptive Learning via Data-Centric Multimodal Explainable 
+  2606.07533	Bridging Traditional Explainability Methods and Multimodal Multilingua
+  … and 30 more
+Corpus now has 715 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [39/395] [cs.CL] multimodal XAI
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"multimodal XAI" OR abs:"multimodal XAI") OR (all:multimodal AND all:XAI))
+Found 10 papers
+  2606.16137	XAI-Grounded Explanation Generation for Speech Deepfake Detection with
+  2608.26144	Why Current XAI Is Not Enough for Arabic NLP: A Critical Survey of the
+  2606.07533	Bridging Traditional Explainability Methods and Multimodal Multilingua
+  2401.09446	Explainable Multimodal Sentiment Analysis on Bengali Memes
+  2412.14056	A Review of Multimodal Explainable Artificial Intelligence: Past, Pres
+  2408.12808	VALE: A Multimodal Visual and Language Explanation Framework for Image
+  2601.08457	An Under-Explored Application for Explainable Multimodal Misogyny Dete
+  2308.11585	Causal Intersectionality and Dual Form of Gradient Descent for Multimo
+  2606.29069	Low-cost concept-based localized explanations: How far can we get with
+  2602.07179	An Information-Theoretic Framework for Comparing Voice and Text Explai
+Corpus now has 715 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [40/395] [all-cats] multimodal XAI
+----------------------------------------------------------------
+Query clause: ((ti:"multimodal XAI" OR abs:"multimodal XAI") OR (all:multimodal AND all:XAI))
+Found 40 papers
+  2507.21158	Adaptive XAI in High Stakes Environments: Modeling Swift Trust with Mu
+  2606.16137	XAI-Grounded Explanation Generation for Speech Deepfake Detection with
+  2602.07017	XAI-CLIP: ROI-Guided Perturbation Framework for Explainable Medical Im
+  2310.13787	Enhancing Illicit Activity Detection using XAI: A Multimodal Graph-LLM
+  2608.26144	Why Current XAI Is Not Enough for Arabic NLP: A Critical Survey of the
+  2508.10806	Who Benefits from AI Explanations? Towards Accessible and Interpretabl
+  2508.04427	Decoding the Multimodal Maze: A Systematic Review on the Adoption of E
+  2512.21066	Agentic Explainable Artificial Intelligence (Agentic XAI) Approach To 
+  2507.15915	An empirical study for the early detection of Mpox from skin lesion im
+  2312.17624	XAI for In-hospital Mortality Prediction via Multimodal ICU Data
+  … and 30 more
+Corpus now has 716 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [41/395] [cs.CV] Score-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CV all:Score-CAM
+Found 40 papers
+  2103.13859	Group-CAM: Group Score-Weighted Visual Explanations for Deep Convoluti
+  2010.03023	IS-CAM: Integrated Score-CAM for axiomatic-based explanations
+  2006.14255	SS-CAM: Smoothed Score-CAM for Sharper Visual Feature Localization
+  1910.01279	Score-CAM: Score-Weighted Visual Explanations for Convolutional Neural
+  2605.02007	How Can One Choose the Best CAM-Based Explainability Method for a CNN 
+  2209.14074	Recipro-CAM: Fast gradient-free visual explanations for convolutional 
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2604.08502	Quantifying Explanation Consistency: The C-Score Metric for CAM-Based 
+  2206.08792	FD-CAM: Improving Faithfulness and Discriminability of Visual Explanat
+  2412.01354	Integrative CAM: Adaptive Layer Fusion for Comprehensive Interpretatio
+  … and 30 more
+Corpus now has 756 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [42/395] [cs.LG] Score-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.LG all:Score-CAM
+Found 40 papers
+  2605.02007	How Can One Choose the Best CAM-Based Explainability Method for a CNN 
+  2209.14074	Recipro-CAM: Fast gradient-free visual explanations for convolutional 
+  2410.21557	A Novel Score-CAM based Denoiser for Spectrographic Signature Extracti
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2008.00299	Eigen-CAM: Class Activation Map using Principal Components
+  2404.01964	CAM-Based Methods Can See through Walls
+  1806.04838	Partial AUC Maximization via Nonlinear Scoring Functions
+  2607.27083	Scores Are Not Decisions: Cost-Aware Stopping for Tool Acquisition in 
+  2311.11176	Morphology-Enhanced CAM-Guided SAM for weakly supervised Breast Lesion
+  2308.13150	Breast Cancer Classification with Enhanced Interpretability: DALAResNe
+  … and 30 more
+Corpus now has 787 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [43/395] [cs.AI] Score-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.AI all:Score-CAM
+Found 40 papers
+  2103.13859	Group-CAM: Group Score-Weighted Visual Explanations for Deep Convoluti
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2604.08502	Quantifying Explanation Consistency: The C-Score Metric for CAM-Based 
+  2412.01354	Integrative CAM: Adaptive Layer Fusion for Comprehensive Interpretatio
+  2308.11052	Beyond Discriminative Regions: Saliency Maps as Alternatives to CAMs f
+  2408.03164	Dilated Convolution with Learnable Spacings makes visual models more a
+  2605.17133	CAM-VFD: Cross-Attention Multimodal Video Forgery Detection
+  2607.27083	Scores Are Not Decisions: Cost-Aware Stopping for Tool Acquisition in 
+  2311.11176	Morphology-Enhanced CAM-Guided SAM for weakly supervised Breast Lesion
+  2403.05658	Feature CAM: Interpretable AI in Image Classification
+  … and 30 more
+Corpus now has 807 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [44/395] [cs.CL] Score-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CL all:Score-CAM
+Found 12 papers
+  2207.11562	Better Reasoning Behind Classification Predictions with BERT for Fake 
+  2512.18298	Explainable Transformer-CNN Fusion for Noise-Robust Speech Emotion Rec
+  2510.12137	Credal Transformer: A Principled Approach for Quantifying and Mitigati
+  2212.13392	DeepCuts: Single-Shot Interpretability based Pruning for BERT
+  2501.15374	Evaluating the Effectiveness of XAI Techniques for Encoder-Based Langu
+  2406.06579	From Redundancy to Relevance: Information Flow in LVLMs Across Reasoni
+  2609.34514	How to Tame a Multi-Headed Hydra? Adaptive Multi-Category Safety Steer
+  1804.09949	Pay Attention to Virality: understanding popularity of social media vi
+  2609.37686	EngiWorld: What Can Frontier Agents Deliver in Professional Engineerin
+  2210.08430	Explainable Causal Analysis of Mental Health on Social Media Data
+  … and 2 more
+Corpus now has 814 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [45/395] [all-cats] Score-CAM
+----------------------------------------------------------------
+Query clause: all:Score-CAM
+Found 40 papers
+  2103.13859	Group-CAM: Group Score-Weighted Visual Explanations for Deep Convoluti
+  2010.03023	IS-CAM: Integrated Score-CAM for axiomatic-based explanations
+  2006.14255	SS-CAM: Smoothed Score-CAM for Sharper Visual Feature Localization
+  1910.01279	Score-CAM: Score-Weighted Visual Explanations for Convolutional Neural
+  2607.19372	endoExplain: A reproducible protocol for auditing score-localisation d
+  2605.02007	How Can One Choose the Best CAM-Based Explainability Method for a CNN 
+  2209.14074	Recipro-CAM: Fast gradient-free visual explanations for convolutional 
+  2410.21557	A Novel Score-CAM based Denoiser for Spectrographic Signature Extracti
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2604.08502	Quantifying Explanation Consistency: The C-Score Metric for CAM-Based 
+  … and 30 more
+Corpus now has 818 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [46/395] [cs.CV] Grad-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CV all:Grad-CAM
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  2205.10838	Grad-CAM++ is Equivalent to Grad-CAM With Positive Gradients
+  2001.06538	Adapting Grad-CAM for Embedding Networks
+  2307.10506	Is Grad-CAM Explainable in Medical Images?
+  2204.05427	Generalizing Adversarial Explanations with Grad-CAM
+  2608.05258	Grad-CAM for Vision Transformers: A Systematic Taxonomy and Audit of M
+  1611.07450	Grad-CAM: Why did you say that?
+  1805.11393	Robust Tumor Localization with Pyramid Grad-CAM
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  1610.02391	Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Lo
+  … and 30 more
+Corpus now has 848 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [47/395] [cs.LG] Grad-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.LG all:Grad-CAM
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  1611.07450	Grad-CAM: Why did you say that?
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  1610.02391	Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Lo
+  2406.01274	Expected Grad-CAM: Towards gradient faithfulness
+  2508.11880	Grad-CAM for Visualizing Attention Regions of PCA and SVM Layers in Co
+  2410.16345	Exploring how deep learning decodes anomalous diffusion via Grad-CAM
+  2308.13150	Breast Cancer Classification with Enhanced Interpretability: DALAResNe
+  2402.01744	Unveiling Molecular Moieties through Hierarchical Grad-CAM Graph Expla
+  2009.12546	A light-weight method to foster the (Grad)CAM interpretability and exp
+  … and 30 more
+Corpus now has 868 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [48/395] [cs.AI] Grad-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.AI all:Grad-CAM
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  2205.10838	Grad-CAM++ is Equivalent to Grad-CAM With Positive Gradients
+  1610.02391	Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Lo
+  2211.12108	Explaining YOLO: Leveraging Grad-CAM to Explain Object Detections
+  2408.03164	Dilated Convolution with Learnable Spacings makes visual models more a
+  2402.01744	Unveiling Molecular Moieties through Hierarchical Grad-CAM Graph Expla
+  2509.07795	Enhanced SegNet with Integrated Grad-CAM for Interpretable Retinal Lay
+  2310.07678	Explainable Image Similarity: Integrating Siamese Networks and Grad-CA
+  2511.00456	Weakly Supervised Pneumonia Localization from Chest X-Rays Using Deep 
+  2405.07590	Evaluating the Explainable AI Method Grad-CAM for Breath Classificatio
+  … and 30 more
+Corpus now has 883 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [49/395] [cs.CL] Grad-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CL all:Grad-CAM
+Found 11 papers
+  2001.01037	Explain and Improve: LRP-Inference Fine-Tuning for Image Captioning Mo
+  2402.03043	SIDU-TXT: An XAI Algorithm for NLP with a Holistic Assessment Approach
+  1804.09949	Pay Attention to Virality: understanding popularity of social media vi
+  2310.01828	Trainable Noise Model as an XAI evaluation method: application on Sobo
+  2507.10013	Cross-modal Associations in Vision and Language Models: Revisiting the
+  2601.05143	A Two-Stage Multitask Vision-Language Framework for Explainable Crop D
+  2212.11261	Contrastive Language-Vision AI Models Pretrained on Web-Scraped Multim
+  2509.20589	Every Character Counts: From Vulnerability to Defense in Phishing Dete
+  2501.15374	Evaluating the Effectiveness of XAI Techniques for Encoder-Based Langu
+  2310.04889	GradXKG: A Universal Explain-per-use Temporal Knowledge Graph Explaine
+  … and 1 more
+Corpus now has 889 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [50/395] [all-cats] Grad-CAM
+----------------------------------------------------------------
+Query clause: all:Grad-CAM
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  2205.10838	Grad-CAM++ is Equivalent to Grad-CAM With Positive Gradients
+  2001.06538	Adapting Grad-CAM for Embedding Networks
+  2307.10506	Is Grad-CAM Explainable in Medical Images?
+  2204.05427	Generalizing Adversarial Explanations with Grad-CAM
+  2608.05258	Grad-CAM for Vision Transformers: A Systematic Taxonomy and Audit of M
+  2005.05768	Interpreting Neural Ranking Models using Grad-CAM
+  1611.07450	Grad-CAM: Why did you say that?
+  1805.11393	Robust Tumor Localization with Pyramid Grad-CAM
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  … and 30 more
+Corpus now has 891 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [51/395] [cs.CV] Grad-CAM++
+----------------------------------------------------------------
+Query clause: cat:cs.CV all:Grad-CAM++
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  2205.10838	Grad-CAM++ is Equivalent to Grad-CAM With Positive Gradients
+  1908.01224	Smooth Grad-CAM++: An Enhanced Inference Level Visualization Technique
+  2001.06538	Adapting Grad-CAM for Embedding Networks
+  1710.11063	Grad-CAM++: Improved Visual Explanations for Deep Convolutional Networ
+  2307.10506	Is Grad-CAM Explainable in Medical Images?
+  2204.05427	Generalizing Adversarial Explanations with Grad-CAM
+  1611.07450	Grad-CAM: Why did you say that?
+  2608.05258	Grad-CAM for Vision Transformers: A Systematic Taxonomy and Audit of M
+  1805.11393	Robust Tumor Localization with Pyramid Grad-CAM
+  … and 30 more
+Corpus now has 891 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [52/395] [cs.LG] Grad-CAM++
+----------------------------------------------------------------
+Query clause: cat:cs.LG all:Grad-CAM++
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  1611.07450	Grad-CAM: Why did you say that?
+  2406.01274	Expected Grad-CAM: Towards gradient faithfulness
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  1610.02391	Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Lo
+  2508.11880	Grad-CAM for Visualizing Attention Regions of PCA and SVM Layers in Co
+  2009.12546	A light-weight method to foster the (Grad)CAM interpretability and exp
+  2410.16345	Exploring how deep learning decodes anomalous diffusion via Grad-CAM
+  2007.00453	M3d-CAM: A PyTorch library to generate 3D data attention maps for medi
+  2308.13150	Breast Cancer Classification with Enhanced Interpretability: DALAResNe
+  … and 30 more
+Corpus now has 895 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [53/395] [cs.AI] Grad-CAM++
+----------------------------------------------------------------
+Query clause: cat:cs.AI all:Grad-CAM++
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  2205.10838	Grad-CAM++ is Equivalent to Grad-CAM With Positive Gradients
+  1610.02391	Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Lo
+  2211.12108	Explaining YOLO: Leveraging Grad-CAM to Explain Object Detections
+  2408.03164	Dilated Convolution with Learnable Spacings makes visual models more a
+  2412.01354	Integrative CAM: Adaptive Layer Fusion for Comprehensive Interpretatio
+  2507.10846	Winsor-CAM: Human-Tunable Visual Explanations from Deep Networks via L
+  2402.01744	Unveiling Molecular Moieties through Hierarchical Grad-CAM Graph Expla
+  2509.07795	Enhanced SegNet with Integrated Grad-CAM for Interpretable Retinal Lay
+  2310.07678	Explainable Image Similarity: Integrating Siamese Networks and Grad-CA
+  … and 30 more
+Corpus now has 897 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [54/395] [cs.CL] Grad-CAM++
+----------------------------------------------------------------
+Query clause: cat:cs.CL all:Grad-CAM++
+Found 11 papers
+  2001.01037	Explain and Improve: LRP-Inference Fine-Tuning for Image Captioning Mo
+  2310.01828	Trainable Noise Model as an XAI evaluation method: application on Sobo
+  2402.03043	SIDU-TXT: An XAI Algorithm for NLP with a Holistic Assessment Approach
+  1804.09949	Pay Attention to Virality: understanding popularity of social media vi
+  2509.20589	Every Character Counts: From Vulnerability to Defense in Phishing Dete
+  2507.10013	Cross-modal Associations in Vision and Language Models: Revisiting the
+  2501.15374	Evaluating the Effectiveness of XAI Techniques for Encoder-Based Langu
+  2310.04889	GradXKG: A Universal Explain-per-use Temporal Knowledge Graph Explaine
+  2401.06194	CrisisKAN: Knowledge-infused and Explainable Multimodal Attention Netw
+  2601.05143	A Two-Stage Multitask Vision-Language Framework for Explainable Crop D
+  … and 1 more
+Corpus now has 897 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [55/395] [all-cats] Grad-CAM++
+----------------------------------------------------------------
+Query clause: all:Grad-CAM++
+Found 40 papers
+  2008.02312	Axiom-based Grad-CAM: Towards Accurate Visualization and Explanation o
+  2205.10838	Grad-CAM++ is Equivalent to Grad-CAM With Positive Gradients
+  1908.01224	Smooth Grad-CAM++: An Enhanced Inference Level Visualization Technique
+  2001.06538	Adapting Grad-CAM for Embedding Networks
+  1710.11063	Grad-CAM++: Improved Visual Explanations for Deep Convolutional Networ
+  2307.10506	Is Grad-CAM Explainable in Medical Images?
+  2204.05427	Generalizing Adversarial Explanations with Grad-CAM
+  1611.07450	Grad-CAM: Why did you say that?
+  2005.05768	Interpreting Neural Ranking Models using Grad-CAM
+  2608.05258	Grad-CAM for Vision Transformers: A Systematic Taxonomy and Audit of M
+  … and 30 more
+Corpus now has 897 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [56/395] [cs.CV] class activation mapping
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"class activation mapping" OR abs:"class activation mapping") OR (all:class AND all:activation AND all:mapping))
+Found 40 papers
+  2204.13359	Poly-CAM: High resolution class activation map for convolutional neura
+  2102.05228	Towards Better Explanations of Class Activation Mapping
+  2106.10472	Informative Class Activation Maps
+  1910.05518	Combinational Class Activation Maps for Weakly Supervised Object Local
+  2205.13922	CREAM: Weakly Supervised Object Localization via Class RE-Activation M
+  2104.10252	Revisiting The Evaluation of Class Activation Mapping for Explainabili
+  1901.07683	Class Activation Map Generation by Representative Class Selection and 
+  2504.09998	Metric-Guided Synthesis of Class Activation Mapping
+  2309.14304	Overview of Class Activation Maps for Visualization Explainability
+  2209.09104	VS-CAM: Vertex Semantic Class Activation Mapping to Interpret Vision G
+  … and 30 more
+Corpus now has 932 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [57/395] [cs.LG] class activation mapping
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"class activation mapping" OR abs:"class activation mapping") OR (all:class AND all:activation AND all:mapping))
+Found 40 papers
+  2106.10472	Informative Class Activation Maps
+  2408.05899	Quantum Gradient Class Activation Map for Model Interpretability
+  2506.08514	DiffGradCAM: A Class Activation Map Using the Full Model Decision to S
+  2209.09104	VS-CAM: Vertex Semantic Class Activation Mapping to Interpret Vision G
+  2306.03400	G-CAME: Gaussian-Class Activation Mapping Explainer for Object Detecto
+  2106.10649	CAMERAS: Enhanced Resolution And Sanity preserving Class Activation Ma
+  2510.01004	TextCAM: Explaining Class Activation Map with Text
+  2504.00060	CF-CAM: Cluster Filter Class Activation Mapping for Reliable Gradient-
+  2511.05590	Beyond Softmax: Dual-Branch Sigmoid Architecture for Accurate Class Ac
+  2307.16863	MetaCAM: Ensemble-Based Class Activation Map
+  … and 30 more
+Corpus now has 959 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [58/395] [cs.AI] class activation mapping
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"class activation mapping" OR abs:"class activation mapping") OR (all:class AND all:activation AND all:mapping))
+Found 40 papers
+  2204.13359	Poly-CAM: High resolution class activation map for convolutional neura
+  2408.05899	Quantum Gradient Class Activation Map for Model Interpretability
+  2205.13922	CREAM: Weakly Supervised Object Localization via Class RE-Activation M
+  2504.09998	Metric-Guided Synthesis of Class Activation Mapping
+  2309.14304	Overview of Class Activation Maps for Visualization Explainability
+  2209.09104	VS-CAM: Vertex Semantic Class Activation Mapping to Interpret Vision G
+  2306.03400	G-CAME: Gaussian-Class Activation Mapping Explainer for Object Detecto
+  2404.13417	Efficient and Concise Explanations for Object Detection with Gaussian-
+  2201.08636	Conceptor Learning for Class Activation Mapping
+  2106.10649	CAMERAS: Enhanced Resolution And Sanity preserving Class Activation Ma
+  … and 30 more
+Corpus now has 970 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [59/395] [cs.CL] class activation mapping
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"class activation mapping" OR abs:"class activation mapping") OR (all:class AND all:activation AND all:mapping))
+Found 36 papers
+  2606.08454	Beyond Linear Activation Steering: Invertible Latent Transformations f
+  2002.10309	Uncertainty based Class Activation Maps for Visual Question Answering
+  1908.06306	U-CAM: Visual Explanation using Uncertainty based Class Activation Map
+  2507.21186	Contrast-CAT: Contrasting Activations for Enhanced Interpretability in
+  2608.22007	The Communication Map of a Transformer
+  1707.09468	Zero-Shot Activity Recognition with Verb Attribute Induction
+  2608.13626	A Calibrated Test of Internal Action Maps: State Signals Without Globa
+  2407.17416	Explaining Spectrograms in Machine Learning: A Study on Neural Network
+  2104.06271	A Tale of Two Lexica Testing Computational Hypotheses with Deep Convol
+  2207.11562	Better Reasoning Behind Classification Predictions with BERT for Fake 
+  … and 26 more
+Corpus now has 1000 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [60/395] [all-cats] class activation mapping
+----------------------------------------------------------------
+Query clause: ((ti:"class activation mapping" OR abs:"class activation mapping") OR (all:class AND all:activation AND all:mapping))
+Found 40 papers
+  2204.13359	Poly-CAM: High resolution class activation map for convolutional neura
+  2102.05228	Towards Better Explanations of Class Activation Mapping
+  2106.10472	Informative Class Activation Maps
+  1910.05518	Combinational Class Activation Maps for Weakly Supervised Object Local
+  2408.05899	Quantum Gradient Class Activation Map for Model Interpretability
+  2205.13922	CREAM: Weakly Supervised Object Localization via Class RE-Activation M
+  2506.08514	DiffGradCAM: A Class Activation Map Using the Full Model Decision to S
+  2104.10252	Revisiting The Evaluation of Class Activation Mapping for Explainabili
+  1901.07683	Class Activation Map Generation by Representative Class Selection and 
+  2504.09998	Metric-Guided Synthesis of Class Activation Mapping
+  … and 30 more
+Corpus now has 1000 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [61/395] [cs.CV] HiResCAM
+----------------------------------------------------------------
+Query clause: cat:cs.CV all:HiResCAM
+Found 12 papers
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  2603.16351	Automated identification of Ichneumonoidea wasps via YOLO-based deep l
+  2111.12215	Explainable multiple abnormality classification of chest CT volumes
+  2309.10421	Exploring Different Levels of Supervision for Detecting and Localizing
+  2307.06614	Interpretable 2D Vision Models for 3D Medical Images
+  2508.17699	Benchmarking Class Activation Map Methods for Explainable Brain Hemorr
+  2501.06261	CAMs as Shapley Value-based Explainers
+  2608.28207	Explainable Diabetic Retinopathy Classification Using Vision Foundatio
+  2609.25978	Faithful Faithfulness Evaluations: Challenges & Pitfalls Learned from 
+  2607.22740	A Diagnostic Gap Framework for Evaluating Reconstruction Fidelity in W
+  … and 2 more
+Corpus now has 1009 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [62/395] [cs.LG] HiResCAM
+----------------------------------------------------------------
+Query clause: cat:cs.LG all:HiResCAM
+Found 6 papers
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  2603.16351	Automated identification of Ichneumonoidea wasps via YOLO-based deep l
+  2111.12215	Explainable multiple abnormality classification of chest CT volumes
+  2608.28207	Explainable Diabetic Retinopathy Classification Using Vision Foundatio
+  2609.25978	Faithful Faithfulness Evaluations: Challenges & Pitfalls Learned from 
+  2608.11634	CAM-Guided Saliency Cutout and Image-Based Malware Classification
+Corpus now has 1009 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [63/395] [cs.AI] HiResCAM
+----------------------------------------------------------------
+Query clause: cat:cs.AI all:HiResCAM
+Found 2 papers
+  2603.16351	Automated identification of Ichneumonoidea wasps via YOLO-based deep l
+  2510.21689	On Thin Ice: Towards Explainable Conservation Monitoring via Attributi
+Corpus now has 1009 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [64/395] [cs.CL] HiResCAM
+----------------------------------------------------------------
+Query clause: cat:cs.CL all:HiResCAM
+Found 0 papers
+Corpus now has 1009 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [65/395] [all-cats] HiResCAM
+----------------------------------------------------------------
+Query clause: all:HiResCAM
+Found 16 papers
+  2011.08891	Use HiResCAM instead of Grad-CAM for faithful explanations of convolut
+  2603.16351	Automated identification of Ichneumonoidea wasps via YOLO-based deep l
+  2111.12215	Explainable multiple abnormality classification of chest CT volumes
+  2309.10421	Exploring Different Levels of Supervision for Detecting and Localizing
+  2503.01391	The Road Less Traveled: Investigating Robustness and Explainability in
+  2307.06614	Interpretable 2D Vision Models for 3D Medical Images
+  2508.17699	Benchmarking Class Activation Map Methods for Explainable Brain Hemorr
+  2501.06261	CAMs as Shapley Value-based Explainers
+  2608.28207	Explainable Diabetic Retinopathy Classification Using Vision Foundatio
+  2609.25978	Faithful Faithfulness Evaluations: Challenges & Pitfalls Learned from 
+  … and 6 more
+Corpus now has 1011 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [66/395] [cs.CV] Layer-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CV all:Layer-CAM
+Found 40 papers
+  2412.01354	Integrative CAM: Adaptive Layer Fusion for Comprehensive Interpretatio
+  2507.10846	Winsor-CAM: Human-Tunable Visual Explanations from Deep Networks via L
+  2603.24117	Combi-CAM: A Novel Multi-Layer Approach for Explainable Image Geolocal
+  2509.07795	Enhanced SegNet with Integrated Grad-CAM for Interpretable Retinal Lay
+  2303.09171	Empowering CAM-Based Methods with Capability to Generate Fine-Grained 
+  2008.00299	Eigen-CAM: Class Activation Map using Principal Components
+  2306.14505	AME-CAM: Attentive Multiple-Exit CAM for Weakly Supervised Segmentatio
+  2010.08644	Zoom-CAM: Generating Fine-grained Pixel Annotations from Image Labels
+  2605.14641	How to Evaluate and Refine your CAM
+  2109.01359	CAM-loss: Towards Learning Spatially Discriminative Feature Representa
+  … and 30 more
+Corpus now has 1027 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [67/395] [cs.LG] Layer-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.LG all:Layer-CAM
+Found 40 papers
+  2508.11880	Grad-CAM for Visualizing Attention Regions of PCA and SVM Layers in Co
+  2507.10846	Winsor-CAM: Human-Tunable Visual Explanations from Deep Networks via L
+  2008.00299	Eigen-CAM: Class Activation Map using Principal Components
+  2007.00453	M3d-CAM: A PyTorch library to generate 3D data attention maps for medi
+  2608.19407	HiRA-CAM: Preserving Fine-Grained Spatial Relevance in Gradient-Based 
+  2009.12546	A light-weight method to foster the (Grad)CAM interpretability and exp
+  1610.02391	Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Lo
+  2410.16345	Exploring how deep learning decodes anomalous diffusion via Grad-CAM
+  2308.13150	Breast Cancer Classification with Enhanced Interpretability: DALAResNe
+  2509.25686	EXP-CAM: Explanation Generation and Circuit Discovery Using Classifier
+  … and 30 more
+Corpus now has 1048 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [68/395] [cs.AI] Layer-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.AI all:Layer-CAM
+Found 40 papers
+  2412.01354	Integrative CAM: Adaptive Layer Fusion for Comprehensive Interpretatio
+  2507.10846	Winsor-CAM: Human-Tunable Visual Explanations from Deep Networks via L
+  2509.07795	Enhanced SegNet with Integrated Grad-CAM for Interpretable Retinal Lay
+  2306.14505	AME-CAM: Attentive Multiple-Exit CAM for Weakly Supervised Segmentatio
+  2605.14641	How to Evaluate and Refine your CAM
+  2608.19407	HiRA-CAM: Preserving Fine-Grained Spatial Relevance in Gradient-Based 
+  1610.02391	Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Lo
+  2408.03164	Dilated Convolution with Learnable Spacings makes visual models more a
+  2204.13359	Poly-CAM: High resolution class activation map for convolutional neura
+  2403.05658	Feature CAM: Interpretable AI in Image Classification
+  … and 30 more
+Corpus now has 1060 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [69/395] [cs.CL] Layer-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CL all:Layer-CAM
+Found 6 papers
+  2207.11562	Better Reasoning Behind Classification Predictions with BERT for Fake 
+  2406.06579	From Redundancy to Relevance: Information Flow in LVLMs Across Reasoni
+  2510.12137	Credal Transformer: A Principled Approach for Quantifying and Mitigati
+  2001.01037	Explain and Improve: LRP-Inference Fine-Tuning for Image Captioning Mo
+  2212.13392	DeepCuts: Single-Shot Interpretability based Pruning for BERT
+  2501.15374	Evaluating the Effectiveness of XAI Techniques for Encoder-Based Langu
+Corpus now has 1060 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [70/395] [all-cats] Layer-CAM
+----------------------------------------------------------------
+Query clause: all:Layer-CAM
+Found 40 papers
+  2412.01354	Integrative CAM: Adaptive Layer Fusion for Comprehensive Interpretatio
+  2508.11880	Grad-CAM for Visualizing Attention Regions of PCA and SVM Layers in Co
+  2507.10846	Winsor-CAM: Human-Tunable Visual Explanations from Deep Networks via L
+  2603.24117	Combi-CAM: A Novel Multi-Layer Approach for Explainable Image Geolocal
+  2509.07795	Enhanced SegNet with Integrated Grad-CAM for Interpretable Retinal Lay
+  2303.09171	Empowering CAM-Based Methods with Capability to Generate Fine-Grained 
+  2008.00299	Eigen-CAM: Class Activation Map using Principal Components
+  2306.14505	AME-CAM: Attentive Multiple-Exit CAM for Weakly Supervised Segmentatio
+  2010.08644	Zoom-CAM: Generating Fine-grained Pixel Annotations from Image Labels
+  2605.14641	How to Evaluate and Refine your CAM
+  … and 30 more
+Corpus now has 1072 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [71/395] [cs.CV] Eigen-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CV all:Eigen-CAM
+Found 10 papers
+  2008.00299	Eigen-CAM: Class Activation Map using Principal Components
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2601.13412	Using deep learning for predicting cleansing quality of colon capsule 
+  2504.04549	Opening the black box of deep learning: Validating the statistical ass
+  2411.17251	Interpretable Dynamic Graph Neural Networks for Small Occluded Object 
+  2503.01284	Soybean Disease Detection via Interpretable Hybrid CNN-GNN: Integratin
+  2511.07827	Deep Learning Analysis of Prenatal Ultrasound for Identification of Ve
+  2306.00473	Interpretable simultaneous localization of MRI corpus callosum and cla
+  2401.08732	Bayes Conditional Distribution Estimation for Knowledge Distillation B
+  2507.04880	HGNet: High-Order Spatial Awareness Hypergraph and Multi-Scale Context
+Corpus now has 1077 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [72/395] [cs.LG] Eigen-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.LG all:Eigen-CAM
+Found 5 papers
+  2008.00299	Eigen-CAM: Class Activation Map using Principal Components
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2411.17251	Interpretable Dynamic Graph Neural Networks for Small Occluded Object 
+  2503.01284	Soybean Disease Detection via Interpretable Hybrid CNN-GNN: Integratin
+  2401.08732	Bayes Conditional Distribution Estimation for Knowledge Distillation B
+Corpus now has 1077 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [73/395] [cs.AI] Eigen-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.AI all:Eigen-CAM
+Found 4 papers
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2601.13412	Using deep learning for predicting cleansing quality of colon capsule 
+  2507.04880	HGNet: High-Order Spatial Awareness Hypergraph and Multi-Scale Context
+  2506.13917	Evaluating Explainability: A Framework for Systematic Assessment and R
+Corpus now has 1078 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [74/395] [cs.CL] Eigen-CAM
+----------------------------------------------------------------
+Query clause: cat:cs.CL all:Eigen-CAM
+Found 0 papers
+Corpus now has 1078 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [75/395] [all-cats] Eigen-CAM
+----------------------------------------------------------------
+Query clause: all:Eigen-CAM
+Found 12 papers
+  2008.00299	Eigen-CAM: Class Activation Map using Principal Components
+  2211.13126	Crown-CAM: Interpretable Visual Explanations for Tree Crown Detection 
+  2607.19372	endoExplain: A reproducible protocol for auditing score-localisation d
+  2601.13412	Using deep learning for predicting cleansing quality of colon capsule 
+  2504.04549	Opening the black box of deep learning: Validating the statistical ass
+  2411.17251	Interpretable Dynamic Graph Neural Networks for Small Occluded Object 
+  2503.01284	Soybean Disease Detection via Interpretable Hybrid CNN-GNN: Integratin
+  2511.07827	Deep Learning Analysis of Prenatal Ultrasound for Identification of Ve
+  2306.00473	Interpretable simultaneous localization of MRI corpus callosum and cla
+  2401.08732	Bayes Conditional Distribution Estimation for Knowledge Distillation B
+  … and 2 more
+Corpus now has 1078 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [76/395] [cs.CV] feature attribution
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"feature attribution" OR abs:"feature attribution") OR (all:feature AND all:attribution))
+Found 40 papers
+  2211.12702	Evaluating Feature Attribution Methods for Electrocardiogram
+  2111.07668	Fast Axiomatic Attribution for Neural Networks
+  2311.03386	A Simple and Efficient Baseline for Data Attribution on Images
+  2104.14403	Do Feature Attribution Methods Correctly Attribute Features?
+  2202.12270	Evaluating Feature Attribution Methods in the Image Domain
+  2606.10877	XtrAIn: Training-Guided Occlusion for Feature Attribution
+  2510.09135	Training Feature Attribution for Vision Models
+  2104.05527	A-FMI: Learning Attributions from Deep Networks via Feature Map Import
+  2604.02532	Feature Attribution Stability Suite: How Stable Are Post-Hoc Attributi
+  2411.02833	Lost in Context: The Influence of Context on Feature Attribution Metho
+  … and 30 more
+Corpus now has 1116 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [77/395] [cs.LG] feature attribution
+----------------------------------------------------------------
+Query clause: cat:cs.LG ((ti:"feature attribution" OR abs:"feature attribution") OR (all:feature AND all:attribution))
+Found 40 papers
+  2006.08287	ICAM: Interpretable Classification via Disentangled Representations an
+  2111.07668	Fast Axiomatic Attribution for Neural Networks
+  2311.03386	A Simple and Efficient Baseline for Data Attribution on Images
+  2401.14090	A Modular Approach to Automatic Cyber Threat Attribution using Opinion
+  2104.14403	Do Feature Attribution Methods Correctly Attribute Features?
+  2505.24729	Feature Attribution from First Principles
+  2307.03380	On Formal Feature Attribution and Its Approximation
+  2306.07462	On the Robustness of Removal-Based Feature Attributions
+  2101.00905	On Baselines for Local Feature Attributions
+  2305.09204	The Weighted Möbius Score: A Unified Framework for Feature Attribution
+  … and 30 more
+Corpus now has 1148 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [78/395] [cs.AI] feature attribution
+----------------------------------------------------------------
+Query clause: cat:cs.AI ((ti:"feature attribution" OR abs:"feature attribution") OR (all:feature AND all:attribution))
+Found 40 papers
+  2211.12702	Evaluating Feature Attribution Methods for Electrocardiogram
+  2307.03380	On Formal Feature Attribution and Its Approximation
+  2305.09204	The Weighted Möbius Score: A Unified Framework for Feature Attribution
+  2310.16157	Context-aware feature attribution through argumentation
+  2307.05902	Stability Guarantees for Feature Attributions with Multiplicative Smoo
+  1901.10040	Towards Aggregating Weighted Feature Attributions
+  2308.08949	A Dual-Perspective Approach to Evaluating Feature Attribution Methods
+  1706.06060	Consistent feature attribution for tree ensembles
+  2310.17945	A Comprehensive and Reliable Feature Attribution Method: Double-sided 
+  2310.20012	Multiscale Feature Attribution for Outliers
+  … and 30 more
+Corpus now has 1163 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [79/395] [cs.CL] feature attribution
+----------------------------------------------------------------
+Query clause: cat:cs.CL ((ti:"feature attribution" OR abs:"feature attribution") OR (all:feature AND all:attribution))
+Found 40 papers
+  2305.09204	The Weighted Möbius Score: A Unified Framework for Feature Attribution
+  2505.16406	On the reliability of feature attribution methods for speech classific
+  1906.08286	Incorporating Priors with Feature Attribution on Text Classification
+  2204.10893	Locally Aggregated Feature Attribution on Natural Language Model Under
+  2610.17898	Evaluating the Causal Faithfulness of SHAP as a Candidate Attribution 
+  2107.00323	Combining Feature and Instance Attribution to Detect Artifacts
+  1311.2978	Authorship Attribution Using Word Network Features
+  2510.18462	DePass: Unified Feature Attributing by Simple Decomposed Forward Pass
+  2310.05619	Dynamic Top-k Estimation Consolidates Disagreement between Feature Att
+  2211.09878	Reducing Hallucinations in Neural Machine Translation with Feature Att
+  … and 30 more
+Corpus now has 1199 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [80/395] [all-cats] feature attribution
+----------------------------------------------------------------
+Query clause: ((ti:"feature attribution" OR abs:"feature attribution") OR (all:feature AND all:attribution))
+Found 40 papers
+  2211.12702	Evaluating Feature Attribution Methods for Electrocardiogram
+  2006.08287	ICAM: Interpretable Classification via Disentangled Representations an
+  2111.07668	Fast Axiomatic Attribution for Neural Networks
+  2311.03386	A Simple and Efficient Baseline for Data Attribution on Images
+  2401.14090	A Modular Approach to Automatic Cyber Threat Attribution using Opinion
+  2104.14403	Do Feature Attribution Methods Correctly Attribute Features?
+  2505.24729	Feature Attribution from First Principles
+  2307.03380	On Formal Feature Attribution and Its Approximation
+  2306.07462	On the Robustness of Removal-Based Feature Attributions
+  2101.00905	On Baselines for Local Feature Attributions
+  … and 30 more
+Corpus now has 1202 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+----------------------------------------------------------------
+>>> [81/395] [cs.CV] visual attribution
+----------------------------------------------------------------
+Query clause: cat:cs.CV ((ti:"visual attribution" OR abs:"visual attribution") OR (all:visual AND all:attribution))
+Found 40 papers
+  2311.03386	A Simple and Efficient Baseline for Data Attribution on Images
+  2604.27553	Revealing the Impact of Visual Text Style on Attribute-based Descripti
+  2403.18252	Beyond Embeddings: The Promise of Visual Table in Visual Reasoning
+  2407.19474	Visual Riddles: a Commonsense and World Knowledge Challenge for Large 
+  2602.21829	StoryMovie: A Dataset for Semantic Alignment of Visual Stories with Mo
+  2304.10091	Learning CLIP Guided Visual-Text Fusion Transformer for Video-based Pe
+  2606.06908	polyDAG: Polynomial Acyclicity Constraints for Efficient Continuous Ca
+  2511.17036	Do Vision-Language Models Understand Visual Persuasiveness? A Diagnosi
+  2106.07861	Keep CALM and Improve Visual Feature Attribution
+  2604.16587	Real-Time Visual Attribution Streaming in Thinking Model
+  … and 30 more
+Corpus now has 1238 papers → /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json

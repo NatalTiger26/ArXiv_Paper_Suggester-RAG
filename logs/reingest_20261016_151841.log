@@ -1,0 +1,26 @@
+[mem] startup avail=9.7/16.0GiB → embed_batch=48 usable=8.2GiB micro≤4
+[plan] corpus = /Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/data/corpus.json
+2026-10-16 15:18:41.436 
+'server.enableCORS=false' tells Streamlit not to limit cross-origin access.
+Streamlit sends the header 'Access-Control-Allow-Origin: *', except on the file
+upload routes, which stay pinned to the app address and still require a valid
+XSRF token.
+Streamlit also accepts a WebSocket connection from any origin.
+Streamlit does not set 'server.enableCORS' to 'true' for you.
+'server.enableXsrfProtection=true' does not stop a cross-origin WebSocket
+connection, because Streamlit does not need a valid XSRF token to open one.
+
+To limit cross-origin access, do these steps:
+  1. Set 'server.enableCORS=true'.
+  2. Put the origins that you trust in 'server.corsAllowedOrigins'.
+
+'server.allowedHosts' can also limit the hostnames that Streamlit accepts on a
+WebSocket connection.
+
+[settings] GEMINI_MODEL resolved to 'gemini-3.8-flash'
+[plan] library=25  done_file=1017  RAG_indexed=65  prior_fails=705
+[plan] on disk: pdfs=1255  markdown=1254  (existing PDF/MD are reused unless FORCE=1 — not re-downloaded)
+[plan] SKIP already done/indexed: 25
+[plan] REMAINING this run: 0  (fresh=0 + deferred_fails=0; limit=none)
+[plan] force=False  — library size stays 25; only REMAINING are processed
+[plan] nothing to do.

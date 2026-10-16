@@ -1,0 +1,17 @@
+{
+  "status": "running",
+  "last_ids": [
+    "2512.05740",
+    "2505.17835",
+    "2410.08792",
+    "2505.15925"
+  ],
+  "session_ok": 0,
+  "session_fail": 272,
+  "session_skipped_mem": 0,
+  "last_embed_batch": 48,
+  "last_micro": 4,
+  "last_avail_gb": 8.57,
+  "done_file_count": 977,
+  "updated": "2026-10-16T15:17:43"
+}
