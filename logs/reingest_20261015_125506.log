@@ -6490,3 +6490,1939 @@ WebSocket connection.
   Batches: 100%|██████████| 2/2 [00:17<00:00,  7.81s/it]
   Batches: 100%|██████████| 2/2 [00:17<00:00,  8.72s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2607.03184", "chunks": 77, "title": "BVS: Bayesian Visual Search with Multimodal Large Language Model for Fine-graine", "error": null}
 [retry] attempt 2/2 ids=['2407.00531', '2608.21656', '2605.19956', '2607.03184'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11888.49it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2407.00531
+  Batches:   0%|          | 0/5 [00:00<?, ?it/s]
+  Batches:  20%|██        | 1/5 [00:00<00:02,  1.48it/s]
+  Batches:  40%|████      | 2/5 [00:01<00:02,  1.47it/s]
+  Batches:  60%|██████    | 3/5 [00:02<00:01,  1.40it/s]
+  Batches:  80%|████████  | 4/5 [00:02<00:00,  1.59it/s]
+  Batches: 100%|██████████| 5/5 [00:02<00:00,  1.85it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2407.00531", "chunks": 34, "title": "Interpreting Pretrained Speech Models for Automatic Speech Assessment of Voice D", "error": null}
+  [worker] ingest 2608.21656
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:01<00:19,  1.91s/it]
+  Batches:  18%|█▊        | 2/11 [00:03<00:14,  1.63s/it]
+  Batches:  27%|██▋       | 3/11 [00:04<00:12,  1.56s/it]
+  Batches:  36%|███▋      | 4/11 [00:05<00:08,  1.21s/it]
+  Batches:  45%|████▌     | 5/11 [00:06<00:06,  1.12s/it]
+  Batches:  55%|█████▍    | 6/11 [00:07<00:04,  1.07it/s]
+  Batches:  64%|██████▎   | 7/11 [00:07<00:03,  1.20it/s]
+  Batches:  73%|███████▎  | 8/11 [00:08<00:02,  1.27it/s]
+  Batches:  82%|████████▏ | 9/11 [00:09<00:01,  1.16it/s]
+  Batches:  91%|█████████ | 10/11 [00:09<00:00,  1.48it/s]
+  Batches: 100%|██████████| 11/11 [00:09<00:00,  1.80it/s]
+  Batches: 100%|██████████| 11/11 [00:09<00:00,  1.11it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2608.21656", "chunks": 84, "title": "Mitigating Database Leakage in RAG Systems with Keyword-Grounded Fact Substituti", "error": null}
+  [worker] ingest 2605.19956
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:01<00:11,  1.16s/it]
+  Batches:  18%|█▊        | 2/11 [00:03<00:15,  1.68s/it]
+  Batches:  27%|██▋       | 3/11 [00:04<00:12,  1.56s/it]
+  Batches:  36%|███▋      | 4/11 [00:06<00:11,  1.61s/it]
+  Batches:  45%|████▌     | 5/11 [00:06<00:07,  1.25s/it]
+  Batches:  55%|█████▍    | 6/11 [00:07<00:05,  1.04s/it]
+  Batches:  64%|██████▎   | 7/11 [00:08<00:04,  1.10s/it]
+  Batches:  73%|███████▎  | 8/11 [00:09<00:03,  1.10s/it]
+  Batches:  82%|████████▏ | 9/11 [00:10<00:01,  1.02it/s]
+  Batches:  91%|█████████ | 10/11 [00:10<00:00,  1.28it/s]
+  Batches: 100%|██████████| 11/11 [00:11<00:00,  1.73it/s]
+  Batches: 100%|██████████| 11/11 [00:11<00:00,  1.00s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2605.19956", "chunks": 84, "title": "Towards Fine-Grained Robustness: Attention-Guided Test-Time Prompt Tuning for Vi", "error": null}
+  [worker] ingest 2607.03184
+  Batches:   0%|          | 0/10 [00:00<?, ?it/s]
+  Batches:  10%|█         | 1/10 [00:01<00:11,  1.23s/it]
+  Batches:  20%|██        | 2/10 [00:02<00:07,  1.01it/s]
+  Batches:  30%|███       | 3/10 [00:04<00:10,  1.54s/it]
+  Batches:  40%|████      | 4/10 [00:05<00:08,  1.33s/it]
+  Batches:  50%|█████     | 5/10 [00:05<00:05,  1.07s/it]
+[heartbeat] batch 2407.00531…(+3) running 45s / 1200s
+  Batches:  60%|██████    | 6/10 [00:07<00:04,  1.22s/it]
+  Batches:  70%|███████   | 7/10 [00:08<00:03,  1.11s/it]
+  Batches:  80%|████████  | 8/10 [00:08<00:01,  1.11it/s]
+  Batches:  90%|█████████ | 9/10 [00:09<00:00,  1.32it/s]
+  Batches: 100%|██████████| 10/10 [00:09<00:00,  1.78it/s]
+  Batches: 100%|██████████| 10/10 [00:09<00:00,  1.08it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2607.03184", "chunks": 77, "title": "BVS: Bayesian Visual Search with Multimodal Large Language Model for Fine-graine", "error": null}
+[fail→defer] 2407.00531 — no result from worker (killed or crash)
+[fail→defer] 2608.21656 — no result from worker (killed or crash)
+[fail→defer] 2605.19956 — no result from worker (killed or crash)
+[fail→defer] 2607.03184 — no result from worker (killed or crash)
+[mem] avail=9.2GiB total=16.0GiB reserve=1.5GiB usable=7.7GiB → embed_batch=48 micro_batch=4
+
+===== papers 177–180/3948  ['2401.03785', '2608.25480', '2609.00830', '2605.08325']  elapsed=112.9m  eta~604.8m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23759.26it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2401.03785
+  Downloading 2401.03785 (try 1):   0%|          | 0.00/11.6M [00:00<?, ?B/s]
+  Downloading 2401.03785 (try 1):   1%|          | 98.3k/11.6M [00:00<00:12, 942kB/s]
+  Downloading 2401.03785 (try 1):   4%|▍         | 516k/11.6M [00:00<00:03, 2.81MB/s]
+  Downloading 2401.03785 (try 1):   9%|▉         | 1.06M/11.6M [00:00<00:03, 2.67MB/s]
+  Downloading 2401.03785 (try 1):  18%|█▊        | 2.11M/11.6M [00:00<00:02, 3.32MB/s]
+  Downloading 2401.03785 (try 1):  27%|██▋       | 3.15M/11.6M [00:00<00:02, 3.39MB/s]
+  Downloading 2401.03785 (try 1):  36%|███▋      | 4.20M/11.6M [00:01<00:02, 3.65MB/s]
+  Downloading 2401.03785 (try 1):  45%|████▌     | 5.25M/11.6M [00:02<00:04, 1.52MB/s]
+  Downloading 2401.03785 (try 1):  54%|█████▍    | 6.30M/11.6M [00:03<00:03, 1.47MB/s]
+  Downloading 2401.03785 (try 1):  64%|██████▎   | 7.35M/11.6M [00:04<00:02, 1.44MB/s]
+  Downloading 2401.03785 (try 1):  73%|███████▎  | 8.40M/11.6M [00:04<00:01, 1.78MB/s]
+  Downloading 2401.03785 (try 1):  82%|████████▏ | 9.45M/11.6M [00:05<00:01, 1.34MB/s]
+  Downloading 2401.03785 (try 1):  91%|█████████ | 10.5M/11.6M [00:06<00:00, 1.24MB/s]
+  Downloading 2401.03785 (try 1): 100%|█████████▉| 11.5M/11.6M [00:07<00:00, 1.41MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=4/5.
+  OCR on page.number=5/6.
+  OCR on page.number=7/8.
+  OCR on page.number=10/11.
+  OCR on page.number=11/12.
+  OCR on page.number=12/13.
+  OCR on page.number=14/15.
+  OCR on page.number=15/16.
+  OCR on page.number=16/17.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:09<00:09,  9.19s/it]
+  Batches: 100%|██████████| 2/2 [00:15<00:00,  7.52s/it]
+  Batches: 100%|██████████| 2/2 [00:15<00:00,  7.77s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2401.03785", "chunks": 87, "title": "Identifying Important Group of Pixels using Interactions", "error": null}
+  [worker] ingest 2608.25480
+  Downloading 2608.25480 (try 1):   0%|          | 0.00/17.3M [00:00<?, ?B/s]
+  Downloading 2608.25480 (try 1):   6%|▌         | 1.06M/17.3M [00:00<00:13, 1.18MB/s]
+[heartbeat] batch 2401.03785…(+3) running 45s / 1200s
+  Downloading 2608.25480 (try 1):  12%|█▏        | 2.11M/17.3M [00:02<00:15, 981kB/s] 
+  Downloading 2608.25480 (try 1):  18%|█▊        | 3.15M/17.3M [00:02<00:09, 1.43MB/s]
+  Downloading 2608.25480 (try 1):  24%|██▍       | 4.20M/17.3M [00:02<00:08, 1.58MB/s]
+  Downloading 2608.25480 (try 1):  30%|███       | 5.25M/17.3M [00:03<00:06, 1.92MB/s]
+  Downloading 2608.25480 (try 1):  36%|███▋      | 6.30M/17.3M [00:03<00:05, 2.15MB/s]
+  Downloading 2608.25480 (try 1):  42%|████▏     | 7.35M/17.3M [00:04<00:06, 1.45MB/s]
+  Downloading 2608.25480 (try 1):  48%|████▊     | 8.40M/17.3M [00:05<00:05, 1.76MB/s]
+  Downloading 2608.25480 (try 1):  54%|█████▍    | 9.45M/17.3M [00:05<00:03, 1.98MB/s]
+  Downloading 2608.25480 (try 1):  61%|██████    | 10.5M/17.3M [00:05<00:03, 2.24MB/s]
+  Downloading 2608.25480 (try 1):  67%|██████▋   | 11.5M/17.3M [00:07<00:03, 1.52MB/s]
+  Downloading 2608.25480 (try 1):  73%|███████▎  | 12.6M/17.3M [00:07<00:02, 1.82MB/s]
+  Downloading 2608.25480 (try 1):  79%|███████▊  | 13.6M/17.3M [00:08<00:02, 1.37MB/s]
+  Downloading 2608.25480 (try 1):  85%|████████▍ | 14.7M/17.3M [00:09<00:02, 1.31MB/s]
+  Downloading 2608.25480 (try 1):  91%|█████████ | 15.7M/17.3M [00:10<00:01, 1.14MB/s]
+  Downloading 2608.25480 (try 1):  97%|█████████▋| 16.8M/17.3M [00:11<00:00, 1.43MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=3/4.
+  OCR on page.number=10/11.
+  OCR on page.number=11/12.
+  OCR on page.number=12/13.
+  OCR on page.number=13/14.
+  OCR on page.number=14/15.
+  OCR on page.number=15/16.
+  OCR on page.number=16/17.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:03<00:03,  3.16s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  5.31s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.99s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2608.25480", "chunks": 91, "title": "DeCO: Discriminative Evidence Composition for Fine-Grained Dataset Distillation", "error": null}
+  [worker] ingest 2609.00830
+  Downloading 2609.00830 (try 1):   0%|          | 0.00/2.91M [00:00<?, ?B/s]
+  Downloading 2609.00830 (try 1):  36%|███▋      | 1.06M/2.91M [00:01<00:02, 875kB/s]
+  Downloading 2609.00830 (try 1):  72%|███████▏  | 2.11M/2.91M [00:01<00:00, 1.30MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=6/7.
+  OCR on page.number=7/8.
+  OCR on page.number=11/12.
+  OCR on page.number=12/13.
+  OCR on page.number=13/14.
+  OCR on page.number=14/15.
+  OCR on page.number=15/16.
+  OCR on page.number=16/17.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:04<00:04,  4.84s/it]
+  Batches: 100%|██████████| 2/2 [00:08<00:00,  4.40s/it]
+  Batches: 100%|██████████| 2/2 [00:08<00:00,  4.47s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2609.00830", "chunks": 84, "title": "Visual Attention Faithfulness in Vision-Language Models is Heterogeneous", "error": null}
+  [worker] ingest 2605.08325
+  Downloading 2605.08325 (try 1):   0%|          | 0.00/5.03M [00:00<?, ?B/s]
+  Downloading 2605.08325 (try 1):   2%|▏         | 115k/5.03M [00:00<00:04, 1.12MB/s]
+  Downloading 2605.08325 (try 1):  11%|█         | 557k/5.03M [00:00<00:01, 2.99MB/s]
+  Downloading 2605.08325 (try 1):  21%|██        | 1.06M/5.03M [00:00<00:02, 1.50MB/s]
+[heartbeat] batch 2401.03785…(+3) running 90s / 1200s
+  Downloading 2605.08325 (try 1):  42%|████▏     | 2.11M/5.03M [00:01<00:02, 1.25MB/s]
+  Downloading 2605.08325 (try 1):  63%|██████▎   | 3.15M/5.03M [00:01<00:01, 1.77MB/s]
+  Downloading 2605.08325 (try 1):  84%|████████▎ | 4.20M/5.03M [00:02<00:00, 2.25MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  OCR on page.number=6/7.
+  OCR on page.number=13/14.
+  OCR on page.number=15/16.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:07<00:15,  7.94s/it]
+  Batches:  67%|██████▋   | 2/3 [00:18<00:09,  9.67s/it]
+  Batches: 100%|██████████| 3/3 [00:19<00:00,  5.41s/it]
+  Batches: 100%|██████████| 3/3 [00:19<00:00,  6.39s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2605.08325", "chunks": 100, "title": "CAMAL: Improving Attention Alignment and Faithfulness with Segmentation Masks", "error": null}
+[retry] attempt 2/2 ids=['2401.03785', '2608.25480', '2609.00830', '2605.08325'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12007.71it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2401.03785
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:01<00:16,  1.66s/it]
+  Batches:  18%|█▊        | 2/11 [00:02<00:09,  1.09s/it]
+  Batches:  27%|██▋       | 3/11 [00:03<00:07,  1.09it/s]
+  Batches:  36%|███▋      | 4/11 [00:03<00:06,  1.14it/s]
+  Batches:  45%|████▌     | 5/11 [00:05<00:06,  1.12s/it]
+  Batches:  55%|█████▍    | 6/11 [00:06<00:05,  1.19s/it]
+  Batches:  64%|██████▎   | 7/11 [00:07<00:04,  1.08s/it]
+  Batches:  73%|███████▎  | 8/11 [00:08<00:03,  1.17s/it]
+  Batches:  82%|████████▏ | 9/11 [00:09<00:01,  1.02it/s]
+  Batches:  91%|█████████ | 10/11 [00:09<00:00,  1.26it/s]
+  Batches: 100%|██████████| 11/11 [00:10<00:00,  1.64it/s]
+  Batches: 100%|██████████| 11/11 [00:10<00:00,  1.09it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2401.03785", "chunks": 87, "title": "Identifying Important Group of Pixels using Interactions", "error": null}
+  [worker] ingest 2608.25480
+  Batches:   0%|          | 0/12 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/12 [00:00<00:06,  1.79it/s]
+  Batches:  17%|█▋        | 2/12 [00:01<00:05,  1.88it/s]
+  Batches:  25%|██▌       | 3/12 [00:01<00:05,  1.78it/s]
+  Batches:  33%|███▎      | 4/12 [00:02<00:04,  1.86it/s]
+  Batches:  42%|████▏     | 5/12 [00:02<00:03,  1.91it/s]
+  Batches:  50%|█████     | 6/12 [00:03<00:03,  1.97it/s]
+  Batches:  58%|█████▊    | 7/12 [00:03<00:03,  1.65it/s]
+  Batches:  67%|██████▋   | 8/12 [00:04<00:02,  1.53it/s]
+  Batches:  75%|███████▌  | 9/12 [00:05<00:02,  1.24it/s]
+  Batches:  83%|████████▎ | 10/12 [00:06<00:01,  1.47it/s]
+  Batches:  92%|█████████▏| 11/12 [00:06<00:00,  1.63it/s]
+  Batches: 100%|██████████| 12/12 [00:06<00:00,  1.77it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2608.25480", "chunks": 91, "title": "DeCO: Discriminative Evidence Composition for Fine-Grained Dataset Distillation", "error": null}
+  [worker] ingest 2609.00830
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:00<00:06,  1.45it/s]
+  Batches:  18%|█▊        | 2/11 [00:01<00:06,  1.36it/s]
+  Batches:  27%|██▋       | 3/11 [00:02<00:05,  1.39it/s]
+  Batches:  36%|███▋      | 4/11 [00:02<00:05,  1.31it/s]
+  Batches:  45%|████▌     | 5/11 [00:03<00:04,  1.23it/s]
+  Batches:  55%|█████▍    | 6/11 [00:04<00:04,  1.24it/s]
+  Batches:  64%|██████▎   | 7/11 [00:05<00:03,  1.22it/s]
+  Batches:  73%|███████▎  | 8/11 [00:05<00:02,  1.42it/s]
+  Batches:  82%|████████▏ | 9/11 [00:06<00:01,  1.63it/s]
+  Batches:  91%|█████████ | 10/11 [00:06<00:00,  1.78it/s]
+  Batches: 100%|██████████| 11/11 [00:06<00:00,  2.37it/s]
+  Batches: 100%|██████████| 11/11 [00:06<00:00,  1.58it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2609.00830", "chunks": 84, "title": "Visual Attention Faithfulness in Vision-Language Models is Heterogeneous", "error": null}
+  [worker] ingest 2605.08325
+  Batches:   0%|          | 0/13 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/13 [00:01<00:12,  1.00s/it]
+  Batches:  15%|█▌        | 2/13 [00:01<00:09,  1.20it/s]
+  Batches:  23%|██▎       | 3/13 [00:02<00:07,  1.32it/s]
+  Batches:  31%|███       | 4/13 [00:02<00:06,  1.44it/s]
+  Batches:  38%|███▊      | 5/13 [00:04<00:07,  1.05it/s]
+[heartbeat] batch 2401.03785…(+3) running 46s / 1200s
+  Batches:  46%|████▌     | 6/13 [00:05<00:06,  1.13it/s]
+  Batches:  54%|█████▍    | 7/13 [00:06<00:06,  1.02s/it]
+  Batches:  62%|██████▏   | 8/13 [00:07<00:05,  1.10s/it]
+  Batches:  69%|██████▉   | 9/13 [00:08<00:03,  1.06it/s]
+  Batches:  77%|███████▋  | 10/13 [00:08<00:02,  1.22it/s]
+  Batches:  85%|████████▍ | 11/13 [00:09<00:01,  1.41it/s]
+  Batches:  92%|█████████▏| 12/13 [00:10<00:00,  1.41it/s]
+  Batches: 100%|██████████| 13/13 [00:10<00:00,  1.86it/s]
+  Batches: 100%|██████████| 13/13 [00:10<00:00,  1.28it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2605.08325", "chunks": 100, "title": "CAMAL: Improving Attention Alignment and Faithfulness with Segmentation Masks", "error": null}
+[fail→defer] 2401.03785 — no result from worker (killed or crash)
+[fail→defer] 2608.25480 — no result from worker (killed or crash)
+[fail→defer] 2609.00830 — no result from worker (killed or crash)
+[fail→defer] 2605.08325 — no result from worker (killed or crash)
+[mem] avail=9.7GiB total=16.0GiB reserve=1.5GiB usable=8.2GiB → embed_batch=48 micro_batch=4
+
+===== papers 181–184/3948  ['2408.04600', '2401.13986', '2605.12701', '2605.28609']  elapsed=115.8m  eta~606.1m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23105.41it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2408.04600
+  Downloading 2408.04600 (try 1):   0%|          | 0.00/6.84M [00:00<?, ?B/s]
+  Downloading 2408.04600 (try 1):   2%|▏         | 123k/6.84M [00:00<00:05, 1.13MB/s]
+  Downloading 2408.04600 (try 1):   9%|▊         | 598k/6.84M [00:00<00:02, 2.99MB/s]
+  Downloading 2408.04600 (try 1):  15%|█▌        | 1.06M/6.84M [00:01<00:07, 823kB/s]
+  Downloading 2408.04600 (try 1):  31%|███       | 2.11M/6.84M [00:01<00:03, 1.57MB/s]
+  Downloading 2408.04600 (try 1):  46%|████▌     | 3.15M/6.84M [00:01<00:01, 2.23MB/s]
+  Downloading 2408.04600 (try 1):  61%|██████▏   | 4.20M/6.84M [00:02<00:01, 2.43MB/s]
+  Downloading 2408.04600 (try 1):  77%|███████▋  | 5.25M/6.84M [00:02<00:00, 1.78MB/s]
+  Downloading 2408.04600 (try 1):  92%|█████████▏| 6.30M/6.84M [00:03<00:00, 1.69MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=9/10.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:08<00:08,  8.43s/it]
+  Batches: 100%|██████████| 2/2 [00:12<00:00,  5.90s/it]
+  Batches: 100%|██████████| 2/2 [00:12<00:00,  6.28s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2408.04600", "chunks": 85, "title": "Improving Network Interpretability via Explanation Consistency Evaluation", "error": null}
+  [worker] ingest 2401.13986
+  Downloading 2401.13986 (try 1):   0%|          | 0.00/358k [00:00<?, ?B/s]
+  Downloading 2401.13986 (try 1):  39%|███▉      | 139k/358k [00:00<00:00, 1.36MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=9/10.
+[heartbeat] batch 2408.04600…(+3) running 45s / 1200s
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:09<00:09,  9.83s/it]
+  Batches: 100%|██████████| 2/2 [00:10<00:00,  4.58s/it]
+  Batches: 100%|██████████| 2/2 [00:10<00:00,  5.37s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2401.13986", "chunks": 66, "title": "Towards Consistent Natural-Language Explanations via Explanation-Consistency Fin", "error": null}
+  [worker] ingest 2605.12701
+  Downloading 2605.12701 (try 1):   0%|          | 0.00/1.94M [00:00<?, ?B/s]
+  Downloading 2605.12701 (try 1):   6%|▋         | 123k/1.94M [00:00<00:01, 1.06MB/s]
+  Downloading 2605.12701 (try 1):  28%|██▊       | 541k/1.94M [00:00<00:00, 2.69MB/s]
+  Downloading 2605.12701 (try 1):  55%|█████▍    | 1.06M/1.94M [00:01<00:01, 777kB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=9/10.
+  OCR on page.number=10/11.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:15<00:30, 15.01s/it]
+  Batches:  67%|██████▋   | 2/3 [00:19<00:08,  8.99s/it]
+  Batches: 100%|██████████| 3/3 [00:19<00:00,  4.93s/it]
+  Batches: 100%|██████████| 3/3 [00:19<00:00,  6.63s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2605.12701", "chunks": 99, "title": "Do Fair Models Reason Fairly? Counterfactual Explanation Consistency for Procedu", "error": null}
+  [worker] ingest 2605.28609
+  Downloading 2605.28609 (try 1):   0%|          | 0.00/22.3M [00:00<?, ?B/s]
+  Downloading 2605.28609 (try 1):   1%|          | 123k/22.3M [00:00<00:19, 1.12MB/s]
+  Downloading 2605.28609 (try 1):   3%|▎         | 606k/22.3M [00:00<00:06, 3.15MB/s]
+  Downloading 2605.28609 (try 1):   5%|▍         | 1.06M/22.3M [00:01<00:26, 813kB/s]
+  Downloading 2605.28609 (try 1):   9%|▉         | 2.11M/22.3M [00:01<00:12, 1.59MB/s]
+  Downloading 2605.28609 (try 1):  14%|█▍        | 3.15M/22.3M [00:01<00:08, 2.15MB/s]
+  Downloading 2605.28609 (try 1):  16%|█▌        | 3.53M/22.3M [00:01<00:07, 2.35MB/s]
+  Downloading 2605.28609 (try 1):  19%|█▉        | 4.20M/22.3M [00:02<00:14, 1.27MB/s]
+  Downloading 2605.28609 (try 1):  24%|██▎       | 5.25M/22.3M [00:03<00:12, 1.35MB/s]
+  Downloading 2605.28609 (try 1):  28%|██▊       | 6.30M/22.3M [00:04<00:12, 1.27MB/s]
+  Downloading 2605.28609 (try 1):  33%|███▎      | 7.35M/22.3M [00:04<00:08, 1.67MB/s]
+  Downloading 2605.28609 (try 1):  38%|███▊      | 8.40M/22.3M [00:05<00:08, 1.58MB/s]
+  Downloading 2605.28609 (try 1):  42%|████▏     | 9.45M/22.3M [00:05<00:06, 1.92MB/s]
+  Downloading 2605.28609 (try 1):  47%|████▋     | 10.5M/22.3M [00:06<00:05, 2.26MB/s]
+  Downloading 2605.28609 (try 1):  52%|█████▏    | 11.5M/22.3M [00:06<00:06, 1.74MB/s]
+  Downloading 2605.28609 (try 1):  57%|█████▋    | 12.6M/22.3M [00:07<00:04, 2.06MB/s]
+  Downloading 2605.28609 (try 1):  61%|██████    | 13.6M/22.3M [00:07<00:03, 2.30MB/s]
+  Downloading 2605.28609 (try 1):  66%|██████▌   | 14.7M/22.3M [00:08<00:04, 1.79MB/s]
+  Downloading 2605.28609 (try 1):  71%|███████   | 15.7M/22.3M [00:09<00:03, 1.72MB/s]
+  Downloading 2605.28609 (try 1):  75%|███████▌  | 16.8M/22.3M [00:09<00:02, 2.04MB/s]
+  Downloading 2605.28609 (try 1):  80%|████████  | 17.8M/22.3M [00:10<00:02, 1.64MB/s]
+  Downloading 2605.28609 (try 1):  85%|████████▍ | 18.9M/22.3M [00:11<00:02, 1.40MB/s]
+[heartbeat] batch 2408.04600…(+3) running 91s / 1200s
+  Downloading 2605.28609 (try 1):  89%|████████▉ | 19.9M/22.3M [00:11<00:01, 1.82MB/s]
+  Downloading 2605.28609 (try 1):  94%|█████████▍| 21.0M/22.3M [00:12<00:00, 1.46MB/s]
+  Downloading 2605.28609 (try 1):  99%|█████████▉| 22.0M/22.3M [00:12<00:00, 1.93MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=4/5.
+  OCR on page.number=10/11.
+  OCR on page.number=29/30.
+  OCR on page.number=30/31.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:07<00:15,  7.62s/it]
+  Batches:  67%|██████▋   | 2/3 [00:13<00:06,  6.73s/it]
+  Batches: 100%|██████████| 3/3 [00:16<00:00,  4.97s/it]
+  Batches: 100%|██████████| 3/3 [00:16<00:00,  5.54s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2605.28609", "chunks": 130, "title": "JECA^2: Judgment-Explanation Consistent Adversarial Attack against Forensic Visi", "error": null}
+[retry] attempt 2/2 ids=['2408.04600', '2401.13986', '2605.12701', '2605.28609'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11831.56it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2408.04600
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:00<00:09,  1.08it/s]
+  Batches:  18%|█▊        | 2/11 [00:01<00:05,  1.53it/s]
+  Batches:  27%|██▋       | 3/11 [00:02<00:05,  1.51it/s]
+  Batches:  36%|███▋      | 4/11 [00:03<00:06,  1.12it/s]
+  Batches:  45%|████▌     | 5/11 [00:03<00:04,  1.39it/s]
+  Batches:  55%|█████▍    | 6/11 [00:04<00:03,  1.58it/s]
+  Batches:  64%|██████▎   | 7/11 [00:05<00:02,  1.42it/s]
+  Batches:  73%|███████▎  | 8/11 [00:05<00:02,  1.45it/s]
+  Batches:  82%|████████▏ | 9/11 [00:06<00:01,  1.61it/s]
+  Batches:  91%|█████████ | 10/11 [00:06<00:00,  1.77it/s]
+  Batches: 100%|██████████| 11/11 [00:06<00:00,  2.34it/s]
+  Batches: 100%|██████████| 11/11 [00:06<00:00,  1.64it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2408.04600", "chunks": 85, "title": "Improving Network Interpretability via Explanation Consistency Evaluation", "error": null}
+  [worker] ingest 2401.13986
+  Batches:   0%|          | 0/9 [00:00<?, ?it/s]
+  Batches:  11%|█         | 1/9 [00:01<00:11,  1.38s/it]
+  Batches:  22%|██▏       | 2/9 [00:02<00:07,  1.14s/it]
+  Batches:  33%|███▎      | 3/9 [00:02<00:05,  1.12it/s]
+  Batches:  44%|████▍     | 4/9 [00:03<00:03,  1.39it/s]
+  Batches:  56%|█████▌    | 5/9 [00:04<00:03,  1.31it/s]
+  Batches:  67%|██████▋   | 6/9 [00:05<00:02,  1.17it/s]
+  Batches:  78%|███████▊  | 7/9 [00:05<00:01,  1.43it/s]
+  Batches:  89%|████████▉ | 8/9 [00:06<00:00,  1.70it/s]
+  Batches: 100%|██████████| 9/9 [00:06<00:00,  1.48it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2401.13986", "chunks": 66, "title": "Towards Consistent Natural-Language Explanations via Explanation-Consistency Fin", "error": null}
+  [worker] ingest 2605.12701
+  Batches:   0%|          | 0/13 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/13 [00:02<00:24,  2.08s/it]
+  Batches:  15%|█▌        | 2/13 [00:04<00:22,  2.06s/it]
+  Batches:  23%|██▎       | 3/13 [00:05<00:17,  1.78s/it]
+  Batches:  31%|███       | 4/13 [00:07<00:15,  1.72s/it]
+  Batches:  38%|███▊      | 5/13 [00:07<00:10,  1.35s/it]
+  Batches:  46%|████▌     | 6/13 [00:08<00:07,  1.11s/it]
+  Batches:  54%|█████▍    | 7/13 [00:09<00:05,  1.09it/s]
+  Batches:  62%|██████▏   | 8/13 [00:09<00:04,  1.25it/s]
+  Batches:  69%|██████▉   | 9/13 [00:10<00:03,  1.30it/s]
+  Batches:  77%|███████▋  | 10/13 [00:10<00:01,  1.59it/s]
+  Batches:  85%|████████▍ | 11/13 [00:10<00:01,  1.82it/s]
+  Batches:  92%|█████████▏| 12/13 [00:11<00:00,  2.14it/s]
+  Batches: 100%|██████████| 13/13 [00:11<00:00,  1.15it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2605.12701", "chunks": 99, "title": "Do Fair Models Reason Fairly? Counterfactual Explanation Consistency for Procedu", "error": null}
+  [worker] ingest 2605.28609
+  Batches:   0%|          | 0/17 [00:00<?, ?it/s]
+  Batches:   6%|▌         | 1/17 [00:00<00:11,  1.38it/s]
+  Batches:  12%|█▏        | 2/17 [00:01<00:10,  1.42it/s]
+  Batches:  18%|█▊        | 3/17 [00:01<00:08,  1.62it/s]
+  Batches:  24%|██▎       | 4/17 [00:02<00:09,  1.31it/s]
+  Batches:  29%|██▉       | 5/17 [00:04<00:11,  1.04it/s]
+  Batches:  35%|███▌      | 6/17 [00:04<00:09,  1.14it/s]
+[heartbeat] batch 2408.04600…(+3) running 46s / 1200s
+  Batches:  41%|████      | 7/17 [00:05<00:07,  1.30it/s]
+  Batches:  47%|████▋     | 8/17 [00:06<00:06,  1.37it/s]
+  Batches:  53%|█████▎    | 9/17 [00:06<00:05,  1.42it/s]
+  Batches:  59%|█████▉    | 10/17 [00:07<00:04,  1.55it/s]
+  Batches:  65%|██████▍   | 11/17 [00:08<00:04,  1.39it/s]
+  Batches:  71%|███████   | 12/17 [00:08<00:03,  1.58it/s]
+  Batches:  76%|███████▋  | 13/17 [00:09<00:02,  1.59it/s]
+  Batches:  82%|████████▏ | 14/17 [00:09<00:01,  1.60it/s]
+  Batches:  88%|████████▊ | 15/17 [00:10<00:01,  1.67it/s]
+  Batches:  94%|█████████▍| 16/17 [00:10<00:00,  1.93it/s]
+  Batches: 100%|██████████| 17/17 [00:10<00:00,  1.58it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2605.28609", "chunks": 130, "title": "JECA^2: Judgment-Explanation Consistent Adversarial Attack against Forensic Visi", "error": null}
+[fail→defer] 2408.04600 — no result from worker (killed or crash)
+[fail→defer] 2401.13986 — no result from worker (killed or crash)
+[fail→defer] 2605.12701 — no result from worker (killed or crash)
+[fail→defer] 2605.28609 — no result from worker (killed or crash)
+[mem] avail=10.1GiB total=16.0GiB reserve=1.5GiB usable=8.6GiB → embed_batch=48 micro_batch=4
+
+===== papers 185–188/3948  ['2608.18759', '2312.05778', '2505.07910', '2606.30550']  elapsed=118.9m  eta~607.9m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24981.77it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2608.18759
+  Downloading 2608.18759 (try 1):   0%|          | 0.00/705k [00:00<?, ?B/s]
+  Downloading 2608.18759 (try 1):  15%|█▌        | 106k/705k [00:00<00:00, 1.06MB/s]
+  Downloading 2608.18759 (try 1):  71%|███████   | 500k/705k [00:00<00:00, 2.74MB/s]
+  Using Tesseract for OCR processing.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:05<00:00,  5.41s/it]
+  Batches: 100%|██████████| 1/1 [00:05<00:00,  5.41s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2608.18759", "chunks": 36, "title": "Beyond Predictive Fairness: Quantifying Attribution Consistency Across Demograph", "error": null}
+  [worker] ingest 2312.05778
+  Downloading 2312.05778 (try 1):   0%|          | 0.00/797k [00:00<?, ?B/s]
+  Downloading 2312.05778 (try 1):  14%|█▍        | 115k/797k [00:00<00:00, 1.14MB/s]
+  Downloading 2312.05778 (try 1):  70%|██████▉   | 557k/797k [00:00<00:00, 2.99MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=6/7.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:06<00:13,  6.55s/it]
+  Batches:  67%|██████▋   | 2/3 [00:10<00:05,  5.18s/it]
+  Batches: 100%|██████████| 3/3 [00:12<00:00,  3.53s/it]
+  Batches: 100%|██████████| 3/3 [00:12<00:00,  4.11s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2312.05778", "chunks": 118, "title": "Guiding ChatGPT to Fix Web UI Tests via Explanation-Consistency Checking", "error": null}
+  [worker] ingest 2505.07910
+  Downloading 2505.07910 (try 1):   0%|          | 0.00/570k [00:00<?, ?B/s]
+  Downloading 2505.07910 (try 1):  22%|██▏       | 123k/570k [00:00<00:00, 1.11MB/s]
+  Downloading 2505.07910 (try 1):  85%|████████▍ | 483k/570k [00:00<00:00, 2.07MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=9/10.
+  OCR on page.number=10/11.
+  OCR on page.number=11/12.
+  OCR on page.number=13/14.
+[heartbeat] batch 2608.18759…(+3) running 45s / 1200s
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:04<00:04,  4.07s/it]
+  Batches: 100%|██████████| 2/2 [00:07<00:00,  3.47s/it]
+  Batches: 100%|██████████| 2/2 [00:07<00:00,  3.56s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2505.07910", "chunks": 82, "title": "Tuning for Trustworthiness -- Balancing Performance and Explanation Consistency ", "error": null}
+  [worker] ingest 2606.30550
+  Downloading 2606.30550 (try 1):   0%|          | 0.00/1.04M [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=9/10.
+  OCR on page.number=10/11.
+  OCR on page.number=11/12.
+  OCR on page.number=13/14.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:10<00:10, 10.78s/it]
+  Batches: 100%|██████████| 2/2 [00:17<00:00,  8.45s/it]
+  Batches: 100%|██████████| 2/2 [00:17<00:00,  8.80s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2606.30550", "chunks": 89, "title": "SIGMA: Saliency-Guided Sparse Mask Attacks for Speech Emotion Recognition", "error": null}
+[retry] attempt 2/2 ids=['2608.18759', '2312.05778', '2505.07910', '2606.30550'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11402.81it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2608.18759
+  Batches:   0%|          | 0/5 [00:00<?, ?it/s]
+  Batches:  20%|██        | 1/5 [00:01<00:04,  1.22s/it]
+  Batches:  40%|████      | 2/5 [00:02<00:03,  1.10s/it]
+  Batches:  60%|██████    | 3/5 [00:02<00:01,  1.13it/s]
+  Batches:  80%|████████  | 4/5 [00:03<00:00,  1.52it/s]
+  Batches: 100%|██████████| 5/5 [00:03<00:00,  2.04it/s]
+  Batches: 100%|██████████| 5/5 [00:03<00:00,  1.48it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2608.18759", "chunks": 36, "title": "Beyond Predictive Fairness: Quantifying Attribution Consistency Across Demograph", "error": null}
+  [worker] ingest 2312.05778
+  Batches:   0%|          | 0/15 [00:00<?, ?it/s]
+  Batches:   7%|▋         | 1/15 [00:00<00:11,  1.26it/s]
+  Batches:  13%|█▎        | 2/15 [00:01<00:10,  1.26it/s]
+  Batches:  20%|██        | 3/15 [00:02<00:10,  1.19it/s]
+  Batches:  27%|██▋       | 4/15 [00:02<00:07,  1.41it/s]
+  Batches:  33%|███▎      | 5/15 [00:03<00:06,  1.52it/s]
+  Batches:  40%|████      | 6/15 [00:04<00:07,  1.21it/s]
+  Batches:  47%|████▋     | 7/15 [00:05<00:06,  1.29it/s]
+  Batches:  53%|█████▎    | 8/15 [00:06<00:05,  1.35it/s]
+  Batches:  60%|██████    | 9/15 [00:06<00:04,  1.39it/s]
+  Batches:  67%|██████▋   | 10/15 [00:07<00:03,  1.44it/s]
+  Batches:  73%|███████▎  | 11/15 [00:07<00:02,  1.48it/s]
+  Batches:  80%|████████  | 12/15 [00:08<00:02,  1.45it/s]
+  Batches:  87%|████████▋ | 13/15 [00:09<00:01,  1.51it/s]
+  Batches:  93%|█████████▎| 14/15 [00:09<00:00,  1.79it/s]
+  Batches: 100%|██████████| 15/15 [00:09<00:00,  2.23it/s]
+  Batches: 100%|██████████| 15/15 [00:09<00:00,  1.53it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2312.05778", "chunks": 118, "title": "Guiding ChatGPT to Fix Web UI Tests via Explanation-Consistency Checking", "error": null}
+  [worker] ingest 2505.07910
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:00<00:06,  1.44it/s]
+  Batches:  18%|█▊        | 2/11 [00:01<00:04,  1.85it/s]
+  Batches:  27%|██▋       | 3/11 [00:01<00:04,  1.86it/s]
+  Batches:  36%|███▋      | 4/11 [00:02<00:03,  1.76it/s]
+  Batches:  45%|████▌     | 5/11 [00:02<00:03,  1.85it/s]
+  Batches:  55%|█████▍    | 6/11 [00:03<00:02,  1.71it/s]
+  Batches:  64%|██████▎   | 7/11 [00:04<00:02,  1.60it/s]
+  Batches:  73%|███████▎  | 8/11 [00:04<00:01,  1.62it/s]
+  Batches:  82%|████████▏ | 9/11 [00:05<00:01,  1.93it/s]
+  Batches:  91%|█████████ | 10/11 [00:05<00:00,  2.33it/s]
+  Batches: 100%|██████████| 11/11 [00:05<00:00,  2.07it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2505.07910", "chunks": 82, "title": "Tuning for Trustworthiness -- Balancing Performance and Explanation Consistency ", "error": null}
+  [worker] ingest 2606.30550
+  Batches:   0%|          | 0/12 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/12 [00:01<00:13,  1.24s/it]
+  Batches:  17%|█▋        | 2/12 [00:02<00:14,  1.40s/it]
+  Batches:  25%|██▌       | 3/12 [00:03<00:09,  1.10s/it]
+  Batches:  33%|███▎      | 4/12 [00:05<00:10,  1.35s/it]
+  Batches:  42%|████▏     | 5/12 [00:05<00:07,  1.13s/it]
+  Batches:  50%|█████     | 6/12 [00:06<00:05,  1.05it/s]
+  Batches:  58%|█████▊    | 7/12 [00:07<00:04,  1.06it/s]
+  Batches:  67%|██████▋   | 8/12 [00:08<00:03,  1.21it/s]
+  Batches:  75%|███████▌  | 9/12 [00:09<00:02,  1.05it/s]
+  Batches:  83%|████████▎ | 10/12 [00:10<00:01,  1.12it/s]
+  Batches:  92%|█████████▏| 11/12 [00:10<00:00,  1.27it/s]
+  Batches: 100%|██████████| 12/12 [00:10<00:00,  1.13it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2606.30550", "chunks": 89, "title": "SIGMA: Saliency-Guided Sparse Mask Attacks for Speech Emotion Recognition", "error": null}
+[fail→defer] 2608.18759 — no result from worker (killed or crash)
+[fail→defer] 2312.05778 — no result from worker (killed or crash)
+[fail→defer] 2505.07910 — no result from worker (killed or crash)
+[fail→defer] 2606.30550 — no result from worker (killed or crash)
+[mem] avail=10.1GiB total=16.0GiB reserve=1.5GiB usable=8.6GiB → embed_batch=48 micro_batch=4
+
+===== papers 189–192/3948  ['2105.06791', '1302.4972', '2504.17544', '2507.09545']  elapsed=121.0m  eta~604.8m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 21323.06it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2105.06791
+  Downloading 2105.06791 (try 1):   0%|          | 0.00/1.60M [00:00<?, ?B/s]
+  Downloading 2105.06791 (try 1):   8%|▊         | 123k/1.60M [00:00<00:01, 1.18MB/s]
+  Downloading 2105.06791 (try 1):  38%|███▊      | 614k/1.60M [00:00<00:00, 3.23MB/s]
+  Downloading 2105.06791 (try 1):  66%|██████▌   | 1.06M/1.60M [00:00<00:00, 1.66MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=7/8.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:10<00:10, 10.01s/it]
+  Batches: 100%|██████████| 2/2 [00:11<00:00,  4.95s/it]
+  Batches: 100%|██████████| 2/2 [00:11<00:00,  5.71s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2105.06791", "chunks": 61, "title": "Agree to Disagree: When Deep Learning Models With Identical Architectures Produc", "error": null}
+  [worker] ingest 1302.4972
+  Downloading 1302.4972 (try 1):   0%|          | 0.00/519k [00:00<?, ?B/s]
+  Downloading 1302.4972 (try 1):  21%|██        | 106k/519k [00:00<00:00, 1.03MB/s]
+  Downloading 1302.4972 (try 1):  96%|█████████▋| 500k/519k [00:00<00:00, 2.64MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=1/2.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  OCR on page.number=4/5.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=7/8.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:03<00:03,  3.84s/it]
+  Batches: 100%|██████████| 2/2 [00:04<00:00,  2.16s/it]
+  Batches: 100%|██████████| 2/2 [00:04<00:00,  2.41s/it]WORKER_RESULT {"ok": true, "arxiv_id": "1302.4972", "chunks": 65, "title": "Causal Inference and Causal Explanation with Background Knowledge", "error": null}
+  [worker] ingest 2504.17544
+  Downloading 2504.17544 (try 1):   0%|          | 0.00/1.25M [00:00<?, ?B/s]
+  Downloading 2504.17544 (try 1):  10%|▉         | 123k/1.25M [00:00<00:01, 1.05MB/s]
+  Downloading 2504.17544 (try 1):  45%|████▌     | 565k/1.25M [00:00<00:00, 2.82MB/s]
+  Downloading 2504.17544 (try 1):  84%|████████▍ | 1.06M/1.25M [00:01<00:00, 769kB/s]
+[heartbeat] batch 2105.06791…(+3) running 45s / 1200s
+  Using Tesseract for OCR processing.
+  OCR on page.number=11/12.
+  OCR on page.number=13/14.
+  OCR on page.number=14/15.
+  OCR on page.number=19/20.
+  OCR on page.number=20/21.
+  OCR on page.number=21/22.
+  OCR on page.number=7/8.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:05<00:10,  5.45s/it]
+  Batches:  67%|██████▋   | 2/3 [00:11<00:05,  5.88s/it]
+  Batches: 100%|██████████| 3/3 [00:11<00:00,  3.32s/it]
+  Batches: 100%|██████████| 3/3 [00:11<00:00,  3.97s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2504.17544", "chunks": 105, "title": "Auditing the Ethical Logic of Generative AI Models", "error": null}
+  [worker] ingest 2507.09545
+  Downloading 2507.09545 (try 1):   0%|          | 0.00/601k [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=4/5.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=20/21.
+  OCR on page.number=21/22.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.69s/it]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.69s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2507.09545", "chunks": 41, "title": "Assessing reliability of explanations in unbalanced datasets: a use-case on the ", "error": null}
+[retry] attempt 2/2 ids=['2105.06791', '1302.4972', '2504.17544', '2507.09545'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12299.64it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2105.06791
+  Batches:   0%|          | 0/8 [00:00<?, ?it/s]
+  Batches:  12%|█▎        | 1/8 [00:01<00:09,  1.40s/it]
+  Batches:  25%|██▌       | 2/8 [00:02<00:07,  1.21s/it]
+  Batches:  38%|███▊      | 3/8 [00:03<00:05,  1.03s/it]
+  Batches:  50%|█████     | 4/8 [00:03<00:03,  1.15it/s]
+  Batches:  62%|██████▎   | 5/8 [00:04<00:02,  1.44it/s]
+  Batches:  75%|███████▌  | 6/8 [00:04<00:01,  1.46it/s]
+  Batches:  88%|████████▊ | 7/8 [00:06<00:00,  1.25it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.69it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.30it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2105.06791", "chunks": 61, "title": "Agree to Disagree: When Deep Learning Models With Identical Architectures Produc", "error": null}
+  [worker] ingest 1302.4972
+  Batches:   0%|          | 0/9 [00:00<?, ?it/s]
+  Batches:  11%|█         | 1/9 [00:00<00:05,  1.36it/s]
+  Batches:  22%|██▏       | 2/9 [00:01<00:05,  1.36it/s]
+  Batches:  33%|███▎      | 3/9 [00:02<00:04,  1.37it/s]
+  Batches:  44%|████▍     | 4/9 [00:03<00:03,  1.27it/s]
+  Batches:  56%|█████▌    | 5/9 [00:03<00:02,  1.35it/s]
+  Batches:  67%|██████▋   | 6/9 [00:04<00:02,  1.44it/s]
+  Batches:  78%|███████▊  | 7/9 [00:04<00:01,  1.59it/s]
+  Batches:  89%|████████▉ | 8/9 [00:05<00:00,  1.99it/s]
+  Batches: 100%|██████████| 9/9 [00:05<00:00,  1.76it/s]WORKER_RESULT {"ok": true, "arxiv_id": "1302.4972", "chunks": 65, "title": "Causal Inference and Causal Explanation with Background Knowledge", "error": null}
+  [worker] ingest 2504.17544
+  Batches:   0%|          | 0/14 [00:00<?, ?it/s]
+  Batches:   7%|▋         | 1/14 [00:00<00:12,  1.04it/s]
+  Batches:  14%|█▍        | 2/14 [00:01<00:11,  1.06it/s]
+  Batches:  21%|██▏       | 3/14 [00:02<00:08,  1.26it/s]
+  Batches:  29%|██▊       | 4/14 [00:03<00:08,  1.25it/s]
+  Batches:  36%|███▌      | 5/14 [00:04<00:07,  1.21it/s]
+  Batches:  43%|████▎     | 6/14 [00:05<00:06,  1.18it/s]
+  Batches:  50%|█████     | 7/14 [00:05<00:05,  1.19it/s]
+  Batches:  57%|█████▋    | 8/14 [00:06<00:05,  1.17it/s]
+  Batches:  64%|██████▍   | 9/14 [00:07<00:03,  1.29it/s]
+  Batches:  71%|███████▏  | 10/14 [00:08<00:02,  1.37it/s]
+  Batches:  79%|███████▊  | 11/14 [00:09<00:02,  1.20it/s]
+  Batches:  86%|████████▌ | 12/14 [00:09<00:01,  1.29it/s]
+  Batches:  93%|█████████▎| 13/14 [00:09<00:00,  1.63it/s]
+  Batches: 100%|██████████| 14/14 [00:10<00:00,  1.95it/s]
+  Batches: 100%|██████████| 14/14 [00:10<00:00,  1.36it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2504.17544", "chunks": 105, "title": "Auditing the Ethical Logic of Generative AI Models", "error": null}
+  [worker] ingest 2507.09545
+  Batches:   0%|          | 0/6 [00:00<?, ?it/s]
+  Batches:  17%|█▋        | 1/6 [00:00<00:04,  1.24it/s]
+  Batches:  33%|███▎      | 2/6 [00:01<00:02,  1.50it/s]
+  Batches:  50%|█████     | 3/6 [00:02<00:02,  1.50it/s]
+  Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.62it/s]
+  Batches:  83%|████████▎ | 5/6 [00:03<00:00,  1.74it/s]
+  Batches: 100%|██████████| 6/6 [00:03<00:00,  1.92it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2507.09545", "chunks": 41, "title": "Assessing reliability of explanations in unbalanced datasets: a use-case on the ", "error": null}
+[fail→defer] 2105.06791 — no result from worker (killed or crash)
+[fail→defer] 1302.4972 — no result from worker (killed or crash)
+[fail→defer] 2504.17544 — no result from worker (killed or crash)
+[fail→defer] 2507.09545 — no result from worker (killed or crash)
+[mem] avail=7.9GiB total=16.0GiB reserve=1.5GiB usable=6.4GiB → embed_batch=48 micro_batch=4
+
+===== papers 193–196/3948  ['2607.16478', '2304.08499', '2606.24424', '2511.23184']  elapsed=122.9m  eta~600.9m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11185.35it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2607.16478
+  Downloading 2607.16478 (try 1):   0%|          | 0.00/1.06M [00:00<?, ?B/s]
+  Downloading 2607.16478 (try 1): 100%|██████████| 1.06M/1.06M [00:00<00:00, 3.54MB/s]
+  Using Tesseract for OCR processing.
+  Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[heartbeat] batch 2607.16478…(+3) running 45s / 1200s
+  Batches:  25%|██▌       | 1/4 [00:15<00:45, 15.23s/it]
+  Batches:  50%|█████     | 2/4 [00:27<00:27, 13.76s/it]
+  Batches:  75%|███████▌  | 3/4 [00:35<00:11, 11.02s/it]
+  Batches: 100%|██████████| 4/4 [00:36<00:00,  7.14s/it]
+  Batches: 100%|██████████| 4/4 [00:36<00:00,  9.23s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2607.16478", "chunks": 158, "title": "K-IPO: Kendall-constrained Importance Preserving Oversampling for Imbalanced Tab", "error": null}
+  [worker] ingest 2304.08499
+  Downloading 2304.08499 (try 1):   0%|          | 0.00/1.27M [00:00<?, ?B/s]
+  Downloading 2304.08499 (try 1):  10%|▉         | 123k/1.27M [00:00<00:01, 1.07MB/s]
+  Downloading 2304.08499 (try 1):  46%|████▌     | 582k/1.27M [00:00<00:00, 2.81MB/s]
+  Downloading 2304.08499 (try 1):  83%|████████▎ | 1.06M/1.27M [00:00<00:00, 2.86MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=6/7.
+  OCR on page.number=13/14.
+  OCR on page.number=14/15.
+  OCR on page.number=16/17.
+  OCR on page.number=17/18.
+  OCR on page.number=18/19.
+  OCR on page.number=21/22.
+  OCR on page.number=22/23.
+  OCR on page.number=23/24.
+  OCR on page.number=24/25.
+  OCR on page.number=25/26.
+  OCR on page.number=26/27.
+  OCR on page.number=27/28.
+  OCR on page.number=36/37.
+  OCR on page.number=37/38.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:14<00:14, 14.49s/it]
+  Batches: 100%|██████████| 2/2 [00:22<00:00, 10.74s/it]
+  Batches: 100%|██████████| 2/2 [00:22<00:00, 11.30s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2304.08499", "chunks": 96, "title": "The XAISuite framework and the implications of explanatory system dissonance", "error": null}
+  [worker] ingest 2606.24424
+[heartbeat] batch 2607.16478…(+3) running 91s / 1200s
+  Downloading 2606.24424 (try 1):   0%|          | 0.00/8.73M [00:00<?, ?B/s]
+  Downloading 2606.24424 (try 1):   1%|          | 90.1k/8.73M [00:00<00:10, 847kB/s]
+  Downloading 2606.24424 (try 1):   6%|▌         | 483k/8.73M [00:00<00:03, 2.59MB/s]
+  Downloading 2606.24424 (try 1):  12%|█▏        | 1.06M/8.73M [00:00<00:03, 2.37MB/s]
+  Downloading 2606.24424 (try 1):  24%|██▍       | 2.11M/8.73M [00:00<00:01, 3.50MB/s]
+  Downloading 2606.24424 (try 1):  36%|███▌      | 3.15M/8.73M [00:00<00:01, 3.46MB/s]
+  Downloading 2606.24424 (try 1):  48%|████▊     | 4.20M/8.73M [00:01<00:01, 2.35MB/s]
+  Downloading 2606.24424 (try 1):  60%|██████    | 5.25M/8.73M [00:01<00:01, 2.67MB/s]
+  Downloading 2606.24424 (try 1):  72%|███████▏  | 6.30M/8.73M [00:02<00:01, 1.74MB/s]
+  Downloading 2606.24424 (try 1):  84%|████████▍ | 7.35M/8.73M [00:03<00:00, 1.96MB/s]
+  Downloading 2606.24424 (try 1):  96%|█████████▌| 8.40M/8.73M [00:03<00:00, 2.45MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=6/7.
+  OCR on page.number=7/8.
+  OCR on page.number=8/9.
+  OCR on page.number=9/10.
+  OCR on page.number=10/11.
+  OCR on page.number=13/14.
+  OCR on page.number=15/16.
+  OCR on page.number=19/20.
+  OCR on page.number=21/22.
+  OCR on page.number=24/25.
+  OCR on page.number=25/26.
+  OCR on page.number=26/27.
+  OCR on page.number=27/28.
+  OCR on page.number=36/37.
+  OCR on page.number=37/38.
+  Batches:   0%|          | 0/5 [00:00<?, ?it/s]
+  Batches:  20%|██        | 1/5 [00:05<00:23,  5.85s/it]
+  Batches:  40%|████      | 2/5 [00:11<00:17,  5.98s/it]
+  Batches:  60%|██████    | 3/5 [00:16<00:10,  5.34s/it]
+  Batches:  80%|████████  | 4/5 [00:20<00:04,  4.72s/it]
+  Batches: 100%|██████████| 5/5 [00:22<00:00,  3.77s/it]
+  Batches: 100%|██████████| 5/5 [00:22<00:00,  4.47s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2606.24424", "chunks": 238, "title": "Explainable AI for Next-Generation Wireless Physical Layer: Basics, State-of-the", "error": null}
+  [worker] ingest 2511.23184
+  Downloading 2511.23184 (try 1):   0%|          | 0.00/7.02M [00:00<?, ?B/s]
+  Downloading 2511.23184 (try 1):   2%|▏         | 123k/7.02M [00:00<00:06, 1.12MB/s]
+  Downloading 2511.23184 (try 1):   8%|▊         | 549k/7.02M [00:00<00:02, 2.74MB/s]
+  Downloading 2511.23184 (try 1):  15%|█▌        | 1.06M/7.02M [00:01<00:07, 836kB/s]
+  Downloading 2511.23184 (try 1):  30%|██▉       | 2.11M/7.02M [00:01<00:02, 1.68MB/s]
+  Downloading 2511.23184 (try 1):  45%|████▍     | 3.15M/7.02M [00:01<00:01, 2.40MB/s]
+  Downloading 2511.23184 (try 1):  60%|█████▉    | 4.20M/7.02M [00:01<00:00, 2.85MB/s]
+  Downloading 2511.23184 (try 1):  75%|███████▍  | 5.25M/7.02M [00:02<00:00, 2.55MB/s]
+  Downloading 2511.23184 (try 1):  90%|████████▉ | 6.30M/7.02M [00:02<00:00, 2.96MB/s]
+[heartbeat] batch 2607.16478…(+3) running 136s / 1200s
+  Using Tesseract for OCR processing.
+  OCR on page.number=6/7.
+  OCR on page.number=7/8.
+  OCR on page.number=8/9.
+  OCR on page.number=9/10.
+  OCR on page.number=10/11.
+  OCR on page.number=13/14.
+  OCR on page.number=15/16.
+  OCR on page.number=19/20.
+  OCR on page.number=21/22.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:11<00:11, 11.05s/it]
+  Batches: 100%|██████████| 2/2 [00:12<00:00,  5.27s/it]
+  Batches: 100%|██████████| 2/2 [00:12<00:00,  6.14s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2511.23184", "chunks": 67, "title": "Listwise Preference Optimization with Element-wise Confusions for Aspect Sentime", "error": null}
+[retry] attempt 2/2 ids=['2607.16478', '2304.08499', '2606.24424', '2511.23184'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12378.89it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2607.16478
+  Batches:   0%|          | 0/20 [00:00<?, ?it/s]
+  Batches:   5%|▌         | 1/20 [00:02<00:41,  2.17s/it]
+  Batches:  10%|█         | 2/20 [00:04<00:41,  2.29s/it]
+  Batches:  15%|█▌        | 3/20 [00:06<00:38,  2.28s/it]
+  Batches:  20%|██        | 4/20 [00:08<00:34,  2.14s/it]
+  Batches:  25%|██▌       | 5/20 [00:10<00:30,  2.06s/it]
+  Batches:  30%|███       | 6/20 [00:12<00:28,  2.01s/it]
+  Batches:  35%|███▌      | 7/20 [00:14<00:25,  1.97s/it]
+  Batches:  40%|████      | 8/20 [00:16<00:23,  1.93s/it]
+  Batches:  45%|████▌     | 9/20 [00:17<00:17,  1.58s/it]
+  Batches:  50%|█████     | 10/20 [00:18<00:14,  1.48s/it]
+  Batches:  55%|█████▌    | 11/20 [00:19<00:12,  1.41s/it]
+  Batches:  60%|██████    | 12/20 [00:20<00:09,  1.19s/it]
+  Batches:  65%|██████▌   | 13/20 [00:20<00:06,  1.00it/s]
+  Batches:  70%|███████   | 14/20 [00:22<00:06,  1.07s/it]
+  Batches:  75%|███████▌  | 15/20 [00:23<00:05,  1.11s/it]
+  Batches:  80%|████████  | 16/20 [00:23<00:03,  1.05it/s]
+  Batches:  85%|████████▌ | 17/20 [00:24<00:02,  1.07it/s]
+  Batches:  90%|█████████ | 18/20 [00:25<00:01,  1.12it/s]
+  Batches:  95%|█████████▌| 19/20 [00:26<00:00,  1.22it/s]
+  Batches: 100%|██████████| 20/20 [00:26<00:00,  1.53it/s]
+  Batches: 100%|██████████| 20/20 [00:26<00:00,  1.32s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2607.16478", "chunks": 158, "title": "K-IPO: Kendall-constrained Importance Preserving Oversampling for Imbalanced Tab", "error": null}
+  [worker] ingest 2304.08499
+  Batches:   0%|          | 0/12 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/12 [00:02<00:23,  2.16s/it]
+[heartbeat] batch 2607.16478…(+3) running 46s / 1200s
+  Batches:  17%|█▋        | 2/12 [00:04<00:21,  2.13s/it]
+  Batches:  25%|██▌       | 3/12 [00:05<00:15,  1.75s/it]
+  Batches:  33%|███▎      | 4/12 [00:06<00:10,  1.36s/it]
+  Batches:  42%|████▏     | 5/12 [00:06<00:07,  1.07s/it]
+  Batches:  50%|█████     | 6/12 [00:07<00:05,  1.09it/s]
+  Batches:  58%|█████▊    | 7/12 [00:08<00:03,  1.27it/s]
+  Batches:  67%|██████▋   | 8/12 [00:08<00:03,  1.30it/s]
+  Batches:  75%|███████▌  | 9/12 [00:09<00:02,  1.12it/s]
+  Batches:  83%|████████▎ | 10/12 [00:10<00:01,  1.29it/s]
+  Batches:  92%|█████████▏| 11/12 [00:10<00:00,  1.52it/s]
+  Batches: 100%|██████████| 12/12 [00:11<00:00,  1.86it/s]
+  Batches: 100%|██████████| 12/12 [00:11<00:00,  1.08it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2304.08499", "chunks": 96, "title": "The XAISuite framework and the implications of explanatory system dissonance", "error": null}
+  [worker] ingest 2606.24424
+  Batches:   0%|          | 0/30 [00:00<?, ?it/s]
+  Batches:   3%|▎         | 1/30 [00:00<00:26,  1.08it/s]
+  Batches:   7%|▋         | 2/30 [00:01<00:20,  1.36it/s]
+  Batches:  10%|█         | 3/30 [00:02<00:20,  1.35it/s]
+  Batches:  13%|█▎        | 4/30 [00:02<00:19,  1.37it/s]
+  Batches:  17%|█▋        | 5/30 [00:03<00:18,  1.38it/s]
+  Batches:  20%|██        | 6/30 [00:04<00:15,  1.53it/s]
+  Batches:  23%|██▎       | 7/30 [00:04<00:15,  1.47it/s]
+  Batches:  27%|██▋       | 8/30 [00:05<00:13,  1.64it/s]
+  Batches:  30%|███       | 9/30 [00:06<00:15,  1.39it/s]
+  Batches:  33%|███▎      | 10/30 [00:06<00:13,  1.53it/s]
+  Batches:  37%|███▋      | 11/30 [00:07<00:11,  1.60it/s]
+  Batches:  40%|████      | 12/30 [00:08<00:11,  1.50it/s]
+  Batches:  43%|████▎     | 13/30 [00:08<00:09,  1.70it/s]
+  Batches:  47%|████▋     | 14/30 [00:09<00:09,  1.65it/s]
+  Batches:  50%|█████     | 15/30 [00:09<00:09,  1.63it/s]
+  Batches:  53%|█████▎    | 16/30 [00:10<00:08,  1.57it/s]
+  Batches:  57%|█████▋    | 17/30 [00:11<00:07,  1.65it/s]
+  Batches:  60%|██████    | 18/30 [00:11<00:06,  1.79it/s]
+  Batches:  63%|██████▎   | 19/30 [00:11<00:05,  2.03it/s]
+  Batches:  67%|██████▋   | 20/30 [00:12<00:04,  2.03it/s]
+  Batches:  70%|███████   | 21/30 [00:12<00:04,  1.94it/s]
+  Batches:  73%|███████▎  | 22/30 [00:13<00:03,  2.09it/s]
+  Batches:  77%|███████▋  | 23/30 [00:13<00:03,  2.08it/s]
+  Batches:  80%|████████  | 24/30 [00:14<00:02,  2.06it/s]
+  Batches:  83%|████████▎ | 25/30 [00:14<00:02,  2.30it/s]
+  Batches:  87%|████████▋ | 26/30 [00:14<00:01,  2.54it/s]
+  Batches:  90%|█████████ | 27/30 [00:15<00:01,  2.66it/s]
+  Batches:  93%|█████████▎| 28/30 [00:15<00:00,  2.78it/s]
+  Batches:  97%|█████████▋| 29/30 [00:15<00:00,  2.93it/s]
+  Batches: 100%|██████████| 30/30 [00:16<00:00,  3.60it/s]
+  Batches: 100%|██████████| 30/30 [00:16<00:00,  1.87it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2606.24424", "chunks": 238, "title": "Explainable AI for Next-Generation Wireless Physical Layer: Basics, State-of-the", "error": null}
+  [worker] ingest 2511.23184
+  Batches:   0%|          | 0/9 [00:00<?, ?it/s]
+  Batches:  11%|█         | 1/9 [00:00<00:05,  1.44it/s]
+  Batches:  22%|██▏       | 2/9 [00:02<00:07,  1.09s/it]
+  Batches:  33%|███▎      | 3/9 [00:03<00:07,  1.22s/it]
+  Batches:  44%|████▍     | 4/9 [00:04<00:05,  1.06s/it]
+  Batches:  56%|█████▌    | 5/9 [00:05<00:05,  1.30s/it]
+  Batches:  67%|██████▋   | 6/9 [00:07<00:03,  1.23s/it]
+  Batches:  78%|███████▊  | 7/9 [00:07<00:01,  1.00it/s]
+  Batches:  89%|████████▉ | 8/9 [00:07<00:00,  1.28it/s]
+  Batches: 100%|██████████| 9/9 [00:08<00:00,  1.12it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2511.23184", "chunks": 67, "title": "Listwise Preference Optimization with Element-wise Confusions for Aspect Sentime", "error": null}
+[fail→defer] 2607.16478 — no result from worker (killed or crash)
+[fail→defer] 2304.08499 — no result from worker (killed or crash)
+[fail→defer] 2606.24424 — no result from worker (killed or crash)
+[fail→defer] 2511.23184 — no result from worker (killed or crash)
+[mem] avail=10.7GiB total=16.0GiB reserve=1.5GiB usable=9.2GiB → embed_batch=48 micro_batch=4
+
+===== papers 197–200/3948  ['2609.07462', '2604.07655', '2212.05946', '2410.05085']  elapsed=126.8m  eta~607.0m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 22590.27it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2609.07462
+  Downloading 2609.07462 (try 1):   0%|          | 0.00/5.92M [00:00<?, ?B/s]
+  Downloading 2609.07462 (try 1):  18%|█▊        | 1.06M/5.92M [00:01<00:05, 859kB/s]
+  Downloading 2609.07462 (try 1):  36%|███▌      | 2.11M/5.92M [00:01<00:02, 1.47MB/s]
+  Downloading 2609.07462 (try 1):  53%|█████▎    | 3.15M/5.92M [00:01<00:01, 1.83MB/s]
+  Downloading 2609.07462 (try 1):  71%|███████   | 4.20M/5.92M [00:02<00:00, 1.96MB/s]
+  Downloading 2609.07462 (try 1):  89%|████████▉ | 5.25M/5.92M [00:02<00:00, 2.56MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:08<00:08,  8.78s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  3.95s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.67s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2609.07462", "chunks": 61, "title": "When Superpixels Fail on Documents: A Study of Segmentation for LIME Explanation", "error": null}
+  [worker] ingest 2604.07655
+  Downloading 2604.07655 (try 1):   0%|          | 0.00/2.46M [00:00<?, ?B/s]
+  Downloading 2604.07655 (try 1):  43%|████▎     | 1.06M/2.46M [00:00<00:00, 1.66MB/s]
+  Downloading 2604.07655 (try 1):  86%|████████▌ | 2.11M/2.46M [00:00<00:00, 2.42MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=20/21.
+  OCR on page.number=3/4.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+[heartbeat] batch 2609.07462…(+3) running 45s / 1200s
+  Batches:  33%|███▎      | 1/3 [00:07<00:14,  7.02s/it]
+  Batches:  67%|██████▋   | 2/3 [00:11<00:05,  5.70s/it]
+  Batches: 100%|██████████| 3/3 [00:12<00:00,  3.20s/it]
+  Batches: 100%|██████████| 3/3 [00:12<00:00,  4.00s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2604.07655", "chunks": 103, "title": "Guardian-as-an-Advisor: Advancing Next-Generation Guardian Models for Trustworth", "error": null}
+  [worker] ingest 2212.05946
+  Downloading 2212.05946 (try 1):   0%|          | 0.00/2.71M [00:00<?, ?B/s]
+  Downloading 2212.05946 (try 1):  39%|███▉      | 1.06M/2.71M [00:00<00:00, 3.06MB/s]
+  Downloading 2212.05946 (try 1):  78%|███████▊  | 2.11M/2.71M [00:01<00:00, 1.37MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:08<00:08,  8.52s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.05s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.72s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2212.05946", "chunks": 62, "title": "Evaluation and Improvement of Interpretability for Self-Explainable Part-Prototy", "error": null}
+  [worker] ingest 2410.05085
+  Downloading 2410.05085 (try 1):   0%|          | 0.00/1.49M [00:00<?, ?B/s]
+  Downloading 2410.05085 (try 1):  71%|███████   | 1.06M/1.49M [00:00<00:00, 2.58MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=10/11.
+  OCR on page.number=14/15.
+  OCR on page.number=15/16.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:06<00:12,  6.39s/it]
+  Batches:  67%|██████▋   | 2/3 [00:10<00:05,  5.26s/it]
+  Batches: 100%|██████████| 3/3 [00:11<00:00,  3.13s/it]
+  Batches: 100%|██████████| 3/3 [00:11<00:00,  3.81s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2410.05085", "chunks": 106, "title": "Explanation sensitivity to the randomness of large language models: the case of ", "error": null}
+[retry] attempt 2/2 ids=['2609.07462', '2604.07655', '2212.05946', '2410.05085'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11936.58it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2609.07462
+  Batches:   0%|          | 0/8 [00:00<?, ?it/s]
+  Batches:  12%|█▎        | 1/8 [00:01<00:10,  1.48s/it]
+  Batches:  25%|██▌       | 2/8 [00:02<00:06,  1.05s/it]
+  Batches:  38%|███▊      | 3/8 [00:02<00:04,  1.21it/s]
+  Batches:  50%|█████     | 4/8 [00:03<00:02,  1.50it/s]
+  Batches:  62%|██████▎   | 5/8 [00:03<00:01,  1.57it/s]
+  Batches:  75%|███████▌  | 6/8 [00:04<00:01,  1.82it/s]
+  Batches:  88%|████████▊ | 7/8 [00:04<00:00,  2.05it/s]
+  Batches: 100%|██████████| 8/8 [00:04<00:00,  2.67it/s]
+  Batches: 100%|██████████| 8/8 [00:04<00:00,  1.71it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2609.07462", "chunks": 61, "title": "When Superpixels Fail on Documents: A Study of Segmentation for LIME Explanation", "error": null}
+  [worker] ingest 2604.07655
+  Batches:   0%|          | 0/13 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/13 [00:00<00:06,  1.83it/s]
+  Batches:  15%|█▌        | 2/13 [00:01<00:07,  1.41it/s]
+  Batches:  23%|██▎       | 3/13 [00:02<00:09,  1.08it/s]
+  Batches:  31%|███       | 4/13 [00:03<00:09,  1.04s/it]
+  Batches:  38%|███▊      | 5/13 [00:04<00:06,  1.15it/s]
+  Batches:  46%|████▌     | 6/13 [00:04<00:05,  1.26it/s]
+  Batches:  54%|█████▍    | 7/13 [00:05<00:04,  1.26it/s]
+  Batches:  62%|██████▏   | 8/13 [00:06<00:03,  1.33it/s]
+  Batches:  69%|██████▉   | 9/13 [00:07<00:03,  1.32it/s]
+  Batches:  77%|███████▋  | 10/13 [00:07<00:01,  1.53it/s]
+  Batches:  85%|████████▍ | 11/13 [00:07<00:01,  1.82it/s]
+  Batches:  92%|█████████▏| 12/13 [00:08<00:00,  2.18it/s]
+  Batches: 100%|██████████| 13/13 [00:08<00:00,  2.61it/s]
+  Batches: 100%|██████████| 13/13 [00:08<00:00,  1.55it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2604.07655", "chunks": 103, "title": "Guardian-as-an-Advisor: Advancing Next-Generation Guardian Models for Trustworth", "error": null}
+  [worker] ingest 2212.05946
+  Batches:   0%|          | 0/8 [00:00<?, ?it/s]
+  Batches:  12%|█▎        | 1/8 [00:01<00:09,  1.33s/it]
+  Batches:  25%|██▌       | 2/8 [00:02<00:08,  1.35s/it]
+  Batches:  38%|███▊      | 3/8 [00:03<00:05,  1.06s/it]
+  Batches:  50%|█████     | 4/8 [00:04<00:04,  1.05s/it]
+  Batches:  62%|██████▎   | 5/8 [00:05<00:02,  1.13it/s]
+  Batches:  75%|███████▌  | 6/8 [00:05<00:01,  1.32it/s]
+  Batches:  88%|████████▊ | 7/8 [00:06<00:00,  1.47it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.77it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.25it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2212.05946", "chunks": 62, "title": "Evaluation and Improvement of Interpretability for Self-Explainable Part-Prototy", "error": null}
+  [worker] ingest 2410.05085
+  Batches:   0%|          | 0/14 [00:00<?, ?it/s]
+  Batches:   7%|▋         | 1/14 [00:00<00:12,  1.01it/s]
+  Batches:  14%|█▍        | 2/14 [00:01<00:10,  1.14it/s]
+  Batches:  21%|██▏       | 3/14 [00:02<00:08,  1.26it/s]
+  Batches:  29%|██▊       | 4/14 [00:03<00:07,  1.27it/s]
+  Batches:  36%|███▌      | 5/14 [00:04<00:07,  1.22it/s]
+  Batches:  43%|████▎     | 6/14 [00:05<00:06,  1.15it/s]
+  Batches:  50%|█████     | 7/14 [00:05<00:05,  1.21it/s]
+  Batches:  57%|█████▋    | 8/14 [00:06<00:04,  1.43it/s]
+  Batches:  64%|██████▍   | 9/14 [00:06<00:03,  1.48it/s]
+  Batches:  71%|███████▏  | 10/14 [00:07<00:02,  1.66it/s]
+  Batches:  79%|███████▊  | 11/14 [00:07<00:01,  1.66it/s]
+  Batches:  86%|████████▌ | 12/14 [00:08<00:01,  1.90it/s]
+  Batches:  93%|█████████▎| 13/14 [00:08<00:00,  1.99it/s]
+  Batches: 100%|██████████| 14/14 [00:08<00:00,  1.59it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2410.05085", "chunks": 106, "title": "Explanation sensitivity to the randomness of large language models: the case of ", "error": null}
+[fail→defer] 2609.07462 — no result from worker (killed or crash)
+[fail→defer] 2604.07655 — no result from worker (killed or crash)
+[fail→defer] 2212.05946 — no result from worker (killed or crash)
+[fail→defer] 2410.05085 — no result from worker (killed or crash)
+[mem] avail=10.2GiB total=16.0GiB reserve=1.5GiB usable=8.7GiB → embed_batch=48 micro_batch=4
+
+===== papers 201–204/3948  ['2603.08241', '2208.02555', '2504.19027', '2509.09312']  elapsed=129.1m  eta~604.6m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23047.74it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2603.08241
+  Downloading 2603.08241 (try 1):   0%|          | 0.00/903k [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  OCR on page.number=4/5.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2603.08241", "chunks": 23, "title": "Sensivity of LLMs' Explanations to the Training Randomness:Context, Class &amp; ", "error": null}
+  [worker] ingest 2208.02555
+  Downloading 2208.02555 (try 1):   0%|          | 0.00/2.33M [00:00<?, ?B/s]
+  Downloading 2208.02555 (try 1):  45%|████▌     | 1.06M/2.33M [00:00<00:00, 2.49MB/s]
+  Downloading 2208.02555 (try 1):  90%|█████████ | 2.11M/2.33M [00:00<00:00, 3.45MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  OCR on page.number=5/6.
+  OCR on page.number=7/8.
+  OCR on page.number=8/9.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.66s/it]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.66s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2208.02555", "chunks": 33, "title": "Multi-modal volumetric concept activation to explain detection and classificatio", "error": null}
+  [worker] ingest 2504.19027
+  Downloading 2504.19027 (try 1):   0%|          | 0.00/269k [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  OCR on page.number=5/6.
+  OCR on page.number=7/8.
+  OCR on page.number=8/9.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:07<00:00,  7.48s/it]
+  Batches: 100%|██████████| 1/1 [00:07<00:00,  7.48s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2504.19027", "chunks": 41, "title": "DiCE-Extended: A Robust Approach to Counterfactual Explanations in Machine Learn", "error": null}
+  [worker] ingest 2509.09312
+  Downloading 2509.09312 (try 1):   0%|          | 0.00/531k [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=7/8.
+[heartbeat] batch 2603.08241…(+3) running 46s / 1200s
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:07<00:14,  7.46s/it]
+  Batches:  67%|██████▋   | 2/3 [00:13<00:06,  6.90s/it]
+  Batches: 100%|██████████| 3/3 [00:17<00:00,  5.56s/it]
+  Batches: 100%|██████████| 3/3 [00:17<00:00,  5.98s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2509.09312", "chunks": 134, "title": "Explaining Tournament Solutions with Minimal Supports", "error": null}
+[retry] attempt 2/2 ids=['2603.08241', '2208.02555', '2504.19027', '2509.09312'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11829.64it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2603.08241
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:00<00:01,  1.20it/s]
+  Batches:  67%|██████▋   | 2/3 [00:01<00:00,  1.50it/s]
+  Batches: 100%|██████████| 3/3 [00:01<00:00,  1.88it/s]
+  Batches: 100%|██████████| 3/3 [00:01<00:00,  1.71it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2603.08241", "chunks": 23, "title": "Sensivity of LLMs' Explanations to the Training Randomness:Context, Class &amp; ", "error": null}
+  [worker] ingest 2208.02555
+  Batches:   0%|          | 0/5 [00:00<?, ?it/s]
+  Batches:  20%|██        | 1/5 [00:00<00:02,  1.51it/s]
+  Batches:  40%|████      | 2/5 [00:01<00:02,  1.44it/s]
+  Batches:  60%|██████    | 3/5 [00:01<00:01,  1.53it/s]
+  Batches:  80%|████████  | 4/5 [00:02<00:00,  1.73it/s]
+  Batches: 100%|██████████| 5/5 [00:02<00:00,  2.00it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2208.02555", "chunks": 33, "title": "Multi-modal volumetric concept activation to explain detection and classificatio", "error": null}
+  [worker] ingest 2504.19027
+  Batches:   0%|          | 0/6 [00:00<?, ?it/s]
+  Batches:  17%|█▋        | 1/6 [00:00<00:02,  2.10it/s]
+  Batches:  33%|███▎      | 2/6 [00:01<00:04,  1.03s/it]
+  Batches:  50%|█████     | 3/6 [00:02<00:02,  1.06it/s]
+  Batches:  67%|██████▋   | 4/6 [00:03<00:01,  1.35it/s]
+  Batches:  83%|████████▎ | 5/6 [00:04<00:00,  1.25it/s]
+  Batches: 100%|██████████| 6/6 [00:04<00:00,  1.46it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2504.19027", "chunks": 41, "title": "DiCE-Extended: A Robust Approach to Counterfactual Explanations in Machine Learn", "error": null}
+  [worker] ingest 2509.09312
+  Batches:   0%|          | 0/17 [00:00<?, ?it/s]
+  Batches:   6%|▌         | 1/17 [00:01<00:17,  1.08s/it]
+  Batches:  12%|█▏        | 2/17 [00:02<00:16,  1.12s/it]
+  Batches:  18%|█▊        | 3/17 [00:03<00:16,  1.18s/it]
+  Batches:  24%|██▎       | 4/17 [00:04<00:14,  1.15s/it]
+  Batches:  29%|██▉       | 5/17 [00:05<00:13,  1.12s/it]
+  Batches:  35%|███▌      | 6/17 [00:06<00:12,  1.12s/it]
+  Batches:  41%|████      | 7/17 [00:07<00:10,  1.07s/it]
+  Batches:  47%|████▋     | 8/17 [00:08<00:08,  1.04it/s]
+  Batches:  53%|█████▎    | 9/17 [00:09<00:07,  1.02it/s]
+  Batches:  59%|█████▉    | 10/17 [00:10<00:06,  1.06it/s]
+  Batches:  65%|██████▍   | 11/17 [00:11<00:05,  1.06it/s]
+  Batches:  71%|███████   | 12/17 [00:12<00:04,  1.12it/s]
+  Batches:  76%|███████▋  | 13/17 [00:12<00:03,  1.22it/s]
+  Batches:  82%|████████▏ | 14/17 [00:13<00:02,  1.24it/s]
+  Batches:  88%|████████▊ | 15/17 [00:14<00:01,  1.31it/s]
+  Batches:  94%|█████████▍| 16/17 [00:14<00:00,  1.38it/s]
+  Batches: 100%|██████████| 17/17 [00:15<00:00,  1.62it/s]
+  Batches: 100%|██████████| 17/17 [00:15<00:00,  1.12it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2509.09312", "chunks": 134, "title": "Explaining Tournament Solutions with Minimal Supports", "error": null}
+[fail→defer] 2603.08241 — no result from worker (killed or crash)
+[fail→defer] 2208.02555 — no result from worker (killed or crash)
+[fail→defer] 2504.19027 — no result from worker (killed or crash)
+[fail→defer] 2509.09312 — no result from worker (killed or crash)
+[mem] avail=10.4GiB total=16.0GiB reserve=1.5GiB usable=8.9GiB → embed_batch=48 micro_batch=4
+
+===== papers 205–208/3948  ['2605.09852', '1608.07879', '2603.02396', '2501.01926']  elapsed=130.8m  eta~600.2m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23645.76it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2605.09852
+  Downloading 2605.09852 (try 1):   0%|          | 0.00/1.12M [00:00<?, ?B/s]
+  Downloading 2605.09852 (try 1):  94%|█████████▍| 1.06M/1.12M [00:00<00:00, 2.64MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=3/4.
+  Batches:   0%|          | 0/6 [00:00<?, ?it/s]
+  Batches:  17%|█▋        | 1/6 [00:05<00:26,  5.27s/it]
+  Batches:  33%|███▎      | 2/6 [00:10<00:21,  5.38s/it]
+  Batches:  50%|█████     | 3/6 [00:14<00:13,  4.50s/it]
+  Batches:  67%|██████▋   | 4/6 [00:17<00:08,  4.03s/it]
+  Batches:  83%|████████▎ | 5/6 [00:20<00:03,  3.65s/it]
+  Batches: 100%|██████████| 6/6 [00:22<00:00,  3.01s/it]
+  Batches: 100%|██████████| 6/6 [00:22<00:00,  3.71s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2605.09852", "chunks": 271, "title": "Fairness of Explanations in Artificial Intelligence (AI): A Unifying Framework, ", "error": null}
+  [worker] ingest 1608.07879
+  Downloading 1608.07879 (try 1):   0%|          | 0.00/149k [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+[heartbeat] batch 2605.09852…(+3) running 45s / 1200s
+  OCR on page.number=3/4.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.17s/it]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.17s/it]WORKER_RESULT {"ok": true, "arxiv_id": "1608.07879", "chunks": 43, "title": "Causality and Responsibility for Formal Verification and Beyond", "error": null}
+  [worker] ingest 2603.02396
+  Downloading 2603.02396 (try 1):   0%|          | 0.00/782k [00:00<?, ?B/s]
+  Downloading 2603.02396 (try 1):  16%|█▌        | 123k/782k [00:00<00:00, 1.11MB/s]
+  Downloading 2603.02396 (try 1):  72%|███████▏  | 565k/782k [00:00<00:00, 2.76MB/s]
+  Using Tesseract for OCR processing.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:06<00:12,  6.29s/it]
+  Batches:  67%|██████▋   | 2/3 [00:12<00:06,  6.05s/it]
+  Batches: 100%|██████████| 3/3 [00:15<00:00,  4.93s/it]
+  Batches: 100%|██████████| 3/3 [00:15<00:00,  5.26s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2603.02396", "chunks": 133, "title": "COOL-MC: Verifying and Explaining RL Policies for Platelet Inventory Management", "error": null}
+  [worker] ingest 2501.01926
+  Downloading 2501.01926 (try 1):   0%|          | 0.00/2.03M [00:00<?, ?B/s]
+  Downloading 2501.01926 (try 1):   6%|▌         | 123k/2.03M [00:00<00:01, 1.16MB/s]
+  Downloading 2501.01926 (try 1):  30%|██▉       | 606k/2.03M [00:00<00:00, 3.16MB/s]
+  Downloading 2501.01926 (try 1):  52%|█████▏    | 1.06M/2.03M [00:00<00:00, 2.54MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=13/14.
+  OCR on page.number=14/15.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+[heartbeat] batch 2605.09852…(+3) running 91s / 1200s
+  Batches:  33%|███▎      | 1/3 [00:12<00:25, 12.57s/it]
+  Batches:  67%|██████▋   | 2/3 [00:19<00:09,  9.44s/it]
+  Batches: 100%|██████████| 3/3 [00:19<00:00,  5.20s/it]
+  Batches: 100%|██████████| 3/3 [00:19<00:00,  6.66s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2501.01926", "chunks": 100, "title": "Cross-Modal Attention Calibration for LVLM Hallucination Mitigation", "error": null}
+[retry] attempt 2/2 ids=['2605.09852', '1608.07879', '2603.02396', '2501.01926'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11862.17it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2605.09852
+  Batches:   0%|          | 0/34 [00:00<?, ?it/s]
+  Batches:   3%|▎         | 1/34 [00:00<00:26,  1.22it/s]
+  Batches:   6%|▌         | 2/34 [00:01<00:28,  1.11it/s]
+  Batches:   9%|▉         | 3/34 [00:02<00:26,  1.19it/s]
+  Batches:  12%|█▏        | 4/34 [00:03<00:26,  1.14it/s]
+  Batches:  15%|█▍        | 5/34 [00:04<00:25,  1.16it/s]
+  Batches:  18%|█▊        | 6/34 [00:05<00:24,  1.13it/s]
+  Batches:  21%|██        | 7/34 [00:06<00:24,  1.12it/s]
+  Batches:  24%|██▎       | 8/34 [00:06<00:19,  1.30it/s]
+  Batches:  26%|██▋       | 9/34 [00:07<00:19,  1.25it/s]
+  Batches:  29%|██▉       | 10/34 [00:08<00:18,  1.29it/s]
+  Batches:  32%|███▏      | 11/34 [00:08<00:17,  1.32it/s]
+  Batches:  35%|███▌      | 12/34 [00:09<00:15,  1.41it/s]
+  Batches:  38%|███▊      | 13/34 [00:10<00:13,  1.50it/s]
+  Batches:  41%|████      | 14/34 [00:10<00:12,  1.58it/s]
+  Batches:  44%|████▍     | 15/34 [00:11<00:11,  1.68it/s]
+  Batches:  47%|████▋     | 16/34 [00:11<00:10,  1.79it/s]
+  Batches:  50%|█████     | 17/34 [00:12<00:08,  1.94it/s]
+  Batches:  53%|█████▎    | 18/34 [00:12<00:07,  2.14it/s]
+  Batches:  56%|█████▌    | 19/34 [00:12<00:06,  2.21it/s]
+  Batches:  59%|█████▉    | 20/34 [00:13<00:06,  2.31it/s]
+  Batches:  62%|██████▏   | 21/34 [00:13<00:05,  2.35it/s]
+  Batches:  65%|██████▍   | 22/34 [00:13<00:04,  2.54it/s]
+  Batches:  68%|██████▊   | 23/34 [00:14<00:04,  2.28it/s]
+  Batches:  71%|███████   | 24/34 [00:14<00:04,  2.40it/s]
+  Batches:  74%|███████▎  | 25/34 [00:15<00:03,  2.57it/s]
+  Batches:  76%|███████▋  | 26/34 [00:15<00:03,  2.65it/s]
+  Batches:  79%|███████▉  | 27/34 [00:15<00:02,  2.87it/s]
+  Batches:  82%|████████▏ | 28/34 [00:16<00:02,  2.57it/s]
+  Batches:  85%|████████▌ | 29/34 [00:16<00:02,  2.43it/s]
+  Batches:  88%|████████▊ | 30/34 [00:17<00:01,  2.42it/s]
+  Batches:  91%|█████████ | 31/34 [00:17<00:01,  2.36it/s]
+  Batches:  94%|█████████▍| 32/34 [00:17<00:00,  2.52it/s]
+  Batches:  97%|█████████▋| 33/34 [00:18<00:00,  2.51it/s]
+  Batches: 100%|██████████| 34/34 [00:18<00:00,  2.59it/s]
+  Batches: 100%|██████████| 34/34 [00:18<00:00,  1.81it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2605.09852", "chunks": 271, "title": "Fairness of Explanations in Artificial Intelligence (AI): A Unifying Framework, ", "error": null}
+  [worker] ingest 1608.07879
+  Batches:   0%|          | 0/6 [00:00<?, ?it/s]
+  Batches:  17%|█▋        | 1/6 [00:00<00:03,  1.59it/s]
+  Batches:  33%|███▎      | 2/6 [00:01<00:02,  1.44it/s]
+  Batches:  50%|█████     | 3/6 [00:01<00:01,  1.60it/s]
+  Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.85it/s]
+  Batches:  83%|████████▎ | 5/6 [00:02<00:00,  1.77it/s]
+  Batches: 100%|██████████| 6/6 [00:03<00:00,  2.44it/s]
+  Batches: 100%|██████████| 6/6 [00:03<00:00,  1.98it/s]WORKER_RESULT {"ok": true, "arxiv_id": "1608.07879", "chunks": 43, "title": "Causality and Responsibility for Formal Verification and Beyond", "error": null}
+  [worker] ingest 2603.02396
+  Batches:   0%|          | 0/17 [00:00<?, ?it/s]
+  Batches:   6%|▌         | 1/17 [00:00<00:09,  1.62it/s]
+  Batches:  12%|█▏        | 2/17 [00:01<00:09,  1.51it/s]
+  Batches:  18%|█▊        | 3/17 [00:02<00:11,  1.23it/s]
+  Batches:  24%|██▎       | 4/17 [00:03<00:10,  1.26it/s]
+  Batches:  29%|██▉       | 5/17 [00:03<00:08,  1.35it/s]
+  Batches:  35%|███▌      | 6/17 [00:04<00:07,  1.42it/s]
+  Batches:  41%|████      | 7/17 [00:05<00:07,  1.42it/s]
+  Batches:  47%|████▋     | 8/17 [00:05<00:06,  1.47it/s]
+  Batches:  53%|█████▎    | 9/17 [00:06<00:05,  1.54it/s]
+  Batches:  59%|█████▉    | 10/17 [00:06<00:04,  1.58it/s]
+  Batches:  65%|██████▍   | 11/17 [00:07<00:04,  1.38it/s]
+[heartbeat] batch 2605.09852…(+3) running 45s / 1200s
+  Batches:  71%|███████   | 12/17 [00:08<00:03,  1.46it/s]
+  Batches:  76%|███████▋  | 13/17 [00:09<00:02,  1.43it/s]
+  Batches:  82%|████████▏ | 14/17 [00:09<00:01,  1.59it/s]
+  Batches:  88%|████████▊ | 15/17 [00:09<00:01,  1.82it/s]
+  Batches:  94%|█████████▍| 16/17 [00:10<00:00,  1.94it/s]
+  Batches: 100%|██████████| 17/17 [00:10<00:00,  2.48it/s]
+  Batches: 100%|██████████| 17/17 [00:10<00:00,  1.61it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2603.02396", "chunks": 133, "title": "COOL-MC: Verifying and Explaining RL Policies for Platelet Inventory Management", "error": null}
+  [worker] ingest 2501.01926
+  Batches:   0%|          | 0/13 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/13 [00:01<00:16,  1.41s/it]
+  Batches:  15%|█▌        | 2/13 [00:03<00:19,  1.73s/it]
+  Batches:  23%|██▎       | 3/13 [00:05<00:18,  1.86s/it]
+  Batches:  31%|███       | 4/13 [00:07<00:17,  1.90s/it]
+  Batches:  38%|███▊      | 5/13 [00:08<00:12,  1.56s/it]
+  Batches:  46%|████▌     | 6/13 [00:09<00:10,  1.45s/it]
+  Batches:  54%|█████▍    | 7/13 [00:10<00:08,  1.35s/it]
+  Batches:  62%|██████▏   | 8/13 [00:11<00:05,  1.16s/it]
+  Batches:  69%|██████▉   | 9/13 [00:12<00:04,  1.14s/it]
+  Batches:  77%|███████▋  | 10/13 [00:13<00:02,  1.05it/s]
+  Batches:  85%|████████▍ | 11/13 [00:13<00:01,  1.27it/s]
+  Batches:  92%|█████████▏| 12/13 [00:14<00:00,  1.33it/s]
+  Batches: 100%|██████████| 13/13 [00:14<00:00,  1.78it/s]
+  Batches: 100%|██████████| 13/13 [00:14<00:00,  1.10s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2501.01926", "chunks": 100, "title": "Cross-Modal Attention Calibration for LVLM Hallucination Mitigation", "error": null}
+[fail→defer] 2605.09852 — no result from worker (killed or crash)
+[fail→defer] 1608.07879 — no result from worker (killed or crash)
+[fail→defer] 2603.02396 — no result from worker (killed or crash)
+[fail→defer] 2501.01926 — no result from worker (killed or crash)
+[mem] avail=11.3GiB total=16.0GiB reserve=1.5GiB usable=9.8GiB → embed_batch=48 micro_batch=4
+
+===== papers 209–212/3948  ['2212.10549', '2107.04548', '2105.09597', '2411.18659']  elapsed=133.6m  eta~600.8m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 22438.94it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2212.10549
+  Downloading 2212.10549 (try 1):   0%|          | 0.00/3.94M [00:00<?, ?B/s]
+  Downloading 2212.10549 (try 1):   3%|▎         | 123k/3.94M [00:00<00:03, 1.07MB/s]
+  Downloading 2212.10549 (try 1):  14%|█▍        | 565k/3.94M [00:00<00:01, 2.85MB/s]
+  Downloading 2212.10549 (try 1):  27%|██▋       | 1.06M/3.94M [00:00<00:02, 1.33MB/s]
+  Downloading 2212.10549 (try 1):  53%|█████▎    | 2.11M/3.94M [00:02<00:01, 954kB/s] 
+  Downloading 2212.10549 (try 1):  80%|███████▉  | 3.15M/3.94M [00:02<00:00, 1.50MB/s]
+  Using Tesseract for OCR processing.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:04<00:04,  4.31s/it]
+  Batches: 100%|██████████| 2/2 [00:04<00:00,  1.94s/it]
+  Batches: 100%|██████████| 2/2 [00:04<00:00,  2.30s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2212.10549", "chunks": 53, "title": "Cross-modal Attention Congruence Regularization for Vision-Language Relation Ali", "error": null}
+  [worker] ingest 2107.04548
+  Downloading 2107.04548 (try 1):   0%|          | 0.00/608k [00:00<?, ?B/s]
+  Downloading 2107.04548 (try 1):  19%|█▉        | 115k/608k [00:00<00:00, 1.05MB/s]
+  Downloading 2107.04548 (try 1):  89%|████████▉ | 541k/608k [00:00<00:00, 2.84MB/s]
+  Using Tesseract for OCR processing.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.90s/it]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.90s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2107.04548", "chunks": 34, "title": "Cross-modal Attention for MRI and Ultrasound Volume Registration", "error": null}
+  [worker] ingest 2105.09597
+  Downloading 2105.09597 (try 1):   0%|          | 0.00/5.73M [00:00<?, ?B/s]
+  Downloading 2105.09597 (try 1):   2%|▏         | 123k/5.73M [00:00<00:05, 1.11MB/s]
+  Downloading 2105.09597 (try 1):   8%|▊         | 434k/5.73M [00:00<00:02, 2.21MB/s]
+  Downloading 2105.09597 (try 1):  18%|█▊        | 1.06M/5.73M [00:00<00:02, 2.24MB/s]
+  Downloading 2105.09597 (try 1):  37%|███▋      | 2.11M/5.73M [00:00<00:01, 2.28MB/s]
+  Downloading 2105.09597 (try 1):  55%|█████▌    | 3.15M/5.73M [00:02<00:01, 1.37MB/s]
+  Downloading 2105.09597 (try 1):  73%|███████▎  | 4.20M/5.73M [00:02<00:00, 1.87MB/s]
+  Downloading 2105.09597 (try 1):  92%|█████████▏| 5.25M/5.73M [00:02<00:00, 2.34MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=7/8.
+  OCR on page.number=10/11.
+[heartbeat] batch 2212.10549…(+3) running 45s / 1200s
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:10<00:10, 10.88s/it]
+  Batches: 100%|██████████| 2/2 [00:11<00:00,  4.85s/it]
+  Batches: 100%|██████████| 2/2 [00:11<00:00,  5.76s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2105.09597", "chunks": 63, "title": "More Than Just Attention: Improving Cross-Modal Attentions with Contrastive Cons", "error": null}
+  [worker] ingest 2411.18659
+  Downloading 2411.18659 (try 1):   0%|          | 0.00/3.89M [00:00<?, ?B/s]
+  Downloading 2411.18659 (try 1):   3%|▎         | 123k/3.89M [00:00<00:03, 1.00MB/s]
+  Downloading 2411.18659 (try 1):  15%|█▍        | 565k/3.89M [00:00<00:01, 2.71MB/s]
+  Downloading 2411.18659 (try 1):  27%|██▋       | 1.06M/3.89M [00:00<00:02, 1.12MB/s]
+  Downloading 2411.18659 (try 1):  54%|█████▍    | 2.11M/3.89M [00:01<00:00, 2.02MB/s]
+  Downloading 2411.18659 (try 1):  81%|████████  | 3.15M/3.89M [00:01<00:00, 2.71MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=12/13.
+  OCR on page.number=13/14.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:13<00:13, 13.51s/it]
+  Batches: 100%|██████████| 2/2 [00:19<00:00,  8.96s/it]
+  Batches: 100%|██████████| 2/2 [00:19<00:00,  9.64s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2411.18659", "chunks": 86, "title": "DHCP: Detecting Hallucinations by Cross-modal Attention Pattern in Large Vision-", "error": null}
+[retry] attempt 2/2 ids=['2212.10549', '2107.04548', '2105.09597', '2411.18659'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11920.98it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2212.10549
+  Batches:   0%|          | 0/7 [00:00<?, ?it/s]
+  Batches:  14%|█▍        | 1/7 [00:00<00:04,  1.37it/s]
+  Batches:  29%|██▊       | 2/7 [00:01<00:03,  1.54it/s]
+  Batches:  43%|████▎     | 3/7 [00:01<00:02,  1.58it/s]
+  Batches:  57%|█████▋    | 4/7 [00:02<00:01,  1.59it/s]
+  Batches:  71%|███████▏  | 5/7 [00:03<00:01,  1.56it/s]
+  Batches:  86%|████████▌ | 6/7 [00:03<00:00,  1.84it/s]
+  Batches: 100%|██████████| 7/7 [00:03<00:00,  2.18it/s]
+  Batches: 100%|██████████| 7/7 [00:03<00:00,  1.81it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2212.10549", "chunks": 53, "title": "Cross-modal Attention Congruence Regularization for Vision-Language Relation Ali", "error": null}
+  [worker] ingest 2107.04548
+  Batches:   0%|          | 0/5 [00:00<?, ?it/s]
+  Batches:  20%|██        | 1/5 [00:00<00:02,  1.36it/s]
+  Batches:  40%|████      | 2/5 [00:01<00:01,  1.54it/s]
+  Batches:  60%|██████    | 3/5 [00:01<00:01,  1.73it/s]
+  Batches:  80%|████████  | 4/5 [00:02<00:00,  1.55it/s]
+  Batches: 100%|██████████| 5/5 [00:02<00:00,  1.89it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2107.04548", "chunks": 34, "title": "Cross-modal Attention for MRI and Ultrasound Volume Registration", "error": null}
+  [worker] ingest 2105.09597
+  Batches:   0%|          | 0/8 [00:00<?, ?it/s]
+  Batches:  12%|█▎        | 1/8 [00:01<00:12,  1.75s/it]
+  Batches:  25%|██▌       | 2/8 [00:02<00:07,  1.29s/it]
+  Batches:  38%|███▊      | 3/8 [00:03<00:05,  1.11s/it]
+  Batches:  50%|█████     | 4/8 [00:04<00:04,  1.02s/it]
+  Batches:  62%|██████▎   | 5/8 [00:05<00:03,  1.00s/it]
+  Batches:  75%|███████▌  | 6/8 [00:05<00:01,  1.20it/s]
+  Batches:  88%|████████▊ | 7/8 [00:06<00:00,  1.48it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.90it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.23it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2105.09597", "chunks": 63, "title": "More Than Just Attention: Improving Cross-Modal Attentions with Contrastive Cons", "error": null}
+  [worker] ingest 2411.18659
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:01<00:12,  1.25s/it]
+  Batches:  18%|█▊        | 2/11 [00:03<00:15,  1.67s/it]
+  Batches:  27%|██▋       | 3/11 [00:04<00:11,  1.47s/it]
+  Batches:  36%|███▋      | 4/11 [00:05<00:07,  1.12s/it]
+  Batches:  45%|████▌     | 5/11 [00:05<00:05,  1.01it/s]
+  Batches:  55%|█████▍    | 6/11 [00:06<00:04,  1.14it/s]
+  Batches:  64%|██████▎   | 7/11 [00:07<00:03,  1.26it/s]
+  Batches:  73%|███████▎  | 8/11 [00:07<00:02,  1.27it/s]
+  Batches:  82%|████████▏ | 9/11 [00:08<00:01,  1.13it/s]
+  Batches:  91%|█████████ | 10/11 [00:09<00:00,  1.37it/s]
+  Batches: 100%|██████████| 11/11 [00:09<00:00,  1.65it/s]
+  Batches: 100%|██████████| 11/11 [00:09<00:00,  1.14it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2411.18659", "chunks": 86, "title": "DHCP: Detecting Hallucinations by Cross-modal Attention Pattern in Large Vision-", "error": null}
+[fail→defer] 2212.10549 — no result from worker (killed or crash)
+[fail→defer] 2107.04548 — no result from worker (killed or crash)
+[fail→defer] 2105.09597 — no result from worker (killed or crash)
+[fail→defer] 2411.18659 — no result from worker (killed or crash)
+[mem] avail=9.8GiB total=16.0GiB reserve=1.5GiB usable=8.3GiB → embed_batch=48 micro_batch=4
+
+===== papers 213–216/3948  ['2604.07741', '2510.07567', '2610.07243', '1912.07872']  elapsed=135.7m  eta~597.7m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23482.49it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2604.07741
+  Downloading 2604.07741 (try 1):   0%|          | 0.00/3.76M [00:00<?, ?B/s]
+  Downloading 2604.07741 (try 1):  13%|█▎        | 492k/3.76M [00:00<00:00, 4.87MB/s]
+  Downloading 2604.07741 (try 1):  28%|██▊       | 1.06M/3.76M [00:00<00:02, 1.26MB/s]
+  Downloading 2604.07741 (try 1):  56%|█████▌    | 2.11M/3.76M [00:01<00:01, 1.07MB/s]
+  Downloading 2604.07741 (try 1):  84%|████████▍ | 3.15M/3.76M [00:02<00:00, 1.49MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=1/2.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2604.07741", "chunks": 28, "title": "MSCT: Differential Cross-Modal Attention for Deepfake Detection", "error": null}
+  [worker] ingest 2510.07567
+  Downloading 2510.07567 (try 1):   0%|          | 0.00/1.37M [00:00<?, ?B/s]
+  Downloading 2510.07567 (try 1):  39%|███▉      | 541k/1.37M [00:00<00:00, 5.21MB/s]
+  Downloading 2510.07567 (try 1):  77%|███████▋  | 1.06M/1.37M [00:00<00:00, 2.60MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=7/8.
+  OCR on page.number=1/2.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:07<00:07,  7.44s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.05s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.55s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2510.07567", "chunks": 76, "title": "Cross-Modal Attention Guided Unlearning in Vision-Language Models", "error": null}
+  [worker] ingest 2610.07243
+  Downloading 2610.07243 (try 1):   0%|          | 0.00/452k [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+[heartbeat] batch 2604.07741…(+3) running 46s / 1200s
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.48s/it]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.48s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2610.07243", "chunks": 31, "title": "Hybrid Cross-Modal Attention Network for Early Breast Cancer Detection in Low-Re", "error": null}
+  [worker] ingest 1912.07872
+  Downloading 1912.07872 (try 1):   0%|          | 0.00/3.34M [00:00<?, ?B/s]
+  Downloading 1912.07872 (try 1):   4%|▎         | 123k/3.34M [00:00<00:03, 1.06MB/s]
+  Downloading 1912.07872 (try 1):  17%|█▋        | 573k/3.34M [00:00<00:00, 2.90MB/s]
+  Downloading 1912.07872 (try 1):  32%|███▏      | 1.06M/3.34M [00:00<00:01, 1.79MB/s]
+  Downloading 1912.07872 (try 1):  63%|██████▎   | 2.11M/3.34M [00:00<00:00, 3.32MB/s]
+  Downloading 1912.07872 (try 1):  94%|█████████▍| 3.15M/3.34M [00:00<00:00, 3.89MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:08<00:08,  8.62s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  3.87s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.58s/it]WORKER_RESULT {"ok": true, "arxiv_id": "1912.07872", "chunks": 58, "title": "Cross-Modality Attention with Semantic Graph Embedding for Multi-Label Classific", "error": null}
+[retry] attempt 2/2 ids=['2604.07741', '2510.07567', '2610.07243', '1912.07872'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11767.94it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2604.07741
+  Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+  Batches:  25%|██▌       | 1/4 [00:00<00:02,  1.46it/s]
+  Batches:  50%|█████     | 2/4 [00:01<00:01,  1.75it/s]
+  Batches:  75%|███████▌  | 3/4 [00:01<00:00,  2.11it/s]
+  Batches: 100%|██████████| 4/4 [00:01<00:00,  3.03it/s]
+  Batches: 100%|██████████| 4/4 [00:01<00:00,  2.43it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2604.07741", "chunks": 28, "title": "MSCT: Differential Cross-Modal Attention for Deepfake Detection", "error": null}
+  [worker] ingest 2510.07567
+  Batches:   0%|          | 0/10 [00:00<?, ?it/s]
+  Batches:  10%|█         | 1/10 [00:01<00:10,  1.15s/it]
+  Batches:  20%|██        | 2/10 [00:02<00:09,  1.23s/it]
+  Batches:  30%|███       | 3/10 [00:03<00:09,  1.30s/it]
+  Batches:  40%|████      | 4/10 [00:04<00:06,  1.10s/it]
+  Batches:  50%|█████     | 5/10 [00:05<00:04,  1.13it/s]
+  Batches:  60%|██████    | 6/10 [00:06<00:03,  1.02it/s]
+  Batches:  70%|███████   | 7/10 [00:06<00:02,  1.21it/s]
+  Batches:  80%|████████  | 8/10 [00:07<00:01,  1.43it/s]
+  Batches:  90%|█████████ | 9/10 [00:07<00:00,  1.72it/s]
+  Batches: 100%|██████████| 10/10 [00:07<00:00,  2.28it/s]
+  Batches: 100%|██████████| 10/10 [00:07<00:00,  1.31it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2510.07567", "chunks": 76, "title": "Cross-Modal Attention Guided Unlearning in Vision-Language Models", "error": null}
+  [worker] ingest 2610.07243
+  Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+  Batches:  25%|██▌       | 1/4 [00:01<00:03,  1.11s/it]
+  Batches:  50%|█████     | 2/4 [00:02<00:02,  1.19s/it]
+  Batches:  75%|███████▌  | 3/4 [00:02<00:00,  1.08it/s]
+  Batches: 100%|██████████| 4/4 [00:03<00:00,  1.37it/s]
+  Batches: 100%|██████████| 4/4 [00:03<00:00,  1.18it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2610.07243", "chunks": 31, "title": "Hybrid Cross-Modal Attention Network for Early Breast Cancer Detection in Low-Re", "error": null}
+  [worker] ingest 1912.07872
+  Batches:   0%|          | 0/8 [00:00<?, ?it/s]
+  Batches:  12%|█▎        | 1/8 [00:01<00:09,  1.38s/it]
+  Batches:  25%|██▌       | 2/8 [00:02<00:07,  1.28s/it]
+  Batches:  38%|███▊      | 3/8 [00:03<00:04,  1.02it/s]
+  Batches:  50%|█████     | 4/8 [00:03<00:03,  1.26it/s]
+  Batches:  62%|██████▎   | 5/8 [00:04<00:02,  1.43it/s]
+  Batches:  75%|███████▌  | 6/8 [00:05<00:01,  1.32it/s]
+  Batches:  88%|████████▊ | 7/8 [00:05<00:00,  1.52it/s]
+  Batches: 100%|██████████| 8/8 [00:05<00:00,  1.41it/s]WORKER_RESULT {"ok": true, "arxiv_id": "1912.07872", "chunks": 58, "title": "Cross-Modality Attention with Semantic Graph Embedding for Multi-Label Classific", "error": null}
+[fail→defer] 2604.07741 — no result from worker (killed or crash)
+[fail→defer] 2510.07567 — no result from worker (killed or crash)
+[fail→defer] 2610.07243 — no result from worker (killed or crash)
+[fail→defer] 1912.07872 — no result from worker (killed or crash)
+[mem] avail=9.2GiB total=16.0GiB reserve=1.5GiB usable=7.7GiB → embed_batch=48 micro_batch=4
+
+===== papers 217–220/3948  ['2108.09669', '2112.03562', '2302.14264', '2407.03563']  elapsed=137.4m  eta~593.7m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23493.96it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2108.09669
+  Downloading 2108.09669 (try 1):   0%|          | 0.00/278k [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=2/3.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:03<00:00,  3.36s/it]
+  Batches: 100%|██████████| 1/1 [00:03<00:00,  3.36s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2108.09669", "chunks": 39, "title": "Using Large Pre-Trained Models with Cross-Modal Attention for Multi-Modal Emotio", "error": null}
+  [worker] ingest 2112.03562
+  Downloading 2112.03562 (try 1):   0%|          | 0.00/7.50M [00:00<?, ?B/s]
+  Downloading 2112.03562 (try 1):  14%|█▍        | 1.06M/7.50M [00:00<00:04, 1.47MB/s]
+  Downloading 2112.03562 (try 1):  28%|██▊       | 2.11M/7.50M [00:01<00:04, 1.26MB/s]
+  Downloading 2112.03562 (try 1):  42%|████▏     | 3.15M/7.50M [00:02<00:02, 1.46MB/s]
+  Downloading 2112.03562 (try 1):  56%|█████▌    | 4.20M/7.50M [00:03<00:02, 1.25MB/s]
+  Downloading 2112.03562 (try 1):  70%|███████   | 5.25M/7.50M [00:04<00:01, 1.29MB/s]
+  Downloading 2112.03562 (try 1):  84%|████████▍ | 6.30M/7.50M [00:05<00:01, 1.05MB/s]
+  Downloading 2112.03562 (try 1):  98%|█████████▊| 7.35M/7.50M [00:05<00:00, 1.37MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=6/7.
+  OCR on page.number=2/3.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:06<00:06,  6.80s/it]
+  Batches: 100%|██████████| 2/2 [00:07<00:00,  3.02s/it]
+  Batches: 100%|██████████| 2/2 [00:07<00:00,  3.59s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2112.03562", "chunks": 56, "title": "CMA-CLIP: Cross-Modality Attention CLIP for Image-Text Classification", "error": null}
+  [worker] ingest 2302.14264
+  Downloading 2302.14264 (try 1):   0%|          | 0.00/2.36M [00:00<?, ?B/s]
+  Downloading 2302.14264 (try 1):   5%|▌         | 123k/2.36M [00:00<00:02, 984kB/s]
+  Downloading 2302.14264 (try 1):  21%|██        | 483k/2.36M [00:00<00:00, 2.26MB/s]
+  Downloading 2302.14264 (try 1):  45%|████▍     | 1.06M/2.36M [00:01<00:01, 859kB/s]
+  Downloading 2302.14264 (try 1):  89%|████████▉ | 2.11M/2.36M [00:01<00:00, 1.77MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=5/6.
+[heartbeat] batch 2108.09669…(+3) running 46s / 1200s
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:07<00:07,  7.59s/it]
+  Batches: 100%|██████████| 2/2 [00:07<00:00,  3.21s/it]
+  Batches: 100%|██████████| 2/2 [00:07<00:00,  3.87s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2302.14264", "chunks": 52, "title": "RGB-D Grasp Detection via Depth Guided Learning with Cross-modal Attention", "error": null}
+  [worker] ingest 2407.03563
+  Downloading 2407.03563 (try 1):   0%|          | 0.00/710k [00:00<?, ?B/s]
+  Downloading 2407.03563 (try 1):  17%|█▋        | 123k/710k [00:00<00:00, 1.20MB/s]
+  Downloading 2407.03563 (try 1):  81%|████████  | 573k/710k [00:00<00:00, 3.09MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=5/6.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:08<00:08,  8.99s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.15s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.87s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2407.03563", "chunks": 57, "title": "Learning Video Temporal Dynamics with Cross-Modal Attention for Robust Audio-Vis", "error": null}
+[retry] attempt 2/2 ids=['2108.09669', '2112.03562', '2302.14264', '2407.03563'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 12041.01it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2108.09669
+  Batches:   0%|          | 0/5 [00:00<?, ?it/s]
+  Batches:  20%|██        | 1/5 [00:00<00:02,  1.68it/s]
+  Batches:  40%|████      | 2/5 [00:01<00:01,  1.67it/s]
+  Batches:  60%|██████    | 3/5 [00:01<00:01,  1.98it/s]
+  Batches:  80%|████████  | 4/5 [00:02<00:00,  2.00it/s]
+  Batches: 100%|██████████| 5/5 [00:02<00:00,  2.43it/s]
+  Batches: 100%|██████████| 5/5 [00:02<00:00,  2.14it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2108.09669", "chunks": 39, "title": "Using Large Pre-Trained Models with Cross-Modal Attention for Multi-Modal Emotio", "error": null}
+  [worker] ingest 2112.03562
+  Batches:   0%|          | 0/7 [00:00<?, ?it/s]
+  Batches:  14%|█▍        | 1/7 [00:00<00:03,  1.60it/s]
+  Batches:  29%|██▊       | 2/7 [00:01<00:04,  1.15it/s]
+  Batches:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s]
+  Batches:  57%|█████▋    | 4/7 [00:03<00:02,  1.12it/s]
+  Batches:  71%|███████▏  | 5/7 [00:04<00:01,  1.27it/s]
+  Batches:  86%|████████▌ | 6/7 [00:04<00:00,  1.47it/s]
+  Batches: 100%|██████████| 7/7 [00:04<00:00,  1.71it/s]
+  Batches: 100%|██████████| 7/7 [00:04<00:00,  1.41it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2112.03562", "chunks": 56, "title": "CMA-CLIP: Cross-Modality Attention CLIP for Image-Text Classification", "error": null}
+  [worker] ingest 2302.14264
+  Batches:   0%|          | 0/7 [00:00<?, ?it/s]
+  Batches:  14%|█▍        | 1/7 [00:01<00:08,  1.37s/it]
+  Batches:  29%|██▊       | 2/7 [00:01<00:04,  1.09it/s]
+  Batches:  43%|████▎     | 3/7 [00:03<00:04,  1.01s/it]
+  Batches:  57%|█████▋    | 4/7 [00:03<00:02,  1.04it/s]
+  Batches:  71%|███████▏  | 5/7 [00:04<00:01,  1.19it/s]
+  Batches:  86%|████████▌ | 6/7 [00:05<00:00,  1.32it/s]
+  Batches: 100%|██████████| 7/7 [00:05<00:00,  1.81it/s]
+  Batches: 100%|██████████| 7/7 [00:05<00:00,  1.31it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2302.14264", "chunks": 52, "title": "RGB-D Grasp Detection via Depth Guided Learning with Cross-modal Attention", "error": null}
+  [worker] ingest 2407.03563
+  Batches:   0%|          | 0/8 [00:00<?, ?it/s]
+  Batches:  12%|█▎        | 1/8 [00:01<00:08,  1.23s/it]
+  Batches:  25%|██▌       | 2/8 [00:01<00:05,  1.11it/s]
+  Batches:  38%|███▊      | 3/8 [00:02<00:04,  1.01it/s]
+  Batches:  50%|█████     | 4/8 [00:04<00:05,  1.29s/it]
+  Batches:  62%|██████▎   | 5/8 [00:05<00:03,  1.15s/it]
+  Batches:  75%|███████▌  | 6/8 [00:06<00:01,  1.11it/s]
+  Batches:  88%|████████▊ | 7/8 [00:06<00:00,  1.21it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.18it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2407.03563", "chunks": 57, "title": "Learning Video Temporal Dynamics with Cross-Modal Attention for Robust Audio-Vis", "error": null}
+[fail→defer] 2108.09669 — no result from worker (killed or crash)
+[fail→defer] 2112.03562 — no result from worker (killed or crash)
+[fail→defer] 2302.14264 — no result from worker (killed or crash)
+[fail→defer] 2407.03563 — no result from worker (killed or crash)
+[mem] avail=9.4GiB total=16.0GiB reserve=1.5GiB usable=7.9GiB → embed_batch=48 micro_batch=4
+
+===== papers 221–224/3948  ['2504.15595', '2106.06939', '2609.02028', '2504.14573']  elapsed=139.2m  eta~589.7m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 23197.45it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2504.15595
+  Downloading 2504.15595 (try 1):   0%|          | 0.00/1.46M [00:00<?, ?B/s]
+  Downloading 2504.15595 (try 1):  72%|███████▏  | 1.06M/1.46M [00:00<00:00, 3.26MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=5/6.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:04<00:04,  4.64s/it]
+  Batches: 100%|██████████| 2/2 [00:04<00:00,  2.00s/it]
+  Batches: 100%|██████████| 2/2 [00:04<00:00,  2.40s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2504.15595", "chunks": 52, "title": "Grasping Deformable Objects via Reinforcement Learning with Cross-Modal Attentio", "error": null}
+  [worker] ingest 2106.06939
+  Downloading 2106.06939 (try 1):   0%|          | 0.00/873k [00:00<?, ?B/s]
+  Downloading 2106.06939 (try 1):  14%|█▍        | 123k/873k [00:00<00:00, 1.12MB/s]
+  Downloading 2106.06939 (try 1):  60%|██████    | 524k/873k [00:00<00:00, 2.76MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=5/6.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:10<00:10, 10.82s/it]
+  Batches: 100%|██████████| 2/2 [00:12<00:00,  5.25s/it]
+  Batches: 100%|██████████| 2/2 [00:12<00:00,  6.09s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2106.06939", "chunks": 62, "title": "Cross-Modal Attention Consistency for Video-Audio Unsupervised Learning", "error": null}
+  [worker] ingest 2609.02028
+  Downloading 2609.02028 (try 1):   0%|          | 0.00/5.52M [00:00<?, ?B/s]
+  Downloading 2609.02028 (try 1):   1%|          | 49.2k/5.52M [00:00<00:18, 302kB/s]
+  Downloading 2609.02028 (try 1):   5%|▍         | 270k/5.52M [00:00<00:04, 1.10MB/s]
+  Downloading 2609.02028 (try 1):   7%|▋         | 393k/5.52M [00:00<00:06, 803kB/s] 
+  Downloading 2609.02028 (try 1):   9%|▉         | 492k/5.52M [00:00<00:09, 550kB/s]
+  Downloading 2609.02028 (try 1):  10%|█         | 565k/5.52M [00:01<00:11, 444kB/s]
+  Downloading 2609.02028 (try 1):  11%|█▏        | 623k/5.52M [00:01<00:13, 370kB/s]
+  Downloading 2609.02028 (try 1):  12%|█▏        | 672k/5.52M [00:01<00:15, 316kB/s]
+  Downloading 2609.02028 (try 1):  13%|█▎        | 713k/5.52M [00:01<00:16, 288kB/s]
+  Downloading 2609.02028 (try 1):  14%|█▎        | 745k/5.52M [00:02<00:20, 228kB/s]
+  Downloading 2609.02028 (try 1):  14%|█▍        | 778k/5.52M [00:02<00:23, 201kB/s]
+  Downloading 2609.02028 (try 1):  15%|█▍        | 803k/5.52M [00:02<00:28, 165kB/s]
+  Downloading 2609.02028 (try 1):  15%|█▍        | 827k/5.52M [00:02<00:27, 173kB/s]
+  Downloading 2609.02028 (try 1):  15%|█▌        | 852k/5.52M [00:02<00:32, 142kB/s]
+  Downloading 2609.02028 (try 1):  16%|█▌        | 868k/5.52M [00:03<00:32, 141kB/s]
+  Downloading 2609.02028 (try 1):  16%|█▌        | 885k/5.52M [00:03<00:33, 137kB/s]
+  Downloading 2609.02028 (try 1):  16%|█▋        | 901k/5.52M [00:03<00:39, 116kB/s]
+  Downloading 2609.02028 (try 1):  17%|█▋        | 918k/5.52M [00:03<00:38, 121kB/s]
+  Downloading 2609.02028 (try 1):  17%|█▋        | 934k/5.52M [00:03<00:41, 110kB/s]
+  Downloading 2609.02028 (try 1):  17%|█▋        | 950k/5.52M [00:04<01:10, 65.1kB/s]
+  Downloading 2609.02028 (try 1):  18%|█▊        | 967k/5.52M [00:04<01:03, 71.2kB/s]
+  Downloading 2609.02028 (try 1):  18%|█▊        | 983k/5.52M [00:04<00:57, 78.8kB/s]
+  Downloading 2609.02028 (try 1):  18%|█▊        | 999k/5.52M [00:04<00:50, 89.9kB/s]
+  Downloading 2609.02028 (try 1):  18%|█▊        | 1.02M/5.52M [00:04<00:44, 102kB/s]
+  Downloading 2609.02028 (try 1):  19%|█▉        | 1.06M/5.52M [00:04<00:31, 140kB/s]
+  Downloading 2609.02028 (try 1):  20%|█▉        | 1.09M/5.52M [00:05<00:27, 159kB/s]
+  Downloading 2609.02028 (try 1):  20%|██        | 1.12M/5.52M [00:05<00:23, 186kB/s]
+  Downloading 2609.02028 (try 1):  21%|██        | 1.15M/5.52M [00:05<00:22, 198kB/s]
+  Downloading 2609.02028 (try 1):  21%|██        | 1.17M/5.52M [00:05<00:20, 208kB/s]
+  Downloading 2609.02028 (try 1):  22%|██▏       | 1.20M/5.52M [00:05<00:24, 180kB/s]
+  Downloading 2609.02028 (try 1):  22%|██▏       | 1.22M/5.52M [00:05<00:30, 142kB/s]
+  Downloading 2609.02028 (try 1):  23%|██▎       | 1.25M/5.52M [00:06<00:32, 133kB/s]
+  Downloading 2609.02028 (try 1):  23%|██▎       | 1.26M/5.52M [00:06<00:31, 136kB/s]
+  Downloading 2609.02028 (try 1):  23%|██▎       | 1.28M/5.52M [00:06<00:37, 112kB/s]
+  Downloading 2609.02028 (try 1):  23%|██▎       | 1.29M/5.52M [00:06<00:36, 116kB/s]
+[heartbeat] batch 2504.15595…(+3) running 45s / 1200s
+  Downloading 2609.02028 (try 1):  24%|██▍       | 1.31M/5.52M [00:06<00:43, 95.7kB/s]
+  Downloading 2609.02028 (try 1):  24%|██▍       | 1.33M/5.52M [00:07<00:51, 81.0kB/s]
+  Downloading 2609.02028 (try 1):  24%|██▍       | 1.34M/5.52M [00:07<00:53, 78.4kB/s]
+  Downloading 2609.02028 (try 1):  25%|██▍       | 1.36M/5.52M [00:07<00:54, 76.4kB/s]
+  Downloading 2609.02028 (try 1):  25%|██▍       | 1.38M/5.52M [00:07<00:49, 82.9kB/s]
+  Downloading 2609.02028 (try 1):  25%|██▌       | 1.39M/5.52M [00:07<00:42, 96.0kB/s]
+  Downloading 2609.02028 (try 1):  26%|██▌       | 1.41M/5.52M [00:07<00:41, 99.6kB/s]
+  Downloading 2609.02028 (try 1):  26%|██▌       | 1.43M/5.52M [00:08<00:40, 102kB/s] 
+  Downloading 2609.02028 (try 1):  26%|██▌       | 1.44M/5.52M [00:08<00:36, 112kB/s]
+  Downloading 2609.02028 (try 1):  26%|██▋       | 1.46M/5.52M [00:08<00:34, 119kB/s]
+  Downloading 2609.02028 (try 1):  27%|██▋       | 1.48M/5.52M [00:08<00:39, 102kB/s]
+  Downloading 2609.02028 (try 1):  27%|██▋       | 1.50M/5.52M [00:08<00:35, 112kB/s]
+  Downloading 2609.02028 (try 1):  27%|██▋       | 1.52M/5.52M [00:08<00:35, 111kB/s]
+  Downloading 2609.02028 (try 1):  28%|██▊       | 1.53M/5.52M [00:09<00:35, 112kB/s]
+  Downloading 2609.02028 (try 1):  28%|██▊       | 1.55M/5.52M [00:09<00:33, 118kB/s]
+  Downloading 2609.02028 (try 1):  28%|██▊       | 1.56M/5.52M [00:09<00:31, 125kB/s]
+  Downloading 2609.02028 (try 1):  29%|██▉       | 1.60M/5.52M [00:09<00:26, 148kB/s]
+  Downloading 2609.02028 (try 1):  29%|██▉       | 1.61M/5.52M [00:09<00:26, 147kB/s]
+  Downloading 2609.02028 (try 1):  30%|██▉       | 1.65M/5.52M [00:09<00:25, 153kB/s]
+  Downloading 2609.02028 (try 1):  30%|███       | 1.68M/5.52M [00:09<00:20, 187kB/s]
+  Downloading 2609.02028 (try 1):  31%|███       | 1.70M/5.52M [00:09<00:19, 199kB/s]
+  Downloading 2609.02028 (try 1):  31%|███▏      | 1.73M/5.52M [00:10<00:19, 190kB/s]
+  Downloading 2609.02028 (try 1):  32%|███▏      | 1.76M/5.52M [00:10<00:19, 193kB/s]
+  Downloading 2609.02028 (try 1):  33%|███▎      | 1.79M/5.52M [00:10<00:17, 216kB/s]
+  Downloading 2609.02028 (try 1):  33%|███▎      | 1.83M/5.52M [00:10<00:15, 237kB/s]
+  Downloading 2609.02028 (try 1):  34%|███▍      | 1.88M/5.52M [00:10<00:14, 257kB/s]
+  Downloading 2609.02028 (try 1):  35%|███▍      | 1.91M/5.52M [00:10<00:13, 271kB/s]
+  Downloading 2609.02028 (try 1):  35%|███▌      | 1.96M/5.52M [00:10<00:11, 316kB/s]
+  Downloading 2609.02028 (try 1):  36%|███▋      | 2.01M/5.52M [00:11<00:10, 339kB/s]
+  Downloading 2609.02028 (try 1):  37%|███▋      | 2.06M/5.52M [00:11<00:09, 354kB/s]
+  Downloading 2609.02028 (try 1):  38%|███▊      | 2.11M/5.52M [00:11<00:08, 384kB/s]
+  Downloading 2609.02028 (try 1):  39%|███▉      | 2.15M/5.52M [00:11<00:08, 399kB/s]
+  Downloading 2609.02028 (try 1):  40%|███▉      | 2.20M/5.52M [00:11<00:07, 421kB/s]
+  Downloading 2609.02028 (try 1):  41%|████      | 2.25M/5.52M [00:11<00:07, 437kB/s]
+  Downloading 2609.02028 (try 1):  42%|████▏     | 2.30M/5.52M [00:11<00:07, 446kB/s]
+  Downloading 2609.02028 (try 1):  43%|████▎     | 2.37M/5.52M [00:11<00:06, 458kB/s]
+  Downloading 2609.02028 (try 1):  44%|████▍     | 2.42M/5.52M [00:11<00:06, 483kB/s]
+  Downloading 2609.02028 (try 1):  45%|████▌     | 2.49M/5.52M [00:12<00:05, 512kB/s]
+  Downloading 2609.02028 (try 1):  46%|████▌     | 2.55M/5.52M [00:12<00:05, 528kB/s]
+  Downloading 2609.02028 (try 1):  48%|████▊     | 2.62M/5.52M [00:12<00:05, 559kB/s]
+  Downloading 2609.02028 (try 1):  49%|████▉     | 2.70M/5.52M [00:12<00:05, 562kB/s]
+  Downloading 2609.02028 (try 1):  50%|█████     | 2.79M/5.52M [00:12<00:04, 612kB/s]
+  Downloading 2609.02028 (try 1):  52%|█████▏    | 2.87M/5.52M [00:12<00:04, 626kB/s]
+  Downloading 2609.02028 (try 1):  53%|█████▎    | 2.93M/5.52M [00:12<00:04, 627kB/s]
+  Downloading 2609.02028 (try 1):  55%|█████▍    | 3.01M/5.52M [00:12<00:03, 670kB/s]
+  Downloading 2609.02028 (try 1):  56%|█████▌    | 3.10M/5.52M [00:12<00:03, 702kB/s]
+  Downloading 2609.02028 (try 1):  57%|█████▋    | 3.17M/5.52M [00:13<00:04, 486kB/s]
+  Downloading 2609.02028 (try 1):  59%|█████▉    | 3.25M/5.52M [00:13<00:04, 554kB/s]
+  Downloading 2609.02028 (try 1):  60%|██████    | 3.33M/5.52M [00:13<00:03, 596kB/s]
+  Downloading 2609.02028 (try 1):  62%|██████▏   | 3.42M/5.52M [00:13<00:03, 640kB/s]
+  Downloading 2609.02028 (try 1):  63%|██████▎   | 3.50M/5.52M [00:13<00:02, 686kB/s]
+  Downloading 2609.02028 (try 1):  65%|██████▍   | 3.58M/5.52M [00:13<00:02, 671kB/s]
+  Downloading 2609.02028 (try 1):  67%|██████▋   | 3.69M/5.52M [00:13<00:02, 767kB/s]
+  Downloading 2609.02028 (try 1):  69%|██████▊   | 3.78M/5.52M [00:13<00:02, 799kB/s]
+  Downloading 2609.02028 (try 1):  70%|███████   | 3.88M/5.52M [00:14<00:01, 833kB/s]
+  Downloading 2609.02028 (try 1):  72%|███████▏  | 4.00M/5.52M [00:14<00:01, 902kB/s]
+  Downloading 2609.02028 (try 1):  74%|███████▍  | 4.10M/5.52M [00:14<00:01, 899kB/s]
+  Downloading 2609.02028 (try 1):  76%|███████▋  | 4.21M/5.52M [00:14<00:01, 892kB/s]
+  Downloading 2609.02028 (try 1):  78%|███████▊  | 4.33M/5.52M [00:14<00:01, 914kB/s]
+  Downloading 2609.02028 (try 1):  80%|████████  | 4.42M/5.52M [00:14<00:01, 909kB/s]
+  Downloading 2609.02028 (try 1):  82%|████████▏ | 4.54M/5.52M [00:14<00:01, 918kB/s]
+  Downloading 2609.02028 (try 1):  84%|████████▍ | 4.65M/5.52M [00:14<00:00, 964kB/s]
+  Downloading 2609.02028 (try 1):  87%|████████▋ | 4.78M/5.52M [00:14<00:00, 1.03MB/s]
+  Downloading 2609.02028 (try 1):  89%|████████▉ | 4.92M/5.52M [00:15<00:00, 1.07MB/s]
+  Downloading 2609.02028 (try 1):  92%|█████████▏| 5.06M/5.52M [00:15<00:00, 1.16MB/s]
+  Downloading 2609.02028 (try 1):  94%|█████████▍| 5.19M/5.52M [00:15<00:00, 1.16MB/s]
+  Downloading 2609.02028 (try 1):  96%|█████████▋| 5.32M/5.52M [00:15<00:00, 1.11MB/s]
+  Downloading 2609.02028 (try 1):  99%|█████████▊| 5.45M/5.52M [00:15<00:00, 1.13MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=2/3.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=10/11.
+  OCR on page.number=13/14.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:11<00:11, 11.22s/it]
+  Batches: 100%|██████████| 2/2 [00:14<00:00,  6.50s/it]
+  Batches: 100%|██████████| 2/2 [00:14<00:00,  7.21s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2609.02028", "chunks": 82, "title": "Detecting Object Hallucinations in Large Vision-Language Models via Cross-Modal ", "error": null}
+  [worker] ingest 2504.14573
+  Downloading 2504.14573 (try 1):   0%|          | 0.00/1.03M [00:00<?, ?B/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=2/3.
+  OCR on page.number=3/4.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=10/11.
+  OCR on page.number=13/14.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.10s/it]
+  Batches: 100%|██████████| 1/1 [00:02<00:00,  2.10s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2504.14573", "chunks": 25, "title": "Modality Selection and Skill Segmentation via Cross-Modality Attention", "error": null}
+[retry] attempt 2/2 ids=['2504.15595', '2106.06939', '2609.02028', '2504.14573'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11804.16it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2504.15595
+  Batches:   0%|          | 0/7 [00:00<?, ?it/s]
+  Batches:  14%|█▍        | 1/7 [00:00<00:03,  1.51it/s]
+  Batches:  29%|██▊       | 2/7 [00:01<00:03,  1.38it/s]
+  Batches:  43%|████▎     | 3/7 [00:02<00:02,  1.36it/s]
+  Batches:  57%|█████▋    | 4/7 [00:02<00:02,  1.41it/s]
+  Batches:  71%|███████▏  | 5/7 [00:03<00:01,  1.60it/s]
+  Batches:  86%|████████▌ | 6/7 [00:03<00:00,  1.69it/s]
+  Batches: 100%|██████████| 7/7 [00:03<00:00,  2.26it/s]
+  Batches: 100%|██████████| 7/7 [00:03<00:00,  1.76it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2504.15595", "chunks": 52, "title": "Grasping Deformable Objects via Reinforcement Learning with Cross-Modal Attentio", "error": null}
+  [worker] ingest 2106.06939
+  Batches:   0%|          | 0/8 [00:00<?, ?it/s]
+  Batches:  12%|█▎        | 1/8 [00:00<00:04,  1.57it/s]
+  Batches:  25%|██▌       | 2/8 [00:01<00:04,  1.23it/s]
+  Batches:  38%|███▊      | 3/8 [00:03<00:06,  1.20s/it]
+  Batches:  50%|█████     | 4/8 [00:03<00:04,  1.02s/it]
+  Batches:  62%|██████▎   | 5/8 [00:04<00:02,  1.15it/s]
+  Batches:  75%|███████▌  | 6/8 [00:05<00:01,  1.29it/s]
+  Batches:  88%|████████▊ | 7/8 [00:05<00:00,  1.28it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.58it/s]
+  Batches: 100%|██████████| 8/8 [00:06<00:00,  1.27it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2106.06939", "chunks": 62, "title": "Cross-Modal Attention Consistency for Video-Audio Unsupervised Learning", "error": null}
+  [worker] ingest 2609.02028
+  Batches:   0%|          | 0/11 [00:00<?, ?it/s]
+  Batches:   9%|▉         | 1/11 [00:00<00:08,  1.18it/s]
+  Batches:  18%|█▊        | 2/11 [00:02<00:14,  1.59s/it]
+  Batches:  27%|██▋       | 3/11 [00:04<00:13,  1.74s/it]
+  Batches:  36%|███▋      | 4/11 [00:06<00:10,  1.54s/it]
+  Batches:  45%|████▌     | 5/11 [00:07<00:08,  1.34s/it]
+  Batches:  55%|█████▍    | 6/11 [00:07<00:05,  1.11s/it]
+  Batches:  64%|██████▎   | 7/11 [00:08<00:03,  1.05it/s]
+  Batches:  73%|███████▎  | 8/11 [00:09<00:02,  1.07it/s]
+  Batches:  82%|████████▏ | 9/11 [00:09<00:01,  1.29it/s]
+  Batches:  91%|█████████ | 10/11 [00:09<00:00,  1.63it/s]
+  Batches: 100%|██████████| 11/11 [00:10<00:00,  1.10it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2609.02028", "chunks": 82, "title": "Detecting Object Hallucinations in Large Vision-Language Models via Cross-Modal ", "error": null}
+  [worker] ingest 2504.14573
+  Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+  Batches:  25%|██▌       | 1/4 [00:00<00:02,  1.37it/s]
+  Batches:  50%|█████     | 2/4 [00:01<00:01,  1.48it/s]
+  Batches:  75%|███████▌  | 3/4 [00:01<00:00,  1.85it/s]
+  Batches: 100%|██████████| 4/4 [00:01<00:00,  2.23it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2504.14573", "chunks": 25, "title": "Modality Selection and Skill Segmentation via Cross-Modality Attention", "error": null}
+[fail→defer] 2504.15595 — no result from worker (killed or crash)
+[fail→defer] 2106.06939 — no result from worker (killed or crash)
+[fail→defer] 2609.02028 — no result from worker (killed or crash)
+[fail→defer] 2504.14573 — no result from worker (killed or crash)
+[mem] avail=9.8GiB total=16.0GiB reserve=1.5GiB usable=8.3GiB → embed_batch=48 micro_batch=4
+
+===== papers 225–228/3948  ['2302.08670', '2508.13327', '2606.09271', '2502.17028']  elapsed=141.4m  eta~587.5m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 24440.94it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2302.08670
+  Downloading 2302.08670 (try 1):   0%|          | 0.00/646k [00:00<?, ?B/s]
+  Downloading 2302.08670 (try 1):  10%|█         | 65.5k/646k [00:00<00:00, 636kB/s]
+  Downloading 2302.08670 (try 1):  47%|████▋     | 303k/646k [00:00<00:00, 1.63MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=1/2.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=11/12.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+  Batches:  50%|█████     | 1/2 [00:06<00:06,  6.81s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.46s/it]
+  Batches: 100%|██████████| 2/2 [00:09<00:00,  4.81s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2302.08670", "chunks": 71, "title": "Cascaded information enhancement and cross-modal attention feature fusion for mu", "error": null}
+  [worker] ingest 2508.13327
+  Downloading 2508.13327 (try 1):   0%|          | 0.00/444k [00:00<?, ?B/s]
+  Downloading 2508.13327 (try 1):  26%|██▌       | 115k/444k [00:00<00:00, 1.09MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=0/1.
+  OCR on page.number=1/2.
+  OCR on page.number=5/6.
+  OCR on page.number=6/7.
+  OCR on page.number=11/12.
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.40s/it]
+  Batches: 100%|██████████| 1/1 [00:04<00:00,  4.40s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2508.13327", "chunks": 30, "title": "Towards Unified Multimodal Financial Forecasting: Integrating Sentiment Embeddin", "error": null}
+  [worker] ingest 2606.09271
+  Downloading 2606.09271 (try 1):   0%|          | 0.00/1.12M [00:00<?, ?B/s]
+  Downloading 2606.09271 (try 1):   8%|▊         | 90.1k/1.12M [00:00<00:01, 859kB/s]
+  Downloading 2606.09271 (try 1):  42%|████▏     | 467k/1.12M [00:00<00:00, 2.39MB/s]
+  Downloading 2606.09271 (try 1):  95%|█████████▍| 1.06M/1.12M [00:00<00:00, 2.71MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=4/5.
+  Batches:   0%|          | 0/2 [00:00<?, ?it/s]
+[heartbeat] batch 2302.08670…(+3) running 46s / 1200s
+  Batches:  50%|█████     | 1/2 [00:07<00:07,  7.12s/it]
+  Batches: 100%|██████████| 2/2 [00:10<00:00,  4.78s/it]
+  Batches: 100%|██████████| 2/2 [00:10<00:00,  5.13s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2606.09271", "chunks": 78, "title": "Multi-View Speech Representation Learning for Parkinson's Disease Detection Usin", "error": null}
+  [worker] ingest 2502.17028
+  Downloading 2502.17028 (try 1):   0%|          | 0.00/10.3M [00:00<?, ?B/s]
+  Downloading 2502.17028 (try 1):   5%|▍         | 508k/10.3M [00:00<00:01, 5.01MB/s]
+  Downloading 2502.17028 (try 1):  10%|█         | 1.06M/10.3M [00:00<00:04, 2.28MB/s]
+  Downloading 2502.17028 (try 1):  14%|█▍        | 1.46M/10.3M [00:00<00:03, 2.73MB/s]
+  Downloading 2502.17028 (try 1):  18%|█▊        | 1.87M/10.3M [00:00<00:02, 3.08MB/s]
+  Downloading 2502.17028 (try 1):  22%|██▏       | 2.24M/10.3M [00:00<00:03, 2.56MB/s]
+  Downloading 2502.17028 (try 1):  26%|██▌       | 2.69M/10.3M [00:00<00:02, 2.99MB/s]
+  Downloading 2502.17028 (try 1):  30%|██▉       | 3.04M/10.3M [00:01<00:02, 2.95MB/s]
+  Downloading 2502.17028 (try 1):  33%|███▎      | 3.37M/10.3M [00:01<00:02, 2.55MB/s]
+  Downloading 2502.17028 (try 1):  36%|███▌      | 3.65M/10.3M [00:01<00:02, 2.22MB/s]
+  Downloading 2502.17028 (try 1):  38%|███▊      | 3.90M/10.3M [00:01<00:02, 2.18MB/s]
+  Downloading 2502.17028 (try 1):  40%|████      | 4.14M/10.3M [00:01<00:03, 1.88MB/s]
+  Downloading 2502.17028 (try 1):  42%|████▏     | 4.34M/10.3M [00:01<00:03, 1.51MB/s]
+  Downloading 2502.17028 (try 1):  44%|████▍     | 4.51M/10.3M [00:02<00:04, 1.15MB/s]
+  Downloading 2502.17028 (try 1):  45%|████▌     | 4.65M/10.3M [00:02<00:06, 895kB/s] 
+  Downloading 2502.17028 (try 1):  46%|████▋     | 4.77M/10.3M [00:02<00:06, 824kB/s]
+  Downloading 2502.17028 (try 1):  48%|████▊     | 4.88M/10.3M [00:02<00:06, 876kB/s]
+  Downloading 2502.17028 (try 1):  49%|████▉     | 5.01M/10.3M [00:02<00:05, 954kB/s]
+  Downloading 2502.17028 (try 1):  50%|████▉     | 5.13M/10.3M [00:03<00:05, 968kB/s]
+  Downloading 2502.17028 (try 1):  51%|█████     | 5.26M/10.3M [00:03<00:04, 1.03MB/s]
+  Downloading 2502.17028 (try 1):  52%|█████▏    | 5.37M/10.3M [00:03<00:04, 1.01MB/s]
+  Downloading 2502.17028 (try 1):  54%|█████▎    | 5.51M/10.3M [00:03<00:04, 1.07MB/s]
+  Downloading 2502.17028 (try 1):  55%|█████▍    | 5.62M/10.3M [00:03<00:04, 986kB/s] 
+  Downloading 2502.17028 (try 1):  56%|█████▌    | 5.73M/10.3M [00:03<00:04, 951kB/s]
+  Downloading 2502.17028 (try 1):  57%|█████▋    | 5.85M/10.3M [00:03<00:04, 1.01MB/s]
+  Downloading 2502.17028 (try 1):  58%|█████▊    | 5.96M/10.3M [00:03<00:04, 1.05MB/s]
+  Downloading 2502.17028 (try 1):  59%|█████▉    | 6.08M/10.3M [00:03<00:04, 1.04MB/s]
+  Downloading 2502.17028 (try 1):  61%|██████    | 6.24M/10.3M [00:04<00:03, 1.18MB/s]
+  Downloading 2502.17028 (try 1):  62%|██████▏   | 6.37M/10.3M [00:04<00:03, 1.06MB/s]
+  Downloading 2502.17028 (try 1):  63%|██████▎   | 6.50M/10.3M [00:04<00:03, 1.13MB/s]
+  Downloading 2502.17028 (try 1):  65%|██████▍   | 6.63M/10.3M [00:04<00:03, 1.11MB/s]
+  Downloading 2502.17028 (try 1):  66%|██████▌   | 6.75M/10.3M [00:04<00:03, 1.10MB/s]
+  Downloading 2502.17028 (try 1):  67%|██████▋   | 6.86M/10.3M [00:04<00:03, 1.07MB/s]
+  Downloading 2502.17028 (try 1):  68%|██████▊   | 6.98M/10.3M [00:04<00:03, 1.03MB/s]
+  Downloading 2502.17028 (try 1):  69%|██████▉   | 7.09M/10.3M [00:04<00:03, 979kB/s] 
+  Downloading 2502.17028 (try 1):  70%|███████   | 7.23M/10.3M [00:04<00:02, 1.08MB/s]
+  Downloading 2502.17028 (try 1):  72%|███████▏  | 7.35M/10.3M [00:05<00:03, 939kB/s] 
+  Downloading 2502.17028 (try 1):  74%|███████▎  | 7.56M/10.3M [00:05<00:02, 1.21MB/s]
+  Downloading 2502.17028 (try 1):  75%|███████▍  | 7.69M/10.3M [00:05<00:02, 1.21MB/s]
+  Downloading 2502.17028 (try 1):  76%|███████▌  | 7.82M/10.3M [00:05<00:02, 1.20MB/s]
+  Downloading 2502.17028 (try 1):  77%|███████▋  | 7.95M/10.3M [00:05<00:01, 1.21MB/s]
+  Downloading 2502.17028 (try 1):  79%|███████▊  | 8.09M/10.3M [00:05<00:01, 1.18MB/s]
+  Downloading 2502.17028 (try 1):  80%|███████▉  | 8.22M/10.3M [00:05<00:01, 1.21MB/s]
+  Downloading 2502.17028 (try 1):  82%|████████▏ | 8.43M/10.3M [00:05<00:01, 1.25MB/s]
+  Downloading 2502.17028 (try 1):  84%|████████▍ | 8.61M/10.3M [00:06<00:01, 1.37MB/s]
+  Downloading 2502.17028 (try 1):  85%|████████▌ | 8.75M/10.3M [00:06<00:01, 1.38MB/s]
+  Downloading 2502.17028 (try 1):  87%|████████▋ | 8.89M/10.3M [00:06<00:01, 1.16MB/s]
+  Downloading 2502.17028 (try 1):  88%|████████▊ | 9.01M/10.3M [00:06<00:01, 1.15MB/s]
+  Downloading 2502.17028 (try 1):  90%|████████▉ | 9.20M/10.3M [00:06<00:00, 1.32MB/s]
+  Downloading 2502.17028 (try 1):  91%|█████████▏| 9.38M/10.3M [00:06<00:00, 1.31MB/s]
+  Downloading 2502.17028 (try 1):  94%|█████████▎| 9.61M/10.3M [00:06<00:00, 1.54MB/s]
+  Downloading 2502.17028 (try 1):  95%|█████████▌| 9.77M/10.3M [00:06<00:00, 1.36MB/s]
+  Downloading 2502.17028 (try 1):  97%|█████████▋| 9.95M/10.3M [00:07<00:00, 1.38MB/s]
+  Downloading 2502.17028 (try 1):  98%|█████████▊| 10.1M/10.3M [00:07<00:00, 1.29MB/s]
+  Downloading 2502.17028 (try 1): 100%|█████████▉| 10.2M/10.3M [00:07<00:00, 1.05MB/s]
+  Using Tesseract for OCR processing.
+  OCR on page.number=1/2.
+  OCR on page.number=2/3.
+  OCR on page.number=7/8.
+  OCR on page.number=19/20.
+  Batches:   0%|          | 0/3 [00:00<?, ?it/s]
+  Batches:  33%|███▎      | 1/3 [00:05<00:10,  5.48s/it]
+  Batches:  67%|██████▋   | 2/3 [00:12<00:06,  6.24s/it]
+  Batches: 100%|██████████| 3/3 [00:12<00:00,  3.55s/it]
+  Batches: 100%|██████████| 3/3 [00:12<00:00,  4.20s/it]WORKER_RESULT {"ok": true, "arxiv_id": "2502.17028", "chunks": 102, "title": "Distributional Vision-Language Alignment by Cauchy-Schwarz Divergence", "error": null}
+[retry] attempt 2/2 ids=['2302.08670', '2508.13327', '2606.09271', '2502.17028'] batch=8
+[run] micro=4 embed_batch=8 timeout=1200s
+  [worker] ids=4 force=False batch=8
+  [worker] loading embedding model…
+  [embed] Loading google/embeddinggemma-2 on mps …
+  Loading weights: 100%|██████████| 1376/1376 [00:00<00:00, 11720.38it/s][embed] Ready. full_dim=768  active_dim=768  model=google/embeddinggemma-2
+  [worker] model ready
+  [worker] ingest 2302.08670
+  Batches:   0%|          | 0/9 [00:00<?, ?it/s]
+  Batches:  11%|█         | 1/9 [00:01<00:08,  1.09s/it]
+  Batches:  22%|██▏       | 2/9 [00:01<00:06,  1.06it/s]
+  Batches:  33%|███▎      | 3/9 [00:02<00:04,  1.27it/s]
+  Batches:  44%|████▍     | 4/9 [00:03<00:03,  1.27it/s]
+  Batches:  56%|█████▌    | 5/9 [00:04<00:03,  1.33it/s]
+  Batches:  67%|██████▋   | 6/9 [00:04<00:02,  1.39it/s]
+  Batches:  78%|███████▊  | 7/9 [00:05<00:01,  1.48it/s]
+  Batches:  89%|████████▉ | 8/9 [00:06<00:00,  1.28it/s]
+  Batches: 100%|██████████| 9/9 [00:06<00:00,  1.64it/s]
+  Batches: 100%|██████████| 9/9 [00:06<00:00,  1.38it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2302.08670", "chunks": 71, "title": "Cascaded information enhancement and cross-modal attention feature fusion for mu", "error": null}
+  [worker] ingest 2508.13327
+  Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+  Batches:  25%|██▌       | 1/4 [00:01<00:03,  1.13s/it]
+  Batches:  50%|█████     | 2/4 [00:02<00:02,  1.14s/it]
+  Batches:  75%|███████▌  | 3/4 [00:02<00:00,  1.10it/s]
+  Batches: 100%|██████████| 4/4 [00:03<00:00,  1.39it/s]
+  Batches: 100%|██████████| 4/4 [00:03<00:00,  1.20it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2508.13327", "chunks": 30, "title": "Towards Unified Multimodal Financial Forecasting: Integrating Sentiment Embeddin", "error": null}
+  [worker] ingest 2606.09271
+  Batches:   0%|          | 0/10 [00:00<?, ?it/s]
+  Batches:  10%|█         | 1/10 [00:00<00:04,  2.13it/s]
+  Batches:  20%|██        | 2/10 [00:00<00:03,  2.42it/s]
+  Batches:  30%|███       | 3/10 [00:01<00:03,  2.08it/s]
+  Batches:  40%|████      | 4/10 [00:02<00:03,  1.70it/s]
+  Batches:  50%|█████     | 5/10 [00:03<00:04,  1.19it/s]
+  Batches:  60%|██████    | 6/10 [00:04<00:03,  1.10it/s]
+  Batches:  70%|███████   | 7/10 [00:04<00:02,  1.34it/s]
+  Batches:  80%|████████  | 8/10 [00:05<00:01,  1.39it/s]
+  Batches:  90%|█████████ | 9/10 [00:06<00:00,  1.32it/s]
+  Batches: 100%|██████████| 10/10 [00:06<00:00,  1.72it/s]
+  Batches: 100%|██████████| 10/10 [00:06<00:00,  1.52it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2606.09271", "chunks": 78, "title": "Multi-View Speech Representation Learning for Parkinson's Disease Detection Usin", "error": null}
+  [worker] ingest 2502.17028
+  Batches:   0%|          | 0/13 [00:00<?, ?it/s]
+  Batches:   8%|▊         | 1/13 [00:00<00:08,  1.40it/s]
+  Batches:  15%|█▌        | 2/13 [00:01<00:08,  1.35it/s]
+  Batches:  23%|██▎       | 3/13 [00:02<00:07,  1.30it/s]
+  Batches:  31%|███       | 4/13 [00:03<00:08,  1.09it/s]
+  Batches:  38%|███▊      | 5/13 [00:04<00:07,  1.08it/s]
+  Batches:  46%|████▌     | 6/13 [00:05<00:06,  1.08it/s]
+  Batches:  54%|█████▍    | 7/13 [00:06<00:05,  1.16it/s]
+  Batches:  62%|██████▏   | 8/13 [00:06<00:03,  1.26it/s]
+  Batches:  69%|██████▉   | 9/13 [00:07<00:03,  1.26it/s]
+  Batches:  77%|███████▋  | 10/13 [00:07<00:02,  1.44it/s]
+  Batches:  85%|████████▍ | 11/13 [00:08<00:01,  1.53it/s]
+  Batches:  92%|█████████▏| 12/13 [00:08<00:00,  1.71it/s]
+  Batches: 100%|██████████| 13/13 [00:09<00:00,  2.04it/s]
+  Batches: 100%|██████████| 13/13 [00:09<00:00,  1.42it/s]WORKER_RESULT {"ok": true, "arxiv_id": "2502.17028", "chunks": 102, "title": "Distributional Vision-Language Alignment by Cauchy-Schwarz Divergence", "error": null}
+[fail→defer] 2302.08670 — no result from worker (killed or crash)
+[fail→defer] 2508.13327 — no result from worker (killed or crash)
+[fail→defer] 2606.09271 — no result from worker (killed or crash)
+[fail→defer] 2502.17028 — no result from worker (killed or crash)
+[mem] avail=10.0GiB total=16.0GiB reserve=1.5GiB usable=8.5GiB → embed_batch=48 micro_batch=4
+
+===== papers 229–232/3948  ['2506.08990', '2502.19672', '2512.23243', '2410.14148']  elapsed=143.5m  eta~585.2m =====
+[run] micro=4 embed_batch=48 timeout=1200s
+  [worker] ids=4 force=False batch=48
+  [worker] loading embedding model…

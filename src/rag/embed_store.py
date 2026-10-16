@@ -323,21 +323,42 @@ def query_chunks(
 
 
 def list_ingested_papers() -> list[dict[str, Any]]:
+    """Return unique paper_ids in the RAG collection (paginated — not capped at 5k chunks)."""
     try:
         collection = get_collection(create=False)
     except Exception:
         return []
-    if collection.count() == 0:
+    total = collection.count()
+    if total == 0:
         return []
-    n = min(collection.count(), 5000)
-    res = collection.get(limit=n, include=["metadatas"])
     by_id: dict[str, str] = {}
-    for meta in res.get("metadatas") or []:
-        if not meta:
-            continue
-        pid = meta.get("paper_id") or ""
-        if pid and pid not in by_id:
-            by_id[pid] = meta.get("title") or ""
+    batch = 5000
+    offset = 0
+    while offset < total:
+        try:
+            res = collection.get(limit=batch, offset=offset, include=["metadatas"])
+        except TypeError:
+            # older chroma without offset: one shot (may under-count very large indexes)
+            res = collection.get(limit=min(total, batch), include=["metadatas"])
+            for meta in res.get("metadatas") or []:
+                if not meta:
+                    continue
+                pid = str(meta.get("paper_id") or "").strip()
+                if pid and pid not in by_id:
+                    by_id[pid] = meta.get("title") or ""
+            break
+        metas = res.get("metadatas") or []
+        if not metas:
+            break
+        for meta in metas:
+            if not meta:
+                continue
+            pid = str(meta.get("paper_id") or "").strip()
+            if pid and pid not in by_id:
+                by_id[pid] = meta.get("title") or ""
+        offset += len(metas)
+        if len(metas) < batch:
+            break
     return [{"paper_id": k, "title": v} for k, v in sorted(by_id.items())]
 
 

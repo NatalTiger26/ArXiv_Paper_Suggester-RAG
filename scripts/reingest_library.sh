@@ -601,18 +601,52 @@ all_ids = load_corpus_ids()
 done = load_id_set(done_file)
 failed_prior = load_id_set(fail_file)
 indexed = set() if redo_indexed else load_indexed_ids()
+
+# Sync: anything already in the RAG index counts as done (resume after crash /
+# old runs that wrote chunks but not done.txt)
+synced = 0
+if not redo_indexed:
+    for pid in indexed:
+        aid = str(pid).replace("arXiv:", "").split("v")[0].strip()
+        if aid and aid not in done:
+            append_id(done_file, aid)
+            done.add(aid)
+            synced += 1
+if synced:
+    print(f"[plan] synced {synced} already-indexed ids into done.txt", flush=True)
+
+# Disk presence (informational — PDF on disk ≠ done; avoids "re-download" fear)
+papers_dir = root / "data" / "papers"
+md_dir = root / "data" / "markdown"
+pdf_on_disk = set()
+md_on_disk = set()
+if papers_dir.is_dir():
+    for f in papers_dir.glob("*.pdf"):
+        pdf_on_disk.add(f.stem.replace("arXiv:", "").split("v")[0])
+if md_dir.is_dir():
+    for f in md_dir.glob("*.md"):
+        md_on_disk.add(f.stem.replace("arXiv:", "").split("v")[0])
+
 print(
-    f"[plan] library={len(all_ids)} done_file={len(done)} "
-    f"prior_fails={len(failed_prior)} indexed={len(indexed)}",
+    f"[plan] library={len(all_ids)}  done_file={len(done)}  "
+    f"RAG_indexed={len(indexed)}  prior_fails={len(failed_prior)}",
+    flush=True,
+)
+print(
+    f"[plan] on disk: pdfs={len(pdf_on_disk)}  markdown={len(md_on_disk)}  "
+    f"(existing PDF/MD are reused unless FORCE=1 — not re-downloaded)",
     flush=True,
 )
 
 fresh: list[str] = []
 deferred: list[str] = []
+skipped_done = 0
 for aid in all_ids:
     if not redo_done and aid in done:
+        skipped_done += 1
         continue
     if not redo_indexed and aid in indexed:
+        skipped_done += 1
         if aid not in done:
             append_id(done_file, aid)
             done.add(aid)
@@ -622,7 +656,6 @@ for aid in all_ids:
     else:
         fresh.append(aid)
 
-# session failures go to the end of *this* run as well
 pending = fresh + deferred
 total_pending = len(pending)
 if limit > 0:
@@ -630,8 +663,18 @@ if limit > 0:
 n = len(pending)
 
 print(
-    f"[plan] pending={total_pending} (fresh={len(fresh)} deferred_fails={len(deferred)}) "
-    f"session={n} force={force}",
+    f"[plan] SKIP already done/indexed: {skipped_done}",
+    flush=True,
+)
+print(
+    f"[plan] REMAINING this run: {n}  "
+    f"(fresh={len(fresh)} + deferred_fails={len(deferred)}; "
+    f"limit={'none' if limit <= 0 else limit})",
+    flush=True,
+)
+print(
+    f"[plan] force={force}  — library size stays {len(all_ids)}; "
+    f"only REMAINING are processed",
     flush=True,
 )
 if n == 0:
