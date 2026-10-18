@@ -62,3 +62,9 @@ results/rag_eval/last_eval.md
 
 # Streamlit local secrets (never commit real keys)
 .streamlit/secrets.toml
+/data
+data/chroma_corpus/chroma.sqlite3
+data/chroma_rag/chroma.sqlite3
+data/corpus.json
+data/embeddings/corpus_embeddings.json
+/data
