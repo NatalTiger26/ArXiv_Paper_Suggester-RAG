@@ -137,20 +137,45 @@ def embed_texts(model, texts: list[str], batch_size: int = 32) -> list[list[floa
 
 def build(args: argparse.Namespace) -> None:
     corpus = load_corpus()
-    model = load_model(args.model)
     ids = [paper_id(p) for p in corpus]
     texts = [text_for_embedding(p) for p in corpus]
-    print(f"Embedding {len(texts)} papers...")
-    t0 = time.time()
-    vectors = embed_texts(model, texts, batch_size=args.batch_size)
-    print(f"  embedded in {time.time() - t0:.1f}s  dim={len(vectors[0])}")
 
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    EMB_CACHE.write_text(
-        json.dumps({"model": args.model, "dim": len(vectors[0]), "ids": ids, "embeddings": vectors}),
-        encoding="utf-8",
-    )
-    print(f"Cached embeddings -> {EMB_CACHE}")
+    vectors = None
+    # Reuse disk cache when ids match (avoids re-embedding after Chroma-only failures)
+    if EMB_CACHE.exists() and not getattr(args, "force_embed", False):
+        try:
+            cached = json.loads(EMB_CACHE.read_text(encoding="utf-8"))
+            c_ids = cached.get("ids") or []
+            c_vecs = cached.get("embeddings") or []
+            if c_ids == ids and len(c_vecs) == len(ids) and c_vecs:
+                vectors = c_vecs
+                print(
+                    f"Reusing embedding cache ({len(vectors)} vectors, "
+                    f"dim={len(vectors[0])}, model={cached.get('model')})",
+                    flush=True,
+                )
+        except Exception as e:
+            print(f"[corpus_index] cache load skipped: {e}", flush=True)
+
+    if vectors is None:
+        model = load_model(args.model)
+        print(f"Embedding {len(texts)} papers...")
+        t0 = time.time()
+        vectors = embed_texts(model, texts, batch_size=args.batch_size)
+        print(f"  embedded in {time.time() - t0:.1f}s  dim={len(vectors[0])}")
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        EMB_CACHE.write_text(
+            json.dumps(
+                {
+                    "model": args.model or DEFAULT_MODEL,
+                    "dim": len(vectors[0]),
+                    "ids": ids,
+                    "embeddings": vectors,
+                }
+            ),
+            encoding="utf-8",
+        )
+        print(f"Cached embeddings -> {EMB_CACHE}")
 
     import chromadb
     from chromadb.config import Settings
@@ -200,7 +225,22 @@ def build(args: argparse.Namespace) -> None:
             "citation_count": str(p.get("citation_count") if p.get("citation_count") is not None else ""),
         })
         documents.append(text[:2000])
-    collection.add(ids=ids, embeddings=vectors, documents=documents, metadatas=metadatas)
+    # Chroma enforces a max upsert batch (often ~5461). Chunk large corpora.
+    chroma_batch = 2000
+    try:
+        chroma_batch = min(2000, int(client.get_max_batch_size()))
+    except Exception:
+        pass
+    n = len(ids)
+    for start in range(0, n, chroma_batch):
+        end = min(start + chroma_batch, n)
+        collection.add(
+            ids=ids[start:end],
+            embeddings=vectors[start:end],
+            documents=documents[start:end],
+            metadatas=metadatas[start:end],
+        )
+        print(f"  chroma add {end}/{n}", flush=True)
     print(f"Chroma index ready  n={collection.count()}")
     print('Try: python src/corpus_index.py query "mechanistic interpretability circuits"')
 
@@ -262,6 +302,11 @@ def main():
 
     b = sub.add_parser("build")
     b.add_argument("--batch-size", type=int, default=32)
+    b.add_argument(
+        "--force-embed",
+        action="store_true",
+        help="Ignore data/embeddings/corpus_embeddings.json and re-embed",
+    )
 
     q = sub.add_parser("query")
     q.add_argument("query")

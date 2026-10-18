@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import contextlib
+import io
+import os
 from pathlib import Path
 
 from .config import MARKDOWN_DIR
@@ -13,23 +16,51 @@ def markdown_path_for(arxiv_id: str) -> Path:
     return MARKDOWN_DIR / f"{safe}.md"
 
 
-def _has_usable_text_layer(pdf_path: Path, sample_pages: int = 3) -> bool:
+def _has_usable_text_layer(pdf_path: Path, sample_pages: int = 5) -> bool:
     """True if the PDF already has a reasonable text layer (skip OCR)."""
     try:
         import pymupdf
     except ImportError:
-        return True  # let pymupdf4llm decide
+        return True
     try:
         doc = pymupdf.open(str(pdf_path))
-        n = min(sample_pages, len(doc))
+        n = min(sample_pages, max(len(doc), 1))
         chars = 0
         for i in range(n):
             chars += len(doc[i].get_text("text") or "")
         doc.close()
-        # ~200 chars/page average → digital text layer present
-        return chars >= 150 * n
+        # Digital arXiv PDFs usually have hundreds of chars per page.
+        return chars >= 120 * n
     except Exception:
         return True
+
+
+def _to_markdown_quiet(pdf_path: Path, *, force_ocr: bool) -> str:
+    import pymupdf4llm
+
+    kwargs = {}
+    # Prefer explicit no-OCR when the library supports it
+    if not force_ocr:
+        try:
+            return pymupdf4llm.to_markdown(str(pdf_path), force_ocr=False)
+        except TypeError:
+            pass
+        try:
+            return pymupdf4llm.to_markdown(str(pdf_path), ocr=False)
+        except TypeError:
+            pass
+    # Swallow noisy OCR progress lines on stderr/stdout when possible
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+        try:
+            if force_ocr:
+                try:
+                    return pymupdf4llm.to_markdown(str(pdf_path), force_ocr=True)
+                except TypeError:
+                    return pymupdf4llm.to_markdown(str(pdf_path))
+            return pymupdf4llm.to_markdown(str(pdf_path))
+        except Exception:
+            return pymupdf4llm.to_markdown(str(pdf_path))
 
 
 def pdf_to_markdown(
@@ -59,24 +90,24 @@ def pdf_to_markdown(
         return md_path
 
     try:
-        import pymupdf4llm
+        import pymupdf4llm  # noqa: F401
     except ImportError:
         raise SystemExit(
             "pymupdf4llm is required for PDF→Markdown conversion.\n"
-            "  pip install pymupdf4llm"
+            "  uv add pymupdf4llm"
         )
 
-    # Prefer text layer — avoids Tesseract on born-digital arXiv PDFs
-    kwargs = {}
-    if _has_usable_text_layer(pdf_path):
-        # force_ocr=False is the default; explicit for clarity when supported
-        try:
-            md_text = pymupdf4llm.to_markdown(str(pdf_path), force_ocr=False)
-        except TypeError:
-            md_text = pymupdf4llm.to_markdown(str(pdf_path))
+    use_ocr = not _has_usable_text_layer(pdf_path)
+    if use_ocr:
+        print(f"  [pdf2md] OCR fallback for {pdf_path.name}", flush=True)
     else:
-        md_text = pymupdf4llm.to_markdown(str(pdf_path))
+        print(f"  [pdf2md] text-layer extract for {pdf_path.name}", flush=True)
 
+    # Optional: OS env can force OCR for debugging
+    if os.getenv("FORCE_PDF_OCR", "0") == "1":
+        use_ocr = True
+
+    md_text = _to_markdown_quiet(pdf_path, force_ocr=use_ocr)
     md_path.parent.mkdir(parents=True, exist_ok=True)
     md_path.write_text(md_text or "", encoding="utf-8")
     return md_path
@@ -87,4 +118,6 @@ def ensure_markdown(arxiv_id: str, force: bool = False) -> Path:
     from .download import download_paper
 
     pdf = download_paper(arxiv_id, force=force)
-    return pdf_to_markdown(pdf, arxiv_id=normalise_arxiv_id(arxiv_id) or arxiv_id, force=force)
+    return pdf_to_markdown(
+        pdf, arxiv_id=normalise_arxiv_id(arxiv_id) or arxiv_id, force=force
+    )

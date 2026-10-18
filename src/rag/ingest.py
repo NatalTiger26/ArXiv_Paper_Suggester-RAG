@@ -8,9 +8,9 @@ from typing import Iterable
 
 from .chunk import chunk_markdown, is_bad_title
 from .config import RANKINGS_PATH
-from .download import download_paper, fetch_arxiv_title, normalise_arxiv_id
+from .download import download_paper, fetch_arxiv_title, normalise_arxiv_id, pdf_path_for
 from .embed_store import load_embedding_model, upsert_chunks
-from .pdf_to_md import pdf_to_markdown
+from .pdf_to_md import markdown_path_for, pdf_to_markdown
 
 
 def resolve_title(arxiv_id: str, md_path: Path | None = None) -> str:
@@ -27,22 +27,102 @@ def resolve_title(arxiv_id: str, md_path: Path | None = None) -> str:
     return title or "Untitled"
 
 
+def _paper_in_rag(aid: str) -> tuple[bool, int]:
+    """Return (present, chunk_count) for this arXiv id in chroma_rag."""
+    try:
+        from .embed_store import get_collection
+
+        coll = get_collection(create=False)
+        # Prefer metadata filter; fall back to full list for older stores
+        try:
+            res = coll.get(where={"paper_id": aid}, include=["metadatas"], limit=5)
+            n = len(res.get("ids") or [])
+            if n == 0:
+                # count all matching via get without limit if small
+                res = coll.get(where={"paper_id": aid}, include=[])
+                n = len(res.get("ids") or [])
+            return (n > 0, n)
+        except Exception:
+            from .embed_store import list_ingested_papers
+
+            ids = {
+                str(p.get("paper_id") or p.get("arxiv_id") or "").strip()
+                for p in list_ingested_papers()
+            }
+            return (aid in ids, -1)
+    except Exception:
+        return (False, 0)
+
+
 def ingest_paper(
     arxiv_id: str,
     model=None,
     force_download: bool = False,
+    force_embed: bool = False,
 ) -> dict:
-    """Full pipeline for a single paper."""
+    """
+    Full pipeline for a single paper.
+
+    Skips work when artifacts already exist (unless force_*):
+      • PDF     — data/papers/{id}.pdf present and >1KB
+      • Markdown— data/markdown/{id}.md present, non-trivial, not older than PDF
+      • Embed   — paper_id already has chunks in chroma_rag (skip chunk+embed)
+    """
     aid = normalise_arxiv_id(arxiv_id)
     if not aid:
         return {"arxiv_id": arxiv_id, "ok": False, "error": "invalid id"}
 
     try:
+        # --- PDF ---
+        dest = pdf_path_for(aid)
+        pdf_reused = (
+            dest.exists() and dest.stat().st_size > 1000 and not force_download
+        )
         pdf = download_paper(aid, force=force_download)
+        if pdf_reused:
+            print(f"  [skip-download] PDF already on disk: {pdf.name}", flush=True)
+        else:
+            print(f"  [download] wrote {pdf.name}", flush=True)
+
+        # --- Markdown ---
+        md_dest = markdown_path_for(aid)
+        md_reused = (
+            not force_download
+            and md_dest.exists()
+            and md_dest.stat().st_size > 200
+            and md_dest.stat().st_mtime >= pdf.stat().st_mtime
+        )
         md_path = pdf_to_markdown(pdf, arxiv_id=aid, force=force_download)
+        if md_reused:
+            print(f"  [skip-pdf2md] Markdown already present: {md_path.name}", flush=True)
+        else:
+            print(f"  [pdf2md] wrote {md_path.name}", flush=True)
+
+        # --- Already embedded in RAG? ---
+        in_rag, n_existing = _paper_in_rag(aid)
+        if in_rag and not force_embed and not force_download:
+            title = resolve_title(aid, md_path)
+            print(
+                f"  [skip-embed] already in RAG"
+                + (f" (~{n_existing} chunks)" if n_existing > 0 else ""),
+                flush=True,
+            )
+            return {
+                "arxiv_id": aid,
+                "ok": True,
+                "title": title,
+                "pdf": str(pdf),
+                "markdown": str(md_path),
+                "chunks": n_existing if n_existing > 0 else 0,
+                "skipped_embed": True,
+                "reused_pdf": pdf_reused,
+                "reused_md": md_reused,
+            }
+
         title = resolve_title(aid, md_path)
         chunks = chunk_markdown(md_path, paper_id=aid, title=title)
         n = upsert_chunks(chunks, model=model)
+        print(f"  [embed] upserted {n} chunks", flush=True)
         return {
             "arxiv_id": aid,
             "ok": True,
@@ -50,18 +130,32 @@ def ingest_paper(
             "pdf": str(pdf),
             "markdown": str(md_path),
             "chunks": n,
+            "skipped_embed": False,
+            "reused_pdf": pdf_reused,
+            "reused_md": md_reused,
         }
     except Exception as e:
         return {"arxiv_id": aid, "ok": False, "error": str(e)}
 
 
-def ingest_papers(ids: Iterable[str], force_download: bool = False) -> list[dict]:
+def ingest_papers(
+    ids: Iterable[str],
+    force_download: bool = False,
+    force_embed: bool = False,
+) -> list[dict]:
     """Ingest many papers; load the embedding model once."""
     model = load_embedding_model()
     results = []
     for raw in ids:
         print(f"[ingest] {raw} …")
-        results.append(ingest_paper(raw, model=model, force_download=force_download))
+        results.append(
+            ingest_paper(
+                raw,
+                model=model,
+                force_download=force_download,
+                force_embed=force_embed,
+            )
+        )
     return results
 
 
@@ -98,22 +192,14 @@ def ids_from_personal_ranking(
             rows.append((score, aid, row.get("title") or ""))
 
     rows.sort(key=lambda x: (-x[0], x[1]))
-    seen = set()
-    out = []
-    for _, aid, _ in rows:
-        if aid not in seen:
-            seen.add(aid)
-            out.append(aid)
-        if len(out) >= top_n:
-            break
-    return out
+    return [aid for _, aid, _ in rows[:top_n]]
 
 
 def ingest_from_personal_ranking(
     top_n: int = 10,
     min_score: float = 4.0,
     force_download: bool = False,
+    force_embed: bool = False,
 ) -> list[dict]:
     ids = ids_from_personal_ranking(top_n=top_n, min_score=min_score)
-    print(f"[ingest] personal ranking → {len(ids)} ids (score>={min_score}, top_n={top_n})")
-    return ingest_papers(ids, force_download=force_download)
+    return ingest_papers(ids, force_download=force_download, force_embed=force_embed)

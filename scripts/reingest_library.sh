@@ -17,7 +17,7 @@
 #   FORCE=1  REDO_DONE=1  REDO_INDEXED=1  LIMIT=N
 #   SYSTEM_BUFFER_GB=0.5   PEAK_BUFFER_GB=1.0   (optimistic defaults)
 #   MIN_BATCH=8  MAX_BATCH=48
-#   MICRO_BATCH=4          papers per worker process (model loaded once)
+#   MICRO_BATCH=8          papers per worker (model once; raise for fewer reloads)
 #   PAPER_TIMEOUT_SEC=300  hard kill per micro-batch
 #   MAX_RETRIES=2
 #   STALL_LOG_SEC=45
@@ -41,7 +41,7 @@ SYSTEM_BUFFER_GB="${SYSTEM_BUFFER_GB:-0.5}"
 PEAK_BUFFER_GB="${PEAK_BUFFER_GB:-1.0}"
 MIN_BATCH="${MIN_BATCH:-8}"
 MAX_BATCH="${MAX_BATCH:-48}"
-MICRO_BATCH="${MICRO_BATCH:-4}"
+MICRO_BATCH="${MICRO_BATCH:-8}"
 MEM_WAIT_SEC="${MEM_WAIT_SEC:-20}"
 MEM_WAIT_MAX="${MEM_WAIT_MAX:-6}"
 PAPER_TIMEOUT_SEC="${PAPER_TIMEOUT_SEC:-300}"
@@ -601,9 +601,9 @@ all_ids = load_corpus_ids()
 done = load_id_set(done_file)
 failed_prior = load_id_set(fail_file)
 indexed = set() if redo_indexed else load_indexed_ids()
+trust_done = os.environ.get("TRUST_DONE", "0") == "1"
 
-# Sync: anything already in the RAG index counts as done (resume after crash /
-# old runs that wrote chunks but not done.txt)
+# Sync: anything already in the RAG index counts as done
 synced = 0
 if not redo_indexed:
     for pid in indexed:
@@ -614,6 +614,20 @@ if not redo_indexed:
             synced += 1
 if synced:
     print(f"[plan] synced {synced} already-indexed ids into done.txt", flush=True)
+
+false_done = (done & set(all_ids)) - indexed if not redo_indexed else set()
+if false_done and not trust_done:
+    print(
+        f"[plan] NOTE: {len(false_done)} library ids in done.txt but NOT in RAG — "
+        f"will RE-QUEUE (RAG is source of truth). "
+        f"Prefer: uv run python scripts/sync_rag_progress.py",
+        flush=True,
+    )
+elif false_done and trust_done:
+    print(
+        f"[plan] TRUST_DONE=1: keeping {len(false_done)} done-only skips",
+        flush=True,
+    )
 
 # Disk presence (informational — PDF on disk ≠ done; avoids "re-download" fear)
 papers_dir = root / "data" / "papers"
@@ -642,25 +656,43 @@ fresh: list[str] = []
 deferred: list[str] = []
 skipped_done = 0
 for aid in all_ids:
-    if not redo_done and aid in done:
-        skipped_done += 1
-        continue
+    # Primary: already in RAG full-text index
     if not redo_indexed and aid in indexed:
         skipped_done += 1
         if aid not in done:
             append_id(done_file, aid)
             done.add(aid)
         continue
+    # Secondary: done.txt only if TRUST_DONE=1 (or id is also indexed — handled above)
+    if not redo_done and aid in done and (trust_done or aid in indexed):
+        skipped_done += 1
+        continue
+    # done.txt but not in RAG → re-queue unless TRUST_DONE
     if aid in failed_prior:
         deferred.append(aid)
     else:
         fresh.append(aid)
 
+# Prefer on-disk PDFs first (skip download; often skip OCR path) — much faster.
+def _pdf_first(ids: list[str]) -> list[str]:
+    has, missing = [], []
+    for a in ids:
+        (has if a in pdf_on_disk else missing).append(a)
+    return has + missing
+
+fresh = _pdf_first(fresh)
+deferred = _pdf_first(deferred)
 pending = fresh + deferred
 total_pending = len(pending)
 if limit > 0:
     pending = pending[:limit]
 n = len(pending)
+n_pdf_ready = sum(1 for a in pending if a in pdf_on_disk)
+print(
+    f"[plan] queue order: PDF-on-disk first "
+    f"({n_pdf_ready}/{n} remaining already have PDF)",
+    flush=True,
+)
 
 print(
     f"[plan] SKIP already done/indexed: {skipped_done}",
@@ -688,6 +720,7 @@ print(
 print("", flush=True)
 
 times: list[float] = []
+paper_secs: list[float] = []
 ok = fail = skipped_mem = 0
 t_all = time.time()
 i = 0
@@ -712,14 +745,37 @@ while i < n:
     chunk = pending[i : i + mb]
     i += len(chunk)
 
-    elapsed = sum(times)
-    avg = (elapsed / max(1, ok + fail)) if (ok + fail) else 35.0
-    left = n - (i - len(chunk))
-    # rough: papers left / micro
-    eta = avg * max(1, (n - i + len(chunk)) / max(1, mb))
+    wall = time.time() - t_all
+    done_n = ok + fail
+    remaining = n - (i - len(chunk))  # including current chunk
+    # Per-paper samples: batch_wall / papers_in_batch stored in times as batch duration;
+    # convert to per-paper for median.
+    per_paper: list[float] = []
+    # We also store paper_secs list below after each batch
+    if paper_secs:
+        window = paper_secs[-30:]
+        window_sorted = sorted(window)
+        med = window_sorted[len(window_sorted) // 2]
+        p90 = window_sorted[int(0.9 * (len(window_sorted) - 1))]
+    else:
+        # Cold start: mix of PDF-ready vs download (heuristic seconds)
+        rest = pending[i - len(chunk) :]
+        n_has = sum(1 for a in rest if a in pdf_on_disk)
+        n_miss = max(0, len(rest) - n_has)
+        med = (n_has * 28.0 + n_miss * 55.0) / max(1, len(rest))
+        p90 = med * 1.6
+    # ETA = median * remaining (NOT divided by micro-batch — that under-estimated badly)
+    eta_med = med * remaining
+    eta_p90 = p90 * remaining
     print(
         f"\n===== papers {i - len(chunk) + 1}–{i}/{n}  "
-        f"{chunk}  elapsed={elapsed/60:.1f}m  eta~{eta/60:.1f}m =====",
+        f"ids={chunk} =====",
+        flush=True,
+    )
+    print(
+        f"[eta] wall={wall/60:.1f}m  done_session={done_n}  remaining={remaining}  "
+        f"~{med:.0f}s/paper (median)  ETA~{eta_med/60:.0f}m "
+        f"(p90~{eta_p90/60:.0f}m)  micro={mb}",
         flush=True,
     )
 
@@ -763,6 +819,8 @@ while i < n:
 
     dt = time.time() - t0
     times.append(dt)
+    n_in_batch = max(1, len(rows))
+    paper_secs.extend([dt / n_in_batch] * n_in_batch)
 
     for row in rows:
         aid = str(row.get("arxiv_id") or "")
