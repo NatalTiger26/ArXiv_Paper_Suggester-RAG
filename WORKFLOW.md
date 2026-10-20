@@ -1,177 +1,65 @@
-# Exact workflow — CLI and web
+# Workflow (CLI)
 
-All commands assume you are in the project root (the folder that contains `pyproject.toml` and `src/`).
+All commands from the project root. Use **`uv run`**.
 
----
-
-## 0. One-time setup
+## Setup
 
 ```bash
-cd "/path/to/ArXiv_Paper_Suggester"
-
 uv sync
-
-# Create .env if needed (do not commit secrets)
-# GEMINI_API_KEY=your_key_here
-# GEMINI_MODEL=gemini-3.8-flash   # or whatever your key supports
-# EMBEDDING_DIM=0                # 0 = full 768; use 512 only after reset-index
-
-# Confirm Streamlit is installed
-uv run python -c "import streamlit; print('streamlit', streamlit.__version__)"
+cp .env.example .env   # add GEMINI_API_KEY for generation
 ```
 
-Start the web UI (prefer the module form):
+## 1. Library
 
 ```bash
-uv run python -m streamlit run src/app.py
-```
-
-If you see `Failed to spawn: streamlit`, run `uv sync` (or `uv add streamlit`) and use the command above.
-
----
-
-## 1. Build a paper library (metadata)
-
-### Option A — search by keywords
-
-```bash
-uv run python src/corpus_builder.py search "mechanistic interpretability" -n 12 --build-index
-```
-
-- Saves papers into `data/corpus.json`
-- `--build-index` embeds titles/abstracts into `data/chroma_corpus` for ranking
-
-### Option B — explicit arXiv IDs
-
-```bash
+uv run python src/corpus_builder.py search "mechanistic interpretability" -n 15 --build-index
 uv run python src/corpus_builder.py from-ids 1806.07572 2501.16496 2304.14997 --build-index
-```
-
-### Status
-
-```bash
 uv run python src/corpus_builder.py status
-```
-
-### Rebuild recommend index only (after editing corpus)
-
-```bash
 uv run python src/corpus_builder.py rebuild-index
 ```
 
----
-
-## 2. Rank papers for an interest
+## 2. Rank
 
 ```bash
 uv run python src/recommend.py "mechanistic interpretability circuits" -k 8
+uv run python src/recommend.py "Grad-CAM" -k 10 --prefer-recent
 ```
 
-Useful flags:
+## 3. Full-text ingest
 
 ```bash
-uv run python src/recommend.py "neural tangent kernel" -k 10 --prefer-recent
-uv run python src/recommend.py "circuits" -k 8 --weights 0.65,0.10,0.20,0.05
-uv run python src/recommend.py "NTK" -k 8 --json
-```
-
-Requires a non-empty library **and** a built recommend index (`--build-index` or `rebuild-index`).
-
----
-
-## 3. Ingest full text for Q&A (RAG)
-
-Downloads PDF → Markdown → chunks → EmbeddingGemma 2 → `data/chroma_rag`.
-
-```bash
-uv run python -m src.rag.cli ingest 1806.07572 2501.16496 2304.14997
-```
-
-Force re-download / re-embed:
-
-```bash
-uv run python -m src.rag.cli ingest --force 1806.07572 2501.16496
-```
-
-From personal ranking CSV (if you have rankings):
-
-```bash
-# uses rankings/personal_importance.csv via the Python API / Library tab
-```
-
-### RAG status
-
-```bash
+uv run python -m src.rag.cli ingest 2304.14997 2501.16496
 uv run python -m src.rag.cli status
-uv run python -m src.rag.cli papers
 ```
 
-### If you changed `EMBEDDING_DIM`
+Overnight / large (resumable):
 
 ```bash
-uv run python -m src.rag.cli reset-index
-uv run python -m src.rag.cli ingest --force <ids…>
+bash scripts/reingest_overnight.sh
+# Ctrl+C stops after current batch; resume with the same command.
+# FRESH=1 only when intentionally resetting the RAG index.
 ```
 
----
-
-## 4. Ask a question
+## 4. Ask
 
 ```bash
-uv run python -m src.rag.cli ask "What is the neural tangent kernel and why does it matter?"
+uv run python -m src.rag.cli ask "What is circuit discovery?"
 ```
 
-Typical wall time: **10–20 seconds** (LLM). Retrieval alone is tens of milliseconds.
-
----
-
-## 5. Evaluation
+## 5. UI
 
 ```bash
-# Retrieval + dim sweep + report (no LLM cost)
-uv run python src/final_eval.py --retrieval-only
-
-# Cold generation + refusal + citation validity
-uv run python src/final_eval.py --with-generation --no-cache
-```
-
-Outputs:
-
-- `results/EVALUATION_REPORT.md`
-- `results/rag_eval/final_eval.json`
-- `results/rag_eval/dim_sweep.json`
-
----
-
-## End-to-end minimal path (copy-paste)
-
-```bash
-uv sync
-
-uv run python src/corpus_builder.py search "mechanistic interpretability" -n 12 --build-index
-
-uv run python src/recommend.py "mechanistic interpretability circuits" -k 8
-
-uv run python -m src.rag.cli ingest 2501.16496 2304.14997 1806.07572
-
-uv run python -m src.rag.cli status
-
-uv run python -m src.rag.cli ask "What are open problems in mechanistic interpretability?"
-
 uv run python -m streamlit run src/app.py
 ```
 
----
+## 6. Evaluate
 
-## When something feels stuck
+```bash
+uv run python src/final_eval.py --retrieval-only
+```
 
-| Symptom | Likely cause | What to do |
-|---------|--------------|------------|
-| No output for 1–2 min | First EmbeddingGemma load | Wait; check terminal |
-| Rank fails | Empty library or no index | `corpus_builder.py status` then `rebuild-index` |
-| Ask says not covered | No full-text ingest | `rag.cli ingest <ids>` |
-| Dimension error | `EMBEDDING_DIM` changed | `rag.cli reset-index` then re-ingest |
-| Streamlit spawn error | Deps not synced | `uv sync` then `python -m streamlit run …` |
-| Gemini errors | Key / model name | Check `.env` `GEMINI_API_KEY`, `GEMINI_MODEL` |
+## Reminders
 
-In the **web UI**, open **Activity log** at the top of the page — every major step is timestamped there and mirrored to the terminal.
+- Library ≠ RAG — ingest before full-text answers.
+- Rebuild indexes after embedding model or `EMBEDDING_DIM` changes.
+- Cloud demo may use MiniLM and a smaller library than local.

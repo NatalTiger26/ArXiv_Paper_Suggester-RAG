@@ -1,80 +1,51 @@
-# ArXiv Paper Suggester + RAG
+# Literature Discovery with Multi-Signal Ranking and Citation-Grounded RAG
 
-**Find papers. Rank them for your research interest. Read the full text. Ask questions with citations.**
+**Find papers for your research interest. Rank them with inspectable signals. Ingest full text only for what you select. Ask questions and get answers with citations.**
 
 [![Live demo](https://img.shields.io/badge/Streamlit-Live%20demo-FF4B4B?logo=streamlit&logoColor=white)](https://nataltiger26-arxiv-paper-suggester-rag-srcapp-olkakz.streamlit.app/)
 [![Python 3.10–3.12](https://img.shields.io/badge/Python-3.10%E2%80%933.12-blue?logo=python&logoColor=white)](#prerequisites)
 [![uv](https://img.shields.io/badge/package%20manager-uv-DE5FE9)](#install-uv)
 
-**Live demo:** [nataltiger26-arxiv-paper-suggester-rag (Streamlit)](https://nataltiger26-arxiv-paper-suggester-rag-srcapp-olkakz.streamlit.app/)
+**ConfAI 2026** poster project · Plaksha University · M.S. in AI · Supervisor: **Dr. Subrat Panda** · AI in Practice extended track
 
-A cold-start literature workspace: multi-signal arXiv recommendation, full-text PDF → Markdown → chunk → embed pipeline, and a grounded RAG assistant (Gemini primary, OpenAI-compatible failsafe). Ships with a **CLI** for diagnosis and batch work and a **Streamlit** UI (dark theme by default, light toggle) for demos and exploration.
-
-| Layer | Local (laptop) | Streamlit Community Cloud |
-|--------|----------------|---------------------------|
-| **Embeddings** | `google/embeddinggemma-2` (Matryoshka dim optional) | Auto **MiniLM** (`all-MiniLM-L6-v2`) — free tier RAM |
-| **Vector store** | Chroma (`data/chroma_corpus`, `data/chroma_rag`) | Same layout; ephemeral filesystem |
-| **Generation** | Gemini (`GEMINI_MODEL`, default `gemini-3.8-flash`) | Same; Secrets required |
-| **Failsafe LLM** | NVIDIA / any OpenAI-compatible endpoint | Optional |
-| **Package manager** | **[uv](https://docs.astral.sh/uv/)** | Cloud uses `uv.lock` / `requirements.txt` |
-
-> **Package manager:** this project is built around **`uv sync` / `uv run`**. Prefer those over `pip install`.
-
----
-
-## Table of contents
-
-1. [Why this exists](#why-this-exists)
-2. [What you can do](#what-you-can-do)
-3. [Architecture](#architecture)
-4. [Repository layout](#repository-layout)
-5. [Prerequisites](#prerequisites)
-6. [Install (uv)](#install-uv)
-7. [Configuration](#configuration)
-8. [Quick start](#quick-start)
-9. [End-to-end workflow](#end-to-end-workflow)
-10. [CLI reference](#cli-reference)
-11. [Web UI (Streamlit)](#web-ui-streamlit)
-12. [Embeddings & dimensions](#embeddings--dimensions)
-13. [Generation (Gemini + failsafe)](#generation-gemini--failsafe)
-14. [Evaluation](#evaluation)
-15. [Local health check](#local-health-check)
-16. [Deploy to Streamlit Cloud](#deploy-to-streamlit-cloud)
-17. [Troubleshooting](#troubleshooting)
-18. [Design choices](#design-choices)
-19. [Further reading](#further-reading)
+| | |
+|---|---|
+| **Live demo** | [Streamlit app](https://nataltiger26-arxiv-paper-suggester-rag-srcapp-olkakz.streamlit.app/) |
+| **Repository** | [github.com/NatalTiger26/ArXiv_Paper_Suggester-RAG](https://github.com/NatalTiger26/ArXiv_Paper_Suggester-RAG) |
 
 ---
 
 ## Why this exists
 
-Literature review for a new research direction is slow: search, skim abstracts, open PDFs, lose track of what you already read, and struggle to ask *precise* questions across papers.
+Literature work fails in two common ways:
 
-This project turns that into a single loop:
+1. **Discovery** — search returns long lists that are not ranked for *your* research narrative.
+2. **Grounding** — chat models answer fluently but often without faithful links to passages you can verify.
+
+This project closes the loop:
 
 1. **Discover** papers from arXiv (keywords or explicit IDs).
-2. **Rank** them for *your* interest (semantic + recency + citation + author signals).
-3. **Ingest** only the papers you care about (PDF → text → chunks → vectors).
-4. **Ask** grounded questions and get answers with **references** (arXiv id, section, score, snippet).
+2. **Rank** them for a free-text interest (semantic similarity + recency + citation impact + author continuity).
+3. **Ingest** full text only for papers you choose (PDF → Markdown → chunks → local embeddings).
+4. **Ask** questions over those chunks and receive answers with **paper-level citations** and a **coverage** cue when evidence is thin.
 
-It was extended as an **AI in Practice** style lab track: retrieval quality, caching, coverage gating, evaluation metrics (MRR, Recall@k, CIs, refusal), CLI + UI, and deployment constraints.
+Built for real laptops and demos: **CLI** for batch work and diagnosis, **Streamlit** for interactive use, reproducible **`uv`** environments.
 
 ---
 
-## What you can do
+## What you get
 
-| Capability | How |
-|------------|-----|
-| Cold-start library | `corpus_builder search` / `from-ids` |
-| Multi-signal recommend | `recommend.py` or **Recommend** tab |
-| Full-text ingest | `rag.cli ingest` or UI ingest / Quick demo |
-| Q&A with citations | `rag.cli ask` or **Ask** tab |
-| Unified UI | `streamlit run src/app.py` |
-| Health check | `bash scripts/check_local.sh` |
-| Rigorous eval | `final_eval.py` → `results/EVALUATION_REPORT.md` |
-| Cloud demo | Streamlit Community Cloud (MiniLM + Gemini) |
+| Capability | Entry point |
+|------------|-------------|
+| Build a paper library (metadata) | `src/corpus_builder.py search` / `from-ids` |
+| Multi-signal recommendation | `src/recommend.py` or UI **Recommend** |
+| Full-text ingest | `python -m src.rag.cli ingest` or UI |
+| Q&A with citations | `python -m src.rag.cli ask` or UI **Ask** |
+| Web app | `uv run python -m streamlit run src/app.py` |
+| Local health check | `bash scripts/check_local.sh` |
+| RAG evaluation | `src/final_eval.py` → `results/EVALUATION_REPORT.md` |
 
-**Important:** **Library ≠ full-text.** Ranking uses titles/abstracts. **Ask** only sees papers you **ingested**.
+**Important:** **Library ≠ full-text RAG.** Ranking uses titles and abstracts. **Ask** only sees papers you have **ingested**.
 
 ---
 
@@ -88,8 +59,7 @@ It was extended as an **AI in Practice** style lab track: retrieval quality, cac
                     │ corpus_builder  │──► data/corpus.json
                     │                 │──► data/chroma_corpus   (recommend index)
                     └────────┬────────┘
-                             │
-              interest text  │
+                             │ interest text
                              ▼
                     ┌─────────────────┐
                     │ ranking /       │──► ranked arXiv IDs
@@ -103,12 +73,11 @@ It was extended as an **AI in Practice** style lab track: retrieval quality, cac
                     │ section chunk   │
                     │ embed + Chroma  │──► data/chroma_rag
                     └────────┬────────┘
-                             │
-                    question │
+                             │ question
                              ▼
                     ┌─────────────────┐
                     │ retrieve chunks │
-                    │ Gemini / failsafe│──► answer + coverage + citations
+                    │ Gemini + failsafe│──► answer + coverage + citations
                     └─────────────────┘
 ```
 
@@ -117,9 +86,27 @@ It was extended as an **AI in Practice** style lab track: retrieval quality, cac
 | Index | Path | Content | Used by |
 |-------|------|---------|---------|
 | **Recommend** | `data/chroma_corpus` | Title + abstract embeddings | Rank / recommend |
-| **RAG** | `data/chroma_rag` | Full-text chunks | Ask / eval |
+| **RAG** | `data/chroma_rag` | Full-text chunks | Ask / evaluation |
 
-Changing **embedding model or dimension** requires rebuilding **both** indexes (vectors are not interchangeable).
+Changing **embedding model or dimension** requires rebuilding the affected index(es). Vectors from different models or dims are not interchangeable.
+
+### Design choice
+
+Only **abstracts** are indexed library-wide (cheap ranking at scale). **Full text** is ingested on demand so a laptop remains viable and RAG stays focused on papers the user actually selected.
+
+---
+
+## Stack
+
+| Layer | Local (laptop) | Streamlit Community Cloud |
+|--------|----------------|---------------------------|
+| **Embeddings** | `google/embeddinggemma-2` (optional Matryoshka dim) | Auto **MiniLM** (`all-MiniLM-L6-v2`) for free-tier RAM |
+| **Vector store** | Chroma under `data/` | Same layout; ephemeral disk |
+| **Generation** | Gemini (`GEMINI_MODEL`) | Same; set Secrets |
+| **Failsafe LLM** | OpenAI-compatible endpoint (e.g. NVIDIA) | Optional |
+| **Packages** | **[uv](https://docs.astral.sh/uv/)** (`uv sync` / `uv run`) | `uv.lock` / `requirements.txt` |
+
+> Prefer **`uv run …`** over bare `pip` / global `streamlit`.
 
 ---
 
@@ -127,46 +114,51 @@ Changing **embedding model or dimension** requires rebuilding **both** indexes (
 
 ```text
 ArXiv_Paper_Suggester/
-├── pyproject.toml           # uv project + dependencies
-├── requirements.txt         # mirror for Streamlit Cloud
-├── packages.txt             # apt: tesseract-ocr (Cloud OCR)
-├── uv.lock                  # locked deps (Cloud may uv-sync this)
-├── .env.example             # copy → .env (never commit secrets)
-├── .streamlit/              # config + secrets example
-├── README.md                # this file
-├── WORKFLOW.md              # short CLI path
-├── DEPLOY.md                # Cloud checklist
-├── Makefile                 # optional helpers
+├── pyproject.toml            # uv project + dependencies
+├── requirements.txt          # mirror for Streamlit Cloud
+├── packages.txt              # apt: tesseract-ocr (Cloud OCR)
+├── uv.lock                   # locked deps when present
+├── .env.example              # copy → .env (never commit secrets)
+├── .streamlit/               # theme / Cloud config
+├── README.md
+├── WORKFLOW.md               # short CLI path
+├── DEPLOY.md                 # Cloud checklist
+├── Makefile
 ├── scripts/
-│   └── check_local.sh       # local verification
-├── data/                    # runtime (often empty on clone)
+│   ├── check_local.sh
+│   ├── reingest_overnight.sh
+│   └── reingest_stable.py
+├── data/                     # runtime (usually gitignored)
 │   ├── corpus.json
 │   ├── chroma_corpus/
 │   ├── chroma_rag/
-│   ├── papers/              # PDFs
+│   ├── papers/
 │   ├── markdown/
 │   ├── embeddings/
-│   └── rag_cache/
-├── rankings/                # optional personal importance CSVs
-├── results/                 # EVALUATION_REPORT.md, rag_eval/
-├── docs/ notebooks/ legacy/
+│   ├── rag_cache/
+│   └── rag_ingest_progress/
+├── rankings/
+├── results/                  # EVALUATION_REPORT.md, rag_eval/
+├── docs/                     # ConfAI notes
+├── notebooks/
 └── src/
-    ├── settings.py          # paths, models, Cloud detection, Secrets
-    ├── corpus_builder.py    # search / from-ids / status / rebuild-index
-    ├── corpus_index.py      # recommend embeddings + Chroma
-    ├── ranking.py           # multi-signal score_and_rank
-    ├── recommend.py         # recommend CLI
+    ├── settings.py
+    ├── corpus_builder.py
+    ├── corpus_index.py
+    ├── ranking.py
+    ├── recommend.py
     ├── evaluate_recommender.py
-    ├── final_eval.py        # main RAG evaluation
-    ├── app.py               # Streamlit UI
+    ├── final_eval.py
+    ├── app.py
     └── rag/
-        ├── cli.py           # ingest | ask | status | papers | reset-index | eval
+        ├── cli.py
         ├── download.py
         ├── pdf_to_md.py
         ├── chunk.py
         ├── embed_store.py
+        ├── ingest.py
+        ├── rag_pipeline.py
         ├── cache.py
-        ├── rag_pipeline.py  # retrieve → generate → cite
         └── evaluate.py
 ```
 
@@ -174,12 +166,10 @@ ArXiv_Paper_Suggester/
 
 ## Prerequisites
 
-- **Python 3.10–3.12** (3.11 or 3.12 recommended; avoid 3.13+ for torch wheels)
-- **[uv](https://docs.astral.sh/uv/)** installed
-- Network access: arXiv, Hugging Face (models), Gemini API
-- Optional: Hugging Face token (rate limits), NVIDIA / OpenAI-compatible failsafe key
-
-Install uv:
+- Python **3.10–3.12**
+- [uv](https://docs.astral.sh/uv/)
+- Optional: Tesseract for OCR on scanned PDFs
+- Optional: `GEMINI_API_KEY` for generation (retrieval works without it)
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -187,337 +177,212 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ---
 
-## Install (uv)
+## Install
 
 ```bash
-cd ArXiv_Paper_Suggester
+git clone https://github.com/NatalTiger26/ArXiv_Paper_Suggester-RAG.git
+cd ArXiv_Paper_Suggester-RAG
 
-# Create .venv and install from pyproject / lock
 uv sync
 
-# Secrets (local)
 cp .env.example .env
-# Edit .env:
-#   GEMINI_API_KEY=...
-#   GEMINI_MODEL=gemini-3.8-flash
-# Optional: HF_TOKEN, NVIDIA_API_KEY / FALLBACK_LLM_*
-
-# Sanity
-uv run python -c "import streamlit, chromadb, sentence_transformers, torch; print('ok')"
+# Edit .env — GEMINI_API_KEY for Ask generation
 ```
 
-Add a dependency later:
-
 ```bash
-uv add some-package
-```
-
-Always run tools with **`uv run`** (no need to manually activate the venv):
-
-```bash
-uv run python src/recommend.py "..."
-uv run python -m streamlit run src/app.py
+uv run python -c "import streamlit, chromadb; print('ok')"
+bash scripts/check_local.sh
 ```
 
 ---
 
 ## Configuration
 
-### Local: `.env`
+| Variable | Role |
+|----------|------|
+| `GEMINI_API_KEY` | Primary generation |
+| `GEMINI_MODEL` | e.g. `gemini-3.8-flash` (must match your API access) |
+| `EMBEDDING_MODEL` | Default `google/embeddinggemma-2` |
+| `EMBEDDING_DIM` | `0` = full; or `512` / `256` / `128` (rebuild indexes after change) |
+| `FALLBACK_LLM_*` | OpenAI-compatible failsafe |
+| `HF_TOKEN` | Optional Hugging Face rate limits |
 
-| Variable | Role | Typical value |
-|----------|------|----------------|
-| `GEMINI_API_KEY` | Primary LLM | required for generation |
-| `GEMINI_MODEL` | Model id | `gemini-3.8-flash` (use what **your** API accepts) |
-| `FALLBACK_LLM_API_KEY` / `NVIDIA_API_KEY` | Failsafe LLM | optional |
-| `FALLBACK_LLM_BASE_URL` | OpenAI-compatible base | see `.env.example` |
-| `FALLBACK_LLM_MODEL` | Failsafe model | e.g. `meta/llama-3.1-8b-instruct` |
-| `EMBEDDING_MODEL` | Local embedder | `google/embeddinggemma-2` |
-| `EMBEDDING_DIM` | Matryoshka truncate | `0` = full; or `512` / `256` / `128` |
-| `HF_TOKEN` | Hugging Face | optional |
-
-After changing **`EMBEDDING_MODEL` or `EMBEDDING_DIM`**:
-
-```bash
-uv run python src/corpus_builder.py rebuild-index
-uv run python -m src.rag.cli reset-index
-uv run python -m src.rag.cli ingest --force <arxiv_ids…>
-```
-
-### Streamlit Cloud: Secrets (not `.env`)
-
-```toml
-GEMINI_API_KEY = "..."
-GEMINI_MODEL = "gemini-3.8-flash"
-```
-
-Do **not** set `EMBEDDING_MODEL` to EmbeddingGemma on free Cloud (OOM). Leave unset so the app forces MiniLM.
-
-**Note:** Streamlit Secrets **override** `.env` values so Cloud does not keep a stale model name.
+**Streamlit Cloud:** set the same keys under **Secrets**.
 
 ---
 
 ## Quick start
 
 ```bash
-cd ArXiv_Paper_Suggester
-uv sync
-cp .env.example .env   # set GEMINI_API_KEY and GEMINI_MODEL=gemini-3.8-flash
-
-uv run python src/corpus_builder.py search "mechanistic interpretability" -n 12 --build-index
+uv run python src/corpus_builder.py search "mechanistic interpretability" -n 15 --build-index
 uv run python src/recommend.py "mechanistic interpretability circuits" -k 8
-uv run python -m src.rag.cli ingest 2501.16496 2304.14997 1806.07572
-uv run python -m src.rag.cli ask "What are open problems in mechanistic interpretability?"
+uv run python -m src.rag.cli ingest 2304.14997 2501.16496 1806.07572
+uv run python -m src.rag.cli ask "What is circuit discovery in mechanistic interpretability?"
 uv run python -m streamlit run src/app.py
+```
+
+```bash
+uv run python src/corpus_builder.py status
+uv run python -m src.rag.cli status
 ```
 
 ---
 
 ## End-to-end workflow
 
-### 1. Build a library (metadata)
+Full detail: **[WORKFLOW.md](WORKFLOW.md)**.
+
+### Library
 
 ```bash
-# Keywords
-uv run python src/corpus_builder.py search "mechanistic interpretability" -n 12 --build-index
-
-# Or explicit IDs
-uv run python src/corpus_builder.py from-ids 1806.07572 2501.16496 2304.14997 --build-index
-
-uv run python src/corpus_builder.py status
-```
-
-### 2. Rank for an interest
-
-```bash
-uv run python src/recommend.py "neural tangent kernel" -k 10
-uv run python src/recommend.py "circuits" -k 8 --prefer-recent
-uv run python src/recommend.py "NTK" -k 8 --weights 0.65,0.10,0.20,0.05 --json
-```
-
-### 3. Ingest full text (slow first time)
-
-```bash
-uv run python -m src.rag.cli ingest 1806.07572 2501.16496
-uv run python -m src.rag.cli status
-uv run python -m src.rag.cli papers
-```
-
-### 4. Ask
-
-```bash
-uv run python -m src.rag.cli ask "What is the neural tangent kernel and why does it matter?"
-```
-
-### 5. UI
-
-```bash
-uv run python -m streamlit run src/app.py
-```
-
-Prefer **`python -m streamlit`** over bare `uv run streamlit …` so the entrypoint always resolves after `uv sync`.
-
-More detail: **[WORKFLOW.md](WORKFLOW.md)**.
-
----
-
-## CLI reference
-
-### Corpus
-
-```bash
-uv run python src/corpus_builder.py search "keywords" -n 20 --build-index
-uv run python src/corpus_builder.py search "..." --category cs.LG --sort relevance
-uv run python src/corpus_builder.py from-ids ID1 ID2 --build-index
-uv run python src/corpus_builder.py status
+uv run python src/corpus_builder.py search "vision-language model interpretability" -n 30 --build-index
+uv run python src/corpus_builder.py from-ids 1610.02391 2304.14997 --build-index
 uv run python src/corpus_builder.py rebuild-index
 ```
 
-### Recommend
+### Rank
 
 ```bash
-uv run python src/recommend.py "query" -k 10
-uv run python src/recommend.py "query" -k 8 --prefer-recent --since 2020
-uv run python src/recommend.py "query" -k 8 --weights 0.65,0.10,0.20,0.05
-uv run python src/recommend.py --demo
+uv run python src/recommend.py "attention faithfulness multimodal" -k 10
+uv run python src/recommend.py "Grad-CAM" -k 8 --prefer-recent
 ```
 
-### RAG
+Weights (semantic, recency, citation, author) are inspectable; the UI exposes presets (Balanced / Semantic-heavy / Frontier / Custom).
+
+### Ingest
 
 ```bash
-uv run python -m src.rag.cli ingest ID1 ID2
-uv run python -m src.rag.cli ingest --force ID1
-uv run python -m src.rag.cli ingest --from-recommend "circuits" -k 4
+uv run python -m src.rag.cli ingest 2304.14997 2501.16496
 uv run python -m src.rag.cli status
-uv run python -m src.rag.cli papers
-uv run python -m src.rag.cli ask "Your question"
-uv run python -m src.rag.cli reset-index
-uv run python -m src.rag.cli eval --retrieval-only
 ```
 
-### Evaluation
+Large / overnight (resumable):
 
 ```bash
-uv run python src/final_eval.py --retrieval-only
-uv run python src/final_eval.py --with-generation --no-cache
-uv run python src/evaluate_recommender.py run
+bash scripts/reingest_overnight.sh
+# Ctrl+C finishes the current batch; resume with the same command.
+# Use FRESH=1 only when intentionally resetting the RAG index.
 ```
 
-Outputs typically land under `results/EVALUATION_REPORT.md` and `results/rag_eval/`.
+Existing PDFs and Markdown are reused when present.
+
+### Ask
+
+```bash
+uv run python -m src.rag.cli ask "How does Grad-CAM produce visual explanations?"
+```
+
+Coverage notes are **heuristic**, not calibrated probabilities.
 
 ---
 
-## Web UI (Streamlit)
+## Web UI
 
 ```bash
 uv run python -m streamlit run src/app.py
 ```
 
-| Tab | Purpose |
-|-----|---------|
-| **Home** | Orientation + **Quick demo** (seed → rank → ingest → ask) |
-| **Library** | Search arXiv / paste IDs / rebuild recommend index |
-| **Recommend** | Rank library → ingest top-N for Q&A |
-| **Ask** | Question answering with coverage, sources, Markdown download |
-| **Help** | Concepts, CLI cheatsheet, eval notes |
+Flow: search/add → rank → ingest → ask with citations.
 
-**Sidebar:** **Appearance (dark/light)**, library vs full-text counts, embedder name/dim, system health (API keys), CLI hints, activity log for long steps.
-
-First embedder load can take **1–2 minutes**; Ask with Gemini often **8–20 seconds**.
+Public Cloud demo uses a **lighter embedder** and a **smaller library** than a full local run (free-tier RAM). See **[DEPLOY.md](DEPLOY.md)**.
 
 ---
 
-## Embeddings & dimensions
+## Embeddings
 
-- **Local default:** EmbeddingGemma 2 (`google/embeddinggemma-2`), needs `torch` + `torchvision`.
-- **Matryoshka:** set `EMBEDDING_DIM=512` (or 256 / 128), then rebuild indexes. Dim sweeps live in evaluation.
-- **Cloud:** free tier forces **MiniLM (384-d)** unless `ALLOW_LARGE_EMBED=1` (not recommended). Gemma indexes are **not** queryable with MiniLM — rebuild / re-ingest on Cloud.
+- Local default: **EmbeddingGemma 2** (768-d).
+- Optional `EMBEDDING_DIM` (e.g. 512) for speed/memory; eval dim-sweeps often found 512 close to full MRR on the gold set.
+- Cloud may force MiniLM (384-d). Do not mix models/dims in one Chroma collection.
 
 ---
 
-## Generation (Gemini + failsafe)
+## Generation
 
-1. **Primary:** Gemini via `google-genai` and `GEMINI_API_KEY`.
-2. Model id is resolved **at call time** from Secrets / env (`get_gemini_model()`), with retries if Google returns a “use models/…” suggestion.
-3. **Failsafe:** OpenAI-compatible client (`FALLBACK_LLM_*` or `NVIDIA_API_KEY`).
+- **Primary:** Gemini (`GEMINI_API_KEY`, `GEMINI_MODEL`).
+- **Failsafe:** OpenAI-compatible chat API.
 
-Coverage labels (`high` / `partial` / `low` / `none`) come from **retrieval scores**, not calibrated probabilities. Prefer more ingested papers for broader questions.
-
-Use the model id **your key supports**. Google retires names over time; if you see a 404, set `GEMINI_MODEL` to the name in the error message (e.g. `gemini-3.8-flash`).
+Ranking and retrieval work without Gemini; **answer generation** needs a key (or failsafe).
 
 ---
 
 ## Evaluation
 
-Aligned with lab-style metrics:
-
-- Retrieval: **MRR**, **Recall@k**, **hit@1**, stratified by question kind
-- Uncertainty: **bootstrap 95% CIs**
-- Generation (optional): refusal precision/recall, citation validity, latency p50/p95
-- Dim sweep: 128 / 256 / 512 / 768
-- Narrative report: `results/EVALUATION_REPORT.md`
-
 ```bash
 uv run python src/final_eval.py --retrieval-only
-uv run python src/final_eval.py --with-generation --no-cache
+# uv run python src/final_eval.py --with-generation
 ```
 
-Re-run after corpus, embedder, or model changes.
+Outputs under `results/` (e.g. `EVALUATION_REPORT.md`).
+
+Representative protocol figures from curated full-text eval reports (not a claim that every paper in a multi-thousand library is labelled):
+
+| Metric | Approx. | Notes |
+|--------|---------|--------|
+| Mean MRR | ~0.75 | 95% CI ~0.66–0.83 in reported runs |
+| Recall@k | ~0.85 | Labelled gold items |
+| Hit@1 | ~0.69 | |
+| Citation validity | ~0.95 | When generation is scored |
+
+**Limits:** weak answers if the needed paper was never ingested; early refusal precision lagged a strict ~0.7 bar; citation/author signals are proxies; broad harvests can add noise without disciplined selection.
 
 ---
 
-## Local health check
+## Health check
 
 ```bash
-bash scripts/check_local.sh            # imports, modules, CLI, Streamlit, arXiv
-bash scripts/check_local.sh --quick    # skip network / model load
-bash scripts/check_local.sh --with-model  # load embedder + encode test string
+bash scripts/check_local.sh
+bash scripts/check_local.sh --with-model
 ```
-
-Or `make check` / `make check-quick` / `make check-model` if those targets are present.
-
----
-
-## Deploy to Streamlit Cloud
-
-Community Cloud is a **demo** host, not a full substitute for a laptop with EmbeddingGemma.
-
-| Do | Don’t |
-|----|--------|
-| Python **3.11 or 3.12** | Python 3.13+ |
-| Secrets: `GEMINI_API_KEY`, `GEMINI_MODEL=gemini-3.8-flash` | Put Gemma in Cloud Secrets |
-| Main file: `src/app.py` | Expect persistent `data/` forever |
-| Ingest **1–3** papers for demos | Bulk OCR + huge demos on free tier |
-
-Full checklist: **[DEPLOY.md](DEPLOY.md)**.
-
-Live pattern that works: MiniLM → rank → ingest 3 papers → Ask with Gemini 3.8 → answer + citations.
 
 ---
 
 ## Troubleshooting
 
-| Symptom | Likely cause | Fix |
-|---------|--------------|-----|
-| `Failed to spawn: streamlit` | Deps / entrypoint | `uv sync` then `uv run python -m streamlit run src/app.py` |
-| Empty rank | No library / no recommend index | `corpus_builder … --build-index` or `rebuild-index` |
-| Ask “not covered” | No full-text ingest | `rag.cli ingest <ids>` |
-| Chroma dimension error | Model/dim changed | `reset-index` + `ingest --force` |
-| `Collection already exists` | Rebuild race | Update `corpus_index` (retry/get_or_create); redeploy |
-| Gemini 404 | Wrong / retired model id | Set `GEMINI_MODEL` to the id Google names; reboot Cloud |
-| Cloud still uses old model | Stale env vs Secrets | Secrets must list correct `GEMINI_MODEL`; reboot app |
-| Cloud OOM / connection reset | Heavy embedder | Ensure MiniLM on Cloud; do not force Gemma |
-| First command “hangs” 1–2 min | Model download | Normal; watch terminal / Activity log |
+| Symptom | Try |
+|---------|-----|
+| `Failed to spawn: streamlit` | `uv sync`; `uv run python -m streamlit run src/app.py` |
+| Empty rank results | Build library + `rebuild-index` |
+| Thin Ask answers | Ingest relevant IDs; `rag.cli status` |
+| Chroma dim errors | Rebuild after model/dim change |
+| Gemini model 404 | Set `GEMINI_MODEL` to a supported id |
+| Cloud OOM | Expected with large models; Cloud uses MiniLM |
+| Re-ingest confusion | Prefer `reingest_overnight.sh`; avoid unnecessary `FRESH=1` |
 
 ---
 
+## ConfAI 2026
 
-## Accessibility & UI theme
+Poster project for **ConfAI 2026** (Plaksha University):
 
-- **Default theme:** dark (`.streamlit/config.toml`), suitable for long reading sessions.
-- **In-app toggle:** compact **Dark mode** switch at the **top-right** of the main page (not the sidebar).
-- **Focus styles:** visible `:focus-visible` outlines on controls for keyboard users.
-- **Reading:** slightly increased line-height on markdown/answers; reduced motion respected when the OS asks for it.
-- **Cloud vs local:** free Streamlit Cloud uses a small embedder (MiniLM); full EmbeddingGemma stays on your laptop — see [Deploy](#deploy-to-streamlit-cloud).
+**Literature Discovery with Multi-Signal Ranking and Citation-Grounded RAG**
 
-## Design choices
+Conference-facing notes: **[docs/CONF_AI.md](docs/CONF_AI.md)** · materials under `docs/confai/` when present.
 
-- **uv-only** workflow for reproducible environments.
-- **Local embeddings** for cost control; API only for generation.
-- **Hybrid corpus size:** on-demand ingest of recommended or explicit IDs (not bulk-OCR of all arXiv).
-- **Citations required** on the RAG path for trust and lab-style deliverables.
-- **CLI + UI:** CLI for debugging and batch jobs; Streamlit for demos.
-- **Cloud guards:** refuse EmbeddingGemma on free tier; Secrets override stale env; auto-reset incompatible Chroma collections when possible.
-- **Evaluation as a first-class artifact**, not an afterthought.
+Scope: **recommend → selective full-text ingest → citation-grounded RAG**, evaluation, and engineering—not ancillary side experiments.
+
+---
+
+## Design principles
+
+1. Closed loop from interest to cited answer  
+2. Inspectable ranking weights  
+3. Selective full text (cost and focus)  
+4. Grounding over uncited fluency  
+5. Honest evaluation and limits  
+6. Laptop-real CLI + web + Cloud demo path  
+
+---
+
+## Acknowledgements
+
+Academic project, Plaksha University · Supervisor **Dr. Subrat Panda**.  
+Third-party APIs and models remain under their own terms.
 
 ---
 
 ## Further reading
 
-| Document | Content |
-|----------|---------|
-| [WORKFLOW.md](WORKFLOW.md) | Exact CLI path and stuck-state table |
-| [DEPLOY.md](DEPLOY.md) | Streamlit Cloud deployment |
-| `results/EVALUATION_REPORT.md` | Metrics narrative after you run eval |
-| `.env.example` | All supported environment variables |
-| `.streamlit/secrets.toml.example` | Cloud secrets template |
-| `scripts/check_local.sh` | Local verification |
-
----
-
-## License / academic use
-
-Intended for coursework, portfolio, and research prototyping. Respect [arXiv terms](https://arxiv.org/help/api), model licenses (EmbeddingGemma, Gemini, failsafe providers), and third-party package licenses.
-
----
-
-### One-liner recap
-
-```bash
-uv sync && cp .env.example .env   # set GEMINI_API_KEY + GEMINI_MODEL=gemini-3.8-flash
-uv run python src/corpus_builder.py search "your topic" -n 12 --build-index
-uv run python src/recommend.py "your topic" -k 8
-uv run python -m src.rag.cli ingest <top_ids…>
-uv run python -m src.rag.cli ask "Your question"
-uv run python -m streamlit run src/app.py
-```
+- [WORKFLOW.md](WORKFLOW.md)  
+- [DEPLOY.md](DEPLOY.md)  
+- [docs/CONF_AI.md](docs/CONF_AI.md)  
+- `results/EVALUATION_REPORT.md` (after running eval)  
