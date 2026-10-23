@@ -1,0 +1,114 @@
+[
+  {
+    "arxiv_id": "1312.6229",
+    "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks",
+    "year": 2013,
+    "doi": "",
+    "library_cite_count": 5,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1310.1531",
+    "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition",
+    "year": 2013,
+    "doi": "",
+    "library_cite_count": 5,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1405.3531",
+    "title": "Return of the Devil in the Details: Delving Deep into Convolutional Nets",
+    "year": 2014,
+    "doi": "10.5244/C.28.6",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1312.6026",
+    "title": "How to Construct Deep Recurrent Neural Networks",
+    "year": 2013,
+    "doi": "",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1112.6209",
+    "title": "Building high-level features using large scale unsupervised learning",
+    "year": 2011,
+    "doi": "10.1109/ICASSP.2013.6639343",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1211.5063",
+    "title": "On the difficulty of training recurrent neural networks",
+    "year": 2012,
+    "doi": "",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1302.4389",
+    "title": "Maxout Networks",
+    "year": 2013,
+    "doi": "",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1103.0398",
+    "title": "Natural Language Processing (Almost) from Scratch",
+    "year": 2011,
+    "doi": "10.5555/1953048.2078186",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1010.3467",
+    "title": "Fast Inference in Sparse Coding Algorithms with Applications to Object Recognition",
+    "year": 2010,
+    "doi": "",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1312.5402",
+    "title": "Some Improvements on Deep Convolutional Neural Network Based Image Classification",
+    "year": 2013,
+    "doi": "",
+    "library_cite_count": 3,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1205.2662",
+    "title": "On Smoothing and Inference for Topic Models",
+    "year": 2009,
+    "doi": "",
+    "library_cite_count": 2,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1211.4246",
+    "title": "What regularized auto-encoders learn from the data-generating distribution",
+    "year": 2012,
+    "doi": "10.5555/2627435.2750359",
+    "library_cite_count": 2,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "0912.1128",
+    "title": "How to Explain Individual Classification Decisions",
+    "year": 2009,
+    "doi": "10.5555/1756006.1859912",
+    "library_cite_count": 2,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1306.1091",
+    "title": "Deep Generative Stochastic Networks Trainable by Backprop",
+    "year": 2013,
+    "doi": "",
+    "library_cite_count": 2,
+    "source": "citation_library"
+  }
+]

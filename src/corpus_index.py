@@ -124,6 +124,16 @@ def _apply_matryoshka(vectors, dim: int):
     return arr / np.maximum(norms, 1e-12)
 
 def embed_texts(model, texts: list[str], batch_size: int = 32) -> list[list[float]]:
+    """Encode texts in batches. Prefer smaller batches on MPS to avoid silent kills."""
+    import numpy as np
+
+    if not texts:
+        return []
+    device = get_device()
+    # MPS / unified memory: large batches of Gemma often OOM and kill the process
+    if device == "mps" and batch_size > 16:
+        batch_size = 16
+        print(f"[corpus_index] MPS: capping encode batch_size={batch_size}", flush=True)
     vectors = model.encode(
         texts,
         batch_size=batch_size,
@@ -135,47 +145,145 @@ def embed_texts(model, texts: list[str], batch_size: int = 32) -> list[list[floa
     return [v.tolist() for v in vectors]
 
 
-def build(args: argparse.Namespace) -> None:
-    corpus = load_corpus()
-    ids = [paper_id(p) for p in corpus]
-    texts = [text_for_embedding(p) for p in corpus]
-
-    vectors = None
-    # Reuse disk cache when ids match (avoids re-embedding after Chroma-only failures)
-    if EMB_CACHE.exists() and not getattr(args, "force_embed", False):
+def _load_embedding_map(force: bool = False) -> dict[str, list[float]]:
+    """id → vector from JSON cache and/or npz checkpoint (partial OK)."""
+    out: dict[str, list[float]] = {}
+    if force:
+        return out
+    # Primary JSON cache (may be large)
+    if EMB_CACHE.exists():
         try:
             cached = json.loads(EMB_CACHE.read_text(encoding="utf-8"))
             c_ids = cached.get("ids") or []
             c_vecs = cached.get("embeddings") or []
-            if c_ids == ids and len(c_vecs) == len(ids) and c_vecs:
-                vectors = c_vecs
+            for i, pid in enumerate(c_ids):
+                if i < len(c_vecs) and c_vecs[i]:
+                    out[str(pid)] = c_vecs[i]
+            if out:
                 print(
-                    f"Reusing embedding cache ({len(vectors)} vectors, "
-                    f"dim={len(vectors[0])}, model={cached.get('model')})",
+                    f"[corpus_index] loaded {len(out)} vectors from {EMB_CACHE.name}",
                     flush=True,
                 )
         except Exception as e:
-            print(f"[corpus_index] cache load skipped: {e}", flush=True)
+            print(f"[corpus_index] JSON cache load skipped: {e}", flush=True)
+    # Incremental npz checkpoint (survives mid-run crashes)
+    npz_path = CACHE_DIR / "corpus_embeddings_checkpoint.npz"
+    meta_path = CACHE_DIR / "corpus_embeddings_checkpoint_ids.json"
+    if npz_path.exists() and meta_path.exists():
+        try:
+            import numpy as np
 
-    if vectors is None:
-        model = load_model(args.model)
-        print(f"Embedding {len(texts)} papers...")
-        t0 = time.time()
-        vectors = embed_texts(model, texts, batch_size=args.batch_size)
-        print(f"  embedded in {time.time() - t0:.1f}s  dim={len(vectors[0])}")
-        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+            arr = np.load(npz_path)["vectors"]
+            c_ids = json.loads(meta_path.read_text(encoding="utf-8"))
+            for i, pid in enumerate(c_ids):
+                if i < len(arr) and str(pid) not in out:
+                    out[str(pid)] = arr[i].tolist()
+            print(
+                f"[corpus_index] checkpoint has {len(c_ids)} ids "
+                f"(map now {len(out)} unique)",
+                flush=True,
+            )
+        except Exception as e:
+            print(f"[corpus_index] checkpoint load skipped: {e}", flush=True)
+    return out
+
+
+def _save_checkpoint(id_to_vec: dict[str, list[float]], model_name: str) -> None:
+    """Write npz + ids so a killed run can resume."""
+    import numpy as np
+
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    ids = list(id_to_vec.keys())
+    if not ids:
+        return
+    arr = np.asarray([id_to_vec[i] for i in ids], dtype="float32")
+    npz_path = CACHE_DIR / "corpus_embeddings_checkpoint.npz"
+    meta_path = CACHE_DIR / "corpus_embeddings_checkpoint_ids.json"
+    np.savez_compressed(npz_path, vectors=arr)
+    meta_path.write_text(json.dumps(ids), encoding="utf-8")
+    # Also refresh full JSON when not huge (optional; skip if very large)
+    if len(ids) <= 8000:
         EMB_CACHE.write_text(
             json.dumps(
                 {
-                    "model": args.model or DEFAULT_MODEL,
-                    "dim": len(vectors[0]),
+                    "model": model_name,
+                    "dim": int(arr.shape[1]),
                     "ids": ids,
-                    "embeddings": vectors,
+                    "embeddings": [id_to_vec[i] for i in ids],
                 }
             ),
             encoding="utf-8",
         )
-        print(f"Cached embeddings -> {EMB_CACHE}")
+
+
+def build(args: argparse.Namespace) -> None:
+    corpus = load_corpus()
+    ids = [paper_id(p) for p in corpus]
+    texts = [text_for_embedding(p) for p in corpus]
+    model_name = args.model or DEFAULT_MODEL
+    force = bool(getattr(args, "force_embed", False))
+
+    id_to_vec = _load_embedding_map(force=force)
+    missing_idx = [i for i, pid in enumerate(ids) if pid not in id_to_vec]
+
+    if not missing_idx:
+        print(
+            f"Reusing embeddings for all {len(ids)} papers "
+            f"(dim={len(next(iter(id_to_vec.values())))})",
+            flush=True,
+        )
+    else:
+        print(
+            f"Need to embed {len(missing_idx)} / {len(ids)} papers "
+            f"({len(ids) - len(missing_idx)} already cached)",
+            flush=True,
+        )
+        model = load_model(args.model)
+        batch_size = int(getattr(args, "batch_size", None) or 16)
+        # Encode in chunks and checkpoint often (crash-safe)
+        chunk = max(32, min(128, batch_size * 4))
+        t0 = time.time()
+        done = 0
+        for start in range(0, len(missing_idx), chunk):
+            sl = missing_idx[start : start + chunk]
+            sub_texts = [texts[i] for i in sl]
+            sub_ids = [ids[i] for i in sl]
+            try:
+                sub_vecs = embed_texts(model, sub_texts, batch_size=batch_size)
+            except Exception as e:
+                print(f"[corpus_index] encode failed at +{done}: {e}", flush=True)
+                _save_checkpoint(id_to_vec, model_name)
+                print(
+                    f"[corpus_index] saved checkpoint ({len(id_to_vec)} vectors). "
+                    "Re-run the same command to resume.",
+                    flush=True,
+                )
+                raise SystemExit(1) from e
+            for pid, vec in zip(sub_ids, sub_vecs):
+                id_to_vec[pid] = vec
+            done += len(sl)
+            _save_checkpoint(id_to_vec, model_name)
+            print(
+                f"  embedded {done}/{len(missing_idx)} new  "
+                f"total_cached={len(id_to_vec)}  "
+                f"elapsed={time.time() - t0:.0f}s",
+                flush=True,
+            )
+        print(
+            f"  embedding finished in {time.time() - t0:.1f}s  "
+            f"dim={len(next(iter(id_to_vec.values())))}",
+            flush=True,
+        )
+        print(f"Cached embeddings -> {EMB_CACHE} (+ checkpoint)", flush=True)
+
+    # Align vectors to corpus order
+    missing_final = [pid for pid in ids if pid not in id_to_vec]
+    if missing_final:
+        raise SystemExit(
+            f"Still missing {len(missing_final)} embeddings after encode — "
+            "re-run build."
+        )
+    vectors = [id_to_vec[pid] for pid in ids]
 
     import chromadb
     from chromadb.config import Settings
@@ -301,11 +409,16 @@ def main():
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     b = sub.add_parser("build")
-    b.add_argument("--batch-size", type=int, default=32)
+    b.add_argument(
+        "--batch-size",
+        type=int,
+        default=12,
+        help="Encode batch size (default 12; keep small on Mac MPS to avoid OOM kills)",
+    )
     b.add_argument(
         "--force-embed",
         action="store_true",
-        help="Ignore data/embeddings/corpus_embeddings.json and re-embed",
+        help="Ignore embedding caches and re-embed everything",
     )
 
     q = sub.add_parser("query")

@@ -68,3 +68,4 @@ data/chroma_rag/chroma.sqlite3
 data/corpus.json
 data/embeddings/corpus_embeddings.json
 /data
+/backups

@@ -395,18 +395,80 @@ def load_corpus_ids() -> list[str]:
 
 
 def load_indexed_ids() -> set[str]:
-    try:
-        from src.rag.embed_store import list_ingested_papers
+    """Already-ingested skip set. Avoid hanging on Chroma after hard reboot.
 
-        out = set()
-        for p in list_ingested_papers():
-            pid = str(p.get("paper_id") or "").replace("arXiv:", "").split("v")[0].strip()
-            if pid:
-                out.add(pid)
+    Priority:
+      1) indexed_ids.txt cache
+      2) done.txt when SKIP_RAG_SCAN=1 (default) — no Chroma open
+      3) FORCE_RAG_LIST=1 → scan Chroma in a subprocess with timeout
+    """
+    cache_path = (
+        Path(os.environ.get("DONE_FILE", "data/rag_ingest_progress/done.txt")).parent
+        / "indexed_ids.txt"
+    )
+    force_list = os.environ.get("FORCE_RAG_LIST", "0") == "1"
+    skip_scan = os.environ.get("SKIP_RAG_SCAN", "1") == "1"
+
+    if cache_path.exists() and not force_list:
+        ids = load_id_set(cache_path)
+        if ids:
+            print(
+                f"[plan] RAG_indexed from cache {cache_path.name}: {len(ids)} "
+                f"(FORCE_RAG_LIST=1 to rescan)",
+                flush=True,
+            )
+            return ids
+
+    if skip_scan and not force_list:
+        done_fallback = load_id_set(Path(os.environ["DONE_FILE"]))
+        print(
+            f"[plan] SKIP_RAG_SCAN=1 → use done.txt as indexed ({len(done_fallback)} ids). "
+            f"IDs not in done.txt will be ingested. "
+            f"When Chroma is healthy: FORCE_RAG_LIST=1 to resync.",
+            flush=True,
+        )
+        return done_fallback
+
+    timeout_sec = int(os.environ.get("RAG_LIST_TIMEOUT_SEC", "120"))
+    print(f"[plan] scanning RAG index (timeout={timeout_sec}s)…", flush=True)
+    scan_code = (
+        "import json,sys\n"
+        "sys.path.insert(0,'src')\n"
+        "from rag.embed_store import list_ingested_papers\n"
+        "out=[]\n"
+        "for p in list_ingested_papers():\n"
+        " pid=str(p.get('paper_id') or p.get('arxiv_id') or '').replace('arXiv:','').split('v')[0].strip()\n"
+        " if pid: out.append(pid)\n"
+        "print(json.dumps(out))\n"
+    )
+    try:
+        proc = subprocess.run(
+            ["uv", "run", "python", "-c", scan_code],
+            cwd=str(root),
+            capture_output=True,
+            text=True,
+            timeout=timeout_sec,
+            env={**os.environ, "PYTHONPATH": str(root)},
+        )
+        if proc.returncode != 0:
+            raise RuntimeError((proc.stderr or proc.stdout or "scan failed")[:500])
+        lines = [ln for ln in (proc.stdout or "").splitlines() if ln.strip().startswith("[")]
+        out = set(json.loads(lines[-1] if lines else "[]"))
+        if out:
+            try:
+                cache_path.write_text("\n".join(sorted(out)) + "\n", encoding="utf-8")
+                print(f"[plan] wrote {cache_path} ({len(out)} ids)", flush=True)
+            except Exception as e:
+                print(f"[plan] could not write indexed cache: {e}", flush=True)
         return out
+    except subprocess.TimeoutExpired:
+        print(f"[plan] RAG scan timed out after {timeout_sec}s", flush=True)
     except Exception as e:
-        print(f"[plan] RAG index list skipped ({e})", flush=True)
-        return set()
+        print(f"[plan] RAG index list failed: {e}", flush=True)
+
+    done_fallback = load_id_set(Path(os.environ["DONE_FILE"]))
+    print(f"[plan] FALLBACK: done.txt ({len(done_fallback)} ids) as indexed", flush=True)
+    return done_fallback
 
 
 def is_transient(err: str) -> bool:
@@ -827,6 +889,11 @@ while i < n:
         if row.get("ok"):
             ok += 1
             append_id(done_file, aid)
+            try:
+                idx_cache = done_file.parent / "indexed_ids.txt"
+                append_id(idx_cache, aid)
+            except Exception:
+                pass
             print(
                 f"[ok] {aid} chunks={row.get('chunks')}  "
                 f"{(row.get('title') or '')[:50]}",

@@ -350,19 +350,6 @@ def _render_theme_toggle() -> None:
 
 
 
-EXAMPLE_INTERESTS = [
-    "mechanistic interpretability circuits",
-    "neural tangent kernel generalization",
-    "statistical mechanics of deep learning",
-    "random matrix theory neural networks",
-]
-
-EXAMPLE_QUESTIONS = [
-    "What is the neural tangent kernel and why does it matter?",
-    "What happens to the NTK in the infinite-width limit?",
-    "What are open problems in mechanistic interpretability regarding network decomposition?",
-    "How can circuits in transformers be discovered automatically?",
-]
 
 WEIGHT_KEYS = ("embedding", "recency", "citation", "author")
 
@@ -679,10 +666,10 @@ def render_results_panel() -> None:
                         chunks_disp = None
                 rows.append(
                     {
+                        "Title / error": str(r.get("title") or r.get("error") or "")[:120],
                         "arXiv ID": str(r.get("arxiv_id") or ""),
                         "Status": "ok" if r.get("ok") else "fail",
                         "Chunks": chunks_disp,
-                        "Title / error": str(r.get("title") or r.get("error") or "")[:120],
                     }
                 )
             try:
@@ -741,8 +728,9 @@ def friendly_error(exc: BaseException | str) -> str:
     return f"**Something went wrong.**\n\n`{msg[:500]}`"
 
 
-@st.cache_data(ttl=15, show_spinner=False)
+@st.cache_data(ttl=120, show_spinner=False)
 def corpus_status_cached():
+    """Library size + recommend index flag. Cheap; cached 2 min."""
     try:
         from corpus_builder import corpus_status
 
@@ -756,17 +744,18 @@ def corpus_status_cached():
         }
 
 
-@st.cache_data(ttl=15, show_spinner=False)
+@st.cache_data(ttl=120, show_spinner=False)
 def rag_stats_cached():
+    """Counts only — does NOT scan all Chroma chunks (that froze the UI)."""
     try:
         from rag.embed_store import index_stats
 
-        return index_stats()
+        return index_stats(include_papers=False)
     except Exception:
         try:
             from src.rag.embed_store import index_stats
 
-            return index_stats()
+            return index_stats(include_papers=False)
         except Exception as e:
             return {
                 "paper_count": 0,
@@ -777,9 +766,40 @@ def rag_stats_cached():
             }
 
 
+@st.cache_data(ttl=300, show_spinner=False)
+def rag_papers_catalog_cached():
+    """Paper id+title list for filters. Prefer progress files; rare Chroma scan."""
+    try:
+        from rag.embed_store import list_ingested_papers
+
+        return list_ingested_papers(force_chroma=False)
+    except Exception:
+        try:
+            from src.rag.embed_store import list_ingested_papers
+
+            return list_ingested_papers(force_chroma=False)
+        except Exception:
+            return []
+
+
 def clear_data_caches():
     corpus_status_cached.clear()
     rag_stats_cached.clear()
+    rag_papers_catalog_cached.clear()
+    try:
+        from rag.embed_store import invalidate_paper_list_cache
+
+        invalidate_paper_list_cache()
+    except Exception:
+        try:
+            from src.rag.embed_store import invalidate_paper_list_cache
+
+            invalidate_paper_list_cache()
+        except Exception:
+            pass
+    # Drop session catalog so next run refreshes
+    if "papers_catalog" in st.session_state:
+        del st.session_state["papers_catalog"]
 
 
 def save_library(papers: list, replace: bool = False) -> int:
@@ -859,6 +879,246 @@ def paper_id_from_row(r: dict) -> str:
     return pid.strip()
 
 
+def format_paper_label(pid: str, title: str | None = None, *, max_title: int = 80) -> str:
+    """Human-readable option: 'Title (arxiv_id)' for multiselect / search."""
+    pid = (pid or "").strip()
+    t = (title or "").strip().replace("\n", " ")
+    if len(t) > max_title:
+        t = t[: max_title - 1].rstrip() + "…"
+    if t and pid:
+        return f"{t} ({pid})"
+    if pid:
+        return pid
+    return t or "(unknown)"
+
+
+def parse_paper_label(label: str) -> str:
+    """Extract arXiv id from a format_paper_label string, or bare id."""
+    import re
+
+    s = (label or "").strip()
+    if not s:
+        return ""
+    m = re.search(r"\(([0-9]{4}\.[0-9]{4,5}(?:v[0-9]+)?)\)\s*$", s)
+    if m:
+        return paper_id_from_row({"id": m.group(1)})
+    m = re.search(r"\(([a-z\-]+/[0-9]{7}(?:v[0-9]+)?)\)\s*$", s, re.I)
+    if m:
+        return paper_id_from_row({"id": m.group(1)})
+    # bare id
+    return paper_id_from_row({"id": s})
+
+
+def ingested_papers_catalog(rs: dict | None = None, *, force: bool = False) -> list[dict]:
+    """Normalized list of {paper_id, title, label} for UI pickers.
+
+    Uses session + cached progress-file catalog — not a full Chroma scan on each
+    keystroke / click.
+    """
+    if not force and st.session_state.get("papers_catalog"):
+        cached = st.session_state["papers_catalog"]
+        # If cache has ids but every title empty and user searches titles, still OK for ids
+        if cached:
+            return cached
+
+    raw = rag_papers_catalog_cached()
+    if not raw and rs:
+        raw = rs.get("papers") or []
+
+    out: list[dict] = []
+    seen: set[str] = set()
+    for p in raw:
+        pid = paper_id_from_row(p)
+        if not pid or pid in seen:
+            continue
+        seen.add(pid)
+        title = (p.get("title") or "").strip()
+        out.append(
+            {
+                "paper_id": pid,
+                "title": title,
+                "label": format_paper_label(pid, title),
+            }
+        )
+    out.sort(key=lambda x: (x["title"] or x["paper_id"]).lower())
+    st.session_state["papers_catalog"] = out
+    return out
+
+
+def paper_scope_picker(
+    catalog: list[dict],
+    *,
+    state_key: str = "ask_scope_ids",
+) -> list[str]:
+    """
+    Restrict Ask to selected papers:
+
+      1. Type title or arXiv id -> Find
+      2. Tick matches -> Add to selection
+      3. Empty selection = search all papers
+
+    Returns list of arXiv ids (empty = no restriction).
+    """
+    if not catalog:
+        st.caption("No full-text papers loaded yet. Ingest from **Recommend** first.")
+        return []
+
+    id_to_row = {c["paper_id"]: c for c in catalog}
+    if state_key not in st.session_state:
+        st.session_state[state_key] = []
+    st.session_state[state_key] = [
+        pid for pid in st.session_state[state_key] if pid in id_to_row
+    ]
+
+    n = len(catalog)
+    st.markdown(
+        f"Optional: limit answers to specific papers ({n} full-text available). "
+        "**Empty selection = search all.**"
+    )
+
+    selected = list(st.session_state[state_key])
+    if selected:
+        st.markdown(f"**Selected for this question ({len(selected)})**")
+        for pid in selected[:15]:
+            row = id_to_row.get(pid) or {}
+            title = (row.get("title") or pid)[:70]
+            c1, c2 = st.columns([6, 1])
+            with c1:
+                st.markdown(f"**{title}**")
+                st.caption(pid)
+            with c2:
+                if st.button("Remove", key=f"{state_key}_rm_{pid}", help=f"Remove {pid}"):
+                    st.session_state[state_key] = [
+                        x for x in st.session_state[state_key] if x != pid
+                    ]
+                    st.rerun()
+        if len(selected) > 15:
+            st.caption(f"... and {len(selected) - 15} more")
+        if st.button("Clear selection (use all papers)", key=f"{state_key}_clear"):
+            st.session_state[state_key] = []
+            st.rerun()
+    else:
+        st.info("No paper filter — Ask will search **all** ingested full-text papers.")
+
+    st.markdown("**Find papers to add**")
+    with st.form(key=f"{state_key}_find_form", clear_on_submit=False):
+        q = st.text_input(
+            "Search by title or arXiv id",
+            placeholder="e.g. Grad-CAM, interpretability, 2501.16496",
+            help="Matches titles and ids. Press Find, then add matches below.",
+        )
+        find_clicked = st.form_submit_button("Find")
+
+    if find_clicked:
+        st.session_state[f"{state_key}_last_q"] = (q or "").strip()
+
+    last_q = (st.session_state.get(f"{state_key}_last_q") or "").strip()
+    if last_q:
+        q_norm = last_q.lower().strip()
+        # also try as normalized arxiv id
+        q_id = parse_paper_label(last_q) or q_norm
+        q_id = q_id.lower().replace("arxiv:", "").strip()
+        tokens = [t for t in q_norm.replace(",", " ").split() if t]
+
+        def _row_hay(c: dict) -> str:
+            return " ".join(
+                [
+                    str(c.get("title") or ""),
+                    str(c.get("paper_id") or ""),
+                    str(c.get("arxiv_id") or ""),
+                    str(c.get("label") or ""),
+                ]
+            ).lower()
+
+        matches: list[dict] = []
+        # Pass 1: exact / prefix id match (highest priority)
+        for c in catalog:
+            pid = str(c.get("paper_id") or "").lower()
+            if not pid:
+                continue
+            if q_id == pid or pid.startswith(q_id) or q_id in pid:
+                if len(q_id) >= 4:  # avoid tiny accidental hits
+                    matches.append(c)
+            if len(matches) >= 40:
+                break
+        # Pass 2: token search on title+id if still empty or id query was short
+        if not matches and tokens:
+            for c in catalog:
+                hay = _row_hay(c)
+                if all(t in hay for t in tokens):
+                    matches.append(c)
+                if len(matches) >= 40:
+                    break
+        # Pass 3: single-substring on full hay
+        if not matches and len(q_norm) >= 3:
+            for c in catalog:
+                if q_norm in _row_hay(c):
+                    matches.append(c)
+                if len(matches) >= 40:
+                    break
+
+        st.caption(f"Search **{last_q}** → {len(matches)} match(es) (max 40 shown)")
+        if not matches:
+            # Show a few catalog samples so user can see real ids/titles
+            sample = catalog[:5]
+            sample_txt = "; ".join(
+                f"`{c.get('paper_id')}` {(c.get('title') or '')[:40]}" for c in sample
+            )
+            st.warning(
+                "No matches. Try a shorter keyword, or an id exactly as in the library."
+            )
+            st.caption(f"Catalog sample ({len(catalog)} papers): {sample_txt}")
+        else:
+            match_labels = [c["label"] for c in matches]
+            label_to_id = {c["label"]: c["paper_id"] for c in matches}
+            picked = st.multiselect(
+                "Matches — choose papers to add",
+                options=match_labels,
+                key=f"{state_key}_match_pick",
+            )
+            b1, b2 = st.columns(2)
+            with b1:
+                add = st.button(
+                    "Add to selection",
+                    type="primary",
+                    key=f"{state_key}_add",
+                    disabled=not picked,
+                )
+            with b2:
+                add_all = st.button("Add all matches", key=f"{state_key}_add_all")
+            if add and picked:
+                cur = list(st.session_state[state_key])
+                for lab in picked:
+                    pid = label_to_id.get(lab) or parse_paper_label(lab)
+                    if pid and pid not in cur:
+                        cur.append(pid)
+                st.session_state[state_key] = cur
+                st.rerun()
+            if add_all:
+                cur = list(st.session_state[state_key])
+                for c in matches:
+                    if c["paper_id"] not in cur:
+                        cur.append(c["paper_id"])
+                st.session_state[state_key] = cur
+                st.rerun()
+    else:
+        st.caption("Enter a title keyword or arXiv id, then press **Find**.")
+
+    return list(st.session_state[state_key])
+
+
+def paper_picker_multiselect(
+    catalog: list[dict],
+    *,
+    key: str,
+    label: str = "Restrict to papers",
+    help_text: str | None = None,
+    large_threshold: int = 120,
+) -> list[str]:
+    """Backward-compatible alias."""
+    return paper_scope_picker(catalog, state_key=key or "ask_scope_ids")
+
+
 def show_ingest_results(results: list[dict]) -> None:
     if not results:
         st.warning("No ingest results.")
@@ -881,12 +1141,32 @@ def answer_to_markdown(question: str, result: dict) -> str:
     return "\n".join(lines)
 
 
-def render_answer_block(question: str, result: dict, *, key_prefix: str = "ask") -> None:
+def render_answer_block(
+    question: str,
+    result: dict,
+    *,
+    key_prefix: str = "ask",
+    scope_ids: list[str] | None = None,
+    scope_labels: list[str] | None = None,
+    corpus_paper_count: int | None = None,
+) -> None:
     if result.get("cache_hit"):
         st.info(
             f"Cached answer (similarity {result.get('cache_score')}). "
             "Turn off cache in Advanced for a fresh LLM call."
         )
+    # Scope line: which papers were searched
+    if scope_ids:
+        n = len(scope_ids)
+        st.caption(f"**Searched over** {n} selected paper{'s' if n != 1 else ''} (filter on).")
+        with st.expander(f"Filter: {n} paper(s)", expanded=False):
+            for lab in (scope_labels or scope_ids)[:30]:
+                st.markdown(f"- {lab}")
+            if n > 30:
+                st.caption(f"… and {n - 30} more")
+    elif corpus_paper_count is not None:
+        st.caption(f"**Searched over** all **{corpus_paper_count}** ingested full-text papers.")
+
     cov = result.get("coverage") or "n/a"
     if cov == "high":
         st.success(f"Coverage: **{cov}**")
@@ -898,6 +1178,11 @@ def render_answer_block(question: str, result: dict, *, key_prefix: str = "ask")
         "Coverage is from retrieval scores, not a calibrated probability. "
         "`high` is better; `low`/`none` means the topic may be missing from full-text."
     )
+    if cov in ("low", "none"):
+        st.info(
+            "**Next step:** clear the paper filter if you used one, or go to **Recommend** → "
+            "rank your interest → **Ingest for Q&A** so the right full texts are available."
+        )
     st.markdown("#### Answer")
     st.markdown(result.get("answer") or "_No answer_")
     refs = result.get("references") or []
@@ -1109,6 +1394,17 @@ except Exception as _startup_err:
     st.exception(_startup_err)
     cs = {"n_papers": 0, "chroma_exists": False}
     rs = {"paper_count": 0, "chunk_count": 0, "papers": []}
+
+# Prefer progress-file paper count when Chroma has chunks but count is 0
+if int(rs.get("paper_count") or 0) == 0 and int(rs.get("chunk_count") or 0) > 0:
+    try:
+        _cat = ingested_papers_catalog(rs)
+        if _cat:
+            rs = dict(rs)
+            rs["paper_count"] = len(_cat)
+    except Exception:
+        pass
+
 hint_title, hint_body = next_step_hint(cs, rs)
 try:
     health = system_health()
@@ -1138,12 +1434,26 @@ with st.sidebar:
         st.rerun()
 
     with st.expander("Full-text papers in RAG"):
-        papers = rs.get("papers") or []
-        if not papers:
-            st.caption("None yet.")
+        # Only resolve catalog when user opens this expander (still runs body, but cached)
+        cat = ingested_papers_catalog(rs) if rag_n else []
+        if not cat:
+            if int(rs.get("chunk_count") or 0) > 0:
+                st.caption(
+                    f"{rs.get('chunk_count')} chunks indexed — open **Ask → filter** "
+                    "or refresh after ingest to list titles."
+                )
+            else:
+                st.caption("None yet — ingest from **Recommend**.")
         else:
-            for p in papers:
-                st.markdown(f"`{p.get('paper_id')}`  \n{p.get('title', '')[:70]}")
+            for p in cat[:40]:
+                pid = p.get("paper_id") or ""
+                title = (p.get("title") or "")[:70]
+                if title:
+                    st.markdown(f"**{title}**  \n`{pid}`")
+                else:
+                    st.markdown(f"`{pid}`")
+            if len(cat) > 40:
+                st.caption(f"… and {len(cat) - 40} more (search in **Ask → filter**)")
 
     with st.expander("System health", expanded=False):
         st.write(
@@ -1189,26 +1499,47 @@ tab_home, tab_lib, tab_rec, tab_ask, tab_help = st.tabs(
 # ── HOME ──────────────────────────────────────────────────────────────────
 
 with tab_home:
-    st.subheader("What do you want to do?")
+    st.subheader("Your path")
+    st.markdown(
+        """
+1. **Library** — add papers (search or arXiv IDs) and build the recommend index  
+2. **Recommend** — rank by research interest, then **Ingest for Q&A** (full text)  
+3. **Ask** — questions with citations (only over **ingested** full-text papers)
+
+**Library ≠ Ask.** Ranking uses titles/abstracts; answers need full-text ingest.
+"""
+    )
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("#### 1. Add papers")
         st.write("Search arXiv or paste IDs.")
-        st.caption("→ Library")
+        if lib_n == 0:
+            st.warning("Library empty")
+        else:
+            st.caption(f"{lib_n} in library")
+        st.caption("→ **Library** tab")
     with c2:
-        st.markdown("#### 2. Rank by interest")
-        st.write("Multi-signal ranking.")
-        st.caption("→ Recommend")
+        st.markdown("#### 2. Rank & ingest")
+        st.write("Multi-signal ranking, then full text.")
+        if rag_n == 0 and lib_n > 0:
+            st.warning("No full-text yet")
+        else:
+            st.caption(f"{rag_n} full-text")
+        st.caption("→ **Recommend** tab")
     with c3:
         st.markdown("#### 3. Ask questions")
         st.write("Grounded answers + citations.")
-        st.caption("→ Ask (after ingest)")
+        if rag_n == 0:
+            st.warning("Ingest first")
+        else:
+            st.success("Ready")
+        st.caption("→ **Ask** tab")
 
     st.divider()
     st.markdown("#### Quick demo")
     st.write(
-        "Runs: seed library (if empty) → rebuild index → rank → ingest top papers → ask. "
-        "Watch the **Activity log** and progress labels — first embedder load is slow."
+        "One click: seed library (if empty) → rebuild index → rank → ingest top papers → ask. "
+        "Watch the **Activity log** — first embedder load is slow."
     )
     d1, d2 = st.columns(2)
     with d1:
@@ -1264,7 +1595,14 @@ with tab_home:
             ranked = run_rank(demo_interest, demo_k, None)
             ids = [paper_id_from_row(r) for r in ranked[:demo_k]]
             ids = [x for x in ids if x]
-            st.write("Top IDs:", ", ".join(ids) if ids else "(none)")
+            if ranked:
+                st.markdown("**Top papers**")
+                for i, r in enumerate(ranked[:demo_k], 1):
+                    pid = paper_id_from_row(r)
+                    title = (r.get("title") or "")[:100]
+                    st.markdown(f"{i}. **{title}** (`{pid}`)")
+            else:
+                st.write("Top papers: (none)")
 
             if ids:
                 overall.progress(60, text="Ingesting full text…")
@@ -1605,13 +1943,6 @@ with tab_rec:
         placeholder="Describe what you want from papers (topics, depth, constraints)…",
         help="Grows with your text. Long profiles are fine — results will not echo the full text.",
     )
-    ex_cols = st.columns(len(EXAMPLE_INTERESTS))
-    for i, ex in enumerate(EXAMPLE_INTERESTS):
-        label = ex[:28] + ("…" if len(ex) > 28 else "")
-        if ex_cols[i].button(label, key=f"ex_int_{i}"):
-            st.session_state["rec_interest"] = ex
-            st.rerun()
-
     k = int_with_input(
         "Top-k",
         1,
@@ -1825,16 +2156,28 @@ Progress = i/N + ETA. Force re-download only to refresh files.
 
 with tab_ask:
     st.subheader("Ask the papers")
+
     if rag_n == 0:
-        st.warning("No full-text papers yet. Ingest from **Recommend** first.")
+        st.warning(
+            "**No full-text papers yet.** Ranking alone is not enough for Q&A."
+        )
+        st.markdown(
+            """
+**Next steps**
+1. Open **Recommend**, enter your research interest, rank papers  
+2. Click **Ingest for Q&A** on the top results  
+3. Return here to ask with citations  
+"""
+        )
+        st.info("Or use **Home → Quick demo** for a guided first run.")
     else:
         st.caption(
-            f"Searching **{rag_n}** full-text papers · "
-            "Typical answer time **10–20 seconds** (LLM)."
+            f"**{rag_n}** full-text papers · answers usually **10–20 s**. "
+            "Editing the question does **not** query the index until you press **Ask**."
         )
 
     recent = st.session_state.get("recent_questions") or []
-    if recent:
+    if recent and rag_n > 0:
         st.markdown("**Recent questions**")
         rcols = st.columns(min(len(recent), 4))
         for i, rq in enumerate(recent[:4]):
@@ -1843,73 +2186,99 @@ with tab_ask:
                 st.session_state["ask_q"] = rq
                 st.rerun()
 
-    question = st.text_area("Question", height=80, key="ask_q")
-    eq = st.columns(len(EXAMPLE_QUESTIONS))
-    for i, exq in enumerate(EXAMPLE_QUESTIONS):
-        if eq[i].button(exq[:30] + "…", key=f"ex_q_{i}"):
-            st.session_state["ask_q"] = exq
+    paper_filter: list[str] = []
+    scope_labels: list[str] = []
+    top_k = 6
+    use_cache = True
+
+    if rag_n > 0:
+        with st.expander("Paper filter & retrieval options", expanded=True):
+            # Rebuild catalog if session cache has no titles (broken fast-path)
+            catalog = ingested_papers_catalog(rs)
+            titled = sum(1 for c in catalog if (c.get("title") or "").strip())
+            if catalog and titled < max(3, len(catalog) // 20):
+                st.caption(
+                    f"Paper list has {len(catalog)} ids but few titles ({titled}). "
+                    "Refresh to reload titles from corpus.json."
+                )
+            c_ref, c_info = st.columns([1, 3])
+            with c_ref:
+                if st.button("Refresh paper list", key="ask_refresh_catalog"):
+                    clear_data_caches()
+                    st.session_state.pop("papers_catalog", None)
+                    try:
+                        rag_papers_catalog_cached.clear()
+                    except Exception:
+                        pass
+                    st.rerun()
+            with c_info:
+                st.caption("Use after ingest if search finds nothing.")
+
+            if not catalog and int(rs.get("chunk_count") or 0) > 0:
+                st.warning(
+                    "Paper list is empty but chunks exist — click **Refresh paper list**."
+                )
+
+            paper_filter = paper_scope_picker(catalog, state_key="ask_scope_ids")
+            if paper_filter:
+                id_to_label = {c["paper_id"]: c["label"] for c in catalog}
+                scope_labels = [id_to_label.get(i, i) for i in paper_filter]
+            else:
+                scope_labels = []
+
+            st.divider()
+            st.markdown("**Retrieval**")
+            top_k = int_with_input(
+                "Passages (top-k)",
+                1,
+                20,
+                6,
+                key="ask_k",
+                help="Chunks sent to the LLM (1–20). Default 6.",
+            )
+            use_cache = st.checkbox(
+                "Use semantic answer cache",
+                value=True,
+                key="ask_cache",
+                help="On = reuse similar questions. Off = always call the LLM.",
+            )
+
+        with st.form("ask_form", clear_on_submit=False):
+            question = st.text_area(
+                "Question",
+                height=100,
+                key="ask_q",
+                placeholder="e.g. What is circuit discovery in mechanistic interpretability?",
+            )
+            ask_clicked = st.form_submit_button(
+                "Ask",
+                type="primary",
+                disabled=rag_n == 0,
+            )
+    else:
+        question = ""
+        ask_clicked = False
+
+    if st.session_state.get("last_ask") and rag_n > 0:
+        if st.button("Clear last answer", key="ask_clear"):
+            st.session_state["last_ask"] = None
             st.rerun()
 
-    with st.expander("Advanced — passages, cache, paper filter", expanded=False):
-        st.markdown(
-            """
-**top-k** = chunks to the LLM (index can be huge; only top-k are shown to the model).  
-Default **6**. Facts: 4–6 · normal: 6–8 · compare: 8–12.  
-Don’t raise k just because the library grew — ingest better papers instead. Full guide: **Help**.
-"""
+    if ask_clicked and (question or "").strip() and rag_n > 0:
+        log(
+            f"Ask: {question.strip()!r} top_k={top_k} cache={use_cache} "
+            f"filter={paper_filter or 'all'}"
         )
-        top_k = int_with_input(
-            "Passages (top-k)",
-            1,
-            20,
-            6,
-            key="ask_k",
-            help="Chunks sent to the LLM after retrieval (1–20). Default 6.",
-        )
-        use_cache = st.checkbox(
-            "Use semantic answer cache",
-            value=True,
-            key="ask_cache",
-            help="Reuse near-duplicate questions (faster). Off = always call the LLM.",
-        )
-        paper_filter = st.multiselect(
-            "Restrict to papers",
-            options=[
-                p.get("paper_id")
-                for p in (rs.get("papers") or [])
-                if p.get("paper_id")
-            ],
-            key="ask_filter",
-        )
-
-    col_a, col_b = st.columns(2)
-    with col_a:
-        ask_clicked = st.button(
-            "Ask",
-            type="primary",
-            disabled=rag_n == 0 or not (question or "").strip(),
-            key="ask_btn",
-        )
-    with col_b:
-        if st.session_state.get("last_ask"):
-            if st.button("Clear last answer", key="ask_clear"):
-                st.session_state["last_ask"] = None
-                st.rerun()
-
-    if ask_clicked and (question or "").strip():
-        log(f"Ask: {question.strip()!r} top_k={top_k} cache={use_cache}")
         progress = st.progress(0, text="Starting…")
         status = st.empty()
         try:
-            status.markdown("**1/3 Retrieving** relevant chunks from full-text index…")
+            status.markdown("**1/3 Retrieving** relevant chunks…")
             progress.progress(15, text="Retrieving…")
             try:
                 from rag.rag_pipeline import ask
             except ImportError:
                 from src.rag.rag_pipeline import ask
-            status.markdown(
-                "**2/3 Generating** with Gemini (often 10–20 s — watch Activity log)…"
-            )
+            status.markdown("**2/3 Generating** with Gemini (often 10–20 s)…")
             progress.progress(40, text="Calling LLM…")
             t0 = time.time()
             result = ask(
@@ -1928,9 +2297,19 @@ Don’t raise k just because the library grew — ingest better papers instead. 
             st.session_state["last_ask"] = {
                 "q": question.strip(),
                 "result": result,
+                "scope_ids": list(paper_filter),
+                "scope_labels": list(scope_labels),
+                "corpus_n": rag_n,
             }
             push_recent_question(question.strip())
-            render_answer_block(question.strip(), result, key_prefix="ask_live")
+            render_answer_block(
+                question.strip(),
+                result,
+                key_prefix="ask_live",
+                scope_ids=paper_filter or None,
+                scope_labels=scope_labels or None,
+                corpus_paper_count=None if paper_filter else rag_n,
+            )
         except Exception as e:
             progress.empty()
             status.empty()
@@ -1941,10 +2320,17 @@ Don’t raise k just because the library grew — ingest better papers instead. 
         st.markdown("#### Last answer")
         la = st.session_state["last_ask"]
         st.caption(la.get("q"))
-        render_answer_block(la["q"], la["result"], key_prefix="ask_last")
+        render_answer_block(
+            la["q"],
+            la["result"],
+            key_prefix="ask_last",
+            scope_ids=la.get("scope_ids") or None,
+            scope_labels=la.get("scope_labels") or None,
+            corpus_paper_count=(
+                None if la.get("scope_ids") else la.get("corpus_n") or rag_n
+            ),
+        )
 
-
-# ── HELP ──────────────────────────────────────────────────────────────────
 
 with tab_help:
     st.subheader("Help")
@@ -2014,7 +2400,7 @@ More chunks in the index does **not** mean you need a higher k. Prefer better in
 **Coverage:** high ≈ strong hits · partial ≈ incomplete · low/none ≈ missing topic in full-text.
 
 **Cache:** on = reuse similar questions · off = fresh LLM call.  
-**Restrict to papers:** limit which PDFs can be retrieved.
+**Restrict to papers:** searchable list of **title (arXiv id)**. Type to filter; leave empty to use all ingested full-text.
 """
         )
 

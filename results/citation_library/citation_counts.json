@@ -1,0 +1,2619 @@
+{
+  "min_count": 2,
+  "n_ranked": 168,
+  "n_candidates_not_in_library": 14,
+  "refs": [
+    {
+      "library_cite_count": 8,
+      "title": "Multi-column deep neural networks for image classification",
+      "arxiv_id": "1202.2745",
+      "year": 2012,
+      "doi": "10.1109/CVPR.2012.6248110",
+      "s2_id": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+      "canonical_id": "s2:398c296d0cc7f9d180f84969f8937e6d3a413796",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1206.2944",
+        "1206.5538",
+        "1311.2901",
+        "1312.6034",
+        "1312.6120",
+        "1406.2199",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 6,
+      "title": "Visualizing and Understanding Convolutional Networks",
+      "arxiv_id": "1311.2901",
+      "year": 2013,
+      "doi": "10.1007/978-3-319-10590-1_53",
+      "s2_id": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+      "canonical_id": "s2:1a2a770d23b4a171fa81de62a78a3deb0588f238",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1312.6034",
+        "1312.6199",
+        "1404.7828",
+        "1406.2199",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 6,
+      "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation",
+      "arxiv_id": "1311.2524",
+      "year": 2013,
+      "doi": "10.1109/CVPR.2014.81",
+      "s2_id": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+      "canonical_id": "s2:2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1311.2901",
+        "1312.6199",
+        "1404.7828",
+        "1405.0312",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 6,
+      "title": "ImageNet: A large-scale hierarchical image database",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "10.1109/CVPR.2009.5206848",
+      "s2_id": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+      "canonical_id": "s2:d2c733e34d48784a37d717fe43d9e93277a8c53e",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1311.2901",
+        "1312.6199",
+        "1405.0312",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 5,
+      "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks",
+      "arxiv_id": "1312.6229",
+      "year": 2013,
+      "doi": "",
+      "s2_id": "1109b663453e78a59e4f66446d71720ac58cec25",
+      "canonical_id": "s2:1109b663453e78a59e4f66446d71720ac58cec25",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1404.7828",
+        "1405.0312",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 5,
+      "title": "Backpropagation Applied to Handwritten Zip Code Recognition",
+      "arxiv_id": "",
+      "year": 1989,
+      "doi": "10.1162/neco.1989.1.4.541",
+      "s2_id": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+      "canonical_id": "s2:a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1311.2524",
+        "1311.2901",
+        "1406.2199",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 5,
+      "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition",
+      "arxiv_id": "1310.1531",
+      "year": 2013,
+      "doi": "",
+      "s2_id": "b8de958fead0d8a9619b55c7299df3257c624a96",
+      "canonical_id": "s2:b8de958fead0d8a9619b55c7299df3257c624a96",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1311.2901",
+        "1404.7828",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Gradient-based learning applied to document recognition",
+      "arxiv_id": "",
+      "year": 1998,
+      "doi": "10.1109/5.726791",
+      "s2_id": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+      "canonical_id": "s2:162d958ff885f1462aeda91cd72582323fd6a1f4",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1004.4421",
+        "1202.2745",
+        "1311.2524",
+        "1312.6034"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition: The Shared Views of Four Research Groups",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "10.1109/MSP.2012.2205597",
+      "s2_id": "31868290adf1c000c611dfc966b514d5a34e8d23",
+      "canonical_id": "s2:31868290adf1c000c611dfc966b514d5a34e8d23",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1303.5778",
+        "1312.6199",
+        "1404.7828"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Greedy Layer-Wise Training of Deep Networks",
+      "arxiv_id": "",
+      "year": 2006,
+      "doi": "10.7551/mitpress/7503.003.0024",
+      "s2_id": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+      "canonical_id": "s2:355d44f53428b1ac4fb2ab468d593c720640e5bd",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1206.5533",
+        "1311.2901",
+        "1312.6120"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Improving the Fisher Kernel for Large-Scale Image Classification",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "10.1007/978-3-642-15561-1_11",
+      "s2_id": "39f3b1804b8df5be645a1dcb4a876e128385d9be",
+      "canonical_id": "s2:39f3b1804b8df5be645a1dcb4a876e128385d9be",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6034",
+        "1406.2199",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "10.5555/1953048.2021068",
+      "s2_id": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+      "canonical_id": "s2:413c1142de9d91804d6d11c67ff3fed59c9fc279",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1212.5701",
+        "1301.3781",
+        "1312.6114"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Learning Multiple Layers of Features from Tiny Images",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "",
+      "s2_id": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+      "canonical_id": "s2:5d90f06bb70a0a3dced62413346235c02b1aa086",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1206.2944",
+        "1402.3337",
+        "1405.0312"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "10.1109/TASL.2011.2134090",
+      "s2_id": "6658bbf68995731b2083195054ff45b4eca38b3a",
+      "canonical_id": "s2:6658bbf68995731b2083195054ff45b4eca38b3a",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1212.5701",
+        "1312.5602",
+        "1406.1078"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "A Neural Probabilistic Language Model",
+      "arxiv_id": "",
+      "year": 2003,
+      "doi": "",
+      "s2_id": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+      "canonical_id": "s2:6c2b28f9354f667cd5bd07afc0471d8334430da7",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1301.3781",
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 4,
+      "title": "Understanding the difficulty of training deep feedforward neural networks",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "",
+      "s2_id": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+      "canonical_id": "s2:ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538",
+        "1312.6120",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Improving neural networks by preventing co-adaptation of feature detectors",
+      "arxiv_id": "1207.0580",
+      "year": 2012,
+      "doi": "",
+      "s2_id": "0060745e006c5f14ec326904119dca19c6545e51",
+      "canonical_id": "s2:0060745e006c5f14ec326904119dca19c6545e51",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1311.2901",
+        "1402.3337",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Unbiased look at dataset bias",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "10.1109/CVPR.2011.5995347",
+      "s2_id": "0302bb2d5476540cfb21467473f5eca843caf90b",
+      "canonical_id": "s2:0302bb2d5476540cfb21467473f5eca843caf90b",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2901",
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Algorithms for Hyper-Parameter Optimization",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+      "canonical_id": "s2:03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.2944",
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Learning representations by back-propagating errors",
+      "arxiv_id": "",
+      "year": 1986,
+      "doi": "10.1038/323533a0",
+      "s2_id": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+      "canonical_id": "s2:052b1d8ce63b07fec3de9dbb583772d860b7c769",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1212.5701",
+        "1303.5778"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Tiled convolutional neural networks",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "",
+      "s2_id": "05cc38e249a6f642363b5a5cbd71cda67cea5893",
+      "canonical_id": "s2:05cc38e249a6f642363b5a5cbd71cda67cea5893",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538",
+        "1311.2901"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Why Does Unsupervised Pre-training Help Deep Learning?",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "10.5555/1756006.1756025",
+      "s2_id": "0d2336389dff3031910bd21dd1c44d1b4cd51725",
+      "canonical_id": "s2:0d2336389dff3031910bd21dd1c44d1b4cd51725",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1206.5533",
+        "1312.6120"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Return of the Devil in the Details: Delving Deep into Convolutional Nets",
+      "arxiv_id": "1405.3531",
+      "year": 2014,
+      "doi": "10.5244/C.28.6",
+      "s2_id": "14d9be7962a4ec5a6e55755f4c7588ea00793652",
+      "canonical_id": "s2:14d9be7962a4ec5a6e55755f4c7588ea00793652",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.2199",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Random Search for Hyper-Parameter Optimization",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "10.5555/2503308.2188395",
+      "s2_id": "188e247506ad992b8bc62d6c74789e89891a984f",
+      "canonical_id": "s2:188e247506ad992b8bc62d6c74789e89891a984f",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.2944",
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Contractive Auto-Encoders: Explicit Invariance During Feature Extraction",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "195d0a8233a7a46329c742eaff56c276f847fadc",
+      "canonical_id": "s2:195d0a8233a7a46329c742eaff56c276f847fadc",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "What is the best multi-stage architecture for object recognition?",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "10.1109/ICCV.2009.5459469",
+      "s2_id": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+      "canonical_id": "s2:1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1311.2901",
+        "1312.5602"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "On Random Weights and Unsupervised Feature Learning",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "265069b3670930fd884b02062d7e7b79ff2a49d5",
+      "canonical_id": "s2:265069b3670930fd884b02062d7e7b79ff2a49d5",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.2944",
+        "1206.5533",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Long Short-Term Memory",
+      "arxiv_id": "",
+      "year": 1997,
+      "doi": "10.1162/neco.1997.9.8.1735",
+      "s2_id": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+      "canonical_id": "s2:2e9d221c206e9503ceb452302d68d10e293f2a10",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1303.5778",
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Large Scale Distributed Deep Networks",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "",
+      "s2_id": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+      "canonical_id": "s2:3127190433230b3dc1abd0680bb58dced4bcd90e",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1212.5701",
+        "1301.3781",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "A Stochastic Approximation Method",
+      "arxiv_id": "",
+      "year": 1951,
+      "doi": "10.1214/AOMS/1177729586",
+      "s2_id": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+      "canonical_id": "s2:34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.7051",
+        "1212.5701"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Learning hierarchical invariant spatio-temporal features for action recognition with independent subspace analysis",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "10.1109/CVPR.2011.5995496",
+      "s2_id": "42269d0438c0ae4ca892334946ed779999691074",
+      "canonical_id": "s2:42269d0438c0ae4ca892334946ed779999691074",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1402.3337",
+        "1406.2199"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Deep learning via Hessian-free optimization",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "",
+      "s2_id": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+      "canonical_id": "s2:4c46347fbc272b21468efe3d9af34b4b2bad6684",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538",
+        "1312.6120"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Convolutional Learning of Spatio-temporal Features",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "10.1007/978-3-642-15567-3_11",
+      "s2_id": "4d476b96be73fccc61f2076befbf5a468caa4180",
+      "canonical_id": "s2:4d476b96be73fccc61f2076befbf5a468caa4180",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1402.3337",
+        "1406.2199"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "How to Construct Deep Recurrent Neural Networks",
+      "arxiv_id": "1312.6026",
+      "year": 2013,
+      "doi": "",
+      "s2_id": "533ee188324b833e059cb59b654e6160776d5812",
+      "canonical_id": "s2:533ee188324b833e059cb59b654e6160776d5812",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1404.7828",
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "A unified architecture for natural language processing: deep neural networks with multitask learning",
+      "arxiv_id": "",
+      "year": 2008,
+      "doi": "10.1145/1390156.1390177",
+      "s2_id": "57458bc1cffe5caa45a885af986d70f723f406b4",
+      "canonical_id": "s2:57458bc1cffe5caa45a885af986d70f723f406b4",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1301.3781",
+        "1312.6120",
+        "1406.2199"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Caltech-256 Object Category Dataset",
+      "arxiv_id": "",
+      "year": 2007,
+      "doi": "",
+      "s2_id": "5a5effa909cdeafaddbbb7855037e02f8e25d632",
+      "canonical_id": "s2:5a5effa909cdeafaddbbb7855037e02f8e25d632",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Practical Variational Inference for Neural Networks",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "5a9ef216bf11f222438fff130c778267d39a9564",
+      "canonical_id": "s2:5a9ef216bf11f222438fff130c778267d39a9564",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1303.5778",
+        "1312.6114",
+        "1401.4082"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Visualizing Higher-Layer Features of a Deep Network",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "",
+      "s2_id": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+      "canonical_id": "s2:65d994fb778a8d9e0f632659fb33a082949a50d3",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2901",
+        "1312.6034",
+        "1312.6199"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Deep Sparse Rectifier Neural Networks",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+      "canonical_id": "s2:67107f78a84bdb2411053cb54e94fa226eea6d8e",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538",
+        "1406.1078"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "The Importance of Encoding Versus Training with Sparse Coding and Vector Quantization",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "6f568d757d2c1ab42f2006faa25690b74c3d2d44",
+      "canonical_id": "s2:6f568d757d2c1ab42f2006faa25690b74c3d2d44",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Building high-level features using large scale unsupervised learning",
+      "arxiv_id": "1112.6209",
+      "year": 2011,
+      "doi": "10.1109/ICASSP.2013.6639343",
+      "s2_id": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+      "canonical_id": "s2:72e93aa6767ee683de7f001fa72f1314e40a8f35",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6034",
+        "1312.6120",
+        "1312.6199"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "On the difficulty of training recurrent neural networks",
+      "arxiv_id": "1211.5063",
+      "year": 2012,
+      "doi": "",
+      "s2_id": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+      "canonical_id": "s2:84069287da0a6b488b8c933f3cb5be759cb6237e",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6120",
+        "1404.7828",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Extracting and composing robust features with denoising autoencoders",
+      "arxiv_id": "",
+      "year": 2008,
+      "doi": "10.1145/1390156.1390294",
+      "s2_id": "843959ffdccf31c6694d135fad07425924f785b1",
+      "canonical_id": "s2:843959ffdccf31c6694d135fad07425924f785b1",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1311.2901",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "ADADELTA: An Adaptive Learning Rate Method",
+      "arxiv_id": "1212.5701",
+      "year": 2012,
+      "doi": "",
+      "s2_id": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+      "canonical_id": "s2:8729441d734782c3ed532a7d2d9611b438c0a09a",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1404.7828",
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "A Fast Learning Algorithm for Deep Belief Nets",
+      "arxiv_id": "",
+      "year": 2006,
+      "doi": "10.1162/neco.2006.18.7.1527",
+      "s2_id": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+      "canonical_id": "s2:8978cf7574ceb35f4c3096be768c7547b28a35d0",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1311.2901",
+        "1312.6034"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Scalable multi-label annotation",
+      "arxiv_id": "",
+      "year": 2014,
+      "doi": "10.1145/2556288.2557011",
+      "s2_id": "8ab9d01469b542434e0e47428aa25e233824ea80",
+      "canonical_id": "s2:8ab9d01469b542434e0e47428aa25e233824ea80",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Diagnosing Error in Object Detectors",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "10.1007/978-3-642-33712-3_25",
+      "s2_id": "9f9205a60ddf1135929e0747db34363b3a8c6bc8",
+      "canonical_id": "s2:9f9205a60ddf1135929e0747db34363b3a8c6bc8",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Rectified Linear Units Improve Restricted Boltzmann Machines",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "",
+      "s2_id": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+      "canonical_id": "s2:a538b05ebb01a40323997629e171c91aa28b8e2f",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538",
+        "1312.5602"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "ImageNet classification with deep convolutional neural networks",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "10.1145/3065386",
+      "s2_id": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+      "canonical_id": "s2:abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1404.7828",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Dynamic Pooling and Unfolding Recursive Autoencoders for Paraphrase Detection",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "ae5e6c6f5513613a161b2c85563f9708bf2e9178",
+      "canonical_id": "s2:ae5e6c6f5513613a161b2c85563f9708bf2e9178",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1301.3781",
+        "1406.1078"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Maxout Networks",
+      "arxiv_id": "1302.4389",
+      "year": 2013,
+      "doi": "",
+      "s2_id": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+      "canonical_id": "s2:b7b915d508987b73b61eccd2b237e7ed099a2d29",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1404.7828",
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Natural Language Processing (Almost) from Scratch",
+      "arxiv_id": "1103.0398",
+      "year": 2011,
+      "doi": "10.5555/1953048.2078186",
+      "s2_id": "bc1022b031dc6c7019696492e8116598097a8c12",
+      "canonical_id": "s2:bc1022b031dc6c7019696492e8116598097a8c12",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538",
+        "1301.3781"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Learning and Transferring Mid-level Image Representations Using Convolutional Neural Networks",
+      "arxiv_id": "",
+      "year": 2014,
+      "doi": "10.1109/CVPR.2014.222",
+      "s2_id": "c08f5fa876181fc040d76c75fe2433eee3c9b001",
+      "canonical_id": "s2:c08f5fa876181fc040d76c75fe2433eee3c9b001",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2901",
+        "1404.7828",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Fast Inference in Sparse Coding Algorithms with Applications to Object Recognition",
+      "arxiv_id": "1010.3467",
+      "year": 2010,
+      "doi": "",
+      "s2_id": "c63ef05c5f9c424b5cfeeed90dbe35eedf6cb8ec",
+      "canonical_id": "s2:c63ef05c5f9c424b5cfeeed90dbe35eedf6cb8ec",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1312.6114",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Learning Deep Architectures for AI",
+      "arxiv_id": "",
+      "year": 2007,
+      "doi": "10.1561/2200000006",
+      "s2_id": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+      "canonical_id": "s2:d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6120",
+        "1312.6199",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Some Improvements on Deep Convolutional Neural Network Based Image Classification",
+      "arxiv_id": "1312.5402",
+      "year": 2013,
+      "doi": "",
+      "s2_id": "d67175d17c450ab0ac9c256103828f9e9a0acb85",
+      "canonical_id": "s2:d67175d17c450ab0ac9c256103828f9e9a0acb85",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2901",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Adaptive deconvolutional networks for mid and high level feature learning",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "10.1109/ICCV.2011.6126474",
+      "s2_id": "d743430cb2329caa5d446c17fc9ec07f5e916ab0",
+      "canonical_id": "s2:d743430cb2329caa5d446c17fc9ec07f5e916ab0",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1311.2901",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Going deeper with convolutions",
+      "arxiv_id": "1409.4842",
+      "year": 2014,
+      "doi": "10.1109/CVPR.2015.7298594",
+      "s2_id": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+      "canonical_id": "s2:e15cf50aa89fee8535703b9f9512fca5bfc43327",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1404.7828",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "10.5555/1756006.1953039",
+      "s2_id": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+      "canonical_id": "s2:e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1312.6114",
+        "1401.4082"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Object Detection with Discriminatively Trained Part Based Models",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "10.1109/TPAMI.2009.167",
+      "s2_id": "e79272fe3d65197100eae8be9fec6469107969ae",
+      "canonical_id": "s2:e79272fe3d65197100eae8be9fec6469107969ae",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Histograms of oriented gradients for human detection",
+      "arxiv_id": "",
+      "year": 2005,
+      "doi": "10.1109/CVPR.2005.177",
+      "s2_id": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+      "canonical_id": "s2:e8b12467bdc20bde976750b8a28decdb33246d1d",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1405.0312",
+        "1406.2199"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "Learning Generative Visual Models from Few Training Examples: An Incremental Bayesian Approach Tested on 101 Object Categories",
+      "arxiv_id": "",
+      "year": 2004,
+      "doi": "10.1016/j.cviu.2005.09.012",
+      "s2_id": "ed9db7b20e019cdb1c7db8b7921221ee2d9f36e2",
+      "canonical_id": "s2:ed9db7b20e019cdb1c7db8b7921221ee2d9f36e2",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 3,
+      "title": "GradientBased Learning Applied to Document Recognition",
+      "arxiv_id": "",
+      "year": 2001,
+      "doi": "10.1109/9780470544976.CH9",
+      "s2_id": "f42b865e20e61a954239f421b42007236e671f19",
+      "canonical_id": "s2:f42b865e20e61a954239f421b42007236e671f19",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1004.4421",
+        "1202.2745",
+        "1311.2524"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "On optimization methods for deep learning",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "053912e76e50c9f923a1fc1c173f1365776060cc",
+      "canonical_id": "s2:053912e76e50c9f923a1fc1c173f1365776060cc",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation",
+      "arxiv_id": "",
+      "year": 2014,
+      "doi": "10.3115/v1/P14-1129",
+      "s2_id": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+      "canonical_id": "s2:0894b06cff1cd0903574acaa7fcf071b144ae775",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "LabelMe: A Database and Web-Based Tool for Image Annotation",
+      "arxiv_id": "",
+      "year": 2008,
+      "doi": "10.1007/s11263-007-0090-8",
+      "s2_id": "092c275005ae49dc1303214f6d02d134457c7053",
+      "canonical_id": "s2:092c275005ae49dc1303214f6d02d134457c7053",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Linear spatial pyramid matching using sparse coding for image classification",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "10.1109/CVPR.2009.5206757",
+      "s2_id": "0c9633aedafe4ee8cf238fa06c40b84f47e17362",
+      "canonical_id": "s2:0c9633aedafe4ee8cf238fa06c40b84f47e17362",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2901",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Contour Detection and Hierarchical Image Segmentation",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "10.1109/TPAMI.2010.161",
+      "s2_id": "0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+      "canonical_id": "s2:0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Learning to Represent Spatial Transformations with Factored Higher-Order Boltzmann Machines",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "10.1162/neco.2010.01-09-953",
+      "s2_id": "0eb2e4a205a628ab059cab41d3b772f614ad29f2",
+      "canonical_id": "s2:0eb2e4a205a628ab059cab41d3b772f614ad29f2",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Continuous space language models",
+      "arxiv_id": "",
+      "year": 2007,
+      "doi": "10.1016/j.csl.2006.09.003",
+      "s2_id": "0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+      "canonical_id": "s2:0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1301.3781",
+        "1406.1078"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Selecting Receptive Fields in Deep Networks",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "182015c5edff1956cbafbcb3e7bbe294aa54f9fc",
+      "canonical_id": "s2:182015c5edff1956cbafbcb3e7bbe294aa54f9fc",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.2944",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Representation Learning: A Review and New Perspectives",
+      "arxiv_id": "1206.5538",
+      "year": 2012,
+      "doi": "10.1109/TPAMI.2013.50",
+      "s2_id": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+      "canonical_id": "s2:184ac0766262312ba76bbdece4e7ffad0aa8180b",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1311.2524",
+        "1312.6114"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Enhanced Gradient and Adaptive Learning Rate for Training Restricted Boltzmann Machines",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "1a700d6cce09f1711cdaf8f5f21b6ab2a8ce7bae",
+      "canonical_id": "s2:1a700d6cce09f1711cdaf8f5f21b6ab2a8ce7bae",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Sparse deep belief net model for visual area V2",
+      "arxiv_id": "",
+      "year": 2007,
+      "doi": "",
+      "s2_id": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+      "canonical_id": "s2:202cbbf671743aefd380d2f23987bd46b9caaf97",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Learning Hierarchical Features for Scene Labeling",
+      "arxiv_id": "",
+      "year": 2013,
+      "doi": "10.1109/TPAMI.2012.231",
+      "s2_id": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+      "canonical_id": "s2:237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1404.7828"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "On Smoothing and Inference for Topic Models",
+      "arxiv_id": "1205.2662",
+      "year": 2009,
+      "doi": "",
+      "s2_id": "239243dfa44e14b4fca15675d25cb655fb91a7b7",
+      "canonical_id": "s2:239243dfa44e14b4fca15675d25cb655fb91a7b7",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.7051",
+        "1312.7258"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Keeping the neural networks simple by minimizing the description length of the weights",
+      "arxiv_id": "",
+      "year": 1993,
+      "doi": "10.1145/168304.168306",
+      "s2_id": "25c9f33aceac6dcff357727cbe2faf145b01d13c",
+      "canonical_id": "s2:25c9f33aceac6dcff357727cbe2faf145b01d13c",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.7051",
+        "1303.5778"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Parameterisation of a stochastic model for human face identification",
+      "arxiv_id": "",
+      "year": 1994,
+      "doi": "10.1109/ACV.1994.341300",
+      "s2_id": "294adb9b8dca839832836bee0f06e15be550aaaa",
+      "canonical_id": "s2:294adb9b8dca839832836bee0f06e15be550aaaa",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1009.3029",
+        "1201.5946"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Online Learning for Latent Dirichlet Allocation",
+      "arxiv_id": "",
+      "year": 2010,
+      "doi": "",
+      "s2_id": "2d8cbd7370b4ce666edd864e66f83ebf20963516",
+      "canonical_id": "s2:2d8cbd7370b4ce666edd864e66f83ebf20963516",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.2944",
+        "1206.7051"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Measuring the Objectness of Image Windows",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "10.1109/TPAMI.2012.28",
+      "s2_id": "2eb6caace8296fd4dfd4947efa4fe911c8e133b2",
+      "canonical_id": "s2:2eb6caace8296fd4dfd4947efa4fe911c8e133b2",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Measuring Invariances in Deep Networks",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "",
+      "s2_id": "3137bc367c61c0e507a5e3c1f8caeb26f292d79f",
+      "canonical_id": "s2:3137bc367c61c0e507a5e3c1f8caeb26f292d79f",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1312.6199"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Learning internal representations by error propagation",
+      "arxiv_id": "",
+      "year": 1986,
+      "doi": "10.1016/B978-1-4832-1446-7.50035-2",
+      "s2_id": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+      "canonical_id": "s2:319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1311.2524"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "What regularized auto-encoders learn from the data-generating distribution",
+      "arxiv_id": "1211.4246",
+      "year": 2012,
+      "doi": "10.5555/2627435.2750359",
+      "s2_id": "31a2053ebda7f6f77afe8c3fc53269b73567e446",
+      "canonical_id": "s2:31a2053ebda7f6f77afe8c3fc53269b73567e446",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Domain Adaptation via Pseudo In-Domain Data Selection",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "396aabd694da04cdb846cb724ca9f866f345cbd5",
+      "canonical_id": "s2:396aabd694da04cdb846cb724ca9f866f345cbd5",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "International Journal of Computer Vision manuscript No. (will be inserted by the editor) The PASCAL Visual Object Classes (VOC) Challenge",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+      "canonical_id": "s2:3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "From Large Scale Image Categorization to Entry-Level Categories",
+      "arxiv_id": "",
+      "year": 2013,
+      "doi": "10.1109/ICCV.2013.344",
+      "s2_id": "3bfeecf2aa26efe211985e19a967b2cb28012482",
+      "canonical_id": "s2:3bfeecf2aa26efe211985e19a967b2cb28012482",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Untersuchungen zu dynamischen neuronalen Netzen",
+      "arxiv_id": "",
+      "year": 1991,
+      "doi": "",
+      "s2_id": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+      "canonical_id": "s2:3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6120",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Speech recognition with deep recurrent neural networks",
+      "arxiv_id": "1303.5778",
+      "year": 2013,
+      "doi": "10.1109/ICASSP.2013.6638947",
+      "s2_id": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+      "canonical_id": "s2:4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1312.5602",
+        "1404.7828"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models",
+      "arxiv_id": "",
+      "year": 2014,
+      "doi": "",
+      "s2_id": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+      "canonical_id": "s2:484ad17c926292fbe0d5211540832a8c8a8e958b",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6114",
+        "1406.2661"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Do We Need More Training Data or Better Models for Object Detection?",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "10.5244/C.26.80",
+      "s2_id": "4cb1494e547f1eaf51bab8038c8fab904dda9026",
+      "canonical_id": "s2:4cb1494e547f1eaf51bab8038c8fab904dda9026",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1405.0312"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "How to Explain Individual Classification Decisions",
+      "arxiv_id": "0912.1128",
+      "year": 2009,
+      "doi": "10.5555/1756006.1859912",
+      "s2_id": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+      "canonical_id": "s2:4e6238c8613b5b81f81552939bce33296aedfbfe",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6034",
+        "1312.6199"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Detecting Avocados to Zucchinis: What Have We Done, and Where Are We Going?",
+      "arxiv_id": "",
+      "year": 2013,
+      "doi": "10.1109/ICCV.2013.258",
+      "s2_id": "4eeec2093a08b9d5a965776ad0e11eab749bd019",
+      "canonical_id": "s2:4eeec2093a08b9d5a965776ad0e11eab749bd019",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Evaluation of GIST descriptors for web-scale image search",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "10.1145/1646396.1646421",
+      "s2_id": "51bdb7d535fb9ec20e696c256e945f8fcb620caa",
+      "canonical_id": "s2:51bdb7d535fb9ec20e696c256e945f8fcb620caa",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1405.0312"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Unsupervised Models of Images by Spikeand-Slab RBMs",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "524b24a3523123785bedccfa0ef6c4857bf21b5f",
+      "canonical_id": "s2:524b24a3523123785bedccfa0ef6c4857bf21b5f",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 80 Million Tiny Images: a Large Dataset for Non-parametric Object and Scene Recognition",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "54d2b5c64a67f65c5dd812b89e07973f97699552",
+      "canonical_id": "s2:54d2b5c64a67f65c5dd812b89e07973f97699552",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Poselets: Body part detectors trained using 3D human pose annotations",
+      "arxiv_id": "",
+      "year": 2009,
+      "doi": "10.1109/ICCV.2009.5459303",
+      "s2_id": "55b29a2505149d06d8c1d616cd30edca40cb029c",
+      "canonical_id": "s2:55b29a2505149d06d8c1d616cd30edca40cb029c",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1405.0312"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence Flexible, High Performance Convolutional Neural Networks for Image Classification",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "5a47ba057a858f8c024d2518cc3731fc7eb40de1",
+      "canonical_id": "s2:5a47ba057a858f8c024d2518cc3731fc7eb40de1",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Natural Gradient Works Efficiently in Learning",
+      "arxiv_id": "",
+      "year": 1998,
+      "doi": "10.1162/089976698300017746",
+      "s2_id": "5a767a341364de1f75bea85e0b12ba7d3586a461",
+      "canonical_id": "s2:5a767a341364de1f75bea85e0b12ba7d3586a461",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.7051"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Multi-column deep neural network for traffic sign classification",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "10.1016/j.neunet.2012.02.023",
+      "s2_id": "5bdfd78fb2285b9306e93bd3a4b534d19bf55f06",
+      "canonical_id": "s2:5bdfd78fb2285b9306e93bd3a4b534d19bf55f06",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2901",
+        "1404.7828"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Network In Network",
+      "arxiv_id": "1312.4400",
+      "year": 2013,
+      "doi": "",
+      "s2_id": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+      "canonical_id": "s2:5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+      "global_citation_count": null,
+      "in_library": true,
+      "example_citers": [
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Continuous Space Translation Models for Phrase-Based Statistical Machine Translation",
+      "arxiv_id": "",
+      "year": 2012,
+      "doi": "",
+      "s2_id": "5f08df805f14baa826dbddcb002277b15d3f1556",
+      "canonical_id": "s2:5f08df805f14baa826dbddcb002277b15d3f1556",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Deep Generative Stochastic Networks Trainable by Backprop",
+      "arxiv_id": "1306.1091",
+      "year": 2013,
+      "doi": "",
+      "s2_id": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+      "canonical_id": "s2:5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6114",
+        "1406.2661"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "616b246e332573af1f4859aa91440280774c183a",
+      "canonical_id": "s2:616b246e332573af1f4859aa91440280774c183a",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "6196fa503ecd1b0798e5fd3a48ea519fc3ff5765",
+      "canonical_id": "s2:6196fa503ecd1b0798e5fd3a48ea519fc3ff5765",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1404.7828"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "6270baedeba28001cd1b563a199335720d6e0fe0",
+      "canonical_id": "s2:6270baedeba28001cd1b563a199335720d6e0fe0",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1404.7828",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "69e68bfaadf2dccff800158749f5a50fe82d173b",
+      "canonical_id": "s2:69e68bfaadf2dccff800158749f5a50fe82d173b",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1311.2524"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+      "canonical_id": "s2:6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1404.7828",
+        "1406.2199"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "6d77482b5e3478f4616f7467054ad50505207958",
+      "canonical_id": "s2:6d77482b5e3478f4616f7467054ad50505207958",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.2199",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+      "canonical_id": "s2:6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "6fdb77260fc83dff91c44fea0f31a2cb8ed13d04",
+      "canonical_id": "s2:6fdb77260fc83dff91c44fea0f31a2cb8ed13d04",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1301.3781",
+        "1312.6120"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "713f73ce5c3013d9fb796c21b981dc6629af0bd5",
+      "canonical_id": "s2:713f73ce5c3013d9fb796c21b981dc6629af0bd5",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1404.7828"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "728744423ff0fb7e327664ed4e6352a95bb6c893",
+      "canonical_id": "s2:728744423ff0fb7e327664ed4e6352a95bb6c893",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.2944",
+        "1206.5533"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.21437/Interspeech.2011-242",
+      "s2_id": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+      "canonical_id": "s2:77dfe038a9bdab27c4505444931eaa976e9ec667",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1301.3781"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "78c91d969c55a4a61184f81001c376810cdbd541",
+      "canonical_id": "s2:78c91d969c55a4a61184f81001c376810cdbd541",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+      "canonical_id": "s2:7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1303.5778",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "83d1118c2b2995a3e0cf9b6159e4c59e85cabb7e",
+      "canonical_id": "s2:83d1118c2b2995a3e0cf9b6159e4c59e85cabb7e",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+      "canonical_id": "s2:855d0f722d75cc56a66a00ede18ace96bafee6bd",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "860a9d55d87663ca88e74b3ca357396cd51733d0",
+      "canonical_id": "s2:860a9d55d87663ca88e74b3ca357396cd51733d0",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6034",
+        "1312.6199"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "869171b2f56cfeaa9b81b2626cb4956fea590a57",
+      "canonical_id": "s2:869171b2f56cfeaa9b81b2626cb4956fea590a57",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1145/1273496.1273598",
+      "s2_id": "86b7edea21cb82af9c0c04e53c66d7ad55e419b4",
+      "canonical_id": "s2:86b7edea21cb82af9c0c04e53c66d7ad55e419b4",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1004.4421",
+        "1206.7051"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1162/NECO_a_00142",
+      "s2_id": "872bae24c109f7c30e052ac218b17a8b028d08a0",
+      "canonical_id": "s2:872bae24c109f7c30e052ac218b17a8b028d08a0",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+      "canonical_id": "s2:87f40e6f3022adbc1f1905e3e506abad05a9964f",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1301.3781",
+        "1406.1078"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "8a9a10170ee907acb3e582742bec5fa09116f302",
+      "canonical_id": "s2:8a9a10170ee907acb3e582742bec5fa09116f302",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "8c04f169203f9e55056a6f7f956695babe622a38",
+      "canonical_id": "s2:8c04f169203f9e55056a6f7f956695babe622a38",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "908091b4a8757c3b2f7d9cfa2c4f616ee12c5157",
+      "canonical_id": "s2:908091b4a8757c3b2f7d9cfa2c4f616ee12c5157",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1007/978-3-642-24412-4_3",
+      "s2_id": "90a99fb11720ad5977f9195c8edbb217744b0f67",
+      "canonical_id": "s2:90a99fb11720ad5977f9195c8edbb217744b0f67",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "932c2a02d462abd75af018125413b1ceaa1ee3f4",
+      "canonical_id": "s2:932c2a02d462abd75af018125413b1ceaa1ee3f4",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1206.5533"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+      "canonical_id": "s2:944a1cfd79dbfb6fef460360a0765ba790f4027a",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "954ec02492cecbf8a4fc1c8e37179fae613dbfc9",
+      "canonical_id": "s2:954ec02492cecbf8a4fc1c8e37179fae613dbfc9",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "99c970348b8f70ce23d6641e201904ea49266b6e",
+      "canonical_id": "s2:99c970348b8f70ce23d6641e201904ea49266b6e",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.1078",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "9b223c8a31e0ea1d1f2c9787ffd8416dfc90c912",
+      "canonical_id": "s2:9b223c8a31e0ea1d1f2c9787ffd8416dfc90c912",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+      "canonical_id": "s2:9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.7051",
+        "1312.6114"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "a1306ce652f556fbb9e794d91084a29294298e6d",
+      "canonical_id": "s2:a1306ce652f556fbb9e794d91084a29294298e6d",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1312.5602"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "a233fccffdd2db27f833841d2cf0dfb338b03509",
+      "canonical_id": "s2:a233fccffdd2db27f833841d2cf0dfb338b03509",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+      "canonical_id": "s2:a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.1078",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "a6cd9442a627cc3cadcc2403b821887127cc83fc",
+      "canonical_id": "s2:a6cd9442a627cc3cadcc2403b821887127cc83fc",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1406.2199",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "a97b5db17acc731ef67321832dbbaf5766153135",
+      "canonical_id": "s2:a97b5db17acc731ef67321832dbbaf5766153135",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1303.5778",
+        "1406.1078"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "aa1762a629b31d254450e37ce8baa235d729d82b",
+      "canonical_id": "s2:aa1762a629b31d254450e37ce8baa235d729d82b",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "ab4850b6151ca9a9337dbba94115bde342876d50",
+      "canonical_id": "s2:ab4850b6151ca9a9337dbba94115bde342876d50",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "Bayesian Learning via Stochastic Gradient Langevin Dynamics",
+      "arxiv_id": "",
+      "year": 2011,
+      "doi": "",
+      "s2_id": "aeed631d6a84100b5e9a021ec1914095c66de415",
+      "canonical_id": "s2:aeed631d6a84100b5e9a021ec1914095c66de415",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.7051",
+        "1401.4082"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1007/978-3-642-35289-8",
+      "s2_id": "b305c18d17fd6a17e8e52a21bcd680220d322cc3",
+      "canonical_id": "s2:b305c18d17fd6a17e8e52a21bcd680220d322cc3",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1404.7828"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "b3d8dffb73bc93de239998548386c84177caa2ad",
+      "canonical_id": "s2:b3d8dffb73bc93de239998548386c84177caa2ad",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1404.7828",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1007/978-3-642-35289-8_3",
+      "s2_id": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+      "canonical_id": "s2:b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1312.6120"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+      "canonical_id": "s2:b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "c6b3ca4f939e36a9679a70e14ce8b1bbbc5618f3",
+      "canonical_id": "s2:c6b3ca4f939e36a9679a70e14ce8b1bbbc5618f3",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1405.0312",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "cbb19236820a96038d000dc629225d36e0b6294a",
+      "canonical_id": "s2:cbb19236820a96038d000dc629225d36e0b6294a",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1409.0575",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "ccd52aff02b0f902f4ce7247c4fee7273014c41c",
+      "canonical_id": "s2:ccd52aff02b0f902f4ce7247c4fee7273014c41c",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1202.2745",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "cd5a26b89f0799db1cbc1dff5607cb6815739fe7",
+      "canonical_id": "s2:cd5a26b89f0799db1cbc1dff5607cb6815739fe7",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.2944",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+      "canonical_id": "s2:cea967b59209c6be22829699f05b8b1ac4dc092d",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1404.7828",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "cf9daa503798c3d4e04131bc7bf01544666265d1",
+      "canonical_id": "s2:cf9daa503798c3d4e04131bc7bf01544666265d1",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "cfc6d0c8260594ebc5dd20ee558d29b1014ed41a",
+      "canonical_id": "s2:cfc6d0c8260594ebc5dd20ee558d29b1014ed41a",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.7258",
+        "1406.2199"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "d0be39ee052d246ae99c082a565aba25b811be2d",
+      "canonical_id": "s2:d0be39ee052d246ae99c082a565aba25b811be2d",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6120",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1162/NECO_a_00158",
+      "s2_id": "d1c67346e46b4d0067b3c2e5d3b959a8bc24b28c",
+      "canonical_id": "s2:d1c67346e46b4d0067b3c2e5d3b959a8bc24b28c",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1109/TASL.2011.2109382",
+      "s2_id": "d2b62f77cb2864e465aa60bca6c26bb1d2f84963",
+      "canonical_id": "s2:d2b62f77cb2864e465aa60bca6c26bb1d2f84963",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1303.5778",
+        "1312.6120"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1111/J.2517-6161.1977.TB01600.X",
+      "s2_id": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+      "canonical_id": "s2:d36efb9ad91e00faa334b549ce989bfae7e2907a",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1004.4421",
+        "1206.7051"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+      "canonical_id": "s2:dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6199",
+        "1405.0312"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+      "canonical_id": "s2:dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2901",
+        "1409.1556"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "10.1109/78.650093",
+      "s2_id": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+      "canonical_id": "s2:e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1303.5778",
+        "1409.0473"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+      "canonical_id": "s2:e33cbb25a8c7390aec6a398e36381f4f7770c283",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1303.5778"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "e5a685f40338f9c2f3e68e142efa217aad16dd56",
+      "canonical_id": "s2:e5a685f40338f9c2f3e68e142efa217aad16dd56",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1212.5701"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "e7c64258997838087c9ba4e87225627b015122b2",
+      "canonical_id": "s2:e7c64258997838087c9ba4e87225627b015122b2",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5538",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "e95d3934e51107da7610acd0b1bcb6551671f9f1",
+      "canonical_id": "s2:e95d3934e51107da7610acd0b1bcb6551671f9f1",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1402.3337"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "eb42cf88027de515750f230b23b1a057dc782108",
+      "canonical_id": "s2:eb42cf88027de515750f230b23b1a057dc782108",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "f05cf9f5fc419e3f299bd11e481e29574afab6a1",
+      "canonical_id": "s2:f05cf9f5fc419e3f299bd11e481e29574afab6a1",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "f2f72cfb48d15d4d2bd1e91a92e7f3ac8635d433",
+      "canonical_id": "s2:f2f72cfb48d15d4d2bd1e91a92e7f3ac8635d433",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1206.5533",
+        "1206.5538"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+      "canonical_id": "s2:f6b51c8753a871dc94ff32152c00c01e94f90f09",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1312.6199",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "f99408de2ae6c5c036e1825bdadf7b193c3ba734",
+      "canonical_id": "s2:f99408de2ae6c5c036e1825bdadf7b193c3ba734",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1311.2524",
+        "1409.0575"
+      ]
+    },
+    {
+      "library_cite_count": 2,
+      "title": "",
+      "arxiv_id": "",
+      "year": null,
+      "doi": "",
+      "s2_id": "f9f19bee621faf46f90b023f8de8248b57becbc4",
+      "canonical_id": "s2:f9f19bee621faf46f90b023f8de8248b57becbc4",
+      "global_citation_count": null,
+      "in_library": false,
+      "example_citers": [
+        "1402.3337",
+        "1404.7828"
+      ]
+    }
+  ]
+}

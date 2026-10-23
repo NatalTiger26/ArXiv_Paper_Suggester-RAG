@@ -1,47 +1,55 @@
 {
   "model": "google/embeddinggemma-2",
-  "timestamp": "2026-10-08T19:03:24.885133+00:00",
+  "timestamp": "2026-10-20T13:38:40.771729+00:00",
   "rows": [
     {
       "dim": 128,
+      "mean_mrr": 0.0,
+      "mean_recall@10": 0.0,
+      "mean_hit@1": 0.0,
+      "mrr_ci95": [
+        0.0,
+        0.0
+      ],
       "n_queries": 80,
-      "n_corpus": 11,
-      "mean_mrr": 0.5918,
-      "mean_recall@10": 0.85,
-      "mean_hit@1": 0.4875,
-      "score_ms": 0.3,
-      "bytes_per_vector_approx": 512
+      "n_corpus": 3833
     },
     {
       "dim": 256,
+      "mean_mrr": 0.0,
+      "mean_recall@10": 0.0,
+      "mean_hit@1": 0.0,
+      "mrr_ci95": [
+        0.0,
+        0.0
+      ],
       "n_queries": 80,
-      "n_corpus": 11,
-      "mean_mrr": 0.6347,
-      "mean_recall@10": 0.8625,
-      "mean_hit@1": 0.55,
-      "score_ms": 0.2,
-      "bytes_per_vector_approx": 1024
+      "n_corpus": 3833
     },
     {
       "dim": 512,
+      "mean_mrr": 0.0,
+      "mean_recall@10": 0.0,
+      "mean_hit@1": 0.0,
+      "mrr_ci95": [
+        0.0,
+        0.0
+      ],
       "n_queries": 80,
-      "n_corpus": 11,
-      "mean_mrr": 0.6394,
-      "mean_recall@10": 0.8625,
-      "mean_hit@1": 0.5625,
-      "score_ms": 0.2,
-      "bytes_per_vector_approx": 2048
+      "n_corpus": 3833
     },
     {
       "dim": 768,
+      "mean_mrr": 0.0,
+      "mean_recall@10": 0.0,
+      "mean_hit@1": 0.0,
+      "mrr_ci95": [
+        0.0,
+        0.0
+      ],
       "n_queries": 80,
-      "n_corpus": 11,
-      "mean_mrr": 0.6266,
-      "mean_recall@10": 0.8625,
-      "mean_hit@1": 0.5375,
-      "score_ms": 0.2,
-      "bytes_per_vector_approx": 3072
+      "n_corpus": 3833
     }
   ],
-  "recommendation": "Consider EMBEDDING_DIM=512 (MRR=0.6394, vs full 0.6266; \u0394\u22640.02). Rebuild indexes after changing."
+  "recommendation": "Consider EMBEDDING_DIM=128 (MRR=0.0 vs full 0.0; \u0394\u22640.02). Rebuild indexes after change."
 }

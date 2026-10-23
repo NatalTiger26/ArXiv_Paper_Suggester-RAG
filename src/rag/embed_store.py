@@ -322,53 +322,203 @@ def query_chunks(
 
 
 
-def list_ingested_papers() -> list[dict[str, Any]]:
-    """Return unique paper_ids in the RAG collection (paginated — not capped at 5k chunks)."""
+# Process-level caches (survive Streamlit reruns in the same worker)
+_list_papers_cache: list[dict[str, Any]] | None = None
+_list_papers_cache_key: tuple | None = None
+_chunk_count_cache: int | None = None
+
+
+def _progress_done_ids() -> list[str]:
+    """Fast path: ids from ingest progress files (no Chroma scan)."""
+    candidates = [
+        PROJECT_ROOT / "data" / "rag_ingest_progress" / "done.txt",
+        PROJECT_ROOT / "data" / "rag_ingest_progress" / "indexed_ids.txt",
+    ]
+    for path in candidates:
+        try:
+            if not path.is_file():
+                continue
+            ids: list[str] = []
+            seen: set[str] = set()
+            for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+                pid = (line or "").strip().split()[0] if line.strip() else ""
+                if not pid or pid.startswith("#") or pid in seen:
+                    continue
+                seen.add(pid)
+                ids.append(pid)
+            if ids:
+                return ids
+        except Exception:
+            continue
+    return []
+
+
+def _titles_from_corpus(ids: list[str]) -> dict[str, str]:
+    """Map arxiv id → title from corpus.json (cheap file read)."""
+    out: dict[str, str] = {}
+    if not ids:
+        return out
+    try:
+        import json
+
+        corpus_path = PROJECT_ROOT / "data" / "corpus.json"
+        if not corpus_path.is_file():
+            return out
+        data = json.loads(corpus_path.read_text(encoding="utf-8"))
+        if not isinstance(data, list):
+            return out
+        want = set(ids)
+        for row in data:
+            if not isinstance(row, dict):
+                continue
+            pid = str(
+                row.get("arxiv_id") or row.get("id") or row.get("paper_id") or ""
+            ).strip()
+            if "v" in pid:
+                base, _, ver = pid.rpartition("v")
+                if ver.isdigit():
+                    pid = base
+            if pid in want and row.get("title"):
+                out[pid] = str(row.get("title") or "").strip()
+    except Exception:
+        pass
+    return out
+
+
+def list_ingested_papers(*, force_chroma: bool = False) -> list[dict[str, Any]]:
+    """Return unique papers in the RAG index.
+
+    Prefer progress files + corpus titles (fast). Full Chroma metadata scan only
+    when forced or when progress files are empty — that scan is expensive on
+    large indexes and must not run on every Streamlit rerun.
+    """
+    global _list_papers_cache, _list_papers_cache_key
+
     try:
         collection = get_collection(create=False)
-    except Exception:
+        total = int(collection.count() or 0)
+    except Exception as e:
+        print(f"[embed] list_ingested: no collection ({e})", flush=True)
         return []
-    total = collection.count()
     if total == 0:
+        _list_papers_cache = []
         return []
+
+    cache_key = (total, force_chroma)
+    if (
+        not force_chroma
+        and _list_papers_cache is not None
+        and _list_papers_cache_key == cache_key
+    ):
+        return _list_papers_cache
+
+    # Fast path: done.txt / indexed_ids.txt
+    if not force_chroma:
+        done_ids = _progress_done_ids()
+        if done_ids:
+            titles = _titles_from_corpus(done_ids)
+            papers = [
+                {
+                    "paper_id": pid,
+                    "title": titles.get(pid, ""),
+                    "arxiv_id": pid,
+                }
+                for pid in done_ids
+            ]
+            papers.sort(key=lambda x: (x.get("title") or x["paper_id"]).lower())
+            _list_papers_cache = papers
+            _list_papers_cache_key = cache_key
+            return papers
+
+    # Slow path: scan Chroma metadatas (only when needed)
     by_id: dict[str, str] = {}
-    batch = 5000
+    batch = 2000
     offset = 0
+
+    def _pid(meta: dict) -> str:
+        if not meta:
+            return ""
+        return str(
+            meta.get("paper_id")
+            or meta.get("arxiv_id")
+            or meta.get("id")
+            or ""
+        ).strip()
+
+    print(f"[embed] listing papers from {total} chunks (Chroma scan)…", flush=True)
     while offset < total:
         try:
             res = collection.get(limit=batch, offset=offset, include=["metadatas"])
         except TypeError:
-            # older chroma without offset: one shot (may under-count very large indexes)
             res = collection.get(limit=min(total, batch), include=["metadatas"])
             for meta in res.get("metadatas") or []:
-                if not meta:
-                    continue
-                pid = str(meta.get("paper_id") or "").strip()
+                pid = _pid(meta)
                 if pid and pid not in by_id:
-                    by_id[pid] = meta.get("title") or ""
+                    by_id[pid] = (meta or {}).get("title") or ""
+            break
+        except Exception as e:
+            print(f"[embed] list_ingested get failed at offset={offset}: {e}", flush=True)
             break
         metas = res.get("metadatas") or []
         if not metas:
             break
         for meta in metas:
-            if not meta:
-                continue
-            pid = str(meta.get("paper_id") or "").strip()
+            pid = _pid(meta)
             if pid and pid not in by_id:
-                by_id[pid] = meta.get("title") or ""
+                by_id[pid] = (meta or {}).get("title") or ""
         offset += len(metas)
+        if offset % 20000 < batch or offset >= total:
+            print(
+                f"[embed] list progress chunks={min(offset, total)}/{total} "
+                f"unique_papers={len(by_id)}",
+                flush=True,
+            )
         if len(metas) < batch:
             break
-    return [{"paper_id": k, "title": v} for k, v in sorted(by_id.items())]
+    print(f"[embed] list done: {len(by_id)} papers", flush=True)
+    papers = [
+        {"paper_id": k, "title": v, "arxiv_id": k} for k, v in sorted(by_id.items())
+    ]
+    _list_papers_cache = papers
+    _list_papers_cache_key = cache_key
+    return papers
 
 
-def index_stats() -> dict[str, Any]:
+def invalidate_paper_list_cache() -> None:
+    global _list_papers_cache, _list_papers_cache_key, _chunk_count_cache
+    _list_papers_cache = None
+    _list_papers_cache_key = None
+    _chunk_count_cache = None
+
+
+def index_stats(*, include_papers: bool = False) -> dict[str, Any]:
+    """Lightweight by default: chunk count only. Set include_papers=True for full list.
+
+    Streamlit calls this often; never scan all chunks unless requested.
+    """
+    global _chunk_count_cache
     try:
         collection = get_collection(create=False)
-        count = collection.count()
+        count = int(collection.count() or 0)
+        _chunk_count_cache = count
     except Exception:
-        count = 0
-    papers = list_ingested_papers() if count else []
+        count = int(_chunk_count_cache or 0)
+
+    papers: list[dict[str, Any]] = []
+    paper_count = 0
+    if include_papers and count:
+        papers = list_ingested_papers()
+        paper_count = len(papers)
+    else:
+        # Prefer progress file length (O(lines)), not Chroma scan
+        done_ids = _progress_done_ids()
+        if done_ids:
+            paper_count = len(done_ids)
+        elif count and _list_papers_cache is not None:
+            paper_count = len(_list_papers_cache)
+        else:
+            paper_count = 0  # unknown without scan; UI may load catalog on demand
+
     full = _model_full_dim
     active = (
         EMBEDDING_DIM
@@ -377,7 +527,7 @@ def index_stats() -> dict[str, Any]:
     )
     return {
         "chunk_count": count,
-        "paper_count": len(papers),
+        "paper_count": paper_count,
         "papers": papers,
         "embedding_model": _model_name_loaded or EMBEDDING_MODEL,
         "embedding_dim": active,
