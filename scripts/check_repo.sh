@@ -63,6 +63,10 @@ modules = [
     'src.final_eval',
     'src.citation_library.store',
     'src.novelty.refs',
+    'src.novelty.viz',
+    'src.catalog',
+    'src.api.server',
+    'src.cli',
     'src.telemetry',
 ]
 for m in modules:
@@ -80,6 +84,9 @@ uv run python src/corpus_builder.py --help >/dev/null && ok "corpus_builder.py -
 uv run python src/recommend.py --help >/dev/null && ok "recommend.py --help" || bad "recommend.py --help failed"
 uv run python -m src.rag.cli --help >/dev/null && ok "python -m src.rag.cli --help" || bad "rag.cli --help failed"
 uv run python src/final_eval.py --help >/dev/null && ok "final_eval.py --help" || bad "final_eval.py --help failed"
+uv run python -m src.cli --help >/dev/null && ok "python -m src.cli --help" || bad "src.cli --help failed"
+uv run python scripts/batch_novelty_library.py --help >/dev/null && ok "scripts/batch_novelty_library.py --help" || bad "scripts/batch_novelty_library.py --help failed"
+uv run python scripts/bulk_topic_ingest.py --help >/dev/null && ok "scripts/bulk_topic_ingest.py --help" || bad "scripts/bulk_topic_ingest.py --help failed"
 
 # 5. Unit Test Suite
 echo "[5/6] Running core unit test suite..."

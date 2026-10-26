@@ -12,21 +12,18 @@ def model_and_dim() -> tuple[str, int]:
         from settings import EMBEDDING_MODEL, EMBEDDING_DIM
     except ImportError:
         from src.settings import EMBEDDING_MODEL, EMBEDDING_DIM
-    try:
-        from src.rag.embed_store import load_embedding_model, _active_dim
-    except ImportError:
-        from rag.embed_store import load_embedding_model, _active_dim  # type: ignore
 
-    model = load_embedding_model()
-    dim = int(_active_dim())
-    name = EMBEDDING_MODEL
     try:
         from src.rag import embed_store as es
-        if getattr(es, "_model_name_loaded", None):
-            name = es._model_name_loaded
+        if getattr(es, "_MODEL_INSTANCE", None) is not None:
+            dim = int(es._active_dim())
+            name = getattr(es, "_model_name_loaded", EMBEDDING_MODEL)
+            return str(name), dim
     except Exception:
         pass
-    return str(name), dim
+
+    dim = int(EMBEDDING_DIM) if EMBEDDING_DIM else 768
+    return str(EMBEDDING_MODEL), dim
 
 
 def embed_texts(texts: list[str], model=None) -> np.ndarray:

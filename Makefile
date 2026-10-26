@@ -110,6 +110,15 @@ web:
 
 app: web
 
+serve:
+	$(PY) -m src.cli serve
+
+batch-novelty:
+	$(PY) scripts/batch_novelty_library.py --limit $(or $(LIMIT),50)
+
+bulk-ingest:
+	$(PY) scripts/bulk_topic_ingest.py $(if $(TOPICS),--topics $(TOPICS),) $(if $(MAX),--max-per-topic $(MAX),) $(if $(CATS),--categories $(CATS),)
+
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 

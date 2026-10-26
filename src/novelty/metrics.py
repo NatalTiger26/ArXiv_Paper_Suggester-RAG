@@ -99,11 +99,11 @@ def nnls_cone_r2(x: np.ndarray, Y: np.ndarray) -> tuple[float, np.ndarray]:
     return max(0.0, min(1.0, r2)), lam
 
 
-def effective_dimension(vectors: np.ndarray) -> float:
+def effective_dimension(vectors: np.ndarray) -> float | None:
     """Participation ratio d_eff = (tr Σ)^2 / tr(Σ²) of row-stacked vectors."""
     X = np.asarray(vectors, dtype=np.float64)
     if X.ndim != 2 or X.shape[0] < 3:
-        return float("nan")
+        return None
     X = X - X.mean(axis=0, keepdims=True)
     n, d = X.shape
     try:
@@ -116,11 +116,12 @@ def effective_dimension(vectors: np.ndarray) -> float:
         ev = np.clip(ev, 0.0, None)
         s1 = float(ev.sum())
         s2 = float((ev ** 2).sum())
-        if s2 < 1e-18:
-            return float("nan")
-        return (s1 * s1) / s2
+        if s2 < 1e-18 or np.isnan(s1) or np.isnan(s2):
+            return None
+        res = float((s1 * s1) / s2)
+        return None if (np.isnan(res) or np.isinf(res)) else res
     except Exception:
-        return float("nan")
+        return None
 
 
 def chance_r2_ols_mean(n_refs: int, d_eff: float) -> float | None:
@@ -219,6 +220,7 @@ def compute_profile(
             "D_q90": disp.get("D_q90"),
             "attribution": attribution,
             "lambda_sum": s,
+            "raw_lambda": lam.tolist() if hasattr(lam, "tolist") else list(lam),
             "d_eff_refs": d_eff,
             "chance_R2_ols_mean": chance_r2_ols_mean(n, d_eff),
         }

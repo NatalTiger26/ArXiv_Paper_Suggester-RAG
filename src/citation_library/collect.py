@@ -7,7 +7,10 @@ import time
 from pathlib import Path
 from typing import Any, Literal
 
-from settings import PROJECT_ROOT
+try:
+    from settings import PROJECT_ROOT
+except ImportError:
+    from src.settings import PROJECT_ROOT
 
 from .store import (
     already_ok,

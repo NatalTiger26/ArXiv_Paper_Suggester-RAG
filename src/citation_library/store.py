@@ -8,7 +8,10 @@ import time
 from pathlib import Path
 from typing import Any, Iterable
 
-from settings import PROJECT_ROOT
+try:
+    from settings import PROJECT_ROOT
+except ImportError:
+    from src.settings import PROJECT_ROOT
 
 DEFAULT_DB = PROJECT_ROOT / "data" / "citation_library" / "graph.sqlite3"
 
@@ -179,17 +182,24 @@ def citation_counts(conn: sqlite3.Connection) -> list[sqlite3.Row]:
 
 
 def example_citers(conn: sqlite3.Connection, cited_id: str, limit: int = 8) -> list[str]:
+    cids = [cited_id]
+    cid_str = str(cited_id).strip()
+    if not cid_str.startswith("arxiv:") and not cid_str.startswith("s2:") and not cid_str.startswith("doi:"):
+        cids.append(f"arxiv:{cid_str}")
+    elif cid_str.startswith("arxiv:"):
+        cids.append(cid_str[6:].strip())
+    placeholders = ",".join(["?"] * len(cids))
     rows = conn.execute(
-        """
+        f"""
         SELECT DISTINCT citer_id FROM edges
-        WHERE cited_id = ?
+        WHERE cited_id IN ({placeholders})
         LIMIT ?
         """,
-        (cited_id, limit),
+        (*cids, limit),
     ).fetchall()
     out = []
     for r in rows:
-        cid = r["citer_id"]
+        cid = r["citer_id"] if isinstance(r, (dict, sqlite3.Row)) else r[0]
         # prefer arxiv part
         if cid.startswith("arxiv:"):
             out.append(cid.split(":", 1)[1])

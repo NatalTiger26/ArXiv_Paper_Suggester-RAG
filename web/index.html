@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArXiv Scientific Discovery Platform</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-text">
+        <h1>ArXiv Discovery & RAG Studio</h1>
+        <span class="subtext">Multi-Signal Ranking • Citation Grounding • 2D Novelty Geometry</span>
+      </div>
+    </div>
+    <div class="header-status" id="headerStatus">
+      <div class="status-badge" id="catalogBadge"><span class="dot"></span> Catalog: <strong id="catalogCount">—</strong></div>
+      <div class="status-badge" id="chromaBadge"><span class="dot"></span> Chunks: <strong id="chunksCount">—</strong></div>
+      <div class="status-badge" id="telemetryBadge"><span class="dot"></span> Calls: <strong id="telemetryCalls">0</strong></div>
+      <button class="secondary-btn-sm" id="btnOpenGuide" style="margin-left: 6px;">📖 Guide</button>
+    </div>
+  </header>
+
+  <!-- Main Three-Pane Layout -->
+  <main class="studio-container">
+    
+    <!-- LEFT PANE: Discovery & Ranking -->
+    <section class="pane left-pane" id="discoveryPane">
+      <div class="pane-header">
+        <h2>Discovery & Multi-Signal Ranking</h2>
+        <span class="badge" id="rankCountBadge">0 papers</span>
+      </div>
+
+      <div class="search-box">
+        <input type="text" id="rankQuery" placeholder="Search literature or enter research topic..." value="mechanistic interpretability circuits">
+        <button id="btnRank" class="primary-btn">Rank Papers</button>
+      </div>
+
+      <!-- Live Signal Weight Sliders -->
+      <details class="weights-expander" open>
+        <summary>Scoring Weights & Hyperparameters</summary>
+        <div class="slider-grid">
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Embedding Semantic</span>
+              <strong id="wEmbVal">0.40</strong>
+            </div>
+            <input type="range" id="wEmb" min="0" max="1" step="0.05" value="0.40">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Recency Decay</span>
+              <strong id="wRecVal">0.15</strong>
+            </div>
+            <input type="range" id="wRec" min="0" max="1" step="0.05" value="0.15">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Global Citations</span>
+              <strong id="wCitVal">0.15</strong>
+            </div>
+            <input type="range" id="wCit" min="0" max="1" step="0.05" value="0.15">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Author Corpus Frequency</span>
+              <strong id="wAuthVal">0.05</strong>
+            </div>
+            <input type="range" id="wAuth" min="0" max="1" step="0.05" value="0.05">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Velocity & Hub Authority</span>
+              <strong id="wVelVal">0.25</strong>
+            </div>
+            <input type="range" id="wVel" min="0" max="1" step="0.05" value="0.25">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Diversity Temperature (MMR)</span>
+              <strong id="wTempVal">0.10</strong>
+            </div>
+            <input type="range" id="wTemp" min="0" max="1" step="0.05" value="0.10">
+          </div>
+        </div>
+      </details>
+
+      <!-- Fast FTS5 Filter -->
+      <div class="sub-filter">
+        <input type="text" id="ftsKeyword" placeholder="Filter current list by keyword...">
+      </div>
+
+      <!-- Ranked Results List -->
+      <div class="results-list" id="rankResultsList">
+        <div class="empty-state">Enter a topic and click <strong>Rank Papers</strong> to inspect multi-signal scoring.</div>
+      </div>
+    </section>
+
+    <!-- CENTER PANE: Citation-Grounded Q&A Studio -->
+    <section class="pane center-pane" id="qaPane">
+      <div class="pane-header">
+        <h2>Citation-Grounded Q&A Studio</h2>
+        <div class="header-controls">
+          <label class="toggle-control"><input type="checkbox" id="chkStream" checked> Live SSE</label>
+          <label class="toggle-control"><input type="checkbox" id="chkCache" checked> Semantic Cache</label>
+        </div>
+      </div>
+
+      <div class="qa-input-box">
+        <textarea id="qaQuery" rows="3" placeholder="Ask a technical research question grounded in the ingested literature... (e.g. What is the core theorem of NTK in 1806.07572?)">What are the main theoretical contributions and empirical findings in arXiv paper 1806.07572?</textarea>
+        <div class="qa-actions">
+          <div class="preset-pills">
+            <button class="preset-pill" data-q="What is the main contribution of paper 1806.07572?">1806.07572 NTK</button>
+            <button class="preset-pill" data-q="What are the key limitations of circuit discovery in transformers?">Circuits Limitations</button>
+            <button class="preset-pill" data-q="Explain the loss landscape under random matrix theory.">RMT Loss Landscape</button>
+          </div>
+          <button id="btnAsk" class="primary-btn">Ask Grounded RAG</button>
+        </div>
+      </div>
+
+      <!-- Answer Container -->
+      <div class="qa-response-area" id="qaResponseArea">
+        <div class="qa-meta-bar" id="qaMetaBar" style="display: none;">
+          <span class="meta-tag" id="metaCoverage">Coverage: —</span>
+          <span class="meta-tag" id="metaCache">Cache: Miss</span>
+          <span class="meta-tag" id="metaLatency">Latency: — ms</span>
+          <button class="export-btn" id="btnExportBib">Export BibTeX</button>
+          <button class="export-btn" id="btnExportMd">Copy Markdown</button>
+        </div>
+        <div class="answer-content" id="answerContent">
+          <div class="empty-state">Ask a question to see an answer with strict inline citation tags (e.g. <code>[1]</code>, <code>[2]</code>). Click any tag to view the exact supporting passage.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANE: Subspace Explorer & Source Inspector -->
+    <section class="pane right-pane" id="inspectorPane">
+      <div class="pane-header">
+        <div class="tab-buttons">
+          <button class="tab-btn active" id="tabBtnSubspace">2D Novelty Cone</button>
+          <button class="tab-btn" id="tabBtnPassages">Source Passages</button>
+          <button class="tab-btn" id="tabBtnHubs">Landmark Hubs</button>
+        </div>
+      </div>
+
+      <!-- Subspace Explorer Tab Content -->
+      <div class="tab-content" id="tabSubspace">
+        <div class="subspace-controls">
+          <input type="text" id="noveltyArxivId" placeholder="arXiv ID (e.g. 1806.07572)" value="1806.07572">
+          <button id="btnComputeNovelty" class="secondary-btn">Project Subspace</button>
+        </div>
+
+        <div class="typology-header" id="typologyHeader" style="display: none;">
+          <span class="typology-pill" id="typologyPill">Synergistic Blend</span>
+          <span class="coverage-pill" id="coveragePill">Full Abstract Coverage</span>
+        </div>
+
+        <div class="canvas-container">
+          <div class="canvas-tooltip" id="canvasTooltip" style="display: none;"></div>
+          <canvas id="subspaceCanvas" width="420" height="360"></canvas>
+          <div class="canvas-legend">
+            <span class="legend-item"><span class="legend-dot parent"></span> Dominant Parent (1, 0)</span>
+            <span class="legend-item"><span class="legend-dot recon"></span> Cone Projection x̂ = (m, √Δ)</span>
+            <span class="legend-item"><span class="legend-dot cited"></span> Cited References (yⱼ)</span>
+            <span class="legend-item"><span class="legend-dot unit"></span> Unit Circle ‖x‖ = 1</span>
+            <span class="legend-item"><span class="legend-dot residual"></span> Novelty Residual</span>
+          </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metrics-cards" id="noveltyMetrics">
+          <div class="metric-card" title="Max cosine similarity to the single closest reference paper.">
+            <span class="metric-title">Direct Similarity (m)</span>
+            <strong class="metric-value" id="mVal">—</strong>
+            <span class="metric-sub">Closest single parent</span>
+          </div>
+          <div class="metric-card" title="Multi-parent synergy blend: R²₊ - m². Reflects genuine combination of ideas.">
+            <span class="metric-title">Synergy Blend (Δ)</span>
+            <strong class="metric-value" id="deltaVal">—</strong>
+            <span class="metric-sub">Multi-paper synergy</span>
+          </div>
+          <div class="metric-card" title="Total non-negative fraction of paper explained by reference cone.">
+            <span class="metric-title">Cone Variance (R²₊)</span>
+            <strong class="metric-value" id="r2Val">—</strong>
+            <span class="metric-sub">Explained by references</span>
+          </div>
+          <div class="metric-card" title="Radial distance from reconstruction to unit circle. Pure innovation outside prior art.">
+            <span class="metric-title">Novelty Residual (√1-R²₊)</span>
+            <strong class="metric-value" id="resVal">—</strong>
+            <span class="metric-sub">Creative departure</span>
+          </div>
+        </div>
+
+        <!-- Interpretability Guide -->
+        <details class="guide-expander">
+          <summary>💡 How to Read This Subspace & Reference Points</summary>
+          <div class="guide-body">
+            <div class="guide-item">
+              <strong>Dominant Parent Dot (Red, 1, 0):</strong> The single foundational paper in the bibliography with the highest direct cosine similarity ($m$) to this paper.
+            </div>
+            <div class="guide-item">
+              <strong>Scattered Dots (Grey / Purple yⱼ):</strong> The other cited reference papers from the paper's bibliography projected onto this plane. Their positions show how each relates to the dominant parent vs the synergy direction.
+            </div>
+            <div class="guide-item">
+              <strong>Cone Projection Dot (Blue x̂):</strong> The synthesized combination of foundational references ($\sum \lambda_j y_j$). It sits in the nonnegative cone spanned by the references (radius = $\sqrt{R^2_+}$).
+            </div>
+            <div class="guide-item">
+              <strong>Orange Dashed Line:</strong> The orthogonal novelty residual gap from $\hat{x}$ out to the unit circle $\|x\| = 1$. The longer this line, the greater the paper's creative departure from its cited literature.
+            </div>
+          </div>
+        </details>
+
+        <!-- Foundational References Attribution -->
+        <div class="attribution-section">
+          <div class="attribution-header">
+            <h3>Foundational Reference Attribution (λ)</h3>
+            <span class="subtext">NNLS embedding weights</span>
+          </div>
+          <div class="attribution-table-container" id="attributionTable">
+            <div class="empty-state-sm">No paper analyzed yet.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source Passages Tab Content -->
+      <div class="tab-content" id="tabPassages" style="display: none;">
+        <div class="passages-header">
+          <span id="passagesCount">0 retrieved passages</span>
+        </div>
+        <div class="passages-list" id="passagesList">
+          <div class="empty-state">No query run yet. Ask a question or click a citation tag to inspect retrieved source passages.</div>
+        </div>
+      </div>
+
+      <!-- Landmark Hubs Tab Content -->
+      <div class="tab-content" id="tabHubs" style="display: none;">
+        <div class="hubs-header">
+          <span>Top Global Landmark Papers in Graph</span>
+          <button class="secondary-btn-sm" id="btnRefreshHubs">Refresh</button>
+        </div>
+        <div class="hubs-list" id="hubsList">
+          <div class="loading-state">Loading citation hubs...</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive User Guide & Quickstart Modal -->
+  <div class="guide-modal-backdrop" id="guideModal" style="display: none;">
+    <div class="guide-modal-content">
+      <div class="guide-modal-header">
+        <h2>📖 Discovery Platform User Guide & Architecture</h2>
+        <button class="guide-modal-close" id="btnCloseGuide">✕</button>
+      </div>
+      <div class="guide-modal-body">
+        <div class="guide-step">
+          <h3>1. Discovery & Multi-Signal Ranking</h3>
+          <p>Search over 5,700 catalog papers or your research domain. Adjust weights to balance <strong>Embedding fit</strong>, <strong>Recency half-life</strong>, <strong>Global citations</strong>, and <strong>Author domain authority</strong>. Click any paper to copy its ID or inspect its subspace.</p>
+        </div>
+        <div class="guide-step">
+          <h3>2. Citation-Grounded Q&A</h3>
+          <p>Ask scientific questions and receive streaming answers with inline <strong>[1], [2]</strong> citations grounded in full-text chunks. Click any citation tag to jump directly to the supporting passage in the <strong>Source Passages</strong> tab.</p>
+        </div>
+        <div class="guide-step">
+          <h3>3. 2D Novelty Cone & Foundational References</h3>
+          <p>Enter any arXiv ID to project it into a 2D orthonormal reference subspace:</p>
+          <ul>
+            <li><strong>Red Dot (1, 0):</strong> The single closest foundational parent ($e_1$ baseline, cosine similarity $m$).</li>
+            <li><strong>Blue Dot (x̂):</strong> Nonnegative linear synthesis ($\sum \lambda_j y_j$) inside the reference cone.</li>
+            <li><strong>Scattered Dots (yⱼ):</strong> All other cited works. <em>Indigo dots</em> are active parents with $\lambda_j > 0$; <em>grey dots</em> are background citations.</li>
+            <li><strong>Orange Dashed Line:</strong> Novelty residual gap ($\sqrt{1 - R^2_+}$) measuring departure from prior art to the unit circle.</li>
+          </ul>
+        </div>
+        <div class="guide-step">
+          <h3>4. Verified Authoritative Links</h3>
+          <p>Every foundational reference provides direct external links to its official source: <strong>arXiv</strong>, <strong>DOI</strong>, or <strong>Semantic Scholar</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -149,6 +149,34 @@ def citation_score(cites: Any) -> float:
     return min(1.0, math.log1p(value) / math.log1p(500))
 
 
+def velocity_score(
+    cites: Any,
+    year: Any,
+    library_citations: Any = None,
+) -> float:
+    """
+    Citation Velocity & Graph Hub Authority score.
+
+    Computes annualized citation velocity:
+      velocity = (citations + 5.0 * library_citations) / max(1.0, current_year - pub_year)
+
+    Log-normalized against a benchmark velocity of 50 citations/year.
+    Recent breakout papers (2024-2026) with high velocity score close to 1.0.
+    Missing citation or year data defaults to neutral 0.3.
+    """
+    year_int = _extract_year(year)
+    if year_int is None:
+        return 0.3
+
+    age = max(1.0, float(_current_year() - year_int))
+    cites_val = _safe_float(cites, 0.0) or 0.0
+    lib_val = _safe_float(library_citations, 0.0) or 0.0
+
+    effective = max(0.0, cites_val + 5.0 * lib_val)
+    velocity = effective / age
+    return min(1.0, math.log1p(velocity) / math.log1p(50.0))
+
+
 def _author_name(author: Any) -> str | None:
     """Normalize the common author representations found in paper metadata."""
     if isinstance(author, str):
@@ -253,6 +281,12 @@ def _validate_weights(weights: dict[str, float]) -> dict[str, float]:
             raise ValueError(f"Invalid weight for {name!r}: {weights.get(name)!r}")
         cleaned[name] = float(value)
 
+    if "velocity" in weights:
+        val = _safe_float(weights.get("velocity"))
+        if val is None or val < 0:
+            raise ValueError(f"Invalid weight for 'velocity': {weights.get('velocity')!r}")
+        cleaned["velocity"] = float(val)
+
     if sum(cleaned.values()) <= 0:
         raise ValueError("At least one scoring weight must be greater than zero.")
 
@@ -264,7 +298,7 @@ def combine_scores(
     weights: dict[str, float],
 ) -> tuple[float, dict[str, float]]:
     """
-    Combine the four core signals and return:
+    Combine the scoring signals and return:
 
       (weighted score, contribution breakdown)
 
@@ -274,8 +308,8 @@ def combine_scores(
     weights = _validate_weights(weights)
 
     contributions = {
-        name: float(signals[name]) * weights[name]
-        for name in ("embedding", "recency", "citation", "author")
+        name: float(signals.get(name, 0.0)) * weights[name]
+        for name in weights
     }
 
     return float(sum(contributions.values())), contributions
@@ -674,6 +708,7 @@ def score_and_rank(
 
         year = _resolve_year(result, paper)
         cites = _resolve_citations(result, paper)
+        lib_cites = (paper or {}).get("library_cite_count") or (paper or {}).get("citation_count_in_library") or 0
 
         signals = {
             "embedding": min(
@@ -683,6 +718,7 @@ def score_and_rank(
             "recency": recency_score(year, half_life),
             "citation": citation_score(cites),
             "author": author_score(paper or {}, author_frequency),
+            "velocity": velocity_score(cites, year, lib_cites),
         }
 
         final_score, contribution = combine_scores(signals, weights)
@@ -769,14 +805,18 @@ def parse_weights(text: str) -> dict[str, float]:
     """
     Parse CLI weights in the documented order:
 
-      embedding,recency,citation,author
+      embedding,recency,citation,author[,velocity]
     """
     parts = [part.strip() for part in text.split(",")]
 
-    if len(parts) != 4:
+    if len(parts) == 4:
+        keys = ("embedding", "recency", "citation", "author")
+    elif len(parts) == 5:
+        keys = ("embedding", "recency", "citation", "author", "velocity")
+    else:
         raise argparse.ArgumentTypeError(
-            "--weights must contain exactly four comma-separated values: "
-            "embedding,recency,citation,author"
+            "--weights must contain 4 or 5 comma-separated values: "
+            "embedding,recency,citation,author[,velocity]"
         )
 
     try:
@@ -788,7 +828,7 @@ def parse_weights(text: str) -> dict[str, float]:
 
     try:
         return _validate_weights(
-            dict(zip(("embedding", "recency", "citation", "author"), values))
+            dict(zip(keys, values))
         )
     except ValueError as exc:
         raise argparse.ArgumentTypeError(str(exc)) from exc
@@ -810,31 +850,29 @@ def print_ranked_results(
         )
 
         signals = result["signals"]
+        vel_sig = f"  vel={signals['velocity']:.2f}" if "velocity" in signals else ""
+        llm_sig = f"  llm={signals['llm']:.2f}" if "llm" in signals else ""
         print(
             "     signals  "
             f"emb={signals['embedding']:.2f}  "
             f"rec={signals['recency']:.2f}  "
             f"cit={signals['citation']:.2f}  "
             f"auth={signals['author']:.2f}"
-            + (
-                f"  llm={signals['llm']:.2f}"
-                if "llm" in signals
-                else ""
-            )
+            + vel_sig
+            + llm_sig
         )
 
         contribution = result["contribution"]
+        vel_con = f"  vel={contribution['velocity']:.3f}" if "velocity" in contribution else ""
+        llm_con = f"  llm={contribution['llm']:.3f}" if "llm" in contribution else ""
         print(
             "     contrib  "
             f"emb={contribution['embedding']:.3f}  "
             f"rec={contribution['recency']:.3f}  "
             f"cit={contribution['citation']:.3f}  "
             f"auth={contribution['author']:.3f}"
-            + (
-                f"  llm={contribution['llm']:.3f}"
-                if "llm" in contribution
-                else ""
-            )
+            + vel_con
+            + llm_con
         )
 
 

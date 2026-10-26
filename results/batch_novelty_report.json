@@ -1,0 +1,1296 @@
+{
+  "stats": {
+    "timestamp": "2026-10-26T22:19:51.291561+00:00",
+    "total_requested": 50,
+    "total_evaluated": 50,
+    "total_successful": 20,
+    "category_filter": null,
+    "min_citations_filter": 0,
+    "mean_m": 0.8903,
+    "mean_Delta": 0.0825,
+    "mean_R2_plus": 0.8761,
+    "mean_residual": 0.3478
+  },
+  "results": [
+    {
+      "arxiv_id": "1710.11063",
+      "title": "Grad-CAM++: Improved Visual Explanations for Deep Convolutional Networks",
+      "year": 2017,
+      "citation_count": 3549,
+      "ok": true,
+      "m": 0.938,
+      "Delta": 0.0471,
+      "R2_plus": 0.927,
+      "novelty_residual": 0.2703,
+      "novelty_score": 0.073,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:5582bebed97947a41e3ddd9bd1f284b73f1648c2",
+          "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization",
+          "weight": 0.4966,
+          "share": 0.5,
+          "url": "https://www.semanticscholar.org/paper/5582bebed97947a41e3ddd9bd1f284b73f1648c2"
+        },
+        {
+          "paper_id": "s2:dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+          "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+          "weight": 0.2356,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71"
+        },
+        {
+          "paper_id": "s2:1a2a770d23b4a171fa81de62a78a3deb0588f238",
+          "title": "Visualizing and Understanding Convolutional Networks",
+          "weight": 0.0978,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/1a2a770d23b4a171fa81de62a78a3deb0588f238"
+        },
+        {
+          "paper_id": "1409.1556",
+          "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+          "weight": 0.0525,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1409.1556"
+        },
+        {
+          "paper_id": "s2:33af9298e5399269a12d4b9901492fe406af62b4",
+          "title": "Striving for Simplicity: The All Convolutional Net",
+          "weight": 0.0404,
+          "share": 0.0,
+          "url": "https://www.semanticscholar.org/paper/33af9298e5399269a12d4b9901492fe406af62b4"
+        }
+      ],
+      "n_refs_used": 18,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1802.03888",
+      "title": "Consistent Individualized Feature Attribution for Tree Ensembles",
+      "year": 2018,
+      "citation_count": 2020,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1803.08024",
+      "title": "Stacked Cross Attention for Image-Text Matching",
+      "year": 2018,
+      "citation_count": 1441,
+      "ok": true,
+      "m": 0.8728,
+      "Delta": 0.086,
+      "R2_plus": 0.8478,
+      "novelty_residual": 0.3902,
+      "novelty_score": 0.1522,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1412.2306",
+          "title": "Deep Visual-Semantic Alignments for Generating Image Descriptions",
+          "weight": 0.2313,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1412.2306"
+        },
+        {
+          "paper_id": "1707.07998",
+          "title": "Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering",
+          "weight": 0.2274,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1707.07998"
+        },
+        {
+          "paper_id": "1711.06420",
+          "title": "Look, Imagine and Match: Improving Textual-Visual Cross-Modal Retrieval with Generative Models",
+          "weight": 0.1553,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1711.06420"
+        },
+        {
+          "paper_id": "1508.04025",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "weight": 0.1282,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1508.04025"
+        },
+        {
+          "paper_id": "1502.03044",
+          "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+          "weight": 0.0769,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1502.03044"
+        }
+      ],
+      "n_refs_used": 46,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1812.11788",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 1111,
+      "ok": true,
+      "m": 0.8766,
+      "Delta": 0.0827,
+      "R2_plus": 0.8511,
+      "novelty_residual": 0.3859,
+      "novelty_score": 0.1489,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1804.03959",
+          "title": "Making Deep Heatmaps Robust to Partial Occlusions for 3D Object Pose Estimation",
+          "weight": 0.1414,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1804.03959"
+        },
+        {
+          "paper_id": "s2:7dd7bbbc8ed59a9f989bee1a0feaa88cb8bc54af",
+          "title": "Leveraging Feature Uncertainty in the PnP Problem",
+          "weight": 0.1348,
+          "share": 0.1,
+          "url": "https://doi.org/10.5244/C.28.83"
+        },
+        {
+          "paper_id": "1703.04670",
+          "title": "6-DoF object pose from semantic keypoints",
+          "weight": 0.1175,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1703.04670"
+        },
+        {
+          "paper_id": "1607.06038",
+          "title": "Deep Learning of Local RGB-D Patches for 3D Object Detection and 6D Pose Estimation",
+          "weight": 0.1173,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1607.06038"
+        },
+        {
+          "paper_id": "1711.08848",
+          "title": "Real-Time Seamless Single Shot 6D Object Pose Prediction",
+          "weight": 0.1011,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1711.08848"
+        }
+      ],
+      "n_refs_used": 44,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1711.00867",
+      "title": "The (Un)reliability of saliency methods",
+      "year": 2017,
+      "citation_count": 832,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1512.00570",
+      "title": "Attribute2Image: Conditional Image Generation from Visual Attributes",
+      "year": 2015,
+      "citation_count": 810,
+      "ok": true,
+      "m": 0.8426,
+      "Delta": 0.1057,
+      "R2_plus": 0.8156,
+      "novelty_residual": 0.4294,
+      "novelty_score": 0.1844,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1502.04623",
+          "title": "DRAW: A Recurrent Neural Network For Image Generation",
+          "weight": 0.1993,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1502.04623"
+        },
+        {
+          "paper_id": "1502.03044",
+          "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+          "weight": 0.1561,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1502.03044"
+        },
+        {
+          "paper_id": "1312.6114",
+          "title": "Auto-Encoding Variational Bayes",
+          "weight": 0.1104,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1312.6114"
+        },
+        {
+          "paper_id": "s2:6fb28823b9851fd14dcc7f363f6bba1fdae31755",
+          "title": "Scene Collaging: Analysis and Synthesis of Natural Images with Semantic Layers",
+          "weight": 0.1051,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICCV.2013.457"
+        },
+        {
+          "paper_id": "s2:d3046251ec5d6e7f90ef5ef2b0ac885c01138555",
+          "title": "Attribute and simile classifiers for face verification",
+          "weight": 0.0941,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICCV.2009.5459250"
+        }
+      ],
+      "n_refs_used": 63,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1704.05858",
+      "title": "The Hyper Suprime-Cam SSP Survey: Overview and Survey Design",
+      "year": 2017,
+      "citation_count": 679,
+      "ok": true,
+      "m": 0.8432,
+      "Delta": 0.0987,
+      "R2_plus": 0.8097,
+      "novelty_residual": 0.4362,
+      "novelty_score": 0.1903,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "astro-ph/0211006",
+          "title": "Subaru Prime Focus Camera — Suprime-Cam",
+          "weight": 0.2164,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/astro-ph/0211006"
+        },
+        {
+          "paper_id": "1705.06766",
+          "title": "The Hyper Suprime-Cam Software Pipeline",
+          "weight": 0.1858,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1705.06766"
+        },
+        {
+          "paper_id": "0801.4017",
+          "title": "The Subaru/XMM-Newton Deep Survey (SXDS). II. Optical Imaging and Photometric Catalogs",
+          "weight": 0.1812,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/0801.4017"
+        },
+        {
+          "paper_id": "1705.01599",
+          "title": "Characterization and Photometric Performance of the Hyper Suprime-Cam Software Pipeline",
+          "weight": 0.1322,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1705.01599"
+        },
+        {
+          "paper_id": "1007.0290",
+          "title": "The Atacama Cosmology Telescope: The Receiver and Instrumentation",
+          "weight": 0.0827,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1007.0290"
+        }
+      ],
+      "n_refs_used": 42,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1806.02724",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 679,
+      "ok": true,
+      "m": 0.879,
+      "Delta": 0.1034,
+      "R2_plus": 0.8761,
+      "novelty_residual": 0.352,
+      "novelty_score": 0.1239,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1711.04987",
+          "title": "Unified Pragmatic Models for Generating and Following Instructions",
+          "weight": 0.2711,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1711.04987"
+        },
+        {
+          "paper_id": "1506.04089",
+          "title": "Listen, Attend, and Walk: Neural Mapping of Navigational Instructions to Action Sequences",
+          "weight": 0.2203,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1506.04089"
+        },
+        {
+          "paper_id": "1803.07729",
+          "title": "Look Before You Leap: Bridging Model-Free and Model-Based Reinforcement Learning for Planned-Ahead Vision-and-Language Navigation",
+          "weight": 0.1398,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1803.07729"
+        },
+        {
+          "paper_id": "1711.03800",
+          "title": "Object Referring in Visual Scene with Spoken Language",
+          "weight": 0.1267,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1711.03800"
+        },
+        {
+          "paper_id": "1711.07280",
+          "title": "Vision-and-Language Navigation: Interpreting Visually-Grounded Navigation Instructions in Real Environments",
+          "weight": 0.0909,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1711.07280"
+        }
+      ],
+      "n_refs_used": 60,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1906.06532",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 677,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1901.09392",
+      "title": "On the (In)fidelity and Sensitivity for Explanations",
+      "year": 2019,
+      "citation_count": 651,
+      "ok": true,
+      "m": 0.8394,
+      "Delta": 0.1334,
+      "R2_plus": 0.8381,
+      "novelty_residual": 0.4024,
+      "novelty_score": 0.1619,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1705.07857",
+          "title": "Real Time Image Saliency for Black Box Classifiers",
+          "weight": 0.1693,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1705.07857"
+        },
+        {
+          "paper_id": "1806.08049",
+          "title": "On the Robustness of Interpretability Methods",
+          "weight": 0.1624,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1806.08049"
+        },
+        {
+          "paper_id": "1711.00867",
+          "title": "The (Un)reliability of saliency methods",
+          "weight": 0.1355,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1711.00867"
+        },
+        {
+          "paper_id": "s2:b2681fbc27089797cedc1a454b0c1b94c6482abe",
+          "title": "Algorithmic Transparency via Quantitative Input Influence: Theory and Experiments with Learning Systems",
+          "weight": 0.1103,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/SP.2016.42"
+        },
+        {
+          "paper_id": "1703.04730",
+          "title": "Understanding Black-box Predictions via Influence Functions",
+          "weight": 0.0761,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1703.04730"
+        }
+      ],
+      "n_refs_used": 52,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1611.09571",
+      "title": "Predicting Human Eye Fixations via an LSTM-based Saliency Attentive Model",
+      "year": 2016,
+      "citation_count": 613,
+      "ok": true,
+      "m": 0.932,
+      "Delta": 0.0686,
+      "R2_plus": 0.9373,
+      "novelty_residual": 0.2505,
+      "novelty_score": 0.0627,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1510.02927",
+          "title": "DeepFix: A Fully Convolutional Neural Network for Predicting Human Eye Fixations",
+          "weight": 0.3145,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1510.02927"
+        },
+        {
+          "paper_id": "s2:a48dc9c898d6ff1cdb96dcf8a297bafb8ac1b9e2",
+          "title": "Predicting human gaze using low-level saliency combined with face detection",
+          "weight": 0.245,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/a48dc9c898d6ff1cdb96dcf8a297bafb8ac1b9e2"
+        },
+        {
+          "paper_id": "1804.01793",
+          "title": "End-to-End Saliency Mapping via Probability Distribution Prediction",
+          "weight": 0.1193,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1804.01793"
+        },
+        {
+          "paper_id": "1411.1045",
+          "title": "Deep Gaze I: Boosting Saliency Prediction with Feature Maps Trained on ImageNet",
+          "weight": 0.0605,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1411.1045"
+        },
+        {
+          "paper_id": "1607.01794",
+          "title": "VideoLSTM convolves, attends and flows for action recognition",
+          "weight": 0.052,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1607.01794"
+        }
+      ],
+      "n_refs_used": 78,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1904.04745",
+      "title": "Cross-Modal Self-Attention Network for Referring Image Segmentation",
+      "year": 2019,
+      "citation_count": 605,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1806.06176",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 578,
+      "ok": true,
+      "m": 0.8954,
+      "Delta": 0.0915,
+      "R2_plus": 0.8933,
+      "novelty_residual": 0.3266,
+      "novelty_score": 0.1067,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2301.04856",
+          "title": "Multimodal Deep Learning",
+          "weight": 0.2526,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2301.04856"
+        },
+        {
+          "paper_id": "1206.5538",
+          "title": "Representation Learning: A Review and New Perspectives",
+          "weight": 0.1591,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1206.5538"
+        },
+        {
+          "paper_id": "s2:adb4ea2c0f3eff8a17c97a67f28b923e8e5bdff1",
+          "title": "Multimodal learning with deep Boltzmann machines",
+          "weight": 0.1345,
+          "share": 0.1,
+          "url": "https://doi.org/10.5555/2627435.2697059"
+        },
+        {
+          "paper_id": "1802.00924",
+          "title": "Multimodal sentiment analysis with word-level fusion and reinforcement learning",
+          "weight": 0.1069,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1802.00924"
+        },
+        {
+          "paper_id": "1611.01891",
+          "title": "Joint Multimodal Learning with Deep Generative Models",
+          "weight": 0.0913,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.01891"
+        }
+      ],
+      "n_refs_used": 75,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1703.05446",
+      "title": "Look into Person: Self-supervised Structure-sensitive Learning and A New Benchmark for Human Parsing",
+      "year": 2017,
+      "citation_count": 520,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1510.02927",
+      "title": "DeepFix: A Fully Convolutional Neural Network for predicting Human Eye Fixations",
+      "year": 2015,
+      "citation_count": 516,
+      "ok": true,
+      "m": 0.907,
+      "Delta": 0.0858,
+      "R2_plus": 0.9083,
+      "novelty_residual": 0.3028,
+      "novelty_score": 0.0917,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1603.00845",
+          "title": "Shallow and Deep Convolutional Networks for Saliency Prediction",
+          "weight": 0.2801,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1603.00845"
+        },
+        {
+          "paper_id": "s2:c6551c3c5e4c9779b2bbc6c8edcdeab545bc824d",
+          "title": "Predicting eye fixations using convolutional neural networks",
+          "weight": 0.234,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/CVPR.2015.7298633"
+        },
+        {
+          "paper_id": "s2:18804d8e981fa66135c0ffa6fdb2b8b3fec6d753",
+          "title": "Predicting human gaze beyond pixels.",
+          "weight": 0.2169,
+          "share": 0.2,
+          "url": "https://doi.org/10.1167/14.1.28"
+        },
+        {
+          "paper_id": "s2:b380725466e69717ab4c2520c80cff4bba2cc05c",
+          "title": "Learning a saliency map using fixated locations in natural scenes.",
+          "weight": 0.0619,
+          "share": 0.1,
+          "url": "https://doi.org/10.1167/11.3.9"
+        },
+        {
+          "paper_id": "1412.7062",
+          "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs",
+          "weight": 0.0615,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1412.7062"
+        }
+      ],
+      "n_refs_used": 71,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1603.00845",
+      "title": "Shallow and Deep Convolutional Networks for Saliency Prediction",
+      "year": 2016,
+      "citation_count": 499,
+      "ok": true,
+      "m": 0.907,
+      "Delta": 0.0644,
+      "R2_plus": 0.887,
+      "novelty_residual": 0.3362,
+      "novelty_score": 0.113,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1510.02927",
+          "title": "DeepFix: A Fully Convolutional Neural Network for Predicting Human Eye Fixations",
+          "weight": 0.3875,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/1510.02927"
+        },
+        {
+          "paper_id": "1312.6034",
+          "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+          "weight": 0.2553,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1312.6034"
+        },
+        {
+          "paper_id": "s2:1281e443d2cf1c1dd71ed3b7b0376d408d0958af",
+          "title": "SALICON: Reducing the Semantic Gap in Saliency Prediction by Adapting Deep Neural Networks",
+          "weight": 0.1503,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/ICCV.2015.38"
+        },
+        {
+          "paper_id": "s2:cd126c7db89f1a66b17a6ef1152412876f4c0cbe",
+          "title": "Saliency detection by multi-context deep learning",
+          "weight": 0.0506,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2015.7298731"
+        },
+        {
+          "paper_id": "1409.1556",
+          "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+          "weight": 0.0499,
+          "share": 0.0,
+          "url": "https://arxiv.org/abs/1409.1556"
+        }
+      ],
+      "n_refs_used": 44,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1807.11546",
+      "title": "Textual Explanations for Self-Driving Vehicles",
+      "year": 2018,
+      "citation_count": 486,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1703.06585",
+      "title": "Learning Cooperative Visual Dialog Agents with Deep Reinforcement Learning",
+      "year": 2017,
+      "citation_count": 435,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1906.07983",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 421,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1905.00780",
+      "title": "Full-Gradient Representation for Neural Network Visualization",
+      "year": 2019,
+      "citation_count": 383,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1902.04742",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 368,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1609.02077",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 367,
+      "ok": true,
+      "m": 0.9187,
+      "Delta": 0.0312,
+      "R2_plus": 0.8753,
+      "novelty_residual": 0.3531,
+      "novelty_score": 0.1247,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "1503.08663",
+          "title": "Visual saliency based on multiscale deep features",
+          "weight": 0.5099,
+          "share": 0.5,
+          "url": "https://arxiv.org/abs/1503.08663"
+        },
+        {
+          "paper_id": "1403.6382",
+          "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition",
+          "weight": 0.138,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1403.6382"
+        },
+        {
+          "paper_id": "1406.2807",
+          "title": "The Secrets of Salient Object Segmentation",
+          "weight": 0.1151,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1406.2807"
+        },
+        {
+          "paper_id": "1409.1556",
+          "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+          "weight": 0.1013,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1409.1556"
+        },
+        {
+          "paper_id": "s2:a3826c9a88d873331c13e3305cf16aa19144b12c",
+          "title": "A framework for visual saliency detection with applications to image thumbnailing",
+          "weight": 0.0499,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/a3826c9a88d873331c13e3305cf16aa19144b12c"
+        }
+      ],
+      "n_refs_used": 55,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1607.06215",
+      "title": "A Comprehensive Survey on Cross-modal Retrieval",
+      "year": 2016,
+      "citation_count": 336,
+      "ok": true,
+      "m": 0.8729,
+      "Delta": 0.0828,
+      "R2_plus": 0.8447,
+      "novelty_residual": 0.3941,
+      "novelty_score": 0.1553,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:b7b00080f83e5b65a10bb07c0a7091e746c3a57e",
+          "title": "Cross-modal Retrieval with Correspondence Autoencoder",
+          "weight": 0.2506,
+          "share": 0.3,
+          "url": "https://doi.org/10.1145/2647868.2654902"
+        },
+        {
+          "paper_id": "2301.04856",
+          "title": "Multimodal Deep Learning",
+          "weight": 0.1915,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2301.04856"
+        },
+        {
+          "paper_id": "s2:9ec8a6002d8b0e766dae3a13c0746ca0a5cf2366",
+          "title": "Scalable heterogeneous translated hashing",
+          "weight": 0.1517,
+          "share": 0.2,
+          "url": "https://doi.org/10.1145/2623330.2623688"
+        },
+        {
+          "paper_id": "1602.02255",
+          "title": "Deep Cross-Modal Hashing",
+          "weight": 0.1161,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1602.02255"
+        },
+        {
+          "paper_id": "s2:5fdb167494a9677402f9b8205bc163c0f43c653d",
+          "title": "Cross-media retrieval: state-of-the-art and open issues",
+          "weight": 0.0929,
+          "share": 0.1,
+          "url": "https://doi.org/10.1504/IJMIS.2010.035970"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1905.11833",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 336,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1812.01687",
+      "title": "PointCloud Saliency Maps",
+      "year": 2018,
+      "citation_count": 286,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1802.00682",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 268,
+      "ok": true,
+      "m": 0.8882,
+      "Delta": 0.0776,
+      "R2_plus": 0.8664,
+      "novelty_residual": 0.3655,
+      "novelty_score": 0.1336,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1702.08608",
+          "title": "Towards A Rigorous Science of Interpretable Machine Learning",
+          "weight": 0.3,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1702.08608"
+        },
+        {
+          "paper_id": "1711.07414",
+          "title": "The Promise and Peril of Human Evaluation for Model Interpretability",
+          "weight": 0.2131,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1711.07414"
+        },
+        {
+          "paper_id": "s2:b56b1e0acd3301c925bb2b074fe3fb8e0dbf5379",
+          "title": "Too much, too little, or just right? Ways explanations impact end users' mental models",
+          "weight": 0.1773,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/VLHCC.2013.6645235"
+        },
+        {
+          "paper_id": "s2:15b9bca3874c375af62d647fc062ebf029fb21cc",
+          "title": "How Does Predicate Invention Affect Human Comprehensibility?",
+          "weight": 0.1217,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/978-3-319-63342-8_5"
+        },
+        {
+          "paper_id": "1611.07579",
+          "title": "Programs as Black-Box Explanations",
+          "weight": 0.0654,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.07579"
+        }
+      ],
+      "n_refs_used": 61,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1703.03054",
+      "title": "Deep Variation-structured Reinforcement Learning for Visual Relationship and Attribute Detection",
+      "year": 2017,
+      "citation_count": 263,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1701.08893",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 262,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1710.07859",
+      "title": "Feature-Guided Black-Box Safety Testing of Deep Neural Networks",
+      "year": 2017,
+      "citation_count": 255,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1807.03903",
+      "title": "Deep Imbalanced Attribute Classification using Visual Attention Aggregation",
+      "year": 2018,
+      "citation_count": 245,
+      "ok": true,
+      "m": 0.8851,
+      "Delta": 0.1128,
+      "R2_plus": 0.8962,
+      "novelty_residual": 0.3222,
+      "novelty_score": 0.1038,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1806.00194",
+          "title": "Deep Imbalanced Learning for Face Recognition and Attribute Prediction",
+          "weight": 0.1687,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1806.00194"
+        },
+        {
+          "paper_id": "s2:88ef861a5c803a8dace73c82b9cb05679f9c6ba2",
+          "title": "Human attribute recognition by refining attention heat map",
+          "weight": 0.1466,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.patrec.2017.05.012"
+        },
+        {
+          "paper_id": "1705.02544",
+          "title": "Deep Visual Attention Prediction",
+          "weight": 0.1381,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1705.02544"
+        },
+        {
+          "paper_id": "1708.08728",
+          "title": "Curriculum Learning for Multi-task Classification of Visual Attributes",
+          "weight": 0.085,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1708.08728"
+        },
+        {
+          "paper_id": "1606.03556",
+          "title": "Human Attention in Visual Question Answering: Do Humans and Deep Networks look at the same regions?",
+          "weight": 0.0714,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1606.03556"
+        }
+      ],
+      "n_refs_used": 63,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1804.03959",
+      "title": "Making Deep Heatmaps Robust to Partial Occlusions for 3D Object Pose Estimation",
+      "year": 2018,
+      "citation_count": 245,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1701.01299",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 244,
+      "ok": true,
+      "m": 0.9281,
+      "Delta": 0.0704,
+      "R2_plus": 0.9318,
+      "novelty_residual": 0.2612,
+      "novelty_score": 0.0682,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1610.03107",
+          "title": "Approaching a realistic force balance in geodynamo simulations",
+          "weight": 0.2668,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1610.03107"
+        },
+        {
+          "paper_id": "1611.04776",
+          "title": "Spherical convective dynamos in the rapidly rotating asymptotic regime",
+          "weight": 0.1095,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.04776"
+        },
+        {
+          "paper_id": "1112.3879",
+          "title": "On the reflection of Alfvén waves and its implication for Earth's core modelling",
+          "weight": 0.1029,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1112.3879"
+        },
+        {
+          "paper_id": "s2:9e2c5c04b8d79cc01f8be096374820ae0541e648",
+          "title": "Quasi-geostrophic flows responsible for the secular variation of the Earth's magnetic field",
+          "weight": 0.0984,
+          "share": 0.1,
+          "url": "https://doi.org/10.1111/J.1365-246X.2008.03741.X"
+        },
+        {
+          "paper_id": "s2:d9a2543039bb1903dcfbd4dfbfac76eacf268b59",
+          "title": "Turbulence in the Core",
+          "weight": 0.0958,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/B978-0-444-53802-4.00142-1"
+        }
+      ],
+      "n_refs_used": 74,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1904.02323",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 242,
+      "ok": true,
+      "m": 0.857,
+      "Delta": 0.1074,
+      "R2_plus": 0.842,
+      "novelty_residual": 0.3975,
+      "novelty_score": 0.158,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1704.01942",
+          "title": "ActiVis: Visual Exploration of Industry-Scale Deep Neural Network Models",
+          "weight": 0.2763,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1704.01942"
+        },
+        {
+          "paper_id": "1808.02861",
+          "title": "Choose Your Neuron: Incorporating Domain Knowledge through Neuron-Importance",
+          "weight": 0.1285,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1808.02861"
+        },
+        {
+          "paper_id": "1604.07043",
+          "title": "Towards Better Analysis of Deep Convolutional Neural Networks",
+          "weight": 0.1021,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1604.07043"
+        },
+        {
+          "paper_id": "1806.00069",
+          "title": "Explaining Explanations: An Overview of Interpretability of Machine Learning",
+          "weight": 0.0987,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1806.00069"
+        },
+        {
+          "paper_id": "s2:bab6fa046f49058a97e8b6e3a721aca7d278294a",
+          "title": "Activation Atlas",
+          "weight": 0.0832,
+          "share": 0.1,
+          "url": "https://doi.org/10.23915/distill.00015"
+        }
+      ],
+      "n_refs_used": 61,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1904.04975",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 228,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1903.00839",
+      "title": "Improving Referring Expression Grounding with Cross-modal Attention-guided Erasing",
+      "year": 2019,
+      "citation_count": 225,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1807.04855",
+      "title": "A feature agnostic approach for glaucoma detection in OCT volumes",
+      "year": 2018,
+      "citation_count": 193,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1706.06060",
+      "title": "Consistent feature attribution for tree ensembles",
+      "year": 2017,
+      "citation_count": 187,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1905.04172",
+      "title": "On the Connection Between Adversarial Robustness and Saliency Map Interpretability",
+      "year": 2019,
+      "citation_count": 184,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1711.08998",
+      "title": "Visual Feature Attribution using Wasserstein GANs",
+      "year": 2017,
+      "citation_count": 160,
+      "ok": true,
+      "m": 0.8914,
+      "Delta": 0.0959,
+      "R2_plus": 0.8906,
+      "novelty_residual": 0.3308,
+      "novelty_score": 0.1094,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1511.06434",
+          "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks",
+          "weight": 0.1301,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1511.06434"
+        },
+        {
+          "paper_id": "s2:ce52577e4f7fe983467f4983d42a7f3473193aee",
+          "title": "Image Super Resolution Using Generative Adversarial Networks and Local Saliency Maps for Retinal Image Analysis",
+          "weight": 0.1256,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/978-3-319-66179-7_44"
+        },
+        {
+          "paper_id": "1612.05362",
+          "title": "Medical Image Synthesis with Context-Aware Generative Adversarial Networks",
+          "weight": 0.112,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1612.05362"
+        },
+        {
+          "paper_id": "1704.00028",
+          "title": "Improved Training of Wasserstein GANs",
+          "weight": 0.1044,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1704.00028"
+        },
+        {
+          "paper_id": "s2:16ef8cd34b9580865ce5628a2f0a8d8aa7529815",
+          "title": "Cortical change in Alzheimer's disease detected with a disease-specific population-based brain atlas.",
+          "weight": 0.0832,
+          "share": 0.1,
+          "url": "https://doi.org/10.1093/CERCOR/11.1.1"
+        }
+      ],
+      "n_refs_used": 71,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1906.01160",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 155,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1804.01793",
+      "title": "End-to-End Saliency Mapping via Probability Distribution Prediction",
+      "year": 2018,
+      "citation_count": 154,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1904.11223",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 146,
+      "ok": true,
+      "m": 0.892,
+      "Delta": 0.0607,
+      "R2_plus": 0.8563,
+      "novelty_residual": 0.379,
+      "novelty_score": 0.1437,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1212.0504",
+          "title": "Machine Learning Prediction of Cancer Cell Sensitivity to Drugs Based on Genomic and Chemical Properties",
+          "weight": 0.19,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1212.0504"
+        },
+        {
+          "paper_id": "1811.06802",
+          "title": "PaccMann: Prediction of anticancer compound sensitivity with multi-modal attention-based neural networks",
+          "weight": 0.1501,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1811.06802"
+        },
+        {
+          "paper_id": "1812.04439",
+          "title": "Synergy Effect between Convolutional Neural Networks and the Multiplicity of SMILES for Improvement of Molecular Prediction",
+          "weight": 0.0871,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1812.04439"
+        },
+        {
+          "paper_id": "s2:239237dc8aa4df5e060a148bde5910101e6f21b3",
+          "title": "Cancer Drug Response Profile scan (CDRscan): A Deep Learning Model That Predicts Drug Effectiveness from Cancer Genomic Signature",
+          "weight": 0.0847,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/s41598-018-27214-6"
+        },
+        {
+          "paper_id": "s2:0b309c0725c717989f6d6ae485fbab521e72d903",
+          "title": "The cornucopia of meaningful leads: Applying deep adversarial autoencoders for new molecule development in oncology",
+          "weight": 0.0845,
+          "share": 0.1,
+          "url": "https://doi.org/10.18632/oncotarget.14073"
+        }
+      ],
+      "n_refs_used": 73,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1708.04776",
+      "title": "Modality-specific Cross-modal Similarity Measurement with Recurrent Attention Network",
+      "year": 2017,
+      "citation_count": 145,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1901.00392",
+      "title": "Attribute-Aware Attention Model for Fine-grained Representation Learning",
+      "year": 2019,
+      "citation_count": 133,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1709.06316",
+      "title": "Predicting Video Saliency with Object-to-Motion CNN and Two-layer Convolutional LSTM",
+      "year": 2017,
+      "citation_count": 125,
+      "ok": true,
+      "m": 0.94,
+      "Delta": 0.0437,
+      "R2_plus": 0.9274,
+      "novelty_residual": 0.2695,
+      "novelty_score": 0.0726,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:25c65c87968b94631d3dcca253478d9f50806be3",
+          "title": "Video Saliency Detection via Dynamic Consistent Spatio-Temporal Attention Modelling",
+          "weight": 0.2664,
+          "share": 0.3,
+          "url": "https://doi.org/10.1609/aaai.v27i1.8642"
+        },
+        {
+          "paper_id": "s2:5c3318d66f78c2ed8cbbdd1791e5a70ba2f64ead",
+          "title": "Predicting Salient Face in Multiple-Face Videos",
+          "weight": 0.1691,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/CVPR.2017.343"
+        },
+        {
+          "paper_id": "1801.07424",
+          "title": "Revisiting Video Saliency: A Large-Scale Benchmark and a New Model",
+          "weight": 0.1402,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1801.07424"
+        },
+        {
+          "paper_id": "s2:9f5c5b5be74b6ce35f51722b40cdf94ef4cc7bab",
+          "title": "Transfer learning with deep networks for saliency prediction in natural video",
+          "weight": 0.1265,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICIP.2016.7532629"
+        },
+        {
+          "paper_id": "1702.00871",
+          "title": "Video Salient Object Detection via Fully Convolutional Networks",
+          "weight": 0.1131,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1702.00871"
+        }
+      ],
+      "n_refs_used": 77,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1707.06355",
+      "title": "Video Question Answering via Attribute-Augmented Attention Network Learning",
+      "year": 2017,
+      "citation_count": 118,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1811.12615",
+      "title": "An Interpretable Model with Globally Consistent Explanations for Credit Risk",
+      "year": 2018,
+      "citation_count": 107,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1906.03284",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 104,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1905.09957",
+      "title": "Robust Attribution Regularization",
+      "year": 2019,
+      "citation_count": 98,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    },
+    {
+      "arxiv_id": "1902.04893",
+      "title": "Why are Saliency Maps Noisy? Cause of and Solution to Noisy Saliency Maps",
+      "year": 2019,
+      "citation_count": 97,
+      "ok": false,
+      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+    }
+  ]
+}

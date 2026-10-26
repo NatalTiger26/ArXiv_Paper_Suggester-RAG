@@ -7,7 +7,10 @@ import json
 from pathlib import Path
 from typing import Any
 
-from settings import PROJECT_ROOT
+try:
+    from settings import PROJECT_ROOT
+except ImportError:
+    from src.settings import PROJECT_ROOT
 
 from .collect import library_id_set
 from .store import citation_counts, connect, example_citers, stats

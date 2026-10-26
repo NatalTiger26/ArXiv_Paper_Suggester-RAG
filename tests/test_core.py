@@ -19,7 +19,7 @@ for p in (str(ROOT), str(SRC)):
 
 from src.rag.download import normalise_arxiv_id
 from src.final_eval import looks_like_refusal, looks_like_refusal_broader, citation_validity
-from src.ranking import _validate_weights, combine_scores
+from src.ranking import _validate_weights, combine_scores, velocity_score
 from src.rag.hybrid import extract_query_identifiers, BM25Scorer
 
 
@@ -127,6 +127,23 @@ class TestRankingWeights(unittest.TestCase):
         expected = 0.9 * 0.5 + 0.5 * 0.2 + 0.8 * 0.2 + 0.2 * 0.1
         self.assertAlmostEqual(score, expected)
         self.assertEqual(len(contribs), 4)
+
+    def test_velocity_scoring_and_weights(self):
+        # A 2025 paper with 100 citations has high velocity
+        score_high = velocity_score(cites=100, year="2025")
+        score_low = velocity_score(cites=5, year="2015")
+        self.assertGreater(score_high, score_low)
+
+        # Missing year/cites returns neutral 0.3
+        self.assertAlmostEqual(velocity_score(None, None), 0.3)
+
+        # 5-signal combine_scores
+        signals = {"embedding": 0.8, "recency": 0.4, "citation": 0.6, "author": 0.2, "velocity": 0.9}
+        weights = {"embedding": 0.4, "recency": 0.15, "citation": 0.15, "author": 0.05, "velocity": 0.25}
+        score, contribs = combine_scores(signals, weights)
+        expected = 0.8 * 0.4 + 0.4 * 0.15 + 0.6 * 0.15 + 0.2 * 0.05 + 0.9 * 0.25
+        self.assertAlmostEqual(score, expected)
+        self.assertEqual(len(contribs), 5)
 
 
 class TestHybridQueryExtraction(unittest.TestCase):

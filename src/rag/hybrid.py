@@ -1,7 +1,9 @@
-"""Hybrid retrieval: Dense embeddings + Lexical BM25 / token matching with RRF.
+"""Hybrid retrieval: Dense embeddings + Lexical BM25 + Section-Aware Intent + Entity Resolution.
 
-Improves retrieval for exact identifier queries (e.g. arXiv IDs like '1806.07572')
-and technical acronyms where dense cosine similarity alone can be ambiguous.
+Improves retrieval for:
+1. Exact identifier queries (arXiv IDs like '1806.07572').
+2. Technical acronyms and method names (e.g. 'Grad-CAM', 'NTK', 'SHAP', 'LoRA') via FTS5 entity resolution.
+3. Section-aware query intents (e.g. boosting Abstract/Intro for summary questions, Experiments for benchmark questions).
 """
 
 from __future__ import annotations
@@ -23,6 +25,40 @@ def extract_query_identifiers(query: str) -> list[str]:
         if aid not in clean:
             clean.append(aid)
     return clean
+
+
+def detect_query_intent(query: str) -> str:
+    """Classify user query into structural paper section intents."""
+    q_low = query.lower()
+    if any(k in q_low for k in ["limitation", "weakness", "failure", "bottleneck", "future work", "drawback"]):
+        return "LIMITATIONS_FUTURE"
+    if any(k in q_low for k in ["dataset", "benchmark", "accuracy", "baseline", "experiment", "metric", "hyperparameter", "results", "empirical"]):
+        return "EMPIRICAL_EVAL"
+    if any(k in q_low for k in ["proof", "theorem", "lemma", "formula", "derivation", "convergence", "bound"]):
+        return "THEORETICAL_TECH"
+    if any(k in q_low for k in ["contribution", "overview", "summary", "propose", "introduce", "main idea", "novel", "what is", "explain"]):
+        return "CONTRIBUTION_SUMMARY"
+    return "GENERAL"
+
+
+def section_intent_boost(section_name: str, intent: str) -> float:
+    """Return priority score boost based on section alignment with user intent."""
+    if not section_name:
+        return 0.0
+    sec = section_name.lower()
+    if intent == "CONTRIBUTION_SUMMARY":
+        if any(k in sec for k in ["abstract", "introduction", "conclusion", "overview", "contribution"]):
+            return 0.015
+    elif intent == "LIMITATIONS_FUTURE":
+        if any(k in sec for k in ["limitation", "discussion", "future work", "conclusion"]):
+            return 0.020
+    elif intent == "EMPIRICAL_EVAL":
+        if any(k in sec for k in ["experiment", "result", "evaluation", "benchmark", "dataset", "ablation"]):
+            return 0.020
+    elif intent == "THEORETICAL_TECH":
+        if any(k in sec for k in ["method", "architecture", "model", "proof", "theory", "formulation"]):
+            return 0.015
+    return 0.0
 
 
 def _tokenize(text: str) -> list[str]:
@@ -80,12 +116,25 @@ def hybrid_rerank(
 ) -> list[dict[str, Any]]:
     """Combine dense retrieval order with BM25 lexical ranking via Reciprocal Rank Fusion (RRF).
 
-    Also applies exact paper_id identifier boosting if an arXiv ID is in the query.
+    Includes:
+    1. Exact arXiv ID boosting.
+    2. FTS5 method/title entity resolution boosting.
+    3. Section-aware intent prior boosting.
     """
     if not chunks or len(chunks) <= 1:
         return chunks[:top_k]
 
     explicit_ids = extract_query_identifiers(query)
+
+    # Resolve entity acronyms / method titles (e.g. Grad-CAM, NTK, SHAP)
+    matched_entities: list[str] = []
+    try:
+        from src.catalog import resolve_entities_in_query
+        matched_entities = resolve_entities_in_query(query, limit=4)
+    except Exception:
+        pass
+
+    intent = detect_query_intent(query)
 
     # 1. Dense ranking order
     dense_order = {c["chunk_id"]: rank for rank, c in enumerate(chunks, 1)}
@@ -100,7 +149,7 @@ def hybrid_rerank(
     )
     bm25_order = {chunks[idx]["chunk_id"]: rank for rank, idx in enumerate(bm25_ranked, 1)}
 
-    # 3. Reciprocal Rank Fusion (RRF) with identifier boost
+    # 3. Reciprocal Rank Fusion (RRF) with identifier and section intent boost
     combined: list[tuple[float, dict[str, Any]]] = []
     for c in chunks:
         cid = c["chunk_id"]
@@ -109,16 +158,25 @@ def hybrid_rerank(
 
         rrf_score = (1.0 / (rrf_k + dense_r)) + (1.0 / (rrf_k + bm25_r))
 
-        # Direct boost if chunk matches explicit arXiv ID in query
         pid = str(c.get("paper_id") or "")
+        # Boost 1: Exact explicit arXiv ID in query
         if any(e == pid or e in pid for e in explicit_ids):
-            rrf_score += 0.05  # Strong boost for exact identifier matches
+            rrf_score += 0.05
+
+        # Boost 2: Method / entity title match from catalog
+        if any(m == pid or m in pid for m in matched_entities):
+            rrf_score += 0.025
+
+        # Boost 3: Section intent alignment
+        sec_boost = section_intent_boost(str(c.get("section") or ""), intent)
+        rrf_score += sec_boost
 
         # Update chunk metadata with hybrid information
         c_copy = dict(c)
         c_copy["dense_rank"] = dense_r
         c_copy["bm25_rank"] = bm25_r
         c_copy["rrf_score"] = round(rrf_score, 5)
+        c_copy["intent"] = intent
         combined.append((rrf_score, c_copy))
 
     combined.sort(key=lambda x: x[0], reverse=True)

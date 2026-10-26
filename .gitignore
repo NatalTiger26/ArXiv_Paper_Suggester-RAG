@@ -44,6 +44,8 @@ data/corpus_*.jsonl
 data/rag_ingest_progress/
 data/novelty/
 data/*.db
+data/catalog.sqlite3*
+data/telemetry.sqlite3*
 logs/
 
 # Keep corpus JSON if you want offline recommend out of the box;

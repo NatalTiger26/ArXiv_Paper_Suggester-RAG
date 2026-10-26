@@ -8,6 +8,7 @@ Unified web UI for ArXiv Paper Suggester.
 
 from __future__ import annotations
 
+import re
 import os
 import sys
 import time
@@ -16,6 +17,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = ROOT
 SRC = ROOT / "src"
 for p in (str(ROOT), str(SRC)):
     if p not in sys.path:
@@ -219,6 +221,73 @@ def _inject_theme_css(theme: str) -> None:
         div[data-baseweb="slider"] div[role="slider"] {
           background-color: var(--aps-primary) !important;
         }
+
+        /* Segmented Controls (Fix black box in light mode) */
+        [data-testid="stSegmentedControl"],
+        div[data-testid="stSegmentedControl"] > div {
+          background-color: #e5e8f0 !important;
+          border-radius: 0.5rem !important;
+          border: 1px solid var(--aps-border) !important;
+        }
+        [data-testid="stSegmentedControl"] button,
+        [data-testid="stSegmentedControl"] div[role="radiogroup"] button,
+        button[data-testid="stSegmentedControlButton"],
+        [data-baseweb="button-group"] button {
+          background-color: transparent !important;
+          color: var(--aps-text) !important;
+          border: none !important;
+        }
+        [data-testid="stSegmentedControl"] button p,
+        [data-testid="stSegmentedControl"] button span,
+        [data-baseweb="button-group"] button p,
+        [data-baseweb="button-group"] button span {
+          color: var(--aps-text) !important;
+        }
+        [data-testid="stSegmentedControl"] button[aria-checked="true"],
+        [data-testid="stSegmentedControl"] button[aria-pressed="true"],
+        button[data-testid="stSegmentedControlButton"][aria-checked="true"],
+        [data-baseweb="button-group"] button[aria-checked="true"] {
+          background-color: #ffffff !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+        }
+        [data-testid="stSegmentedControl"] button[aria-checked="true"] p,
+        [data-testid="stSegmentedControl"] button[aria-checked="true"] span {
+          color: var(--aps-primary) !important;
+          font-weight: 600 !important;
+        }
+
+        /* Paper Library Cards (Light) */
+        .paper-card-container {
+          background-color: #ffffff !important;
+          border: 1px solid #cdd2dc !important;
+          border-radius: 8px !important;
+          padding: 14px 16px !important;
+          margin-bottom: 12px !important;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+        }
+        .paper-badge-arxiv {
+          background-color: rgba(59, 91, 219, 0.1) !important;
+          color: #3b5bdb !important;
+          padding: 2px 8px !important;
+          border-radius: 4px !important;
+          font-weight: 600 !important;
+          font-size: 11px !important;
+        }
+        .paper-badge-ready {
+          background-color: rgba(16, 185, 129, 0.12) !important;
+          color: #059669 !important;
+          padding: 2px 8px !important;
+          border-radius: 4px !important;
+          font-weight: 600 !important;
+          font-size: 11px !important;
+        }
+        .paper-badge-missing {
+          background-color: rgba(100, 116, 139, 0.1) !important;
+          color: #64748b !important;
+          padding: 2px 8px !important;
+          border-radius: 4px !important;
+          font-size: 11px !important;
+        }
         </style>
         """
     else:
@@ -276,6 +345,38 @@ def _inject_theme_css(theme: str) -> None:
         button[data-testid="baseButton-secondary"] p,
         button[data-testid="baseButton-secondary"] span {
           color: var(--aps-text) !important;
+        }
+
+        /* Paper Library Cards (Dark) */
+        .paper-card-container {
+          background-color: #1a1d27 !important;
+          border: 1px solid rgba(232,234,237,0.14) !important;
+          border-radius: 8px !important;
+          padding: 14px 16px !important;
+          margin-bottom: 12px !important;
+        }
+        .paper-badge-arxiv {
+          background-color: rgba(139, 156, 255, 0.15) !important;
+          color: #8b9cff !important;
+          padding: 2px 8px !important;
+          border-radius: 4px !important;
+          font-weight: 600 !important;
+          font-size: 11px !important;
+        }
+        .paper-badge-ready {
+          background-color: rgba(52, 211, 153, 0.15) !important;
+          color: #34d399 !important;
+          padding: 2px 8px !important;
+          border-radius: 4px !important;
+          font-weight: 600 !important;
+          font-size: 11px !important;
+        }
+        .paper-badge-missing {
+          background-color: rgba(148, 163, 184, 0.1) !important;
+          color: #94a3b8 !important;
+          padding: 2px 8px !important;
+          border-radius: 4px !important;
+          font-size: 11px !important;
         }
         </style>
         """
@@ -657,13 +758,7 @@ def render_results_panel() -> None:
             rows = []
             for r in results:
                 chunks = r.get("chunks")
-                if not r.get("ok"):
-                    chunks_disp = None
-                else:
-                    try:
-                        chunks_disp = int(chunks) if chunks is not None else None
-                    except (TypeError, ValueError):
-                        chunks_disp = None
+                chunks_disp = str(chunks) if (r.get("ok") and chunks is not None) else "—"
                 fmt = (r.get("source_format") or "pdf").upper() if r.get("ok") else "—"
                 rows.append(
                     {
@@ -1673,298 +1768,432 @@ with tab_home:
 # ── LIBRARY ───────────────────────────────────────────────────────────────
 
 with tab_lib:
-    st.subheader("Paper library")
-    st.write(
-        "Metadata for **ranking**. Full-text for **Ask** is a separate ingest step."
+    st.subheader("Literature Library & Discovery Workstation")
+    st.caption(
+        "Search, inspect, and explore the 5,700+ papers in your local catalog. Ingest full-text PDFs on-demand for grounded Q&A."
     )
-    mode = st.radio(
-        "How do you want to add papers?",
-        [
-            "Search arXiv",
-            "Paste arXiv IDs",
-            "Ingest from personal ranking",
-            "Rebuild index only",
-        ],
-        horizontal=True,
-        key="lib_mode",
+
+    lib_nav = st.segmented_control(
+        "Library View",
+        ["Browse & Search Catalog", "Add New Papers to Library"],
+        default="Browse & Search Catalog",
+        key="lib_view_mode_segmented",
     )
-    with st.expander("Options", expanded=False):
-        replace = st.checkbox(
-            "Replace library instead of merging",
-            value=False,
-            key="lib_replace",
-        )
-        if replace:
-            st.checkbox(
-                "I understand this replaces the current library",
-                value=False,
-                key="lib_replace_confirm",
+
+    if lib_nav == "Browse & Search Catalog":
+        from src.catalog import browse_catalog, get_catalog_stats
+
+        c_stats = get_catalog_stats()
+
+        # Catalog Metrics Header
+        st.markdown("##### Catalog Overview")
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric("Catalog Papers", f"{c_stats['total_papers']:,}", help="Total metadata records in local SQLite catalog.")
+        m2.metric("Full-Text in RAG", f"{c_stats['full_text_count']:,}", help="Papers with full Markdown parsed and chunked in Chroma.")
+        m3.metric("Avg Citations", f"{c_stats['avg_citations']:.1f}", help="Average global citations across cited papers.")
+        m4.metric("Year Range", f"{c_stats['min_year']} – {c_stats['max_year']}", help="Publication years present in catalog.")
+
+        st.markdown("---")
+        st.markdown("##### Filter & Search Library")
+
+        f_col1, f_col2, f_col3 = st.columns([0.45, 0.25, 0.30])
+        with f_col1:
+            lib_q = st.text_input(
+                "🔍 Search titles & abstracts",
+                placeholder="e.g. transformers, attention, causal, circuits, NTK…",
+                key="lib_search_kw",
             )
-        build_idx = st.checkbox(
-            "Rebuild recommend index after save", value=True, key="lib_build_idx"
-        )
+        with f_col2:
+            cat_list = ["All Categories"] + c_stats.get("top_categories", [])
+            sel_cat = st.selectbox("Category", cat_list, key="lib_filter_cat")
+            cat_filter = None if sel_cat == "All Categories" else sel_cat
+        with f_col3:
+            sort_map = {
+                "Most Cited": "citations_desc",
+                "Newest First": "year_desc",
+                "Relevance (BM25)": "relevance",
+                "Title (A-Z)": "title_asc",
+            }
+            sel_sort = st.selectbox("Sort by", list(sort_map.keys()), index=0 if not lib_q else 2, key="lib_filter_sort")
+            sort_val = sort_map[sel_sort]
 
-    def _guard_replace() -> bool:
-        if replace and not st.session_state.get("lib_replace_confirm"):
-            st.error("Confirm **Replace library** in Options before continuing.")
-            return False
-        return True
+        f_sub1, f_sub2, f_sub3 = st.columns([0.35, 0.35, 0.30])
+        with f_sub1:
+            ft_only = st.checkbox("Show full-text RAG papers only", value=False, key="lib_chk_ft_only")
+        with f_sub2:
+            min_cite_filter = st.slider("Minimum citations", 0, 500, 0, step=10, key="lib_slider_cites")
+        with f_sub3:
+            page_lim = st.selectbox("Papers per page", [10, 25, 50], index=0, key="lib_page_limit")
 
-    if mode == "Search arXiv":
-        st.caption(
-            "Add one or more keyword blocks. All non-empty queries are searched "
-            "and **merged** into the library in one run (duplicates by arXiv id skipped)."
+        with st.spinner("Fetching catalog papers…"):
+            papers, total_matches = browse_catalog(
+                limit=int(page_lim),
+                offset=0,
+                query=lib_q.strip() if lib_q else None,
+                category=cat_filter,
+                min_citations=min_cite_filter if min_cite_filter > 0 else None,
+                full_text_only=ft_only,
+                sort_by=sort_val,
+            )
+
+        st.markdown(f"**Found {total_matches:,} matching papers** (showing top {len(papers)})")
+
+        if not papers:
+            st.info("No papers match your search criteria. Try clearing filters or search terms.")
+        else:
+            for p in papers:
+                aid = p["arxiv_id"]
+                title = p["title"]
+                year = p["year"] or "—"
+                cites = p["citation_count"]
+                cats = p.get("categories") or []
+                cats_str = " · ".join(cats[:3]) if cats else "General"
+                has_ft = p["has_full_text"]
+
+                with st.container():
+                    c_head, c_status = st.columns([0.75, 0.25])
+                    with c_head:
+                        st.markdown(f"#### [{title}](https://arxiv.org/abs/{aid})")
+                        st.caption(f"**arXiv:** `{aid}` · **Year:** {year} · **Citations:** ⭐ {cites:,} · **Categories:** {cats_str}")
+                    with c_status:
+                        if has_ft:
+                            st.success("✓ Full-Text Ready", icon="✅")
+                        else:
+                            st.info("○ Metadata Only", icon="📄")
+
+                    if p.get("abstract"):
+                        with st.expander("Abstract preview", expanded=False):
+                            st.markdown(p["abstract"])
+
+                    b_col1, b_col2, b_col3, b_col4 = st.columns([0.25, 0.25, 0.25, 0.25])
+                    with b_col1:
+                        if not has_ft:
+                            if st.button("📥 Ingest for Q&A", key=f"btn_ingest_{aid}"):
+                                with st.spinner(f"Downloading PDF & ingesting {aid}…"):
+                                    try:
+                                        from src.rag.ingest import ingest_papers
+                                        ingest_papers([aid])
+                                        clear_data_caches()
+                                        st.success(f"Ingested {aid} into RAG!")
+                                        st.rerun()
+                                    except Exception as e:
+                                        st.error(f"Ingest failed: {e}")
+                        else:
+                            md_file = PROJECT_ROOT / "data" / "markdown" / f"{aid}.md"
+                            if md_file.exists():
+                                with st.expander("📖 Markdown excerpt"):
+                                    try:
+                                        st.markdown(md_file.read_text(encoding="utf-8")[:1800] + "\n\n*… [truncated]*")
+                                    except Exception:
+                                        st.caption("Could not load markdown.")
+
+                    with b_col2:
+                        if st.button("🔬 Novelty Subspace", key=f"btn_nov_{aid}", help="Pre-fill this paper in the Novelty & Graph Lab"):
+                            st.session_state["novelty_target_id"] = aid
+                            st.info(f"Target set to `{aid}`! Open the **Novelty & Graph** tab to compute its subspace projection.")
+
+                    with b_col3:
+                        if st.button("💬 Ask Question", key=f"btn_ask_{aid}", help="Ask questions about this paper"):
+                            st.session_state["ask_prefill_query"] = f"What are the core methodology, findings, and limitations of {title}?"
+                            st.info("Question draft prepared! Switch to the **Ask** tab to run grounded retrieval.")
+
+                    with b_col4:
+                        st.link_button("arXiv ↗", f"https://arxiv.org/abs/{aid}")
+
+                    st.markdown("---")
+
+    else:
+        st.write(
+            "Metadata for **ranking**. Full-text for **Ask** is a separate ingest step."
         )
-        with st.expander("Tips", expanded=False):
-            st.markdown(
-                """
+        mode = st.radio(
+            "How do you want to add papers?",
+            [
+                "Search arXiv",
+                "Paste arXiv IDs",
+                "Ingest from personal ranking",
+                "Rebuild index only",
+            ],
+            horizontal=True,
+            key="lib_mode",
+        )
+        with st.expander("Options", expanded=False):
+            replace = st.checkbox(
+                "Replace library instead of merging",
+                value=False,
+                key="lib_replace",
+            )
+            if replace:
+                st.checkbox(
+                    "I understand this replaces the current library",
+                    value=False,
+                    key="lib_replace_confirm",
+                )
+            build_idx = st.checkbox(
+                "Rebuild recommend index after save", value=True, key="lib_build_idx"
+            )
+
+        def _guard_replace() -> bool:
+            if replace and not st.session_state.get("lib_replace_confirm"):
+                st.error("Confirm **Replace library** in Options before continuing.")
+                return False
+            return True
+
+        if mode == "Search arXiv":
+            st.caption(
+                "Add one or more keyword blocks. All non-empty queries are searched "
+                "and **merged** into the library in one run (duplicates by arXiv id skipped)."
+            )
+            with st.expander("Tips", expanded=False):
+                st.markdown(
+                    """
 - **Max results** is per topic; ids are merged uniquely.  
 - Rebuild the **recommend index** after large adds.  
 - Rank ≠ Ask — **ingest** for full-text Q&A.
 """
-            )
-        if "lib_queries" not in st.session_state:
-            st.session_state["lib_queries"] = [st.session_state.get("lib_q") or ""]
-
-        queries = st.session_state["lib_queries"]
-        remove_idx = None
-        for qi in range(len(queries)):
-            cols = st.columns([0.9, 0.1])
-            with cols[0]:
-                growing_text_area(
-                    f"Keywords / topic {qi + 1}",
-                    key=f"lib_q_{qi}",
-                    default=queries[qi] if qi < len(queries) else "",
-                    min_lines=2,
-                    max_lines=12,
-                    placeholder="e.g. mechanistic interpretability circuits",
                 )
-                # sync list from widget state
-                st.session_state["lib_queries"][qi] = st.session_state.get(f"lib_q_{qi}") or ""
-            with cols[1]:
-                st.write("")
-                if len(queries) > 1 and st.button("✕", key=f"lib_q_rm_{qi}", help="Remove this topic"):
-                    remove_idx = qi
-        if remove_idx is not None:
-            # drop widget keys and rebuild
-            new_q = [st.session_state["lib_queries"][j] for j in range(len(queries)) if j != remove_idx]
-            st.session_state["lib_queries"] = new_q or [""]
-            for j in range(len(queries) + 2):
-                st.session_state.pop(f"lib_q_{j}", None)
-            for j, val in enumerate(st.session_state["lib_queries"]):
-                st.session_state[f"lib_q_{j}"] = val
-            st.rerun()
+            if "lib_queries" not in st.session_state:
+                st.session_state["lib_queries"] = [st.session_state.get("lib_q") or ""]
 
-        b_add, b_sp = st.columns([0.35, 0.65])
-        with b_add:
-            if st.button("＋ Add another topic", key="lib_q_add"):
-                st.session_state["lib_queries"].append("")
+            queries = st.session_state["lib_queries"]
+            remove_idx = None
+            for qi in range(len(queries)):
+                cols = st.columns([0.9, 0.1])
+                with cols[0]:
+                    growing_text_area(
+                        f"Keywords / topic {qi + 1}",
+                        key=f"lib_q_{qi}",
+                        default=queries[qi] if qi < len(queries) else "",
+                        min_lines=2,
+                        max_lines=12,
+                        placeholder="e.g. mechanistic interpretability circuits",
+                    )
+                    # sync list from widget state
+                    st.session_state["lib_queries"][qi] = st.session_state.get(f"lib_q_{qi}") or ""
+                with cols[1]:
+                    st.write("")
+                    if len(queries) > 1 and st.button("✕", key=f"lib_q_rm_{qi}", help="Remove this topic"):
+                        remove_idx = qi
+            if remove_idx is not None:
+                # drop widget keys and rebuild
+                new_q = [st.session_state["lib_queries"][j] for j in range(len(queries)) if j != remove_idx]
+                st.session_state["lib_queries"] = new_q or [""]
+                for j in range(len(queries) + 2):
+                    st.session_state.pop(f"lib_q_{j}", None)
+                for j, val in enumerate(st.session_state["lib_queries"]):
+                    st.session_state[f"lib_q_{j}"] = val
                 st.rerun()
 
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            n = st.number_input(
-                "Max results per topic",
-                min_value=1,
-                max_value=50,
-                value=12,
-                step=1,
-                key="lib_n",
-                help="arXiv hits **per keyword block** (1–50).",
-            )
-        with c2:
-            cat = st.text_input("Category", placeholder="cs.LG", key="lib_cat")
-        with c3:
-            sort = st.selectbox(
-                "Sort",
-                ["relevance", "lastUpdatedDate", "submittedDate"],
-                key="lib_sort",
-            )
-        if st.button("Search & add to library", type="primary", key="lib_search_btn"):
-            if not _guard_replace():
-                pass
-            else:
-                topics = [
-                    (st.session_state.get(f"lib_q_{i}") or "").strip()
-                    for i in range(len(st.session_state.get("lib_queries") or [""]))
-                ]
-                topics = [x for x in topics if x]
-                if not topics and not (cat or "").strip():
-                    st.error("Enter at least one topic/keywords block (or a category).")
-                else:
-                    if not topics:
-                        topics = [""]  # category-only search once
-                    log(f"Library search topics={topics!r} cat={cat!r}")
-                    with st.status("Searching arXiv…", expanded=True) as st_status:
-                        try:
-                            from corpus_builder import search_arxiv
-
-                            merged: dict[str, dict] = {}
-                            for t_i, topic in enumerate(topics):
-                                st_status.write(
-                                    f"Query {t_i+1}/{len(topics)}: {topic[:60]!r}…"
-                                )
-                                papers = search_arxiv(
-                                    topic,
-                                    max_results=int(n),
-                                    category=(cat or None),
-                                    sort_by=sort,
-                                )
-                                for p in papers or []:
-                                    pid = (
-                                        p.get("arxiv_id")
-                                        or p.get("id")
-                                        or p.get("paper_id")
-                                        or ""
-                                    )
-                                    pid = str(pid).split("v")[0].strip()
-                                    if pid and pid not in merged:
-                                        merged[pid] = p
-                            papers = list(merged.values())
-                            size = save_library(papers, replace=replace)
-                            st_status.write(
-                                f"Merged **{len(papers)}** unique papers · library size **{size}**"
-                            )
-                            st.success(
-                                f"Added/merged **{len(papers)}** unique papers · library **{size}**"
-                            )
-                            set_results_panel(
-                                "library",
-                                {
-                                    "summary": f"Merged {len(papers)} unique papers from {len(topics)} topic(s).",
-                                    "detail": papers[:30],
-                                },
-                            )
-                            log(f"Library search merged={len(papers)} library={size}")
-                            st_status.update(state="complete")
-                        except Exception as e:
-                            st_status.update(state="error")
-                            st.markdown(friendly_error(e))
-                            papers = []
-                    if build_idx and papers:
-                        with st.status("Building recommend index…", expanded=True) as s2:
-                            try:
-                                from corpus_builder import rebuild_index
-
-                                rebuild_index()
-                                s2.write("Index ready")
-                                s2.update(label="Index ready", state="complete")
-                                log("Recommend index rebuilt")
-                                st.success("Recommend index ready.")
-                            except Exception as e:
-                                s2.update(label="Index failed", state="error")
-                                st.markdown(friendly_error(e))
-                        clear_data_caches()
-                        st.rerun()
-                    elif papers:
-                        clear_data_caches()
-                        st.rerun()
-
-    elif mode == "Paste arXiv IDs":
-        ids_raw = st.text_area(
-            "IDs (comma or newline separated)",
-            placeholder="1806.07572\n2501.16496",
-            height=100,
-            key="lib_ids",
-        )
-        if st.button("Fetch & add", type="primary", key="lib_ids_btn"):
-            if not _guard_replace():
-                pass
-            else:
-                ids = [
-                    x.strip()
-                    for x in ids_raw.replace(",", "\n").splitlines()
-                    if x.strip()
-                ]
-                if not ids:
-                    st.error("Enter at least one ID.")
-                else:
-                    log(f"Fetch IDs: {ids}")
-                    with st.status("Fetching metadata…", expanded=True) as s:
-                        try:
-                            from corpus_builder import fetch_by_ids
-
-                            s.write(f"Requesting {len(ids)} IDs from arXiv…")
-                            papers = fetch_by_ids(ids)
-                            size = save_library(papers, replace=replace)
-                            s.write(f"Saved library size {size}")
-                            st.success(
-                                f"Fetched **{len(papers)}** · library **{size}**"
-                            )
-                            log(f"Fetched {len(papers)} library={size}")
-                            s.update(state="complete")
-                        except Exception as e:
-                            s.update(state="error")
-                            st.markdown(friendly_error(e))
-                            papers = []
-                    if build_idx and papers:
-                        with st.status("Building recommend index…", expanded=True) as s2:
-                            try:
-                                from corpus_builder import rebuild_index
-
-                                s2.write("Embedding…")
-                                rebuild_index()
-                                s2.update(label="Index ready", state="complete")
-                                st.success("Recommend index ready.")
-                            except Exception as e:
-                                s2.update(state="error")
-                                st.markdown(friendly_error(e))
-                    clear_data_caches()
+            b_add, b_sp = st.columns([0.35, 0.65])
+            with b_add:
+                if st.button("＋ Add another topic", key="lib_q_add"):
+                    st.session_state["lib_queries"].append("")
                     st.rerun()
 
-    elif mode == "Ingest from personal ranking":
-        st.write("Uses `rankings/personal_importance.csv` if present.")
-        top_n = int_with_input(
-            "Top-N",
-            1,
-            30,
-            5,
-            key="lib_rank_n",
-            help="How many top personal-ranking papers to ingest (1–30).",
-        )
-        min_score = float_with_input(
-            "Min personal score",
-            1.0,
-            5.0,
-            4.0,
-            0.5,
-            key="lib_rank_min",
-            help="Only papers at or above this personal score.",
-        )
-        if st.button("Ingest from personal ranking", type="primary", key="lib_rank_btn"):
-            log(f"Ingest personal ranking top_n={top_n} min={min_score}")
-            try:
-                try:
-                    from rag.ingest import ids_from_personal_ranking
-                except ImportError:
-                    from src.rag.ingest import ids_from_personal_ranking
-                ids = ids_from_personal_ranking(
-                    top_n=int(top_n), min_score=float(min_score)
+            c1, c2, c3 = st.columns(3)
+            with c1:
+                n = st.number_input(
+                    "Max results per topic",
+                    min_value=1,
+                    max_value=50,
+                    value=12,
+                    step=1,
+                    key="lib_n",
+                    help="arXiv hits **per keyword block** (1–50).",
                 )
-                st.write("IDs:", ids)
-                results = run_ingest_with_progress(list(ids), force=False)
-                show_ingest_results(results)
-                clear_data_caches()
-            except Exception as e:
-                st.markdown(friendly_error(e))
+            with c2:
+                cat = st.text_input("Category", placeholder="cs.LG", key="lib_cat")
+            with c3:
+                sort = st.selectbox(
+                    "Sort",
+                    ["relevance", "lastUpdatedDate", "submittedDate"],
+                    key="lib_sort",
+                )
+            if st.button("Search & add to library", type="primary", key="lib_search_btn"):
+                if not _guard_replace():
+                    pass
+                else:
+                    topics = [
+                        (st.session_state.get(f"lib_q_{i}") or "").strip()
+                        for i in range(len(st.session_state.get("lib_queries") or [""]))
+                    ]
+                    topics = [x for x in topics if x]
+                    if not topics and not (cat or "").strip():
+                        st.error("Enter at least one topic/keywords block (or a category).")
+                    else:
+                        if not topics:
+                            topics = [""]  # category-only search once
+                        log(f"Library search topics={topics!r} cat={cat!r}")
+                        with st.status("Searching arXiv…", expanded=True) as st_status:
+                            try:
+                                from corpus_builder import search_arxiv
 
-    else:
-        st.write("Rebuild title/abstract vector index from current library.")
-        if st.button("Rebuild recommend index", type="primary", key="lib_rebuild_btn"):
-            log("Manual rebuild_index")
-            with st.status("Building recommend index…", expanded=True) as s:
-                s.write("Loading model and embedding library texts…")
+                                merged: dict[str, dict] = {}
+                                for t_i, topic in enumerate(topics):
+                                    st_status.write(
+                                        f"Query {t_i+1}/{len(topics)}: {topic[:60]!r}…"
+                                    )
+                                    papers = search_arxiv(
+                                        topic,
+                                        max_results=int(n),
+                                        category=(cat or None),
+                                        sort_by=sort,
+                                    )
+                                    for p in papers or []:
+                                        pid = (
+                                            p.get("arxiv_id")
+                                            or p.get("id")
+                                            or p.get("paper_id")
+                                            or ""
+                                        )
+                                        pid = str(pid).split("v")[0].strip()
+                                        if pid and pid not in merged:
+                                            merged[pid] = p
+                                papers = list(merged.values())
+                                size = save_library(papers, replace=replace)
+                                st_status.write(
+                                    f"Merged **{len(papers)}** unique papers · library size **{size}**"
+                                )
+                                st.success(
+                                    f"Added/merged **{len(papers)}** unique papers · library **{size}**"
+                                )
+                                set_results_panel(
+                                    "library",
+                                    {
+                                        "summary": f"Merged {len(papers)} unique papers from {len(topics)} topic(s).",
+                                        "detail": papers[:30],
+                                    },
+                                )
+                                log(f"Library search merged={len(papers)} library={size}")
+                                st_status.update(state="complete")
+                            except Exception as e:
+                                st_status.update(state="error")
+                                st.markdown(friendly_error(e))
+                                papers = []
+                        if build_idx and papers:
+                            with st.status("Building recommend index…", expanded=True) as s2:
+                                try:
+                                    from corpus_builder import rebuild_index
+
+                                    rebuild_index()
+                                    s2.write("Index ready")
+                                    s2.update(label="Index ready", state="complete")
+                                    log("Recommend index rebuilt")
+                                    st.success("Recommend index ready.")
+                                except Exception as e:
+                                    s2.update(label="Index failed", state="error")
+                                    st.markdown(friendly_error(e))
+                            clear_data_caches()
+                            st.rerun()
+                        elif papers:
+                            clear_data_caches()
+                            st.rerun()
+
+        elif mode == "Paste arXiv IDs":
+            ids_raw = st.text_area(
+                "IDs (comma or newline separated)",
+                placeholder="1806.07572\n2501.16496",
+                height=100,
+                key="lib_ids",
+            )
+            if st.button("Fetch & add", type="primary", key="lib_ids_btn"):
+                if not _guard_replace():
+                    pass
+                else:
+                    ids = [
+                        x.strip()
+                        for x in ids_raw.replace(",", "\n").splitlines()
+                        if x.strip()
+                    ]
+                    if not ids:
+                        st.error("Enter at least one ID.")
+                    else:
+                        log(f"Fetch IDs: {ids}")
+                        with st.status("Fetching metadata…", expanded=True) as s:
+                            try:
+                                from corpus_builder import fetch_by_ids
+
+                                s.write(f"Requesting {len(ids)} IDs from arXiv…")
+                                papers = fetch_by_ids(ids)
+                                size = save_library(papers, replace=replace)
+                                s.write(f"Saved library size {size}")
+                                st.success(
+                                    f"Fetched **{len(papers)}** · library **{size}**"
+                                )
+                                log(f"Fetched {len(papers)} library={size}")
+                                s.update(state="complete")
+                            except Exception as e:
+                                s.update(state="error")
+                                st.markdown(friendly_error(e))
+                                papers = []
+                        if build_idx and papers:
+                            with st.status("Building recommend index…", expanded=True) as s2:
+                                try:
+                                    from corpus_builder import rebuild_index
+
+                                    s2.write("Embedding…")
+                                    rebuild_index()
+                                    s2.update(label="Index ready", state="complete")
+                                    st.success("Recommend index ready.")
+                                except Exception as e:
+                                    s2.update(state="error")
+                                    st.markdown(friendly_error(e))
+                        clear_data_caches()
+                        st.rerun()
+
+        elif mode == "Ingest from personal ranking":
+            st.write("Uses `rankings/personal_importance.csv` if present.")
+            top_n = int_with_input(
+                "Top-N",
+                1,
+                30,
+                5,
+                key="lib_rank_n",
+                help="How many top personal-ranking papers to ingest (1–30).",
+            )
+            min_score = float_with_input(
+                "Min personal score",
+                1.0,
+                5.0,
+                4.0,
+                0.5,
+                key="lib_rank_min",
+                help="Only papers at or above this personal score.",
+            )
+            if st.button("Ingest from personal ranking", type="primary", key="lib_rank_btn"):
+                log(f"Ingest personal ranking top_n={top_n} min={min_score}")
                 try:
-                    from corpus_builder import rebuild_index
-
-                    rebuild_index()
-                    s.update(label="Index ready", state="complete")
-                    st.success("Recommend index ready.")
-                    log("rebuild_index ok")
+                    try:
+                        from rag.ingest import ids_from_personal_ranking
+                    except ImportError:
+                        from src.rag.ingest import ids_from_personal_ranking
+                    ids = ids_from_personal_ranking(
+                        top_n=int(top_n), min_score=float(min_score)
+                    )
+                    st.write("IDs:", ids)
+                    results = run_ingest_with_progress(list(ids), force=False)
+                    show_ingest_results(results)
                     clear_data_caches()
                 except Exception as e:
-                    s.update(state="error")
                     st.markdown(friendly_error(e))
+
+        else:
+            st.write("Rebuild title/abstract vector index from current library.")
+            if st.button("Rebuild recommend index", type="primary", key="lib_rebuild_btn"):
+                log("Manual rebuild_index")
+                with st.status("Building recommend index…", expanded=True) as s:
+                    s.write("Loading model and embedding library texts…")
+                    try:
+                        from corpus_builder import rebuild_index
+
+                        rebuild_index()
+                        s.update(label="Index ready", state="complete")
+                        st.success("Recommend index ready.")
+                        log("rebuild_index ok")
+                        clear_data_caches()
+                    except Exception as e:
+                        s.update(state="error")
+                        st.markdown(friendly_error(e))
 
 
 # ── RECOMMEND ─────────────────────────────────────────────────────────────
@@ -2292,6 +2521,7 @@ with tab_ask:
         with st.form("ask_form", clear_on_submit=False):
             question = st.text_area(
                 "Question",
+                value=st.session_state.get("ask_prefill_query", ""),
                 height=100,
                 key="ask_q",
                 placeholder="e.g. What is circuit discovery in mechanistic interpretability?",
@@ -2391,12 +2621,15 @@ def _get_citation_library_hubs(top_n: int = 25) -> tuple[dict, list[dict]]:
         counts = store.citation_counts(conn)
         rows = []
         for r in counts[:top_n]:
+            year_val = r["year"]
+            year_str = str(year_val).strip() if (year_val is not None and str(year_val).strip().isdigit()) else "—"
+            c_global = r["global_citation_count"]
             rows.append({
                 "Title": str(r["title"] or "Untitled")[:120],
                 "Paper ID": str(r["arxiv_id"] or r["canonical_id"]),
-                "Year": r["year"] or "—",
-                "In-Library Citers": int(r["library_cite_count"]),
-                "Global Citations": int(r["global_citation_count"] or 0),
+                "Year": year_str,
+                "In-Library Citers": int(r["library_cite_count"] or 0),
+                "Global Citations": int(c_global or 0),
             })
         return st_data, rows
     finally:
@@ -2443,7 +2676,7 @@ with tab_nov:
             with col_id:
                 aid_input = st.text_input(
                     "arXiv paper ID",
-                    value="1806.07572",
+                    value=st.session_state.get("novelty_target_id", "1806.07572"),
                     placeholder="e.g. 1806.07572, 2404.14082",
                     help="Paper to score relative to its references.",
                     key="nov_aid_input",
@@ -2485,36 +2718,108 @@ with tab_nov:
 
                         c1, c2, c3, c4 = st.columns(4)
                         c1.metric(
-                            "Parent weight (m)",
-                            f"{prof.get('m', 0.0):.3f}",
-                            help="Weight of the strongest parent reference in the projection.",
+                            "Direct Similarity (m)",
+                            f"{float(prof.get('m') or 0.0):.3f}",
+                            help="Cosine similarity to single closest foundational parent reference.",
                         )
                         c2.metric(
-                            "Residual novelty (Δ)",
-                            f"{prof.get('Delta', 0.0):.3f}",
-                            help="Distance outside the linear subspace of references.",
+                            "Synergy Blend (Δ)",
+                            f"{float(prof.get('Delta') or 0.0):.3f}",
+                            help="Multi-parent combination gain: R²₊ - m².",
                         )
                         c3.metric(
-                            "Variance explained (R²₊)",
-                            f"{prof.get('R2_plus', 0.0):.3f}",
-                            help="Non-negative fraction of focal paper variance explained by its references.",
+                            "Cone Variance (R²₊)",
+                            f"{float(prof.get('R2_plus') or 0.0):.3f}",
+                            help="Total fraction of focal paper representation explained by non-negative reference cone.",
                         )
+                        viz_data = prof.get("viz_2d")
+                        res_dist = viz_data.get("metrics", {}).get("residual_distance") if viz_data and viz_data.get("metrics") else (max(0.0, 1.0 - float(prof.get("R2_plus") or 0.0)) ** 0.5)
                         c4.metric(
-                            "Median ref dist (D)",
-                            f"{prof.get('D_median', 0.0):.3f}",
-                            help="Median cosine distance to all references.",
+                            "Novelty Residual (√1-R²₊)",
+                            f"{float(res_dist):.3f}",
+                            help="Radial distance outside prior art references to unit horizon ‖x‖ = 1.",
                         )
 
+                        with st.expander("💡 How to Read This Subspace & Metrics", expanded=False):
+                            st.markdown(
+                                """
+- **Direct Similarity ($m$):** How closely the paper mirrors its single most influential cited parent.
+- **Synergy Blend ($\Delta$):** The non-linear synthesis gain ($R^2_+ - m^2$) from combining multiple distinct lineages.
+- **Cone Variance ($R^2_+$):** The total fraction of the paper's representation accounted for by prior art references.
+- **Novelty Residual ($\sqrt{1 - R^2_+}$):** The radial distance outside the reference cone to the unit circle $\|x\|=1$. Higher values indicate greater creative departure from existing literature.
+- **Dominant Parent ($e_1$):** Direction of the closest foundational paper placed at $(1, 0)$.
+- **Blend Direction ($e_2$):** Orthogonal dimension capturing cross-reference synthesis.
+                                """
+                            )
+
+                        if viz_data and viz_data.get("ok"):
+                            try:
+                                from src.novelty.viz import render_altair_subspace_chart
+
+                                chart = render_altair_subspace_chart(viz_data)
+                                if chart is not None:
+                                    st.altair_chart(chart, use_container_width=True)
+                            except Exception as e:
+                                st.caption(f"Subspace chart note: {e}")
+
                         stats = prof.get("stats") or {}
+                        n_refs_total = stats.get("n_refs") or stats.get("n_raw", 0)
+                        n_with_abs = stats.get("n_with_abstract") or stats.get("n_abstracts", 0)
+                        n_emb = stats.get("n_refs_embedded") or stats.get("n_total", 0)
+                        d_eff_val = prof.get("d_eff_refs") or prof.get("d_eff_cache") or prof.get("d_eff", "n/a")
+                        frac_abs = stats.get("frac_with_abstract", 0.0)
+
                         with st.expander("Reference & embedding details", expanded=False):
                             st.markdown(
-                                f"- **Total references resolved:** {stats.get('n_raw', 0)}\n"
-                                f"- **References in graph:** {stats.get('n_total', 0)}\n"
-                                f"- **Abstracts available:** {stats.get('n_abstracts', 0)} "
-                                f"({stats.get('frac_with_abstract', 0.0):.1%})\n"
+                                f"- **Total references resolved:** {n_refs_total}\n"
+                                f"- **References embedded:** {n_emb}\n"
+                                f"- **Abstracts available:** {n_with_abs} ({frac_abs:.1%})\n"
                                 f"- **Embedding model:** `{prof.get('model', 'default')}` (dim={prof.get('dim', 'auto')})\n"
-                                f"- **Effective dimensionality ($d_{{eff}}$):** {prof.get('d_eff', 'n/a')}"
+                                f"- **Effective dimensionality ($d_{{eff}}$):** {f'{d_eff_val:.2f}' if isinstance(d_eff_val, (int, float)) else d_eff_val}"
                             )
+
+                        attr_list = prof.get("attribution") or []
+                        if attr_list:
+                            with st.expander("Foundational parent references (attribution weights)", expanded=True):
+                                st.caption("Top references explaining the focal paper's placement in the embedding cone (NNLS weights):")
+                                attr_rows = []
+                                missing_parents = []
+                                for item in attr_list[:12]:
+                                    rid = item.get("paper_id") or item.get("ref_id") or item.get("canonical_id") or ""
+                                    title = item.get("title") or rid
+                                    aid_clean = rid.replace("arxiv:", "") if "arxiv:" in rid else (rid if re.match(r"^\d{4}\.\d{4,5}", rid) else "")
+                                    in_rag_status = "In RAG" if aid_clean and (PROJECT_ROOT / "data" / "markdown" / f"{aid_clean}.md").exists() else "Missing"
+                                    if in_rag_status == "Missing" and aid_clean:
+                                        missing_parents.append(aid_clean)
+                                    url = item.get("url") or (f"https://arxiv.org/abs/{aid_clean}" if aid_clean else f"https://www.semanticscholar.org/paper/{rid.replace('s2:', '')}")
+                                    provider = item.get("provider") or ("arXiv" if aid_clean else "Semantic Scholar")
+                                    display_id = (aid_clean if aid_clean else (rid[:16] + "…" if len(rid) > 20 else rid))
+                                    attr_rows.append({
+                                        "Reference Title": title,
+                                        "Source": provider,
+                                        "Paper ID": display_id,
+                                        "Weight (λ)": f"{float(item.get('weight') or 0.0):.4f}",
+                                        "Attribution Share": f"{(float(item.get('share') or 0.0) * 100):.1f}%",
+                                        "Paper Link": url,
+                                        "Full-Text Status": in_rag_status,
+                                    })
+                                st.dataframe(
+                                    attr_rows,
+                                    hide_index=True,
+                                    width="stretch",
+                                    column_config={
+                                        "Paper Link": st.column_config.LinkColumn("Paper Link", display_text="Open ↗")
+                                    },
+                                )
+
+                                if missing_parents:
+                                    if st.button(f"📥 Ingest {len(missing_parents)} missing foundational parents into RAG", key="ingest_missing_parents_btn"):
+                                        with st.spinner(f"Ingesting foundational parents: {missing_parents}…"):
+                                            from src.rag.ingest import ingest_papers
+                                            res_parents = ingest_papers(missing_parents)
+                                            st.success(f"Ingested {len(res_parents)} parent papers into RAG!")
+                                            clear_data_caches()
+                                            st.rerun()
                     else:
                         st.error(
                             prof.get("message")
@@ -2524,8 +2829,8 @@ with tab_nov:
                         stats = prof.get("stats") or {}
                         if stats:
                             st.caption(
-                                f"References found: {stats.get('n_total', 0)} "
-                                f"(with abstract: {stats.get('n_abstracts', 0)})"
+                                f"References found: {stats.get('n_refs', 0)} "
+                                f"(with abstract: {stats.get('n_with_abstract', 0)})"
                             )
 
     elif nov_mode == "Citation network hubs":
@@ -2567,109 +2872,97 @@ with tab_nov:
 
 
 with tab_help:
-    st.subheader("Help")
+    st.subheader("Interactive Research Guide & System Architecture")
     st.markdown(
         """
-**Workflow:** Library (find papers) → Recommend (rank) → Ingest (full text) → Ask (Q&A with citations).
+This platform integrates **Literature Discovery**, **Multi-Signal Ranking**, **Citation-Grounded Hybrid RAG**, and **Geometric Novelty Subspace Modeling** into a closed-loop research workflow.
 
-| | **Library** | **Full-text** |
-|--|-------------|---------------|
-| Holds | Titles & abstracts | PDF text in chunks |
-| Used by | Rank | **Ask** only |
-
-Ranking never feeds Ask by itself — you must **ingest** first.
+```
+┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
+│       1. DISCOVER       │      │        2. RANK          │      │        3. INGEST        │      │         4. ASK          │
+│ Browse 5,700+ Catalog   │ ──►  │ Multi-Signal Weighting  │ ──►  │ Selective PDF Download │ ──►  │ Citation-Grounded Q&A   │
+│ Or Search Live arXiv    │      │ Embedding + Recency +   │      │ PyMuPDF4LLM Markdown    │      │ Hybrid RRF Retrieval    │
+│ Titles & Abstracts      │      │ Citations + Authors     │      │ Chunk + Chroma Index    │      │ Strict [1], [2] Citings │
+└─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘
+```
 """
     )
 
-    with st.expander("Library", expanded=False):
+    with st.expander("🔬 How 2D Novelty & Subspace Geometry Works", expanded=True):
         st.markdown(
             """
-- Add **one or more topic boxes**; results are merged (unique arXiv ids).
-- **Max results** applies *per topic*, not as a global unique cap.
-- After large adds, **rebuild the recommend index** before ranking.
+When a paper is scored relative to its cited references, its 768-dimensional embedding vector is projected onto a 2D orthonormal plane defined by its literature:
+
+- **Horizontal Axis ($e_1$):** Direction of the single closest foundational reference (the **Dominant Parent**, shown as a **Red Dot** at $(1, 0)$).
+- **Vertical Axis ($e_2$):** Orthogonal synergy dimension capturing combination across other cited lineages.
+- **Scattered Dots ($y_j$):** Every cited paper from the bibliography.
+  - **Indigo/Purple Dots:** Active foundational parents that contribute positive weight ($\lambda_j > 0$) to the reconstruction.
+  - **Muted Grey Dots:** Background references ($\lambda_j = 0$) cited for context or tools.
+- **Blue Cone Projection Dot ($\hat{x} = (m, \sqrt{\Delta})$):** The non-negative weighted center of gravity ($\sum \lambda_j y_j$) inside the cone formed by references.
+- **Orange Dashed Radial Line:** The **Novelty Residual Gap** ($\sqrt{1 - R^2_+}$) from $\hat{x}$ out to the unit horizon $\|x\| = 1$. The longer this line, the greater the paper's creative departure from prior art.
+
+| Metric | Name | Meaning |
+| :--- | :--- | :--- |
+| **$m$** | Direct Similarity | Max cosine similarity to the closest foundational parent paper. |
+| **$\Delta$** | Synergy Blend | Multi-parent combination gain ($R^2_+ - m^2$). Measures genuine synthesis of ideas. |
+| **$R^2_+$** | Cone Variance | Fraction of paper representation explained by the non-negative reference cone. |
+| **$\sqrt{1 - R^2_+}$** | Novelty Residual | Radial distance outside prior art to the unit sphere. |
 """
         )
 
-    with st.expander("Recommend & weights", expanded=False):
+    with st.expander("📚 Library vs. Full-Text Ingest (Why Two Steps?)", expanded=False):
         st.markdown(
             """
-**Signals:** embedding (topic fit) · recency · citations · author.
-
-| Preset | emb | rec | cite | auth | Best for |
-|--------|-----|-----|------|------|----------|
-| Balanced | 0.50 | 0.20 | 0.25 | 0.05 | Default dig |
-| Precision | 0.65 | 0.10 | 0.20 | 0.05 | On-topic library |
-| Prefer recent | 0.45 | 0.35 | 0.15 | 0.05 | Fast-moving fields |
-| Citation heavy | 0.35 | 0.10 | 0.50 | 0.05 | Landmarks / surveys |
-
-Edit any number → **Custom** (auto-normalized to sum to 1).  
-If numbers match a preset, the UI says so.
+| Feature | **Catalog Library** | **Full-Text Ingestion (RAG)** |
+| :--- | :--- | :--- |
+| **Data Held** | Titles, abstracts, citations, years, categories | Complete sectioned Markdown parsed from PDFs |
+| **Storage** | High-performance SQLite FTS5 (`data/catalog.sqlite3`) | Chunked ChromaDB vector store (`data/chroma_rag`) |
+| **Purpose** | Fast browsing, filtering, and initial topic ranking | Deep question answering, evidence extraction, citation grounding |
+| **Laptop Scalability** | Millions of papers easily fit | Only ingest papers you actually care to study |
 """
         )
 
-    with st.expander("Ingest (full text)", expanded=False):
+    with st.expander("⚖️ Multi-Signal Ranking Weights Guide", expanded=False):
         st.markdown(
             """
-- **Top-N** max = size of the *current* rank list.
-- **Time:** often ~30–90s per paper the first time (OCR can be slower).
-- **RAM:** on 16 GB machines, prefer **5–10** papers per batch, or **Low memory mode**.
-- Progress shows **i/N**, elapsed, and ETA.
+Adjust the sliders under **Recommend** to customize how papers are ranked:
+
+- **Embedding Semantic Weight ($w_{\text{emb}}$):** Relevance of paper abstract to your research interest query.
+- **Recency Decay Weight ($w_{\text{rec}}$):** Exponential half-life boost favoring recent publications.
+- **Global Citations Weight ($w_{\text{cit}}$):** Normalized impact based on worldwide citation counts.
+- **Author Corpus Weight ($w_{\text{auth}}$):** Continuity boost for authors who frequently publish in this specific domain.
 """
         )
 
-    with st.expander("Ask — passages & coverage", expanded=False):
-        st.markdown(
-            """
-**top-k** = chunks sent to the LLM (not total chunks in the store). Retrieval still searches everything.
-
-| Question type | top-k |
-|---------------|-------|
-| Short fact | 4–6 |
-| Typical research Q | **6–8** (default 6) |
-| Compare papers | 8–12 |
-| Broad survey | 10–15 |
-
-More chunks in the index does **not** mean you need a higher k. Prefer better ingest over k &gt; 15.
-
-**Coverage:** high ≈ strong hits · partial ≈ incomplete · low/none ≈ missing topic in full-text.
-
-**Cache:** on = reuse similar questions · off = fresh LLM call.  
-**Restrict to papers:** searchable list of **title (arXiv id)**. Type to filter; leave empty to use all ingested full-text.
-"""
-        )
-
-    with st.expander("Timing & when it feels stuck", expanded=False):
-        st.markdown(
-            """
-| Step | Typical |
-|------|---------|
-| First model load | 1–2 min |
-| Rank | ~5–30s (warm) |
-| Ingest (1 paper) | ~30–90s |
-| Ask | ~8–20s |
-
-Use **Activity log** (and the terminal) if the UI looks idle.
-"""
-        )
-
-    with st.expander("CLI (short)", expanded=False):
+    with st.expander("💻 CLI & Autonomous Scripts Reference", expanded=False):
         st.code(
             "\n".join(
                 [
-                    "uv sync",
-                    'uv run python src/corpus_builder.py search "topic" -n 12 --build-index',
-                    'uv run python src/recommend.py "interest" -k 8',
-                    "uv run python -m src.rag.cli ingest <id>",
-                    'uv run python -m src.rag.cli ask "question"',
-                    "uv run python -m streamlit run src/app.py",
+                    "# 1. Start Modern Web Studio (Starlette + SSE Streaming UI)",
+                    "make serve           # Runs on http://127.0.0.1:8000",
+                    "",
+                    "# 2. Start Streamlit Discovery Lab",
+                    "make app             # Runs on http://localhost:8501",
+                    "",
+                    "# 3. Run Autonomous Topic-Based Ingestion",
+                    "uv run python scripts/bulk_topic_ingest.py --topics 'mechanistic interpretability' 'sparse autoencoders' --max-per-topic 25",
+                    "",
+                    "# 4. Run Batch Novelty Scoring for Library Papers",
+                    "uv run python scripts/batch_novelty_library.py --limit 50 --output results/batch_novelty_report.json",
+                    "",
+                    "# 5. Run Verification & Health Checks",
+                    "make check           # 11/11 repository hygiene checks",
+                    "make test            # 60+ core unit tests",
                 ]
             ),
             language="bash",
         )
-        st.caption("Full detail: WORKFLOW.md")
 
     report_path = ROOT / "results" / "EVALUATION_REPORT.md"
     if report_path.exists():
-        with st.expander("Evaluation report preview", expanded=False):
-            st.markdown(report_path.read_text(encoding="utf-8")[:4000])
+        with st.expander("📊 Benchmark Evaluation Report", expanded=False):
+            try:
+                st.markdown(report_path.read_text(encoding="utf-8")[:4000])
+            except Exception:
+                pass
 

@@ -110,15 +110,17 @@ def shuffled_reference_percentiles(
         if len(refs) < n_target:
             continue
         # deterministic subsample to matched n
-        rng_o = random.Random((seed, other, n_target))
+        rng_o = random.Random(f"{seed}:{other}:{n_target}")
         pick = refs if len(refs) == n_target else rng_o.sample(refs, n_target)
         cols = []
         used = []
         for rid in pick:
             v = get_embedding(conn, rid, model, dim)
             if v is not None:
-                cols.append(np.asarray(v, dtype=np.float64))
-                used.append(rid)
+                arr = np.asarray(v, dtype=np.float64)
+                if arr.shape[0] == x.shape[0]:
+                    cols.append(arr)
+                    used.append(rid)
         if len(cols) < n_target:
             continue
         Y = np.column_stack(cols)

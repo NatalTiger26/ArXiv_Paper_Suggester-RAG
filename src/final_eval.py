@@ -236,6 +236,65 @@ def check_gold_presence(gold: list[dict[str, Any]]) -> dict[str, Any]:
 CITATION_RE = re.compile(r"\[(\d+)\]")
 
 
+def citation_precision_and_groundedness(
+    answer: str,
+    chunks: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """
+    Computes fine-grained sentence-level citation precision and groundedness ratio.
+    - Evaluates each sentence in answer:
+      * does it contain citation tags [n]?
+      * if so, do tokens in the sentence align with the referenced chunk text?
+    """
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", answer or "") if len(s.strip()) > 10]
+    if not sentences:
+        is_ref = looks_like_refusal(answer)
+        return {
+            "groundedness_ratio": 1.0 if is_ref else 0.0,
+            "citation_precision": 1.0 if is_ref else 0.0,
+            "n_sentences": 0,
+            "n_cited_sentences": 0,
+        }
+
+    cited_sentences = 0
+    grounded_sentences = 0
+    total_tags = 0
+    supported_tags = 0
+
+    chunk_texts = [(c.get("chunk_text") or c.get("text") or "").lower() for c in (chunks or [])]
+
+    for sent in sentences:
+        tags = [int(x) for x in CITATION_RE.findall(sent)]
+        if not tags:
+            continue
+        cited_sentences += 1
+        sent_words = set(re.findall(r"[a-z0-9]{3,}", sent.lower()))
+        sent_supported = False
+        for tag in tags:
+            total_tags += 1
+            idx = tag - 1
+            if 0 <= idx < len(chunk_texts):
+                ctext = chunk_texts[idx]
+                cwords = set(re.findall(r"[a-z0-9]{3,}", ctext))
+                overlap = len(sent_words & cwords)
+                if overlap >= min(3, max(1, len(sent_words))):
+                    supported_tags += 1
+                    sent_supported = True
+        if sent_supported:
+            grounded_sentences += 1
+
+    precision = (supported_tags / total_tags) if total_tags > 0 else (1.0 if looks_like_refusal(answer) else 0.0)
+    ratio = (grounded_sentences / cited_sentences) if cited_sentences > 0 else (1.0 if looks_like_refusal(answer) else 0.0)
+
+    return {
+        "groundedness_ratio": round(ratio, 4),
+        "citation_precision": round(precision, 4),
+        "n_sentences": len(sentences),
+        "n_cited_sentences": cited_sentences,
+        "n_grounded_sentences": grounded_sentences,
+    }
+
+
 def citation_validity(answer: str, n_sources: int) -> dict[str, Any]:
     """Lab 4: every [n] must refer to a supplied source index."""
     nums = [int(x) for x in CITATION_RE.findall(answer or "")]
@@ -429,8 +488,10 @@ def run_core(
             refs = result.get("references") or []
             n_sources_used = len(refs) if refs else len(result.get("chunks") or chunks)
             cites = citation_validity(answer, max(n_sources_used, len(chunks)))
+            grounding = citation_precision_and_groundedness(answer, result.get("chunks") or chunks)
         else:
             refusal = coverage in ("none", "low") and bool(item.get("should_refuse"))
+            grounding = {}
 
         elapsed = (time.perf_counter() - t0) * 1000
         latencies.append(elapsed)
@@ -489,6 +550,8 @@ def run_core(
                 "citation_valid": cites.get("valid"),
                 "citation_has": cites.get("has_citation"),
                 "n_citations": cites.get("n_citations"),
+                "citation_precision": grounding.get("citation_precision"),
+                "groundedness_ratio": grounding.get("groundedness_ratio"),
                 "latency_ms": round(elapsed, 1),
                 "fail_hint": fail_hint,
                 "answer_preview": (answer[:220] + "…") if len(answer) > 220 else answer,
@@ -572,6 +635,12 @@ def run_core(
         summary["citation_validity_rate"] = round(cit_ok / n_all, 4)
         summary["citation_validity_ci95"] = wilson_ci(cit_ok, n_all)
         summary["answers_with_citation"] = sum(1 for r in rows if r.get("citation_has"))
+        summary["mean_groundedness_ratio"] = mean(
+            [r["groundedness_ratio"] for r in rows if r.get("groundedness_ratio") is not None]
+        )
+        summary["mean_citation_precision"] = mean(
+            [r["citation_precision"] for r in rows if r.get("citation_precision") is not None]
+        )
 
     # Stratification
     by_kind: dict[str, Any] = {}

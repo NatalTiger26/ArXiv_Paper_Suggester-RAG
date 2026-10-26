@@ -59,25 +59,70 @@ Rules:
 """
 
 
-def _dedupe_chunks(chunks: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Keep highest-scoring chunk per (paper_id, section)."""
+def _chunk_rank_score(c: dict[str, Any]) -> float:
+    """Extract ranking score, strictly preferring hybrid RRF score over raw dense score."""
+    if not isinstance(c, dict):
+        return 0.0
+    if c.get("rrf_score") is not None:
+        try:
+            return float(c["rrf_score"])
+        except (ValueError, TypeError):
+            pass
+    try:
+        return float(c.get("score") or 0.0)
+    except (ValueError, TypeError):
+        return 0.0
+
+
+def _dedupe_chunks(
+    chunks: list[dict[str, Any]],
+    max_per_paper: int = 3,
+    allow_adjacent: bool = True,
+) -> list[dict[str, Any]]:
+    """Deduplicate, expand adjacent windows, and enforce per-paper diversity caps."""
+    if not chunks:
+        return []
+
+    # Sort chunks by hybrid ranking score descending
+    sorted_chunks = sorted(chunks, key=_chunk_rank_score, reverse=True)
+    paper_counts: dict[str, int] = {}
     best: dict[tuple[str, str], dict] = {}
-    order: list[tuple[str, str]] = []
-    for c in chunks:
-        key = (str(c.get("paper_id") or ""), str(c.get("section") or ""))
-        prev = best.get(key)
-        if prev is None:
+    selected: list[dict] = []
+
+    unique_papers = len({c.get("paper_id") for c in sorted_chunks if c.get("paper_id")})
+    cap = max_per_paper if unique_papers > 1 else 999
+
+    for c in sorted_chunks:
+        pid = str(c.get("paper_id") or "")
+        sec = str(c.get("section") or "")
+        key = (pid, sec)
+
+        if paper_counts.get(pid, 0) >= cap:
+            continue
+
+        if key not in best:
             best[key] = c
-            order.append(key)
-        elif float(c.get("score") or 0) > float(prev.get("score") or 0):
-            best[key] = c
-    return [best[k] for k in order]
+            selected.append(c)
+            paper_counts[pid] = paper_counts.get(pid, 0) + 1
+        elif allow_adjacent:
+            # Allow adjacent chunk continuation in same section
+            prev = best[key]
+            try:
+                prev_idx = int(prev.get("chunk_index") or -99)
+                curr_idx = int(c.get("chunk_index") or -99)
+                if abs(prev_idx - curr_idx) == 1 and paper_counts.get(pid, 0) < cap:
+                    selected.append(c)
+                    paper_counts[pid] = paper_counts.get(pid, 0) + 1
+            except (ValueError, TypeError):
+                pass
+
+    return sorted(selected, key=_chunk_rank_score, reverse=True)
 
 
 def _build_context(chunks: list[dict[str, Any]], max_chars: int) -> tuple[str, list[dict]]:
     deduped = _dedupe_chunks(chunks)
-    # Rank chunks by relevance score descending so highest-evidence passages fit first
-    deduped.sort(key=lambda x: float(x.get("score") or 0.0), reverse=True)
+    # Strictly maintain hybrid RRF ranking order!
+    deduped.sort(key=_chunk_rank_score, reverse=True)
     parts = []
     used = []
     total = 0
