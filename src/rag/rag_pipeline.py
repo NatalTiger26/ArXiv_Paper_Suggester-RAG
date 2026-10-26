@@ -75,11 +75,13 @@ def _dedupe_chunks(chunks: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def _build_context(chunks: list[dict[str, Any]], max_chars: int) -> tuple[str, list[dict]]:
-    chunks = _dedupe_chunks(chunks)
+    deduped = _dedupe_chunks(chunks)
+    # Rank chunks by relevance score descending so highest-evidence passages fit first
+    deduped.sort(key=lambda x: float(x.get("score") or 0.0), reverse=True)
     parts = []
     used = []
     total = 0
-    for i, c in enumerate(chunks, 1):
+    for i, c in enumerate(deduped, 1):
         header = f"[{i}] {c.get('title') or c.get('paper_id')} — § {c.get('section') or 'body'}"
         body = (c.get("text") or "").strip()
         block = f"{header}\n{body}\n"
@@ -155,6 +157,21 @@ def _gemini_generate(client, model: str, prompt: str, system: str) -> str:
         return (response.text or "").strip()
 
 
+_gemini_client = None
+_gemini_client_key: str | None = None
+
+
+def _get_gemini_client(api_key: str):
+    global _gemini_client, _gemini_client_key
+    if _gemini_client is not None and _gemini_client_key == api_key:
+        return _gemini_client
+    from google import genai
+
+    _gemini_client = genai.Client(api_key=api_key)
+    _gemini_client_key = api_key
+    return _gemini_client
+
+
 def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
     """Prefer Gemini; on failure or missing key, use OpenAI-compatible failsafe."""
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
@@ -162,11 +179,8 @@ def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
 
     if api_key:
         try:
-            from google import genai
-
-            client = genai.Client(api_key=api_key)
+            client = _get_gemini_client(api_key)
             requested = get_gemini_model()
-            print(f"[llm] Requesting Gemini model={requested!r}", flush=True)
             candidates: list[str] = []
             for m in (
                 requested,
@@ -181,23 +195,19 @@ def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
             for model in candidates:
                 try:
                     text = _gemini_generate(client, model, prompt, system)
-                    if model != requested:
-                        print(f"[llm] Gemini OK with model={model!r} (requested {requested!r})")
-                    else:
-                        print(f"[llm] Gemini OK with model={model!r}", flush=True)
                     return text
                 except Exception as e:
                     last_err = e
                     suggested = _extract_suggested_gemini_model(e)
                     if suggested and suggested not in candidates:
                         candidates.append(suggested)
-                    print(f"[llm] Gemini model {model!r} failed: {e}")
+                    print(f"[llm] Gemini model {model!r} retry with fallback candidate: {e}", flush=True)
                     continue
             gemini_err = last_err
-            print(f"[llm] Gemini unavailable after trying {candidates}; trying fallback…")
+            print(f"[llm] Gemini unavailable after trying {candidates}; trying fallback…", flush=True)
         except Exception as e:
             gemini_err = e
-            print(f"[llm] Gemini unavailable ({e}); trying fallback…")
+            print(f"[llm] Gemini client error ({e}); trying fallback…", flush=True)
 
     if FALLBACK_LLM_API_KEY:
         print(f"[llm] Using fallback model {FALLBACK_LLM_MODEL} @ {FALLBACK_LLM_BASE_URL}")
@@ -239,22 +249,53 @@ def ask(
     max_context_chars: int = DEFAULT_MAX_CONTEXT_CHARS,
     return_chunks: bool = False,
     use_cache: bool = True,
+    hybrid: bool = False,
 ) -> dict[str, Any]:
     """
     Full RAG query with optional semantic cache and coverage gating.
+    Computes query embedding ONCE for single-pass retrieval and caching.
     """
     model = load_embedding_model()
+    # Embed question once for single-pass retrieval and cache lookup
+    qvec = embed_texts([question], model=model)[0]
+    gen_model = get_gemini_model()
 
     if use_cache:
         from .cache import lookup
 
-        hit = lookup(question, paper_ids, lambda texts: embed_texts(texts, model=model))
+        hit = lookup(
+            question,
+            paper_ids,
+            query_vector=qvec,
+            model_id=gen_model,
+        )
         if hit is not None:
             if return_chunks:
                 hit.setdefault("chunks", [])
             return hit
 
-    chunks = query_chunks(question, top_k=top_k, paper_ids=paper_ids, model=model)
+    fetch_k = max(top_k * 3, 16) if hybrid else top_k
+    effective_paper_ids = paper_ids
+    if hybrid and not effective_paper_ids:
+        from .hybrid import extract_query_identifiers
+
+        explicit_ids = extract_query_identifiers(question)
+        if explicit_ids:
+            effective_paper_ids = explicit_ids
+
+    chunks = query_chunks(
+        question,
+        top_k=fetch_k,
+        paper_ids=effective_paper_ids,
+        model=model,
+        query_vector=qvec,
+    )
+
+    if hybrid and len(chunks) > 1:
+        from .hybrid import hybrid_rerank
+
+        chunks = hybrid_rerank(chunks, question, top_k=top_k)
+
     cov = _coverage(chunks)
 
     if not chunks or cov == "none":
@@ -318,7 +359,8 @@ def ask(
             question,
             paper_ids,
             result,
-            lambda texts: embed_texts(texts, model=model),
+            query_vector=qvec,
+            model_id=gen_model,
         )
 
     return result

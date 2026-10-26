@@ -264,11 +264,14 @@ def query_chunks(
     top_k: int = 6,
     paper_ids: list[str] | None = None,
     model=None,
+    query_vector: list[float] | None = None,
 ) -> list[dict[str, Any]]:
-    if model is None:
-        model = load_embedding_model()
-
-    qvec = embed_texts([query], model=model)[0]
+    if query_vector is not None:
+        qvec = query_vector
+    else:
+        if model is None:
+            model = load_embedding_model()
+        qvec = embed_texts([query], model=model)[0]
     where = None
     if paper_ids:
         if len(paper_ids) == 1:

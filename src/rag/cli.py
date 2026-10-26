@@ -83,6 +83,7 @@ def cmd_ask(args: argparse.Namespace) -> None:
         paper_ids=args.paper_ids or None,
         return_chunks=args.verbose,
         use_cache=not args.no_cache,
+        hybrid=args.hybrid,
     )
     if args.json:
         print(json.dumps(result, indent=2, ensure_ascii=False))
@@ -105,7 +106,7 @@ def cmd_reset_index(args):
     print("RAG index cleared. Re-ingest papers with: python -m src.rag.cli ingest --force …")
 
 def cmd_status(args: argparse.Namespace) -> None:
-    from src.rag.embed_store import index_stats
+    from src.rag.embed_store import index_stats, list_ingested_papers
 
     stats = index_stats()
     if args.json:
@@ -116,9 +117,19 @@ def cmd_status(args: argparse.Namespace) -> None:
         print(f"Model  : {stats['embedding_model']}")
         print(f"Store  : {stats['persist_dir']}")
         print("\nIngested papers:")
-        for p in stats.get("papers") or []:
-            print(f"  • {p['paper_id']}  {p.get('title', '')[:70]}")
-        if not stats.get("papers"):
+        papers = stats.get("papers") or []
+        if not papers and stats.get("paper_count", 0) > 0:
+            all_p = list_ingested_papers()
+            for p in all_p[:10]:
+                print(f"  • {p['paper_id']}  {p.get('title', '')[:70]}")
+            if len(all_p) > 10:
+                print(f"  ... and {len(all_p) - 10} more (run `python -m src.rag.cli papers` to view all)")
+        elif papers:
+            for p in papers[:10]:
+                print(f"  • {p['paper_id']}  {p.get('title', '')[:70]}")
+            if len(papers) > 10:
+                print(f"  ... and {len(papers) - 10} more")
+        else:
             print("  (none yet — run `ingest` first)")
 
 
@@ -169,6 +180,7 @@ def build_parser() -> argparse.ArgumentParser:
     ask_p.add_argument("--json", action="store_true")
     ask_p.add_argument("-v", "--verbose", action="store_true")
     ask_p.add_argument("--no-cache", action="store_true")
+    ask_p.add_argument("--hybrid", action="store_true", help="Enable hybrid BM25 + dense retrieval with RRF")
     ask_p.add_argument("--export", action="store_true", help="Write Markdown answer to results/rag_answers/")
     ask_p.set_defaults(func=cmd_ask)
 
@@ -191,6 +203,9 @@ def build_parser() -> argparse.ArgumentParser:
         help="Delete RAG Chroma collection (after embedder / EMBEDDING_DIM change)",
     )
     p_reset.set_defaults(func=cmd_reset_index)
+
+    hl = sub.add_parser("health", help="Display full system health and resource metrics")
+    hl.set_defaults(func=lambda args: __import__("scripts.system_health", fromlist=["print_health"]).print_health())
 
     return p
 

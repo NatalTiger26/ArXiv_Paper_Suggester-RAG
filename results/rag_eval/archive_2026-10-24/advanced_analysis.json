@@ -1,0 +1,331 @@
+{
+  "timestamp": "2026-10-08T19:11:14.307469+00:00",
+  "summary_echo": {
+    "mean_mrr": 0.75,
+    "mean_recall@k": 0.85,
+    "mean_hit_rate@1": 0.6875,
+    "mrr_ci95": [
+      0.6562,
+      0.8375
+    ],
+    "refusal_precision": 0.45,
+    "refusal_recall": 0.45,
+    "index_papers": 10,
+    "fail_hint_counts": {
+      "over_refuse": 5,
+      "missing_or_ranking": 12,
+      "ranking": 13,
+      "false_answer": 11
+    }
+  },
+  "missing_papers": [
+    {
+      "arxiv_id": "2304.14997",
+      "n_questions": 7
+    },
+    {
+      "arxiv_id": "1806.07572",
+      "n_questions": 3
+    },
+    {
+      "arxiv_id": "2501.16496",
+      "n_questions": 3
+    },
+    {
+      "arxiv_id": "2407.13594",
+      "n_questions": 2
+    },
+    {
+      "arxiv_id": "2504.19475",
+      "n_questions": 2
+    },
+    {
+      "arxiv_id": "2502.20914",
+      "n_questions": 1
+    },
+    {
+      "arxiv_id": "2404.14082",
+      "n_questions": 1
+    }
+  ],
+  "ingest_lift_simulation": [
+    {
+      "paper_id": "2304.14997",
+      "base_recall": 0.85,
+      "lifted_recall": 0.9125,
+      "base_mrr": 0.75,
+      "lifted_mrr": 0.8125,
+      "delta_recall": 0.0625,
+      "delta_mrr": 0.0625,
+      "questions_helped": 5
+    },
+    {
+      "paper_id": "1806.07572",
+      "base_recall": 0.85,
+      "lifted_recall": 0.8625,
+      "base_mrr": 0.75,
+      "lifted_mrr": 0.7625,
+      "delta_recall": 0.0125,
+      "delta_mrr": 0.0125,
+      "questions_helped": 1
+    },
+    {
+      "paper_id": "2501.16496",
+      "base_recall": 0.85,
+      "lifted_recall": 0.8875,
+      "base_mrr": 0.75,
+      "lifted_mrr": 0.7875,
+      "delta_recall": 0.0375,
+      "delta_mrr": 0.0375,
+      "questions_helped": 3
+    },
+    {
+      "paper_id": "2407.13594",
+      "base_recall": 0.85,
+      "lifted_recall": 0.8625,
+      "base_mrr": 0.75,
+      "lifted_mrr": 0.7625,
+      "delta_recall": 0.0125,
+      "delta_mrr": 0.0125,
+      "questions_helped": 1
+    },
+    {
+      "paper_id": "2504.19475",
+      "base_recall": 0.85,
+      "lifted_recall": 0.875,
+      "base_mrr": 0.75,
+      "lifted_mrr": 0.775,
+      "delta_recall": 0.025,
+      "delta_mrr": 0.025,
+      "questions_helped": 2
+    }
+  ],
+  "refusal_confusion": {
+    "TP": 9,
+    "FP": 11,
+    "TN": 69,
+    "FN": 11
+  },
+  "kind_difficulty": [
+    {
+      "kind": "comparison",
+      "difficulty": "hard",
+      "n": 3,
+      "mean_mrr": 0.75
+    },
+    {
+      "kind": "comparison",
+      "difficulty": "medium",
+      "n": 2,
+      "mean_mrr": 0.1666
+    },
+    {
+      "kind": "definition",
+      "difficulty": "easy",
+      "n": 4,
+      "mean_mrr": 1.0
+    },
+    {
+      "kind": "definition",
+      "difficulty": "hard",
+      "n": 4,
+      "mean_mrr": 0.5
+    },
+    {
+      "kind": "definition",
+      "difficulty": "medium",
+      "n": 4,
+      "mean_mrr": 0.5833
+    },
+    {
+      "kind": "identifier",
+      "difficulty": "easy",
+      "n": 6,
+      "mean_mrr": 0.3889
+    },
+    {
+      "kind": "identifier",
+      "difficulty": "medium",
+      "n": 4,
+      "mean_mrr": 0.4583
+    },
+    {
+      "kind": "method",
+      "difficulty": "easy",
+      "n": 1,
+      "mean_mrr": 0.5
+    },
+    {
+      "kind": "method",
+      "difficulty": "hard",
+      "n": 7,
+      "mean_mrr": 0.7143
+    },
+    {
+      "kind": "method",
+      "difficulty": "medium",
+      "n": 6,
+      "mean_mrr": 0.5417
+    },
+    {
+      "kind": "multi_hop",
+      "difficulty": "hard",
+      "n": 1,
+      "mean_mrr": 1.0
+    },
+    {
+      "kind": "open_problem",
+      "difficulty": "easy",
+      "n": 1,
+      "mean_mrr": 1.0
+    },
+    {
+      "kind": "open_problem",
+      "difficulty": "hard",
+      "n": 6,
+      "mean_mrr": 0.8889
+    },
+    {
+      "kind": "open_problem",
+      "difficulty": "medium",
+      "n": 6,
+      "mean_mrr": 1.0
+    },
+    {
+      "kind": "paraphrase",
+      "difficulty": "easy",
+      "n": 9,
+      "mean_mrr": 1.0
+    },
+    {
+      "kind": "paraphrase",
+      "difficulty": "hard",
+      "n": 3,
+      "mean_mrr": 0.8333
+    },
+    {
+      "kind": "paraphrase",
+      "difficulty": "medium",
+      "n": 13,
+      "mean_mrr": 0.8718
+    }
+  ],
+  "coverage_calibration": [
+    {
+      "coverage": "high",
+      "n": 80,
+      "mean_recall": 0.85
+    }
+  ],
+  "score_quintiles": [
+    {
+      "quintile": 1,
+      "n": 16,
+      "score_lo": 0.7268,
+      "score_hi": 0.7933,
+      "mean_hit@1": 0.3125,
+      "mean_recall": 0.6875
+    },
+    {
+      "quintile": 2,
+      "n": 16,
+      "score_lo": 0.7934,
+      "score_hi": 0.8122,
+      "mean_hit@1": 0.5625,
+      "mean_recall": 0.6875
+    },
+    {
+      "quintile": 3,
+      "n": 16,
+      "score_lo": 0.8134,
+      "score_hi": 0.8291,
+      "mean_hit@1": 0.875,
+      "mean_recall": 1.0
+    },
+    {
+      "quintile": 4,
+      "n": 16,
+      "score_lo": 0.8303,
+      "score_hi": 0.8508,
+      "mean_hit@1": 0.75,
+      "mean_recall": 0.9375
+    },
+    {
+      "quintile": 5,
+      "n": 16,
+      "score_lo": 0.8525,
+      "score_hi": 0.8875,
+      "mean_hit@1": 0.9375,
+      "mean_recall": 0.9375
+    }
+  ],
+  "slo_gate": {
+    "mrr_pass": true,
+    "recall_pass": true,
+    "refusal_precision_pass": false,
+    "latency_pass": true,
+    "latency_limit_ms": 15000,
+    "gates": {
+      "mean_mrr_min": 0.55,
+      "mean_recall_min": 0.55,
+      "refusal_precision_min": 0.5,
+      "p95_latency_ms_max_retrieval": 500,
+      "p95_latency_ms_max_generation": 15000
+    },
+    "all_pass": false
+  },
+  "cost_sketch": {
+    "assume_usd_per_query": 0.005,
+    "queries_per_day": 1000,
+    "usd_per_year": 1825.0,
+    "note": "Replace cost_per_query with measured Gemini spend/query from your traces."
+  },
+  "dim_sweep": {
+    "model": "google/embeddinggemma-2",
+    "timestamp": "2026-10-08T19:03:24.885133+00:00",
+    "rows": [
+      {
+        "dim": 128,
+        "n_queries": 80,
+        "n_corpus": 11,
+        "mean_mrr": 0.5918,
+        "mean_recall@10": 0.85,
+        "mean_hit@1": 0.4875,
+        "score_ms": 0.3,
+        "bytes_per_vector_approx": 512
+      },
+      {
+        "dim": 256,
+        "n_queries": 80,
+        "n_corpus": 11,
+        "mean_mrr": 0.6347,
+        "mean_recall@10": 0.8625,
+        "mean_hit@1": 0.55,
+        "score_ms": 0.2,
+        "bytes_per_vector_approx": 1024
+      },
+      {
+        "dim": 512,
+        "n_queries": 80,
+        "n_corpus": 11,
+        "mean_mrr": 0.6394,
+        "mean_recall@10": 0.8625,
+        "mean_hit@1": 0.5625,
+        "score_ms": 0.2,
+        "bytes_per_vector_approx": 2048
+      },
+      {
+        "dim": 768,
+        "n_queries": 80,
+        "n_corpus": 11,
+        "mean_mrr": 0.6266,
+        "mean_recall@10": 0.8625,
+        "mean_hit@1": 0.5375,
+        "score_ms": 0.2,
+        "bytes_per_vector_approx": 3072
+      }
+    ],
+    "recommendation": "Consider EMBEDDING_DIM=512 (MRR=0.6394, vs full 0.6266; \u0394\u22640.02). Rebuild indexes after changing."
+  },
+  "recommendation": "With 10 full-text papers indexed, mean MRR is 0.75 (95% CI [0.6562, 0.8375]) and Recall@k is 0.85 on 80 gold items with labels. Residual retrieval issues: missing_or_ranking=12, ranking=13. Most frequent top-k miss is still 2304.14997 (7 questions) \u2014 often ranking/embedding mismatch, not a missing PDF. Refusal precision/recall are 0.45/0.45 (product bar for unsupervised use \u2248 0.7). Generation metrics used a warm semantic cache (hit rate 1.0); for a cold refusal measurement re-run with cache disabled. Dim sweep: Consider EMBEDDING_DIM=512 (MRR=0.6394, vs full 0.6266; \u0394\u22640.02). Rebuild indexes after changing. System is suitable for a constrained demo on the ingested MI/NTK library; not for unsupervised refusal-critical deployment until OOS precision improves."
+}

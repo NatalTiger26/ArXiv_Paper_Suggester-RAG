@@ -1,0 +1,196 @@
+{
+  "index_total_chunks_scanned": 551743,
+  "collection_count": 551743,
+  "n_expected_unique": 10,
+  "papers": [
+    {
+      "paper_id": "1806.07572",
+      "n_chunks": 89,
+      "in_list_ingested": true,
+      "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks",
+      "gold_question_ids": [
+        "ntk_01",
+        "ntk_02",
+        "ntk_03",
+        "ntk_04",
+        "ntk_05",
+        "ntk_06",
+        "ntk_07",
+        "ntk_08",
+        "ntk_09",
+        "ntk_10",
+        "ntk_11",
+        "ntk_12",
+        "op_06",
+        "cmp_02",
+        "cmp_04",
+        "para_01",
+        "para_02",
+        "para_07",
+        "ntk_13",
+        "ntk_14",
+        "ntk_15",
+        "para_09",
+        "pad_1",
+        "pad_2",
+        "pad_3",
+        "pad_4",
+        "pad_5",
+        "pad_6",
+        "pad_7"
+      ],
+      "n_gold_questions": 29
+    },
+    {
+      "paper_id": "2304.14997",
+      "n_chunks": 150,
+      "in_list_ingested": true,
+      "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability",
+      "gold_question_ids": [
+        "acdc_01",
+        "acdc_02",
+        "acdc_03",
+        "acdc_04",
+        "acdc_05",
+        "acdc_06",
+        "acdc_07",
+        "cmp_01",
+        "cmp_02",
+        "cmp_03",
+        "cmp_05",
+        "para_04",
+        "id_02",
+        "acdc_08",
+        "acdc_09",
+        "rev_12",
+        "cmp_06"
+      ],
+      "n_gold_questions": 17
+    },
+    {
+      "paper_id": "2404.14082",
+      "n_chunks": 225,
+      "in_list_ingested": true,
+      "title": "Mechanistic Interpretability for AI Safety -- A Review",
+      "gold_question_ids": [
+        "rev_01",
+        "rev_02",
+        "rev_10",
+        "para_08",
+        "id_03",
+        "cmp_06"
+      ],
+      "n_gold_questions": 6
+    },
+    {
+      "paper_id": "2406.11779",
+      "n_chunks": 281,
+      "in_list_ingested": false,
+      "title": "Compact Proofs of Model Performance via Mechanistic Interpretability",
+      "gold_question_ids": [
+        "rev_05",
+        "id_05"
+      ],
+      "n_gold_questions": 2
+    },
+    {
+      "paper_id": "2407.13594",
+      "n_chunks": 187,
+      "in_list_ingested": false,
+      "title": "Validating Mechanistic Interpretations: An Axiomatic Approach",
+      "gold_question_ids": [
+        "op_10",
+        "rev_06",
+        "para_05",
+        "rev_12",
+        "id_07"
+      ],
+      "n_gold_questions": 5
+    },
+    {
+      "paper_id": "2501.16496",
+      "n_chunks": 244,
+      "in_list_ingested": false,
+      "title": "Open Problems in Mechanistic Interpretability",
+      "gold_question_ids": [
+        "op_01",
+        "op_02",
+        "op_03",
+        "op_04",
+        "op_05",
+        "op_06",
+        "op_07",
+        "op_08",
+        "op_09",
+        "op_10",
+        "acdc_03",
+        "rev_01",
+        "rev_09",
+        "rev_10",
+        "cmp_01",
+        "cmp_03",
+        "cmp_04",
+        "cmp_05",
+        "para_03",
+        "para_05",
+        "para_08",
+        "id_01",
+        "op_11",
+        "op_12",
+        "op_13",
+        "rev_13",
+        "para_10"
+      ],
+      "n_gold_questions": 27
+    },
+    {
+      "paper_id": "2502.20914",
+      "n_chunks": 96,
+      "in_list_ingested": false,
+      "title": "Everything, Everywhere, All at Once: Is Mechanistic Interpretability Identifiable?",
+      "gold_question_ids": [
+        "rev_08"
+      ],
+      "n_gold_questions": 1
+    },
+    {
+      "paper_id": "2504.13151",
+      "n_chunks": 205,
+      "in_list_ingested": false,
+      "title": "MIB: A Mechanistic Interpretability Benchmark",
+      "gold_question_ids": [
+        "rev_04",
+        "rev_09",
+        "id_04"
+      ],
+      "n_gold_questions": 3
+    },
+    {
+      "paper_id": "2504.19475",
+      "n_chunks": 48,
+      "in_list_ingested": true,
+      "title": "Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vision and Video",
+      "gold_question_ids": [
+        "rev_07",
+        "para_06"
+      ],
+      "n_gold_questions": 2
+    },
+    {
+      "paper_id": "2506.18852",
+      "n_chunks": 68,
+      "in_list_ingested": false,
+      "title": "Mechanistic Interpretability Needs Philosophy",
+      "gold_question_ids": [
+        "rev_03",
+        "rev_11",
+        "id_06"
+      ],
+      "n_gold_questions": 3
+    }
+  ],
+  "absent_papers": [],
+  "low_chunk_papers_lt5": [],
+  "gold_question_ids_depending_on_absent": [],
+  "gold_question_ids_depending_on_low_chunk": []
+}

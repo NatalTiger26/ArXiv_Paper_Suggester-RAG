@@ -1,18 +1,129 @@
 """Reference + abstract resolution: Semantic Scholar primary, OpenAlex backup."""
 
-from __future__ import annotations
-
+import json
 import os
+import sqlite3
 import time
+from pathlib import Path
 from typing import Any
 
+from dotenv import load_dotenv
 import requests
+
+load_dotenv()
 
 from .ids import canonical_id, normalise_arxiv_id, strip_version
 
 S2_BASE = "https://api.semanticscholar.org/graph/v1"
 OPENALEX_BASE = "https://api.openalex.org"
 USER_AGENT = "ArXivPaperSuggester-Novelty/0.1 (research; contact: local)"
+
+
+def _get_project_root() -> Path:
+    p = Path(__file__).resolve().parent
+    for _ in range(5):
+        if (p / "pyproject.toml").exists() or (p / "src").exists():
+            return p
+        p = p.parent
+    return Path(__file__).resolve().parents[2]
+
+
+_CACHE_DB: sqlite3.Connection | None = None
+_MEMORY_CACHE: dict[str, tuple[float, Any]] = {}
+_MEMORY_CACHE_MAX = 1000
+
+
+def _get_cache_db() -> sqlite3.Connection:
+    global _CACHE_DB
+    if _CACHE_DB is not None:
+        return _CACHE_DB
+    root = _get_project_root()
+    cache_dir = root / "data" / "cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    db_path = cache_dir / "http_cache.sqlite"
+    conn = sqlite3.connect(str(db_path), timeout=15)
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS http_cache (
+            cache_key TEXT PRIMARY KEY,
+            url TEXT,
+            response_json TEXT,
+            status_code INTEGER,
+            created_at REAL,
+            expires_at REAL
+        )
+        """
+    )
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_http_cache_expires ON http_cache (expires_at)"
+    )
+    conn.commit()
+    _CACHE_DB = conn
+    return _CACHE_DB
+
+
+def _make_cache_key(url: str, params: dict | None) -> str:
+    norm_url = url.strip().rstrip("/")
+    if not params:
+        return norm_url
+    items = sorted((str(k), str(v)) for k, v in params.items())
+    param_str = "&".join(f"{k}={v}" for k, v in items)
+    return f"{norm_url}?{param_str}"
+
+
+def _cache_get(key: str) -> Any | None:
+    now = time.time()
+    if key in _MEMORY_CACHE:
+        exp, val = _MEMORY_CACHE[key]
+        if exp > now:
+            return val
+        else:
+            del _MEMORY_CACHE[key]
+
+    try:
+        conn = _get_cache_db()
+        row = conn.execute(
+            "SELECT response_json, expires_at FROM http_cache WHERE cache_key = ?",
+            (key,),
+        ).fetchone()
+        if row:
+            resp_str, exp = row
+            if exp > now:
+                val = json.loads(resp_str)
+                if len(_MEMORY_CACHE) < _MEMORY_CACHE_MAX:
+                    _MEMORY_CACHE[key] = (exp, val)
+                return val
+            else:
+                conn.execute("DELETE FROM http_cache WHERE cache_key = ?", (key,))
+                conn.commit()
+    except Exception:
+        pass
+    return None
+
+
+def _cache_set(
+    key: str,
+    url: str,
+    val: Any,
+    status_code: int = 200,
+    ttl_days: float = 14.0,
+) -> None:
+    now = time.time()
+    exp = now + (ttl_days * 86400.0)
+    if len(_MEMORY_CACHE) < _MEMORY_CACHE_MAX:
+        _MEMORY_CACHE[key] = (exp, val)
+    try:
+        conn = _get_cache_db()
+        conn.execute(
+            """
+            INSERT OR REPLACE INTO http_cache (cache_key, url, response_json, status_code, created_at, expires_at)
+            VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (key, url, json.dumps(val, ensure_ascii=False), status_code, now, exp),
+        )
+        conn.commit()
+    except Exception:
+        pass
 
 
 def _s2_headers() -> dict[str, str]:
@@ -23,34 +134,69 @@ def _s2_headers() -> dict[str, str]:
     return h
 
 
+def _openalex_headers() -> dict[str, str]:
+    h = {"User-Agent": USER_AGENT}
+    key = os.getenv("OPENALEX_API_KEY")
+    if key:
+        h["api-key"] = key.strip()
+    return h
+
+
 # Shared adaptive pause after 429 so callers can space subsequent requests
 _LAST_RATE_LIMIT_AT = 0.0
 _RATE_LIMIT_STREAK = 0
 
 
-def _get(url: str, *, headers: dict | None = None, params: dict | None = None, timeout: int = 30) -> dict | list | None:
+def _get(
+    url: str,
+    *,
+    headers: dict | None = None,
+    params: dict | None = None,
+    timeout: int = 30,
+    use_cache: bool = True,
+    ttl_days: float = 14.0,
+) -> dict | list | None:
     global _LAST_RATE_LIMIT_AT, _RATE_LIMIT_STREAK
+
+    cache_key = _make_cache_key(url, params)
+    if use_cache:
+        cached = _cache_get(cache_key)
+        if cached is not None:
+            return cached
+
+    req_headers = headers or {"User-Agent": USER_AGENT}
+    if "openalex.org" in url and "api-key" not in req_headers:
+        oa_h = _openalex_headers()
+        if "api-key" in oa_h:
+            req_headers = dict(req_headers)
+            req_headers["api-key"] = oa_h["api-key"]
+
     try:
-        r = requests.get(url, headers=headers or {"User-Agent": USER_AGENT}, params=params, timeout=timeout)
+        r = requests.get(url, headers=req_headers, params=params, timeout=timeout)
         if r.status_code == 429:
             _RATE_LIMIT_STREAK += 1
             _LAST_RATE_LIMIT_AT = time.time()
-            # Exponential backoff: 4s, 8s, 16s… capped at 45s; up to 3 retries
             wait = min(45.0, 4.0 * (2 ** min(_RATE_LIMIT_STREAK - 1, 3)))
             print(f"[refs] HTTP 429 — backoff {wait:.0f}s (streak={_RATE_LIMIT_STREAK})", flush=True)
             time.sleep(wait)
-            r = requests.get(url, headers=headers or {"User-Agent": USER_AGENT}, params=params, timeout=timeout)
+            r = requests.get(url, headers=req_headers, params=params, timeout=timeout)
             if r.status_code == 429:
                 wait2 = min(60.0, wait * 1.5)
                 print(f"[refs] HTTP 429 again — backoff {wait2:.0f}s", flush=True)
                 time.sleep(wait2)
-                r = requests.get(url, headers=headers or {"User-Agent": USER_AGENT}, params=params, timeout=timeout)
+                r = requests.get(url, headers=req_headers, params=params, timeout=timeout)
         if r.status_code == 200:
             _RATE_LIMIT_STREAK = max(0, _RATE_LIMIT_STREAK - 1)
-            return r.json()
+            data = r.json()
+            if use_cache and data is not None:
+                _cache_set(cache_key, url, data, status_code=200, ttl_days=ttl_days)
+            return data
         if r.status_code >= 400:
             return None
-        return r.json()
+        data = r.json()
+        if use_cache and data is not None:
+            _cache_set(cache_key, url, data, status_code=r.status_code, ttl_days=ttl_days)
+        return data
     except Exception:
         return None
 

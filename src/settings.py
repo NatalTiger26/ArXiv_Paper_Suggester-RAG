@@ -16,6 +16,7 @@ Generation — Gemini primary, OpenAI-compatible failsafe (e.g. NVIDIA):
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -25,10 +26,62 @@ from dotenv import load_dotenv
 load_dotenv(override=False)
 
 
+
+
+
+def _detect_streamlit_cloud() -> bool:
+    """True on Streamlit Community Cloud (and similar constrained hosts)."""
+    if os.getenv("FORCE_CLOUD_EMBED") == "1":
+        return True
+    if os.getenv("FORCE_LOCAL_EMBED") == "1":
+        return False
+    # Common Cloud markers
+    if os.path.exists("/home/adminuser"):
+        return True
+    if os.path.exists("/mount/src"):
+        return True
+    if os.getenv("STREAMLIT_RUNTIME_ENVIRONMENT") == "cloud":
+        return True
+    # Hostname / path heuristics
+    try:
+        import socket
+
+        hn = socket.gethostname() or ""
+        if "streamlit" in hn.lower():
+            return True
+    except Exception:
+        pass
+    cwd = os.getcwd()
+    if "/mount/src/" in str(cwd).replace(chr(92), "/"):
+        return True
+    return False
+
+
+IS_STREAMLIT_CLOUD = _detect_streamlit_cloud()
+
+
+def _should_check_streamlit_secrets() -> bool:
+    """Only import streamlit if we are running under streamlit or on Streamlit Cloud."""
+    if "streamlit" in sys.modules:
+        return True
+    if any("streamlit" in str(arg).lower() for arg in sys.argv):
+        return True
+    if IS_STREAMLIT_CLOUD:
+        return True
+    return False
+
+
 def _apply_streamlit_secrets(*, override: bool = True) -> None:
     """Copy st.secrets into os.environ. override=True so Cloud Secrets beat .env."""
+    if not _should_check_streamlit_secrets():
+        return
     try:
-        import streamlit as st  # type: ignore
+        import contextlib
+        import io
+
+        # Suppress noisy server/CORS warnings during import in non-server contexts
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            import streamlit as st  # type: ignore
 
         secrets = getattr(st, "secrets", None)
         if not secrets:
@@ -61,45 +114,18 @@ def _apply_streamlit_secrets(*, override: bool = True) -> None:
                 prev = os.environ.get(key)
                 os.environ[key] = val_s
                 if prev and prev != val_s and key in ("GEMINI_MODEL", "EMBEDDING_MODEL"):
-                    print(
-                        f"[settings] Secret overrode {key}: {prev!r} → {val_s!r}",
-                        flush=True,
-                    )
+                    if os.getenv("DEBUG_SETTINGS", "0") == "1":
+                        print(
+                            f"[settings] Secret overrode {key}: {prev!r} → {val_s!r}",
+                            flush=True,
+                        )
     except Exception:
         pass
 
 
 _apply_streamlit_secrets(override=True)
 
-def _detect_streamlit_cloud() -> bool:
-    """True on Streamlit Community Cloud (and similar constrained hosts)."""
-    if os.getenv("FORCE_CLOUD_EMBED") == "1":
-        return True
-    if os.getenv("FORCE_LOCAL_EMBED") == "1":
-        return False
-    # Common Cloud markers
-    if os.path.exists("/home/adminuser"):
-        return True
-    if os.path.exists("/mount/src"):
-        return True
-    if os.getenv("STREAMLIT_RUNTIME_ENVIRONMENT") == "cloud":
-        return True
-    # Hostname / path heuristics
-    try:
-        import socket
 
-        hn = socket.gethostname() or ""
-        if "streamlit" in hn.lower():
-            return True
-    except Exception:
-        pass
-    cwd = os.getcwd()
-    if "/mount/src/" in str(cwd).replace(chr(92), "/"):
-        return True
-    return False
-
-
-IS_STREAMLIT_CLOUD = _detect_streamlit_cloud()
 
 # ── Embeddings ────────────────────────────────────────────────────────────
 # Local default: EmbeddingGemma 2 (~1GB — fine on a laptop, deadly on free Cloud).
@@ -177,7 +203,8 @@ def get_gemini_model() -> str:
 
 
 GEMINI_MODEL = get_gemini_model()
-print(f"[settings] GEMINI_MODEL resolved to {GEMINI_MODEL!r}", flush=True)
+if os.getenv("DEBUG_SETTINGS", "0") == "1":
+    print(f"[settings] GEMINI_MODEL resolved to {GEMINI_MODEL!r}", flush=True)
 
 TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.2"))
 

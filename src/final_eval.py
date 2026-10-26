@@ -162,23 +162,75 @@ def hit_at_1(retrieved: list[str], expected: list[str]) -> float:
     return 1.0 if any(e == pid or e in pid or pid in e for e in expected) else 0.0
 
 
+OFFICIAL_REFUSAL_KEYS = [
+    "not covered",
+    "do not contain",
+    "does not provide",
+    "no relevant",
+    "not enough information",
+    "ingested papers do not",
+    "cannot answer",
+    "outside the scope",
+    "not present in",
+    "i don't know",
+    "i do not know",
+    "unable to answer",
+]
+
+BROADER_REFUSAL_EXTRA = [
+    "there is no information",
+    "no mention",
+    "insufficient context",
+    "insufficient evidence",
+    "insufficient information",
+    "excerpts do not",
+    "not in the ingested",
+]
+
+
 def looks_like_refusal(answer: str) -> bool:
+    """Official substring list — preserved exactly for benchmark comparisons."""
     a = (answer or "").lower()
-    keys = [
-        "not covered",
-        "do not contain",
-        "does not provide",
-        "no relevant",
-        "not enough information",
-        "ingested papers do not",
-        "cannot answer",
-        "outside the scope",
-        "not present in",
-        "i don't know",
-        "i do not know",
-        "unable to answer",
-    ]
-    return any(k in a for k in keys)
+    return any(k in a for k in OFFICIAL_REFUSAL_KEYS)
+
+
+def looks_like_refusal_broader(answer: str) -> bool:
+    """Broader diagnostic grader for exploratory analysis only."""
+    a = (answer or "").lower()
+    return any(k in a for k in (OFFICIAL_REFUSAL_KEYS + BROADER_REFUSAL_EXTRA))
+
+
+def check_gold_presence(gold: list[dict[str, Any]]) -> dict[str, Any]:
+    """Check if expected gold papers are present in the active RAG index."""
+    from rag.embed_store import get_collection
+
+    expected: set[str] = set()
+    for q in gold:
+        for pid in q.get("expected_paper_ids") or []:
+            expected.add(str(pid).strip())
+
+    missing: list[str] = []
+    counts: dict[str, int] = {}
+    try:
+        coll = get_collection(create=False)
+        for pid in sorted(expected):
+            try:
+                res = coll.get(where={"paper_id": pid}, limit=1)
+                cnt = len(res.get("ids") or [])
+                counts[pid] = cnt
+                if cnt == 0:
+                    missing.append(pid)
+            except Exception:
+                missing.append(pid)
+    except Exception as e:
+        print(f"[final_eval] Warning: could not check gold presence: {e}", flush=True)
+
+    return {
+        "ok": len(missing) == 0,
+        "n_expected": len(expected),
+        "missing": missing,
+        "counts": counts,
+    }
 
 
 CITATION_RE = re.compile(r"\[(\d+)\]")
@@ -317,6 +369,7 @@ def run_core(
     stats = index_stats()
     model = load_embedding_model()
     rows: list[dict[str, Any]] = []
+    full_answers: list[dict[str, Any]] = []
     latencies: list[float] = []
 
     print(f"[final_eval] {len(gold)} gold questions  generation={with_generation}  cache={use_cache}")
@@ -376,6 +429,27 @@ def run_core(
             fail_hint = "false_answer"
         elif with_generation and (not should_refuse) and refusal:
             fail_hint = "over_refuse"
+
+        if with_generation:
+            full_answers.append(
+                {
+                    "id": item["id"],
+                    "question": item["question"],
+                    "kind": item.get("kind"),
+                    "difficulty": item.get("difficulty"),
+                    "expected_paper_ids": expected,
+                    "retrieved_paper_ids": retrieved,
+                    "should_refuse": should_refuse,
+                    "did_refuse_official": refusal,
+                    "did_refuse_broader": looks_like_refusal_broader(answer),
+                    "coverage": coverage,
+                    "top_score": round(top_score, 4),
+                    "answer": answer,
+                    "references": refs if with_generation else [],
+                    "chunks": chunks,
+                    "latency_ms": round(elapsed, 1),
+                }
+            )
 
         rows.append(
             {
@@ -454,6 +528,24 @@ def run_core(
             summary["refusal_recall_ci95"] = wilson_ci(tp, len(refuse_rows))
         if (tp + fp) > 0:
             summary["refusal_precision_ci95"] = wilson_ci(tp, tp + fp)
+
+        tp_b = sum(
+            1 for fa in full_answers if fa.get("should_refuse") and fa.get("did_refuse_broader")
+        )
+        fn_b = sum(
+            1 for fa in full_answers if fa.get("should_refuse") and not fa.get("did_refuse_broader")
+        )
+        fp_b = sum(
+            1 for fa in full_answers if not fa.get("should_refuse") and fa.get("did_refuse_broader")
+        )
+        tn_b = sum(
+            1 for fa in full_answers if not fa.get("should_refuse") and not fa.get("did_refuse_broader")
+        )
+        summary["refusal_broader_analysis"] = {
+            "confusion": {"TP": tp_b, "FP": fp_b, "TN": tn_b, "FN": fn_b},
+            "recall": round(tp_b / len(refuse_rows), 4) if refuse_rows else None,
+            "precision": round(tp_b / (tp_b + fp_b), 4) if (tp_b + fp_b) else None,
+        }
 
         # Citation validity (Lab 4)
         gen_rows = [r for r in rows if not r["should_refuse"] or r.get("n_citations", 0) > 0]
@@ -554,7 +646,7 @@ def run_core(
     slo["all_pass"] = all(v for k, v in slo.items() if k.endswith("_pass"))
     summary["slo_gate"] = slo
 
-    report = {"summary": summary, "rows": rows}
+    report = {"summary": summary, "rows": rows, "_full_answers": full_answers}
     return report
 
 
@@ -807,7 +899,10 @@ def write_report(
         lines.append("")
         p(f"**Recommendation:** {dim.get('recommendation')}")
         p(
-            "This sweep embeds library **titles+abstracts**, not full-text RAG chunks.",
+            "> **Quarantine / Scope Note:** This sweep evaluates zero-shot question-to-abstract",
+            "dot product over 5,716 library **titles+abstracts**, NOT passage-level full-text chunk retrieval.",
+            "Passage-level RAG questions have low lexical overlap with abstracts (~0.05 MRR).",
+            "For full-text RAG quality, refer to Section 1 metrics and index-size sweeps.",
             "Changing `EMBEDDING_DIM` requires resetting the RAG collection and re-ingesting.",
             "If CIs for 512 and 768 overlap heavily, prefer the cheaper dim only for ops cost,",
             "not as a proven quality win (Lab 2 honesty).",
@@ -911,7 +1006,45 @@ def write_report(
 
     OUT_REPORT.write_text("\n".join(lines), encoding="utf-8")
     print(f"Wrote {OUT_REPORT}")
+    compat_md = EVAL_DIR / "last_eval.md"
+    compat_md.write_text("\n".join(lines), encoding="utf-8")
     return OUT_REPORT
+
+
+def archive_previous_eval(eval_dir: Path, results_dir: Path) -> Path | None:
+    final_json = eval_dir / "final_eval.json"
+    if not final_json.exists():
+        return None
+    try:
+        raw = json.loads(final_json.read_text(encoding="utf-8"))
+        ts = raw.get("summary", {}).get("timestamp") or ""
+        date_str = ts[:10] if ts else datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        archive_dir = eval_dir / f"archive_{date_str}"
+        counter = 1
+        while archive_dir.exists():
+            if (archive_dir / "final_eval.json").exists():
+                try:
+                    if (archive_dir / "final_eval.json").read_text() == final_json.read_text():
+                        return archive_dir
+                except Exception:
+                    pass
+            archive_dir = eval_dir / f"archive_{date_str}_{counter}"
+            counter += 1
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        import shutil
+
+        shutil.copy2(final_json, archive_dir / "final_eval.json")
+        rep = results_dir / "EVALUATION_REPORT.md"
+        if rep.exists():
+            shutil.copy2(rep, archive_dir / "EVALUATION_REPORT.md")
+        last_md = eval_dir / "last_eval.md"
+        if last_md.exists():
+            shutil.copy2(last_md, archive_dir / "last_eval.md")
+        print(f"[final_eval] Archived previous run to {archive_dir}")
+        return archive_dir
+    except Exception as e:
+        print(f"[final_eval] Archival warning: {e}")
+        return None
 
 
 # ── Main ──────────────────────────────────────────────────────────────────
@@ -921,10 +1054,32 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Unified final evaluation")
     parser.add_argument("--retrieval-only", action="store_true")
     parser.add_argument("--with-generation", action="store_true")
-    parser.add_argument("--no-cache", action="store_true", help="Disable semantic cache (honest refusal)")
+    parser.add_argument(
+        "--no-cache", action="store_true", help="Disable semantic cache (honest refusal)"
+    )
     parser.add_argument("--skip-dim-sweep", action="store_true")
     parser.add_argument("-k", type=int, default=6)
-    parser.add_argument("--save-baseline", action="store_true", help="Force write baseline_v1.json")
+    parser.add_argument(
+        "--save-baseline", action="store_true", help="Force write baseline_v1.json"
+    )
+    parser.add_argument(
+        "--run-name",
+        type=str,
+        default="",
+        help="Save artifacts to a named directory under results/rag_eval/",
+    )
+    parser.add_argument(
+        "--save-full-answers",
+        type=str,
+        nargs="?",
+        const="default",
+        help="Save full generated answer text sidecar JSON",
+    )
+    parser.add_argument(
+        "--strict-gold",
+        action="store_true",
+        help="Fail if any gold expected papers are missing from index",
+    )
     args = parser.parse_args()
 
     EVAL_DIR.mkdir(parents=True, exist_ok=True)
@@ -933,10 +1088,27 @@ def main() -> None:
     if not GOLD_PATH.exists():
         raise SystemExit(f"Missing gold set: {GOLD_PATH}")
 
+    gold = json.loads(GOLD_PATH.read_text(encoding="utf-8"))
+    presence = check_gold_presence(gold)
+    if not presence["ok"]:
+        msg = f"[final_eval] Warning: {len(presence['missing'])} expected gold papers missing from RAG index: {presence['missing']}"
+        if args.strict_gold:
+            raise SystemExit(f"ERROR: {msg}")
+        print(msg)
+    else:
+        print(f"[final_eval] Gold presence check: all {presence['n_expected']} expected papers found in RAG index.")
+
+    target_eval_dir = (EVAL_DIR / args.run_name) if args.run_name else EVAL_DIR
+    target_eval_dir.mkdir(parents=True, exist_ok=True)
+    out_json = target_eval_dir / "final_eval.json"
+    compat_last = target_eval_dir / "last_eval.json"
+
+    if not args.run_name:
+        archive_previous_eval(EVAL_DIR, RESULTS_DIR)
+
     with_gen = args.with_generation and not args.retrieval_only
-    # default: retrieval + dim + report; generation only if asked
     if not args.retrieval_only and not args.with_generation:
-        with_gen = False  # default path is retrieval-first
+        with_gen = False
 
     if args.with_generation:
         with_gen = True
@@ -947,10 +1119,24 @@ def main() -> None:
         use_cache=not args.no_cache,
     )
 
+    full_answers = core.pop("_full_answers", [])
+    if args.save_full_answers and full_answers:
+        if args.save_full_answers == "default":
+            date_tag = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+            full_ans_path = target_eval_dir / f"full_answers_{date_tag}.json"
+        else:
+            full_ans_path = Path(args.save_full_answers)
+        full_ans_path.parent.mkdir(parents=True, exist_ok=True)
+        full_ans_path.write_text(
+            json.dumps(full_answers, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+        core["summary"]["full_answers_file"] = str(full_ans_path)
+        print(f"Wrote full answers sidecar → {full_ans_path}")
+
     # Persist
-    OUT_JSON.write_text(json.dumps(core, indent=2), encoding="utf-8")
-    COMPAT_LAST.write_text(json.dumps(core, indent=2), encoding="utf-8")
-    print(f"Wrote {OUT_JSON}")
+    out_json.write_text(json.dumps(core, indent=2), encoding="utf-8")
+    compat_last.write_text(json.dumps(core, indent=2), encoding="utf-8")
+    print(f"Wrote {out_json}")
 
     if args.save_baseline or not (EVAL_DIR / "baseline_v1.json").exists():
         if args.save_baseline:
@@ -960,13 +1146,10 @@ def main() -> None:
         maybe_save_baseline(core["rows"])
 
     paired = load_baseline_for_paired(core["rows"])
-    # If baseline was just created from this run, paired delta is zero — skip noise
     if paired and paired.get("n_paired") and abs(paired["mrr_paired"]["delta"]) < 1e-9:
         if not (EVAL_DIR / "baseline_v1.json").exists():
             paired = None
-        # same snapshot compared to itself
         elif paired["mrr_paired"]["delta"] == 0 and paired["recall_paired"]["delta"] == 0:
-            # Check if baseline ids match current exactly as same run
             paired = None
             print("[final_eval] Skipping paired test (baseline is this same run).")
 
@@ -982,13 +1165,21 @@ def main() -> None:
 
     s = core["summary"]
     print("\n=== Summary ===")
-    print(f"  MRR={s.get('mean_mrr')}  Recall={s.get('mean_recall@k')}  Hit@1={s.get('mean_hit_rate@1')}")
+    print(
+        f"  MRR={s.get('mean_mrr')}  Recall={s.get('mean_recall@k')}  Hit@1={s.get('mean_hit_rate@1')}"
+    )
     print(f"  CI MRR={s.get('mrr_ci95')}  papers={s.get('index_papers')}")
     if with_gen:
         print(
             f"  Refusal P/R={s.get('refusal_precision')}/{s.get('refusal_recall')}  "
             f"cite_valid={s.get('citation_validity_rate')}"
         )
+        if s.get("refusal_broader_analysis"):
+            rba = s["refusal_broader_analysis"]
+            print(
+                f"  Refusal (Broader analysis) P/R={rba.get('precision')}/{rba.get('recall')}  "
+                f"confusion={rba.get('confusion')}"
+            )
     print(f"  Report → {OUT_REPORT}")
 
 

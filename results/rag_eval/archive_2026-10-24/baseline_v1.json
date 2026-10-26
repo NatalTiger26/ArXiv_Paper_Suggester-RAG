@@ -1,0 +1,486 @@
+{
+  "rows": [
+    {
+      "id": "ntk_01",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_02",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_03",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_04",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_05",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_06",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_07",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_08",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_09",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "ntk_10",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_11",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_12",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_01",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_02",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_03",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_04",
+      "recall@k": 1.0,
+      "mrr": 0.3333,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "op_05",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_06",
+      "recall@k": 1.0,
+      "mrr": 0.5,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "op_07",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_08",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_09",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_10",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "acdc_01",
+      "recall@k": 1.0,
+      "mrr": 0.5,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "acdc_02",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "acdc_03",
+      "recall@k": 1.0,
+      "mrr": 0.3333,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "acdc_04",
+      "recall@k": 1.0,
+      "mrr": 0.25,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "acdc_05",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "acdc_06",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "acdc_07",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "rev_01",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_02",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_03",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_04",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_05",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_06",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_07",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "rev_08",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "rev_09",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_10",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "cmp_01",
+      "recall@k": 1.0,
+      "mrr": 0.25,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "cmp_02",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "cmp_03",
+      "recall@k": 1.0,
+      "mrr": 0.3333,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "cmp_04",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "cmp_05",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "para_01",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "para_02",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "para_03",
+      "recall@k": 1.0,
+      "mrr": 0.3333,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "para_04",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "para_05",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "para_06",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "para_07",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "para_08",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "id_01",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "id_02",
+      "recall@k": 1.0,
+      "mrr": 0.3333,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "id_03",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "id_04",
+      "recall@k": 1.0,
+      "mrr": 0.5,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "id_05",
+      "recall@k": 1.0,
+      "mrr": 0.3333,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "ntk_13",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_14",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "ntk_15",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_11",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_12",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "op_13",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "acdc_08",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "acdc_09",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "rev_11",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "rev_12",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "rev_13",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "cmp_06",
+      "recall@k": 0.0,
+      "mrr": 0.0,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "para_09",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "para_10",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "id_06",
+      "recall@k": 1.0,
+      "mrr": 0.5,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "id_07",
+      "recall@k": 1.0,
+      "mrr": 0.5,
+      "hit_rate@1": 0.0
+    },
+    {
+      "id": "pad_1",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "pad_2",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "pad_3",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "pad_4",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "pad_5",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "pad_6",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    },
+    {
+      "id": "pad_7",
+      "recall@k": 1.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0
+    }
+  ],
+  "note": "Auto-saved first final_eval snapshot for future paired tests. Delete to refresh.",
+  "timestamp": "2026-10-08T19:28:01.375006+00:00"
+}

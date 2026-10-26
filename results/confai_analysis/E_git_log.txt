@@ -1,0 +1,31 @@
+=== git rev-parse ===
+/Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester
+
+======== results/rag_eval/gold_questions.json ========
+4886d15 2026-10-09 10:54:27 +0530 NatalTiger26 Initial commit
+
+======== src/final_eval.py ========
+4886d15 2026-10-09 10:54:27 +0530 NatalTiger26 Initial commit
+
+======== src/settings.py ========
+6c4b810 2026-10-11 17:45:56 +0530 NatalTiger26 default behaviour changes
+1425d56 2026-10-11 17:27:26 +0530 NatalTiger26 src changes
+9eafea8 2026-10-11 17:05:52 +0530 NatalTiger26 settings changes
+0d1cf27 2026-10-11 16:56:56 +0530 NatalTiger26 streamlit deploy
+4886d15 2026-10-09 10:54:27 +0530 NatalTiger26 Initial commit
+
+======== src/rag/rag_pipeline.py ========
+6c4b810 2026-10-11 17:45:56 +0530 NatalTiger26 default behaviour changes
+4886d15 2026-10-09 10:54:27 +0530 NatalTiger26 Initial commit
+
+======== src/rag/config.py ========
+4886d15 2026-10-09 10:54:27 +0530 NatalTiger26 Initial commit
+
+======== src/rag/evaluate.py ========
+0d1cf27 2026-10-11 16:56:56 +0530 NatalTiger26 streamlit deploy
+4886d15 2026-10-09 10:54:27 +0530 NatalTiger26 Initial commit
+
+======== commits touching results/rag_eval after 2026-10-08 ========
+78fe8d1 2026-10-23 18:01:27 +0530 Add citation analysis and novelty profiling
+0d1cf27 2026-10-11 16:56:56 +0530 streamlit deploy
+4886d15 2026-10-09 10:54:27 +0530 Initial commit

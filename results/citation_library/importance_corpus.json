@@ -1,114 +1,554 @@
 [
   {
-    "arxiv_id": "1312.6229",
-    "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks",
-    "year": 2013,
-    "doi": "",
-    "library_cite_count": 5,
+    "arxiv_id": "1512.04150",
+    "title": "Learning Deep Features for Discriminative Localization",
+    "year": 2015,
+    "doi": "10.1109/CVPR.2016.319",
+    "library_cite_count": 349,
     "source": "citation_library"
   },
   {
-    "arxiv_id": "1310.1531",
-    "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition",
-    "year": 2013,
+    "arxiv_id": "1706.03825",
+    "title": "SmoothGrad: removing noise by adding noise",
+    "year": 2017,
     "doi": "",
-    "library_cite_count": 5,
+    "library_cite_count": 302,
     "source": "citation_library"
   },
   {
-    "arxiv_id": "1405.3531",
-    "title": "Return of the Devil in the Details: Delving Deep into Convolutional Nets",
+    "arxiv_id": "1806.07421",
+    "title": "RISE: Randomized Input Sampling for Explanation of Black-box Models",
+    "year": 2018,
+    "doi": "",
+    "library_cite_count": 278,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1412.6806",
+    "title": "Striving for Simplicity: The All Convolutional Net",
     "year": 2014,
-    "doi": "10.5244/C.28.6",
-    "library_cite_count": 3,
-    "source": "citation_library"
-  },
-  {
-    "arxiv_id": "1312.6026",
-    "title": "How to Construct Deep Recurrent Neural Networks",
-    "year": 2013,
     "doi": "",
-    "library_cite_count": 3,
+    "library_cite_count": 237,
     "source": "citation_library"
   },
   {
-    "arxiv_id": "1112.6209",
-    "title": "Building high-level features using large scale unsupervised learning",
+    "arxiv_id": "1704.03296",
+    "title": "Interpretable Explanations of Black Boxes by Meaningful Perturbation",
+    "year": 2017,
+    "doi": "10.1109/ICCV.2017.371",
+    "library_cite_count": 179,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1702.08608",
+    "title": "Towards A Rigorous Science of Interpretable Machine Learning",
+    "year": 2017,
+    "doi": "",
+    "library_cite_count": 154,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2502.13923",
+    "title": "Qwen2.5-VL Technical Report",
+    "year": 2025,
+    "doi": "10.48550/arXiv.2502.13923",
+    "library_cite_count": 151,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2007.04612",
+    "title": "Concept Bottleneck Models",
+    "year": 2020,
+    "doi": "",
+    "library_cite_count": 142,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1710.10547",
+    "title": "Interpretation of Neural Networks is Fragile",
+    "year": 2017,
+    "doi": "10.1609/aaai.v33i01.33013681",
+    "library_cite_count": 136,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2409.12191",
+    "title": "Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution",
+    "year": 2024,
+    "doi": "10.48550/arXiv.2409.12191",
+    "library_cite_count": 134,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1509.06321",
+    "title": "Evaluating the Visualization of What a Deep Neural Network Has Learned",
+    "year": 2015,
+    "doi": "10.1109/TNNLS.2016.2599820",
+    "library_cite_count": 133,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2004.03685",
+    "title": "Towards Faithfully Interpretable NLP Systems: How Should We Define and Evaluate Faithfulness?",
+    "year": 2020,
+    "doi": "10.18653/v1/2020.acl-main.386",
+    "library_cite_count": 132,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1806.10758",
+    "title": "A Benchmark for Interpretability Methods in Deep Neural Networks",
+    "year": 2018,
+    "doi": "",
+    "library_cite_count": 127,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2012.09838",
+    "title": "Transformer Interpretability Beyond Attention Visualization",
+    "year": 2020,
+    "doi": "10.1109/CVPR46437.2021.00084",
+    "library_cite_count": 125,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1602.07332",
+    "title": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations",
+    "year": 2016,
+    "doi": "10.1007/s11263-016-0981-7",
+    "library_cite_count": 123,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1908.04626",
+    "title": "Attention is not not Explanation",
+    "year": 2019,
+    "doi": "10.18653/v1/D19-1002",
+    "library_cite_count": 117,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1608.00507",
+    "title": "Top-Down Neural Attention by Excitation Backprop",
+    "year": 2016,
+    "doi": "10.1007/s11263-017-1059-x",
+    "library_cite_count": 111,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1904.09675",
+    "title": "BERTScore: Evaluating Text Generation with BERT",
+    "year": 2019,
+    "doi": "",
+    "library_cite_count": 110,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1910.10045",
+    "title": "Explainable Artificial Intelligence (XAI): Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI",
+    "year": 2019,
+    "doi": "10.1016/j.inffus.2019.12.012",
+    "library_cite_count": 107,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1411.7766",
+    "title": "Deep Learning Face Attributes in the Wild",
+    "year": 2014,
+    "doi": "10.1109/ICCV.2015.425",
+    "library_cite_count": 107,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1801.03924",
+    "title": "The Unreasonable Effectiveness of Deep Features as a Perceptual Metric",
+    "year": 2018,
+    "doi": "10.1109/CVPR.2018.00068",
+    "library_cite_count": 105,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1704.05796",
+    "title": "Network Dissection: Quantifying Interpretability of Deep Visual Representations",
+    "year": 2017,
+    "doi": "10.1109/CVPR.2017.354",
+    "library_cite_count": 99,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1711.00399",
+    "title": "Counterfactual Explanations without Opening the Black Box: Automated Decisions and the GDPR",
+    "year": 2017,
+    "doi": "10.2139/SSRN.3063289",
+    "library_cite_count": 92,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1806.07538",
+    "title": "Towards Robust Interpretability with Self-Explaining Neural Networks",
+    "year": 2018,
+    "doi": "",
+    "library_cite_count": 91,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1201.0490",
+    "title": "Scikit-learn: Machine Learning in Python",
     "year": 2011,
-    "doi": "10.1109/ICASSP.2013.6639343",
-    "library_cite_count": 3,
+    "doi": "10.5555/1953048.2078195",
+    "library_cite_count": 91,
     "source": "citation_library"
   },
   {
-    "arxiv_id": "1211.5063",
-    "title": "On the difficulty of training recurrent neural networks",
-    "year": 2012,
+    "arxiv_id": "2305.10355",
+    "title": "Evaluating Object Hallucination in Large Vision-Language Models",
+    "year": 2023,
+    "doi": "10.48550/arXiv.2305.10355",
+    "library_cite_count": 90,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2312.14238",
+    "title": "Intern VL: Scaling up Vision Foundation Models and Aligning for Generic Visual-Linguistic Tasks",
+    "year": 2023,
+    "doi": "10.1109/CVPR52733.2024.02283",
+    "library_cite_count": 90,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1706.07269",
+    "title": "Explanation in Artificial Intelligence: Insights from the Social Sciences",
+    "year": 2017,
+    "doi": "10.1016/J.ARTINT.2018.07.007",
+    "library_cite_count": 90,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1802.01933",
+    "title": "A Survey of Methods for Explaining Black Box Models",
+    "year": 2018,
+    "doi": "10.1145/3236009",
+    "library_cite_count": 89,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1911.03429",
+    "title": "ERASER: A Benchmark to Evaluate Rationalized NLP Models",
+    "year": 2019,
+    "doi": "10.18653/v1/2020.acl-main.408",
+    "library_cite_count": 86,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1505.04870",
+    "title": "Flickr30k Entities: Collecting Region-to-Phrase Correspondences for Richer Image-to-Sentence Models",
+    "year": 2015,
+    "doi": "10.1007/s11263-016-0965-7",
+    "library_cite_count": 86,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1910.08485",
+    "title": "Understanding Deep Networks via Extremal Perturbations and Smooth Masks",
+    "year": 2019,
+    "doi": "10.1109/ICCV.2019.00304",
+    "library_cite_count": 86,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2109.01134",
+    "title": "Learning to Prompt for Vision-Language Models",
+    "year": 2021,
+    "doi": "10.1007/s11263-022-01653-1",
+    "library_cite_count": 84,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2505.09388",
+    "title": "Qwen3 Technical Report",
+    "year": 2025,
     "doi": "",
-    "library_cite_count": 3,
+    "library_cite_count": 84,
     "source": "citation_library"
   },
   {
-    "arxiv_id": "1302.4389",
-    "title": "Maxout Networks",
+    "arxiv_id": "1411.5726",
+    "title": "CIDEr: Consensus-based image description evaluation",
+    "year": 2014,
+    "doi": "10.1109/CVPR.2015.7299087",
+    "library_cite_count": 83,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1806.08049",
+    "title": "On the Robustness of Interpretability Methods",
+    "year": 2018,
+    "doi": "",
+    "library_cite_count": 83,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1705.07857",
+    "title": "Real Time Image Saliency for Black Box Classifiers",
+    "year": 2017,
+    "doi": "",
+    "library_cite_count": 80,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2107.07651",
+    "title": "Align before Fuse: Vision and Language Representation Learning with Momentum Distillation",
+    "year": 2021,
+    "doi": "",
+    "library_cite_count": 77,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2103.15679",
+    "title": "Generic Attention-model Explainability for Interpreting Bi-Modal and Encoder-Decoder Transformers",
+    "year": 2021,
+    "doi": "10.1109/ICCV48922.2021.00045",
+    "library_cite_count": 76,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2104.08718",
+    "title": "CLIPScore: A Reference-free Evaluation Metric for Image Captioning",
+    "year": 2021,
+    "doi": "10.18653/v1/2021.emnlp-main.595",
+    "library_cite_count": 75,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2009.07896",
+    "title": "Captum: A unified and generic model interpretability library for PyTorch",
+    "year": 2020,
+    "doi": "",
+    "library_cite_count": 75,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2311.16502",
+    "title": "MMMU: A Massive Multi-Discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI",
+    "year": 2023,
+    "doi": "10.1109/CVPR52733.2024.00913",
+    "library_cite_count": 75,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2408.03326",
+    "title": "LLaVA-OneVision: Easy Visual Task Transfer",
+    "year": 2024,
+    "doi": "10.48550/arXiv.2408.03326",
+    "library_cite_count": 73,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1605.01713",
+    "title": "Not Just a Black Box: Learning Important Features Through Propagating Activation Differences",
+    "year": 2016,
+    "doi": "",
+    "library_cite_count": 73,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1606.03490",
+    "title": "The mythos of model interpretability",
+    "year": 2016,
+    "doi": "10.1145/3233231",
+    "library_cite_count": 73,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2511.21631",
+    "title": "Qwen3-VL Technical Report",
+    "year": 2025,
+    "doi": "10.48550/arXiv.2511.21631",
+    "library_cite_count": 72,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2305.04388",
+    "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+    "year": 2023,
+    "doi": "10.48550/arXiv.2305.04388",
+    "library_cite_count": 72,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1911.02508",
+    "title": "Fooling LIME and SHAP: Adversarial Attacks on Post hoc Explanation Methods",
+    "year": 2019,
+    "doi": "10.1145/3375627.3375830",
+    "library_cite_count": 71,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1803.05457",
+    "title": "Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge",
+    "year": 2018,
+    "doi": "",
+    "library_cite_count": 71,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2004.07780",
+    "title": "Shortcut learning in deep neural networks",
+    "year": 2020,
+    "doi": "10.1038/s42256-020-00257-z",
+    "library_cite_count": 70,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1503.03585",
+    "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+    "year": 2015,
+    "doi": "",
+    "library_cite_count": 69,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1906.03731",
+    "title": "Is Attention Interpretable?",
+    "year": 2019,
+    "doi": "10.18653/v1/P19-1282",
+    "library_cite_count": 66,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2311.16922",
+    "title": "Mitigating Object Hallucinations in Large Vision-Language Models through Visual Contrastive Decoding",
+    "year": 2023,
+    "doi": "10.1109/CVPR52733.2024.01316",
+    "library_cite_count": 66,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1311.3618",
+    "title": "Describing Textures in the Wild",
+    "year": 2013,
+    "doi": "10.1109/CVPR.2014.461",
+    "library_cite_count": 65,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2203.00667",
+    "title": "Generative Adversarial Networks",
+    "year": 2021,
+    "doi": "10.1109/ICCCNT56998.2023.10306417",
+    "library_cite_count": 63,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1504.00325",
+    "title": "Microsoft COCO Captions: Data Collection and Evaluation Server",
+    "year": 2015,
+    "doi": "",
+    "library_cite_count": 62,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2410.21276",
+    "title": "GPT-4o System Card",
+    "year": 2024,
+    "doi": "",
+    "library_cite_count": 62,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2504.10479",
+    "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
+    "year": 2025,
+    "doi": "10.48550/arXiv.2504.10479",
+    "library_cite_count": 61,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2111.02114",
+    "title": "LAION-400M: Open Dataset of CLIP-Filtered 400 Million Image-Text Pairs",
+    "year": 2021,
+    "doi": "",
+    "library_cite_count": 60,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1812.01193",
+    "title": "e-SNLI: Natural Language Inference with Natural Language Explanations",
+    "year": 2018,
+    "doi": "",
+    "library_cite_count": 60,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2006.16241",
+    "title": "The Many Faces of Robustness: A Critical Analysis of Out-of-Distribution Generalization",
+    "year": 2020,
+    "doi": "10.1109/ICCV48922.2021.00823",
+    "library_cite_count": 59,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1902.10811",
+    "title": "Do ImageNet Classifiers Generalize to ImageNet?",
+    "year": 2019,
+    "doi": "",
+    "library_cite_count": 59,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1906.04341",
+    "title": "What Does BERT Look at? An Analysis of BERT’s Attention",
+    "year": 2019,
+    "doi": "10.18653/v1/W19-4828",
+    "library_cite_count": 59,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1904.08920",
+    "title": "Towards VQA Models That Can Read",
+    "year": 2019,
+    "doi": "10.1109/CVPR.2019.00851",
+    "library_cite_count": 59,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2401.06209",
+    "title": "Eyes Wide Shut? Exploring the Visual Shortcomings of Multimodal LLMs",
+    "year": 2024,
+    "doi": "10.1109/CVPR52733.2024.00914",
+    "library_cite_count": 59,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1705.03551",
+    "title": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
+    "year": 2017,
+    "doi": "10.18653/v1/P17-1147",
+    "library_cite_count": 59,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "2306.00890",
+    "title": "LLaVA-Med: Training a Large Language-and-Vision Assistant for Biomedicine in One Day",
+    "year": 2023,
+    "doi": "10.48550/arXiv.2306.00890",
+    "library_cite_count": 59,
+    "source": "citation_library"
+  },
+  {
+    "arxiv_id": "1306.5151",
+    "title": "Fine-Grained Visual Classification of Aircraft",
     "year": 2013,
     "doi": "",
-    "library_cite_count": 3,
+    "library_cite_count": 58,
     "source": "citation_library"
   },
   {
-    "arxiv_id": "1103.0398",
-    "title": "Natural Language Processing (Almost) from Scratch",
-    "year": 2011,
-    "doi": "10.5555/1953048.2078186",
-    "library_cite_count": 3,
-    "source": "citation_library"
-  },
-  {
-    "arxiv_id": "1010.3467",
-    "title": "Fast Inference in Sparse Coding Algorithms with Applications to Object Recognition",
-    "year": 2010,
-    "doi": "",
-    "library_cite_count": 3,
-    "source": "citation_library"
-  },
-  {
-    "arxiv_id": "1312.5402",
-    "title": "Some Improvements on Deep Convolutional Neural Network Based Image Classification",
-    "year": 2013,
-    "doi": "",
-    "library_cite_count": 3,
-    "source": "citation_library"
-  },
-  {
-    "arxiv_id": "1205.2662",
-    "title": "On Smoothing and Inference for Topic Models",
-    "year": 2009,
-    "doi": "",
-    "library_cite_count": 2,
-    "source": "citation_library"
-  },
-  {
-    "arxiv_id": "1211.4246",
-    "title": "What regularized auto-encoders learn from the data-generating distribution",
-    "year": 2012,
-    "doi": "10.5555/2627435.2750359",
-    "library_cite_count": 2,
-    "source": "citation_library"
-  },
-  {
-    "arxiv_id": "0912.1128",
-    "title": "How to Explain Individual Classification Decisions",
-    "year": 2009,
-    "doi": "10.5555/1756006.1859912",
-    "library_cite_count": 2,
-    "source": "citation_library"
-  },
-  {
-    "arxiv_id": "1306.1091",
-    "title": "Deep Generative Stochastic Networks Trainable by Backprop",
-    "year": 2013,
-    "doi": "",
-    "library_cite_count": 2,
+    "arxiv_id": "2306.13394",
+    "title": "MME: A Comprehensive Evaluation Benchmark for Multimodal Large Language Models",
+    "year": 2023,
+    "doi": "10.48550/arXiv.2306.13394",
+    "library_cite_count": 58,
     "source": "citation_library"
   }
 ]

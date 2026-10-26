@@ -323,7 +323,13 @@ Representative protocol figures from curated full-text eval reports (not a claim
 | Hit@1 | ~0.69 | |
 | Citation validity | ~0.95 | When generation is scored |
 
-**Limits:** weak answers if the needed paper was never ingested; early refusal precision lagged a strict ~0.7 bar; citation/author signals are proxies; broad harvests can add noise without disciplined selection.
+### Safe Limits & System Boundaries
+
+1. **Ingested Scope Bound:** The Ask RAG pipeline answers questions strictly from the **ingested full-text papers** in `data/chroma_rag`. If a paper is only in the library (`data/corpus.json`) but was never ingested, the model will not have its full text and should refuse.
+2. **Refusal Gating is Heuristic:** Refusal scoring uses heuristic substring matching against standardized phrasing (`not covered`, `do not contain`, etc.). It is an engineering safety gate, not a calibrated Bayesian confidence probability.
+3. **Dense-Only Retrieval on Identifiers:** Dense semantic embeddings (`embeddinggemma-2`, `all-MiniLM-L6-v2`) prioritize conceptual semantics over literal token matching. Queries containing explicit arXiv IDs (e.g., `1806.07572`) or exact equation symbols benefit from hybrid BM25 lexical retrieval.
+4. **Model Vector Incompatibility:** Indexes built with EmbeddingGemma 2 (768-d) cannot be queried with MiniLM (384-d). Changing models or Matryoshka dimensions requires running `make rag-ingest` with the new embedding configuration.
+5. **No Hallucinated Citations:** Citation validity enforces that every inline marker `[n]` points to an actual retrieved chunk provided in the prompt context.
 
 ---
 

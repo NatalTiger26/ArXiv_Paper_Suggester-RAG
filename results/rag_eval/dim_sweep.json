@@ -1,55 +1,55 @@
 {
   "model": "google/embeddinggemma-2",
-  "timestamp": "2026-10-20T13:38:40.771729+00:00",
+  "timestamp": "2026-10-24T10:05:52.976184+00:00",
   "rows": [
     {
       "dim": 128,
-      "mean_mrr": 0.0,
-      "mean_recall@10": 0.0,
-      "mean_hit@1": 0.0,
+      "mean_mrr": 0.0531,
+      "mean_recall@10": 0.0625,
+      "mean_hit@1": 0.05,
       "mrr_ci95": [
-        0.0,
-        0.0
+        0.0125,
+        0.1031
       ],
       "n_queries": 80,
-      "n_corpus": 3833
+      "n_corpus": 5716
     },
     {
       "dim": 256,
-      "mean_mrr": 0.0,
-      "mean_recall@10": 0.0,
-      "mean_hit@1": 0.0,
+      "mean_mrr": 0.0583,
+      "mean_recall@10": 0.075,
+      "mean_hit@1": 0.05,
       "mrr_ci95": [
-        0.0,
-        0.0
+        0.0146,
+        0.1125
       ],
       "n_queries": 80,
-      "n_corpus": 3833
+      "n_corpus": 5716
     },
     {
       "dim": 512,
-      "mean_mrr": 0.0,
-      "mean_recall@10": 0.0,
-      "mean_hit@1": 0.0,
+      "mean_mrr": 0.0588,
+      "mean_recall@10": 0.075,
+      "mean_hit@1": 0.05,
       "mrr_ci95": [
-        0.0,
-        0.0
+        0.015,
+        0.1125
       ],
       "n_queries": 80,
-      "n_corpus": 3833
+      "n_corpus": 5716
     },
     {
       "dim": 768,
-      "mean_mrr": 0.0,
-      "mean_recall@10": 0.0,
-      "mean_hit@1": 0.0,
+      "mean_mrr": 0.0594,
+      "mean_recall@10": 0.075,
+      "mean_hit@1": 0.05,
       "mrr_ci95": [
-        0.0,
-        0.0
+        0.0156,
+        0.1125
       ],
       "n_queries": 80,
-      "n_corpus": 3833
+      "n_corpus": 5716
     }
   ],
-  "recommendation": "Consider EMBEDDING_DIM=128 (MRR=0.0 vs full 0.0; \u0394\u22640.02). Rebuild indexes after change."
+  "recommendation": "Keep full dim=768 (best MRR=0.0594)."
 }

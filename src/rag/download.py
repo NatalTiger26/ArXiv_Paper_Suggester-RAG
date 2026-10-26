@@ -108,12 +108,35 @@ def download_paper(arxiv_id: str, force: bool = False) -> Path:
     )
 
 
-def download_papers(ids: Iterable[str], force: bool = False) -> list[Path]:
-    """Download multiple papers. Returns list of successful local paths."""
-    paths = []
-    for raw in ids:
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+
+def download_papers(
+    ids: Iterable[str],
+    force: bool = False,
+    max_workers: int = 4,
+) -> list[Path]:
+    """Download multiple papers with bounded concurrency. Returns list of successful local paths."""
+    id_list = list(ids)
+    if not id_list:
+        return []
+    if len(id_list) == 1:
         try:
-            paths.append(download_paper(raw, force=force))
+            return [download_paper(id_list[0], force=force)]
         except Exception as e:
-            print(f"[download] skip {raw}: {e}")
+            print(f"[download] skip {id_list[0]}: {e}")
+            return []
+
+    paths: list[Path] = []
+    workers = min(max_workers, len(id_list), 4)
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        future_to_id = {
+            executor.submit(download_paper, raw, force): raw for raw in id_list
+        }
+        for future in as_completed(future_to_id):
+            raw = future_to_id[future]
+            try:
+                paths.append(future.result())
+            except Exception as e:
+                print(f"[download] skip {raw}: {e}")
     return paths

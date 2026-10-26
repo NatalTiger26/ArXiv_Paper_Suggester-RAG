@@ -1,0 +1,402 @@
+[
+  {
+    "id": "rev_13",
+    "kind": "definition",
+    "question": "What is meant by mechanistic interpretability for neural algorithmic reasoning?",
+    "expected_paper_ids": [
+      "2501.16496"
+    ],
+    "top1_paper_id": "2506.18852",
+    "top1_title": "Mechanistic Interpretability Needs Philosophy",
+    "top1_score": 0.8727,
+    "top1_section": "**1 Introduction**",
+    "top1_snippet": "How and why do artificial neural networks produce the outputs they do? Since the resurgence of deep learning approximately a decade ago, this question has driven various efforts to interpret and explain AI systems. Among these efforts, mechanistic interpretability (MI) has emerged as an increasingly",
+    "expected_papers": [
+      {
+        "paper_id": "2501.16496",
+        "title": "Open Problems in Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "op_06",
+    "kind": "paraphrase",
+    "question": "Why might connecting generalization theories like the NTK to interpretability help MI?",
+    "expected_paper_ids": [
+      "2501.16496",
+      "1806.07572"
+    ],
+    "top1_paper_id": "2506.18852",
+    "top1_title": "Mechanistic Interpretability Needs Philosophy",
+    "top1_score": 0.8157,
+    "top1_section": "**2.3 How can we detect deceptive behaviour from model internals?**",
+    "top1_snippet": "One major hope for MI is that it can help to detect unsafe or misaligned model processing that is not evident from outward behaviour [Amodei, 2025]. Here, too, philosophy can make important contributions to MI research. While there are many forms of unsafe or misaligned model processing, \n\n> 10Philo",
+    "expected_papers": [
+      {
+        "paper_id": "2501.16496",
+        "title": "Open Problems in Mechanistic Interpretability"
+      },
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "ntk_02",
+    "kind": "definition",
+    "question": "What happens to the NTK in the infinite-width limit?",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2106.10165",
+    "top1_title": "The Principles of Deep Learning Theory",
+    "top1_score": 0.8428,
+    "top1_section": "**Effective Theory of the NTK at Initialization**",
+    "top1_snippet": "and a special name: the **frozen NTK** . The frozen NTK controls the training dynamics in the infinite-width limit, which we will investigate in detail next chapter.<sup>1</sup> \n\n> 1Typically in the literature, the _neural tangent kernel_ or NTK refers to this deterministic infinitewidth NTK mean \u0398",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "pad_3",
+    "kind": "paraphrase",
+    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 3).",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2406.04606",
+    "top1_title": "Helpful or Harmful Data? Fine-tuning-free Shapley Attribution for Explaining Language Model Predictions",
+    "top1_score": 0.8264,
+    "top1_section": "**2.3. Neural Tangent Kernel**",
+    "top1_snippet": "The neural tangent kernel (NTK) theory is proposed to study the training dynamics of infinite-width neural networks (Jacot et al., 2018) , and has been extended to other applications, such as active learning (Hemachandra et al., 2023; Lau et al., 2024). Existing works (Arora et al., 2019; Liu et al.",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "cmp_01",
+    "kind": "comparison",
+    "question": "How do automated circuit discovery and open problems in MI relate to each other?",
+    "expected_paper_ids": [
+      "2304.14997",
+      "2501.16496"
+    ],
+    "top1_paper_id": "2602.16823",
+    "top1_title": "Formal Mechanistic Interpretability: Automated Circuit Discovery with Provable Guarantees",
+    "top1_score": 0.8421,
+    "top1_section": "6 RELATED WORK",
+    "top1_snippet": "**Circuit discovery.** Our work joins recent efforts on circuit discovery in MI (Olah et al., 2020; Elhage et al., 2021; Dunefsky et al., 2024), particularly those advancing _automated_ algorithms (Conmy et al., 2023; Hsu et al., 2024). Other relevant avenues include metrics for circuit faithfulness",
+    "expected_papers": [
+      {
+        "paper_id": "2304.14997",
+        "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability"
+      },
+      {
+        "paper_id": "2501.16496",
+        "title": "Open Problems in Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "rev_02",
+    "kind": "open_problem",
+    "question": "What safety motivations are given for mechanistic interpretability?",
+    "expected_paper_ids": [
+      "2404.14082"
+    ],
+    "top1_paper_id": "2211.00593",
+    "top1_title": "Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 small",
+    "top1_score": 0.8442,
+    "top1_section": "1 INTRODUCTION",
+    "top1_snippet": "ossible model behaviors. Some researchers have argued that interpretability is critical for the safe deployment of advanced machine learning systems (Hendrycks & Mazeika, 2022). \n\nWork in mechanistic interpretability aims to discover, understand, and verify the algorithms that model weights implemen",
+    "expected_papers": [
+      {
+        "paper_id": "2404.14082",
+        "title": "Mechanistic Interpretability for AI Safety -- A Review"
+      }
+    ]
+  },
+  {
+    "id": "acdc_07",
+    "kind": "method",
+    "question": "What are limitations of purely manual circuit analysis that automation aims to fix?",
+    "expected_paper_ids": [
+      "2304.14997"
+    ],
+    "top1_paper_id": "2501.16496",
+    "top1_title": "Open Problems in Mechanistic Interpretability",
+    "top1_score": 0.7864,
+    "top1_section": "**A.1.4 Automating steps in mechanistic interpretability research**",
+    "top1_snippet": "1. Can we improve on AI automated feature description and validation methods? \n\n   - a. Through automating the generation and testing of arbitrary hypotheses? \n\n   - b. Through describing differences between features? \n\n   - c. Through descriptions of how components interact? \n\n2. Can we improve on ",
+    "expected_papers": [
+      {
+        "paper_id": "2304.14997",
+        "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "op_10",
+    "kind": "open_problem",
+    "question": "What open issues remain around validating that an interpretation is faithful?",
+    "expected_paper_ids": [
+      "2501.16496",
+      "2407.13594"
+    ],
+    "top1_paper_id": "2411.17992",
+    "top1_title": "New Faithfulness-Centric Interpretability Paradigms for Natural Language Processing",
+    "top1_score": 0.8334,
+    "top1_section": "**CHAPTER 1 INTRODUCTION**",
+    "top1_snippet": "en removal cause out-of-distribution issues, what is a significant change, and what if multiple tokens need to be removed for the prediction to change (Chapter 3 and Chapter 4)? \n\nBesides the challenges of the faithfulness metric, there is also the fundamental question of when an interpretability me",
+    "expected_papers": [
+      {
+        "paper_id": "2501.16496",
+        "title": "Open Problems in Mechanistic Interpretability"
+      },
+      {
+        "paper_id": "2407.13594",
+        "title": "Validating Mechanistic Interpretations: An Axiomatic Approach"
+      }
+    ]
+  },
+  {
+    "id": "op_04",
+    "kind": "open_problem",
+    "question": "How does sparse dictionary learning relate to neural network decomposition in MI?",
+    "expected_paper_ids": [
+      "2501.16496"
+    ],
+    "top1_paper_id": "2608.31084",
+    "top1_title": "Verbalizing Multi-Token Concepts in LLMs",
+    "top1_score": 0.8068,
+    "top1_section": "G.4 SPARSE AUTOENCODERS AND FEATURE DICTIONARIES",
+    "top1_snippet": "Sparse autoencoders (SAEs) learn a dictionary that represents a hidden state as a sparse combination of learned feature directions (Huben et al., 2024). The feature vocabulary is the set of learned latent coordinates, and interpretability is studied by examining the examples and behavior associated ",
+    "expected_papers": [
+      {
+        "paper_id": "2501.16496",
+        "title": "Open Problems in Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "op_11",
+    "kind": "open_problem",
+    "question": "What problems arise when features are not cleanly disentangled in neural networks?",
+    "expected_paper_ids": [
+      "2501.16496"
+    ],
+    "top1_paper_id": "2103.11251",
+    "top1_title": "Interpretable Machine Learning: Fundamental Principles and 10 Grand Challenges",
+    "top1_score": 0.8312,
+    "top1_section": "**5 Complete supervised disentanglement of neural networks**",
+    "top1_snippet": "latent spaces where concepts are more \u201cpure\u201d than those of a standard DNN, without hurting accuracy. With the disentangled latent space, one can answer questions about how \n\n29 \n\nthe network gradually learns concepts over layers (Chen et al., 2020), or one could interact with the model by intervenin",
+    "expected_papers": [
+      {
+        "paper_id": "2501.16496",
+        "title": "Open Problems in Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "ntk_12",
+    "kind": "method",
+    "question": "What does the NTK say about generalization of over-parameterized networks?",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2201.02177",
+    "top1_title": "Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets",
+    "top1_score": 0.8364,
+    "top1_section": "1 INTRODUCTION",
+    "top1_snippet": "The generalization of overparameterized neural networks has long been a source of interest to the machine learning community since it defies intuitions derived from classical learning theory. In this paper we show that training networks on small algorithmically generated datasets can reliably exhibi",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "acdc_08",
+    "kind": "method",
+    "question": "What kinds of transformer behaviors have been reverse-engineered by circuit-style analysis?",
+    "expected_paper_ids": [
+      "2304.14997"
+    ],
+    "top1_paper_id": "2407.08734",
+    "top1_title": "Transformer Circuit Faithfulness Metrics are not Robust",
+    "top1_score": 0.8271,
+    "top1_section": "**2 Related Work**",
+    "top1_snippet": "**Circuit Analysis** . Circuit analysis is a form of post-hoc interpretability focused on understanding the full end-to-end learned algorithm responsible for some specified narrow behaviour. A circuit is a subgraph of the full computational graph of the model that (is alleged to) implement some prec",
+    "expected_papers": [
+      {
+        "paper_id": "2304.14997",
+        "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "para_07",
+    "kind": "paraphrase",
+    "question": "Summarize why infinite width makes training dynamics more tractable.",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2106.10165",
+    "top1_title": "The Principles of Deep Learning Theory",
+    "top1_score": 0.8259,
+    "top1_section": "**The End of Training**",
+    "top1_snippet": "raining error even further. \n\nRecall from \u00a710.2 that, in order to fully train an infinite-width network in a single step, we needed to make a _second-order update_ of the form \n\n\n\nwhich we interpreted either _(i)_ as a _generalized training algorithm_ (10.19) optimizing the standard MSE loss (10.5),",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "ntk_03",
+    "kind": "definition",
+    "question": "How is the limiting NTK defined recursively for deep networks?",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2106.10165",
+    "top1_title": "The Principles of Deep Learning Theory",
+    "top1_score": 0.8693,
+    "top1_section": "**Effective Theory of the NTK at Initialization**",
+    "top1_snippet": "and a special name: the **frozen NTK** . The frozen NTK controls the training dynamics in the infinite-width limit, which we will investigate in detail next chapter.<sup>1</sup> \n\n> 1Typically in the literature, the _neural tangent kernel_ or NTK refers to this deterministic infinitewidth NTK mean \u0398",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "pad_5",
+    "kind": "paraphrase",
+    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 5).",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2406.04606",
+    "top1_title": "Helpful or Harmful Data? Fine-tuning-free Shapley Attribution for Explaining Language Model Predictions",
+    "top1_score": 0.8291,
+    "top1_section": "**2.3. Neural Tangent Kernel**",
+    "top1_snippet": "The neural tangent kernel (NTK) theory is proposed to study the training dynamics of infinite-width neural networks (Jacot et al., 2018) , and has been extended to other applications, such as active learning (Hemachandra et al., 2023; Lau et al., 2024). Existing works (Arora et al., 2019; Liu et al.",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "cmp_06",
+    "kind": "comparison",
+    "question": "Compare review-style surveys of MI with primary method papers on circuit discovery.",
+    "expected_paper_ids": [
+      "2404.14082",
+      "2304.14997"
+    ],
+    "top1_paper_id": "2602.16823",
+    "top1_title": "Formal Mechanistic Interpretability: Automated Circuit Discovery with Provable Guarantees",
+    "top1_score": 0.8563,
+    "top1_section": "6 RELATED WORK",
+    "top1_snippet": "**Circuit discovery.** Our work joins recent efforts on circuit discovery in MI (Olah et al., 2020; Elhage et al., 2021; Dunefsky et al., 2024), particularly those advancing _automated_ algorithms (Conmy et al., 2023; Hsu et al., 2024). Other relevant avenues include metrics for circuit faithfulness",
+    "expected_papers": [
+      {
+        "paper_id": "2404.14082",
+        "title": "Mechanistic Interpretability for AI Safety -- A Review"
+      },
+      {
+        "paper_id": "2304.14997",
+        "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "acdc_06",
+    "kind": "identifier",
+    "question": "What problem does arXiv 2304.14997 address?",
+    "expected_paper_ids": [
+      "2304.14997"
+    ],
+    "top1_paper_id": "2604.18094",
+    "top1_title": "Decision-Aware Attention Propagation for Vision Transformer Explainability",
+    "top1_score": 0.7829,
+    "top1_section": "**D Link of Our Codes**",
+    "top1_snippet": "Code is available at https://anonymous.4open.science/r/dap-395D",
+    "expected_papers": [
+      {
+        "paper_id": "2304.14997",
+        "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "pad_1",
+    "kind": "paraphrase",
+    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 1).",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2406.04606",
+    "top1_title": "Helpful or Harmful Data? Fine-tuning-free Shapley Attribution for Explaining Language Model Predictions",
+    "top1_score": 0.8275,
+    "top1_section": "**2.3. Neural Tangent Kernel**",
+    "top1_snippet": "The neural tangent kernel (NTK) theory is proposed to study the training dynamics of infinite-width neural networks (Jacot et al., 2018) , and has been extended to other applications, such as active learning (Hemachandra et al., 2023; Lau et al., 2024). Existing works (Arora et al., 2019; Liu et al.",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  },
+  {
+    "id": "id_05",
+    "kind": "identifier",
+    "question": "What is 2406.11779 about?",
+    "expected_paper_ids": [
+      "2406.11779"
+    ],
+    "top1_paper_id": "2508.06656",
+    "top1_title": "ClusterMark: Towards Robust Watermarking for Autoregressive Image Generators with Visual Token Clustering",
+    "top1_score": 0.7864,
+    "top1_section": "**2.2. LLM Watermarking**",
+    "top1_snippet": "fmyIP 7 C <latexish1 _ b64=\"dA3rupKO72/PEZ8BXY>cVNSwMJ+TCRU 9 qLvDgozWkFHmG05QyjfnI 36 C <latexish1 _ b64=\"Z7pDW3BQ8VvmGykrL>AncTgJEOzF+I9jHRYdw u UNoXfPCSq2/K0M5 2 C <latexish1 _ b64=\"DzqvM3mfpHoW/YdcKQ>AB7XVNSwEJ2+TCRU9LgkZ8F G 05yjrunOIP 13<br>C <latexish1 _ b64=\"DrQJBuwKHC+dFjVgW8>A7cNSE3Uq/9L0o",
+    "expected_papers": [
+      {
+        "paper_id": "2406.11779",
+        "title": "Compact Proofs of Model Performance via Mechanistic Interpretability"
+      }
+    ]
+  },
+  {
+    "id": "pad_7",
+    "kind": "paraphrase",
+    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 7).",
+    "expected_paper_ids": [
+      "1806.07572"
+    ],
+    "top1_paper_id": "2406.04606",
+    "top1_title": "Helpful or Harmful Data? Fine-tuning-free Shapley Attribution for Explaining Language Model Predictions",
+    "top1_score": 0.8256,
+    "top1_section": "**2.3. Neural Tangent Kernel**",
+    "top1_snippet": "The neural tangent kernel (NTK) theory is proposed to study the training dynamics of infinite-width neural networks (Jacot et al., 2018) , and has been extended to other applications, such as active learning (Hemachandra et al., 2023; Lau et al., 2024). Existing works (Arora et al., 2019; Liu et al.",
+    "expected_papers": [
+      {
+        "paper_id": "1806.07572",
+        "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+      }
+    ]
+  }
+]

@@ -79,8 +79,13 @@ def get_device() -> str:
     return "cpu"
 
 
+_CORPUS_MODEL = None
+_CORPUS_MODEL_NAME = None
+
+
 def load_model(model_name: str | None = None):
-    """Load EmbeddingGemma 2 (or EMBEDDING_MODEL). No MiniLM fallback."""
+    """Load EmbeddingGemma 2 (or EMBEDDING_MODEL). Cached in-process singleton."""
+    global _CORPUS_MODEL, _CORPUS_MODEL_NAME
     try:
         from sentence_transformers import SentenceTransformer
     except ImportError:
@@ -99,6 +104,10 @@ def load_model(model_name: str | None = None):
     ) and __import__("os").getenv("ALLOW_LARGE_EMBED") != "1":
         name = "sentence-transformers/all-MiniLM-L6-v2"
         print(f"[corpus_index] Cloud guard: using {name}", flush=True)
+
+    if _CORPUS_MODEL is not None and _CORPUS_MODEL_NAME == name:
+        return _CORPUS_MODEL
+
     print(f"Loading model: {name}  (device={device})")
     t0 = time.time()
     try:
@@ -110,6 +119,8 @@ def load_model(model_name: str | None = None):
             "  Optional: HF_TOKEN=... in .env"
         ) from e
     print(f"  loaded in {time.time() - t0:.1f}s")
+    _CORPUS_MODEL = model
+    _CORPUS_MODEL_NAME = name
     return model
 
 
