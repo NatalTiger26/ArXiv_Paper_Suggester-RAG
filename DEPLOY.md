@@ -5,7 +5,7 @@
 - Free Cloud ~1 GB RAM. **EmbeddingGemma 2 (~1 GB) will often crash the app.**
 - On Cloud the code auto-selects `sentence-transformers/all-MiniLM-L6-v2` unless you override `EMBEDDING_MODEL`.
 - Indexes built with Gemma are **not** compatible with MiniLM (different vector size). For Cloud demos either:
-  - run `python scripts/seed_cloud_index.py` locally or on Cloud to seed a lean 3-paper index under MiniLM, or
+  - run `uv run python scripts/seed_cloud_index.py` locally or on Cloud to seed a lean 3-paper index under MiniLM, or
   - ship empty indexes and ingest a few papers under MiniLM in the UI.
 
 ## Checklist (do every item)

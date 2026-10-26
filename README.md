@@ -37,13 +37,13 @@ Built for real laptops and demos: **CLI** for batch work and diagnosis, **Stream
 
 | Capability | Entry point |
 |------------|-------------|
-| Build a paper library (metadata) | `src/corpus_builder.py search` / `from-ids` |
-| Multi-signal recommendation | `src/recommend.py` or UI **Recommend** |
-| Full-text ingest | `python -m src.rag.cli ingest` or UI |
-| Q&A with citations | `python -m src.rag.cli ask` or UI **Ask** |
+| Build a paper library (metadata) | `uv run python src/corpus_builder.py search` / `from-ids` |
+| Multi-signal recommendation | `uv run python src/recommend.py` or UI **Recommend** |
+| Full-text ingest | `uv run python -m src.rag.cli ingest` or UI |
+| Q&A with citations | `uv run python -m src.rag.cli ask` or UI **Ask** |
 | Web app | `uv run python -m streamlit run src/app.py` |
-| Local health check | `bash scripts/check_local.sh` |
-| RAG evaluation | `src/final_eval.py` → `results/EVALUATION_REPORT.md` |
+| Local health check | `bash scripts/check_local.sh` or `make health` |
+| RAG evaluation | `uv run python src/final_eval.py` → `results/EVALUATION_REPORT.md` |
 
 **Important:** **Library ≠ full-text RAG.** Ranking uses titles and abstracts. **Ask** only sees papers you have **ingested**.
 

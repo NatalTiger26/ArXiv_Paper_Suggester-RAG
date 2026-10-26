@@ -29,5 +29,5 @@ uv run python -m src.rag.cli ask "What is the exact critical temperature of the 
 
 echo -e "\n================================================================="
 echo " Demo complete! Launch interactive web UI:"
-echo "   make web    (or: uv run streamlit run src/app.py)"
+echo "   make web    (or: uv run python -m streamlit run src/app.py)"
 echo "================================================================="

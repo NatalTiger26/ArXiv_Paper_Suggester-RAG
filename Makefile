@@ -1,4 +1,4 @@
-.PHONY: help setup health recommend eval build-index index-rebuild \
+.PHONY: help setup sync lock lock-check health recommend eval build-index index-rebuild \
         corpus-status corpus-search rag-status rag-ingest ingest rag-ask ask rag-eval web clean \
         confai-presence confai-sweep check test poster-numbers failure-dashboard budget-planner
 
@@ -12,19 +12,30 @@ else
 endif
 
 help:
-	@echo "ArXiv Paper Suggester"
-	@echo "  make setup | health | web | check"
+	@echo "ArXiv Paper Suggester (uv-native ML workflow)"
+	@echo "  make setup | sync | lock | lock-check"
+	@echo "  make health | check | test | web"
 	@echo "  make corpus-search Q=\"…\" N=10"
 	@echo "  make recommend Q=\"…\" K=8"
 	@echo "  make ingest IDS=\"1806.07572 2501.16496\""
 	@echo "  make ask Q=\"What is the NTK?\""
+	@echo "  make failure-dashboard | poster-numbers | budget-planner"
 	@echo "  make eval | final-eval | final-eval-full"
 	@echo "  make confai-presence | confai-sweep"
 
 setup:
-	@if command -v uv >/dev/null 2>&1; then uv sync || uv pip install -r requirements.txt; \
+	@if command -v uv >/dev/null 2>&1; then uv sync; \
 	else python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt; fi
-	@echo "Copy .env.example → .env and set GEMINI_API_KEY (and optional FALLBACK_LLM_API_KEY)"
+	@echo "Environment synced via uv. Copy .env.example → .env and configure keys."
+
+sync:
+	uv sync
+
+lock:
+	uv lock
+
+lock-check:
+	uv lock --check
 
 health:
 	$(PY) -c "from pathlib import Path; import json; \
