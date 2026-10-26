@@ -133,8 +133,11 @@ def _extract_suggested_gemini_model(err: Exception) -> str | None:
 
 
 def _gemini_generate(client, model: str, prompt: str, system: str) -> str:
+    import time
     from google.genai import types
 
+    t0 = time.perf_counter()
+    response = None
     try:
         chat = client.chats.create(
             model=model,
@@ -144,7 +147,7 @@ def _gemini_generate(client, model: str, prompt: str, system: str) -> str:
             ),
         )
         response = chat.send_message(prompt)
-        return (response.text or "").strip()
+        text = (response.text or "").strip()
     except Exception:
         response = client.models.generate_content(
             model=model,
@@ -154,7 +157,26 @@ def _gemini_generate(client, model: str, prompt: str, system: str) -> str:
                 temperature=TEMPERATURE,
             ),
         )
-        return (response.text or "").strip()
+        text = (response.text or "").strip()
+
+    latency_ms = (time.perf_counter() - t0) * 1000.0
+    try:
+        from src.telemetry import record_call
+
+        usage = getattr(response, "usage_metadata", None)
+        p_tok = getattr(usage, "prompt_token_count", 0) or 0
+        c_tok = getattr(usage, "candidates_token_count", 0) or 0
+        record_call(
+            call_type="rag_ask",
+            model=model,
+            prompt_tokens=p_tok,
+            candidate_tokens=c_tok,
+            latency_ms=latency_ms,
+        )
+    except Exception:
+        pass
+
+    return text
 
 
 _gemini_client = None
@@ -249,7 +271,7 @@ def ask(
     max_context_chars: int = DEFAULT_MAX_CONTEXT_CHARS,
     return_chunks: bool = False,
     use_cache: bool = True,
-    hybrid: bool = False,
+    hybrid: bool = True,
 ) -> dict[str, Any]:
     """
     Full RAG query with optional semantic cache and coverage gating.

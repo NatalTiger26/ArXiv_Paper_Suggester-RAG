@@ -144,6 +144,7 @@ def _wilson_ci(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
 def run_eval(
     top_k: int = 6,
     skip_generation: bool = False,
+    hybrid: bool = True,
 ) -> dict[str, Any]:
     gold = ensure_gold()
     stats = index_stats()
@@ -152,12 +153,28 @@ def run_eval(
     rows: list[dict[str, Any]] = []
     latencies: list[float] = []
 
-    print(f"[eval] {len(gold)} gold questions…")
+    print(f"[eval] {len(gold)} gold questions (hybrid={hybrid})…")
     for qi, item in enumerate(gold, 1):
         if qi % 10 == 0 or qi == 1:
             print(f"  … {qi}/{len(gold)}")
         t0 = time.perf_counter()
-        chunks = query_chunks(item["question"], top_k=top_k, model=model)
+        if hybrid:
+            fetch_k = max(top_k * 3, 16)
+            explicit_ids = None
+            try:
+                from .hybrid import extract_query_identifiers, hybrid_rerank
+                explicit_ids = extract_query_identifiers(item["question"])
+            except ImportError:
+                from src.rag.hybrid import extract_query_identifiers, hybrid_rerank
+                explicit_ids = extract_query_identifiers(item["question"])
+            chunks = query_chunks(item["question"], top_k=fetch_k, paper_ids=explicit_ids or None, model=model)
+            if hybrid_rerank and len(chunks) > 1:
+                chunks = hybrid_rerank(chunks, item["question"], top_k=top_k)
+            else:
+                chunks = chunks[:top_k]
+        else:
+            chunks = query_chunks(item["question"], top_k=top_k, model=model)
+
         retrieved_ids: list[str] = []
         for c in chunks:
             pid = c.get("paper_id") or ""
@@ -295,6 +312,7 @@ def run_eval(
         "index_chunks": stats.get("chunk_count"),
         "embedding_model": stats.get("embedding_model"),
         "embedding_dim": stats.get("embedding_dim"),
+        "retrieval_mode": "hybrid_bm25_dense" if hybrid else "dense_only",
         "mean_recall@k": round(sum(r["recall@k"] for r in ret_rows) / n_ret, 4),
         "mean_mrr": round(sum(r["mrr"] for r in ret_rows) / n_ret, 4),
         "mean_hit_rate@1": round(sum(r["hit_rate@1"] for r in ret_rows) / n_ret, 4),

@@ -63,6 +63,7 @@ modules = [
     'src.final_eval',
     'src.citation_library.store',
     'src.novelty.refs',
+    'src.telemetry',
 ]
 for m in modules:
     try:
@@ -82,7 +83,13 @@ uv run python src/final_eval.py --help >/dev/null && ok "final_eval.py --help" |
 
 # 5. Unit Test Suite
 echo "[5/6] Running core unit test suite..."
-uv run python -m unittest discover -s tests >/dev/null 2>&1 && ok "Unit test suite passed (21 tests)" || bad "Unit test failures"
+TEST_OUT=$(uv run python -m unittest discover -s tests 2>&1)
+if [ $? -eq 0 ]; then
+  TEST_COUNT=$(echo "$TEST_OUT" | grep -o 'Ran [0-9]* tests' | awk '{print $2}')
+  ok "Unit test suite passed (${TEST_COUNT:-all} tests)"
+else
+  bad "Unit test failures"
+fi
 
 # 6. Optional Ruff / formatting check
 echo "[6/6] Checking linter/formatter availability..."

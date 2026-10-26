@@ -162,6 +162,8 @@ def _get(
     if use_cache:
         cached = _cache_get(cache_key)
         if cached is not None:
+            if isinstance(cached, dict) and cached.get("_status") == 404:
+                return None
             return cached
 
     req_headers = headers or {"User-Agent": USER_AGENT}
@@ -191,6 +193,10 @@ def _get(
             if use_cache and data is not None:
                 _cache_set(cache_key, url, data, status_code=200, ttl_days=ttl_days)
             return data
+        if r.status_code == 404:
+            if use_cache:
+                _cache_set(cache_key, url, {"_status": 404}, status_code=404, ttl_days=3.0)
+            return None
         if r.status_code >= 400:
             return None
         data = r.json()
@@ -395,6 +401,11 @@ def s2_node_to_record(node: dict[str, Any]) -> dict[str, Any] | None:
         cats = [str(x) for x in fos if x]
     else:
         cats = []
+    cites = node.get("citationCount")
+    try:
+        cites = int(cites) if cites is not None else None
+    except Exception:
+        cites = None
     return {
         "canonical_id": cid,
         "arxiv_id": arxiv,
@@ -403,6 +414,7 @@ def s2_node_to_record(node: dict[str, Any]) -> dict[str, Any] | None:
         "title": title,
         "abstract": abstract,
         "year": year,
+        "citation_count": cites,
         "categories": cats,
         "source_api": "semanticscholar",
         "has_abstract": bool(abstract),
@@ -524,6 +536,11 @@ def openalex_work_to_record(work: dict[str, Any]) -> dict[str, Any] | None:
     for c in concepts[:8]:
         if isinstance(c, dict) and c.get("display_name"):
             cats.append(str(c["display_name"]))
+    cites = work.get("cited_by_count")
+    try:
+        cites = int(cites) if cites is not None else None
+    except Exception:
+        cites = None
     return {
         "canonical_id": cid,
         "arxiv_id": arxiv,
@@ -532,6 +549,7 @@ def openalex_work_to_record(work: dict[str, Any]) -> dict[str, Any] | None:
         "title": title,
         "abstract": abstract,
         "year": year,
+        "citation_count": cites,
         "categories": cats,
         "source_api": "openalex",
         "has_abstract": bool(abstract),

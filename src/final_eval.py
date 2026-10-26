@@ -362,6 +362,7 @@ def run_core(
     top_k: int = 6,
     with_generation: bool = False,
     use_cache: bool = True,
+    hybrid: bool = True,
 ) -> dict[str, Any]:
     from rag.embed_store import index_stats, load_embedding_model, query_chunks
 
@@ -372,12 +373,28 @@ def run_core(
     full_answers: list[dict[str, Any]] = []
     latencies: list[float] = []
 
-    print(f"[final_eval] {len(gold)} gold questions  generation={with_generation}  cache={use_cache}")
+    print(f"[final_eval] {len(gold)} gold questions  generation={with_generation}  cache={use_cache}  hybrid={hybrid}")
     for qi, item in enumerate(gold, 1):
         if qi % 10 == 0 or qi == 1:
             print(f"  … {qi}/{len(gold)}")
         t0 = time.perf_counter()
-        chunks = query_chunks(item["question"], top_k=top_k, model=model)
+        if hybrid:
+            fetch_k = max(top_k * 3, 16)
+            explicit_ids = None
+            try:
+                from src.rag.hybrid import extract_query_identifiers, hybrid_rerank
+                explicit_ids = extract_query_identifiers(item["question"])
+            except ImportError:
+                from rag.hybrid import extract_query_identifiers, hybrid_rerank
+                explicit_ids = extract_query_identifiers(item["question"])
+            chunks = query_chunks(item["question"], top_k=fetch_k, paper_ids=explicit_ids or None, model=model)
+            if hybrid_rerank and len(chunks) > 1:
+                chunks = hybrid_rerank(chunks, item["question"], top_k=top_k)
+            else:
+                chunks = chunks[:top_k]
+        else:
+            chunks = query_chunks(item["question"], top_k=top_k, model=model)
+
         retrieved: list[str] = []
         for c in chunks:
             pid = c.get("paper_id") or ""
@@ -495,6 +512,7 @@ def run_core(
         "index_chunks": stats.get("chunk_count"),
         "embedding_model": stats.get("embedding_model"),
         "embedding_dim": stats.get("embedding_dim"),
+        "retrieval_mode": "hybrid_bm25_dense" if hybrid else "dense_only",
         "mean_recall@k": mean([r["recall@k"] for r in ret_rows]),
         "mean_mrr": mean([r["mrr"] for r in ret_rows]),
         "mean_hit_rate@1": mean([r["hit_rate@1"] for r in ret_rows]),
@@ -1057,6 +1075,9 @@ def main() -> None:
     parser.add_argument(
         "--no-cache", action="store_true", help="Disable semantic cache (honest refusal)"
     )
+    parser.add_argument(
+        "--dense-only", action="store_true", help="Disable hybrid BM25 lexical ranking (evaluate dense only)"
+    )
     parser.add_argument("--skip-dim-sweep", action="store_true")
     parser.add_argument("-k", type=int, default=6)
     parser.add_argument(
@@ -1117,6 +1138,7 @@ def main() -> None:
         top_k=args.k,
         with_generation=with_gen,
         use_cache=not args.no_cache,
+        hybrid=not args.dense_only,
     )
 
     full_answers = core.pop("_full_answers", [])

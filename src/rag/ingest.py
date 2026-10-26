@@ -39,21 +39,40 @@ def _get_pdf_page_count(pdf_path: Path) -> int:
 
 
 def resolve_title(arxiv_id: str, md_path: Path | None = None) -> str:
-    """Prefer arXiv API title; fall back to Markdown extraction."""
+    """Prefer local markdown / corpus title; fall back to arXiv API only if needed."""
+    if md_path and md_path.exists():
+        try:
+            from .chunk import _extract_title
+            text = md_path.read_text(encoding="utf-8", errors="ignore")[:3000]
+            t = _extract_title(text)
+            if t and not is_bad_title(t):
+                return t
+        except Exception:
+            pass
+    try:
+        from .embed_store import _titles_from_corpus
+        ct = _titles_from_corpus([arxiv_id])
+        if ct.get(arxiv_id) and not is_bad_title(ct[arxiv_id]):
+            return ct[arxiv_id]
+    except Exception:
+        pass
+
     title = fetch_arxiv_title(arxiv_id)
     if title and not is_bad_title(title):
         return title
-    if md_path and md_path.exists():
-        from .chunk import _extract_title
-
-        t = _extract_title(md_path.read_text(encoding="utf-8"))
-        if not is_bad_title(t):
-            return t
     return title or "Untitled"
 
 
 def _paper_in_rag(aid: str) -> tuple[bool, int]:
     """Return (present, chunk_count) for this arXiv id in chroma_rag."""
+    try:
+        from .embed_store import _progress_done_ids
+        done = set(_progress_done_ids())
+        if aid in done:
+            return (True, -1)
+    except Exception:
+        pass
+
     try:
         from .embed_store import get_collection
 
@@ -84,23 +103,108 @@ def ingest_paper(
     model=None,
     force_download: bool = False,
     force_embed: bool = False,
+    prefer_html: bool = True,
+    force_pdf: bool = False,
 ) -> dict:
     """
     Full pipeline for a single paper.
 
-    Skips work when artifacts already exist (unless force_*):
-      • PDF     — data/papers/{id}.pdf present and >1KB
-      • Markdown— data/markdown/{id}.md present, non-trivial, not older than PDF
-      • Embed   — paper_id already has chunks in chroma_rag (skip chunk+embed)
+    Fast HTML-first strategy with automatic PDF fallback:
+      1. If prefer_html and not force_pdf:
+         Fetch arXiv native HTML (LaTeXML/ar5iv). If 200 OK, convert directly
+         to clean Markdown + structured section chunks, bypassing heavy PDF downloads.
+      2. If HTML is unavailable (404 / legacy paper) or force_pdf:
+         Fall back to PDF download → PyMuPDF/OCR → chunk_markdown.
+      3. Skips work when paper is already in RAG unless force_* is specified.
     """
     aid = normalise_arxiv_id(arxiv_id)
     if not aid:
-        return {"arxiv_id": arxiv_id, "ok": False, "error": "invalid id"}
+        return {"arxiv_id": arxiv_id, "ok": False, "error": "invalid id", "source_format": None}
 
     t0 = time.perf_counter()
     try:
-        # --- PDF ---
+        md_dest = markdown_path_for(aid)
         dest = pdf_path_for(aid)
+        in_rag, n_existing = _paper_in_rag(aid)
+
+        # Skip embed if already present and artifacts exist
+        if in_rag and not force_embed and not force_download and md_dest.exists() and md_dest.stat().st_size > 200:
+            title = resolve_title(aid, md_dest)
+            duration = round(time.perf_counter() - t0, 3)
+            print(
+                f"  [skip-embed] already in RAG"
+                + (f" (~{n_existing} chunks)" if n_existing > 0 else ""),
+                flush=True,
+            )
+            _record_ingest_profile({
+                "arxiv_id": aid,
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "pages": 0,
+                "used_ocr": False,
+                "chunks": n_existing if n_existing > 0 else 0,
+                "duration_s": duration,
+                "skipped_embed": True,
+                "reused_md": True,
+            })
+            return {
+                "arxiv_id": aid,
+                "ok": True,
+                "title": title,
+                "source_format": "cached",
+                "pdf": str(dest) if dest.exists() else None,
+                "markdown": str(md_dest),
+                "chunks": n_existing if n_existing > 0 else 0,
+                "skipped_embed": True,
+                "duration_s": duration,
+            }
+
+        # --- Route 1: HTML-First Ingestion ---
+        if prefer_html and not force_pdf:
+            from .html_ingest import fetch_arxiv_html, html_to_markdown_and_chunks
+
+            html_text = fetch_arxiv_html(aid)
+            if html_text:
+                title = resolve_title(aid)
+                md_content, parsed_title, html_chunks = html_to_markdown_and_chunks(
+                    html_text, arxiv_id=aid, title=title if title != "Untitled" else None
+                )
+                md_dest.parent.mkdir(parents=True, exist_ok=True)
+                md_dest.write_text(md_content, encoding="utf-8")
+                print(
+                    f"  [html-ingest] extracted {len(html_chunks)} structured chunks from arXiv HTML",
+                    flush=True,
+                )
+
+                n = upsert_chunks(html_chunks, model=model)
+                duration = round(time.perf_counter() - t0, 3)
+                print(f"  [embed] upserted {n} chunks in {duration:.2f}s", flush=True)
+
+                final_title = parsed_title or title
+                _record_ingest_profile({
+                    "arxiv_id": aid,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "source_format": "html",
+                    "pages": 0,
+                    "used_ocr": False,
+                    "chunks": n,
+                    "duration_s": duration,
+                    "skipped_embed": False,
+                })
+                return {
+                    "arxiv_id": aid,
+                    "ok": True,
+                    "title": final_title,
+                    "source_format": "html",
+                    "pdf": str(dest) if dest.exists() else None,
+                    "markdown": str(md_dest),
+                    "chunks": n,
+                    "skipped_embed": False,
+                    "duration_s": duration,
+                }
+            else:
+                print(f"  [html] not available on arXiv; falling back to PDF download...", flush=True)
+
+        # --- Route 2: PDF Fallback ---
         pdf_reused = (
             dest.exists() and dest.stat().st_size > 1000 and not force_download
         )
@@ -110,8 +214,6 @@ def ingest_paper(
         else:
             print(f"  [download] wrote {pdf.name}", flush=True)
 
-        # --- Markdown ---
-        md_dest = markdown_path_for(aid)
         md_reused = (
             not force_download
             and md_dest.exists()
@@ -126,42 +228,6 @@ def ingest_paper(
             print(f"  [pdf2md] wrote {md_path.name}", flush=True)
 
         pages = _get_pdf_page_count(pdf)
-
-        # --- Already embedded in RAG? ---
-        in_rag, n_existing = _paper_in_rag(aid)
-        if in_rag and not force_embed and not force_download:
-            title = resolve_title(aid, md_path)
-            duration = round(time.perf_counter() - t0, 3)
-            print(
-                f"  [skip-embed] already in RAG"
-                + (f" (~{n_existing} chunks)" if n_existing > 0 else ""),
-                flush=True,
-            )
-            _record_ingest_profile({
-                "arxiv_id": aid,
-                "timestamp": datetime.now(timezone.utc).isoformat(),
-                "pages": pages,
-                "used_ocr": used_ocr,
-                "chunks": n_existing if n_existing > 0 else 0,
-                "duration_s": duration,
-                "skipped_embed": True,
-                "reused_pdf": pdf_reused,
-                "reused_md": md_reused,
-            })
-            return {
-                "arxiv_id": aid,
-                "ok": True,
-                "title": title,
-                "pdf": str(pdf),
-                "markdown": str(md_path),
-                "chunks": n_existing if n_existing > 0 else 0,
-                "skipped_embed": True,
-                "reused_pdf": pdf_reused,
-                "reused_md": md_reused,
-                "pages": pages,
-                "duration_s": duration,
-            }
-
         title = resolve_title(aid, md_path)
         chunks = chunk_markdown(md_path, paper_id=aid, title=title)
         n = upsert_chunks(chunks, model=model)
@@ -170,6 +236,7 @@ def ingest_paper(
         _record_ingest_profile({
             "arxiv_id": aid,
             "timestamp": datetime.now(timezone.utc).isoformat(),
+            "source_format": "pdf",
             "pages": pages,
             "used_ocr": used_ocr,
             "chunks": n,
@@ -182,6 +249,7 @@ def ingest_paper(
             "arxiv_id": aid,
             "ok": True,
             "title": title,
+            "source_format": "pdf",
             "pdf": str(pdf),
             "markdown": str(md_path),
             "chunks": n,
@@ -199,13 +267,15 @@ def ingest_paper(
             "error": str(e),
             "duration_s": duration,
         })
-        return {"arxiv_id": aid, "ok": False, "error": str(e), "duration_s": duration}
+        return {"arxiv_id": aid, "ok": False, "error": str(e), "source_format": None, "duration_s": duration}
 
 
 def ingest_papers(
     ids: Iterable[str],
     force_download: bool = False,
     force_embed: bool = False,
+    prefer_html: bool = True,
+    force_pdf: bool = False,
 ) -> list[dict]:
     """Ingest many papers; load the embedding model once."""
     model = load_embedding_model()
@@ -218,6 +288,8 @@ def ingest_papers(
                 model=model,
                 force_download=force_download,
                 force_embed=force_embed,
+                prefer_html=prefer_html,
+                force_pdf=force_pdf,
             )
         )
     return results
@@ -264,6 +336,14 @@ def ingest_from_personal_ranking(
     min_score: float = 4.0,
     force_download: bool = False,
     force_embed: bool = False,
+    prefer_html: bool = True,
+    force_pdf: bool = False,
 ) -> list[dict]:
     ids = ids_from_personal_ranking(top_n=top_n, min_score=min_score)
-    return ingest_papers(ids, force_download=force_download, force_embed=force_embed)
+    return ingest_papers(
+        ids,
+        force_download=force_download,
+        force_embed=force_embed,
+        prefer_html=prefer_html,
+        force_pdf=force_pdf,
+    )

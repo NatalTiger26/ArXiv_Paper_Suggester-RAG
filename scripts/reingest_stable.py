@@ -240,7 +240,14 @@ print("HAS 0")
     return None
 
 
-def run_microbatch(ids: list[str], *, force: bool, embed_batch: int, timeout_sec: int) -> list[dict]:
+def run_microbatch(
+    ids: list[str],
+    *,
+    force: bool,
+    force_pdf: bool = False,
+    embed_batch: int,
+    timeout_sec: int,
+) -> list[dict]:
     """One process, model once, N papers. Hard timeout on whole batch."""
     env = os.environ.copy()
     env["PYTHONPATH"] = str(ROOT) + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
@@ -255,6 +262,7 @@ import json, os, sys, gc
 sys.path.insert(0, "src")
 ids = sys.argv[1].split(",")
 force = sys.argv[2] == "1"
+force_pdf = sys.argv[3] == "1" if len(sys.argv) > 3 else False
 os.environ.setdefault("STREAMLIT_LOGGER_LEVEL", "error")
 from src.rag.ingest import ingest_paper
 from src.rag.embed_store import load_embedding_model
@@ -264,11 +272,12 @@ print("[worker] model ready", flush=True)
 for aid in ids:
     print(f"[worker] ingest {aid}", flush=True)
     try:
-        row = ingest_paper(aid, model=model, force_download=force)
+        row = ingest_paper(aid, model=model, force_download=force, force_pdf=force_pdf)
         print("RESULT " + json.dumps({
             "ok": bool(row.get("ok")),
             "arxiv_id": row.get("arxiv_id") or aid,
             "chunks": row.get("chunks"),
+            "source_format": row.get("source_format"),
             "title": (row.get("title") or "")[:100],
             "error": row.get("error"),
         }, ensure_ascii=False), flush=True)
@@ -287,7 +296,7 @@ for aid in ids:
     batch_timeout = timeout_sec * max(1, len(ids))
     try:
         proc = subprocess.run(
-            ["uv", "run", "python", "-c", code, ",".join(ids), "1" if force else "0"],
+            ["uv", "run", "python", "-c", code, ",".join(ids), "1" if force else "0", "1" if force_pdf else "0"],
             cwd=str(ROOT),
             capture_output=True,
             text=True,
@@ -349,6 +358,7 @@ def main() -> None:
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--fresh-chroma", action="store_true")
     ap.add_argument("--ids-file", type=Path)
+    ap.add_argument("--force-pdf", action="store_true", help="Force PDF download and OCR extraction instead of arXiv HTML")
     ap.add_argument("--timeout", type=int, default=int(os.environ.get("PAPER_TIMEOUT_SEC", "900")))
     ap.add_argument("--health-timeout", type=int, default=45)
     ap.add_argument("--max-micro", type=int, default=int(os.environ.get("MICRO_BATCH", "4")))
@@ -498,7 +508,11 @@ def main() -> None:
 
         t1 = time.time()
         rows = run_microbatch(
-            todo, force=args.force, embed_batch=embed_batch, timeout_sec=args.timeout
+            todo,
+            force=args.force,
+            force_pdf=getattr(args, "force_pdf", False),
+            embed_batch=embed_batch,
+            timeout_sec=args.timeout,
         )
         dt = time.time() - t1
         per = dt / max(1, len(todo))
@@ -507,6 +521,7 @@ def main() -> None:
         batch_all_ok = True
         for row in rows:
             aid = str(row.get("arxiv_id") or "")
+            fmt = row.get("source_format") or "ingest"
             if row.get("ok"):
                 ok += 1
                 streak_ok += 1
@@ -520,12 +535,13 @@ def main() -> None:
                             "arxiv_id": aid,
                             "ok": True,
                             "chunks": row.get("chunks"),
+                            "format": fmt,
                             "s": round(per, 1),
                         }
                     ),
                 )
                 print(
-                    f"[ok] {aid} chunks={row.get('chunks')}  "
+                    f"[ok] {aid} [{fmt}] chunks={row.get('chunks')}  "
                     f"{(row.get('title') or '')[:50]}",
                     flush=True,
                 )

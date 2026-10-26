@@ -102,11 +102,13 @@ def score_paper(
     force_refresh_refs: bool = False,
     min_frac_abstract: float = MIN_FRAC_ABSTRACT,
     center: bool = True,
+    allow_partial: bool = False,
 ) -> dict[str, Any]:
     """
     Reference-conditional profile for one arXiv id.
 
-    No PDFs. Refuses to score if abstract coverage of refs is below threshold.
+    No PDFs. Refuses to score if abstract coverage of refs is below threshold
+    unless allow_partial=True is passed (which falls back to titles for missing abstracts).
     """
     aid = strip_version(arxiv_id)
     model_name, dim = model_and_dim()
@@ -179,11 +181,19 @@ def score_paper(
             "arxiv_id": aid,
         }
 
-    if (
-        not ref_ids
-        or n_abs < MIN_REFS_WITH_ABS
-        or frac < min_frac_abstract
-    ):
+    coverage_ok = bool(ref_ids and n_abs >= MIN_REFS_WITH_ABS and frac >= min_frac_abstract)
+
+    if not ref_ids:
+        profile = {
+            "ok": False,
+            "error": "no_references_found",
+            "stats": rstats,
+            "source": source,
+            "focal_id": focal_cid,
+        }
+        return profile
+
+    if not coverage_ok and not allow_partial:
         profile = {
             "ok": False,
             "error": "insufficient_reference_abstracts",
@@ -197,7 +207,7 @@ def score_paper(
             "message": (
                 f"Need ≥{MIN_REFS_WITH_ABS} refs with abstracts and "
                 f"frac≥{min_frac_abstract:.0%}; got n_abs={n_abs} frac={frac:.2f}. "
-                "Score not computed (refusing noisy output)."
+                "Score not computed (refusing noisy output). Pass --allow-partial to compute with title fallback."
             ),
         }
         save_score(conn, focal_cid, model_name, dim, profile, cohort_note="refused_coverage")
@@ -278,6 +288,11 @@ def score_paper(
     profile["dim"] = dim
     profile["source"] = source
     profile["stats"] = {**rstats, "n_refs_embedded": len(used_ids)}
+    if not coverage_ok:
+        profile["coverage_warning"] = (
+            f"Partial abstract coverage ({n_abs}/{len(ref_ids)} = {frac:.1%}); "
+            "reference title fallback was used for missing abstracts."
+        )
     profile["covariates"] = covariate_notes(
         n_refs=len(used_ids),
         year=focal_rec.get("year") if focal_rec else None,

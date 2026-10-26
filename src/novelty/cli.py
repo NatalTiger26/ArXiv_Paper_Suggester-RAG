@@ -56,6 +56,7 @@ def cmd_score(args: argparse.Namespace) -> None:
             n_null=args.n_null,
             force_refresh_refs=args.refresh,
             center=not args.no_center,
+            allow_partial=getattr(args, "allow_partial", False),
         )
         _print_profile(last)
     if args.json_out and last is not None:
@@ -184,6 +185,7 @@ def main(argv: list[str] | None = None) -> None:
     p_sc.add_argument("--no-center", action="store_true", help="skip cohort mean centering")
     p_sc.add_argument("--n-null", type=int, default=30)
     p_sc.add_argument("--refresh", action="store_true")
+    p_sc.add_argument("--allow-partial", action="store_true", help="Fallback to reference titles if abstract coverage < 70%%")
     p_sc.add_argument("--json-out", default="")
     p_sc.set_defaults(func=cmd_score)
 

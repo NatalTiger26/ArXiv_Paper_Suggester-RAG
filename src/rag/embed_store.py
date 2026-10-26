@@ -397,6 +397,27 @@ def list_ingested_papers(*, force_chroma: bool = False) -> list[dict[str, Any]]:
     """
     global _list_papers_cache, _list_papers_cache_key
 
+    if not force_chroma and _list_papers_cache is not None:
+        return _list_papers_cache
+
+    # Fast path: done.txt / indexed_ids.txt (no Chroma connection needed)
+    if not force_chroma:
+        done_ids = _progress_done_ids()
+        if done_ids:
+            titles = _titles_from_corpus(done_ids)
+            papers = [
+                {
+                    "paper_id": pid,
+                    "title": titles.get(pid, ""),
+                    "arxiv_id": pid,
+                }
+                for pid in done_ids
+            ]
+            papers.sort(key=lambda x: (x.get("title") or x["paper_id"]).lower())
+            _list_papers_cache = papers
+            _list_papers_cache_key = ("progress", len(papers))
+            return papers
+
     try:
         collection = get_collection(create=False)
         total = int(collection.count() or 0)
@@ -414,24 +435,6 @@ def list_ingested_papers(*, force_chroma: bool = False) -> list[dict[str, Any]]:
         and _list_papers_cache_key == cache_key
     ):
         return _list_papers_cache
-
-    # Fast path: done.txt / indexed_ids.txt
-    if not force_chroma:
-        done_ids = _progress_done_ids()
-        if done_ids:
-            titles = _titles_from_corpus(done_ids)
-            papers = [
-                {
-                    "paper_id": pid,
-                    "title": titles.get(pid, ""),
-                    "arxiv_id": pid,
-                }
-                for pid in done_ids
-            ]
-            papers.sort(key=lambda x: (x.get("title") or x["paper_id"]).lower())
-            _list_papers_cache = papers
-            _list_papers_cache_key = cache_key
-            return papers
 
     # Slow path: scan Chroma metadatas (only when needed)
     by_id: dict[str, str] = {}

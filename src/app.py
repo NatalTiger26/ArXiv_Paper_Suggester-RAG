@@ -664,10 +664,12 @@ def render_results_panel() -> None:
                         chunks_disp = int(chunks) if chunks is not None else None
                     except (TypeError, ValueError):
                         chunks_disp = None
+                fmt = (r.get("source_format") or "pdf").upper() if r.get("ok") else "—"
                 rows.append(
                     {
                         "Title / error": str(r.get("title") or r.get("error") or "")[:120],
                         "arXiv ID": str(r.get("arxiv_id") or ""),
+                        "Format": fmt,
                         "Status": "ok" if r.get("ok") else "fail",
                         "Chunks": chunks_disp,
                     }
@@ -1284,11 +1286,11 @@ def run_ingest_with_progress(
             step_lo = 8 + int(90 * i / n)
             progress.progress(
                 step_lo,
-                text=f"Paper {i+1}/{n}: {aid} — download / convert / embed…",
+                text=f"Paper {i+1}/{n}: {aid} — HTML / PDF convert / embed…",
             )
             status.markdown(
                 f"**Step 2/2 — Paper `{aid}` ({i+1}/{n})**\n"
-                "1. Download PDF → 2. Convert to Markdown → 3. Chunk → 4. Embed & store"
+                "1. Fetch arXiv HTML (or PDF fallback) → 2. Clean Markdown → 3. Chunk → 4. Embed & store"
             )
             log(f"Ingesting {aid} ({i+1}/{n})…")
             t1 = time.time()
@@ -1466,6 +1468,44 @@ with st.sidebar:
         if not health["gemini_key"]:
             st.warning("Set `GEMINI_API_KEY` in `.env` for generation.")
 
+    with st.expander("API & Cost Telemetry", expanded=False):
+        try:
+            from src.telemetry import get_telemetry_summary, reset_telemetry
+
+            t_summary = get_telemetry_summary()
+            st.metric("Total API Calls", t_summary["total_calls"])
+            col_t1, col_t2 = st.columns(2)
+            col_t1.metric("Total Tokens", f"{t_summary['total_tokens']:,}")
+            col_t2.metric("Est. Cost", f"${t_summary['total_cost_usd']:.4f}")
+            st.caption(
+                f"Latency p50: **{t_summary['p50_latency_ms']}ms**  ·  "
+                f"Cache hits: **{t_summary['cache_hit_rate_pct']}%**"
+            )
+
+            # Confirmed reset
+            if "telemetry_reset_confirm" not in st.session_state:
+                st.session_state["telemetry_reset_confirm"] = False
+
+            if not st.session_state["telemetry_reset_confirm"]:
+                if st.button("Reset usage stats", key="btn_reset_telemetry_prep"):
+                    st.session_state["telemetry_reset_confirm"] = True
+                    st.rerun()
+            else:
+                st.warning("Confirm resetting all usage stats?")
+                c_yes, c_no = st.columns(2)
+                with c_yes:
+                    if st.button("Confirm Reset", type="primary", key="btn_reset_telemetry_do"):
+                        reset_telemetry()
+                        st.session_state["telemetry_reset_confirm"] = False
+                        st.success("Telemetry stats reset.")
+                        st.rerun()
+                with c_no:
+                    if st.button("Cancel", key="btn_reset_telemetry_cancel"):
+                        st.session_state["telemetry_reset_confirm"] = False
+                        st.rerun()
+        except Exception as e:
+            st.caption(f"Telemetry not available: {e}")
+
     st.divider()
     st.caption("CLI (see WORKFLOW.md)")
     st.code(
@@ -1491,8 +1531,8 @@ else:
 
 render_activity_log(expanded=False)
 
-tab_home, tab_lib, tab_rec, tab_ask, tab_help = st.tabs(
-    ["Home", "Library", "Recommend", "Ask", "Help"]
+tab_home, tab_lib, tab_rec, tab_ask, tab_nov, tab_help = st.tabs(
+    ["Home", "Library", "Recommend", "Ask", "Novelty & Graph", "Help"]
 )
 
 
@@ -2242,6 +2282,12 @@ with tab_ask:
                 key="ask_cache",
                 help="On = reuse similar questions. Off = always call the LLM.",
             )
+            use_hybrid = st.checkbox(
+                "Hybrid search (BM25 + Dense)",
+                value=True,
+                key="ask_hybrid",
+                help="Fuses BM25 lexical keyword matching with dense semantic embeddings via RRF and boosts exact arXiv IDs.",
+            )
 
         with st.form("ask_form", clear_on_submit=False):
             question = st.text_area(
@@ -2286,6 +2332,7 @@ with tab_ask:
                 top_k=top_k,
                 paper_ids=paper_filter or None,
                 use_cache=use_cache,
+                hybrid=use_hybrid,
             )
             elapsed = time.time() - t0
             log(
@@ -2330,6 +2377,193 @@ with tab_ask:
                 None if la.get("scope_ids") else la.get("corpus_n") or rag_n
             ),
         )
+
+
+@st.cache_data(ttl=300)
+def _get_citation_library_hubs(top_n: int = 25) -> tuple[dict, list[dict]]:
+    try:
+        from src.citation_library import store
+    except ImportError:
+        from citation_library import store
+    conn = store.connect()
+    try:
+        st_data = store.stats(conn)
+        counts = store.citation_counts(conn)
+        rows = []
+        for r in counts[:top_n]:
+            rows.append({
+                "Title": str(r["title"] or "Untitled")[:120],
+                "Paper ID": str(r["arxiv_id"] or r["canonical_id"]),
+                "Year": r["year"] or "—",
+                "In-Library Citers": int(r["library_cite_count"]),
+                "Global Citations": int(r["global_citation_count"] or 0),
+            })
+        return st_data, rows
+    finally:
+        conn.close()
+
+
+def _get_example_citers_for(target_id: str, limit: int = 10) -> list[str]:
+    try:
+        from src.citation_library import store
+    except ImportError:
+        from citation_library import store
+    conn = store.connect()
+    try:
+        return store.example_citers(conn, target_id, limit=limit)
+    finally:
+        conn.close()
+
+
+# ── NOVELTY & GRAPH (LAB) ──────────────────────────────────────────────────
+
+with tab_nov:
+    st.subheader("Novelty analysis & citation network (offline lab)")
+    st.caption(
+        "Explore citation graphs and compute reference-relative geometric novelty "
+        "profiles. Cleanly isolated from ConfAI poster ranking index."
+    )
+
+    nov_mode = st.segmented_control(
+        "Lab view",
+        ["Novelty scoring", "Citation network hubs"],
+        default="Novelty scoring",
+        key="nov_lab_view_selector",
+    )
+
+    if nov_mode == "Novelty scoring":
+        st.markdown(
+            "Quantifies whether a paper is an **extension** of prior work or an "
+            "**orthogonal blend**, measured by projecting its embedding vector onto the subspace "
+            "spanned by its cited references."
+        )
+
+        with st.form("nov_score_form"):
+            col_id, col_opt = st.columns([2, 3])
+            with col_id:
+                aid_input = st.text_input(
+                    "arXiv paper ID",
+                    value="1806.07572",
+                    placeholder="e.g. 1806.07572, 2404.14082",
+                    help="Paper to score relative to its references.",
+                    key="nov_aid_input",
+                )
+            with col_opt:
+                allow_part = st.checkbox(
+                    "Allow partial abstract coverage",
+                    value=True,
+                    help="Falls back to reference titles if <70% of references have abstracts available.",
+                    key="nov_allow_part",
+                )
+            submit_score = st.form_submit_button(
+                "Compute novelty profile", type="primary"
+            )
+
+        if submit_score:
+            target_aid = paper_id_from_row({"id": aid_input or ""})
+            if not target_aid:
+                st.warning("Please provide a valid arXiv ID.")
+            else:
+                log(f"Novelty: scoring {target_aid} (allow_partial={allow_part})")
+                with st.spinner(f"Resolving references and computing embedding projection for {target_aid}…"):
+                    try:
+                        from src.novelty.score import score_paper
+                        prof = score_paper(target_aid, allow_partial=allow_part)
+                    except Exception as e:
+                        st.markdown(friendly_error(e))
+                        prof = None
+
+                if prof:
+                    if prof.get("ok"):
+                        st.success(f"Novelty profile computed for `{target_aid}`")
+                        typ = prof.get("typology_hint", "unknown")
+                        badge_color = "violet" if "blend" in typ else ("blue" if "extension" in typ else "gray")
+                        st.badge(typ.replace("_", " ").title(), icon=":material/psychology:", color=badge_color)
+
+                        if prof.get("coverage_warning"):
+                            st.warning(f"**Coverage Notice:** {prof['coverage_warning']}")
+
+                        c1, c2, c3, c4 = st.columns(4)
+                        c1.metric(
+                            "Parent weight (m)",
+                            f"{prof.get('m', 0.0):.3f}",
+                            help="Weight of the strongest parent reference in the projection.",
+                        )
+                        c2.metric(
+                            "Residual novelty (Δ)",
+                            f"{prof.get('Delta', 0.0):.3f}",
+                            help="Distance outside the linear subspace of references.",
+                        )
+                        c3.metric(
+                            "Variance explained (R²₊)",
+                            f"{prof.get('R2_plus', 0.0):.3f}",
+                            help="Non-negative fraction of focal paper variance explained by its references.",
+                        )
+                        c4.metric(
+                            "Median ref dist (D)",
+                            f"{prof.get('D_median', 0.0):.3f}",
+                            help="Median cosine distance to all references.",
+                        )
+
+                        stats = prof.get("stats") or {}
+                        with st.expander("Reference & embedding details", expanded=False):
+                            st.markdown(
+                                f"- **Total references resolved:** {stats.get('n_raw', 0)}\n"
+                                f"- **References in graph:** {stats.get('n_total', 0)}\n"
+                                f"- **Abstracts available:** {stats.get('n_abstracts', 0)} "
+                                f"({stats.get('frac_with_abstract', 0.0):.1%})\n"
+                                f"- **Embedding model:** `{prof.get('model', 'default')}` (dim={prof.get('dim', 'auto')})\n"
+                                f"- **Effective dimensionality ($d_{{eff}}$):** {prof.get('d_eff', 'n/a')}"
+                            )
+                    else:
+                        st.error(
+                            prof.get("message")
+                            or prof.get("error")
+                            or "Could not compute novelty profile."
+                        )
+                        stats = prof.get("stats") or {}
+                        if stats:
+                            st.caption(
+                                f"References found: {stats.get('n_total', 0)} "
+                                f"(with abstract: {stats.get('n_abstracts', 0)})"
+                            )
+
+    elif nov_mode == "Citation network hubs":
+        st.markdown(
+            "Inspect the top cited landmark papers and citation density across "
+            "the local citation graph database (`data/citation_library.db`)."
+        )
+        try:
+            hub_stats, hub_rows = _get_citation_library_hubs(top_n=30)
+            k1, k2, k3 = st.columns(3)
+            k1.metric("Cached papers", f"{hub_stats.get('papers_cached', 0):,}")
+            k2.metric("Citation edges", f"{hub_stats.get('edges', 0):,}")
+            k3.metric("Completed fetches", f"{hub_stats.get('fetch_ok', 0):,}")
+
+            st.markdown("#### Top landmark papers in local corpus")
+            try:
+                st.dataframe(hub_rows, width="stretch", hide_index=True)
+            except TypeError:
+                st.dataframe(hub_rows, use_container_width=True, hide_index=True)
+
+            with st.expander("Inspect citing papers for a landmark", expanded=False):
+                inspect_id = st.text_input(
+                    "Landmark arXiv ID or S2 ID",
+                    value=hub_rows[0]["Paper ID"] if hub_rows else "1706.03762",
+                    key="nov_hub_inspect_id",
+                )
+                if st.button("Find citing papers", key="nov_hub_find_citers"):
+                    clean_id = paper_id_from_row({"id": inspect_id}) or inspect_id.strip()
+                    citers = _get_example_citers_for(clean_id, limit=15)
+                    if citers:
+                        st.markdown(f"**Found {len(citers)} citing papers in local graph:**")
+                        for cid in citers:
+                            st.markdown(f"- [`{cid}`](https://arxiv.org/abs/{cid})")
+                    else:
+                        st.info(f"No in-library citers recorded yet for `{inspect_id}`.")
+        except Exception as e:
+            st.warning("Citation library database is not initialized yet or empty.")
+            st.caption(f"Detail: {e}")
 
 
 with tab_help:
