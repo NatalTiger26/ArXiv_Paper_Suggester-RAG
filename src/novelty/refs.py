@@ -604,6 +604,107 @@ def fetch_openalex_references(arxiv_id: str, *, limit: int = 100) -> tuple[list[
     return out, "openalex:referenced_works_batch"
 
 
+def fetch_arxiv_html_references(
+    arxiv_id: str,
+    *,
+    limit: int = 80,
+) -> tuple[list[dict[str, Any]], str]:
+    """
+    Direct extraction of cited references from arXiv's official HTML rendering (/html/<id>).
+    Provides resilient zero-dependency fallback for papers where Semantic Scholar or OpenAlex
+    automated parsers failed to extract references (e.g. 2206.04615 BIG-bench).
+    """
+    aid = normalise_arxiv_id(arxiv_id) or strip_version(arxiv_id)
+    if not aid:
+        return [], "arxiv_html:invalid_id"
+
+    url = f"https://arxiv.org/html/{aid}"
+    cache_key = f"arxiv_html:{aid}"
+    cached = _cache_get(cache_key)
+    html_text = None
+    if isinstance(cached, str):
+        html_text = cached
+    else:
+        try:
+            do_get = requests.get if (MagicMock and isinstance(requests.get, MagicMock)) else _SESSION.get
+            r = do_get(url, headers={"User-Agent": USER_AGENT}, timeout=20)
+            if r.status_code == 200:
+                html_text = r.text
+                _cache_set(cache_key, url, html_text, status_code=200, ttl_days=30.0)
+            elif r.status_code == 404:
+                return [], "arxiv_html:404"
+            else:
+                return [], f"arxiv_html:{r.status_code}"
+        except Exception as e:
+            return [], f"arxiv_html:error:{e}"
+
+    if not html_text:
+        return [], "arxiv_html:empty"
+
+    import html as html_lib
+    import re
+
+    pattern = re.compile(
+        r'<li[^>]*class=[\"\'][^\"\']*ltx_bibitem[^\"\']*[\"\'][^>]*>(.*?)</li>',
+        re.DOTALL | re.IGNORECASE,
+    )
+    matches = pattern.findall(html_text)
+    if not matches:
+        pattern = re.compile(
+            r'<div[^>]*class=[\"\'][^\"\']*ltx_bibblock[^\"\']*[\"\'][^>]*>(.*?)</div>',
+            re.DOTALL | re.IGNORECASE,
+        )
+        matches = pattern.findall(html_text)
+
+    if not matches:
+        return [], "arxiv_html:no_bibitems"
+
+    out: list[dict[str, Any]] = []
+    seen_cids: set[str] = set()
+
+    for m in matches:
+        clean = re.sub(r'<[^>]+>', ' ', m)
+        clean = html_lib.unescape(' '.join(clean.split()))
+        if len(clean) < 15:
+            continue
+
+        ax_links = re.findall(r'arxiv\.org/(?:abs|pdf)/([0-9]{4}\.[0-9]{4,5}(?:v\d+)?)', m, re.I)
+        doi_links = re.findall(r'doi\.org/([^\"\s<>\'\)]+)', m, re.I)
+
+        ref_aid = normalise_arxiv_id(ax_links[0]) if ax_links else None
+        doi = doi_links[0].rstrip('.,;') if doi_links else None
+
+        cid = None
+        if ref_aid:
+            cid = canonical_id(arxiv_id=ref_aid)
+        elif doi:
+            cid = canonical_id(doi=doi)
+        else:
+            cid = f"raw:{abs(hash(clean[:80]))}"
+
+        if not cid or cid in seen_cids:
+            continue
+        seen_cids.add(cid)
+
+        yr_m = re.search(r'\b(19\d\d|20\d\d)\b', clean)
+        yr = int(yr_m.group(1)) if yr_m else None
+
+        out.append({
+            "canonical_id": cid,
+            "arxiv_id": ref_aid,
+            "doi": doi,
+            "title": clean[:240],
+            "abstract": clean,
+            "year": yr,
+            "has_abstract": True,
+            "source_api": "arxiv_html",
+        })
+        if len(out) >= limit:
+            break
+
+    return out, "arxiv_html"
+
+
 def _enrich_ref_abstract(rec: dict[str, Any]) -> dict[str, Any]:
     """Fill missing abstract via S2 paper id or OpenAlex arXiv/DOI."""
     if rec.get("has_abstract") and (rec.get("abstract") or "").strip():
@@ -899,6 +1000,13 @@ def resolve_focal_and_refs(
                 refs = oa_refs
                 source = oa_src if not source else source + "+" + oa_src
 
+    # Direct arXiv HTML fallback if S2 and OpenAlex both had no references
+    if not refs:
+        html_refs, html_src = fetch_arxiv_html_references(aid, limit=max_refs)
+        if html_refs:
+            refs = html_refs
+            source = html_src if not source else source + "+" + html_src
+
     # Fast local catalog enrichment (0 network delay for in-corpus references)
     if refs:
         _enrich_from_local_catalog(refs)
@@ -918,8 +1026,30 @@ def resolve_focal_and_refs(
                     source = (source or "") + "+" + oa_src
 
     if focal is None:
+        try:
+            from src.corpus_builder import fetch_by_ids
+            fetched = fetch_by_ids([aid])
+            if fetched:
+                p = fetched[0]
+                pub = p.get("published_date") or ""
+                year = int(str(pub)[:4]) if str(pub)[:4].isdigit() else None
+                focal = {
+                    "canonical_id": canonical_id(arxiv_id=aid) or f"arxiv:{aid}",
+                    "arxiv_id": aid,
+                    "title": p.get("title") or aid,
+                    "abstract": p.get("abstract") or "",
+                    "year": year,
+                    "categories": p.get("categories") or [],
+                    "doi": p.get("doi"),
+                    "source_api": "arxiv_api",
+                    "has_abstract": bool((p.get("abstract") or "").strip()),
+                }
+        except Exception:
+            pass
+
+    if focal is None:
         focal = {
-            "canonical_id": canonical_id(arxiv_id=aid),
+            "canonical_id": canonical_id(arxiv_id=aid) or f"arxiv:{aid}",
             "arxiv_id": aid,
             "title": None,
             "abstract": None,

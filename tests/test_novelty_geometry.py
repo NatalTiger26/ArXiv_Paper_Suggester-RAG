@@ -130,6 +130,45 @@ class TestNoveltyGeometry(unittest.TestCase):
         self.assertEqual(len(remaining), 1)
         self.assertEqual(remaining[0]["canonical_id"], "good")
 
+    def test_non_arxiv_doi_graceful_handling(self):
+        from src.novelty.score import score_paper
+
+        # Querying an external DOI must return a structured error response, not crash
+        res = score_paper("https://doi.org/10.1146/annurev-conmatphys-031119-050745")
+        self.assertFalse(res.get("ok"))
+        self.assertEqual(res.get("error"), "non_arxiv_paper")
+        self.assertIn("not an arXiv paper ID", res.get("message", ""))
+
+    def test_arxiv_html_references_parser(self):
+        from unittest.mock import patch, MagicMock
+        from src.novelty.refs import fetch_arxiv_html_references
+
+        mock_html = """
+        <html><body>
+        <ol class="ltx_biblist">
+          <li class="ltx_bibitem" id="bib.bib1">
+            <span class="ltx_tag">1</span>
+            <span class="ltx_text">Vaswani et al. (2017) Attention is all you need. URL <a href="https://arxiv.org/abs/1706.03762">arXiv</a></span>
+          </li>
+          <li class="ltx_bibitem" id="bib.bib2">
+            <span class="ltx_tag">2</span>
+            <span class="ltx_text">Devlin et al. (2018) BERT. URL <a href="https://doi.org/10.18653/v1/N19-1423">doi</a></span>
+          </li>
+        </ol>
+        </body></html>
+        """
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.text = mock_html
+
+        with patch("requests.get", return_value=mock_resp):
+            refs, src = fetch_arxiv_html_references("9999.99999")
+            self.assertEqual(src, "arxiv_html")
+            self.assertEqual(len(refs), 2)
+            self.assertEqual(refs[0]["canonical_id"], "arxiv:1706.03762")
+            self.assertEqual(refs[0]["arxiv_id"], "1706.03762")
+            self.assertEqual(refs[1]["doi"], "10.18653/v1/N19-1423")
+
 
 if __name__ == "__main__":
     unittest.main()

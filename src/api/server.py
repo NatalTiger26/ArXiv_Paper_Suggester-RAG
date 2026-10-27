@@ -541,7 +541,7 @@ async def api_novelty(request: Request) -> JSONResponse:
     """Compute novelty profile and 2D cone subspace coordinates."""
     aid = request.query_params.get("arxiv_id", "").strip()
     if not aid:
-        return JSONResponse({"error": "Missing 'arxiv_id' query parameter."}, status_code=400)
+        return JSONResponse({"ok": False, "error": "Missing 'arxiv_id' query parameter."}, status_code=400)
 
     from src.rag.download import normalise_arxiv_id
     clean_id = normalise_arxiv_id(aid) or aid
@@ -550,10 +550,10 @@ async def api_novelty(request: Request) -> JSONResponse:
 
     loop = asyncio.get_running_loop()
     try:
-        profile = await loop.run_in_executor(None, lambda: score_paper(clean_id))
+        profile = await loop.run_in_executor(None, lambda: score_paper(clean_id, allow_partial=True))
         return JSONResponse(sanitize_json_obj(profile))
     except Exception as e:
-        return JSONResponse({"error": str(e)}, status_code=500)
+        return JSONResponse({"ok": False, "error": str(e), "message": str(e)}, status_code=200)
 
 
 # ── Landmark Citation Hubs ────────────────────────────────────────────────────

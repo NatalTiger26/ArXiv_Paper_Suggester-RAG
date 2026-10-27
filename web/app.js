@@ -943,8 +943,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnComputeNovelty.addEventListener("click", async () => {
-    const aid = noveltyArxivIdInput.value.trim();
+    let aid = noveltyArxivIdInput.value.trim();
     if (!aid) return;
+
+    // Normalize potential full URLs or arxiv: prefixes
+    const axMatch = aid.match(/(\d{4}\.\d{4,5})/);
+    if (axMatch) {
+      aid = axMatch[1];
+      noveltyArxivIdInput.value = aid;
+    }
 
     btnComputeNovelty.textContent = "Computing...";
     btnComputeNovelty.disabled = true;
@@ -954,7 +961,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const profile = await res.json();
 
       if (!res.ok || profile.error || profile.ok === false) {
-        attributionTable.innerHTML = `<div class="empty-state-sm">Error: ${profile.error || profile.message || "Computation failed."}</div>`;
+        const errMsg = profile.message || profile.error || "Computation failed.";
+        attributionTable.innerHTML = `
+          <div class="empty-state-sm" style="color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05); border-radius: 8px; padding: 1.25rem;">
+            <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.35rem;">Evaluation Notice</div>
+            <div style="font-size: 0.85rem; line-height: 1.5; color: var(--text-muted);">${escapeHtml(errMsg)}</div>
+          </div>
+        `;
+        mVal.textContent = "—";
+        deltaVal.textContent = "—";
+        r2Val.textContent = "—";
+        resVal.textContent = "—";
+        drawSubspace(null);
+        const typologyHeader = document.getElementById("typologyHeader");
+        if (typologyHeader) typologyHeader.style.display = "none";
         return;
       }
 

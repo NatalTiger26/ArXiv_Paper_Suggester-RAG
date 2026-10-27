@@ -26,7 +26,7 @@ from .calibrate import (
     shuffled_reference_percentiles,
 )
 from .embed_util import embed_texts, model_and_dim, text_for_paper
-from .ids import canonical_id, strip_version
+from .ids import canonical_id, normalise_arxiv_id, strip_version
 from .metrics import compute_profile, effective_dimension
 from .refs import resolve_focal_and_refs
 
@@ -111,11 +111,26 @@ def score_paper(
     Ultra-fast: uses local catalog/graph databases first, vectorized S2/OpenAlex batch calls,
     lazy model loading (sub-millisecond evaluation when cached), and graceful title fallback.
     """
-    aid = strip_version(arxiv_id)
+    # Clean input and extract valid arXiv identifier
+    clean_aid = normalise_arxiv_id(arxiv_id)
+    if not clean_aid:
+        import re
+        m = re.search(r"(\d{4}\.\d{4,5})", str(arxiv_id))
+        if m:
+            clean_aid = m.group(1)
+        else:
+            doi_candidate = str(arxiv_id).replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
+            return {
+                "ok": False,
+                "error": "non_arxiv_paper",
+                "message": f"Identifier '{arxiv_id}' is not an arXiv paper ID. Novelty cone projection requires an arXiv paper (e.g. 2206.04615).",
+                "focal_id": f"doi:{doi_candidate}" if "10." in doi_candidate else None,
+            }
+
+    aid = clean_aid
     model_name, dim = model_and_dim()
     conn = connect()
-    focal_cid = canonical_id(arxiv_id=aid)
-    assert focal_cid
+    focal_cid = canonical_id(arxiv_id=aid) or f"arxiv:{aid}"
 
     need_resolve = force_refresh_refs or not get_ref_ids(conn, focal_cid)
     if need_resolve:
@@ -188,6 +203,7 @@ def score_paper(
         profile = {
             "ok": False,
             "error": "no_references_found",
+            "message": f"No cited references could be extracted for paper {aid} across Semantic Scholar, OpenAlex, or arXiv HTML.",
             "stats": rstats,
             "source": source,
             "focal_id": focal_cid,
