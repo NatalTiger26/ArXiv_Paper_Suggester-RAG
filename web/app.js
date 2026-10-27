@@ -17,6 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const rankCountBadge = document.getElementById("rankCountBadge");
   const ftsKeywordInput = document.getElementById("ftsKeyword");
 
+  const modeBtnRank = document.getElementById("modeBtnRank");
+  const modeBtnArxiv = document.getElementById("modeBtnArxiv");
+  const modeBtnImport = document.getElementById("modeBtnImport");
+  const viewRank = document.getElementById("viewRank");
+  const viewArxiv = document.getElementById("viewArxiv");
+  const viewImport = document.getElementById("viewImport");
+
+  const arxivLiveQuery = document.getElementById("arxivLiveQuery");
+  const arxivCategorySelect = document.getElementById("arxivCategorySelect");
+  const btnSearchArxiv = document.getElementById("btnSearchArxiv");
+
+  const importArxivId = document.getElementById("importArxivId");
+  const chkImportRAG = document.getElementById("chkImportRAG");
+  const btnImportPaper = document.getElementById("btnImportPaper");
+  const importStatus = document.getElementById("importStatus");
+
   const wEmb = document.getElementById("wEmb");
   const wRec = document.getElementById("wRec");
   const wCit = document.getElementById("wCit");
@@ -123,6 +139,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ── Discovery Mode Switcher ──────────────────────────────────────────
+  const switchDiscoveryMode = (mode) => {
+    [modeBtnRank, modeBtnArxiv, modeBtnImport].forEach(b => b && b.classList.remove("active"));
+    [viewRank, viewArxiv, viewImport].forEach(v => v && (v.style.display = "none"));
+
+    if (mode === "rank") {
+      if (modeBtnRank) modeBtnRank.classList.add("active");
+      if (viewRank) viewRank.style.display = "block";
+    } else if (mode === "arxiv") {
+      if (modeBtnArxiv) modeBtnArxiv.classList.add("active");
+      if (viewArxiv) viewArxiv.style.display = "block";
+    } else if (mode === "import") {
+      if (modeBtnImport) modeBtnImport.classList.add("active");
+      if (viewImport) viewImport.style.display = "block";
+    }
+  };
+
+  if (modeBtnRank) modeBtnRank.addEventListener("click", () => switchDiscoveryMode("rank"));
+  if (modeBtnArxiv) modeBtnArxiv.addEventListener("click", () => switchDiscoveryMode("arxiv"));
+  if (modeBtnImport) modeBtnImport.addEventListener("click", () => switchDiscoveryMode("import"));
+
   // ── Multi-Signal Ranking ─────────────────────────────────────────────
   const renderRankedPapers = (papers) => {
     const filter = (ftsKeywordInput.value || "").toLowerCase().trim();
@@ -144,14 +181,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const cites = (p.citation_count !== "" && p.citation_count !== null && p.citation_count !== undefined)
         ? `${p.citation_count} cites`
         : "—";
+      const isDirect = Boolean(p.is_direct_match);
 
       return `
-        <div class="paper-card" data-aid="${aid}">
+        <div class="paper-card ${isDirect ? "direct-match-card" : ""}" data-aid="${aid}">
           <div class="card-top">
-            <span class="score-badge">Score: ${score}</span>
+            ${isDirect
+              ? `<span class="score-badge" style="background:#0284c7; color:#fff; font-weight:600;">🎯 Direct Match</span>`
+              : `<span class="score-badge">Score: ${score}</span>`
+            }
             <span class="aid-badge">${aid}</span>
           </div>
-          <div class="paper-title">${p.title}</div>
+          <div class="paper-title">${escapeHtml(p.title)}</div>
           <div class="paper-meta">
             <span>📅 ${year}</span>
             <span>⭐ ${cites}</span>
@@ -163,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="signal-pill">vel: ${(sig.velocity || 0).toFixed(2)}</span>
           </div>
           <div class="card-actions">
-            <button class="btn-card-action btn-ask-this" data-title="${p.title}" data-aid="${aid}">Ask This</button>
+            <button class="btn-card-action btn-ask-this" data-title="${escapeHtml(p.title)}" data-aid="${aid}">Ask This</button>
             <button class="btn-card-action btn-nov-this" data-aid="${aid}">Novelty</button>
             <button class="btn-card-action btn-ingest-this" data-aid="${aid}">Ingest</button>
           </div>
@@ -172,16 +213,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
 
     // Bind action buttons
-    rankResultsList.querySelectorAll(".btn-ask-this").forEach(b => {
-      b.addEventListener("click", () => {
+    bindPaperCardActions(rankResultsList);
+  };
+
+  // ── Live arXiv Search Renderer ────────────────────────────────────────
+  const renderArxivResults = (papers) => {
+    rankCountBadge.textContent = `${papers.length} live papers`;
+    if (!papers.length) {
+      rankResultsList.innerHTML = `<div class="empty-state">No arXiv papers found for this query.</div>`;
+      return;
+    }
+
+    rankResultsList.innerHTML = papers.map(p => {
+      const aid = p.arxiv_id;
+      const year = p.year || "—";
+      const cats = (p.categories || []).join(", ") || "arXiv";
+      const inCatalog = Boolean(p.in_catalog);
+      const inRag = Boolean(p.in_rag);
+
+      return `
+        <div class="paper-card" data-aid="${aid}">
+          <div class="card-top">
+            <span class="cat-pill">${escapeHtml(cats)}</span>
+            <span class="aid-badge">${aid}</span>
+          </div>
+          <div class="paper-title">${escapeHtml(p.title)}</div>
+          <div class="paper-meta">
+            <span>📅 ${year}</span>
+            <span style="color:${inRag ? '#4ade80' : (inCatalog ? '#38bdf8' : '#94a3b8')}">
+              ${inRag ? "✓ In Q&A Index" : (inCatalog ? "✓ In Library" : "🌐 Live arXiv")}
+            </span>
+          </div>
+          <div class="paper-desc" style="font-size:12px; color:#94a3b8; line-height:1.4; margin: 4px 0 8px 0;">
+            ${escapeHtml((p.abstract || "").slice(0, 160))}...
+          </div>
+          <div class="card-actions">
+            <button class="btn-card-action btn-import-this ${inRag ? "btn-done" : ""}" data-aid="${aid}">
+              ${inRag ? "✓ Ingested" : (inCatalog ? "📥 Ingest for Q&A" : "➕ Import & Ingest")}
+            </button>
+            <button class="btn-card-action btn-nov-this" data-aid="${aid}">Novelty</button>
+            <button class="btn-card-action btn-ask-this" data-title="${escapeHtml(p.title)}" data-aid="${aid}">Ask This</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    bindPaperCardActions(rankResultsList);
+  };
+
+  const bindPaperCardActions = (container) => {
+    container.querySelectorAll(".btn-ask-this").forEach(b => {
+      b.addEventListener("click", async () => {
         const aid = b.getAttribute("data-aid");
         const title = b.getAttribute("data-title");
-        qaQueryInput.value = `What are the key findings, methodologies, and limitations of paper ${aid} (${title})?`;
+        qaQueryInput.value = `What are the key findings, methodologies, and contributions of paper ${aid} (${title})?`;
         btnAsk.click();
       });
     });
 
-    rankResultsList.querySelectorAll(".btn-nov-this").forEach(b => {
+    container.querySelectorAll(".btn-nov-this").forEach(b => {
       b.addEventListener("click", () => {
         noveltyArxivIdInput.value = b.getAttribute("data-aid");
         selectTab("subspace");
@@ -189,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    rankResultsList.querySelectorAll(".btn-ingest-this").forEach(b => {
+    container.querySelectorAll(".btn-ingest-this").forEach(b => {
       b.addEventListener("click", async () => {
         const aid = b.getAttribute("data-aid");
         b.textContent = "Ingesting...";
@@ -201,10 +291,32 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify({ arxiv_id: aid }),
           });
           const d = await res.json();
-          if (d.skipped) {
-            b.textContent = "✓ In Index";
-          } else {
+          b.textContent = d.skipped ? "✓ In Index" : "✓ Ingested";
+          loadHealth();
+        } catch (e) {
+          b.textContent = "Error";
+        }
+      });
+    });
+
+    container.querySelectorAll(".btn-import-this").forEach(b => {
+      b.addEventListener("click", async () => {
+        const aid = b.getAttribute("data-aid");
+        b.textContent = "Importing...";
+        b.disabled = true;
+        try {
+          const res = await fetch("/api/arxiv/import", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ arxiv_id: aid, ingest_rag: true }),
+          });
+          const d = await res.json();
+          if (d.ok) {
             b.textContent = "✓ Ingested";
+            b.style.borderColor = "var(--accent-emerald)";
+            b.style.color = "var(--accent-emerald)";
+          } else {
+            b.textContent = "Failed";
           }
           loadHealth();
         } catch (e) {
@@ -213,6 +325,86 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
+
+  // ── Live arXiv Search Handler ────────────────────────────────────────
+  if (btnSearchArxiv) {
+    btnSearchArxiv.addEventListener("click", async () => {
+      const q = arxivLiveQuery.value.trim();
+      const cat = arxivCategorySelect ? arxivCategorySelect.value : "";
+      if (!q) return;
+
+      btnSearchArxiv.textContent = "Searching...";
+      btnSearchArxiv.disabled = true;
+      rankResultsList.innerHTML = `<div class="loading-state">Querying live arXiv API for "${escapeHtml(q)}"...</div>`;
+
+      try {
+        const url = `/api/arxiv/search?q=${encodeURIComponent(q)}${cat ? `&category=${encodeURIComponent(cat)}` : ""}&limit=15`;
+        const res = await fetch(url);
+        const d = await res.json();
+        renderArxivResults(d.results || []);
+      } catch (e) {
+        rankResultsList.innerHTML = `<div class="empty-state">Error querying arXiv: ${escapeHtml(e.message)}</div>`;
+      } finally {
+        btnSearchArxiv.textContent = "Search arXiv";
+        btnSearchArxiv.disabled = false;
+      }
+    });
+
+    arxivLiveQuery.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") btnSearchArxiv.click();
+    });
+  }
+
+  // ── Add Paper by arXiv ID Handler ────────────────────────────────────
+  if (btnImportPaper) {
+    btnImportPaper.addEventListener("click", async () => {
+      const aid = importArxivId.value.trim();
+      if (!aid) return;
+
+      btnImportPaper.textContent = "Importing...";
+      btnImportPaper.disabled = true;
+      importStatus.className = "import-status";
+      importStatus.textContent = "Fetching metadata from arXiv & indexing...";
+
+      try {
+        const res = await fetch("/api/arxiv/import", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ arxiv_id: aid, ingest_rag: chkImportRAG.checked }),
+        });
+        const d = await res.json();
+        if (d.ok) {
+          const p = d.paper || {};
+          importStatus.className = "import-status success";
+          importStatus.textContent = `✓ Successfully imported "${p.title || aid}" into library!`;
+          loadHealth();
+          renderRankedPapers([{
+            arxiv_id: d.arxiv_id,
+            title: p.title || aid,
+            year: p.year,
+            categories: p.categories,
+            citation_count: p.citation_count,
+            is_direct_match: true,
+            final_score: 1.0,
+            signals: { embedding: 1.0, recency: 1.0, citation: 1.0, velocity: 1.0 },
+          }]);
+        } else {
+          importStatus.className = "import-status error";
+          importStatus.textContent = `Error: ${d.error || "Failed to import"}`;
+        }
+      } catch (e) {
+        importStatus.className = "import-status error";
+        importStatus.textContent = `Error: ${e.message}`;
+      } finally {
+        btnImportPaper.textContent = "Import";
+        btnImportPaper.disabled = false;
+      }
+    });
+
+    importArxivId.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") btnImportPaper.click();
+    });
+  }
 
   ftsKeywordInput.addEventListener("input", () => renderRankedPapers(currentRankedPapers));
 

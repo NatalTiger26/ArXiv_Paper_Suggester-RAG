@@ -1,15 +1,15 @@
 {
   "stats": {
-    "timestamp": "2026-10-26T22:19:51.291561+00:00",
-    "total_requested": 50,
-    "total_evaluated": 50,
-    "total_successful": 20,
+    "timestamp": "2026-10-27T00:15:53.360198+00:00",
+    "total_requested": 105,
+    "total_evaluated": 105,
+    "total_successful": 105,
     "category_filter": null,
     "min_citations_filter": 0,
-    "mean_m": 0.8903,
-    "mean_Delta": 0.0825,
-    "mean_R2_plus": 0.8761,
-    "mean_residual": 0.3478
+    "mean_m": 0.8843,
+    "mean_Delta": 0.078,
+    "mean_R2_plus": 0.8619,
+    "mean_residual": 0.3637
   },
   "results": [
     {
@@ -69,8 +69,52 @@
       "title": "Consistent Individualized Feature Attribution for Tree Ensembles",
       "year": 2018,
       "citation_count": 2020,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8293,
+      "Delta": 0.1135,
+      "R2_plus": 0.8012,
+      "novelty_residual": 0.4458,
+      "novelty_score": 0.1988,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:442e10a3c6640ded9408622005e3c2a8906ce4c2",
+          "title": "A Unified Approach to Interpreting Model Predictions",
+          "weight": 0.3227,
+          "share": 0.3,
+          "url": "https://www.semanticscholar.org/paper/442e10a3c6640ded9408622005e3c2a8906ce4c2"
+        },
+        {
+          "paper_id": "s2:fbf9f8650c9521472f0297e7c82292235738449b",
+          "title": "Classification and regression trees",
+          "weight": 0.1944,
+          "share": 0.2,
+          "url": "https://doi.org/10.1007/s00038-011-0315-z"
+        },
+        {
+          "paper_id": "s2:b2681fbc27089797cedc1a454b0c1b94c6482abe",
+          "title": "Algorithmic Transparency via Quantitative Input Influence: Theory and Experiments with Learning Systems",
+          "weight": 0.1883,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/SP.2016.42"
+        },
+        {
+          "paper_id": "s2:4e6238c8613b5b81f81552939bce33296aedfbfe",
+          "title": "How to Explain Individual Classification Decisions",
+          "weight": 0.0866,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/4e6238c8613b5b81f81552939bce33296aedfbfe"
+        },
+        {
+          "paper_id": "s2:ad4fd2c149f220a62441576af92a8a669fe81246",
+          "title": "Scikit-learn: Machine Learning in Python",
+          "weight": 0.0855,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/ad4fd2c149f220a62441576af92a8a669fe81246"
+        }
+      ],
+      "n_refs_used": 7,
+      "d_eff": null
     },
     {
       "arxiv_id": "1803.08024",
@@ -181,8 +225,52 @@
       "title": "The (Un)reliability of saliency methods",
       "year": 2017,
       "citation_count": 832,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8794,
+      "Delta": 0.0641,
+      "R2_plus": 0.8375,
+      "novelty_residual": 0.4032,
+      "novelty_score": 0.1625,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1810.03292",
+          "title": "Sanity Checks for Saliency Maps",
+          "weight": 0.5204,
+          "share": 0.5,
+          "url": "https://arxiv.org/abs/1810.03292"
+        },
+        {
+          "paper_id": "1703.01365",
+          "title": "Axiomatic Attribution for Deep Networks",
+          "weight": 0.1832,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1703.01365"
+        },
+        {
+          "paper_id": "1611.07270",
+          "title": "Investigating the influence of noise and distractors on the interpretation of neural networks",
+          "weight": 0.1288,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.07270"
+        },
+        {
+          "paper_id": "1605.01713",
+          "title": "Not Just a Black Box: Learning Important Features Through Propagating Activation Differences",
+          "weight": 0.053,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1605.01713"
+        },
+        {
+          "paper_id": "s2:17a273bbd4448083b01b5a9389b3c37f5425aac0",
+          "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation",
+          "weight": 0.0522,
+          "share": 0.1,
+          "url": "https://doi.org/10.1371/journal.pone.0130140"
+        }
+      ],
+      "n_refs_used": 20,
+      "d_eff": null
     },
     {
       "arxiv_id": "1512.00570",
@@ -345,8 +433,52 @@
       "title": "Untitled",
       "year": null,
       "citation_count": 677,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.92,
+      "Delta": 0.0783,
+      "R2_plus": 0.9248,
+      "novelty_residual": 0.2743,
+      "novelty_score": 0.0752,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2613148767",
+          "title": "Deep Graph Clustering in Social Network",
+          "weight": 0.2783,
+          "share": 0.3,
+          "url": "https://doi.org/10.1145/3041021.3051158"
+        },
+        {
+          "paper_id": "openalex:W2173649752",
+          "title": "Unsupervised Deep Embedding for Clustering Analysis",
+          "weight": 0.1724,
+          "share": 0.2,
+          "url": "https://doi.org/10.48550/arxiv.1511.06335"
+        },
+        {
+          "paper_id": "openalex:W2972209102",
+          "title": "Learning Graph Embedding With Adversarial Training Methods",
+          "weight": 0.112,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/tcyb.2019.2932096"
+        },
+        {
+          "paper_id": "openalex:W2766453196",
+          "title": "Graph Attention Networks",
+          "weight": 0.1116,
+          "share": 0.1,
+          "url": "https://doi.org/10.17863/cam.48429"
+        },
+        {
+          "paper_id": "openalex:W2405933695",
+          "title": "Learning Deep Representations for Graph Clustering",
+          "weight": 0.1042,
+          "share": 0.1,
+          "url": "https://doi.org/10.1609/aaai.v28i1.8916"
+        }
+      ],
+      "n_refs_used": 25,
+      "d_eff": null
     },
     {
       "arxiv_id": "1901.09392",
@@ -457,8 +589,52 @@
       "title": "Cross-Modal Self-Attention Network for Referring Image Segmentation",
       "year": 2019,
       "citation_count": 605,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.9362,
+      "Delta": 0.0402,
+      "R2_plus": 0.9167,
+      "novelty_residual": 0.2886,
+      "novelty_score": 0.0833,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "1703.07939",
+          "title": "Recurrent Multimodal Interaction for Referring Image Segmentation",
+          "weight": 0.3821,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/1703.07939"
+        },
+        {
+          "paper_id": "1801.08186",
+          "title": "MAttNet: Modular Attention Network for Referring Expression Comprehension",
+          "weight": 0.1493,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1801.08186"
+        },
+        {
+          "paper_id": "1611.09978",
+          "title": "Modeling Relationships in Referential Expressions with Compositional Modular Networks",
+          "weight": 0.1302,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.09978"
+        },
+        {
+          "paper_id": "s2:8f44799620bf22f6efa01c35497de7dda3e5d4ab",
+          "title": "Referring Image Segmentation via Recurrent Refinement Networks",
+          "weight": 0.0928,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2018.00602"
+        },
+        {
+          "paper_id": "1606.00915",
+          "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs",
+          "weight": 0.0769,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1606.00915"
+        }
+      ],
+      "n_refs_used": 29,
+      "d_eff": null
     },
     {
       "arxiv_id": "1806.06176",
@@ -517,8 +693,52 @@
       "title": "Look into Person: Self-supervised Structure-sensitive Learning and A New Benchmark for Human Parsing",
       "year": 2017,
       "citation_count": 520,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.9201,
+      "Delta": 0.0568,
+      "R2_plus": 0.9034,
+      "novelty_residual": 0.3108,
+      "novelty_score": 0.0966,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2514518917",
+          "title": "Pose-Guided Human Parsing by an AND/OR Graph Using Pose-Context Features",
+          "weight": 0.2217,
+          "share": 0.2,
+          "url": "https://doi.org/10.1609/aaai.v30i1.10460"
+        },
+        {
+          "paper_id": "openalex:W2080873731",
+          "title": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis",
+          "weight": 0.2203,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/cvpr.2014.471"
+        },
+        {
+          "paper_id": "openalex:W2204578866",
+          "title": "Human Parsing with Contextualized Convolutional Neural Network",
+          "weight": 0.1489,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/iccv.2015.163"
+        },
+        {
+          "paper_id": "openalex:W1992996309",
+          "title": "Towards Unified Human Parsing and Pose Estimation",
+          "weight": 0.1085,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/cvpr.2014.113"
+        },
+        {
+          "paper_id": "openalex:W2046835352",
+          "title": "Unsupervised Salience Learning for Person Re-identification",
+          "weight": 0.0688,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/cvpr.2013.460"
+        }
+      ],
+      "n_refs_used": 35,
+      "d_eff": null
     },
     {
       "arxiv_id": "1510.02927",
@@ -629,40 +849,260 @@
       "title": "Textual Explanations for Self-Driving Vehicles",
       "year": 2018,
       "citation_count": 486,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.9071,
+      "Delta": 0.0338,
+      "R2_plus": 0.8566,
+      "novelty_residual": 0.3786,
+      "novelty_score": 0.1434,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:e30e29b3bf4bc19194bad081badeb35803ee2118",
+          "title": "Interpretable Learning for Self-Driving Cars by Visualizing Causal Attention",
+          "weight": 0.672,
+          "share": 0.7,
+          "url": "https://www.semanticscholar.org/paper/e30e29b3bf4bc19194bad081badeb35803ee2118"
+        },
+        {
+          "paper_id": "s2:77a5915693b0f8a2016b53d60ff559d2da589d16",
+          "title": "The structure and function of explanations.",
+          "weight": 0.1285,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/J.TICS.2006.08.004"
+        },
+        {
+          "paper_id": "1409.0473",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "weight": 0.0853,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1409.0473"
+        },
+        {
+          "paper_id": "s2:258986132bf17755fe8263e42429fe73218c1534",
+          "title": "CIDEr: Consensus-based image description evaluation",
+          "weight": 0.0808,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/258986132bf17755fe8263e42429fe73218c1534"
+        },
+        {
+          "paper_id": "s2:d7da009f457917aa381619facfa5ffae9329a6e9",
+          "title": "Bleu: a Method for Automatic Evaluation of Machine Translation",
+          "weight": 0.0233,
+          "share": 0.0,
+          "url": "https://www.semanticscholar.org/paper/d7da009f457917aa381619facfa5ffae9329a6e9"
+        }
+      ],
+      "n_refs_used": 11,
+      "d_eff": null
     },
     {
       "arxiv_id": "1703.06585",
       "title": "Learning Cooperative Visual Dialog Agents with Deep Reinforcement Learning",
       "year": 2017,
       "citation_count": 435,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8616,
+      "Delta": 0.1253,
+      "R2_plus": 0.8677,
+      "novelty_residual": 0.3638,
+      "novelty_score": 0.1323,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1611.08669",
+          "title": "Visual Dialog",
+          "weight": 0.2549,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1611.08669"
+        },
+        {
+          "paper_id": "1605.06676",
+          "title": "Learning to Communicate with Deep Multi-Agent Reinforcement Learning",
+          "weight": 0.1998,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1605.06676"
+        },
+        {
+          "paper_id": "1612.07182",
+          "title": "Multi-Agent Cooperation and the Emergence of (Natural) Language",
+          "weight": 0.176,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1612.07182"
+        },
+        {
+          "paper_id": "1606.01541",
+          "title": "Deep Reinforcement Learning for Dialogue Generation",
+          "weight": 0.1368,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1606.01541"
+        },
+        {
+          "paper_id": "1505.00468",
+          "title": "VQA: Visual Question Answering",
+          "weight": 0.0907,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1505.00468"
+        }
+      ],
+      "n_refs_used": 40,
+      "d_eff": null
     },
     {
       "arxiv_id": "1906.07983",
       "title": "Untitled",
       "year": null,
       "citation_count": 421,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8657,
+      "Delta": 0.099,
+      "R2_plus": 0.8483,
+      "novelty_residual": 0.3894,
+      "novelty_score": 0.1517,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1902.02041",
+          "title": "Fooling Neural Network Interpretations via Adversarial Model Manipulation",
+          "weight": 0.2053,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1902.02041"
+        },
+        {
+          "paper_id": "1711.00867",
+          "title": "The (Un)reliability of saliency methods",
+          "weight": 0.1756,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1711.00867"
+        },
+        {
+          "paper_id": "s2:d8cab3a6d5d0c8ebe8d55fd15f7b5e9d2be11a93",
+          "title": "Differential Geometry: Connections, Curvature, and Characteristic Classes",
+          "weight": 0.1264,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/978-3-319-55084-8"
+        },
+        {
+          "paper_id": "1806.08049",
+          "title": "On the Robustness of Interpretability Methods",
+          "weight": 0.1077,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1806.08049"
+        },
+        {
+          "paper_id": "1806.07538",
+          "title": "Towards Robust Interpretability with Self-Explaining Neural Networks",
+          "weight": 0.0967,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1806.07538"
+        }
+      ],
+      "n_refs_used": 35,
+      "d_eff": null
     },
     {
       "arxiv_id": "1905.00780",
       "title": "Full-Gradient Representation for Neural Network Visualization",
       "year": 2019,
       "citation_count": 383,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8786,
+      "Delta": 0.0849,
+      "R2_plus": 0.8568,
+      "novelty_residual": 0.3784,
+      "novelty_score": 0.1432,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1312.6034",
+          "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+          "weight": 0.2555,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1312.6034"
+        },
+        {
+          "paper_id": "1610.02391",
+          "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization",
+          "weight": 0.1451,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1610.02391"
+        },
+        {
+          "paper_id": "1509.06321",
+          "title": "Evaluating the Visualization of What a Deep Neural Network Has Learned",
+          "weight": 0.1374,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1509.06321"
+        },
+        {
+          "paper_id": "1706.03825",
+          "title": "SmoothGrad: removing noise by adding noise",
+          "weight": 0.1096,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1706.03825"
+        },
+        {
+          "paper_id": "1805.07039",
+          "title": "A Theoretical Explanation for Perplexing Behaviors of Backpropagation-based Visualizations",
+          "weight": 0.1022,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1805.07039"
+        }
+      ],
+      "n_refs_used": 30,
+      "d_eff": null
     },
     {
       "arxiv_id": "1902.04742",
       "title": "Untitled",
       "year": null,
       "citation_count": 368,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.908,
+      "Delta": 0.0943,
+      "R2_plus": 0.9188,
+      "novelty_residual": 0.285,
+      "novelty_score": 0.0812,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1710.05468",
+          "title": "Generalization in Deep Learning",
+          "weight": 0.1129,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1710.05468"
+        },
+        {
+          "paper_id": "1901.01672",
+          "title": "Generalization in Deep Networks: The Role of Distance from Initialization",
+          "weight": 0.11,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1901.01672"
+        },
+        {
+          "paper_id": "1611.03530",
+          "title": "Understanding deep learning requires rethinking generalization",
+          "weight": 0.0982,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.03530"
+        },
+        {
+          "paper_id": "1812.09859",
+          "title": "Generalization Bounds for Uniformly Stable Algorithms",
+          "weight": 0.0852,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1812.09859"
+        },
+        {
+          "paper_id": "1805.12076",
+          "title": "Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks",
+          "weight": 0.0851,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1805.12076"
+        }
+      ],
+      "n_refs_used": 42,
+      "d_eff": null
     },
     {
       "arxiv_id": "1609.02077",
@@ -773,16 +1213,104 @@
       "title": "Untitled",
       "year": null,
       "citation_count": 336,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.851,
+      "Delta": 0.1147,
+      "R2_plus": 0.8389,
+      "novelty_residual": 0.4014,
+      "novelty_score": 0.1611,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:939071cff1ec0fa75a9a31a3a5c6c3c27d892e21",
+          "title": "Aligning context-based statistical models of language with brain activity during reading",
+          "weight": 0.1731,
+          "share": 0.2,
+          "url": "https://doi.org/10.3115/v1/D14-1030"
+        },
+        {
+          "paper_id": "1810.04805",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "weight": 0.1728,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1810.04805"
+        },
+        {
+          "paper_id": "s2:ad22b61cb977377cc422b0b39a0bc5c58f1ab1ea",
+          "title": "Natural speech reveals the semantic maps that tile human cerebral cortex",
+          "weight": 0.1274,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/nature17637"
+        },
+        {
+          "paper_id": "1802.05365",
+          "title": "Deep Contextualized Word Representations",
+          "weight": 0.09,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1802.05365"
+        },
+        {
+          "paper_id": "1901.02860",
+          "title": "Transformer-XL: Attentive Language Models beyond a Fixed-Length Context",
+          "weight": 0.0888,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1901.02860"
+        }
+      ],
+      "n_refs_used": 48,
+      "d_eff": null
     },
     {
       "arxiv_id": "1812.01687",
       "title": "PointCloud Saliency Maps",
       "year": 2018,
       "citation_count": 286,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8651,
+      "Delta": 0.0588,
+      "R2_plus": 0.8071,
+      "novelty_residual": 0.4392,
+      "novelty_score": 0.1929,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+          "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+          "weight": 0.3082,
+          "share": 0.3,
+          "url": "https://www.semanticscholar.org/paper/dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71"
+        },
+        {
+          "paper_id": "s2:8674494bd7a076286b905912d26d47f7501c4046",
+          "title": "PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space",
+          "weight": 0.2408,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/8674494bd7a076286b905912d26d47f7501c4046"
+        },
+        {
+          "paper_id": "s2:d997beefc0922d97202789d2ac307c55c2c52fba",
+          "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation",
+          "weight": 0.1981,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/d997beefc0922d97202789d2ac307c55c2c52fba"
+        },
+        {
+          "paper_id": "s2:ff75dc12b6b64990193e8e79ee8127ec99071cc5",
+          "title": "Probabilistic Terrain Analysis For High-Speed Desert Driving",
+          "weight": 0.0984,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/ff75dc12b6b64990193e8e79ee8127ec99071cc5"
+        },
+        {
+          "paper_id": "s2:e5e4ea8f08d3a52cc92b9dfe5622d116dbad6166",
+          "title": "Dominant Set Clustering and Pooling for Multi-View 3D Object Recognition",
+          "weight": 0.0971,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/e5e4ea8f08d3a52cc92b9dfe5622d116dbad6166"
+        }
+      ],
+      "n_refs_used": 11,
+      "d_eff": null
     },
     {
       "arxiv_id": "1802.00682",
@@ -841,24 +1369,156 @@
       "title": "Deep Variation-structured Reinforcement Learning for Visual Relationship and Attribute Detection",
       "year": 2017,
       "citation_count": 263,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8869,
+      "Delta": 0.1027,
+      "R2_plus": 0.8893,
+      "novelty_residual": 0.3328,
+      "novelty_score": 0.1107,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1602.07332",
+          "title": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations",
+          "weight": 0.2834,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1602.07332"
+        },
+        {
+          "paper_id": "1608.00187",
+          "title": "Visual Relationship Detection with Language Priors",
+          "weight": 0.183,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1608.00187"
+        },
+        {
+          "paper_id": "1311.2524",
+          "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation",
+          "weight": 0.105,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1311.2524"
+        },
+        {
+          "paper_id": "1609.05143",
+          "title": "Target-driven visual navigation in indoor scenes using deep reinforcement learning",
+          "weight": 0.0904,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1609.05143"
+        },
+        {
+          "paper_id": "1312.5602",
+          "title": "Playing Atari with Deep Reinforcement Learning",
+          "weight": 0.0903,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1312.5602"
+        }
+      ],
+      "n_refs_used": 34,
+      "d_eff": null
     },
     {
       "arxiv_id": "1701.08893",
       "title": "Untitled",
       "year": null,
       "citation_count": 262,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8908,
+      "Delta": 0.0772,
+      "R2_plus": 0.8707,
+      "novelty_residual": 0.3596,
+      "novelty_score": 0.1293,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1603.08155",
+          "title": "Perceptual Losses for Real-Time Style Transfer and Super-Resolution",
+          "weight": 0.2408,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1603.08155"
+        },
+        {
+          "paper_id": "1606.01286",
+          "title": "Incorporating long-range consistency in CNN-based texture generation",
+          "weight": 0.1455,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1606.01286"
+        },
+        {
+          "paper_id": "1607.08022",
+          "title": "Instance Normalization: The Missing Ingredient for Fast Stylization",
+          "weight": 0.1185,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1607.08022"
+        },
+        {
+          "paper_id": "s2:38850b393d7132dc14141f7d643aca4cb9c321da",
+          "title": "Pyramid-based texture analysis/synthesis",
+          "weight": 0.0856,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/218380.218446"
+        },
+        {
+          "paper_id": "1611.09969",
+          "title": "High-Resolution Image Inpainting Using Multi-scale Neural Patch Synthesis",
+          "weight": 0.0727,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.09969"
+        }
+      ],
+      "n_refs_used": 42,
+      "d_eff": null
     },
     {
       "arxiv_id": "1710.07859",
       "title": "Feature-Guided Black-Box Safety Testing of Deep Neural Networks",
       "year": 2017,
       "citation_count": 255,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.911,
+      "Delta": 0.0896,
+      "R2_plus": 0.9196,
+      "novelty_residual": 0.2836,
+      "novelty_score": 0.0804,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1610.06940",
+          "title": "Safety Verification of Deep Neural Networks",
+          "weight": 0.2854,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1610.06940"
+        },
+        {
+          "paper_id": "1705.07857",
+          "title": "Real Time Image Saliency for Black Box Classifiers",
+          "weight": 0.2016,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1705.07857"
+        },
+        {
+          "paper_id": "1710.00486",
+          "title": "DeepSafe: A Data-driven Approach for Checking Adversarial Robustness in Neural Networks",
+          "weight": 0.1061,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1710.00486"
+        },
+        {
+          "paper_id": "1707.03501",
+          "title": "NO Need to Worry about Adversarial Examples in Object Detection in Autonomous Vehicles",
+          "weight": 0.0701,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1707.03501"
+        },
+        {
+          "paper_id": "s2:f174af2842fcd9878d460007d476482b1b1c8579",
+          "title": "Simple Black-Box Adversarial Attacks on Deep Neural Networks",
+          "weight": 0.0512,
+          "share": 0.0,
+          "url": "https://doi.org/10.1109/CVPRW.2017.172"
+        }
+      ],
+      "n_refs_used": 34,
+      "d_eff": null
     },
     {
       "arxiv_id": "1807.03903",
@@ -917,8 +1577,52 @@
       "title": "Making Deep Heatmaps Robust to Partial Occlusions for 3D Object Pose Estimation",
       "year": 2018,
       "citation_count": 245,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.9299,
+      "Delta": 0.0242,
+      "R2_plus": 0.889,
+      "novelty_residual": 0.3332,
+      "novelty_score": 0.111,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "1703.10896",
+          "title": "BB8: A Scalable, Accurate, Robust to Partial Occlusion Method for Predicting the 3D Poses of Challenging Objects without Using Depth",
+          "weight": 0.4906,
+          "share": 0.5,
+          "url": "https://arxiv.org/abs/1703.10896"
+        },
+        {
+          "paper_id": "1607.06038",
+          "title": "Deep Learning of Local RGB-D Patches for 3D Object Detection and 6D Pose Estimation",
+          "weight": 0.1182,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1607.06038"
+        },
+        {
+          "paper_id": "1711.00199",
+          "title": "PoseCNN: A Convolutional Neural Network for 6D Object Pose Estimation in Cluttered Scenes",
+          "weight": 0.1165,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1711.00199"
+        },
+        {
+          "paper_id": "1710.10473",
+          "title": "SeeThrough: Finding Chairs in Heavily Occluded Indoor Scene Images",
+          "weight": 0.0877,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1710.10473"
+        },
+        {
+          "paper_id": "1707.07819",
+          "title": "Detecting Semantic Parts on Partially Occluded Objects",
+          "weight": 0.0644,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1707.07819"
+        }
+      ],
+      "n_refs_used": 36,
+      "d_eff": null
     },
     {
       "arxiv_id": "1701.01299",
@@ -1029,40 +1733,253 @@
       "title": "Untitled",
       "year": null,
       "citation_count": 228,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.9262,
+      "Delta": 0.0613,
+      "R2_plus": 0.9192,
+      "novelty_residual": 0.2843,
+      "novelty_score": 0.0808,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1801.00881",
+          "title": "Deep Spatial Feature Reconstruction for Partial Person Re-identification: Alignment-free Approach",
+          "weight": 0.2194,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1801.00881"
+        },
+        {
+          "paper_id": "1804.02792",
+          "title": "Occluded Person Re-Identification",
+          "weight": 0.1912,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1804.02792"
+        },
+        {
+          "paper_id": "1805.03344",
+          "title": "Attention-Aware Compositional Network for Person Re-identification",
+          "weight": 0.1569,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1805.03344"
+        },
+        {
+          "paper_id": "1609.01775",
+          "title": "Performance Measures and a Data Set for Multi-target, Multi-camera Tracking",
+          "weight": 0.0963,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1609.01775"
+        },
+        {
+          "paper_id": "s2:ee62cff7f027a31c3bd7f313bfdc04e7d79eb04a",
+          "title": "Spindle Net: Person Re-identification with Human Body Region Guided Feature Decomposition and Fusion",
+          "weight": 0.0953,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2017.103"
+        }
+      ],
+      "n_refs_used": 24,
+      "d_eff": null
     },
     {
       "arxiv_id": "1903.00839",
       "title": "Improving Referring Expression Grounding with Cross-modal Attention-guided Erasing",
       "year": 2019,
       "citation_count": 225,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.892,
+      "Delta": 0.0886,
+      "R2_plus": 0.8844,
+      "novelty_residual": 0.3401,
+      "novelty_score": 0.1156,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1511.03745",
+          "title": "Grounding of Textual Phrases in Images by Reconstruction",
+          "weight": 0.1981,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1511.03745"
+        },
+        {
+          "paper_id": "1801.08186",
+          "title": "MAttNet: Modular Attention Network for Referring Expression Comprehension",
+          "weight": 0.1313,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1801.08186"
+        },
+        {
+          "paper_id": "s2:1bfe59be5b42d6b7257da4b35a408239c01ab79d",
+          "title": "Adversarially Occluded Samples for Person Re-identification",
+          "weight": 0.1001,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2018.00535"
+        },
+        {
+          "paper_id": "1608.00525",
+          "title": "Modeling Context Between Objects for Referring Expression Understanding",
+          "weight": 0.0886,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1608.00525"
+        },
+        {
+          "paper_id": "1808.01571",
+          "title": "Improving Deep Visual Representation for Person Re-identification by Global and Local Image-language Association",
+          "weight": 0.0767,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1808.01571"
+        }
+      ],
+      "n_refs_used": 45,
+      "d_eff": null
     },
     {
       "arxiv_id": "1807.04855",
       "title": "A feature agnostic approach for glaucoma detection in OCT volumes",
       "year": 2018,
       "citation_count": 193,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.9369,
+      "Delta": 0.0282,
+      "R2_plus": 0.9059,
+      "novelty_residual": 0.3067,
+      "novelty_score": 0.0941,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:4a8d000ef73ac5adf3317fc820cccc5332e236af",
+          "title": "Hybrid deep learning on single wide-field optical coherence tomography scans accurately classifies glaucoma suspects",
+          "weight": 0.5697,
+          "share": 0.5,
+          "url": "https://doi.org/10.1097/IJG.0000000000000765"
+        },
+        {
+          "paper_id": "s2:56e9158d8f98250cc9d7089dee04104c3cd54c58",
+          "title": "Lamina Cribrosa in Glaucoma: Diagnosis and Monitoring",
+          "weight": 0.1166,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/s40135-015-0067-7"
+        },
+        {
+          "paper_id": "s2:cd40a6b80d6603dd62b1ef4a451e3f8ab7d5bf3d",
+          "title": "Detection of Glaucoma Progression with Stratus OCT Retinal Nerve Fiber Layer, Optic Nerve Head, and Macular Thickness Measurements",
+          "weight": 0.0726,
+          "share": 0.1,
+          "url": "https://doi.org/10.1167/iovs.09-3715"
+        },
+        {
+          "paper_id": "s2:2d657a8130503906c0f75fed8c8f75d1d8fba6cf",
+          "title": "Retinal nerve fibre layer thickness measurement reproducibility improved with spectral domain optical coherence tomography",
+          "weight": 0.049,
+          "share": 0.0,
+          "url": "https://doi.org/10.1136/bjo.2009.157875"
+        },
+        {
+          "paper_id": "s2:ad61a4603965611ec0194e4af9999a9b591a50dc",
+          "title": "Lamina Cribrosa in Glaucoma",
+          "weight": 0.0448,
+          "share": 0.0,
+          "url": "https://doi.org/10.1097/ICU.0000000000000354"
+        }
+      ],
+      "n_refs_used": 29,
+      "d_eff": null
     },
     {
       "arxiv_id": "1706.06060",
       "title": "Consistent feature attribution for tree ensembles",
       "year": 2017,
       "citation_count": 187,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8442,
+      "Delta": 0.0477,
+      "R2_plus": 0.7603,
+      "novelty_residual": 0.4896,
+      "novelty_score": 0.2397,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2618851150",
+          "title": "A Unified Approach to Interpreting Model Predictions",
+          "weight": 0.3949,
+          "share": 0.4,
+          "url": "https://doi.org/10.48550/arxiv.1705.07874"
+        },
+        {
+          "paper_id": "openalex:W2549603914",
+          "title": "An unexpected unity among methods for interpreting model predictions",
+          "weight": 0.3696,
+          "share": 0.4,
+          "url": "https://doi.org/10.48550/arxiv.1611.07478"
+        },
+        {
+          "paper_id": "openalex:W2101234009",
+          "title": "Scikit-learn: Machine Learning in Python",
+          "weight": 0.1524,
+          "share": 0.2,
+          "url": "https://doi.org/10.48550/arxiv.1201.0490"
+        },
+        {
+          "paper_id": "openalex:W2146729934",
+          "title": "The Consortium to Establish a Registry for Alzheimer's Disease (CERAD)",
+          "weight": 0.083,
+          "share": 0.1,
+          "url": "https://doi.org/10.1212/wnl.41.4.479"
+        }
+      ],
+      "n_refs_used": 4,
+      "d_eff": null
     },
     {
       "arxiv_id": "1905.04172",
       "title": "On the Connection Between Adversarial Robustness and Saliency Map Interpretability",
       "year": 2019,
       "citation_count": 184,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8122,
+      "Delta": 0.142,
+      "R2_plus": 0.8017,
+      "novelty_residual": 0.4453,
+      "novelty_score": 0.1983,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1706.06083",
+          "title": "Towards Deep Learning Models Resistant to Adversarial Attacks",
+          "weight": 0.219,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1706.06083"
+        },
+        {
+          "paper_id": "1312.6034",
+          "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+          "weight": 0.1871,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1312.6034"
+        },
+        {
+          "paper_id": "1312.6199",
+          "title": "Intriguing properties of neural networks",
+          "weight": 0.1538,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1312.6199"
+        },
+        {
+          "paper_id": "1706.03825",
+          "title": "SmoothGrad: removing noise by adding noise",
+          "weight": 0.14,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1706.03825"
+        },
+        {
+          "paper_id": "1802.01421",
+          "title": "Adversarial Vulnerability of Neural Networks Increases With Input Dimension",
+          "weight": 0.079,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1802.01421"
+        }
+      ],
+      "n_refs_used": 25,
+      "d_eff": null
     },
     {
       "arxiv_id": "1711.08998",
@@ -1121,16 +2038,104 @@
       "title": "Untitled",
       "year": null,
       "citation_count": 155,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.904,
+      "Delta": 0.0386,
+      "R2_plus": 0.8558,
+      "novelty_residual": 0.3798,
+      "novelty_score": 0.1442,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:bb95ef99ae56f6b1087d6a3aec6ba18b766b237a",
+          "title": "DeepAD: Alzheimer’s Disease Classification via Deep Convolutional Neural Networks using MRI and fMRI",
+          "weight": 0.2467,
+          "share": 0.2,
+          "url": "https://doi.org/10.1101/070441"
+        },
+        {
+          "paper_id": "s2:28b7cb6d6cb52779b26028d9c54ba0acb0cefc69",
+          "title": "Automated detection of brain atrophy patterns based on MRI for the prediction of Alzheimer's disease",
+          "weight": 0.1828,
+          "share": 0.2,
+          "url": "https://doi.org/10.1016/j.neuroimage.2009.11.046"
+        },
+        {
+          "paper_id": "s2:09acfd8cf60d44a2a7091f8f90b927567a7b4a16",
+          "title": "Diagnosis of Alzheimer's Disease Using Dual-Tree Complex Wavelet Transform, PCA, and Feed-Forward Neural Network",
+          "weight": 0.112,
+          "share": 0.1,
+          "url": "https://doi.org/10.1155/2017/9060124"
+        },
+        {
+          "paper_id": "s2:3539f67ba7f9025e2695709814aef4864843473b",
+          "title": "Early diagnosis of Alzheimer's disease with deep learning",
+          "weight": 0.0931,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ISBI.2014.6868045"
+        },
+        {
+          "paper_id": "1411.1792",
+          "title": "How transferable are features in deep neural networks?",
+          "weight": 0.0869,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1411.1792"
+        }
+      ],
+      "n_refs_used": 33,
+      "d_eff": null
     },
     {
       "arxiv_id": "1804.01793",
       "title": "End-to-End Saliency Mapping via Probability Distribution Prediction",
       "year": 2018,
       "citation_count": 154,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.9077,
+      "Delta": 0.0621,
+      "R2_plus": 0.886,
+      "novelty_residual": 0.3376,
+      "novelty_score": 0.114,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1507.01422",
+          "title": "End-to-end Convolutional Network for Saliency Prediction",
+          "weight": 0.3012,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1507.01422"
+        },
+        {
+          "paper_id": "1510.02927",
+          "title": "DeepFix: A Fully Convolutional Neural Network for Predicting Human Eye Fixations",
+          "weight": 0.1788,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1510.02927"
+        },
+        {
+          "paper_id": "s2:e80c48441351fc1d928524710b4500a0de8315bb",
+          "title": "SUN: A Bayesian framework for saliency using natural statistics",
+          "weight": 0.1587,
+          "share": 0.2,
+          "url": "https://doi.org/10.1167/8.7.32"
+        },
+        {
+          "paper_id": "s2:4161187846838ef7bb12a7fb5c1a9ba60fcfe0f7",
+          "title": "A new distance measure for probability distribution function of mixture type",
+          "weight": 0.0963,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICASSP.2000.862057"
+        },
+        {
+          "paper_id": "s2:9c9bcf1a9a8847c5cbf9bbd632486cb42d14f425",
+          "title": "Saliency detection using regional histograms.",
+          "weight": 0.0496,
+          "share": 0.0,
+          "url": "https://doi.org/10.1364/OL.38.000700"
+        }
+      ],
+      "n_refs_used": 48,
+      "d_eff": null
     },
     {
       "arxiv_id": "1904.11223",
@@ -1189,16 +2194,104 @@
       "title": "Modality-specific Cross-modal Similarity Measurement with Recurrent Attention Network",
       "year": 2017,
       "citation_count": 145,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8833,
+      "Delta": 0.1056,
+      "R2_plus": 0.8859,
+      "novelty_residual": 0.3379,
+      "novelty_score": 0.1141,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:bd7f187eb807dce5e8ac4e3ef55c19eb91eb6389",
+          "title": "Cross-Modal Subspace Learning via Pairwise Constraints",
+          "weight": 0.2123,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/bd7f187eb807dce5e8ac4e3ef55c19eb91eb6389"
+        },
+        {
+          "paper_id": "s2:4c6ffacad6b3d9ff9a7f553e78593d9dfb507229",
+          "title": "CM-GANs: Cross-modal Generative Adversarial Networks for Common Representation Learning",
+          "weight": 0.2009,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/4c6ffacad6b3d9ff9a7f553e78593d9dfb507229"
+        },
+        {
+          "paper_id": "s2:50233ac68c2aa139fabe71e2844c2734adf39a3d",
+          "title": "An Overview of Cross-Media Retrieval: Concepts, Methodologies, Benchmarks, and Challenges",
+          "weight": 0.1533,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/50233ac68c2aa139fabe71e2844c2734adf39a3d"
+        },
+        {
+          "paper_id": "s2:2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+          "title": "Reasoning about Entailment with Neural Attention",
+          "weight": 0.1467,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45"
+        },
+        {
+          "paper_id": "s2:b7b00080f83e5b65a10bb07c0a7091e746c3a57e",
+          "title": "Cross-modal Retrieval with Correspondence Autoencoder",
+          "weight": 0.1222,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/2647868.2654902"
+        }
+      ],
+      "n_refs_used": 34,
+      "d_eff": null
     },
     {
       "arxiv_id": "1901.00392",
       "title": "Attribute-Aware Attention Model for Fine-grained Representation Learning",
       "year": 2019,
       "citation_count": 133,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.892,
+      "Delta": 0.0684,
+      "R2_plus": 0.864,
+      "novelty_residual": 0.3687,
+      "novelty_score": 0.136,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1605.06217",
+          "title": "Localizing by Describing: Attribute-Guided Attention Localization for Fine-Grained Recognition",
+          "weight": 0.3234,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1605.06217"
+        },
+        {
+          "paper_id": "1703.07220",
+          "title": "Improving Person Re-identification by Attribute and Identity Learning",
+          "weight": 0.2654,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1703.07220"
+        },
+        {
+          "paper_id": "1704.01740",
+          "title": "Object-Part Attention Model for Fine-Grained Image Classification",
+          "weight": 0.127,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1704.01740"
+        },
+        {
+          "paper_id": "1506.08959",
+          "title": "A large-scale car dataset for fine-grained categorization and verification",
+          "weight": 0.0713,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1506.08959"
+        },
+        {
+          "paper_id": "1502.03044",
+          "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+          "weight": 0.0573,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1502.03044"
+        }
+      ],
+      "n_refs_used": 55,
+      "d_eff": null
     },
     {
       "arxiv_id": "1709.06316",
@@ -1257,40 +2350,3092 @@
       "title": "Video Question Answering via Attribute-Augmented Attention Network Learning",
       "year": 2017,
       "citation_count": 118,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.888,
+      "Delta": 0.0774,
+      "R2_plus": 0.866,
+      "novelty_residual": 0.3661,
+      "novelty_score": 0.134,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1511.02274",
+          "title": "Stacked Attention Networks for Image Question Answering",
+          "weight": 0.2486,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1511.02274"
+        },
+        {
+          "paper_id": "1505.00468",
+          "title": "VQA: Visual Question Answering",
+          "weight": 0.2312,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1505.00468"
+        },
+        {
+          "paper_id": "s2:7e9a943f6f0160fc868b77cdb95e35b53f455faa",
+          "title": "Event Driven Web Video Summarization by Tag Localization and Key-Shot Identification",
+          "weight": 0.1596,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/TMM.2012.2185041"
+        },
+        {
+          "paper_id": "s2:d6a7a563640bf53953c4fda0997e4db176488510",
+          "title": "YouTube2Text: Recognizing and Describing Arbitrary Activities Using Semantic Hierarchies and Zero-Shot Recognition",
+          "weight": 0.1495,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICCV.2013.337"
+        },
+        {
+          "paper_id": "s2:0f4de7169787d9922fae06ec80f2d78a7fedda96",
+          "title": "Community-Based Question Answering via Asymmetric Multi-Faceted Ranking Network Learning",
+          "weight": 0.125,
+          "share": 0.1,
+          "url": "https://doi.org/10.1609/aaai.v31i1.10999"
+        }
+      ],
+      "n_refs_used": 23,
+      "d_eff": null
     },
     {
       "arxiv_id": "1811.12615",
       "title": "An Interpretable Model with Globally Consistent Explanations for Credit Risk",
       "year": 2018,
       "citation_count": 107,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8845,
+      "Delta": 0.0369,
+      "R2_plus": 0.8193,
+      "novelty_residual": 0.4251,
+      "novelty_score": 0.1807,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2969964925",
+          "title": "Globally-Consistent Rule-Based Summary-Explanations for Machine Learning Models: Application to Credit-Risk Evaluation",
+          "weight": 0.5636,
+          "share": 0.6,
+          "url": "https://doi.org/10.2139/ssrn.3395422"
+        },
+        {
+          "paper_id": "openalex:W2724999822",
+          "title": "Interpretable and Explorable Approximations of Black Box Models",
+          "weight": 0.1915,
+          "share": 0.2,
+          "url": "https://openalex.org/https://openalex.org/W2724999822"
+        },
+        {
+          "paper_id": "openalex:W2743731382",
+          "title": "Optimized Risk Scores",
+          "weight": 0.1179,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/3097983.3098161"
+        },
+        {
+          "paper_id": "openalex:W1599003247",
+          "title": "Using data mining for bank direct marketing: an application of the CRISP-DM methodology",
+          "weight": 0.0699,
+          "share": 0.1,
+          "url": "https://openalex.org/https://openalex.org/W1599003247"
+        },
+        {
+          "paper_id": "openalex:W2962772482",
+          "title": "A survey of methods for explaining black box models",
+          "weight": 0.0265,
+          "share": 0.0,
+          "url": "https://doi.org/10.1145/3236009"
+        }
+      ],
+      "n_refs_used": 14,
+      "d_eff": null
     },
     {
       "arxiv_id": "1906.03284",
       "title": "Untitled",
       "year": null,
       "citation_count": 104,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8616,
+      "Delta": 0.1051,
+      "R2_plus": 0.8475,
+      "novelty_residual": 0.3906,
+      "novelty_score": 0.1525,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:f4615ae853fa0e8effbc5b36f7455c43520345aa",
+          "title": "On Fairness and Calibration",
+          "weight": 0.1586,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/f4615ae853fa0e8effbc5b36f7455c43520345aa"
+        },
+        {
+          "paper_id": "s2:0fee3b6c72f7676b4934651e517d0a328048c600",
+          "title": "Certifying and Removing Disparate Impact",
+          "weight": 0.1231,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/0fee3b6c72f7676b4934651e517d0a328048c600"
+        },
+        {
+          "paper_id": "s2:3ac3c11bf6cd8ccc657eb629148d6e346e52c8e0",
+          "title": "Data preprocessing techniques for classification without discrimination",
+          "weight": 0.0942,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/3ac3c11bf6cd8ccc657eb629148d6e346e52c8e0"
+        },
+        {
+          "paper_id": "s2:0bdb738ea0f49b045a3232c61d3cc5734bcf1e93",
+          "title": "Empirical Risk Minimization under Fairness Constraints",
+          "weight": 0.0868,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/0bdb738ea0f49b045a3232c61d3cc5734bcf1e93"
+        },
+        {
+          "paper_id": "s2:d42b11ce90c9c69a20ed015b73dc33e0e4100a7b",
+          "title": "Equality of Opportunity in Supervised Learning",
+          "weight": 0.0862,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/d42b11ce90c9c69a20ed015b73dc33e0e4100a7b"
+        }
+      ],
+      "n_refs_used": 30,
+      "d_eff": null
     },
     {
       "arxiv_id": "1905.09957",
       "title": "Robust Attribution Regularization",
       "year": 2019,
       "citation_count": 98,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8786,
+      "Delta": 0.0918,
+      "R2_plus": 0.8637,
+      "novelty_residual": 0.3691,
+      "novelty_score": 0.1363,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1703.01365",
+          "title": "Axiomatic Attribution for Deep Networks",
+          "weight": 0.422,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/1703.01365"
+        },
+        {
+          "paper_id": "1711.09404",
+          "title": "Improving the Adversarial Robustness and Interpretability of Deep Neural Networks by Regularizing their Input Gradients",
+          "weight": 0.1769,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1711.09404"
+        },
+        {
+          "paper_id": "1710.10571",
+          "title": "Certifying Some Distributional Robustness with Principled Adversarial Training",
+          "weight": 0.105,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1710.10571"
+        },
+        {
+          "paper_id": "1706.06083",
+          "title": "Towards Deep Learning Models Resistant to Adversarial Attacks",
+          "weight": 0.0951,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1706.06083"
+        },
+        {
+          "paper_id": "1710.10547",
+          "title": "Interpretation of Neural Networks is Fragile",
+          "weight": 0.0761,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1710.10547"
+        }
+      ],
+      "n_refs_used": 20,
+      "d_eff": null
     },
     {
       "arxiv_id": "1902.04893",
       "title": "Why are Saliency Maps Noisy? Cause of and Solution to Noisy Saliency Maps",
       "year": 2019,
       "citation_count": 97,
-      "ok": false,
-      "error": "The only supported seed types are: None,\nint, float, str, bytes, and bytearray."
+      "ok": true,
+      "m": 0.8582,
+      "Delta": 0.1132,
+      "R2_plus": 0.8496,
+      "novelty_residual": 0.3878,
+      "novelty_score": 0.1504,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1706.03825",
+          "title": "SmoothGrad: removing noise by adding noise",
+          "weight": 0.29,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1706.03825"
+        },
+        {
+          "paper_id": "1805.07039",
+          "title": "A Theoretical Explanation for Perplexing Behaviors of Backpropagation-based Visualizations",
+          "weight": 0.2174,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1805.07039"
+        },
+        {
+          "paper_id": "1509.06321",
+          "title": "Evaluating the Visualization of What a Deep Neural Network Has Learned",
+          "weight": 0.1804,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1509.06321"
+        },
+        {
+          "paper_id": "1312.6034",
+          "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+          "weight": 0.0843,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1312.6034"
+        },
+        {
+          "paper_id": "s2:de01f74a899ecc7e3228cddbc743aaf6faf5e55f",
+          "title": "Towards better understanding of gradient-based attribution methods for Deep Neural Networks",
+          "weight": 0.0805,
+          "share": 0.1,
+          "url": "https://doi.org/10.3929/ETHZ-B-000249929"
+        }
+      ],
+      "n_refs_used": 26,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1612.00385",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 97,
+      "ok": true,
+      "m": 0.907,
+      "Delta": 0.0686,
+      "R2_plus": 0.8913,
+      "novelty_residual": 0.3297,
+      "novelty_score": 0.1087,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:261a056f8b21918e8616a429b2df6e1d5d33be41",
+          "title": "Connectionist Temporal Classiﬁcation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks",
+          "weight": 0.2477,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/261a056f8b21918e8616a429b2df6e1d5d33be41"
+        },
+        {
+          "paper_id": "1502.03044",
+          "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+          "weight": 0.1549,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1502.03044"
+        },
+        {
+          "paper_id": "s2:78ff3505d412121b1c1759b4078204ea28e3ef49",
+          "title": "Spatio-temporal Event Classification using Time-series Kernel based Structured Sparsity",
+          "weight": 0.1315,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/978-3-319-10593-2_10"
+        },
+        {
+          "paper_id": "1508.04025",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "weight": 0.1177,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1508.04025"
+        },
+        {
+          "paper_id": "1611.07212",
+          "title": "Recurrent Attention Models for Depth-Based Person Identification",
+          "weight": 0.0751,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1611.07212"
+        }
+      ],
+      "n_refs_used": 50,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1004.4421",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 95,
+      "ok": true,
+      "m": 0.8076,
+      "Delta": 0.0884,
+      "R2_plus": 0.7406,
+      "novelty_residual": 0.5093,
+      "novelty_score": 0.2594,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:ec9e849d24f7079715a54570a4531681802d6221",
+          "title": "Cited Reference: \"Recent research has studied the role of sparsity in high-dimensional regression and signal…\"",
+          "weight": 0.1661,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/ec9e849d24f7079715a54570a4531681802d6221"
+        },
+        {
+          "paper_id": "s2:ac8e94ad98f8a2383f203e090820890bc7e319c8",
+          "title": "Cited Reference: \"We present a practical and statistically consistent scheme for actively learning binary…\"",
+          "weight": 0.1649,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/ac8e94ad98f8a2383f203e090820890bc7e319c8"
+        },
+        {
+          "paper_id": "s2:d36efb9ad91e00faa334b549ce989bfae7e2907a",
+          "title": "Cited Reference: \"Summary A broadly applicable algorithm for computing maximum likelihood estimates from…\"",
+          "weight": 0.1316,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/d36efb9ad91e00faa334b549ce989bfae7e2907a"
+        },
+        {
+          "paper_id": "s2:162d958ff885f1462aeda91cd72582323fd6a1f4",
+          "title": "Gradient-based learning applied to document recognition",
+          "weight": 0.1312,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/5.726791"
+        },
+        {
+          "paper_id": "s2:86b7edea21cb82af9c0c04e53c66d7ad55e419b4",
+          "title": "Cited Reference: \"We describe and analyze a simple and effective iterative algorithm for solving the…\"",
+          "weight": 0.1312,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/86b7edea21cb82af9c0c04e53c66d7ad55e419b4"
+        }
+      ],
+      "n_refs_used": 14,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1705.10301",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 92,
+      "ok": true,
+      "m": 0.8092,
+      "Delta": 0.1441,
+      "R2_plus": 0.7988,
+      "novelty_residual": 0.4485,
+      "novelty_score": 0.2012,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1807.01613",
+          "title": "Conditional Neural Processes",
+          "weight": 0.1686,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1807.01613"
+        },
+        {
+          "paper_id": "1703.04730",
+          "title": "Understanding Black-box Predictions via Influence Functions",
+          "weight": 0.1481,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1703.04730"
+        },
+        {
+          "paper_id": "1705.07874",
+          "title": "A Unified Approach to Interpreting Model Predictions",
+          "weight": 0.1423,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1705.07874"
+        },
+        {
+          "paper_id": "s2:b387e97f968880858a5624ff6ea8cb92155d120e",
+          "title": "Learning Patient-Specific Cancer Survival Distributions as a Sequence of Dependent Regressors",
+          "weight": 0.1171,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/b387e97f968880858a5624ff6ea8cb92155d120e"
+        },
+        {
+          "paper_id": "s2:77a5915693b0f8a2016b53d60ff559d2da589d16",
+          "title": "The structure and function of explanations.",
+          "weight": 0.1047,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/J.TICS.2006.08.004"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1404.1530",
+      "title": "Provable Deterministic Leverage Score Sampling",
+      "year": 2014,
+      "citation_count": 88,
+      "ok": true,
+      "m": 1.0,
+      "Delta": 0.0,
+      "R2_plus": 0.9999,
+      "novelty_residual": 0.0076,
+      "novelty_score": 0.0001,
+      "classification": "Linear / Incremental Extension",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2109818719",
+          "title": "Provable deterministic leverage score sampling",
+          "weight": 0.9999,
+          "share": 1.0,
+          "url": "https://doi.org/10.1145/2623330.2623698"
+        },
+        {
+          "paper_id": "openalex:W2024027525",
+          "title": "PCA-Correlated SNPs for Structure Identification in Worldwide Human Populations",
+          "weight": 0.0001,
+          "share": 0.0,
+          "url": "https://doi.org/10.1371/journal.pgen.0030160"
+        }
+      ],
+      "n_refs_used": 41,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1805.09701",
+      "title": "R-VQA: Learning Visual Relation Facts with Semantic Attention for Visual Question Answering",
+      "year": 2018,
+      "citation_count": 84,
+      "ok": true,
+      "m": 0.914,
+      "Delta": 0.0681,
+      "R2_plus": 0.9035,
+      "novelty_residual": 0.3107,
+      "novelty_score": 0.0965,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1703.03054",
+          "title": "Deep Variation-Structured Reinforcement Learning for Visual Relationship and Attribute Detection",
+          "weight": 0.2592,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1703.03054"
+        },
+        {
+          "paper_id": "1808.02632",
+          "title": "Question-Guided Hybrid Convolution for Visual Question Answering",
+          "weight": 0.2322,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1808.02632"
+        },
+        {
+          "paper_id": "1511.05234",
+          "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering",
+          "weight": 0.1602,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1511.05234"
+        },
+        {
+          "paper_id": "1502.03044",
+          "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+          "weight": 0.0915,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1502.03044"
+        },
+        {
+          "paper_id": "1602.07332",
+          "title": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations",
+          "weight": 0.06,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1602.07332"
+        }
+      ],
+      "n_refs_used": 43,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1605.06217",
+      "title": "Localizing by Describing: Attribute-Guided Attention Localization for Fine-Grained Recognition",
+      "year": 2016,
+      "citation_count": 82,
+      "ok": true,
+      "m": 0.8452,
+      "Delta": 0.0964,
+      "R2_plus": 0.8106,
+      "novelty_residual": 0.4352,
+      "novelty_score": 0.1894,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:47e52ec494c9eb7dc8c1bddc482f2ee36c992b08",
+          "title": "Hierarchical Attention Networks",
+          "weight": 0.2177,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/47e52ec494c9eb7dc8c1bddc482f2ee36c992b08"
+        },
+        {
+          "paper_id": "s2:6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+          "title": "Deep Learning Face Attributes in the Wild",
+          "weight": 0.1857,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4"
+        },
+        {
+          "paper_id": "s2:4d8f2d14af5991d4f0d050d22216825cac3157bd",
+          "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+          "weight": 0.1733,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/4d8f2d14af5991d4f0d050d22216825cac3157bd"
+        },
+        {
+          "paper_id": "s2:7361e42c5eb0d5438c4294cc7ea3f9a53d326309",
+          "title": "Top-Down Neural Attention by Excitation Backprop",
+          "weight": 0.0993,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/7361e42c5eb0d5438c4294cc7ea3f9a53d326309"
+        },
+        {
+          "paper_id": "s2:8a756d4d25511d92a45d0f4545fa819de993851d",
+          "title": "Recurrent Models of Visual Attention",
+          "weight": 0.0988,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/8a756d4d25511d92a45d0f4545fa819de993851d"
+        }
+      ],
+      "n_refs_used": 16,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1904.12546",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 82,
+      "ok": true,
+      "m": 0.8987,
+      "Delta": 0.0462,
+      "R2_plus": 0.854,
+      "novelty_residual": 0.3821,
+      "novelty_score": 0.146,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "1706.08838",
+          "title": "TimeNet: Pre-trained deep recurrent neural network for time series classification",
+          "weight": 0.233,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1706.08838"
+        },
+        {
+          "paper_id": "1603.06995",
+          "title": "Multi-Scale Convolutional Neural Networks for Time Series Classification",
+          "weight": 0.2217,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1603.06995"
+        },
+        {
+          "paper_id": "s2:a4ba13f755adffe70d4c319c396bc369cc9e13b1",
+          "title": "Using Features From Pre-trained TimeNET For Clinical Predictions",
+          "weight": 0.137,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/a4ba13f755adffe70d4c319c396bc369cc9e13b1"
+        },
+        {
+          "paper_id": "s2:77c24494972324b6405bb8f0045f7f5d44121699",
+          "title": "Regularizing Fully Convolutional Networks for Time Series Classification by Decorrelating Filters",
+          "weight": 0.0798,
+          "share": 0.1,
+          "url": "https://doi.org/10.1609/aaai.v33i01.330110003"
+        },
+        {
+          "paper_id": "s2:e467404d68c8c2f45bae0e4bdfda12fc7df65cce",
+          "title": "Data Augmentation for Time Series Classification using Convolutional Neural Networks",
+          "weight": 0.0673,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/e467404d68c8c2f45bae0e4bdfda12fc7df65cce"
+        }
+      ],
+      "n_refs_used": 29,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1804.05448",
+      "title": "Watch, Listen, and Describe: Globally and Locally Aligned Cross-Modal Attentions for Video Captioning",
+      "year": 2018,
+      "citation_count": 81,
+      "ok": true,
+      "m": 0.8984,
+      "Delta": 0.0525,
+      "R2_plus": 0.8596,
+      "novelty_residual": 0.3747,
+      "novelty_score": 0.1404,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1701.03126",
+          "title": "Attention-Based Multimodal Fusion for Video Description",
+          "weight": 0.3124,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1701.03126"
+        },
+        {
+          "paper_id": "2301.04856",
+          "title": "Multimodal Deep Learning",
+          "weight": 0.2072,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2301.04856"
+        },
+        {
+          "paper_id": "1505.00487",
+          "title": "Sequence to Sequence -- Video to Text",
+          "weight": 0.1405,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1505.00487"
+        },
+        {
+          "paper_id": "1511.03476",
+          "title": "Hierarchical Recurrent Neural Encoder for Video Representation with Application to Captioning",
+          "weight": 0.0827,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1511.03476"
+        },
+        {
+          "paper_id": "s2:b8e2e9f3ba008e28257195ec69a00e07f260131d",
+          "title": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
+          "weight": 0.0726,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2016.571"
+        }
+      ],
+      "n_refs_used": 28,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1808.09316",
+      "title": "How Robust is 3D Human Pose Estimation to Occlusion?",
+      "year": 2018,
+      "citation_count": 78,
+      "ok": true,
+      "m": 0.8727,
+      "Delta": 0.0806,
+      "R2_plus": 0.8423,
+      "novelty_residual": 0.3971,
+      "novelty_score": 0.1577,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1511.09439",
+          "title": "Sparseness Meets Deepness: 3D Human Pose Estimation from Monocular Video",
+          "weight": 0.2422,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1511.09439"
+        },
+        {
+          "paper_id": "s2:65126e0b1161fc8212643b8ff39c1d71d262fbc1",
+          "title": "Occlusion Coherence: Localizing Occluded Faces with a Hierarchical Deformable Part Model",
+          "weight": 0.141,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2014.306"
+        },
+        {
+          "paper_id": "s2:ec7cd3fff8bdbbe7005bc8d6b7f6b87d72aac2d9",
+          "title": "A semantic occlusion model for human pose estimation from a single depth image",
+          "weight": 0.118,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPRW.2015.7301338"
+        },
+        {
+          "paper_id": "s2:63c59a217b3b6cc619f6f7bc759dfb587ede2112",
+          "title": "Estimating Human Pose from Occluded Images",
+          "weight": 0.1096,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/978-3-642-12307-8_5"
+        },
+        {
+          "paper_id": "1702.07836",
+          "title": "Synthesizing Training Data for Object Detection in Indoor Scenes",
+          "weight": 0.0893,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1702.07836"
+        }
+      ],
+      "n_refs_used": 27,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1810.12829",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 76,
+      "ok": true,
+      "m": 0.9438,
+      "Delta": 0.0564,
+      "R2_plus": 0.947,
+      "novelty_residual": 0.2302,
+      "novelty_score": 0.053,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1507.06821",
+          "title": "Multimodal deep learning for robust RGB-D object recognition",
+          "weight": 0.298,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1507.06821"
+        },
+        {
+          "paper_id": "1407.5736",
+          "title": "Learning Rich Features from RGB-D Images for Object Detection and Segmentation",
+          "weight": 0.1457,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1407.5736"
+        },
+        {
+          "paper_id": "1603.07415",
+          "title": "Attentive Contexts for Object Detection",
+          "weight": 0.1132,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1603.07415"
+        },
+        {
+          "paper_id": "s2:4562272025a5bcdb321408116c699798a7997847",
+          "title": "Leveraging RGB-D Data: Adaptive fusion and domain adaptation for object detection",
+          "weight": 0.0931,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICRA.2012.6225137"
+        },
+        {
+          "paper_id": "1803.11395",
+          "title": "Contrast-Oriented Deep Neural Networks for Salient Object Detection",
+          "weight": 0.0832,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1803.11395"
+        }
+      ],
+      "n_refs_used": 50,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1705.01599",
+      "title": "Characterization and Photometric Performance of the Hyper Suprime-Cam Software Pipeline",
+      "year": 2017,
+      "citation_count": 74,
+      "ok": true,
+      "m": 0.8931,
+      "Delta": 0.0815,
+      "R2_plus": 0.8791,
+      "novelty_residual": 0.3477,
+      "novelty_score": 0.1209,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2620256628",
+          "title": "The Hyper Suprime-Cam software pipeline",
+          "weight": 0.3272,
+          "share": 0.3,
+          "url": "https://doi.org/10.1093/pasj/psx080"
+        },
+        {
+          "paper_id": "openalex:W2093437356",
+          "title": "Bayesian Photometric Redshift Estimation",
+          "weight": 0.1327,
+          "share": 0.1,
+          "url": "https://doi.org/10.1086/308947"
+        },
+        {
+          "paper_id": "openalex:W2027244628",
+          "title": "PHOTOMETRIC CALIBRATION OF THE FIRST 1.5 YEARS OF THE PAN-STARRS1 SURVEY",
+          "weight": 0.1299,
+          "share": 0.1,
+          "url": "https://doi.org/10.1088/0004-637x/756/2/158"
+        },
+        {
+          "paper_id": "openalex:W2754986962",
+          "title": "Hyper Suprime-Cam: System design and verification of image quality",
+          "weight": 0.1295,
+          "share": 0.1,
+          "url": "https://doi.org/10.1093/pasj/psx063"
+        },
+        {
+          "paper_id": "openalex:W3005350546",
+          "title": "First data release of the Hyper Suprime-Cam Subaru Strategic Program",
+          "weight": 0.129,
+          "share": 0.1,
+          "url": "https://doi.org/10.1093/pasj/psx081"
+        }
+      ],
+      "n_refs_used": 36,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1806.04398",
+      "title": "Attentive cross-modal paratope prediction",
+      "year": 2018,
+      "citation_count": 67,
+      "ok": true,
+      "m": 0.7025,
+      "Delta": 0.0979,
+      "R2_plus": 0.5914,
+      "novelty_residual": 0.6392,
+      "novelty_score": 0.4086,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2110505462",
+          "title": "SAbDab: the structural antibody database",
+          "weight": 0.431,
+          "share": 0.5,
+          "url": "https://doi.org/10.1093/nar/gkt1043"
+        },
+        {
+          "paper_id": "openalex:W2064675550",
+          "title": "Long Short-Term Memory",
+          "weight": 0.2554,
+          "share": 0.3,
+          "url": "https://doi.org/10.1162/neco.1997.9.8.1735"
+        },
+        {
+          "paper_id": "openalex:W2147209844",
+          "title": "Generation and evaluation of dimension-reduced amino acid parameter representations by artificial neural networks",
+          "weight": 0.1787,
+          "share": 0.2,
+          "url": "https://doi.org/10.1007/s008940100038"
+        },
+        {
+          "paper_id": "openalex:W2143467722",
+          "title": "Standard conformations for the canonical structures of immunoglobulins 1 1Edited by I. A. Wilson",
+          "weight": 0.1349,
+          "share": 0.2,
+          "url": "https://doi.org/10.1006/jmbi.1997.1354"
+        }
+      ],
+      "n_refs_used": 7,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1801.02480",
+      "title": "Facial Attributes: Accuracy and Adversarial Robustness",
+      "year": 2018,
+      "citation_count": 67,
+      "ok": true,
+      "m": 0.9552,
+      "Delta": 0.0057,
+      "R2_plus": 0.918,
+      "novelty_residual": 0.2863,
+      "novelty_score": 0.082,
+      "classification": "Linear / Incremental Extension",
+      "attribution": [
+        {
+          "paper_id": "s2:e87a38f70420b2d4a11c0bbab55677ae139bcc1b",
+          "title": "Are facial attributes adversarially robust?",
+          "weight": 0.8227,
+          "share": 0.8,
+          "url": "https://www.semanticscholar.org/paper/e87a38f70420b2d4a11c0bbab55677ae139bcc1b"
+        },
+        {
+          "paper_id": "s2:bee044c8e8903fb67523c1f8c105ab4718600cdb",
+          "title": "Explaining and Harnessing Adversarial Examples",
+          "weight": 0.0777,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/bee044c8e8903fb67523c1f8c105ab4718600cdb"
+        },
+        {
+          "paper_id": "s2:da900e5f02e23716af164f45333cd182f7e756ca",
+          "title": "Adversarial Manipulation of Deep Representations",
+          "weight": 0.0435,
+          "share": 0.0,
+          "url": "https://www.semanticscholar.org/paper/da900e5f02e23716af164f45333cd182f7e756ca"
+        },
+        {
+          "paper_id": "s2:6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+          "title": "Deep Learning Face Attributes in the Wild",
+          "weight": 0.0242,
+          "share": 0.0,
+          "url": "https://www.semanticscholar.org/paper/6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4"
+        },
+        {
+          "paper_id": "s2:d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+          "title": "Intriguing properties of neural networks",
+          "weight": 0.0192,
+          "share": 0.0,
+          "url": "https://www.semanticscholar.org/paper/d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad"
+        }
+      ],
+      "n_refs_used": 16,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1904.03367",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 67,
+      "ok": true,
+      "m": 0.6875,
+      "Delta": 0.12,
+      "R2_plus": 0.5927,
+      "novelty_residual": 0.6382,
+      "novelty_score": 0.4073,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2150468603",
+          "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents",
+          "weight": 0.1696,
+          "share": 0.2,
+          "url": "https://doi.org/10.1613/jair.3912"
+        },
+        {
+          "paper_id": "openalex:W2337252826",
+          "title": "Hollywood in Homes: Crowdsourcing Data Collection for Activity Understanding",
+          "weight": 0.1659,
+          "share": 0.2,
+          "url": "https://doi.org/10.1007/978-3-319-46448-0_31"
+        },
+        {
+          "paper_id": "openalex:W1773016195",
+          "title": "Perception and Communication",
+          "weight": 0.1528,
+          "share": 0.2,
+          "url": "https://doi.org/10.4324/9781315506173-8"
+        },
+        {
+          "paper_id": "openalex:W2788701627",
+          "title": "Attention-via-Attention Neural Machine Translation",
+          "weight": 0.1486,
+          "share": 0.2,
+          "url": "https://doi.org/10.1609/aaai.v32i1.11254"
+        },
+        {
+          "paper_id": "openalex:W2619947201",
+          "title": "The Kinetics Human Action Video Dataset",
+          "weight": 0.1389,
+          "share": 0.2,
+          "url": "https://doi.org/10.48550/arxiv.1705.06950"
+        }
+      ],
+      "n_refs_used": 30,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1905.12105",
+      "title": "Certifiably Robust Interpretation in Deep Learning",
+      "year": 2019,
+      "citation_count": 65,
+      "ok": true,
+      "m": 0.9008,
+      "Delta": 0.0955,
+      "R2_plus": 0.9069,
+      "novelty_residual": 0.3051,
+      "novelty_score": 0.0931,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1905.04172",
+          "title": "On the Connection Between Adversarial Robustness and Saliency Map Interpretability",
+          "weight": 0.2517,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1905.04172"
+        },
+        {
+          "paper_id": "1710.10547",
+          "title": "Interpretation of Neural Networks is Fragile",
+          "weight": 0.156,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1710.10547"
+        },
+        {
+          "paper_id": "1902.02918",
+          "title": "Certified Adversarial Robustness via Randomized Smoothing",
+          "weight": 0.1449,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1902.02918"
+        },
+        {
+          "paper_id": "1610.07086",
+          "title": "Deep image mining for diabetic retinopathy screening",
+          "weight": 0.1132,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1610.07086"
+        },
+        {
+          "paper_id": "1906.04584",
+          "title": "Provably Robust Deep Learning via Adversarially Trained Smoothed Classifiers",
+          "weight": 0.0971,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1906.04584"
+        }
+      ],
+      "n_refs_used": 38,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1801.05075",
+      "title": "A Human-Grounded Evaluation Benchmark for Local Explanations of Machine Learning",
+      "year": 2018,
+      "citation_count": 63,
+      "ok": true,
+      "m": 0.8985,
+      "Delta": 0.0793,
+      "R2_plus": 0.8866,
+      "novelty_residual": 0.3367,
+      "novelty_score": 0.1134,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1908.11355",
+          "title": "Human-grounded Evaluations of Explanation Methods for Text Classification",
+          "weight": 0.3278,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1908.11355"
+        },
+        {
+          "paper_id": "1907.12652",
+          "title": "How model accuracy and explanation fidelity influence user trust",
+          "weight": 0.1878,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1907.12652"
+        },
+        {
+          "paper_id": "1702.08608",
+          "title": "Towards A Rigorous Science of Interpretable Machine Learning",
+          "weight": 0.1475,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1702.08608"
+        },
+        {
+          "paper_id": "1806.10758",
+          "title": "A Benchmark for Interpretability Methods in Deep Neural Networks",
+          "weight": 0.1126,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1806.10758"
+        },
+        {
+          "paper_id": "s2:f9da80f9cf820b678bd891eedc5aa1f1a89d2103",
+          "title": "Human Evaluation of Models Built for Interpretability",
+          "weight": 0.1031,
+          "share": 0.1,
+          "url": "https://doi.org/10.1609/hcomp.v7i1.5280"
+        }
+      ],
+      "n_refs_used": 31,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1705.09425",
+      "title": "Hierarchical Cellular Automata for Visual Saliency",
+      "year": 2017,
+      "citation_count": 61,
+      "ok": true,
+      "m": 0.9427,
+      "Delta": 0.0312,
+      "R2_plus": 0.9198,
+      "novelty_residual": 0.2832,
+      "novelty_score": 0.0802,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "openalex:W1897243830",
+          "title": "Saliency detection via Cellular Automata",
+          "weight": 0.5324,
+          "share": 0.5,
+          "url": "https://doi.org/10.1109/cvpr.2015.7298606"
+        },
+        {
+          "paper_id": "openalex:W1894057436",
+          "title": "Visual saliency based on multiscale deep features",
+          "weight": 0.1482,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/cvpr.2015.7299184"
+        },
+        {
+          "paper_id": "openalex:W2214352687",
+          "title": "Hierarchical Convolutional Features for Visual Tracking",
+          "weight": 0.0759,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/iccv.2015.352"
+        },
+        {
+          "paper_id": "openalex:W2118246710",
+          "title": "SLIC Superpixels Compared to State-of-the-Art Superpixel Methods",
+          "weight": 0.0567,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/tpami.2012.120"
+        },
+        {
+          "paper_id": "openalex:W2002781701",
+          "title": "Hierarchical Saliency Detection",
+          "weight": 0.0532,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/cvpr.2013.153"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1807.06610",
+      "title": "Learning Noise-Invariant Representations for Robust Speech Recognition",
+      "year": 2018,
+      "citation_count": 58,
+      "ok": true,
+      "m": 0.915,
+      "Delta": 0.0528,
+      "R2_plus": 0.8902,
+      "novelty_residual": 0.3314,
+      "novelty_score": 0.1098,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1612.01928",
+          "title": "Invariant Representations for Noisy Speech Recognition",
+          "weight": 0.2868,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1612.01928"
+        },
+        {
+          "paper_id": "s2:5f3c64b0f92e8c446bebcacd361f0ee8195bf035",
+          "title": "Multi-Condition Training for Unknown Environment Adaptation in Robust ASR Under Real Conditions",
+          "weight": 0.1523,
+          "share": 0.2,
+          "url": "https://doi.org/10.14311/1105"
+        },
+        {
+          "paper_id": "1805.03294",
+          "title": "Improved training of end-to-end attention models for speech recognition",
+          "weight": 0.1514,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1805.03294"
+        },
+        {
+          "paper_id": "s2:c1bca434074c447a31fa227059baccee66b48387",
+          "title": "Recurrent Neural Networks for Noise Reduction in Robust ASR",
+          "weight": 0.1215,
+          "share": 0.1,
+          "url": "https://doi.org/10.21437/Interspeech.2012-6"
+        },
+        {
+          "paper_id": "s2:e68001a21a210bdd403a00b55d4d3633c4b1ea58",
+          "title": "Exemplar-Based Sparse Representations for Noise Robust Automatic Speech Recognition",
+          "weight": 0.1025,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/TASL.2011.2112350"
+        }
+      ],
+      "n_refs_used": 39,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1507.04831",
+      "title": "Deep Multimodal Speaker Naming",
+      "year": 2015,
+      "citation_count": 57,
+      "ok": true,
+      "m": 0.8732,
+      "Delta": 0.0965,
+      "R2_plus": 0.859,
+      "novelty_residual": 0.3755,
+      "novelty_score": 0.141,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:2b743e9a1aa638f46f2842187136b0e32e3bc042",
+          "title": "Semi-supervised Learning with Constraints for Person Identification in Multimedia Data",
+          "weight": 0.2803,
+          "share": 0.3,
+          "url": "https://doi.org/10.1109/CVPR.2013.462"
+        },
+        {
+          "paper_id": "s2:a4aba56927d7841c0aaedf5c73d42ccfadd75124",
+          "title": "Hello! My name is... Buffy'' -- Automatic Naming of Characters in TV Video",
+          "weight": 0.1745,
+          "share": 0.2,
+          "url": "https://doi.org/10.5244/C.20.92"
+        },
+        {
+          "paper_id": "s2:6e91b46e093ca2014e74fb0e7f490327ff00b0e7",
+          "title": "Design, analysis and experimental evaluation of block based transformation in MFCC computation for speaker recognition",
+          "weight": 0.1483,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/J.SPECOM.2011.11.004"
+        },
+        {
+          "paper_id": "s2:a18538c3c33227af387ca52ed0ebf861845f2c01",
+          "title": "Naming faces in broadcast news video by image google",
+          "weight": 0.1121,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/1459359.1459468"
+        },
+        {
+          "paper_id": "1407.5145",
+          "title": "Speaker-Following Video Subtitles",
+          "weight": 0.0865,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1407.5145"
+        }
+      ],
+      "n_refs_used": 24,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1611.07579",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 57,
+      "ok": true,
+      "m": 0.8606,
+      "Delta": 0.1016,
+      "R2_plus": 0.8423,
+      "novelty_residual": 0.3971,
+      "novelty_score": 0.1577,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2420245003",
+          "title": "Model-Agnostic Interpretability of Machine Learning",
+          "weight": 0.3609,
+          "share": 0.3,
+          "url": "https://doi.org/10.48550/arxiv.1606.05386"
+        },
+        {
+          "paper_id": "openalex:W2367397349",
+          "title": "Interpretable Decision Sets",
+          "weight": 0.1515,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/2939672.2939874"
+        },
+        {
+          "paper_id": "openalex:W2131257014",
+          "title": "Learning Programs: A Hierarchical Bayesian Approach",
+          "weight": 0.1402,
+          "share": 0.1,
+          "url": "https://openalex.org/https://openalex.org/W2131257014"
+        },
+        {
+          "paper_id": "openalex:W2012436850",
+          "title": "A Deductive Approach to Program Synthesis",
+          "weight": 0.0752,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/357084.357090"
+        },
+        {
+          "paper_id": "openalex:W1890754682",
+          "title": "Church: a language for generative models",
+          "weight": 0.0713,
+          "share": 0.1,
+          "url": "https://doi.org/10.48550/arxiv.1206.3255"
+        }
+      ],
+      "n_refs_used": 16,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1806.00102",
+      "title": "Respond-CAM: Analyzing Deep Models for 3D Imaging Data by Visualizations",
+      "year": 2018,
+      "citation_count": 56,
+      "ok": true,
+      "m": 0.8659,
+      "Delta": 0.0965,
+      "R2_plus": 0.8464,
+      "novelty_residual": 0.392,
+      "novelty_score": 0.1536,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1610.02391",
+          "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization",
+          "weight": 0.2917,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1610.02391"
+        },
+        {
+          "paper_id": "1701.05567",
+          "title": "Convolutional Neural Networks for Automated Annotation of Cellular Cryo-Electron Tomograms",
+          "weight": 0.2627,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1701.05567"
+        },
+        {
+          "paper_id": "1312.6034",
+          "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps",
+          "weight": 0.2203,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1312.6034"
+        },
+        {
+          "paper_id": "1702.05747",
+          "title": "A survey on deep learning in medical image analysis",
+          "weight": 0.1306,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1702.05747"
+        },
+        {
+          "paper_id": "1311.2901",
+          "title": "Visualizing and Understanding Convolutional Networks",
+          "weight": 0.0894,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1311.2901"
+        }
+      ],
+      "n_refs_used": 13,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1707.09468",
+      "title": "Zero-Shot Activity Recognition with Verb Attribute Induction",
+      "year": 2017,
+      "citation_count": 56,
+      "ok": true,
+      "m": 0.8857,
+      "Delta": 0.0689,
+      "R2_plus": 0.8534,
+      "novelty_residual": 0.3829,
+      "novelty_score": 0.1466,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:7483fd4a7716f144c624b1bf1241280759727648",
+          "title": "Recognizing human actions by attributes",
+          "weight": 0.3393,
+          "share": 0.3,
+          "url": "https://doi.org/10.1109/CVPR.2011.5995353"
+        },
+        {
+          "paper_id": "1511.04458",
+          "title": "Transductive Zero-Shot Action Recognition by Word-Vector Embedding",
+          "weight": 0.2579,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1511.04458"
+        },
+        {
+          "paper_id": "s2:3fd90098551bf88c7509521adf1c0ba9b5dfeb57",
+          "title": "Attribute-Based Classification for Zero-Shot Visual Object Categorization",
+          "weight": 0.0861,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/3fd90098551bf88c7509521adf1c0ba9b5dfeb57"
+        },
+        {
+          "paper_id": "s2:d3ab56d83a616dba391a3373037aceb662bcda9d",
+          "title": "Zero-Shot Learning via Visual Abstraction",
+          "weight": 0.0744,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/978-3-319-10593-2_27"
+        },
+        {
+          "paper_id": "s2:d2c733e34d48784a37d717fe43d9e93277a8c53e",
+          "title": "ImageNet: A large-scale hierarchical image database",
+          "weight": 0.0657,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2009.5206848"
+        }
+      ],
+      "n_refs_used": 40,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1711.02245",
+      "title": "Challenges in Disentangling Independent Factors of Variation",
+      "year": 2017,
+      "citation_count": 53,
+      "ok": true,
+      "m": 0.8559,
+      "Delta": 0.0535,
+      "R2_plus": 0.7862,
+      "novelty_residual": 0.4624,
+      "novelty_score": 0.2138,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1611.03383",
+          "title": "Disentangling factors of variation in deep representation using adversarial training",
+          "weight": 0.234,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1611.03383"
+        },
+        {
+          "paper_id": "1206.5538",
+          "title": "Representation Learning: A Review and New Perspectives",
+          "weight": 0.2194,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1206.5538"
+        },
+        {
+          "paper_id": "1701.02096",
+          "title": "Improved Texture Networks: Maximizing Quality and Diversity in Feed-Forward Stylization and Texture Synthesis",
+          "weight": 0.0939,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1701.02096"
+        },
+        {
+          "paper_id": "1312.6114",
+          "title": "Auto-Encoding Variational Bayes",
+          "weight": 0.0936,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1312.6114"
+        },
+        {
+          "paper_id": "s2:82b8cf061d53c32ab5a403543d1c440bc502416a",
+          "title": "Learning to Disentangle Factors of Variation with Manifold Interaction",
+          "weight": 0.0926,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/82b8cf061d53c32ab5a403543d1c440bc502416a"
+        }
+      ],
+      "n_refs_used": 24,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1808.03737",
+      "title": "Learning Multi-touch Conversion Attribution with Dual-attention Mechanisms for Online Advertising",
+      "year": 2018,
+      "citation_count": 51,
+      "ok": true,
+      "m": 0.9083,
+      "Delta": 0.0912,
+      "R2_plus": 0.9161,
+      "novelty_residual": 0.2896,
+      "novelty_score": 0.0839,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2092547579",
+          "title": "Multi-Touch Attribution Based Budget Allocation in Online Advertising",
+          "weight": 0.1909,
+          "share": 0.2,
+          "url": "https://doi.org/10.1145/2648584.2648586"
+        },
+        {
+          "paper_id": "openalex:W2347817542",
+          "title": "DeepIntent",
+          "weight": 0.1662,
+          "share": 0.2,
+          "url": "https://doi.org/10.1145/2939672.2939759"
+        },
+        {
+          "paper_id": "openalex:W2743904806",
+          "title": "Dynamic Attention Deep Model for Article Recommendation by Learning Human Editors' Demonstration",
+          "weight": 0.1142,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/3097983.3098096"
+        },
+        {
+          "paper_id": "openalex:W3007327886",
+          "title": "Path to Purchase: A Mutually Exciting Point Process Model for Online Advertising and Conversion",
+          "weight": 0.1094,
+          "share": 0.1,
+          "url": "https://doi.org/10.1287/mnsc.2014.1952"
+        },
+        {
+          "paper_id": "openalex:W2047995569",
+          "title": "Multi-touch Attribution in Online Advertising with Survival Theory",
+          "weight": 0.1027,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/icdm.2014.130"
+        }
+      ],
+      "n_refs_used": 20,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1608.05177",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 51,
+      "ok": true,
+      "m": 0.8925,
+      "Delta": 0.0732,
+      "R2_plus": 0.8697,
+      "novelty_residual": 0.3609,
+      "novelty_score": 0.1303,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:338e14e0c5e368efc79361adc5ba4957d1c17ef1",
+          "title": "Deep networks for saliency detection via local estimation and global search",
+          "weight": 0.2385,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/CVPR.2015.7298938"
+        },
+        {
+          "paper_id": "s2:11c5a0e22ceb92ee97a9001dcfd1c5897836ceb8",
+          "title": "Saliency Detection Based on Graph-Structural Agglomerative Clustering",
+          "weight": 0.1337,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/2733373.2806287"
+        },
+        {
+          "paper_id": "1504.06375",
+          "title": "Holistically-Nested Edge Detection",
+          "weight": 0.1139,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1504.06375"
+        },
+        {
+          "paper_id": "s2:a0f79cacfba066ba0e6069978daa16ba7ecc4fcb",
+          "title": "Statistical Textural Distinctiveness for Salient Region Detection in Natural Images",
+          "weight": 0.1022,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2013.131"
+        },
+        {
+          "paper_id": "1502.03240",
+          "title": "Conditional Random Fields as Recurrent Neural Networks",
+          "weight": 0.0956,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1502.03240"
+        }
+      ],
+      "n_refs_used": 47,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1811.09847",
+      "title": "Robust RGB-D Face Recognition Using Attribute-Aware Loss",
+      "year": 2018,
+      "citation_count": 47,
+      "ok": true,
+      "m": 0.9327,
+      "Delta": 0.0555,
+      "R2_plus": 0.9255,
+      "novelty_residual": 0.2729,
+      "novelty_score": 0.0745,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:36cf96fe11a2c1ea4d999a7f86ffef6eea7b5958",
+          "title": "RGB-D Face Recognition With Texture and Attribute Features",
+          "weight": 0.1735,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/TIFS.2014.2343913"
+        },
+        {
+          "paper_id": "1604.08865",
+          "title": "Convolutional neural networks for attribute-based active authentication on mobile devices",
+          "weight": 0.1318,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1604.08865"
+        },
+        {
+          "paper_id": "s2:10f1ab5520c04100558c2da16b37d1ed123033ed",
+          "title": "Robust RGB-D face recognition using Kinect sensor",
+          "weight": 0.1311,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.neucom.2016.06.012"
+        },
+        {
+          "paper_id": "s2:f20e0eefd007bc310d2a753ba526d33a8aba812c",
+          "title": "Accurate and robust face recognition from RGB-D images with a deep learning approach",
+          "weight": 0.1238,
+          "share": 0.1,
+          "url": "https://doi.org/10.5244/C.30.123"
+        },
+        {
+          "paper_id": "s2:5a3da29970d0c3c75ef4cb372b336fc8b10381d7",
+          "title": "CNN-Based Real-Time Dense Face Reconstruction with Inverse-Rendered Photo-Realistic Face Images",
+          "weight": 0.0826,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/tpami.2018.2837742"
+        }
+      ],
+      "n_refs_used": 56,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1605.05411",
+      "title": "Are Facial Attributes Adversarially Robust?",
+      "year": 2016,
+      "citation_count": 47,
+      "ok": true,
+      "m": 0.8646,
+      "Delta": 0.1083,
+      "R2_plus": 0.8559,
+      "novelty_residual": 0.3796,
+      "novelty_score": 0.1441,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1412.6572",
+          "title": "Explaining and Harnessing Adversarial Examples",
+          "weight": 0.219,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1412.6572"
+        },
+        {
+          "paper_id": "1411.7766",
+          "title": "Deep Learning Face Attributes in the Wild",
+          "weight": 0.1967,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1411.7766"
+        },
+        {
+          "paper_id": "s2:d3046251ec5d6e7f90ef5ef2b0ac885c01138555",
+          "title": "Attribute and simile classifiers for face verification",
+          "weight": 0.1581,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/ICCV.2009.5459250"
+        },
+        {
+          "paper_id": "1603.07027",
+          "title": "MOON: A Mixed Objective Optimization Network for the Recognition of Facial Attributes",
+          "weight": 0.1487,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1603.07027"
+        },
+        {
+          "paper_id": "s2:3958db5769c927cfc2a9e4d1ee33ecfba86fe054",
+          "title": "Describable Visual Attributes for Face Verification and Image Search",
+          "weight": 0.0991,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/TPAMI.2011.48"
+        }
+      ],
+      "n_refs_used": 19,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1808.05054",
+      "title": "Shedding Light on Black Box Machine Learning Algorithms: Development of an Axiomatic Framework to Assess the Quality of Methods that Explain Individual Predictions",
+      "year": 2018,
+      "citation_count": 46,
+      "ok": true,
+      "m": 0.8543,
+      "Delta": 0.1185,
+      "R2_plus": 0.8483,
+      "novelty_residual": 0.3895,
+      "novelty_score": 0.1517,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1711.00399",
+          "title": "Counterfactual Explanations without Opening the Black Box: Automated Decisions and the GDPR",
+          "weight": 0.2347,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1711.00399"
+        },
+        {
+          "paper_id": "1702.08608",
+          "title": "Towards A Rigorous Science of Interpretable Machine Learning",
+          "weight": 0.1853,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1702.08608"
+        },
+        {
+          "paper_id": "1705.07874",
+          "title": "A Unified Approach to Interpreting Model Predictions",
+          "weight": 0.11,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1705.07874"
+        },
+        {
+          "paper_id": "1706.07269",
+          "title": "Explanation in Artificial Intelligence: Insights from the Social Sciences",
+          "weight": 0.0938,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1706.07269"
+        },
+        {
+          "paper_id": "s2:e9e6bb5f2a04ae30d8ecc9287f8b702eedd7b772",
+          "title": "Some Studies in Machine Learning Using the Game of Checkers",
+          "weight": 0.0858,
+          "share": 0.1,
+          "url": "https://doi.org/10.1147/rd.33.0210"
+        }
+      ],
+      "n_refs_used": 46,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1904.02057",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 46,
+      "ok": true,
+      "m": 0.8191,
+      "Delta": 0.1278,
+      "R2_plus": 0.7987,
+      "novelty_residual": 0.4487,
+      "novelty_score": 0.2013,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1704.05796",
+          "title": "Network Dissection: Quantifying Interpretability of Deep Visual Representations",
+          "weight": 0.2731,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1704.05796"
+        },
+        {
+          "paper_id": "1412.6572",
+          "title": "Explaining and Harnessing Adversarial Examples",
+          "weight": 0.211,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1412.6572"
+        },
+        {
+          "paper_id": "1802.00420",
+          "title": "Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples",
+          "weight": 0.1574,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1802.00420"
+        },
+        {
+          "paper_id": "1511.07528",
+          "title": "The Limitations of Deep Learning in Adversarial Settings",
+          "weight": 0.0855,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1511.07528"
+        },
+        {
+          "paper_id": "s2:bab6fa046f49058a97e8b6e3a721aca7d278294a",
+          "title": "Activation Atlas",
+          "weight": 0.071,
+          "share": 0.1,
+          "url": "https://doi.org/10.23915/distill.00015"
+        }
+      ],
+      "n_refs_used": 38,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1812.06369",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 46,
+      "ok": true,
+      "m": 0.8293,
+      "Delta": 0.1079,
+      "R2_plus": 0.7956,
+      "novelty_residual": 0.4521,
+      "novelty_score": 0.2044,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1611.03530",
+          "title": "Understanding deep learning requires rethinking generalization",
+          "weight": 0.2796,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/1611.03530"
+        },
+        {
+          "paper_id": "cs/0010022",
+          "title": "Noise-tolerant learning, the parity problem, and the statistical query model",
+          "weight": 0.2289,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/cs/0010022"
+        },
+        {
+          "paper_id": "1703.07950",
+          "title": "Failures of Gradient-Based Deep Learning",
+          "weight": 0.1497,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1703.07950"
+        },
+        {
+          "paper_id": "s2:0c38a6783cdf95d9d41c91cb2eaf3e26f62a4bf1",
+          "title": "Weakly learning DNF and characterizing statistical query learning using Fourier analysis",
+          "weight": 0.0909,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/195058.195147"
+        },
+        {
+          "paper_id": "1509.01240",
+          "title": "Train faster, generalize better: Stability of stochastic gradient descent",
+          "weight": 0.0828,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1509.01240"
+        }
+      ],
+      "n_refs_used": 43,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1709.09885",
+      "title": "Sentiment Classification with Word Attention based on Weakly Supervised Learning with a Convolutional Neural Network",
+      "year": 2017,
+      "citation_count": 45,
+      "ok": true,
+      "m": 0.8909,
+      "Delta": 0.0848,
+      "R2_plus": 0.8786,
+      "novelty_residual": 0.3485,
+      "novelty_score": 0.1214,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:c2f3177d3d88a62bbdedf1e117447a2bfc9255e3",
+          "title": "Multi-aspect sentiment analysis for Chinese online social reviews based on topic modeling and HowNet lexicon",
+          "weight": 0.2402,
+          "share": 0.2,
+          "url": "https://doi.org/10.1016/j.knosys.2012.08.003"
+        },
+        {
+          "paper_id": "s2:1c61f9ef06fe74505775a833ff849185757199e7",
+          "title": "Learning Word Vectors for Sentiment Analysis",
+          "weight": 0.0909,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/1c61f9ef06fe74505775a833ff849185757199e7"
+        },
+        {
+          "paper_id": "1508.04025",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "weight": 0.0853,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1508.04025"
+        },
+        {
+          "paper_id": "1512.04150",
+          "title": "Learning Deep Features for Discriminative Localization",
+          "weight": 0.0818,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1512.04150"
+        },
+        {
+          "paper_id": "1404.2188",
+          "title": "A Convolutional Neural Network for Modelling Sentences",
+          "weight": 0.0795,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1404.2188"
+        }
+      ],
+      "n_refs_used": 30,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1809.02230",
+      "title": "Deep Neural Net with Attention for Multi-channel Multi-touch Attribution",
+      "year": 2018,
+      "citation_count": 44,
+      "ok": true,
+      "m": 0.9084,
+      "Delta": 0.0637,
+      "R2_plus": 0.889,
+      "novelty_residual": 0.3332,
+      "novelty_score": 0.111,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:e73cf4592bd9f37208451266bc01eea971c46702",
+          "title": "Additional Multi-Touch Attribution for Online Advertising",
+          "weight": 0.3865,
+          "share": 0.4,
+          "url": "https://doi.org/10.1609/aaai.v31i1.10737"
+        },
+        {
+          "paper_id": "s2:a288a7c4c5386cf1931b07cd1ebdd93d24e57c35",
+          "title": "Time-Weighted Multi-Touch Attribution and Channel Relevance in the Customer Journey to Online Purchase",
+          "weight": 0.1965,
+          "share": 0.2,
+          "url": "https://doi.org/10.1080/15598608.2013.862753"
+        },
+        {
+          "paper_id": "s2:09c397be5c654041d55451022396b2ed26f0f56a",
+          "title": "Data-driven multi-touch attribution models",
+          "weight": 0.1436,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/2020408.2020453"
+        },
+        {
+          "paper_id": "1406.6247",
+          "title": "Recurrent Models of Visual Attention",
+          "weight": 0.0804,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1406.6247"
+        },
+        {
+          "paper_id": "s2:2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+          "title": "Deep Learning",
+          "weight": 0.0677,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb"
+        }
+      ],
+      "n_refs_used": 19,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1707.09798",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 43,
+      "ok": true,
+      "m": 0.8937,
+      "Delta": 0.0933,
+      "R2_plus": 0.8921,
+      "novelty_residual": 0.3285,
+      "novelty_score": 0.1079,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1703.10593",
+          "title": "Unpaired Image-to-Image Translation Using Cycle-Consistent Adversarial Networks",
+          "weight": 0.2377,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1703.10593"
+        },
+        {
+          "paper_id": "1512.00570",
+          "title": "Attribute2Image: Conditional Image Generation from Visual Attributes",
+          "weight": 0.1561,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1512.00570"
+        },
+        {
+          "paper_id": "s2:1461829cf3cf7a578dd6f3fad0551cfa95af0404",
+          "title": "Style Transfer Via Image Component Analysis",
+          "weight": 0.1263,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/TMM.2013.2265675"
+        },
+        {
+          "paper_id": "1606.03657",
+          "title": "InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets",
+          "weight": 0.0755,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1606.03657"
+        },
+        {
+          "paper_id": "1503.03167",
+          "title": "Deep Convolutional Inverse Graphics Network",
+          "weight": 0.0652,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1503.03167"
+        }
+      ],
+      "n_refs_used": 19,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1606.02393",
+      "title": "Progressive Attention Networks for Visual Attribute Prediction",
+      "year": 2016,
+      "citation_count": 42,
+      "ok": true,
+      "m": 0.8567,
+      "Delta": 0.076,
+      "R2_plus": 0.8099,
+      "novelty_residual": 0.436,
+      "novelty_score": 0.1901,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1406.6247",
+          "title": "Recurrent Models of Visual Attention",
+          "weight": 0.3701,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/1406.6247"
+        },
+        {
+          "paper_id": "1511.02274",
+          "title": "Stacked Attention Networks for Image Question Answering",
+          "weight": 0.2121,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1511.02274"
+        },
+        {
+          "paper_id": "1506.02025",
+          "title": "Spatial Transformer Networks",
+          "weight": 0.1041,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1506.02025"
+        },
+        {
+          "paper_id": "1502.03044",
+          "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+          "weight": 0.0896,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1502.03044"
+        },
+        {
+          "paper_id": "s2:d2c733e34d48784a37d717fe43d9e93277a8c53e",
+          "title": "ImageNet: A large-scale hierarchical image database",
+          "weight": 0.0638,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2009.5206848"
+        }
+      ],
+      "n_refs_used": 20,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1905.07279",
+      "title": "Quantification of the morphological characteristics of hESC colonies",
+      "year": 2019,
+      "citation_count": 37,
+      "ok": true,
+      "m": 0.8536,
+      "Delta": 0.1058,
+      "R2_plus": 0.8344,
+      "novelty_residual": 0.4069,
+      "novelty_score": 0.1656,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:9b5ea534c187480d80b571f7cf511cd4624a9dfd",
+          "title": "Development of a Monitoring Method for Nonlabeled Human Pluripotent Stem Cell Growth by Time‐Lapse Image Analysis",
+          "weight": 0.1785,
+          "share": 0.2,
+          "url": "https://doi.org/10.5966/sctm.2014-0242"
+        },
+        {
+          "paper_id": "1803.00063",
+          "title": "Correlated random walks of human embryonic stem cells in vitro",
+          "weight": 0.1629,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1803.00063"
+        },
+        {
+          "paper_id": "s2:b0d9ffa3e0a9bd24089362f2b2a03092d6fb2b06",
+          "title": "Computational image analysis of colony and nuclear morphology to evaluate human induced pluripotent stem cells",
+          "weight": 0.1427,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/srep06996"
+        },
+        {
+          "paper_id": "s2:f50e7efe4fe34da5d24993aa8ea20f9630909b45",
+          "title": "A method to recapitulate early embryonic spatial patterning in human embryonic stem cells",
+          "weight": 0.0916,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/nmeth.3016"
+        },
+        {
+          "paper_id": "s2:1dc4414a4555ace91f0c7eaee64d032690f770dd",
+          "title": "Cytochemical and ultrastructural characterization of growing colonies of human embryonic stem cells",
+          "weight": 0.0712,
+          "share": 0.1,
+          "url": "https://doi.org/10.1111/j.0021-8782.2004.00336.x"
+        }
+      ],
+      "n_refs_used": 72,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1805.11564",
+      "title": "Entrainment profiles: Comparison by gender, role, and feature set",
+      "year": 2018,
+      "citation_count": 37,
+      "ok": true,
+      "m": 0.8845,
+      "Delta": 0.0819,
+      "R2_plus": 0.8642,
+      "novelty_residual": 0.3685,
+      "novelty_score": 0.1358,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2101416990",
+          "title": "Acoustic-Prosodic Entrainment and Social Behavior",
+          "weight": 0.3362,
+          "share": 0.3,
+          "url": "https://openalex.org/https://openalex.org/W2101416990"
+        },
+        {
+          "paper_id": "openalex:W2145588856",
+          "title": "High frequency word entrainment in spoken dialogue",
+          "weight": 0.1086,
+          "share": 0.1,
+          "url": "https://doi.org/10.3115/1557690.1557737"
+        },
+        {
+          "paper_id": "openalex:W2010476384",
+          "title": "Gender Differences in Vocal Accommodation:",
+          "weight": 0.1042,
+          "share": 0.1,
+          "url": "https://doi.org/10.1177/026192702237958"
+        },
+        {
+          "paper_id": "openalex:W2025909923",
+          "title": "Three ToBI-based measures of prosodic entrainment and their correlations with speaker engagement",
+          "weight": 0.0788,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/slt.2014.7078638"
+        },
+        {
+          "paper_id": "openalex:W2276612001",
+          "title": "Participant role and syntactic alignment in dialogue",
+          "weight": 0.0737,
+          "share": 0.1,
+          "url": "https://openalex.org/https://openalex.org/W2276612001"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1801.08640",
+      "title": "Considerations When Learning Additive Explanations for Black-Box Models",
+      "year": 2018,
+      "citation_count": 34,
+      "ok": true,
+      "m": 0.8951,
+      "Delta": 0.0878,
+      "R2_plus": 0.8891,
+      "novelty_residual": 0.333,
+      "novelty_score": 0.1109,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1907.03039",
+          "title": "Global Aggregations of Local Explanations for Black Box models",
+          "weight": 0.2047,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1907.03039"
+        },
+        {
+          "paper_id": "2006.06466",
+          "title": "How Interpretable and Trustworthy are GAMs?",
+          "weight": 0.1325,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2006.06466"
+        },
+        {
+          "paper_id": "s2:472c809c28923c31da3e56c57d3846107fbace12",
+          "title": "CAUSAL INTERPRETATIONS OF BLACK-BOX MODELS",
+          "weight": 0.1286,
+          "share": 0.1,
+          "url": "https://doi.org/10.1080/07350015.2019.1624293"
+        },
+        {
+          "paper_id": "2005.00631",
+          "title": "Evaluating and Aggregating Feature-based Model Explanations",
+          "weight": 0.1085,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2005.00631"
+        },
+        {
+          "paper_id": "s2:0673c89531494371d90f0cff4a9a895f75fea785",
+          "title": "Discovering additive structure in black box functions",
+          "weight": 0.0997,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/1014052.1014122"
+        }
+      ],
+      "n_refs_used": 74,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1411.4738",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 34,
+      "ok": true,
+      "m": 0.925,
+      "Delta": 0.0536,
+      "R2_plus": 0.9093,
+      "novelty_residual": 0.3012,
+      "novelty_score": 0.0907,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:f216c518c8debef705cce831bef5a5dbce913ab9",
+          "title": "Heterogeneous Metric Learning with Joint Graph Regularization for Cross-Media Retrieval",
+          "weight": 0.3455,
+          "share": 0.3,
+          "url": "https://doi.org/10.1609/aaai.v27i1.8464"
+        },
+        {
+          "paper_id": "s2:6e8c107f5f852640daaf324111fc9cf35b5e4acc",
+          "title": "A new approach to cross-modal multimedia retrieval",
+          "weight": 0.1573,
+          "share": 0.2,
+          "url": "https://doi.org/10.1145/1873951.1873987"
+        },
+        {
+          "paper_id": "s2:77f0d765e9557c8260bb39087985103527f7c702",
+          "title": "Learning Distance Metrics with Contextual Constraints for Image Retrieval",
+          "weight": 0.1362,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2006.167"
+        },
+        {
+          "paper_id": "2301.04856",
+          "title": "Multimodal Deep Learning",
+          "weight": 0.0904,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2301.04856"
+        },
+        {
+          "paper_id": "s2:501d004186c1ebe7da5e3a0631624e0b55ebeabb",
+          "title": "Learning Coupled Feature Spaces for Cross-Modal Matching",
+          "weight": 0.0819,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICCV.2013.261"
+        }
+      ],
+      "n_refs_used": 44,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1202.2842",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 33,
+      "ok": true,
+      "m": 0.9279,
+      "Delta": 0.0138,
+      "R2_plus": 0.8748,
+      "novelty_residual": 0.3538,
+      "novelty_score": 0.1252,
+      "classification": "Linear / Incremental Extension",
+      "attribution": [
+        {
+          "paper_id": "1109.4822",
+          "title": "Transverse instability of dunes.",
+          "weight": 0.6217,
+          "share": 0.6,
+          "url": "https://arxiv.org/abs/1109.4822"
+        },
+        {
+          "paper_id": "s2:03a15a32d752ff77f465a2b4387508501a90a1d7",
+          "title": "Dynamics of secondary airflow and sediment transport over and in the lee of transverse dunes",
+          "weight": 0.0966,
+          "share": 0.1,
+          "url": "https://doi.org/10.1191/0309133302PP325RA"
+        },
+        {
+          "paper_id": "s2:d1f5147235f244a7d91fa612dab85ef69ce2f207",
+          "title": "Velocity profiles measured on the windward slope of a transverse dune",
+          "weight": 0.0804,
+          "share": 0.1,
+          "url": "https://doi.org/10.1002/ESP.3290130703"
+        },
+        {
+          "paper_id": "cond-mat/0301589",
+          "title": "Modelling transverse dunes",
+          "weight": 0.0686,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/cond-mat/0301589"
+        },
+        {
+          "paper_id": "s2:7703d45aaabdd12998aae5cfd8bcdc8a290369a5",
+          "title": "A theoretical model for aeolian impact ripples",
+          "weight": 0.0485,
+          "share": 0.0,
+          "url": "https://doi.org/10.1111/J.1365-3091.1987.TB00814.X"
+        }
+      ],
+      "n_refs_used": 62,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1712.00840",
+      "title": "Visual Explanation by High-Level Abduction: On Answer-Set Programming Driven Reasoning about Moving Objects",
+      "year": 2017,
+      "citation_count": 32,
+      "ok": true,
+      "m": 0.8826,
+      "Delta": 0.1156,
+      "R2_plus": 0.8946,
+      "novelty_residual": 0.3246,
+      "novelty_score": 0.1054,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2739491435",
+          "title": "Multiple People Tracking by Lifted Multicut and Person Re-identification",
+          "weight": 0.1491,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/cvpr.2017.394"
+        },
+        {
+          "paper_id": "openalex:W2578211820",
+          "title": "Semantic question-answering with video and eye-tracking data: AI foundations for human visual perception driven cognitive film studies",
+          "weight": 0.1217,
+          "share": 0.1,
+          "url": "https://openalex.org/https://openalex.org/W2578211820"
+        },
+        {
+          "paper_id": "openalex:W2091138122",
+          "title": "Answer set programming at a glance",
+          "weight": 0.1111,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/2043174.2043195"
+        },
+        {
+          "paper_id": "openalex:W2397322914",
+          "title": "The geometry of a scene: On deep semantics for visual perception driven cognitive film, studies",
+          "weight": 0.1074,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/wacv.2016.7477712"
+        },
+        {
+          "paper_id": "openalex:W2076756823",
+          "title": "Segmentation of Moving Objects by Long Term Video Analysis",
+          "weight": 0.104,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/tpami.2013.242"
+        }
+      ],
+      "n_refs_used": 33,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1502.05678",
+      "title": "VIP: Finding Important People in Images",
+      "year": 2015,
+      "citation_count": 32,
+      "ok": true,
+      "m": 0.8717,
+      "Delta": 0.108,
+      "R2_plus": 0.8679,
+      "novelty_residual": 0.3635,
+      "novelty_score": 0.1321,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2067816745",
+          "title": "Understanding and predicting importance in images",
+          "weight": 0.3093,
+          "share": 0.3,
+          "url": "https://doi.org/10.1109/cvpr.2012.6248100"
+        },
+        {
+          "paper_id": "openalex:W2117736950",
+          "title": "Using Group Prior to Identify People in Consumer Images",
+          "weight": 0.1299,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/cvpr.2007.383492"
+        },
+        {
+          "paper_id": "openalex:W2043006422",
+          "title": "Face-graph matching for classifying groups of people",
+          "weight": 0.1251,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/icip.2013.6738500"
+        },
+        {
+          "paper_id": "openalex:W2137084491",
+          "title": "Finding Important People in Large News Video Databases Using Multimodal and Clustering Analysis",
+          "weight": 0.1128,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/icdew.2007.4400982"
+        },
+        {
+          "paper_id": "openalex:W2106229755",
+          "title": "Discovering important people and objects for egocentric video summarization",
+          "weight": 0.1011,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/cvpr.2012.6247820"
+        }
+      ],
+      "n_refs_used": 21,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1811.02394",
+      "title": "DeepChannel: Salience Estimation by Contrastive Learning for Extractive Document Summarization",
+      "year": 2018,
+      "citation_count": 31,
+      "ok": true,
+      "m": 0.8527,
+      "Delta": 0.0667,
+      "R2_plus": 0.7938,
+      "novelty_residual": 0.454,
+      "novelty_score": 0.2062,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1704.04368",
+          "title": "Get To The Point: Summarization with Pointer-Generator Networks",
+          "weight": 0.4715,
+          "share": 0.5,
+          "url": "https://arxiv.org/abs/1704.04368"
+        },
+        {
+          "paper_id": "0907.0806",
+          "title": "A Noisy-Channel Model for Document Compression",
+          "weight": 0.1213,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/0907.0806"
+        },
+        {
+          "paper_id": "s2:60b05f32c32519a809f21642ef1eb3eaf3848008",
+          "title": "ROUGE: A Package for Automatic Evaluation of Summaries",
+          "weight": 0.1035,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/60b05f32c32519a809f21642ef1eb3eaf3848008"
+        },
+        {
+          "paper_id": "s2:f37e1b62a767a307c046404ca96bc140b3e68cb5",
+          "title": "GloVe: Global Vectors for Word Representation",
+          "weight": 0.0892,
+          "share": 0.1,
+          "url": "https://doi.org/10.3115/v1/D14-1162"
+        },
+        {
+          "paper_id": "1508.04025",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "weight": 0.064,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1508.04025"
+        }
+      ],
+      "n_refs_used": 29,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1811.05437",
+      "title": "Argumentation for Explainable Scheduling (Full Paper with Proofs)",
+      "year": 2018,
+      "citation_count": 30,
+      "ok": true,
+      "m": 0.844,
+      "Delta": 0.14,
+      "R2_plus": 0.8523,
+      "novelty_residual": 0.3843,
+      "novelty_score": 0.1477,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1805.03437",
+          "title": "Exact Lexicographic Scheduling and Approximate Rescheduling",
+          "weight": 0.2268,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1805.03437"
+        },
+        {
+          "paper_id": "s2:6f43bfb88f671d1f10c44c80e34adc8de1b77ed8",
+          "title": "On Computing Explanations in Argumentation",
+          "weight": 0.2001,
+          "share": 0.2,
+          "url": "https://doi.org/10.1609/aaai.v29i1.9420"
+        },
+        {
+          "paper_id": "1709.10256",
+          "title": "Explainable Planning",
+          "weight": 0.1788,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1709.10256"
+        },
+        {
+          "paper_id": "s2:ad6f2fdc076caccb1c8026b7042dd503ab12cac5",
+          "title": "Context-based and Explainable Decision Making with Argumentation",
+          "weight": 0.143,
+          "share": 0.1,
+          "url": "https://doi.org/10.65109/jwjx9116"
+        },
+        {
+          "paper_id": "s2:5ee39493200f747fe22bef6f9cb478070e3e2b6c",
+          "title": "An abductive-based scheduler for air-crew assignment",
+          "weight": 0.1039,
+          "share": 0.1,
+          "url": "https://doi.org/10.1080/08839510151063299"
+        }
+      ],
+      "n_refs_used": 30,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1812.09041",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 30,
+      "ok": true,
+      "m": 0.939,
+      "Delta": 0.0473,
+      "R2_plus": 0.9291,
+      "novelty_residual": 0.2662,
+      "novelty_score": 0.0709,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:7502372bac32d9967eeb4bf68a430a74dadf748c",
+          "title": "Heterogeneous Knowledge Transfer in Video Emotion Recognition, Attribution and Summarization",
+          "weight": 0.3816,
+          "share": 0.4,
+          "url": "https://www.semanticscholar.org/paper/7502372bac32d9967eeb4bf68a430a74dadf748c"
+        },
+        {
+          "paper_id": "s2:4d9c11f792b98a69f5ccd3a53031b8ea6359820b",
+          "title": "Combining modality specific deep neural networks for emotion recognition in video",
+          "weight": 0.1375,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/4d9c11f792b98a69f5ccd3a53031b8ea6359820b"
+        },
+        {
+          "paper_id": "s2:2cecfe08fb146110aadd93e6d021fb21f06fda23",
+          "title": "Speech Emotion Recognition Using Deep Convolutional Neural Network and Discriminant Temporal Pyramid Matching",
+          "weight": 0.0993,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/2cecfe08fb146110aadd93e6d021fb21f06fda23"
+        },
+        {
+          "paper_id": "s2:e9ab17d68a35f35e026c025904d053a653b7c02e",
+          "title": "Predicting Emotions in User-Generated Videos",
+          "weight": 0.0922,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/e9ab17d68a35f35e026c025904d053a653b7c02e"
+        },
+        {
+          "paper_id": "s2:67dccc9a856b60bdc4d058d83657a089b8ad4486",
+          "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+          "weight": 0.0849,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/67dccc9a856b60bdc4d058d83657a089b8ad4486"
+        }
+      ],
+      "n_refs_used": 26,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1711.11118",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 30,
+      "ok": true,
+      "m": 0.8806,
+      "Delta": 0.065,
+      "R2_plus": 0.8405,
+      "novelty_residual": 0.3994,
+      "novelty_score": 0.1595,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:050522a52b04db0f3d636933b253f15b2f7fa299",
+          "title": "Unsupervised Extraction of Popular Product Attributes from Web Sites",
+          "weight": 0.2402,
+          "share": 0.2,
+          "url": "https://doi.org/10.1007/978-3-642-35341-3_39"
+        },
+        {
+          "paper_id": "s2:981958663de2cd392f10b32dcc601aaa16ab593e",
+          "title": "Unsupervised Extraction of Attributes and Their Values from Product Description",
+          "weight": 0.1908,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/981958663de2cd392f10b32dcc601aaa16ab593e"
+        },
+        {
+          "paper_id": "1505.00468",
+          "title": "VQA: Visual Question Answering",
+          "weight": 0.1447,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1505.00468"
+        },
+        {
+          "paper_id": "1405.0312",
+          "title": "Microsoft COCO: Common Objects in Context",
+          "weight": 0.1247,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1405.0312"
+        },
+        {
+          "paper_id": "s2:7311bf33d919297cd9724e9a12d9ea40b2276ce0",
+          "title": "Text mining for product attribute extraction",
+          "weight": 0.0721,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/1147234.1147241"
+        }
+      ],
+      "n_refs_used": 26,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1901.05742",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 29,
+      "ok": true,
+      "m": 0.9372,
+      "Delta": 0.0413,
+      "R2_plus": 0.9197,
+      "novelty_residual": 0.2833,
+      "novelty_score": 0.0803,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "1709.09930",
+          "title": "HydraPlus-Net: Attentive Deep Features for Pedestrian Analysis",
+          "weight": 0.1698,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1709.09930"
+        },
+        {
+          "paper_id": "1707.06089",
+          "title": "Deep View-Sensitive Pedestrian Attribute Inference in an end-to-end Model",
+          "weight": 0.1496,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1707.06089"
+        },
+        {
+          "paper_id": "s2:aba968352b6bf5da3cdef7af99ed90f56fb34c6f",
+          "title": "Pedestrian Attribute Classification in Surveillance: Database and Evaluation",
+          "weight": 0.1257,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICCVW.2013.51"
+        },
+        {
+          "paper_id": "1603.07054",
+          "title": "A Richly Annotated Dataset for Pedestrian Attribute Recognition",
+          "weight": 0.1038,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1603.07054"
+        },
+        {
+          "paper_id": "s2:dc2e81602959f0257bb5b87262b1b3cee78962c9",
+          "title": "Grouping Attribute Recognition for Pedestrian with Joint Recurrent Learning",
+          "weight": 0.1035,
+          "share": 0.1,
+          "url": "https://doi.org/10.24963/ijcai.2018/441"
+        }
+      ],
+      "n_refs_used": 28,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1804.08882",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 29,
+      "ok": true,
+      "m": 0.8872,
+      "Delta": 0.0821,
+      "R2_plus": 0.8692,
+      "novelty_residual": 0.3617,
+      "novelty_score": 0.1308,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1611.05053",
+          "title": "Learning Detailed Face Reconstruction from a Single Image",
+          "weight": 0.2379,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1611.05053"
+        },
+        {
+          "paper_id": "1710.10196",
+          "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation",
+          "weight": 0.1197,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1710.10196"
+        },
+        {
+          "paper_id": "s2:21d1315761131ea6b3e2afe7a745b606341616fd",
+          "title": "Generative Adversarial Network with Spatial Attention for Face Attribute Editing",
+          "weight": 0.0993,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/978-3-030-01231-1_26"
+        },
+        {
+          "paper_id": "s2:69adf2f122ff18848ff85e8de3ee3b2bc495838e",
+          "title": "Arbitrary Facial Attribute Editing: Only Change What You Want",
+          "weight": 0.0847,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/69adf2f122ff18848ff85e8de3ee3b2bc495838e"
+        },
+        {
+          "paper_id": "s2:b66c02569e9fd282c620a50dc59944f617ffc691",
+          "title": "Facial Attribute Editing using Semantic Segmentation",
+          "weight": 0.0815,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/HPBDIS.2019.8735455"
+        }
+      ],
+      "n_refs_used": 53,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1612.08795",
+      "title": "Provable learning of Noisy-or Networks",
+      "year": 2016,
+      "citation_count": 28,
+      "ok": true,
+      "m": 0.8231,
+      "Delta": 0.0998,
+      "R2_plus": 0.7773,
+      "novelty_residual": 0.4719,
+      "novelty_score": 0.2227,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W2113046264",
+          "title": "Discovering Hidden Variables in Noisy-Or Networks using Quartet Tests",
+          "weight": 0.325,
+          "share": 0.3,
+          "url": "https://openalex.org/https://openalex.org/W2113046264"
+        },
+        {
+          "paper_id": "openalex:W2105724942",
+          "title": "Tensor decompositions for learning latent variable models",
+          "weight": 0.2278,
+          "share": 0.2,
+          "url": "https://doi.org/10.5555/2627435.2697055"
+        },
+        {
+          "paper_id": "openalex:W2100495367",
+          "title": "Reducing the Dimensionality of Data with Neural Networks",
+          "weight": 0.1403,
+          "share": 0.1,
+          "url": "https://doi.org/10.1126/science.1127647"
+        },
+        {
+          "paper_id": "openalex:W2074706689",
+          "title": "Internist-I, an Experimental Computer-Based Diagnostic Consultant for General Internal Medicine",
+          "weight": 0.1358,
+          "share": 0.1,
+          "url": "https://doi.org/10.1056/nejm198208193070803"
+        },
+        {
+          "paper_id": "openalex:W2047064469",
+          "title": "Learning Mixtures of Gaussians in High Dimensions",
+          "weight": 0.0558,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/2746539.2746616"
+        }
+      ],
+      "n_refs_used": 12,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1908.07401",
+      "title": "State Space System Modelling of a Quad Copter UAV",
+      "year": null,
+      "citation_count": 28,
+      "ok": true,
+      "m": 0.8804,
+      "Delta": 0.0433,
+      "R2_plus": 0.8183,
+      "novelty_residual": 0.4262,
+      "novelty_score": 0.1817,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:2130d01f68a995a695de54ca942e8311237c67ce",
+          "title": "Modeling, Identification and Control of a Quadrotor Aircraft",
+          "weight": 0.235,
+          "share": 0.3,
+          "url": "https://www.semanticscholar.org/paper/2130d01f68a995a695de54ca942e8311237c67ce"
+        },
+        {
+          "paper_id": "s2:af72502f0b6c8dbe8d518091fce67d0513710dbc",
+          "title": "Modeling and Backstepping-based Nonlinear Control Strategy for a 6 DOF Quadrotor Helicopter",
+          "weight": 0.2221,
+          "share": 0.2,
+          "url": "https://doi.org/10.1016/S1000-9361(08)60034-5"
+        },
+        {
+          "paper_id": "s2:ca5057ae395777730b5f47c554814eed9b7047a5",
+          "title": "Control algorithm research of quadrotor system based on 3-DOF simulation platform",
+          "weight": 0.1825,
+          "share": 0.2,
+          "url": "https://doi.org/10.1049/CP.2012.1073"
+        },
+        {
+          "paper_id": "s2:417250a5298a36da001fde0c17686dfe8c23b036",
+          "title": "DYNAMIC MODELING AND CONTROL OF QUADROTOR VEHICLE",
+          "weight": 0.1529,
+          "share": 0.2,
+          "url": "https://doi.org/10.21608/AMME.2012.37092"
+        },
+        {
+          "paper_id": "s2:6641c5332f4ed8acfaec918e8af95494b594ca8b",
+          "title": "Modelling and PID controller design for a quadrotor unmanned air vehicle",
+          "weight": 0.142,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/AQTR.2010.5520914"
+        }
+      ],
+      "n_refs_used": 9,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1904.09697",
+      "title": "Untitled",
+      "year": null,
+      "citation_count": 28,
+      "ok": true,
+      "m": 0.8877,
+      "Delta": 0.08,
+      "R2_plus": 0.8681,
+      "novelty_residual": 0.3632,
+      "novelty_score": 0.1319,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1801.08240",
+          "title": "First Release of High-Redshift Superluminous Supernovae from the Subaru HIgh-Z SUpernova CAmpaign (SHIZUCA). I. Photometric Properties",
+          "weight": 0.2521,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1801.08240"
+        },
+        {
+          "paper_id": "1604.02350",
+          "title": "THE COSMOS2015 CATALOG: EXPLORING THE 1 < z < 6 UNIVERSE WITH HALF A MILLION GALAXIES",
+          "weight": 0.1113,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1604.02350"
+        },
+        {
+          "paper_id": "1704.05988",
+          "title": "Photometric Redshifts for Hyper Suprime-Cam Subaru Strategic Program Data Release 1",
+          "weight": 0.0844,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1704.05988"
+        },
+        {
+          "paper_id": "1106.3328",
+          "title": "THE CLUSTER LENSING AND SUPERNOVA SURVEY WITH HUBBLE: AN OVERVIEW",
+          "weight": 0.0797,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1106.3328"
+        },
+        {
+          "paper_id": "1405.3668",
+          "title": "RAPIDLY EVOLVING AND LUMINOUS TRANSIENTS FROM PAN-STARRS1",
+          "weight": 0.0776,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1405.3668"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1507.01422",
+      "title": "End-to-end Convolutional Network for Saliency Prediction",
+      "year": 2015,
+      "citation_count": 27,
+      "ok": true,
+      "m": 0.8715,
+      "Delta": 0.0738,
+      "R2_plus": 0.8332,
+      "novelty_residual": 0.4084,
+      "novelty_score": 0.1668,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "1411.1045",
+          "title": "Deep Gaze I: Boosting Saliency Prediction with Feature Maps Trained on ImageNet",
+          "weight": 0.2055,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/1411.1045"
+        },
+        {
+          "paper_id": "s2:daef3fdc4190927c063ae94c12437cf82a6d1c20",
+          "title": "A Benchmark of Computational Models of Saliency to Predict Human Fixations",
+          "weight": 0.1593,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/daef3fdc4190927c063ae94c12437cf82a6d1c20"
+        },
+        {
+          "paper_id": "1411.4038",
+          "title": "Fully convolutional networks for semantic segmentation",
+          "weight": 0.1261,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1411.4038"
+        },
+        {
+          "paper_id": "s2:75ee5cd7712b6ad13d64c3b4de24aa592a869fc1",
+          "title": "Saliency Detection: A Boolean Map Approach",
+          "weight": 0.1036,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ICCV.2013.26"
+        },
+        {
+          "paper_id": "s2:908091b4a8757c3b2f7d9cfa2c4f616ee12c5157",
+          "title": "SUN database: Large-scale scene recognition from abbey to zoo",
+          "weight": 0.1027,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPR.2010.5539970"
+        }
+      ],
+      "n_refs_used": 21,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1903.12019",
+      "title": "Multimodal Deep Network Embedding with Integrated Structure and Attribute Information",
+      "year": 2019,
+      "citation_count": 26,
+      "ok": true,
+      "m": 0.8742,
+      "Delta": 0.0506,
+      "R2_plus": 0.8147,
+      "novelty_residual": 0.4304,
+      "novelty_score": 0.1853,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:d0b7c8828f0fca4dd901674e8fb5bd464a187664",
+          "title": "Structural Deep Network Embedding",
+          "weight": 0.4369,
+          "share": 0.4,
+          "url": "https://doi.org/10.1145/2939672.2939753"
+        },
+        {
+          "paper_id": "2301.04856",
+          "title": "Multimodal Deep Learning",
+          "weight": 0.1956,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2301.04856"
+        },
+        {
+          "paper_id": "s2:1e58e93d6f69c6fbfdb5213921f841c68e427a63",
+          "title": "User Profile Preserving Social Network Embedding",
+          "weight": 0.11,
+          "share": 0.1,
+          "url": "https://doi.org/10.24963/ijcai.2017/472"
+        },
+        {
+          "paper_id": "s2:0d2336389dff3031910bd21dd1c44d1b4cd51725",
+          "title": "Why Does Unsupervised Pre-training Help Deep Learning?",
+          "weight": 0.071,
+          "share": 0.1,
+          "url": "https://doi.org/10.5555/1756006.1756025"
+        },
+        {
+          "paper_id": "s2:0efb659b15737c76a2fc50010a694123f6c45f64",
+          "title": "Accelerated Attributed Network Embedding",
+          "weight": 0.0557,
+          "share": 0.1,
+          "url": "https://doi.org/10.1137/1.9781611974973.71"
+        }
+      ],
+      "n_refs_used": 51,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1507.04491",
+      "title": "Vehicle Authentication via Monolithically Certified Public Key and Attributes",
+      "year": 2015,
+      "citation_count": 25,
+      "ok": true,
+      "m": 0.9043,
+      "Delta": 0.0697,
+      "R2_plus": 0.8875,
+      "novelty_residual": 0.3353,
+      "novelty_score": 0.1125,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:68f1308927034af923c14eb6f395f07ef4f4610d",
+          "title": "Certificating Vehicle Public Key with Vehicle Attributes A (periodical) Licensing Routine, Against Man-in-the-Middle Attacks and Beyond",
+          "weight": 0.3041,
+          "share": 0.3,
+          "url": "https://www.semanticscholar.org/paper/68f1308927034af923c14eb6f395f07ef4f4610d"
+        },
+        {
+          "paper_id": "s2:6663ba5d9e80a8ea2ff1c77e8364334c952a2aeb",
+          "title": "A calculus for cryptographic protocols: the spi calculus",
+          "weight": 0.2089,
+          "share": 0.2,
+          "url": "https://doi.org/10.1145/266420.266432"
+        },
+        {
+          "paper_id": "s2:c8118f826d3c6907bd339bbe7f5d9d18328b3258",
+          "title": "Dynamic attribute based vehicle authentication",
+          "weight": 0.1602,
+          "share": 0.2,
+          "url": "https://doi.org/10.1007/s11276-016-1203-5"
+        },
+        {
+          "paper_id": "s2:639121ef00719211560a21601f0d050022bd381c",
+          "title": "Vehicular telematics over heterogeneous wireless networks: A survey",
+          "weight": 0.1332,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.comcom.2009.12.010"
+        },
+        {
+          "paper_id": "s2:97c62977488606280e380c55b63286074b422403",
+          "title": "Mutual Chip Authentication",
+          "weight": 0.0539,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/TrustCom.2013.209"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1109.6361",
+      "title": "Cognitive Principles in Robust Multimodal Interpretation",
+      "year": 2011,
+      "citation_count": 25,
+      "ok": true,
+      "m": 0.9212,
+      "Delta": 0.0475,
+      "R2_plus": 0.8961,
+      "novelty_residual": 0.3223,
+      "novelty_score": 0.1039,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:e0ac3dc5d45395e9c9d2b337be88346d3bcfb5a1",
+          "title": "Optimization in Multimodal Interpretation",
+          "weight": 0.3438,
+          "share": 0.3,
+          "url": "https://doi.org/10.3115/1218955.1218956"
+        },
+        {
+          "paper_id": "s2:8f0eedc6a9b801a59af499bdfe85eaa988ae12fa",
+          "title": "Linguistic theories in efficient multimodal reference resolution: an empirical investigation",
+          "weight": 0.3286,
+          "share": 0.3,
+          "url": "https://doi.org/10.1145/1040830.1040850"
+        },
+        {
+          "paper_id": "s2:475d9de787a0c8c1d1c45006b7ae36a78c942370",
+          "title": "A probabilistic approach to reference resolution in multimodal user interfaces",
+          "weight": 0.1304,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/964442.964457"
+        },
+        {
+          "paper_id": "s2:1773d10515f6c7010fe6f1e5cfaa2e9dcfefc724",
+          "title": "Embodiment in conversational interfaces: Rea",
+          "weight": 0.0829,
+          "share": 0.1,
+          "url": "https://doi.org/10.1145/302979.303150"
+        },
+        {
+          "paper_id": "s2:7664d4dfd7a88f207e90f80ea7dfbe0786a7812c",
+          "title": "Finite-state Multimodal Parsing and Understanding",
+          "weight": 0.0363,
+          "share": 0.0,
+          "url": "https://doi.org/10.3115/990820.990874"
+        }
+      ],
+      "n_refs_used": 37,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "1805.01946",
+      "title": "Reliability Map Estimation For CNN-Based Camera Model Attribution",
+      "year": 2018,
+      "citation_count": 24,
+      "ok": true,
+      "m": 0.9098,
+      "Delta": 0.0601,
+      "R2_plus": 0.8878,
+      "novelty_residual": 0.3349,
+      "novelty_score": 0.1122,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:47b6bd72444d650f0c3570ae255cf9b5bb2a6cca",
+          "title": "Image forgery localization through the fusion of camera-based, feature-based and pixel-based techniques",
+          "weight": 0.3359,
+          "share": 0.3,
+          "url": "https://doi.org/10.1109/ICIP.2014.7026073"
+        },
+        {
+          "paper_id": "s2:fd8f9168e5d4c87670a6a604ae25bc30d28a2041",
+          "title": "A Preliminary Study on Convolutional Neural Networks for Camera Model Identification",
+          "weight": 0.1776,
+          "share": 0.2,
+          "url": "https://doi.org/10.2352/ISSN.2470-1173.2017.7.MWSF-327"
+        },
+        {
+          "paper_id": "s2:957a7e166a97485899441d4272a14a75f166ac9b",
+          "title": "Automatic source camera identification using the intrinsic lens radial distortion.",
+          "weight": 0.1525,
+          "share": 0.2,
+          "url": "https://doi.org/10.1364/OE.14.011551"
+        },
+        {
+          "paper_id": "s2:1a7205588d9c4eb764ff893b8991e5044f2278b6",
+          "title": "Tampering Detection and Localization Through Clustering of Camera-Based CNN Features",
+          "weight": 0.1306,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/CVPRW.2017.232"
+        },
+        {
+          "paper_id": "s2:17498446b84b211105e3291a0ca4ce6228a10de9",
+          "title": "An Overview on Image Forensics",
+          "weight": 0.0539,
+          "share": 0.1,
+          "url": "https://doi.org/10.1155/2013/496701"
+        }
+      ],
+      "n_refs_used": 33,
+      "d_eff": null
     }
   ]
 }

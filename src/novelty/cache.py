@@ -95,6 +95,8 @@ def pack_vector(vec: list[float] | Any) -> bytes:
     import numpy as np
 
     arr = np.asarray(vec, dtype="float32").ravel()
+    if not np.all(np.isfinite(arr)):
+        raise ValueError("Cannot pack vector with NaN or Inf values")
     return arr.tobytes()
 
 
@@ -102,6 +104,24 @@ def unpack_vector(blob: bytes) -> Any:
     import numpy as np
 
     return np.frombuffer(blob, dtype="float32").copy()
+
+
+def purge_corrupted_embeddings(conn: sqlite3.Connection) -> int:
+    """Scan embeddings table and delete any records containing NaN or Inf floats."""
+    import numpy as np
+
+    rows = conn.execute("SELECT canonical_id, model, dim, vector FROM embeddings").fetchall()
+    purged = 0
+    with conn:
+        for r in rows:
+            vec = np.frombuffer(r["vector"], dtype="float32")
+            if not np.all(np.isfinite(vec)):
+                conn.execute(
+                    "DELETE FROM embeddings WHERE canonical_id=? AND model=? AND dim=?",
+                    (r["canonical_id"], r["model"], r["dim"]),
+                )
+                purged += 1
+    return purged
 
 
 def upsert_paper(
@@ -170,6 +190,13 @@ def put_embedding(
     dim: int,
     vector,
 ) -> None:
+    import numpy as np
+
+    arr = np.asarray(vector, dtype="float32").ravel()
+    if not np.all(np.isfinite(arr)):
+        print(f"[cache] Warning: Refusing to store NaN/Inf embedding for {canonical_id}", file=sys.stderr)
+        return
+
     conn.execute(
         """
         INSERT INTO embeddings (canonical_id, model, dim, vector, embedded_at)
@@ -178,7 +205,7 @@ def put_embedding(
             vector=excluded.vector,
             embedded_at=excluded.embedded_at
         """,
-        (canonical_id, model, int(dim), pack_vector(vector), time.time()),
+        (canonical_id, model, int(dim), pack_vector(arr), time.time()),
     )
     conn.commit()
 
@@ -186,6 +213,8 @@ def put_embedding(
 def get_embedding(
     conn: sqlite3.Connection, canonical_id: str, model: str, dim: int
 ):
+    import numpy as np
+
     row = conn.execute(
         """
         SELECT vector FROM embeddings
@@ -195,7 +224,16 @@ def get_embedding(
     ).fetchone()
     if not row:
         return None
-    return unpack_vector(row["vector"])
+    vec = unpack_vector(row["vector"])
+    if not np.all(np.isfinite(vec)):
+        # Auto-heal corrupted rows
+        conn.execute(
+            "DELETE FROM embeddings WHERE canonical_id=? AND model=? AND dim=?",
+            (canonical_id, model, int(dim)),
+        )
+        conn.commit()
+        return None
+    return vec
 
 
 def set_ref_edges(

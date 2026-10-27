@@ -95,11 +95,22 @@ def run_batch_novelty(
     output_md: Path = DEFAULT_MD,
     sleep_s: float = 0.25,
 ) -> dict[str, Any]:
+    from src.novelty.cache import connect, purge_corrupted_embeddings
     from src.novelty.score import score_paper
-    from src.rag.embed_store import load_embedding_model
+    from src.rag.embed_store import drain_mps_cache, load_embedding_model
 
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_md.parent.mkdir(parents=True, exist_ok=True)
+
+    # Ensure novelty cache has no corrupted NaN vectors from earlier runs
+    try:
+        conn = connect()
+        purged = purge_corrupted_embeddings(conn)
+        if purged > 0:
+            print(f"[batch-novelty] Cleaned {purged} corrupted NaN vectors from novelty cache.")
+        conn.close()
+    except Exception as e:
+        print(f"[batch-novelty] Cache purge check warning: {e}")
 
     # Load existing results if resuming
     existing_records: dict[str, dict[str, Any]] = {}
@@ -108,7 +119,15 @@ def run_batch_novelty(
             with open(output_json, "r", encoding="utf-8") as f:
                 prev_data = json.load(f)
                 for item in prev_data.get("results", []):
-                    if item.get("ok") and item.get("arxiv_id"):
+                    m_val = item.get("m")
+                    d_val = item.get("Delta")
+                    if (
+                        item.get("ok")
+                        and item.get("arxiv_id")
+                        and m_val is not None
+                        and str(m_val) != "nan"
+                        and str(d_val) != "nan"
+                    ):
                         existing_records[item["arxiv_id"]] = item
             print(f"[batch-novelty] Loaded {len(existing_records)} existing records for resumption.")
         except Exception as e:
@@ -155,40 +174,54 @@ def run_batch_novelty(
                     "message": profile.get("message", ""),
                 }
             else:
+                import math
+
                 m = float(profile.get("m", 0.0))
                 delta = float(profile.get("Delta", 0.0))
                 r2_plus = float(profile.get("R2_plus", 0.0))
-                res_gap = float(max(0.0, 1.0 - r2_plus) ** 0.5)
-                classification = classify_geometry(m, delta, r2_plus)
 
-                # Format top parents
-                attr_list = []
-                for a in profile.get("attribution", [])[:5]:
-                    attr_list.append({
-                        "paper_id": a.get("paper_id"),
-                        "title": a.get("title"),
-                        "weight": round(float(a.get("weight", 0.0)), 4),
-                        "share": round(float(a.get("share", 0.0)), 1),
-                        "url": a.get("url"),
-                    })
+                if not (math.isfinite(m) and math.isfinite(delta) and math.isfinite(r2_plus)):
+                    record = {
+                        "arxiv_id": aid,
+                        "title": title,
+                        "year": year,
+                        "citation_count": cites,
+                        "ok": False,
+                        "error": "non_finite_metrics",
+                        "message": f"Non-finite metrics: m={m}, delta={delta}, r2_plus={r2_plus}",
+                    }
+                else:
+                    res_gap = float(max(0.0, 1.0 - r2_plus) ** 0.5)
+                    classification = classify_geometry(m, delta, r2_plus)
 
-                record = {
-                    "arxiv_id": aid,
-                    "title": title,
-                    "year": year,
-                    "citation_count": cites,
-                    "ok": True,
-                    "m": round(m, 4),
-                    "Delta": round(delta, 4),
-                    "R2_plus": round(r2_plus, 4),
-                    "novelty_residual": round(res_gap, 4),
-                    "novelty_score": round(1.0 - r2_plus, 4),
-                    "classification": classification,
-                    "attribution": attr_list,
-                    "n_refs_used": profile.get("n_refs_used", 0),
-                    "d_eff": profile.get("d_eff"),
-                }
-                print(f"       -> m={m:.3f}  Δ={delta:.3f}  R²+={r2_plus:.3f}  Res={res_gap:.3f}  [{classification}]")
+                    # Format top parents
+                    attr_list = []
+                    for a in profile.get("attribution", [])[:5]:
+                        attr_list.append({
+                            "paper_id": a.get("paper_id"),
+                            "title": a.get("title"),
+                            "weight": round(float(a.get("weight", 0.0)), 4),
+                            "share": round(float(a.get("share", 0.0)), 1),
+                            "url": a.get("url"),
+                        })
+
+                    record = {
+                        "arxiv_id": aid,
+                        "title": title,
+                        "year": year,
+                        "citation_count": cites,
+                        "ok": True,
+                        "m": round(m, 4),
+                        "Delta": round(delta, 4),
+                        "R2_plus": round(r2_plus, 4),
+                        "novelty_residual": round(res_gap, 4),
+                        "novelty_score": round(1.0 - r2_plus, 4),
+                        "classification": classification,
+                        "attribution": attr_list,
+                        "n_refs_used": profile.get("n_refs_used", 0),
+                        "d_eff": profile.get("d_eff"),
+                    }
+                    print(f"       -> m={m:.3f}  Δ={delta:.3f}  R²+={r2_plus:.3f}  Res={res_gap:.3f}  [{classification}]")
 
             results.append(record)
 
@@ -206,10 +239,14 @@ def run_batch_novelty(
                 "ok": False,
                 "error": str(e),
             })
+        finally:
+            drain_mps_cache()
 
-        # Save checkpoint every 10 papers
+        # Save checkpoint every 10 papers (and update markdown report every 50)
         if idx % 10 == 0:
-            _save_json_report(output_json, results, limit, category, min_citations)
+            chk = _save_json_report(output_json, results, limit, category, min_citations)
+            if idx % 50 == 0:
+                _generate_markdown_report(output_md, chk)
 
     total_time = time.perf_counter() - t_start
     print("=" * 76)
@@ -231,10 +268,16 @@ def _save_json_report(
     category: str | None,
     min_citations: int,
 ) -> dict[str, Any]:
-    scored_ok = [r for r in results if r.get("ok")]
+    scored_ok = [
+        r for r in results
+        if r.get("ok")
+        and r.get("m") is not None
+        and str(r.get("m")) != "nan"
+        and str(r.get("Delta")) != "nan"
+    ]
     stats: dict[str, Any] = {
         "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "total_requested": limit,
+        "total_requested": "all" if limit == 0 else limit,
         "total_evaluated": len(results),
         "total_successful": len(scored_ok),
         "category_filter": category,

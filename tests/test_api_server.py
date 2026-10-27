@@ -67,7 +67,27 @@ class TestAPIServer(unittest.TestCase):
     def test_static_web_studio_served(self):
         resp = self.client.get("/")
         self.assertEqual(resp.status_code, 200)
-        self.assertIn("ArXiv Discovery & RAG Studio", resp.text)
+        self.assertIn("Literature Discovery", resp.text)
+
+    def test_recommend_direct_arxiv_id(self):
+        # Query with an explicit arXiv ID
+        resp = self.client.post("/api/recommend", json={"query": "1806.07572", "k": 5})
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertGreater(data.get("count", 0), 0)
+        first = data["results"][0]
+        self.assertEqual(first.get("arxiv_id"), "1806.07572")
+        self.assertTrue(first.get("is_direct_match"))
+
+    def test_arxiv_search_and_import_endpoints(self):
+        # Empty query
+        resp = self.client.get("/api/arxiv/search?q=")
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.json().get("count"), 0)
+
+        # Missing ID in import
+        resp_imp = self.client.post("/api/arxiv/import", json={})
+        self.assertEqual(resp_imp.status_code, 400)
 
 
 if __name__ == "__main__":

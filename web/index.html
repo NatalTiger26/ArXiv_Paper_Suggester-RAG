@@ -33,72 +33,120 @@
     <!-- LEFT PANE: Discovery & Ranking -->
     <section class="pane left-pane" id="discoveryPane">
       <div class="pane-header">
-        <h2>Discovery & Multi-Signal Ranking</h2>
+        <h2>Literature Discovery</h2>
         <span class="badge" id="rankCountBadge">0 papers</span>
       </div>
 
-      <div class="search-box">
-        <input type="text" id="rankQuery" placeholder="Search literature or enter research topic..." value="mechanistic interpretability circuits">
-        <button id="btnRank" class="primary-btn">Rank Papers</button>
+      <!-- Discovery Mode Switcher -->
+      <div class="discovery-mode-bar">
+        <button class="mode-btn active" id="modeBtnRank" title="Search & rank literature in local library">🔍 Rank Library</button>
+        <button class="mode-btn" id="modeBtnArxiv" title="Search live arXiv across any discipline">🌐 Live arXiv</button>
+        <button class="mode-btn" id="modeBtnImport" title="Add specific paper by arXiv ID">➕ Add by ID</button>
       </div>
 
-      <!-- Live Signal Weight Sliders -->
-      <details class="weights-expander" open>
-        <summary>Scoring Weights & Hyperparameters</summary>
-        <div class="slider-grid">
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>Embedding Semantic</span>
-              <strong id="wEmbVal">0.40</strong>
+      <!-- VIEW 1: Local Library Multi-Signal Ranking -->
+      <div id="viewRank" class="discovery-view">
+        <div class="search-box">
+          <input type="text" id="rankQuery" placeholder="Search literature or enter arXiv ID..." value="mechanistic interpretability circuits">
+          <button id="btnRank" class="primary-btn">Rank Papers</button>
+        </div>
+
+        <!-- Live Signal Weight Sliders -->
+        <details class="weights-expander" open>
+          <summary>Scoring Weights & Hyperparameters</summary>
+          <div class="slider-grid">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Embedding Semantic</span>
+                <strong id="wEmbVal">0.40</strong>
+              </div>
+              <input type="range" id="wEmb" min="0" max="1" step="0.05" value="0.40">
             </div>
-            <input type="range" id="wEmb" min="0" max="1" step="0.05" value="0.40">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Recency Decay</span>
+                <strong id="wRecVal">0.15</strong>
+              </div>
+              <input type="range" id="wRec" min="0" max="1" step="0.05" value="0.15">
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Global Citations</span>
+                <strong id="wCitVal">0.15</strong>
+              </div>
+              <input type="range" id="wCit" min="0" max="1" step="0.05" value="0.15">
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Author Corpus Frequency</span>
+                <strong id="wAuthVal">0.05</strong>
+              </div>
+              <input type="range" id="wAuth" min="0" max="1" step="0.05" value="0.05">
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Velocity & Hub Authority</span>
+                <strong id="wVelVal">0.25</strong>
+              </div>
+              <input type="range" id="wVel" min="0" max="1" step="0.05" value="0.25">
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Diversity Temperature (MMR)</span>
+                <strong id="wTempVal">0.10</strong>
+              </div>
+              <input type="range" id="wTemp" min="0" max="1" step="0.05" value="0.10">
+            </div>
           </div>
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>Recency Decay</span>
-              <strong id="wRecVal">0.15</strong>
-            </div>
-            <input type="range" id="wRec" min="0" max="1" step="0.05" value="0.15">
-          </div>
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>Global Citations</span>
-              <strong id="wCitVal">0.15</strong>
-            </div>
-            <input type="range" id="wCit" min="0" max="1" step="0.05" value="0.15">
-          </div>
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>Author Corpus Frequency</span>
-              <strong id="wAuthVal">0.05</strong>
-            </div>
-            <input type="range" id="wAuth" min="0" max="1" step="0.05" value="0.05">
-          </div>
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>Velocity & Hub Authority</span>
-              <strong id="wVelVal">0.25</strong>
-            </div>
-            <input type="range" id="wVel" min="0" max="1" step="0.05" value="0.25">
-          </div>
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>Diversity Temperature (MMR)</span>
-              <strong id="wTempVal">0.10</strong>
-            </div>
-            <input type="range" id="wTemp" min="0" max="1" step="0.05" value="0.10">
+        </details>
+
+        <!-- Fast FTS5 Filter -->
+        <div class="sub-filter">
+          <input type="text" id="ftsKeyword" placeholder="Filter current list by keyword...">
+        </div>
+      </div>
+
+      <!-- VIEW 2: Live arXiv Search across ANY discipline (Astrophysics, Physics, CS, Bio, etc.) -->
+      <div id="viewArxiv" class="discovery-view" style="display: none;">
+        <div class="search-box-stacked">
+          <input type="text" id="arxivLiveQuery" placeholder="Search live arXiv (e.g. gravitational waves, exoplanets)..." value="gravitational waves black hole mergers">
+          <div class="arxiv-filter-row">
+            <select id="arxivCategorySelect" class="category-select">
+              <option value="">All Categories</option>
+              <option value="astro-ph">Astrophysics (astro-ph)</option>
+              <option value="physics">Physics (physics)</option>
+              <option value="quant-ph">Quantum Physics (quant-ph)</option>
+              <option value="cs">Computer Science (cs)</option>
+              <option value="math">Mathematics (math)</option>
+              <option value="q-bio">Quantitative Biology (q-bio)</option>
+              <option value="stat">Statistics (stat)</option>
+            </select>
+            <button id="btnSearchArxiv" class="primary-btn">Search arXiv</button>
           </div>
         </div>
-      </details>
-
-      <!-- Fast FTS5 Filter -->
-      <div class="sub-filter">
-        <input type="text" id="ftsKeyword" placeholder="Filter current list by keyword...">
       </div>
 
-      <!-- Ranked Results List -->
+      <!-- VIEW 3: Direct Paper Import by arXiv ID -->
+      <div id="viewImport" class="discovery-view" style="display: none;">
+        <div class="import-box">
+          <span class="import-label">Add Any arXiv Paper to Library & Q&A:</span>
+          <div class="search-box" style="padding: 8px 0; border: none;">
+            <input type="text" id="importArxivId" placeholder="e.g. 1704.05858 or https://arxiv.org/abs/1704.05858">
+            <button id="btnImportPaper" class="primary-btn">Import</button>
+          </div>
+          <div class="import-options">
+            <label class="toggle-control" style="font-size: 11px;">
+              <input type="checkbox" id="chkImportRAG" checked>
+              Download PDF & Ingest into Q&A immediately
+            </label>
+          </div>
+          <div id="importStatus" class="import-status"></div>
+        </div>
+      </div>
+
+      <!-- Results List (Shared container) -->
       <div class="results-list" id="rankResultsList">
-        <div class="empty-state">Enter a topic and click <strong>Rank Papers</strong> to inspect multi-signal scoring.</div>
+        <div class="empty-state">Enter a topic and click <strong>Rank Papers</strong>, or search live arXiv.</div>
       </div>
     </section>
 

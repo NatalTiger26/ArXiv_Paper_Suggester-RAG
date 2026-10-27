@@ -17,9 +17,11 @@ import numpy as np
 
 def _unit(v: np.ndarray) -> np.ndarray:
     v = np.asarray(v, dtype=np.float64).ravel()
+    if not np.all(np.isfinite(v)):
+        v = np.nan_to_num(v, nan=0.0, posinf=0.0, neginf=0.0)
     n = float(np.linalg.norm(v))
-    if n < 1e-12:
-        return v
+    if n < 1e-12 or not np.isfinite(n):
+        return np.zeros_like(v)
     return v / n
 
 
@@ -42,14 +44,18 @@ def prepare_matrix(
 
     if center is not None:
         c = np.asarray(center, dtype=np.float64).ravel()
-        if c.shape[0] == x.shape[0]:
+        if c.shape[0] == x.shape[0] and np.all(np.isfinite(c)):
             x = x - c
             Y = Y - c.reshape(-1, 1)
 
     x = _unit(x)
-    cols = [_unit(Y[:, j]) for j in range(Y.shape[1])]
-    Y = np.column_stack(cols) if cols else np.zeros((x.shape[0], 0), dtype=np.float64)
-    return x, Y
+    cols = []
+    for j in range(Y.shape[1]):
+        u = _unit(Y[:, j])
+        if float(np.linalg.norm(u)) > 0.5:
+            cols.append(u)
+    Y_out = np.column_stack(cols) if cols else np.zeros((x.shape[0], 0), dtype=np.float64)
+    return x, Y_out
 
 
 def pairwise_dispersion(
@@ -81,8 +87,10 @@ def nnls_cone_r2(x: np.ndarray, Y: np.ndarray) -> tuple[float, np.ndarray]:
     For unit x: R2_+ = ||P_K x||^2  (Moreau: residual energy = 1 - R2).
     """
     n = Y.shape[1]
-    if n == 0:
-        return 0.0, np.zeros(0, dtype=np.float64)
+    if n == 0 or float(np.linalg.norm(x)) < 1e-12:
+        return 0.0, np.zeros(n, dtype=np.float64)
+    if not (np.all(np.isfinite(x)) and np.all(np.isfinite(Y))):
+        return 0.0, np.zeros(n, dtype=np.float64)
     try:
         from scipy.optimize import nnls
 
@@ -93,9 +101,11 @@ def nnls_cone_r2(x: np.ndarray, Y: np.ndarray) -> tuple[float, np.ndarray]:
             lam = np.maximum(np.asarray(lam, dtype=np.float64), 0.0)
         except Exception:
             return 0.0, np.zeros(n, dtype=np.float64)
-    lam = np.asarray(lam, dtype=np.float64).ravel()
+    lam = np.nan_to_num(np.asarray(lam, dtype=np.float64).ravel(), nan=0.0, posinf=0.0, neginf=0.0)
     proj = Y @ lam
     r2 = float(np.dot(proj, proj))
+    if not np.isfinite(r2):
+        r2 = 0.0
     return max(0.0, min(1.0, r2)), lam
 
 
@@ -174,19 +184,27 @@ def compute_profile(
         return out
 
     k = Y_u.T @ x_u
-    m = float(np.max(k))
-    m_idx = int(np.argmax(k))
+    m = float(np.max(k)) if k.size > 0 else 0.0
+    if not np.isfinite(m):
+        m = 0.0
+    m_idx = int(np.argmax(k)) if k.size > 0 else 0
     m_plus = max(m, 0.0)
     m_plus_sq = m_plus ** 2
 
-    ybar = Y_u.mean(axis=1)
+    ybar = Y_u.mean(axis=1) if Y_u.shape[1] > 0 else np.zeros_like(x_u)
     c = float(np.dot(ybar, ybar))
+    if not np.isfinite(c):
+        c = 0.0
     a = float(np.dot(x_u, ybar) / np.sqrt(c)) if c > 1e-12 else 0.0
+    if not np.isfinite(a):
+        a = 0.0
 
     disp = pairwise_dispersion(Y_u)
     r2, lam = nnls_cone_r2(x_u, Y_u)
+    if not np.isfinite(r2):
+        r2 = 0.0
     delta = float(r2 - m_plus_sq)
-    if -1e-9 < delta < 0:
+    if not np.isfinite(delta) or (-1e-9 < delta < 0):
         delta = 0.0
 
     s = float(lam.sum())

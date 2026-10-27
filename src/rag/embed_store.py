@@ -202,22 +202,113 @@ def get_collection(create: bool = True):
     )
 
 
+def drain_mps_cache() -> None:
+    """Flush PyTorch MPS Metal allocation pools and trigger garbage collection."""
+    try:
+        import gc
+        import torch
+
+        if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available():
+            torch.mps.empty_cache()
+        gc.collect()
+    except Exception:
+        pass
+
+
 def embed_texts(texts: list[str], model=None) -> list[list[float]]:
+    if not texts:
+        return []
     if model is None:
         model = load_embedding_model()
-    batch = 32
+
+    import numpy as np
+
+    # Detect device
+    device_type = getattr(model, "device", None)
+    is_mps = False
+    if device_type:
+        is_mps = "mps" in str(device_type).lower()
+    else:
+        is_mps = (_get_device() == "mps")
+
+    # Proactive cache drain on Apple Silicon MPS before allocation
+    if is_mps:
+        drain_mps_cache()
+
+    # Adaptive batch sizing: on MPS, 6 prevents Metal buffer exhaustion on 2B models
+    default_batch = 6 if is_mps else 32
     try:
-        batch = int(__import__("os").environ.get("RAG_EMBED_BATCH") or 32)
+        batch = int(os.environ.get("RAG_EMBED_BATCH") or default_batch)
     except ValueError:
-        batch = 32
-    batch = max(4, min(batch, 64))
-    vectors = model.encode(
-        texts,
-        batch_size=batch,
-        normalize_embeddings=True,
-        show_progress_bar=len(texts) > 8,
-        convert_to_numpy=True,
-    )
+        batch = default_batch
+    batch = max(2, min(batch, 8 if is_mps else 64))
+
+    # Inference execution with OOM recovery
+    try:
+        import torch
+        ctx = torch.inference_mode()
+    except Exception:
+        import contextlib
+        ctx = contextlib.nullcontext()
+
+    vectors = None
+    with ctx:
+        try:
+            vectors = model.encode(
+                texts,
+                batch_size=batch,
+                normalize_embeddings=True,
+                show_progress_bar=len(texts) > 8,
+                convert_to_numpy=True,
+            )
+        except Exception as e:
+            err_str = str(e).lower()
+            if "out of memory" in err_str or "command buffer" in err_str or "mps" in err_str:
+                print(f"[embed] MPS memory pressure detected ({e}). Draining cache and retrying with batch 2…", flush=True)
+                drain_mps_cache()
+                try:
+                    vectors = model.encode(
+                        texts,
+                        batch_size=2,
+                        normalize_embeddings=True,
+                        show_progress_bar=False,
+                        convert_to_numpy=True,
+                    )
+                except Exception:
+                    drain_mps_cache()
+                    print("[embed] Retrying batch on CPU for safety…", flush=True)
+                    vectors = model.encode(
+                        texts,
+                        batch_size=8,
+                        device="cpu",
+                        normalize_embeddings=True,
+                        show_progress_bar=False,
+                        convert_to_numpy=True,
+                    )
+            else:
+                raise
+
+    # Verify finite values
+    if vectors is not None:
+        vectors = np.asarray(vectors, dtype=np.float32)
+        if not np.all(np.isfinite(vectors)):
+            print("[embed] Warning: non-finite values detected in embedding output. Re-encoding on CPU…", flush=True)
+            drain_mps_cache()
+            vectors = model.encode(
+                texts,
+                batch_size=8,
+                device="cpu",
+                normalize_embeddings=True,
+                show_progress_bar=False,
+                convert_to_numpy=True,
+            )
+            vectors = np.asarray(vectors, dtype=np.float32)
+            vectors = np.nan_to_num(vectors, nan=0.0, posinf=0.0, neginf=0.0)
+
+    # Clean cache after batch
+    if is_mps:
+        drain_mps_cache()
+
     vectors = _apply_dim(vectors, EMBEDDING_DIM)
     return [v.tolist() for v in vectors]
 

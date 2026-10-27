@@ -61,6 +61,75 @@ class TestNoveltyGeometry(unittest.TestCase):
         radius = np.sqrt(proj_pt["x"]**2 + proj_pt["y"]**2)
         self.assertAlmostEqual(radius, np.sqrt(0.8), places=3)
 
+    def test_nan_and_zero_norm_numerical_stability(self):
+        from src.novelty.metrics import _unit, prepare_matrix, nnls_cone_r2, compute_profile
+
+        # Zero vector handling
+        z = np.zeros(4)
+        self.assertTrue(np.all(_unit(z) == 0.0))
+
+        # NaN/Inf vector handling
+        bad = np.array([np.nan, 1.0, np.inf, -np.inf])
+        u_bad = _unit(bad)
+        self.assertTrue(np.all(np.isfinite(u_bad)))
+
+        # Matrix preparation with corrupted columns
+        x = np.array([1.0, 0.0, 0.0, 0.0])
+        Y_corrupt = np.array([
+            [np.nan, 0.0, 0.0],
+            [1.0, 0.0, 0.0],
+            [0.0, 0.0, 1.0],
+            [0.0, 0.0, 0.0],
+        ])
+        x_clean, Y_clean = prepare_matrix(x, Y_corrupt)
+        self.assertTrue(np.all(np.isfinite(x_clean)))
+        self.assertTrue(np.all(np.isfinite(Y_clean)))
+
+        # NNLS cone projection with zero/non-finite inputs
+        r2, lam = nnls_cone_r2(x, Y_corrupt)
+        self.assertTrue(np.isfinite(r2))
+        self.assertTrue(np.all(np.isfinite(lam)))
+
+        # Profile computation produces strictly finite metrics
+        prof = compute_profile(x, Y_corrupt)
+        self.assertTrue(prof["n_refs_used"] >= 0)
+        if prof.get("m") is not None:
+            self.assertTrue(np.isfinite(prof["m"]))
+            self.assertTrue(np.isfinite(prof["Delta"]))
+            self.assertTrue(np.isfinite(prof["R2_plus"]))
+
+    def test_cache_vector_finiteness_validation(self):
+        from src.novelty.cache import pack_vector, purge_corrupted_embeddings
+        import sqlite3
+
+        # Packing NaN vector should raise ValueError
+        bad_vec = [1.0, np.nan, 3.0]
+        with self.assertRaises(ValueError):
+            pack_vector(bad_vec)
+
+        # In-memory SQLite test of purge_corrupted_embeddings
+        conn = sqlite3.connect(":memory:")
+        conn.row_factory = sqlite3.Row
+        conn.execute("""
+            CREATE TABLE embeddings (
+                canonical_id TEXT, model TEXT, dim INTEGER, vector BLOB, embedded_at REAL,
+                PRIMARY KEY (canonical_id, model, dim)
+            )
+        """)
+        good_blob = np.array([1.0, 2.0, 3.0], dtype="float32").tobytes()
+        bad_blob = np.array([1.0, np.nan, 3.0], dtype="float32").tobytes()
+
+        conn.execute("INSERT INTO embeddings VALUES ('good', 'm', 3, ?, 0)", (good_blob,))
+        conn.execute("INSERT INTO embeddings VALUES ('bad', 'm', 3, ?, 0)", (bad_blob,))
+        conn.commit()
+
+        purged = purge_corrupted_embeddings(conn)
+        self.assertEqual(purged, 1)
+
+        remaining = conn.execute("SELECT canonical_id FROM embeddings").fetchall()
+        self.assertEqual(len(remaining), 1)
+        self.assertEqual(remaining[0]["canonical_id"], "good")
+
 
 if __name__ == "__main__":
     unittest.main()
