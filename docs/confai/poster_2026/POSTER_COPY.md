@@ -1,121 +1,114 @@
-# ConfAI 2026 Poster: Complete Text Copy
+# ConfAI 2026 Academic Poster Copy (Verbatim)
 
 **Event:** ConfAI 2026 · AI in Practice (Extended Track) · Poster Exhibition  
-**Title:** Literature Discovery with Multi-Signal Ranking, Citation-Grounded Hybrid RAG, and 2D Novelty Geometry  
-**Author:** Ajay Sharma (M.S. in AI, Plaksha University)  
+**Official Title:** Literature Discovery with Multi-Signal Ranking, Citation-Grounded Hybrid RAG, and 2D Novelty Geometry  
+**Author:** Ajay Sharma (M.S. in AI)  
 **Supervisor:** Dr. Subrat Panda  
-**Affiliation:** Plaksha University, Punjab, India  
-**Repository:** https://github.com/NatalTiger26/ArXiv_Paper_Suggester  
+**Affiliation:** Center for Artificial Intelligence, Plaksha University, Mohali, Punjab, India  
+**GitHub Repository:** `https://github.com/NatalTiger26/ArXiv_Paper_Suggester-RAG`  
+**Live Demo:** `https://nataltiger26-arxiv-paper-suggester-rag-srcapp-olkakz.streamlit.app/`  
 
 ---
 
-## 1. Problem Statement & Motivation
-Keyword search returns unranked catalogs, while general large language models answer without verifiable links to passages in papers the researcher actually chose to study. Furthermore, existing tools treat scientific innovation as a black box rather than projecting it geometrically against foundational ancestors. We introduce a complete scientific discovery workstation bridging multi-signal abstract ranking, selective full-text hybrid RAG with verifiable passage-level citations, and 2D reference cone novelty geometry.
+## Band A: Header & Identity
+- **Event:** ConfAI 2026 · AI in Practice (Extended Track) · Poster Exhibition
+- **Title:** Literature Discovery with Multi-Signal Ranking, Citation-Grounded Hybrid RAG, and 2D Novelty Geometry
+- **Authors:** Ajay Sharma (M.S. in AI) · Supervisor: Dr. Subrat Panda
+- **Affiliation:** Center for Artificial Intelligence, Plaksha University, Mohali, Punjab, India
+- **Institution Badge:** PLAKSHA UNIVERSITY (Center for Artificial Intelligence)
+- **Interactive QR Access:** GitHub Code and Live Demo (Streamlit Cloud)
 
 ---
 
-## 2. Key Takeaways
-- **Multi-Signal Discovery Over 101k Papers:** Transparent 4-signal ranking (semantic embedding, recency decay with 4.0 yr half-life, citation impact, and author continuity) over 5,752 FTS5 catalog papers and 101k citation graph hubs.
-- **Selective Ingestion & Hybrid RRF RAG:** Empirical evaluation proves pure dense retrieval degrades from 0.786 to 0.457 MRR at scale. Selective full-text ingestion combined with dense + BM25 Reciprocal Rank Fusion and section priors preserves high precision with 98.9% citation validity.
-- **2D Reference Cone Geometry:** Non-Negative Least Squares (NNLS) cone projection decomposes papers into closest parent ($m$), multi-parent synergy gain ($\Delta$), explained energy ($R^2_+$), and orthogonal novelty residual gap ($\sqrt{1 - R^2_+}$).
+## Band B: Contributions & Headline
+1. **Multi-Signal Discovery:** Ranks 5,752 catalog papers and explores 101k citation works via embeddings, 4-year half-life recency, citation saturation, and author prominence.
+2. **Selective Ingest & Hybrid RAG:** Scaling causes 41.9% MRR loss. Selective BM25 plus dense RRF recovers 6% to 61% of lost MRR with 98.89% citation validity.
+3. **2D Reference Cone Geometry:** NNLS cone projection decomposes innovation into Closest Parent (m), Synergy Blend (Δ), and Residual Gap (Res).
 
 ---
 
-## 3. End-to-End System Architecture
-
-### Pipeline Narrative
-1. **Literature Discovery:** Remote papers from arXiv, Semantic Scholar, and OpenAlex are indexed in SQLite FTS5 (5,752 papers) and an edge citation graph (101,716 papers, 226,857 edges).
-2. **Multi-Signal Ranking:** Candidates are filtered using inspectable weight presets across embedding similarity, recency decay, citation saturation, and author domain authority.
-3. **Selective Ingestion:** Researchers selectively ingest chosen papers. PDFs/HTML are converted to clean Markdown via PyMuPDF4LLM, segmented into header-aware chunks (1,000 chars), and indexed in Chroma with local `google/embeddinggemma-2`.
-4. **Hybrid RAG Synthesis:** Queries undergo dense + BM25 Reciprocal Rank Fusion with section-intent priors, delivering grounded context to Gemini with verifiable passage-level `[1], [2]` citations.
-5. **2D Novelty Geometry:** References are resolved via a multi-tier cascade (S2, OpenAlex, direct arXiv HTML), projected onto the reference cone via NNLS, and rendered on an interactive 2D canvas.
-
----
-
-## 4. Pillar 1: Multi-Signal Ranking & Citation Hubs
-
-### Scoring Formula
-$$\text{Score}(\mathbf{q}, \mathbf{p}) = w_{\text{emb}} \cdot S_{\text{emb}}(\mathbf{q}, \mathbf{p}) + w_{\text{rec}} \cdot S_{\text{rec}}(\mathbf{p}) + w_{\text{cit}} \cdot S_{\text{cit}}(\mathbf{p}) + w_{\text{auth}} \cdot S_{\text{auth}}(\mathbf{p})$$
-
-- **Embedding Similarity ($S_{\text{emb}}$):** Cosine dot product in dense embedding space.
-- **Recency Decay ($S_{\text{rec}}$):** Exponential half-life $S_{\text{rec}} = 2^{-\Delta t / t_{1/2}}$ with default $t_{1/2} = 4.0$ years.
-- **Citation Saturation ($S_{\text{cit}}$):** Log-saturated impact $S_{\text{cit}} = \log(1 + C) / \log(1 + C_{\text{max}})$.
-- **Author Domain Continuity ($S_{\text{auth}}$):** Normalized author frequency proxy within the topic collection.
-
-### Inspectable Preset Configurations
-- **Balanced (Default):** $w_{\text{emb}} = 0.50, w_{\text{rec}} = 0.20, w_{\text{cit}} = 0.25, w_{\text{auth}} = 0.05$
-- **Precision (Topic Focus):** $w_{\text{emb}} = 0.65, w_{\text{rec}} = 0.10, w_{\text{cit}} = 0.20, w_{\text{auth}} = 0.05$
-- **Prefer Recent (Emerging Trends):** $w_{\text{emb}} = 0.45, w_{\text{rec}} = 0.35, w_{\text{cit}} = 0.15, w_{\text{auth}} = 0.05$
-- **Citation Heavy (Landmark Works):** $w_{\text{emb}} = 0.35, w_{\text{rec}} = 0.10, w_{\text{cit}} = 0.50, w_{\text{auth}} = 0.05$
+## Band C: Hero Architecture Pipeline
+- **Title:** System Architecture: Literature Discovery, Selective Grounded RAG, and Innovation Subspaces
+- **Pillar 1 (Multi-Signal Discovery):** arXiv Catalog (5,752) and Graph (101k works) feed 4 Heuristics (Dense Embeddings, Recency, Saturated Citations, Author Continuity).
+  - Data Volume Arrow: Candidate pool (20-60 abstracts)
+- **Pillar 2 (Selective Ingest & Hybrid RAG):** User-gated PDFs parsed into 553k passages. Hybrid RRF combines Dense Chroma (768d) and BM25 (k=60) for grounded answer synthesis.
+  - Data Volume Arrow: Extracted bibliographic references
+- **Pillar 3 (2D Novelty Geometry):** Reference Extractor resolves bibliographic citations. NNLS solver projects vectors into the reference cone yielding Closest Parent (m), Synergy Blend (Δ), and Residual Gap (Res).
 
 ---
 
-## 5. Pillar 2: Selective Ingestion & Hybrid RAG
+## Band D: Main Three Pillars
 
-### The Selective Ingest Advantage
-Rather than indexing millions of uncurated documents that dilute dense retrieval precision, the researcher curates high-relevance full texts into a focused project library.
+### Column 1: Multi-Signal Discovery
+- **Kicker:** Heuristic Ranking & Preset Shifts
+- **Scoring Formula:**
+  $$\text{Score}(q, d) = w_{\text{sem}} \cdot S_{\text{sem}} + w_{\text{rec}} \cdot 0.5^{(\Delta t / 4)} + w_{\text{cit}} \cdot C_{\text{score}} + w_{\text{auth}} \cdot A_{\text{score}}$$
+- **Weight Presets Breakdown:**
+  - Balanced: 50% sem · 20% rec · 25% cit · 5% auth
+  - Precision: 65% sem · 10% rec · 20% cit · 5% auth
+  - Recent: 45% sem · 35% rec · 15% cit · 5% auth
+  - Citations: 35% sem · 10% rec · 50% cit · 5% auth
+- **Worked Query ("vision transformer"):**
+  1. #1 2604.133 (Transcoders, Score: 0.743)
+  2. #2 2604.144 (Circuits ViT, Score: 0.740)
+  3. #3 2605.282 (Explaining ViT, Score: 0.727)
+  4. #4 2604.180 (Attention Prop, Score: 0.722)
+  5. #5 2601.141 (Token Attr, Score: 0.718)
+- **Preset Dynamics:** Citation heavy elevates classic foundations like ViT (2510.06070). Recent rewards 2026 preprints (2604.13304).
 
-### Processing & Chunking Specs
-- **Parser:** PyMuPDF4LLM with layout preservation and OCR fallback for scanned figures.
-- **Chunking:** Header-aware markdown splitting, 1,000 character target size, 180 character boundary overlap, 80 character minimum length.
-- **Hybrid RRF & Section Priors:**
-  $$\text{RRF Score}(d) = \frac{w_{\text{dense}}}{60 + r_{\text{dense}}(d)} + \frac{w_{\text{lex}}}{60 + r_{\text{lex}}(d)} + \text{Prior}(\text{section}, \mathbf{q})$$
-  Dynamically promotes Methodology chunks for procedural queries and Results chunks for benchmark questions.
-- **Grounded Streaming Generation:** Prompt forces explicit passage mapping, yielding 98.9% citation validity (89/90 valid references).
+### Column 2: Hybrid RRF RAG
+- **Kicker:** Scaling Degradation & Attribution Integrity
+- **Distractor Scaling Degradation (Pure Dense Search):**
+  - N=10: MRR 0.786, Hit@1 0.725, Recall@6 0.888
+  - N=100: MRR 0.753, Hit@1 0.700, Recall@6 0.833
+  - N=1,000: MRR 0.638, Hit@1 0.575, Recall@6 0.746
+  - N=5,663 (Full): MRR 0.457 (-41.9%), Hit@1 0.350 (-51.7%), Recall@6 0.638
+- **Dense vs Hybrid RRF (Paired Evaluation on 80 Questions):**
+  - MRR: Dense 0.469 vs Hybrid 0.574 (Paired Diff: +0.105, 95% bootstrap CI: [+0.018, +0.197])
+  - Hit@1: Dense 0.350 vs Hybrid 0.488 (Paired Diff: +0.138, 95% bootstrap CI: [+0.038, +0.250])
+  - Recall@6: Dense 0.637 vs Hybrid 0.688 (Paired Diff: +0.050, 95% bootstrap CI: [-0.062, +0.162])
+- **Attribution Integrity & Calibration Facts:**
+  - 98.89% Citation Validity (89 of 90 claims cite valid chunk indices, confirming passage existence).
+  - 65.0% Refusal Recall (13 of 20 unanswerable queries correctly declined).
+  - Gold set LLM-generated against 10-paper index. Added distractors create valid alternative answers scored as misses.
 
----
-
-## 6. Pillar 3: 2D Novelty Geometry & Subspace Cones
-
-### Mathematical Optimization
-Given paper vector $\mathbf{x} \in \mathbb{R}^d$ and cited reference matrix $\mathbf{Y} = [\mathbf{y}_1, \dots, \mathbf{y}_k] \in \mathbb{R}^{d \times k}$:
-$$\boldsymbol{\lambda}^* = \arg\min_{\boldsymbol{\lambda} \ge 0} \|\mathbf{x} - \mathbf{Y}\boldsymbol{\lambda}\|^2, \quad \hat{\mathbf{x}} = \mathbf{Y}\boldsymbol{\lambda}^*$$
-
-### Innovation Decomposition Metrics
-- **Closest Parent Anchor ($m$):** $m = \max_j (\mathbf{x}^T \mathbf{y}_j)$ aligned along basis vector $\mathbf{e}_1 = \mathbf{y}_{m^*}$ at coordinate $(1, 0)$.
-- **Multi-Parent Synergy Gain ($\Delta$):** $\Delta = R^2_+ - \max(m, 0)^2$ where $R^2_+ = \|\hat{\mathbf{x}}\|^2$.
-- **Orthogonal Novelty Residual Gap:** $\text{Res} = \sqrt{\max(0, 1 - R^2_+)}$ measuring departure from prior art.
-- **2D Orthonormal Basis:** $\mathbf{u} = \hat{\mathbf{x}} - (\hat{\mathbf{x}}^T \mathbf{e}_1)\mathbf{e}_1$, with synergy axis $\mathbf{e}_2 = \mathbf{u} / \|\mathbf{u}\|$. Projection $\hat{\mathbf{x}}$ sits at $(m, \sqrt{\Delta})$.
-
-### Classification Typology
-- **High-Synergy Blend ($\Delta \ge 0.05$):** Combines disparate intellectual lineages.
-- **Linear Extension ($m \ge 0.60, \Delta < 0.05$):** Extends single closest parent.
-- **Paradigm Shift ($1 - R^2_+ \ge 0.45$):** Orthogonal departure from cited subspace.
-
----
-
-## 7. Pillar 4: ConfAI 2026 Empirical Evaluation
-
-### Index Scaling Law: Retrieval Quality vs. Corpus Size
-Evaluated on fixed 100-question benchmark with 95% bootstrap confidence intervals:
-
-| Ingested Corpus Scale | Papers ($N$) | Chunks | Mean MRR | 95% Bootstrap CI | Recall@k | Hit@1 |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Curated Subspace** | **10** | ~1,725 | **0.786** | [0.702, 0.863] | **0.888** | **0.725** |
-| **Topic Neighborhood** | **100** | ~9,800 | **0.757** | [0.658, 0.842] | **0.825** | **0.713** |
-| **Domain Corpus** | **1,000** | ~98,000 | **0.638** | [0.546, 0.740] | **0.725** | **0.588** |
-| **Full Uncurated Library** | **5,663** | 551,743 | **0.457** | [0.360, 0.549] | **0.638** | **0.350** |
-
-*Key Finding:* Pure dense retrieval degrades by 41.9% in MRR and 51.7% in Hit@1 when scaling from curated subsets to full uncurated libraries, demonstrating why selective ingestion and hybrid RRF are critical.
-
-### Generation & Attribution Integrity
-- **Passage Citation Validity:** 98.9% (89 of 90 cited links verifiable against retrieved chunks).
-- **Out-of-Scope Rejection Recall:** 65.0% (13 of 20 unanswerable queries correctly refused).
-- **Refusal Precision:** 40.6% (highlights open calibration boundary where the model tends to decline conservatively on weak evidence).
-
----
-
-## 8. Open Limits & Engineering Boundaries
-- **Refusal Calibration:** Conservative safety prompting produces false refusals on marginal contexts (23.8% answerable queries declined).
-- **Lexical Identifier Queries:** Dense embeddings underperform on exact alphanumeric theorem/equation IDs without hybrid BM25 support.
-- **Hardware Footprint:** 2B-parameter `google/embeddinggemma-2` requires proactive Metal cache draining on Apple Silicon (batch size capped at 6).
+### Column 3: 2D Novelty Geometry
+- **Kicker:** Subspace Innovation & Null Control
+- **Non-Negative Least Squares Formulation:**
+  $$\lambda^* = \arg\min_{\lambda \ge 0} \| x - Y \lambda \|^2, \quad \hat{x} = Y \lambda^*$$
+  $$m = \max_j (x^T y_j), \quad \Delta = R^2_+ - \max(m, 0)^2, \quad \text{Res} = \sqrt{1 - R^2_+}$$
+- **2D Reference Cone Geometry:** Visualizes Target vector $x$, Dominant Ancestor $y_{m^*}$ at $(1, 0)$, secondary ancestors ($y_2, y_3$), cone projection $\hat{x}$, and orthogonal residual gap vector Res.
+- **Cohort Distribution (2,159 valid papers):**
+  - High Synergy: 1,936 papers
+  - Moderate Synthesis: 208 papers
+  - Linear Extension: 13 papers
+  - Paradigm Shift: 2 papers
+  - Diffused: 0 papers
+- **Exemplar Ancestor Decomposition:**
+  - Grad-CAM++ (1710.11063): 18/18 refs, m=0.938, Δ=0.047, Res=0.270 (Grad-CAM share: 49.7%).
+  - BIG-bench (2206.04615): 80/706 refs, m=0.774, Δ=0.138, Res=0.513 (BERT share: 24.7%).
+- **Isotropic Null vs Real Synergy:**
+  - Random reference sets yield baseline noise: $\Delta_{\text{null}} = 0.0811$.
+  - Real Paper Synergy: $\Delta = 0.0849$, exceeding the random reference baseline.
 
 ---
 
-## 9. References & Acknowledgements
-1. Vaswani et al., "Attention Is All You Need," NeurIPS 2017.
-2. Jacot et al., "Neural Tangent Kernel," NeurIPS 2018.
-3. Cormack et al., "Reciprocal Rank Fusion," SIGIR 2009.
-4. Srivastava et al., "Beyond the Imitation Game (BIG-bench)," arXiv 2022.
+## Band E: Bottom Scientific Cards
+- **Limitations (AI in Practice):**
+  - Refusal: Declines 23.8% of queries under weak evidence.
+  - Lexical: Dense search misses exact theorem IDs without BM25.
+  - MPS Memory: 1 GB embedding weights require proactive cache release.
+- **Conclusions:**
+  - Gating: Scaling drops Hit@1 by 51.7%, confirming gating is vital.
+  - Hybrid: Reciprocal rank fusion yields paired MRR gain of +0.1052.
+  - Synergy: Real paper synergy exceeds isotropic null baseline by 5.0x.
+- **Future Work & Contact:**
+  - Learned Priors: Query-dependent section attention weights.
+  - Lineage: Multi-hop semantic traversal and co-citations.
+  - Contact: Ajay Sharma, Dr. Subrat Panda (Plaksha University).
 
-*Supervised by Dr. Subrat Panda, Plaksha University. Presented at ConfAI 2026 AI in Practice Track.*
+---
+
+## Band F: Footer References & Footnote
+- **References:** [1] Vaswani et al., Attention, NeurIPS 2017. [2] Cormack et al., RRF, SIGIR 2009. [3] Selvaraju et al., Grad-CAM, ICCV 2017. [4] Srivastava et al., BIG-bench, 2022.
+- **Footnote:** Snapshots: N=5,657 (final_eval.json) vs N=5,663 (sweep). RRF (k=60, α=0.5) and section priors were heuristic defaults, not tuned on eval questions. Gold questions LLM-generated against 10-paper index.

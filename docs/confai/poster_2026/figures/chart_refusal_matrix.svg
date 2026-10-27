@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="533.603691pt" height="219.573529pt" viewBox="0 0 533.603691 219.573529" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-27T19:33:20.650782</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 219.573529 
+L 533.603691 219.573529 
+L 533.603691 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 144.3875 184.871654 
+L 483.077421 184.871654 
+L 483.077421 7.2 
+L 144.3875 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 144.3875 96.035827 
+L 313.732461 96.035827 
+L 313.732461 7.2 
+L 144.3875 7.2 
+z
+" clip-path="url(#pec44d67d98)" style="fill: #dcfce7; stroke: #cbd5e1; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 313.732461 96.035827 
+L 483.077421 96.035827 
+L 483.077421 7.2 
+L 313.732461 7.2 
+z
+" clip-path="url(#pec44d67d98)" style="fill: #fee2e2; stroke: #cbd5e1; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 144.3875 184.871654 
+L 313.732461 184.871654 
+L 313.732461 96.035827 
+L 144.3875 96.035827 
+z
+" clip-path="url(#pec44d67d98)" style="fill: #fef3c7; stroke: #cbd5e1; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 313.732461 184.871654 
+L 483.077421 184.871654 
+L 483.077421 96.035827 
+L 313.732461 96.035827 
+z
+" clip-path="url(#pec44d67d98)" style="fill: #e0e7ff; stroke: #cbd5e1; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #0f172a" x="229.05998" y="206.607904" transform="rotate(-0 229.05998 206.607904)">Answerable (80)</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: middle; fill: #0f172a" x="398.404941" y="206.607904" transform="rotate(-0 398.404941 206.607904)">Unanswerable (20)</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: end; fill: #0f172a" x="140.8875" y="149.571865" transform="rotate(-0 140.8875 149.571865)">Declined</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; text-anchor: end; fill: #0f172a" x="140.8875" y="60.736038" transform="rotate(-0 140.8875 60.736038)">Answered</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_7">
+    <path d="M 144.3875 184.871654 
+L 144.3875 7.2 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 483.077421 184.871654 
+L 483.077421 7.2 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 144.3875 184.871654 
+L 483.077421 184.871654 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 144.3875 7.2 
+L 483.077421 7.2 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(129.626855 43.449007)">TP: 61 (76.2%)</text>
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(150.143105 72.25557)">[65.7, 84.3]</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(307.309941 43.449007)">FP: 7 (35.0%)</text>
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(319.488066 72.25557)">[17.3, 57.9]</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(128.36873 132.284834)">FN: 19 (23.8%)</text>
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(150.143105 161.091396)">[15.7, 34.3]</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(297.724941 132.284834)">TN: 13 (65.0%)</text>
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif; fill: #0f172a" transform="translate(319.488066 161.091396)">[42.1, 82.7]</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pec44d67d98">
+   <rect x="144.3875" y="7.2" width="338.689921" height="177.671654"/>
+  </clipPath>
+ </defs>
+</svg>
