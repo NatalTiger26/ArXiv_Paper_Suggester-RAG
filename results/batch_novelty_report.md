@@ -1,26 +1,26 @@
 # Batch Novelty Subspace Analysis Report
 
-**Generated:** 2026-10-27T01:02:14.909793+00:00  
-**Papers Evaluated:** 300  
-**Success Rate:** 281 / 300 (93.7%)
+**Generated:** 2026-10-27T01:11:04.137327+00:00  
+**Papers Evaluated:** 350  
+**Success Rate:** 326 / 350 (93.1%)
 
 ## 1. Aggregate Geometric Metrics
 
 | Metric | Definition | Cohort Mean | Interpretation |
 | :--- | :--- | :--- | :--- |
-| **m** | Cosine to closest parent | `0.8777` | Baseline anchor strength to closest single prior work |
-| **Δ (Delta)** | Multi-parent cone synergy | `0.0814` | Energy gain from non-negative combination of multiple parents |
-| **R²₊** | Cone reconstruction energy | `0.8536` | Proportion of embedding explained by the reference subspace |
-| **√(1 - R²₊)** | Novelty residual gap | `0.3753` | Orthogonal departure distance from reference cone to unit circle |
+| **m** | Cosine to closest parent | `0.8789` | Baseline anchor strength to closest single prior work |
+| **Δ (Delta)** | Multi-parent cone synergy | `0.0808` | Energy gain from non-negative combination of multiple parents |
+| **R²₊** | Cone reconstruction energy | `0.8549` | Proportion of embedding explained by the reference subspace |
+| **√(1 - R²₊)** | Novelty residual gap | `0.3740` | Orthogonal departure distance from reference cone to unit circle |
 
 ## 2. Discovery Mode Distribution
 
 | Discovery Classification | Paper Count | Percentage |
 | :--- | :---: | :---: |
-| **High Synergy Cone Blend** | 237 | 84.3% |
-| **Moderate Synthesis** | 38 | 13.5% |
-| **Linear / Incremental Extension** | 5 | 1.8% |
-| **Paradigm Shift / Subspace Outlier** | 1 | 0.4% |
+| **High Synergy Cone Blend** | 274 | 84.0% |
+| **Moderate Synthesis** | 46 | 14.1% |
+| **Linear / Incremental Extension** | 5 | 1.5% |
+| **Paradigm Shift / Subspace Outlier** | 1 | 0.3% |
 
 ## 3. Top Synergistic Syntheses (Highest Multi-Parent Synergy Δ)
 Papers that achieve dramatic innovation by non-linearly fusing multiple distinct research threads:
@@ -31,12 +31,12 @@ Papers that achieve dramatic innovation by non-linearly fusing multiple distinct
 | [1512.01289](https://arxiv.org/abs/1512.01289) | Untitled... | — | 2 | **0.1558** | 0.850 | 0.879 | High Synergy Cone Blend |
 | [2603.18353](https://arxiv.org/abs/2603.18353) | Interpretability without actionability: mecha... | — | 0 | **0.1538** | 0.810 | 0.810 | High Synergy Cone Blend |
 | [1810.06583](https://arxiv.org/abs/1810.06583) | Untitled... | — | 13 | **0.1491** | 0.830 | 0.839 | High Synergy Cone Blend |
+| [2607.07708](https://arxiv.org/abs/2607.07708) | Accurate, Interdisciplinary and Transparent S... | 2026 | 0 | **0.1473** | 0.848 | 0.866 | High Synergy Cone Blend |
 | [2404.09516](https://arxiv.org/abs/2404.09516) | State Space Model for New-Generation Network ... | — | 0 | **0.1447** | 0.869 | 0.899 | High Synergy Cone Blend |
 | [1705.10301](https://arxiv.org/abs/1705.10301) | Untitled... | — | 92 | **0.1441** | 0.809 | 0.799 | High Synergy Cone Blend |
 | [1905.04172](https://arxiv.org/abs/1905.04172) | On the Connection Between Adversarial Robustn... | 2019 | 184 | **0.1420** | 0.812 | 0.802 | High Synergy Cone Blend |
 | [1811.05437](https://arxiv.org/abs/1811.05437) | Argumentation for Explainable Scheduling (Ful... | 2018 | 30 | **0.1400** | 0.844 | 0.852 | High Synergy Cone Blend |
-| [2604.10460](https://arxiv.org/abs/2604.10460) | Toward Accountable AI-Generated Content on So... | 2026 | 0 | **0.1384** | 0.846 | 0.854 | High Synergy Cone Blend |
-| [2410.24050](https://arxiv.org/abs/2410.24050) | A Mechanistic Study of Transformers Training ... | — | 0 | **0.1383** | 0.860 | 0.878 | High Synergy Cone Blend |
+| [2609.15065](https://arxiv.org/abs/2609.15065) | Sensory Precision Inference for Multimodal Ar... | 2026 | 0 | **0.1394** | 0.857 | 0.874 | High Synergy Cone Blend |
 
 ## 4. Top Subspace Outliers / Paradigm Shifts (Highest Residual √(1 - R²₊))
 Papers with large orthogonal departures that cannot be reconstructed from their references:

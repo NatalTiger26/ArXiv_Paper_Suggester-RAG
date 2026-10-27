@@ -1,15 +1,15 @@
 {
   "stats": {
-    "timestamp": "2026-10-27T01:05:05.602472+00:00",
+    "timestamp": "2026-10-27T01:12:36.287204+00:00",
     "total_requested": "all",
-    "total_evaluated": 320,
-    "total_successful": 301,
+    "total_evaluated": 360,
+    "total_successful": 336,
     "category_filter": null,
     "min_citations_filter": 0,
     "mean_m": 0.8789,
-    "mean_Delta": 0.0804,
-    "mean_R2_plus": 0.8546,
-    "mean_residual": 0.3741
+    "mean_Delta": 0.081,
+    "mean_R2_plus": 0.855,
+    "mean_residual": 0.3739
   },
   "results": [
     {
@@ -15735,6 +15735,1871 @@
         }
       ],
       "n_refs_used": 27,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2608.14916",
+      "title": "Distinguishing AI-Generated Music from Edited Audio as a Hard-Negative Robustness Task",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8613,
+      "Delta": 0.098,
+      "R2_plus": 0.8398,
+      "novelty_residual": 0.4002,
+      "novelty_score": 0.1602,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:76fb82b922dd989f901a67a61d3dc0edcd2dd3cb",
+          "title": "A Fourier Explanation of AI-music Artifacts",
+          "weight": 0.2756,
+          "share": 0.3,
+          "url": "https://www.semanticscholar.org/paper/76fb82b922dd989f901a67a61d3dc0edcd2dd3cb"
+        },
+        {
+          "paper_id": "s2:fa97fc7d0925957c5d3b05b6474ac6aabdda0b1e",
+          "title": "The AI Music Arms Race: On the Detection of AI-Generated Music",
+          "weight": 0.1686,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/fa97fc7d0925957c5d3b05b6474ac6aabdda0b1e"
+        },
+        {
+          "paper_id": "s2:58cb55954dc1ccf88d6d4932067041406c18bfda",
+          "title": "CLAD: Robust Audio Deepfake Detection Against Manipulation Attacks with Contrastive Learning",
+          "weight": 0.1637,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/58cb55954dc1ccf88d6d4932067041406c18bfda"
+        },
+        {
+          "paper_id": "s2:e6e57d8e5deb0be00305045f274af0b12d878b8b",
+          "title": "SingFake: Singing Voice Deepfake Detection",
+          "weight": 0.1416,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/e6e57d8e5deb0be00305045f274af0b12d878b8b"
+        },
+        {
+          "paper_id": "s2:1ff47aa2aaf3165d0cd7ff3fd3ff4cf0c2549344",
+          "title": "AI-Generated Song Detection via Lyrics Transcripts",
+          "weight": 0.1287,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/1ff47aa2aaf3165d0cd7ff3fd3ff4cf0c2549344"
+        }
+      ],
+      "n_refs_used": 15,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2605.13730",
+      "title": "Robust and Explainable Bicuspid Aortic Valve Diagnosis Using Stacked Ensembles on Echocardiography",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8782,
+      "Delta": 0.0445,
+      "R2_plus": 0.8159,
+      "novelty_residual": 0.4291,
+      "novelty_score": 0.1841,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:82f0a341696d170296928e8677238cf740a6e1e2",
+          "title": "Severe aortic stenosis detection by deep learning applied to echocardiography.",
+          "weight": 0.3919,
+          "share": 0.4,
+          "url": "https://doi.org/10.1093/eurheartj/ehad456"
+        },
+        {
+          "paper_id": "s2:6f472cbad2e9aa1d2f365d3a95c2a2f946d11b31",
+          "title": "Video-based AI for beat-to-beat assessment of cardiac function",
+          "weight": 0.1823,
+          "share": 0.2,
+          "url": "https://doi.org/10.1038/s41586-020-2145-8"
+        },
+        {
+          "paper_id": "s2:bfc409357220ac2a6c8a40d6572aa0827a6a3b58",
+          "title": "International Consensus Statement on Nomenclature and Classification of the Congenital Bicuspid Aortic Valve and Its Aortopathy, for Clinical, Surgical, Interventional and Research Purposes.",
+          "weight": 0.1722,
+          "share": 0.2,
+          "url": "https://doi.org/10.1148/ryct.2021200496"
+        },
+        {
+          "paper_id": "s2:8bbab380d827418271518e83a2329ae34e9179e5",
+          "title": "Ensemble learning with explainable AI for improved heart disease prediction based on multiple datasets",
+          "weight": 0.1551,
+          "share": 0.2,
+          "url": "https://doi.org/10.1038/s41598-025-97547-6"
+        },
+        {
+          "paper_id": "1610.02391",
+          "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization",
+          "weight": 0.078,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1610.02391"
+        }
+      ],
+      "n_refs_used": 16,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2608.08589",
+      "title": "RobustDefect-LLM: Explainable and Robustness-Aware Industrial Surface Defect Classification with Decision Support and AI-Assisted Reporting",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8991,
+      "Delta": 0.0423,
+      "R2_plus": 0.8506,
+      "novelty_residual": 0.3865,
+      "novelty_score": 0.1494,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "s2:5c6483b8db1754390f1d305751a15ff23f78bc3c",
+          "title": "A Survey on Surface Defect Inspection Based on Generative Models in Manufacturing",
+          "weight": 0.2058,
+          "share": 0.2,
+          "url": "https://doi.org/10.3390/app14156774"
+        },
+        {
+          "paper_id": "2101.06915",
+          "title": "TLU-Net: A Deep Learning Approach for Automatic Steel Surface Defect Detection",
+          "weight": 0.1559,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2101.06915"
+        },
+        {
+          "paper_id": "s2:576e5af607d2deb5dc79077d2262ae44c81984dd",
+          "title": "A systematic survey: role of deep learning-based image anomaly detection in industrial inspection contexts",
+          "weight": 0.139,
+          "share": 0.1,
+          "url": "https://doi.org/10.3389/frobt.2025.1554196"
+        },
+        {
+          "paper_id": "s2:efe70a6fe864d2bbce25854ffd562e61a43fcc03",
+          "title": "A survey of real-time surface defect inspection methods based on deep learning",
+          "weight": 0.1293,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/s10462-023-10475-7"
+        },
+        {
+          "paper_id": "1610.02391",
+          "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization",
+          "weight": 0.1101,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1610.02391"
+        }
+      ],
+      "n_refs_used": 24,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2604.27617",
+      "title": "Robust Lightweight Crack Classification for Real-Time UAV Bridge Inspection",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.9208,
+      "Delta": 0.072,
+      "R2_plus": 0.9199,
+      "novelty_residual": 0.283,
+      "novelty_score": 0.0801,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:dfd99cb59ff1f6b9b5a6b3d15f886207e1532045",
+          "title": "CrackLite-Net: A Sustainable Transportation-Oriented Real-Time Lightweight Network for Adaptive Road Crack Detection",
+          "weight": 0.2036,
+          "share": 0.2,
+          "url": "https://doi.org/10.3390/su172410973"
+        },
+        {
+          "paper_id": "s2:942fe58bf2e362e0e854bc50612ed1931f506958",
+          "title": "Automatic bridge crack detection using Unmanned aerial vehicle and Faster R-CNN",
+          "weight": 0.1323,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.conbuildmat.2022.129659"
+        },
+        {
+          "paper_id": "s2:b8eedebeaceb3592bf99508323e6d60b75290b48",
+          "title": "Optimizing Deep Learning-Based Crack Detection Using No-Reference Image Quality Assessment in a Mobile Tunnel Scanning System",
+          "weight": 0.1316,
+          "share": 0.1,
+          "url": "https://doi.org/10.3390/s25175437"
+        },
+        {
+          "paper_id": "s2:b595b1f5f740f4b51d550f3a111b3ff865da030a",
+          "title": "SDNET2018: An annotated image dataset for non-contact concrete crack detection using deep convolutional neural networks",
+          "weight": 0.0867,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.dib.2018.11.015"
+        },
+        {
+          "paper_id": "s2:3991322927b024ebc10ecd37597663ac0cb8b7eb",
+          "title": "Towards fully automated unmanned aerial vehicle-enabled bridge inspection: Where are we at?",
+          "weight": 0.0833,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.conbuildmat.2022.128543"
+        }
+      ],
+      "n_refs_used": 42,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2608.19251",
+      "title": "The Second Edge Theorem: The Asymptotic Collapse of Sample-Dependent Information Geometry to the Canonical Flat Canvas of Conventional Statistics in Large Sample Limits",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": false,
+      "error": "no_references_found",
+      "message": ""
+    },
+    {
+      "arxiv_id": "2607.04131",
+      "title": "Noncommutative Anisotropic Diffusion in Hilbert Space. II. Global Closure of the Logarithmic Gradient, Lower Bounds, and Nanosystem Applications",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8884,
+      "Delta": 0.0847,
+      "R2_plus": 0.874,
+      "novelty_residual": 0.355,
+      "novelty_score": 0.126,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2606.28964",
+          "title": "Noncommutative Anisotropic Diffusion in Hilbert Space. I. The Consistent A-Geometry, Mosco Stability, and the Weak Bridge",
+          "weight": 0.3979,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/2606.28964"
+        },
+        {
+          "paper_id": "2011.13456",
+          "title": "Score-Based Generative Modeling through Stochastic Differential Equations",
+          "weight": 0.1942,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2011.13456"
+        },
+        {
+          "paper_id": "s2:48d2b8c79b456d0de1b70bbf782a2d0c80ce4bfe",
+          "title": "Generative diffusion models in infinite dimensions: a survey",
+          "weight": 0.0998,
+          "share": 0.1,
+          "url": "https://doi.org/10.1098/rsta.2024.0322"
+        },
+        {
+          "paper_id": "s2:872bae24c109f7c30e052ac218b17a8b028d08a0",
+          "title": "A Connection Between Score Matching and Denoising Autoencoders",
+          "weight": 0.0906,
+          "share": 0.1,
+          "url": "https://doi.org/10.1162/NECO_a_00142"
+        },
+        {
+          "paper_id": "s2:b5eaabddaa1cc0acba1f03e63a445c878d38680c",
+          "title": "Shape optimization by the homogenization method",
+          "weight": 0.0862,
+          "share": 0.1,
+          "url": "https://doi.org/10.1007/s002110050253"
+        }
+      ],
+      "n_refs_used": 21,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2606.21513",
+      "title": "Privacy-Preserving Federated Temporal Graph Learning with Digital Twin--Guided Adaptive Deception for Cyber-Resilient IoMT",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8957,
+      "Delta": 0.0927,
+      "R2_plus": 0.895,
+      "novelty_residual": 0.324,
+      "novelty_score": 0.105,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:7c0c7bffcca3029c4ccbe325f728af7f767d6a48",
+          "title": "Fed-Inforce-Fusion: A federated reinforcement-based fusion model for security and privacy protection of IoMT networks against cyber-attacks",
+          "weight": 0.1778,
+          "share": 0.2,
+          "url": "https://doi.org/10.1016/j.inffus.2023.102002"
+        },
+        {
+          "paper_id": "s2:4f5e765f3b6669c3ddf886bdde82276ec2e94aad",
+          "title": "Federated Learning Driven Secure Internet of Medical Things",
+          "weight": 0.1752,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/mwc.008.00475"
+        },
+        {
+          "paper_id": "s2:d7598dc4da0e93768068ed3b640935ad77ac7841",
+          "title": "TON_IoT Telemetry Dataset: A New Generation Dataset of IoT and IIoT for Data-Driven Intrusion Detection Systems",
+          "weight": 0.1277,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ACCESS.2020.3022862"
+        },
+        {
+          "paper_id": "s2:95776fd3256d877793b2038cd387f88361bc0437",
+          "title": "Federated Deep Learning for Zero-Day Botnet Attack Detection in IoT-Edge Devices",
+          "weight": 0.0983,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/jiot.2021.3100755"
+        },
+        {
+          "paper_id": "s2:d9a9da3aa52f8dea831b832c09803728d10b57ff",
+          "title": "Attack Detection Using Federated Learning in Medical Cyber-Physical Systems",
+          "weight": 0.08,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/d9a9da3aa52f8dea831b832c09803728d10b57ff"
+        }
+      ],
+      "n_refs_used": 31,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2606.21422",
+      "title": "Federated Temporal Attention Intelligence for Cyber-Resilient IoMT: Lightweight Digital Twins and PPO-Driven Honeypot Deception",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8991,
+      "Delta": 0.0848,
+      "R2_plus": 0.8931,
+      "novelty_residual": 0.327,
+      "novelty_score": 0.1069,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:4f5e765f3b6669c3ddf886bdde82276ec2e94aad",
+          "title": "Federated Learning Driven Secure Internet of Medical Things",
+          "weight": 0.195,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/mwc.008.00475"
+        },
+        {
+          "paper_id": "s2:95776fd3256d877793b2038cd387f88361bc0437",
+          "title": "Federated Deep Learning for Zero-Day Botnet Attack Detection in IoT-Edge Devices",
+          "weight": 0.1801,
+          "share": 0.2,
+          "url": "https://doi.org/10.1109/jiot.2021.3100755"
+        },
+        {
+          "paper_id": "s2:7c0c7bffcca3029c4ccbe325f728af7f767d6a48",
+          "title": "Fed-Inforce-Fusion: A federated reinforcement-based fusion model for security and privacy protection of IoMT networks against cyber-attacks",
+          "weight": 0.1247,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.inffus.2023.102002"
+        },
+        {
+          "paper_id": "s2:d7598dc4da0e93768068ed3b640935ad77ac7841",
+          "title": "TON_IoT Telemetry Dataset: A New Generation Dataset of IoT and IIoT for Data-Driven Intrusion Detection Systems",
+          "weight": 0.1208,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/ACCESS.2020.3022862"
+        },
+        {
+          "paper_id": "1804.07474",
+          "title": "DÏoT: A Federated Self-learning Anomaly Detection System for IoT",
+          "weight": 0.0887,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1804.07474"
+        }
+      ],
+      "n_refs_used": 31,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2604.25889",
+      "title": "Robust Deepfake Detection: Mitigating Spatial Attention Drift via Calibrated Complementary Ensembles",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.9199,
+      "Delta": 0.0493,
+      "R2_plus": 0.8955,
+      "novelty_residual": 0.3232,
+      "novelty_score": 0.1045,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "2604.24163",
+          "title": "Robust Deepfake Detection, NTIRE 2026 Challenge: Report",
+          "weight": 0.3789,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/2604.24163"
+        },
+        {
+          "paper_id": "2401.13856",
+          "title": "LAA-Net: Localized Artifact Attention Network for Quality-Agnostic and Generalizable Deepfake Detection",
+          "weight": 0.1337,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2401.13856"
+        },
+        {
+          "paper_id": "1910.01279",
+          "title": "Score-CAM: Score-Weighted Visual Explanations for Convolutional Neural Networks",
+          "weight": 0.0921,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1910.01279"
+        },
+        {
+          "paper_id": "1909.12962",
+          "title": "Celeb-DF: A Large-Scale Challenging Dataset for DeepFake Forensics",
+          "weight": 0.0848,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1909.12962"
+        },
+        {
+          "paper_id": "2010.11929",
+          "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+          "weight": 0.069,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2010.11929"
+        }
+      ],
+      "n_refs_used": 35,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2603.19233",
+      "title": "Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8657,
+      "Delta": 0.0699,
+      "R2_plus": 0.8193,
+      "novelty_residual": 0.425,
+      "novelty_score": 0.1807,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2509.00328",
+          "title": "Mechanistic interpretability for steering vision-language-action models",
+          "weight": 0.2662,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2509.00328"
+        },
+        {
+          "paper_id": "2603.10126",
+          "title": "AR-VLA: True Autoregressive Action Expert for Vision-Language-Action Models",
+          "weight": 0.1224,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2603.10126"
+        },
+        {
+          "paper_id": "2202.05262",
+          "title": "Locating and Editing Factual Associations in GPT",
+          "weight": 0.0977,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2202.05262"
+        },
+        {
+          "paper_id": "2601.03309",
+          "title": "VLM4VLA: Revisiting Vision-Language-Models in Vision-Language-Action Models",
+          "weight": 0.0828,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2601.03309"
+        },
+        {
+          "paper_id": "2303.03378",
+          "title": "PaLM-E: An Embodied Multimodal Language Model",
+          "weight": 0.0646,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2303.03378"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2601.05179",
+      "title": "Local Multimodal Dynamics in Mixed Ionic-Electronic Conductors and Their Fingerprints in Organic Electrochemical Transistor Operation",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": false,
+      "error": "no_references_found",
+      "message": ""
+    },
+    {
+      "arxiv_id": "2606.18924",
+      "title": "Who Wins the Conflict? Mechanistic Interpretability of Text Bias in Audio LLMs",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8589,
+      "Delta": 0.0541,
+      "R2_plus": 0.7919,
+      "novelty_residual": 0.4562,
+      "novelty_score": 0.2081,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2603.06854",
+          "title": "Are Audio-Language Models Listening? Audio-Specialist Heads for Adaptive Audio Steering",
+          "weight": 0.4246,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/2603.06854"
+        },
+        {
+          "paper_id": "2508.10552",
+          "title": "When Language Overrules: Revealing Text Dominance in Multimodal Large Language Models",
+          "weight": 0.1578,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2508.10552"
+        },
+        {
+          "paper_id": "2202.05262",
+          "title": "Locating and Editing Factual Associations in GPT",
+          "weight": 0.1038,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2202.05262"
+        },
+        {
+          "paper_id": "2602.11488",
+          "title": "When Audio-LLMs Don't Listen: A Cross-Linguistic Study of Modality Arbitration",
+          "weight": 0.1035,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2602.11488"
+        },
+        {
+          "paper_id": "2605.16403",
+          "title": "When Vision Speaks for Sound",
+          "weight": 0.077,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2605.16403"
+        }
+      ],
+      "n_refs_used": 23,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2607.07708",
+      "title": "Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8476,
+      "Delta": 0.1473,
+      "R2_plus": 0.8657,
+      "novelty_residual": 0.3665,
+      "novelty_score": 0.1343,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2506.17238",
+          "title": "Training a Scientific Reasoning Model for Chemistry",
+          "weight": 0.1666,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2506.17238"
+        },
+        {
+          "paper_id": "2601.04770",
+          "title": "SciIF: Benchmarking Scientific Instruction Following Towards Rigorous Scientific Intelligence",
+          "weight": 0.1437,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2601.04770"
+        },
+        {
+          "paper_id": "s2:7572ba7f604ef95d7acdd657ebac458106bd35df",
+          "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+          "weight": 0.0988,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/s41586-024-07487-w"
+        },
+        {
+          "paper_id": "2011.02893",
+          "title": "RetroXpert: Decompose Retrosynthesis Prediction like a Chemist",
+          "weight": 0.0904,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2011.02893"
+        },
+        {
+          "paper_id": "s2:2212200fee56ec19ca1dcd4e63da8af558bf3a90",
+          "title": "An invertible, invariant crystal representation for inverse design of solid-state materials using generative deep learning",
+          "weight": 0.0758,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/s41467-023-42870-7"
+        }
+      ],
+      "n_refs_used": 80,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2608.30393",
+      "title": "Quantitative Evidence Mining for Plausibility-Aware Biomedical AI: A Narrative Review and Conceptual Framework",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": false,
+      "error": "no_references_found",
+      "message": ""
+    },
+    {
+      "arxiv_id": "2603.06854",
+      "title": "Are Audio-Language Models Listening? Audio-Specialist Heads for Adaptive Audio Steering",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8983,
+      "Delta": 0.0782,
+      "R2_plus": 0.8851,
+      "novelty_residual": 0.3389,
+      "novelty_score": 0.1149,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2510.12851",
+          "title": "Silence is Golden: Mitigating Hallucinations in Large Audio-Language Models via Layer-Weighted Vector Steering",
+          "weight": 0.2618,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2510.12851"
+        },
+        {
+          "paper_id": "2311.07919",
+          "title": "Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models",
+          "weight": 0.1754,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2311.07919"
+        },
+        {
+          "paper_id": "2510.10444",
+          "title": "Do Audio LLMs Really LISTEN, or Just Transcribe? Measuring Lexical vs. Acoustic Emotion Cues Reliance",
+          "weight": 0.1123,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2510.10444"
+        },
+        {
+          "paper_id": "2306.03341",
+          "title": "Inference-Time Intervention: Eliciting Truthful Answers from a Language Model",
+          "weight": 0.0947,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2306.03341"
+        },
+        {
+          "paper_id": "2508.15882",
+          "title": "Beyond Transcription: Mechanistic Interpretability in ASR",
+          "weight": 0.0826,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2508.15882"
+        }
+      ],
+      "n_refs_used": 29,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2604.02605",
+      "title": "Do Audio-Visual Large Language Models Really See and Hear?",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8678,
+      "Delta": 0.1023,
+      "R2_plus": 0.8553,
+      "novelty_residual": 0.3804,
+      "novelty_score": 0.1447,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2306.02858",
+          "title": "Video-LLaMA: An Instruction-tuned Audio-Visual Language Model for Video Understanding",
+          "weight": 0.2326,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2306.02858"
+        },
+        {
+          "paper_id": "2410.07149",
+          "title": "Towards Interpreting Visual Information Processing in Vision-Language Models",
+          "weight": 0.1956,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2410.07149"
+        },
+        {
+          "paper_id": "2501.02135",
+          "title": "AVTrustBench: Assessing and Enhancing Reliability and Robustness in Audio-Visual LLMs",
+          "weight": 0.1894,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2501.02135"
+        },
+        {
+          "paper_id": "2510.23802",
+          "title": "Learning Interpretable Features in Audio Latent Spaces via Sparse Autoencoders",
+          "weight": 0.1405,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2510.23802"
+        },
+        {
+          "paper_id": "2506.05140",
+          "title": "AudioLens: A Closer Look at Auditory Attribute Perception of Large Audio-Language Models",
+          "weight": 0.1084,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2506.05140"
+        }
+      ],
+      "n_refs_used": 59,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2605.09352",
+      "title": "The Wittgensteinian Representation Hypothesis: Is Language the Attractor of Multimodal Convergence?",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8514,
+      "Delta": 0.1311,
+      "R2_plus": 0.8559,
+      "novelty_residual": 0.3796,
+      "novelty_score": 0.1441,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2411.04986",
+          "title": "The Semantic Hub Hypothesis: Language Models Share Semantic Representations Across Languages and Modalities",
+          "weight": 0.219,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2411.04986"
+        },
+        {
+          "paper_id": "2505.12387",
+          "title": "Neural Thermodynamics: Entropic Forces in Deep and Universal Representation Learning",
+          "weight": 0.1434,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2505.12387"
+        },
+        {
+          "paper_id": "2604.04496",
+          "title": "The Indra Representation Hypothesis for Multimodal Alignment",
+          "weight": 0.1345,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2604.04496"
+        },
+        {
+          "paper_id": "2502.16282",
+          "title": "Understanding the Emergence of Multimodal Representation Alignment",
+          "weight": 0.1301,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2502.16282"
+        },
+        {
+          "paper_id": "2404.07983",
+          "title": "Two Effects, One Trigger: On the Modality Gap, Object Bias, and Information Imbalance in Contrastive Vision-Language Models",
+          "weight": 0.104,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2404.07983"
+        }
+      ],
+      "n_refs_used": 35,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2608.24931",
+      "title": "Modality Contribution Score - A Per-Patient Framework for Quantifying the Relative Diagnostic Contribution of Structural MRI and Amyloid PET in Alzheimer's Disease",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": false,
+      "error": "no_references_found",
+      "message": ""
+    },
+    {
+      "arxiv_id": "2602.10168",
+      "title": "EVA: Towards a universal model of the immune system",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8438,
+      "Delta": 0.1159,
+      "R2_plus": 0.8279,
+      "novelty_residual": 0.4148,
+      "novelty_score": 0.1721,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2410.21560",
+          "title": "Going Beyond H&E and Oncology: How Do Histopathology Foundation Models Perform for Multi-stain IHC and Immunology?",
+          "weight": 0.2025,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2410.21560"
+        },
+        {
+          "paper_id": "s2:c290247b923304154fbc2842d97914c613ef66f5",
+          "title": "GeneCompass: deciphering universal gene regulatory mechanisms with a knowledge-informed cross-species foundation model",
+          "weight": 0.1517,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/s41422-024-01034-y"
+        },
+        {
+          "paper_id": "s2:d2299c8e50531ba07bf10f6eae5aeb6ab4cca339",
+          "title": "Approaching Shared Pathophysiology in Immune-Mediated Diseases through Functional Genomics",
+          "weight": 0.151,
+          "share": 0.1,
+          "url": "https://doi.org/10.3390/genes11121482"
+        },
+        {
+          "paper_id": "s2:d16ed171b95105fb47be9b69ec568e23205aca04",
+          "title": "Sparse Autoencoders Reveal Interpretable Features in Single-Cell Foundation Models",
+          "weight": 0.0867,
+          "share": 0.1,
+          "url": "https://doi.org/10.1101/2025.10.22.681631"
+        },
+        {
+          "paper_id": "2510.25807",
+          "title": "Discovering Interpretable Biological Concepts in Single-cell RNA-seq Foundation Models",
+          "weight": 0.0785,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2510.25807"
+        }
+      ],
+      "n_refs_used": 69,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2602.06030",
+      "title": "PhysicsAgentABM: Physics-Guided Generative Agent-Based Modeling",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8657,
+      "Delta": 0.1058,
+      "R2_plus": 0.8551,
+      "novelty_residual": 0.3806,
+      "novelty_score": 0.1449,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2409.10568",
+          "title": "On the limits of agency in agent-based models",
+          "weight": 0.3014,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2409.10568"
+        },
+        {
+          "paper_id": "1906.02530",
+          "title": "Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift",
+          "weight": 0.0988,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1906.02530"
+        },
+        {
+          "paper_id": "s2:9dc09a02b88b53b044aa94f6d2a5341429db8931",
+          "title": "Mesa 3: Agent-based modeling with Python in 2025",
+          "weight": 0.0663,
+          "share": 0.1,
+          "url": "https://doi.org/10.21105/joss.07668"
+        },
+        {
+          "paper_id": "2308.08155",
+          "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+          "weight": 0.0613,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2308.08155"
+        },
+        {
+          "paper_id": "2106.12931",
+          "title": "Spatial-Temporal Graph ODE Networks for Traffic Flow Forecasting",
+          "weight": 0.06,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2106.12931"
+        }
+      ],
+      "n_refs_used": 69,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2606.18506",
+      "title": "Beyond AHI: An Interpretable Causal-Discovery-Guided Framework for Sleep Recovery in Connected Health",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8629,
+      "Delta": 0.0609,
+      "R2_plus": 0.8055,
+      "novelty_residual": 0.441,
+      "novelty_score": 0.1945,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "openalex:W7118732652",
+          "title": "A multimodal sleep foundation model for disease prediction",
+          "weight": 0.3741,
+          "share": 0.4,
+          "url": "https://doi.org/10.1038/s41591-025-04133-4"
+        },
+        {
+          "paper_id": "openalex:W3156463266",
+          "title": "U-Sleep: resilient high-frequency sleep staging",
+          "weight": 0.315,
+          "share": 0.3,
+          "url": "https://doi.org/10.1038/s41746-021-00440-5"
+        },
+        {
+          "paper_id": "openalex:W3095335172",
+          "title": "Weighted Epworth sleepiness scale predicted the apnea-hypopnea index better",
+          "weight": 0.1881,
+          "share": 0.2,
+          "url": "https://doi.org/10.1183/13993003.congress-2020.2103"
+        },
+        {
+          "paper_id": "openalex:W4413270492",
+          "title": "Association of Hypoxic Burden With Cardiovascular Events",
+          "weight": 0.0668,
+          "share": 0.1,
+          "url": "https://doi.org/10.1016/j.chest.2025.07.4081"
+        },
+        {
+          "paper_id": "openalex:W2898815338",
+          "title": "The hypoxic burden of sleep apnoea predicts cardiovascular disease-related mortality: the Osteoporotic Fractures in Men Study and the Sleep Heart Health Study",
+          "weight": 0.0561,
+          "share": 0.1,
+          "url": "https://doi.org/10.1093/eurheartj/ehy624"
+        }
+      ],
+      "n_refs_used": 6,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2603.11924",
+      "title": "Chem4DLLM: 4D Multimodal LLMs for Chemical Dynamics Understanding",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8788,
+      "Delta": 0.0872,
+      "R2_plus": 0.8594,
+      "novelty_residual": 0.375,
+      "novelty_score": 0.1406,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2408.07246",
+          "title": "ChemVLM: Exploring the Power of Multimodal Large Language Models in Chemistry Area",
+          "weight": 0.201,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2408.07246"
+        },
+        {
+          "paper_id": "2301.12586",
+          "title": "Unifying Molecular and Textual Representations via Multi-task Language Modelling",
+          "weight": 0.1868,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2301.12586"
+        },
+        {
+          "paper_id": "2401.13923",
+          "title": "Towards 3D Molecule-Text Interpretation in Language Models",
+          "weight": 0.1606,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2401.13923"
+        },
+        {
+          "paper_id": "s2:f590c727921eac352fca61a6bfe6924cac3bb927",
+          "title": "Comprehensive exploration of graphically defined reaction spaces",
+          "weight": 0.1154,
+          "share": 0.1,
+          "url": "https://doi.org/10.1038/s41597-023-02043-z"
+        },
+        {
+          "paper_id": "1706.08566",
+          "title": "SchNet: A continuous-filter convolutional neural network for modeling quantum interactions",
+          "weight": 0.0937,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1706.08566"
+        }
+      ],
+      "n_refs_used": 47,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2609.15065",
+      "title": "Sensory Precision Inference for Multimodal Arbitration under Uncertainty",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8568,
+      "Delta": 0.1394,
+      "R2_plus": 0.8735,
+      "novelty_residual": 0.3556,
+      "novelty_score": 0.1265,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:32980a97cdab6d019299d055a685c0ffe24dd4d9",
+          "title": "Multimodal Hierarchical Dirichlet Process-Based Active Perception by a Robot",
+          "weight": 0.1884,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/32980a97cdab6d019299d055a685c0ffe24dd4d9"
+        },
+        {
+          "paper_id": "s2:185b7f3c6fe8e647ae9c79fbb463768b64c59a52",
+          "title": "Uncertainty, epistemics and active inference",
+          "weight": 0.1687,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/185b7f3c6fe8e647ae9c79fbb463768b64c59a52"
+        },
+        {
+          "paper_id": "s2:37dc2cad77586816d2a0490dc6876cf02bb285a5",
+          "title": "Precision and False Perceptual Inference",
+          "weight": 0.16,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/37dc2cad77586816d2a0490dc6876cf02bb285a5"
+        },
+        {
+          "paper_id": "s2:344cf4d6b37a2ce985b69ee922c581bbf7b61c29",
+          "title": "Multimodal Boosting: Addressing Noisy Modalities and Identifying Modality Contribution",
+          "weight": 0.1294,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/344cf4d6b37a2ce985b69ee922c581bbf7b61c29"
+        },
+        {
+          "paper_id": "s2:c1b2e20202fbe9989cbe02f0acde78559bb38d7b",
+          "title": "Debiasing Multimodal Large Language Models via Noise-Aware Preference Optimization",
+          "weight": 0.0789,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/c1b2e20202fbe9989cbe02f0acde78559bb38d7b"
+        }
+      ],
+      "n_refs_used": 17,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2603.07343",
+      "title": "Learning Concept Bottleneck Models from Mechanistic Explanations",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8759,
+      "Delta": 0.0968,
+      "R2_plus": 0.8639,
+      "novelty_residual": 0.3689,
+      "novelty_score": 0.1361,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2211.11158",
+          "title": "Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification",
+          "weight": 0.223,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2211.11158"
+        },
+        {
+          "paper_id": "2408.01432",
+          "title": "VLG-CBM: Training Concept Bottleneck Models with Vision-Language Guidance",
+          "weight": 0.1685,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2408.01432"
+        },
+        {
+          "paper_id": "2501.16496",
+          "title": "Open Problems in Mechanistic Interpretability",
+          "weight": 0.1128,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2501.16496"
+        },
+        {
+          "paper_id": "2006.15417",
+          "title": "Invertible Concept-based Explanations for CNN Models with Non-negative Concept Activation Vectors",
+          "weight": 0.0942,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2006.15417"
+        },
+        {
+          "paper_id": "2309.08600",
+          "title": "Sparse Autoencoders Find Highly Interpretable Features in Language Models",
+          "weight": 0.09,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2309.08600"
+        }
+      ],
+      "n_refs_used": 47,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2604.16851",
+      "title": "Applications of deep generative models to DNA reaction kinetics and to cryogenic electron microscopy",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": false,
+      "error": "no_references_found",
+      "message": ""
+    },
+    {
+      "arxiv_id": "2603.17809",
+      "title": "Fine-Grained Post-Training Quantization for Large Vision Language Models with Quantization-Aware Integrated Gradients",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.9136,
+      "Delta": 0.0561,
+      "R2_plus": 0.8908,
+      "novelty_residual": 0.3304,
+      "novelty_score": 0.1092,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2410.08119",
+          "title": "Q-VLM: Post-training Quantization for Large Vision-Language Models",
+          "weight": 0.218,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2410.08119"
+        },
+        {
+          "paper_id": "2210.17323",
+          "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers",
+          "weight": 0.1839,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2210.17323"
+        },
+        {
+          "paper_id": "2111.13824",
+          "title": "FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer",
+          "weight": 0.089,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2111.13824"
+        },
+        {
+          "paper_id": "2211.10438",
+          "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+          "weight": 0.0841,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2211.10438"
+        },
+        {
+          "paper_id": "2408.03735",
+          "title": "Advancing Multimodal Large Language Models with Quantization-Aware Scale Learning for Efficient Adaptation",
+          "weight": 0.0805,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2408.03735"
+        }
+      ],
+      "n_refs_used": 50,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2605.13156",
+      "title": "Dual-Pathway Circuits of Object Hallucination in Vision-Language Models",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8968,
+      "Delta": 0.0684,
+      "R2_plus": 0.8728,
+      "novelty_residual": 0.3567,
+      "novelty_score": 0.1272,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2311.16922",
+          "title": "Mitigating Object Hallucinations in Large Vision-Language Models through Visual Contrastive Decoding",
+          "weight": 0.1723,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2311.16922"
+        },
+        {
+          "paper_id": "2511.05923",
+          "title": "Causal Tracing of Object Representations in Large Vision Language Models: Mechanistic Interpretability and Hallucination Mitigation",
+          "weight": 0.1366,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2511.05923"
+        },
+        {
+          "paper_id": "2410.07149",
+          "title": "Towards Interpreting Visual Information Processing in Vision-Language Models",
+          "weight": 0.1318,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2410.07149"
+        },
+        {
+          "paper_id": "2601.05201",
+          "title": "Mechanisms of Prompt-Induced Hallucination in Vision-Language Models",
+          "weight": 0.1078,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2601.05201"
+        },
+        {
+          "paper_id": "s2:74e213aa78b90207652bf0e0f09b53c10b46fe00",
+          "title": "Activation Steering Decoding: Mitigating Hallucination in Large Vision-Language Models through Bidirectional Hidden State Intervention",
+          "weight": 0.1045,
+          "share": 0.1,
+          "url": "https://doi.org/10.18653/v1/2025.acl-long.634"
+        }
+      ],
+      "n_refs_used": 34,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2607.08605",
+      "title": "When Structured Sparse Autoencoders Learn Consistent Concepts Across Modalities",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.887,
+      "Delta": 0.0625,
+      "R2_plus": 0.8492,
+      "novelty_residual": 0.3883,
+      "novelty_score": 0.1508,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2510.21323",
+          "title": "VL-SAE: Interpreting and Enhancing Vision-Language Alignment with a Unified Concept Set",
+          "weight": 0.2634,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2510.21323"
+        },
+        {
+          "paper_id": "2507.06265",
+          "title": "SPARC: Concept-Aligned Sparse Autoencoders for Cross-Model and Cross-Modal Interpretability",
+          "weight": 0.1964,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2507.06265"
+        },
+        {
+          "paper_id": "2502.17514",
+          "title": "SAE-V: Interpreting Multimodal Models for Enhanced Alignment",
+          "weight": 0.1856,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2502.17514"
+        },
+        {
+          "paper_id": "2504.02821",
+          "title": "Sparse Autoencoders Learn Monosemantic Features in Vision-Language Models",
+          "weight": 0.1515,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2504.02821"
+        },
+        {
+          "paper_id": "2511.21631",
+          "title": "Qwen3-VL Technical Report",
+          "weight": 0.0972,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2511.21631"
+        }
+      ],
+      "n_refs_used": 78,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2608.00540",
+      "title": "DiffuseAgent-MI: Distributionally-Grounded,Tool-Integrated Self-Evolving Agents for Faithful Visual Reasoning",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8529,
+      "Delta": 0.0904,
+      "R2_plus": 0.8178,
+      "novelty_residual": 0.4268,
+      "novelty_score": 0.1822,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:193beadf6062ac9c498f2da3dc4d013a76083330",
+          "title": "A Distributional View for Visual Mechanistic Interpretability: KL-Minimal Soft-Constraint Principle",
+          "weight": 0.4374,
+          "share": 0.4,
+          "url": "https://www.semanticscholar.org/paper/193beadf6062ac9c498f2da3dc4d013a76083330"
+        },
+        {
+          "paper_id": "s2:467aa314b75de57b6e11ae441eff8efd5ad7c393",
+          "title": "MUSE: Resolving Manifold Misalignment in Visual Tokenization via Topological Orthogonality",
+          "weight": 0.1827,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/467aa314b75de57b6e11ae441eff8efd5ad7c393"
+        },
+        {
+          "paper_id": "s2:0671fd553dd670a4e820553a974bc48040ba0819",
+          "title": "Reflexion: language agents with verbal reinforcement learning",
+          "weight": 0.1408,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/0671fd553dd670a4e820553a974bc48040ba0819"
+        },
+        {
+          "paper_id": "s2:99832586d55f540f603637e458a292406a0ed75d",
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "weight": 0.1039,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/99832586d55f540f603637e458a292406a0ed75d"
+        },
+        {
+          "paper_id": "s2:53d128ea815bcc0526856eb5a9c42cc977cb36a7",
+          "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+          "weight": 0.058,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/53d128ea815bcc0526856eb5a9c42cc977cb36a7"
+        }
+      ],
+      "n_refs_used": 16,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2603.00510",
+      "title": "What Do Visual Tokens Really Encode? Uncovering Sparsity and Redundancy in Multimodal Large Language Models",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8928,
+      "Delta": 0.0967,
+      "R2_plus": 0.8937,
+      "novelty_residual": 0.3261,
+      "novelty_score": 0.1063,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2510.08510",
+          "title": "To Sink or Not to Sink: Visual Information Pathways in Large Vision-Language Models",
+          "weight": 0.1912,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2510.08510"
+        },
+        {
+          "paper_id": "2508.00553",
+          "title": "HiPrune: Hierarchical Attention for Efficient Token Pruning in Vision-Language Models",
+          "weight": 0.1524,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2508.00553"
+        },
+        {
+          "paper_id": "2506.11976",
+          "title": "How Visual Representations Map to Language Feature Space in Multimodal LLMs",
+          "weight": 0.1352,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2506.11976"
+        },
+        {
+          "paper_id": "2511.02650",
+          "title": "Can Visual Input Be Compressed? A Visual Token Compression Benchmark for Large Multimodal Models",
+          "weight": 0.1237,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2511.02650"
+        },
+        {
+          "paper_id": "2411.04986",
+          "title": "The Semantic Hub Hypothesis: Language Models Share Semantic Representations Across Languages and Modalities",
+          "weight": 0.0766,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2411.04986"
+        }
+      ],
+      "n_refs_used": 41,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2609.33261",
+      "title": "EngIntervene: Benchmarking Multimodal Engineering State Understanding and Design Intervention Reasoning",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.855,
+      "Delta": 0.0742,
+      "R2_plus": 0.8051,
+      "novelty_residual": 0.4414,
+      "novelty_score": 0.1949,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2404.07917",
+          "title": "DesignQA: A Multimodal Benchmark for Evaluating Large Language Models' Understanding of Engineering Documentation",
+          "weight": 0.278,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2404.07917"
+        },
+        {
+          "paper_id": "2509.17677",
+          "title": "EngiBench: A Benchmark for Evaluating Large Language Models on Engineering Problem Solving",
+          "weight": 0.2712,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2509.17677"
+        },
+        {
+          "paper_id": "2505.23764",
+          "title": "MMSI-Bench: A Benchmark for Multi-Image Spatial Intelligence",
+          "weight": 0.0983,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2505.23764"
+        },
+        {
+          "paper_id": "2509.22339",
+          "title": "CircuitSense: A Hierarchical MLLM Benchmark Bridging Visual Comprehension and Symbolic Reasoning in Engineering Design Process",
+          "weight": 0.0838,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2509.22339"
+        },
+        {
+          "paper_id": "s2:677dea57b38207502fb71b6183db39ef718be3c2",
+          "title": "Software-Defined Power Electronics: Interconnection and Coordination of Power Modules",
+          "weight": 0.0776,
+          "share": 0.1,
+          "url": "https://doi.org/10.1109/JESTPE.2025.3643864"
+        }
+      ],
+      "n_refs_used": 19,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2603.18505",
+      "title": "From Snapshots to Symphonies: The Evolution of Protein Prediction from Static Structures to Generative Dynamics and Multimodal Interactions",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8974,
+      "Delta": 0.0959,
+      "R2_plus": 0.9011,
+      "novelty_residual": 0.3144,
+      "novelty_score": 0.0989,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:dc1ae0c04a9aa5ac02b6e66d2d155f39bfbab3e4",
+          "title": "Boosting Protein Graph Representations through Static-Dynamic Fusion",
+          "weight": 0.1435,
+          "share": 0.1,
+          "url": "https://doi.org/10.1101/2025.02.04.636233"
+        },
+        {
+          "paper_id": "2504.16886",
+          "title": "Exploring zero-shot structure-based protein fitness prediction",
+          "weight": 0.1378,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2504.16886"
+        },
+        {
+          "paper_id": "2402.04997",
+          "title": "Generative Flows on Discrete State-Spaces: Enabling Multimodal Flows with Applications to Protein Co-Design",
+          "weight": 0.1368,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2402.04997"
+        },
+        {
+          "paper_id": "2505.24203",
+          "title": "Aligning Protein Conformation Ensemble Generation with Physical Feedback",
+          "weight": 0.1343,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2505.24203"
+        },
+        {
+          "paper_id": "2507.14156",
+          "title": "All-atom inverse protein folding through discrete flow matching",
+          "weight": 0.1152,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2507.14156"
+        }
+      ],
+      "n_refs_used": 77,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2602.08713",
+      "title": "Towards Understanding Multimodal Fine-Tuning: Spatial Features",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.9169,
+      "Delta": 0.0404,
+      "R2_plus": 0.8812,
+      "novelty_residual": 0.3447,
+      "novelty_score": 0.1188,
+      "classification": "Moderate Synthesis",
+      "attribution": [
+        {
+          "paper_id": "2506.11976",
+          "title": "How Visual Representations Map to Language Feature Space in Multimodal LLMs",
+          "weight": 0.4346,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/2506.11976"
+        },
+        {
+          "paper_id": "2410.07149",
+          "title": "Towards Interpreting Visual Information Processing in Vision-Language Models",
+          "weight": 0.2208,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2410.07149"
+        },
+        {
+          "paper_id": "2205.00363",
+          "title": "Visual Spatial Reasoning",
+          "weight": 0.1365,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2205.00363"
+        },
+        {
+          "paper_id": "2308.01544",
+          "title": "Multimodal Neurons in Pretrained Text-Only Transformers",
+          "weight": 0.0649,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2308.01544"
+        },
+        {
+          "paper_id": "2309.16042",
+          "title": "Towards Best Practices of Activation Patching in Language Models: Metrics and Methods",
+          "weight": 0.0554,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2309.16042"
+        }
+      ],
+      "n_refs_used": 35,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2610.01821",
+      "title": "Beyond Linear Concepts: Discovering and Aligning Non-Linear Concept Manifolds in Large Language Models",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8533,
+      "Delta": 0.1247,
+      "R2_plus": 0.8528,
+      "novelty_residual": 0.3836,
+      "novelty_score": 0.1472,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2412.06639",
+          "title": "Beyond Scalars: Concept-Based Alignment Analysis in Vision Transformers",
+          "weight": 0.274,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2412.06639"
+        },
+        {
+          "paper_id": "2405.14860",
+          "title": "Not All Language Model Features Are One-Dimensionally Linear",
+          "weight": 0.1917,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2405.14860"
+        },
+        {
+          "paper_id": "2602.02315",
+          "title": "The Shape of Beliefs: Geometry, Dynamics, and Interventions along Representation Manifolds of Language Models' Posteriors",
+          "weight": 0.1481,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2602.02315"
+        },
+        {
+          "paper_id": "2501.06346",
+          "title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+          "weight": 0.0968,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2501.06346"
+        },
+        {
+          "paper_id": "1905.05950",
+          "title": "BERT Rediscovers the Classical NLP Pipeline",
+          "weight": 0.0708,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1905.05950"
+        }
+      ],
+      "n_refs_used": 27,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2602.15183",
+      "title": "Seeing to Generalize: How Visual Data Corrects Binding Shortcuts",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8506,
+      "Delta": 0.1129,
+      "R2_plus": 0.8364,
+      "novelty_residual": 0.4044,
+      "novelty_score": 0.1636,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2304.08485",
+          "title": "Visual Instruction Tuning",
+          "weight": 0.2387,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2304.08485"
+        },
+        {
+          "paper_id": "2307.03172",
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "weight": 0.1534,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2307.03172"
+        },
+        {
+          "paper_id": "2505.22200",
+          "title": "Investigating Mechanisms for In-Context Vision Language Binding",
+          "weight": 0.1492,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2505.22200"
+        },
+        {
+          "paper_id": "2304.00685",
+          "title": "Vision-Language Models for Vision Tasks: A Survey",
+          "weight": 0.1052,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2304.00685"
+        },
+        {
+          "paper_id": "2304.14767",
+          "title": "Dissecting Recall of Factual Associations in Auto-Regressive Language Models",
+          "weight": 0.0551,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2304.14767"
+        }
+      ],
+      "n_refs_used": 46,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2602.18262",
+      "title": "Simplifying Outcomes of Language Model Component Analyses with ELIA",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8273,
+      "Delta": 0.0612,
+      "R2_plus": 0.7456,
+      "novelty_residual": 0.5044,
+      "novelty_score": 0.2544,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2008.05122",
+          "title": "The Language Interpretability Tool: Extensible, Interactive Visualizations and Analysis for NLP Models",
+          "weight": 0.35,
+          "share": 0.4,
+          "url": "https://arxiv.org/abs/2008.05122"
+        },
+        {
+          "paper_id": "2404.14082",
+          "title": "Mechanistic Interpretability for AI Safety - A Review",
+          "weight": 0.1271,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2404.14082"
+        },
+        {
+          "paper_id": "2402.00838",
+          "title": "OLMo: Accelerating the Science of Language Models",
+          "weight": 0.1118,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2402.00838"
+        },
+        {
+          "paper_id": "2506.12152",
+          "title": "Because we have LLMs, we Can and Should Pursue Agentic Interpretability",
+          "weight": 0.0877,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2506.12152"
+        },
+        {
+          "paper_id": "1810.03292",
+          "title": "Sanity Checks for Saliency Maps",
+          "weight": 0.0865,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/1810.03292"
+        }
+      ],
+      "n_refs_used": 21,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2607.02494",
+      "title": "Towards Robustness against Typographic Attack with Training-free Concept Localization",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8978,
+      "Delta": 0.0775,
+      "R2_plus": 0.8836,
+      "novelty_residual": 0.3412,
+      "novelty_score": 0.1164,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2405.14169",
+          "title": "Towards Transferable Attacks Against Vision-LLMs in Autonomous Driving with Typography",
+          "weight": 0.2579,
+          "share": 0.3,
+          "url": "https://arxiv.org/abs/2405.14169"
+        },
+        {
+          "paper_id": "2512.11899",
+          "title": "Read or Ignore? A Unified Benchmark for Typographic-Attack Robustness and Text Recognition in Vision-Language Models",
+          "weight": 0.1636,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2512.11899"
+        },
+        {
+          "paper_id": "2505.20229",
+          "title": "From What to How: Attributing CLIP's Latent Components Reveals Unexpected Semantic Reliance",
+          "weight": 0.1206,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2505.20229"
+        },
+        {
+          "paper_id": "2508.20570",
+          "title": "Dyslexify: A Mechanistic Defense Against Typographic Attacks in CLIP",
+          "weight": 0.1137,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2508.20570"
+        },
+        {
+          "paper_id": "2308.12966",
+          "title": "Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond",
+          "weight": 0.1046,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2308.12966"
+        }
+      ],
+      "n_refs_used": 37,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2606.01914",
+      "title": "Mechanistic Diagnostics of Spatial Lexical Bias in Multimodal Large Language Model Spatial Reasoning",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8836,
+      "Delta": 0.0925,
+      "R2_plus": 0.8732,
+      "novelty_residual": 0.3561,
+      "novelty_score": 0.1268,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "s2:9de83e51be23e0a2bf6d62dc8af6163df247332e",
+          "title": "Why Is Spatial Reasoning Hard for VLMs? An Attention Mechanism Perspective on Focus Areas",
+          "weight": 0.2674,
+          "share": 0.3,
+          "url": "https://www.semanticscholar.org/paper/9de83e51be23e0a2bf6d62dc8af6163df247332e"
+        },
+        {
+          "paper_id": "s2:ca00f4056f9039d3c1a4c3a113f5ee0527149b66",
+          "title": "Eyes Wide Shut? Exploring the Visual Shortcomings of Multimodal LLMs",
+          "weight": 0.247,
+          "share": 0.2,
+          "url": "https://www.semanticscholar.org/paper/ca00f4056f9039d3c1a4c3a113f5ee0527149b66"
+        },
+        {
+          "paper_id": "s2:328eb183007bf4aefbf42437b42a15db375803e3",
+          "title": "Mitigating Object Hallucinations in Large Vision-Language Models through Visual Contrastive Decoding",
+          "weight": 0.151,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/328eb183007bf4aefbf42437b42a15db375803e3"
+        },
+        {
+          "paper_id": "s2:6edd112383ad494f5f2eba72b6f4ffae122ce61f",
+          "title": "Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 small",
+          "weight": 0.1108,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/6edd112383ad494f5f2eba72b6f4ffae122ce61f"
+        },
+        {
+          "paper_id": "s2:0d1c76d45afa012ded7ab741194baf142117c495",
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "weight": 0.08,
+          "share": 0.1,
+          "url": "https://www.semanticscholar.org/paper/0d1c76d45afa012ded7ab741194baf142117c495"
+        }
+      ],
+      "n_refs_used": 16,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2606.05843",
+      "title": "Mechanistic Insights into Functional Sparsity in Multimodal LLMs via CoRe Heads",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.894,
+      "Delta": 0.083,
+      "R2_plus": 0.8823,
+      "novelty_residual": 0.3431,
+      "novelty_score": 0.1177,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2603.20662",
+          "title": "Attention in Space: Functional Roles of VLM Heads for Spatial Reasoning",
+          "weight": 0.2306,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2603.20662"
+        },
+        {
+          "paper_id": "2506.05344",
+          "title": "SparseMM: Head Sparsity Emerges from Visual Concept Responses in MLLMs",
+          "weight": 0.1976,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2506.05344"
+        },
+        {
+          "paper_id": "2510.21518",
+          "title": "Head Pursuit: Probing Attention Specialization in Multimodal Transformers",
+          "weight": 0.1896,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2510.21518"
+        },
+        {
+          "paper_id": "2511.05923",
+          "title": "Causal Tracing of Object Representations in Large Vision Language Models: Mechanistic Interpretability and Hallucination Mitigation",
+          "weight": 0.094,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2511.05923"
+        },
+        {
+          "paper_id": "2506.09944",
+          "title": "Query-Focused Retrieval Heads Improve Long-Context Reasoning and Re-ranking",
+          "weight": 0.0864,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2506.09944"
+        }
+      ],
+      "n_refs_used": 30,
+      "d_eff": null
+    },
+    {
+      "arxiv_id": "2604.14477",
+      "title": "Seeing Through Circuits: Faithful Mechanistic Interpretability for Vision Transformers",
+      "year": 2026,
+      "citation_count": 0,
+      "ok": true,
+      "m": 0.8973,
+      "Delta": 0.1179,
+      "R2_plus": 0.9231,
+      "novelty_residual": 0.2773,
+      "novelty_score": 0.0769,
+      "classification": "High Synergy Cone Blend",
+      "attribution": [
+        {
+          "paper_id": "2503.09046",
+          "title": "Discovering Influential Neuron Path in Vision Transformers",
+          "weight": 0.2332,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2503.09046"
+        },
+        {
+          "paper_id": "2602.22968",
+          "title": "Certified Circuits: Stability Guarantees for Mechanistic Circuits",
+          "weight": 0.1777,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2602.22968"
+        },
+        {
+          "paper_id": "2304.14997",
+          "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability",
+          "weight": 0.1619,
+          "share": 0.2,
+          "url": "https://arxiv.org/abs/2304.14997"
+        },
+        {
+          "paper_id": "2508.20570",
+          "title": "Dyslexify: A Mechanistic Defense Against Typographic Attacks in CLIP",
+          "weight": 0.1055,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2508.20570"
+        },
+        {
+          "paper_id": "2504.19475",
+          "title": "Prisma: An Open Source Toolkit for Mechanistic Interpretability in Vision and Video",
+          "weight": 0.088,
+          "share": 0.1,
+          "url": "https://arxiv.org/abs/2504.19475"
+        }
+      ],
+      "n_refs_used": 33,
       "d_eff": null
     }
   ]
