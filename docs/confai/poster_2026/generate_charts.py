@@ -342,10 +342,10 @@ def make_novelty_scatter_plot() -> Path:
     ax.grid(True, ls="--", lw=1.0, color="#e2e8f0", zorder=0)
 
     cat_colors = {
-        "High Synergy Cone Blend": ("#7c3aed", "High Synergy (1,936)"),
-        "Moderate Synthesis": ("#2563eb", "Mod Synth (208)"),
-        "Linear / Incremental Extension": ("#059669", "Linear (13)"),
-        "Paradigm Shift / Subspace Outlier": ("#dc2626", "Shift (2)"),
+        "High Synergy Cone Blend": ("#7c3aed", "High Synergy (5,176)"),
+        "Moderate Synthesis": ("#2563eb", "Mod Synth (489)"),
+        "Linear / Incremental Extension": ("#059669", "Linear (34)"),
+        "Paradigm Shift / Subspace Outlier": ("#dc2626", "Shift (8)"),
     }
 
     for cat_name, (color, label) in cat_colors.items():

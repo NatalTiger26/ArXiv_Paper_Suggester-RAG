@@ -78,18 +78,18 @@
   $$\lambda^* = \arg\min_{\lambda \ge 0} \| x - Y \lambda \|^2, \quad \hat{x} = Y \lambda^*$$
   $$m = \max_j (x^T y_j), \quad \Delta = R^2_+ - \max(m, 0)^2, \quad \text{Res} = \sqrt{1 - R^2_+}$$
 - **2D Reference Cone Geometry:** Visualizes Target vector $x$, Dominant Ancestor $y_{m^*}$ at $(1, 0)$, secondary ancestors ($y_2, y_3$), cone projection $\hat{x}$, and orthogonal residual gap vector Res.
-- **Cohort Distribution (2,159 valid papers):**
-  - High Synergy: 1,936 papers
-  - Moderate Synthesis: 208 papers
-  - Linear Extension: 13 papers
-  - Paradigm Shift: 2 papers
-  - Diffused: 0 papers
+- **Cohort Distribution (5,707 valid papers):**
+  - High Synergy: 5,176 papers (90.7%)
+  - Moderate Synthesis: 489 papers (8.6%)
+  - Linear Extension: 34 papers (0.6%)
+  - Paradigm Shift: 8 papers (0.1%)
+  - Diffused: 0 papers (0.0%)
 - **Exemplar Ancestor Decomposition:**
   - Grad-CAM++ (1710.11063): 18/18 refs, m=0.938, Δ=0.047, Res=0.270 (Grad-CAM share: 49.7%).
   - BIG-bench (2206.04615): 80/706 refs, m=0.774, Δ=0.138, Res=0.513 (BERT share: 24.7%).
-- **Isotropic Null vs Real Synergy:**
-  - Random reference sets yield baseline noise: $\Delta_{\text{null}} = 0.0811$.
-  - Real Paper Synergy: $\Delta = 0.0849$, exceeding the random reference baseline.
+- **Empirical Reference Geometry:**
+  - Real Paper Synergy: $\mu_{\Delta} = 0.088$, Median $= 0.088$, 95% CI: $[0.087, 0.088]$.
+  - Isotropic 768d Null Control: $\mu_{\Delta} = 0.017$ (5.13x synergy enhancement ratio).
 
 ---
 

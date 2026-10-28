@@ -647,7 +647,7 @@ def build_poster_html() -> str:
         <div class="sub-head">2D Reference Cone Geometry Canvas</div>
         {chart_cone_2d}
 
-        <div class="sub-head">Cohort Novelty Space (2,159 Papers, 5 Classes)</div>
+        <div class="sub-head">Cohort Novelty Space (5,707 Papers, 5 Classes)</div>
         {chart_novelty_scatter}
 
         <div class="sub-head">Exemplar Ancestor Decomposition</div>
@@ -783,17 +783,25 @@ def run_audit(out_html: Path, out_pdf: Path) -> dict[str, Any]:
     import numpy as np
     img = cv2.imread(str(preview_png))
     h, w, _ = img.shape
-    # Header QR crop: top 18% of image, right 30% of width
-    qr_crop = img[int(h * 0.02):int(h * 0.18), int(w * 0.68):int(w * 0.98)]
-    gray = cv2.cvtColor(qr_crop, cv2.COLOR_BGR2GRAY)
     det = cv2.QRCodeDetector()
 
-    crop_w = gray.shape[1]
-    left_qr = gray[:, :int(crop_w * 0.5)]
-    right_qr = gray[:, int(crop_w * 0.5):]
+    # Dedicated crops for left QR and right QR inside header right corner
+    crop_l = img[int(h * 0.03):int(h * 0.18), int(w * 0.70):int(w * 0.88)]
+    crop_r = img[int(h * 0.03):int(h * 0.18), int(w * 0.84):int(w * 0.99)]
 
-    url_github, _, _ = det.detectAndDecode(left_qr)
-    url_demo, _, _ = det.detectAndDecode(right_qr)
+    url_github, _, _ = det.detectAndDecode(crop_l)
+    url_demo, _, _ = det.detectAndDecode(crop_r)
+
+    # Multi-detect fallback over full header if needed
+    if not ("github.com" in url_github and "streamlit.app" in url_demo):
+        header_crop = img[:int(h * 0.20), :]
+        val, decoded_info, _, _ = det.detectAndDecodeMulti(header_crop)
+        if val and decoded_info:
+            for u in decoded_info:
+                if "github.com" in u and not url_github:
+                    url_github = u
+                elif "streamlit.app" in u and not url_demo:
+                    url_demo = u
 
     has_github = "github.com" in url_github
     has_demo = "streamlit.app" in url_demo
@@ -886,15 +894,21 @@ def compile_pdf(html_path: Path, pdf_path: Path) -> None:
 
 def main() -> None:
     run_audit_mode = "--audit" in sys.argv
+    use_argon_mode = "--argon" in sys.argv
 
-    # 1. Generate HTML
-    html_content = build_poster_html()
-    out_html = DIR / "poster.html"
-    out_html.write_text(html_content, encoding="utf-8")
-    print(f"Generated A1 Poster HTML: {out_html} ({len(html_content)} bytes)")
+    if use_argon_mode:
+        out_html = DIR / "poster_argon.html"
+        out_pdf = DIR / "poster_argon.pdf"
+        print(f"Using Argon Poster HTML: {out_html}")
+    else:
+        # 1. Generate HTML
+        html_content = build_poster_html()
+        out_html = DIR / "poster.html"
+        out_html.write_text(html_content, encoding="utf-8")
+        print(f"Generated A1 Poster HTML: {out_html} ({len(html_content)} bytes)")
+        out_pdf = DIR / "poster.pdf"
 
     # 2. Compile to PDF
-    out_pdf = DIR / "poster.pdf"
     compile_pdf(out_html, out_pdf)
 
     # 3. Optional Audit
