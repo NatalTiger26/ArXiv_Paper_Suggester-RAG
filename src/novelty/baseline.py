@@ -135,7 +135,7 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
             report["corr_Delta_with_D_median"]
         ) > 0.85:
             report["warning"] = (
-                "Delta is nearly collinear with D_median — blend gain may add "
+                "Delta is nearly collinear with D_median: blend gain may add "
                 "little beyond dispersion."
             )
 

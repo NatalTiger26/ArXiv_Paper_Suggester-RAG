@@ -39,7 +39,7 @@ def _get_pdf_page_count(pdf_path: Path) -> int:
 
 
 def resolve_title(arxiv_id: str, md_path: Path | None = None) -> str:
-    """Prefer local markdown / corpus title; fall back to arXiv API only if needed."""
+    """Prefer local markdown / corpus title, falling back to arXiv API only if needed."""
     if md_path and md_path.exists():
         try:
             from .chunk import _extract_title
@@ -77,7 +77,7 @@ def _paper_in_rag(aid: str) -> tuple[bool, int]:
         from .embed_store import get_collection
 
         coll = get_collection(create=False)
-        # Prefer metadata filter; fall back to full list for older stores
+        # Prefer metadata filter, falling back to full list for older stores
         try:
             res = coll.get(where={"paper_id": aid}, include=["metadatas"], limit=5)
             n = len(res.get("ids") or [])
@@ -202,7 +202,7 @@ def ingest_paper(
                     "duration_s": duration,
                 }
             else:
-                print(f"  [html] not available on arXiv; falling back to PDF download...", flush=True)
+                print(f"  [html] not available on arXiv, falling back to PDF download...", flush=True)
 
         # --- Route 2: PDF Fallback ---
         pdf_reused = (
@@ -277,7 +277,7 @@ def ingest_papers(
     prefer_html: bool = True,
     force_pdf: bool = False,
 ) -> list[dict]:
-    """Ingest many papers; load the embedding model once."""
+    """Ingest many papers, loading the embedding model once."""
     model = load_embedding_model()
     results = []
     for raw in ids:
@@ -292,6 +292,101 @@ def ingest_papers(
                 force_pdf=force_pdf,
             )
         )
+    return results
+
+
+def streaming_ingest_papers(
+    ids: Iterable[str],
+    force_download: bool = False,
+    force_embed: bool = False,
+    prefer_html: bool = True,
+    force_pdf: bool = False,
+    ring_buffer_size: int = 4,
+) -> list[dict]:
+    """Concurrent producer-consumer ingest overlapping network downloads with vector embedding."""
+    import queue
+    import threading
+
+    raw_ids = list(ids)
+    if not raw_ids:
+        return []
+
+    model = load_embedding_model()
+    q: queue.Queue = queue.Queue(maxsize=ring_buffer_size)
+    results: list[dict] = []
+    sentinel = object()
+
+    def producer():
+        for raw in raw_ids:
+            try:
+                aid = normalise_arxiv_id(raw)
+                if not aid:
+                    q.put((raw, False, {"arxiv_id": raw, "ok": False, "error": "invalid_id"}))
+                    continue
+
+                dest = pdf_path_for(aid)
+                md_dest = markdown_path_for(aid)
+
+                chunks = []
+                final_title = ""
+                source_fmt = "pdf"
+
+                if prefer_html and not force_pdf:
+                    from .html_ingest import download_arxiv_html, html_to_markdown_and_chunks
+                    html_file = download_arxiv_html(aid, force=force_download)
+                    if html_file and html_file.exists():
+                        md_text, html_chunks, parsed_title = html_to_markdown_and_chunks(html_file, paper_id=aid)
+                        md_dest.write_text(md_text, encoding="utf-8")
+                        chunks = html_chunks
+                        final_title = parsed_title or ""
+                        source_fmt = "html"
+
+                if not chunks:
+                    pdf = download_paper(aid, force=force_download)
+                    md_path = pdf_to_markdown(pdf, arxiv_id=aid, force=force_download)
+                    final_title = resolve_title(aid, md_path)
+                    chunks = chunk_markdown(md_path, paper_id=aid, title=final_title)
+                    source_fmt = "pdf"
+
+                q.put((raw, True, {
+                    "arxiv_id": aid,
+                    "title": final_title,
+                    "chunks": chunks,
+                    "source_format": source_fmt,
+                    "pdf": str(dest) if dest.exists() else None,
+                    "markdown": str(md_dest) if md_dest.exists() else None,
+                }))
+            except Exception as e:
+                q.put((raw, False, {"arxiv_id": raw, "ok": False, "error": str(e)}))
+
+        q.put(sentinel)
+
+    prod_thread = threading.Thread(target=producer, daemon=True)
+    prod_thread.start()
+
+    while True:
+        item = q.get()
+        if item is sentinel:
+            break
+        raw, ok, data = item
+        if not ok:
+            results.append(data)
+            continue
+        try:
+            chunks = data.pop("chunks", [])
+            t0 = time.perf_counter()
+            n = upsert_chunks(chunks, model=model)
+            dt = round(time.perf_counter() - t0, 3)
+            data["ok"] = True
+            data["chunks"] = n
+            data["duration_s"] = dt
+            results.append(data)
+        except Exception as e:
+            data["ok"] = False
+            data["error"] = str(e)
+            results.append(data)
+
+    prod_thread.join()
     return results
 
 

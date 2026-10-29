@@ -35,16 +35,27 @@ except ImportError:
         EMBEDDING_DIM = 0
 
 
+_CACHED_CORPUS: list[dict] | None = None
+_CACHED_CORPUS_MTIME: float = 0.0
+
+
 def load_corpus(path: Path = CORPUS_PATH) -> list[dict]:
-    if not path.exists():
+    global _CACHED_CORPUS, _CACHED_CORPUS_MTIME
+    p = Path(path)
+    if not p.exists():
         raise SystemExit(
-            f"Corpus not found: {path}\n"
+            f"Corpus not found: {p}\n"
             "  Place data/corpus.json (or legacy corpus_100.json), then optionally\n"
             "  rebuild the index with:  python src/corpus_index.py build"
         )
-    data = json.loads(path.read_text(encoding="utf-8"))
+    mtime = p.stat().st_mtime
+    if _CACHED_CORPUS is not None and mtime == _CACHED_CORPUS_MTIME:
+        return _CACHED_CORPUS
+    data = json.loads(p.read_text(encoding="utf-8"))
     if not isinstance(data, list) or not data:
         raise SystemExit("corpus.json must be a non-empty JSON array")
+    _CACHED_CORPUS = data
+    _CACHED_CORPUS_MTIME = mtime
     return data
 
 
@@ -108,6 +119,15 @@ def load_model(model_name: str | None = None):
     if _CORPUS_MODEL is not None and _CORPUS_MODEL_NAME == name:
         return _CORPUS_MODEL
 
+    try:
+        from src.rag import embed_store as es
+        if getattr(es, "_model", None) is not None and getattr(es, "_model_name_loaded", None) == name:
+            _CORPUS_MODEL = es._model
+            _CORPUS_MODEL_NAME = name
+            return _CORPUS_MODEL
+    except Exception:
+        pass
+
     print(f"Loading model: {name}  (device={device})")
     t0 = time.time()
     try:
@@ -121,6 +141,15 @@ def load_model(model_name: str | None = None):
     print(f"  loaded in {time.time() - t0:.1f}s")
     _CORPUS_MODEL = model
     _CORPUS_MODEL_NAME = name
+
+    try:
+        from src.rag import embed_store as es
+        if getattr(es, "_model", None) is None:
+            es._model = model
+            es._model_name_loaded = name
+    except Exception:
+        pass
+
     return model
 
 

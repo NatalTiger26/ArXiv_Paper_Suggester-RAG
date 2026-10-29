@@ -5,7 +5,7 @@ This package is intentionally separate from recommend / RAG. It does not
 write into chroma_corpus or chroma_rag. Scores are offline / on-demand.
 
 Honest framing: these numbers measure geometry relative to cited references
-in a fixed embedding space — not scientific novelty in the idea sense.
+in a fixed embedding space: not scientific novelty in the idea sense.
 """
 
 from .score import score_paper, score_papers

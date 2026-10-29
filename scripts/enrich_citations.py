@@ -34,21 +34,19 @@ from typing import Any
 import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+from src.core.ids import normalise_arxiv_id
+
 DEFAULT_CORPUS = PROJECT_ROOT / "data" / "corpus.json"
 DEFAULT_CHROMA = PROJECT_ROOT / "data" / "chroma_corpus"
 S2_BATCH_URL = "https://api.semanticscholar.org/graph/v1/paper/batch"
 
 
 def clean_arxiv_id(aid: str | None) -> str:
-    """Normalize arXiv ID for S2 lookup: strip 'arxiv:' prefix and version 'v1'."""
-    if not aid:
-        return ""
-    val = str(aid).strip()
-    if val.lower().startswith("arxiv:"):
-        val = val[6:].strip()
-    # Remove version suffix e.g. 1806.07572v2 -> 1806.07572
-    import re
-    return re.sub(r"v\d+$", "", val).strip()
+    """Normalize arXiv ID for S2 lookup delegating to canonical src.core.ids."""
+    res = normalise_arxiv_id(aid)
+    return res if res else ""
 
 
 def s2_request_headers() -> dict[str, str]:

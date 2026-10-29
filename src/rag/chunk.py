@@ -85,27 +85,82 @@ def _split_by_headings(md: str) -> list[tuple[str, str]]:
     return parts
 
 
+def _find_protected_spans(text: str) -> list[tuple[int, int]]:
+    """Return non-overlapping start/end offsets for math blocks and fenced code."""
+    spans: list[tuple[int, int]] = []
+    for m in re.finditer(r"\$\$.*?\$\$", text, flags=re.DOTALL):
+        spans.append((m.start(), m.end()))
+    for m in re.finditer(r"```.*?```", text, flags=re.DOTALL):
+        spans.append((m.start(), m.end()))
+    if not spans:
+        return []
+    spans.sort(key=lambda s: s[0])
+    merged = [spans[0]]
+    for s_start, s_end in spans[1:]:
+        last_start, last_end = merged[-1]
+        if s_start <= last_end:
+            merged[-1] = (last_start, max(last_end, s_end))
+        else:
+            merged.append((s_start, s_end))
+    return merged
+
+
+def _is_inside_protected(pos: int, spans: list[tuple[int, int]]) -> tuple[int, int] | None:
+    for s_start, s_end in spans:
+        if s_start < pos < s_end:
+            return (s_start, s_end)
+    return None
+
+
 def _char_chunks(text: str, size: int, overlap: int) -> list[tuple[int, int, str]]:
-    """Sliding window over characters with boundary-aware cuts."""
+    """Sliding window with semantic boundary cuts preserving math and code blocks."""
     if len(text) <= size:
         return [(0, len(text), text)] if text.strip() else []
 
-    out = []
+    protected = _find_protected_spans(text)
+    out: list[tuple[int, int, str]] = []
     start = 0
+
     while start < len(text):
-        end = min(start + size, len(text))
+        target_end = min(start + size, len(text))
+        end = target_end
+
         if end < len(text):
-            for sep in ("\n\n", "\n", ". ", "; ", " "):
-                pos = text.rfind(sep, start + size // 2, end)
-                if pos != -1:
-                    end = pos + len(sep)
-                    break
+            span = _is_inside_protected(end, protected)
+            if span is not None:
+                p_start, p_end = span
+                if p_end - start <= int(size * 1.4):
+                    end = p_end
+                elif p_start > start + size // 3:
+                    end = p_start
+
+            if end == target_end:
+                best_cut = -1
+                for sep in ("\n\n", "\n", ". ", "? ", "! ", " "):
+                    pos = text.rfind(sep, start + size // 2, end)
+                    while pos != -1:
+                        if not _is_inside_protected(pos, protected):
+                            best_cut = pos + len(sep)
+                            break
+                        pos = text.rfind(sep, start + size // 2, pos)
+                    if best_cut != -1:
+                        end = best_cut
+                        break
+
         chunk = text[start:end].strip()
         if len(chunk) >= MIN_CHUNK_CHARS:
             out.append((start, end, chunk))
         if end >= len(text):
             break
-        start = max(end - overlap, start + 1)
+
+        cand_start = max(end - overlap, start + 1)
+        span_overlap = _is_inside_protected(cand_start, protected)
+        if span_overlap is not None:
+            p_start, p_end = span_overlap
+            cand_start = p_end if p_end < end else max(p_start, start + 1)
+
+        start = max(cand_start, start + 1)
+
     return out
 
 
@@ -135,12 +190,14 @@ def chunk_markdown(
         for start, end, slice_text in _char_chunks(body, chunk_size, chunk_overlap):
             raw = f"{paper_id}|{section_name}|{start}|{end}|{slice_text[:48]}"
             cid = hashlib.sha1(raw.encode()).hexdigest()[:16]
+            breadcrumb = f"{title} > § {section_name}: "
+            text_anchored = f"{breadcrumb}{slice_text}" if not slice_text.startswith(f"{title} >") else slice_text
             chunks.append(
                 Chunk(
                     chunk_id=cid,
                     paper_id=paper_id,
                     title=title,
-                    text=slice_text,
+                    text=text_anchored,
                     section=section_name,
                     char_start=start,
                     char_end=end,

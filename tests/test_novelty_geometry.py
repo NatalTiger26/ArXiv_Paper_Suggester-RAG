@@ -133,11 +133,15 @@ class TestNoveltyGeometry(unittest.TestCase):
     def test_non_arxiv_doi_graceful_handling(self):
         from src.novelty.score import score_paper
 
-        # Querying an external DOI must return a structured error response, not crash
-        res = score_paper("https://doi.org/10.1146/annurev-conmatphys-031119-050745")
-        self.assertFalse(res.get("ok"))
-        self.assertEqual(res.get("error"), "non_arxiv_paper")
-        self.assertIn("not an arXiv paper ID", res.get("message", ""))
+        # Valid non-arXiv DOIs are now resolved via OpenAlex / S2 fallback
+        res = score_paper("https://doi.org/10.1146/annurev-conmatphys-031119-050745", allow_partial=True)
+        self.assertTrue(res.get("ok"))
+        self.assertIn("m", res)
+        self.assertIn("Delta", res)
+
+        # Invalid or non-existent identifiers return structured failure, not unhandled crash
+        res_invalid = score_paper("https://doi.org/10.0000/nonexistent_paper_id_99999", allow_partial=True)
+        self.assertFalse(res_invalid.get("ok"))
 
     def test_arxiv_html_references_parser(self):
         from unittest.mock import patch, MagicMock

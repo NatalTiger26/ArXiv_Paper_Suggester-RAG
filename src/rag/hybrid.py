@@ -124,13 +124,16 @@ def hybrid_rerank(
     if not chunks or len(chunks) <= 1:
         return chunks[:top_k]
 
+    from src.core.acronyms import expand_query_acronyms
+
+    expanded_query = expand_query_acronyms(query)
     explicit_ids = extract_query_identifiers(query)
 
     # Resolve entity acronyms / method titles (e.g. Grad-CAM, NTK, SHAP)
     matched_entities: list[str] = []
     try:
         from src.catalog import resolve_entities_in_query
-        matched_entities = resolve_entities_in_query(query, limit=4)
+        matched_entities = resolve_entities_in_query(expanded_query, limit=4)
     except Exception:
         pass
 
@@ -141,7 +144,7 @@ def hybrid_rerank(
 
     # 2. BM25 scoring over retrieved pool
     bm25 = BM25Scorer(chunks)
-    bm25_scores = bm25.score(query)
+    bm25_scores = bm25.score(expanded_query)
     bm25_ranked = sorted(
         range(len(chunks)),
         key=lambda i: bm25_scores[i],

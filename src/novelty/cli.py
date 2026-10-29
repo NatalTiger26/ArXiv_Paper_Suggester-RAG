@@ -168,7 +168,7 @@ def _fmt(v) -> str:
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(
         prog="src.novelty.cli",
-        description="Reference-conditional embedding profiles (offline; separate from RAG)",
+        description="Reference-conditional embedding profiles (offline, separate from RAG)",
     )
     sub = parser.add_subparsers(dest="cmd", required=True)
 

@@ -1,4 +1,4 @@
-"""Convert arXiv PDFs to Markdown. Prefer text layer; OCR only when needed."""
+"""Convert arXiv PDFs to Markdown. Prefer text layer, using OCR only when needed."""
 
 from __future__ import annotations
 

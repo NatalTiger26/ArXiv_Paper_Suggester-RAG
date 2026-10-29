@@ -1,4 +1,4 @@
-"""RAG configuration facade — re-exports central project settings from src.settings."""
+"""RAG configuration facade: re-exports central project settings from src.settings."""
 
 from __future__ import annotations
 

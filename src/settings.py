@@ -163,12 +163,12 @@ elif _requested:
 else:
     EMBEDDING_MODEL = _DEFAULT_LOCAL_EMBED if not IS_STREAMLIT_CLOUD else _DEFAULT_CLOUD_EMBED
 
-# Matryoshka truncate. 0 = full dimension from the model (typically 768).
-# Lower values (512, 256, 128) reduce storage/compute; rebuild indexes after change.
+# Matryoshka truncate. Default 256 dimensions for high throughput and compact storage.
+# Set EMBEDDING_DIM=768 in .env to use uncompressed full dimensions.
 try:
-    EMBEDDING_DIM = int(os.getenv("EMBEDDING_DIM", "0"))
+    EMBEDDING_DIM = int(os.getenv("EMBEDDING_DIM", "256"))
 except ValueError:
-    EMBEDDING_DIM = 0
+    EMBEDDING_DIM = 256
 
 HF_TOKEN = os.getenv("HF_TOKEN") or os.getenv("HUGGING_FACE_HUB_TOKEN")
 if HF_TOKEN:

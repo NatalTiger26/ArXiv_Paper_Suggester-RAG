@@ -26,18 +26,18 @@ from typing import Any
 import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+from src.core.ids import normalise_arxiv_id
+
 GRAPH_DB = PROJECT_ROOT / "data" / "citation_library" / "graph.sqlite3"
 CORPUS_JSON = PROJECT_ROOT / "data" / "corpus.json"
 S2_BATCH_URL = "https://api.semanticscholar.org/graph/v1/paper/batch"
 
 
 def clean_arxiv_id(val: str | None) -> str:
-    if not val:
-        return ""
-    s = str(val).strip()
-    if s.lower().startswith("arxiv:"):
-        s = s[6:].strip()
-    return re.sub(r"v\d+$", "", s).strip()
+    res = normalise_arxiv_id(val)
+    return res if res else ""
 
 
 def s2_request_headers() -> dict[str, str]:

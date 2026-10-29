@@ -539,21 +539,134 @@ async def api_arxiv_import(request: Request) -> JSONResponse:
 
 async def api_novelty(request: Request) -> JSONResponse:
     """Compute novelty profile and 2D cone subspace coordinates."""
-    aid = request.query_params.get("arxiv_id", "").strip()
-    if not aid:
-        return JSONResponse({"ok": False, "error": "Missing 'arxiv_id' query parameter."}, status_code=400)
+    import urllib.parse
+    raw_target = (
+        request.query_params.get("doi")
+        or request.query_params.get("arxiv_id")
+        or request.query_params.get("paper_id")
+        or request.query_params.get("query")
+        or ""
+    ).strip()
+    if not raw_target:
+        return JSONResponse(
+            {"ok": False, "error": "Missing 'arxiv_id', 'doi', or 'query' query parameter."},
+            status_code=400,
+        )
 
-    from src.rag.download import normalise_arxiv_id
-    clean_id = normalise_arxiv_id(aid) or aid
+    clean_target = urllib.parse.unquote(raw_target).strip()
+    from src.core.ids import normalise_arxiv_id, normalise_doi
+    aid = normalise_arxiv_id(clean_target)
+    doi = normalise_doi(clean_target)
+    effective_target = aid or doi or clean_target
 
     from src.novelty.score import score_paper
 
     loop = asyncio.get_running_loop()
     try:
-        profile = await loop.run_in_executor(None, lambda: score_paper(clean_id, allow_partial=True))
+        profile = await loop.run_in_executor(
+            None,
+            lambda: score_paper(effective_target, allow_partial=True),
+        )
         return JSONResponse(sanitize_json_obj(profile))
     except Exception as e:
         return JSONResponse({"ok": False, "error": str(e), "message": str(e)}, status_code=200)
+
+
+# ── Novelty Subspace Bridge Discovery ───────────────────────────────────────
+
+
+async def api_novelty_bridge(request: Request) -> JSONResponse:
+    """Multi-focal subspace projection tool discovering conceptual bridge literature."""
+    t0 = time.perf_counter()
+    if request.method == "POST":
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
+        domain_a = body.get("domain_a") or ""
+        domain_b = body.get("domain_b") or ""
+        top_k = int(body.get("top_k", 10))
+    else:
+        domain_a = request.query_params.get("domain_a", "")
+        domain_b = request.query_params.get("domain_b", "")
+        top_k = int(request.query_params.get("top_k", 10))
+
+    if not domain_a or not domain_b:
+        return JSONResponse({"ok": False, "error": "domain_a and domain_b are required"}, status_code=400)
+
+    try:
+        from src.novelty.bridge import find_conceptual_bridges
+        from src.rag.embed_store import load_embedding_model
+        from src.novelty.embed_util import embed_texts
+        from src.settings import DATA_DIR
+        import numpy as np
+
+        model = load_embedding_model()
+        vecs = embed_texts([domain_a, domain_b], model=model)
+        va, vb = vecs[0], vecs[1]
+
+        emb_file = DATA_DIR / "embeddings" / "corpus_embeddings.json"
+        if not emb_file.exists():
+            return JSONResponse({"ok": False, "error": "corpus_embeddings.json not found"}, status_code=500)
+
+        with open(emb_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        c_vecs = np.asarray(data.get("embeddings", []), dtype=np.float32)
+        c_ids = data.get("ids", [])
+
+        t0 = time.perf_counter()
+        bridges = find_conceptual_bridges(va, vb, c_vecs, c_ids, top_k=top_k)
+        dt = (time.perf_counter() - t0) * 1000.0
+
+        return JSONResponse(sanitize_json_obj({
+            "ok": True,
+            "domain_a": domain_a,
+            "domain_b": domain_b,
+            "latency_ms": round(dt, 2),
+            "count": len(bridges),
+            "bridges": bridges,
+        }))
+    except Exception as e:
+        return JSONResponse({"ok": False, "error": str(e)}, status_code=500)
+
+
+# ── Client-Side Wasm Vector Search Payload ───────────────────────────────────
+
+
+async def api_workspace_vectors(request: Request) -> Response:
+    """Stream compressed float16 256-d vectors for ultra-low latency client-side search."""
+    import gzip
+    from src.settings import DATA_DIR
+    import numpy as np
+
+    emb_file = DATA_DIR / "embeddings" / "corpus_embeddings.json"
+    if not emb_file.exists():
+        return JSONResponse({"ok": False, "error": "corpus_embeddings.json not found"}, status_code=404)
+
+    try:
+        limit = int(request.query_params.get("limit", 1000))
+    except ValueError:
+        limit = 1000
+
+    with open(emb_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    raw_vecs = np.asarray(data.get("embeddings", [])[:limit], dtype=np.float16)
+    ids = data.get("ids", [])[:limit]
+
+    header = json.dumps({"count": len(ids), "dim": 256, "ids": ids}).encode("utf-8")
+    payload = len(header).to_bytes(4, byteorder="big") + header + raw_vecs.tobytes()
+    compressed = gzip.compress(payload)
+
+    return Response(
+        content=compressed,
+        media_type="application/octet-stream",
+        headers={
+            "Content-Encoding": "gzip",
+            "Content-Disposition": "attachment",
+        },
+    )
 
 
 # ── Landmark Citation Hubs ────────────────────────────────────────────────────
@@ -582,7 +695,7 @@ async def api_hubs(request: Request) -> JSONResponse:
                 "canonical_id": r["canonical_id"],
                 "arxiv_id": r["arxiv_id"] or "",
                 "title": r["title"] or "Untitled",
-                "year": str(r["year"]) if r["year"] else "—",
+                "year": str(r["year"]) if r["year"] else "-",
                 "citation_count": r["citation_count"] or 0,
             }
             for r in rows
@@ -631,6 +744,8 @@ def create_app() -> Starlette:
         Route("/api/arxiv/search", api_arxiv_search, methods=["GET"]),
         Route("/api/arxiv/import", api_arxiv_import, methods=["POST"]),
         Route("/api/novelty", api_novelty, methods=["GET"]),
+        Route("/api/novelty/bridge", api_novelty_bridge, methods=["GET", "POST"]),
+        Route("/api/workspace/vectors", api_workspace_vectors, methods=["GET"]),
         Route("/api/hubs", api_hubs, methods=["GET"]),
         Route("/api/telemetry", api_telemetry, methods=["GET"]),
         Route("/api/telemetry/reset", api_telemetry_reset, methods=["POST"]),

@@ -24,87 +24,96 @@ DEFAULT_DB_PATH = PROJECT_ROOT / "data" / "catalog.sqlite3"
 DEFAULT_CORPUS_JSON = PROJECT_ROOT / "data" / "corpus.json"
 
 
+_CATALOG_INITIALIZED: set[str] = set()
+
+
 def clean_arxiv_id(aid: str | None) -> str:
+    """Return normalized arXiv ID delegating to canonical src.core.ids."""
     if not aid:
         return ""
-    s = str(aid).strip()
-    if s.lower().startswith("arxiv:"):
-        s = s[6:].strip()
-    return re.sub(r"v\d+$", "", s).strip()
+    from src.core.ids import normalise_arxiv_id
+    res = normalise_arxiv_id(aid)
+    return res if res else ""
 
 
 def connect(db_path: Path | str | None = None) -> sqlite3.Connection:
-    """Connect to catalog database and ensure FTS5 tables and triggers exist."""
+    """Connect to catalog database with memory mapping and one-time schema initialization."""
     path = Path(db_path) if db_path else DEFAULT_DB_PATH
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(path), timeout=15.0)
     conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA journal_mode=WAL;")
-    conn.execute("PRAGMA synchronous=NORMAL;")
+    from src.core.db import apply_performance_pragmas
+    apply_performance_pragmas(conn)
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
 
-    with conn:
-        conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS papers (
-                arxiv_id TEXT PRIMARY KEY,
-                title TEXT,
-                abstract TEXT,
-                year INTEGER,
-                citation_count INTEGER,
-                categories TEXT,
-                doi TEXT,
-                updated_at REAL
+    p_str = str(path.resolve())
+    if p_str not in _CATALOG_INITIALIZED:
+        with conn:
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS papers (
+                    arxiv_id TEXT PRIMARY KEY,
+                    title TEXT,
+                    abstract TEXT,
+                    year INTEGER,
+                    citation_count INTEGER,
+                    categories TEXT,
+                    doi TEXT,
+                    updated_at REAL
+                )
+                """
             )
-            """
-        )
-        conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_papers_year ON papers(year);"
-        )
-        conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_papers_cites ON papers(citation_count);"
-        )
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_papers_year ON papers(year)"
+            )
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_papers_cites ON papers(citation_count)"
+            )
 
-        # SQLite FTS5 external content table
-        conn.execute(
-            """
-            CREATE VIRTUAL TABLE IF NOT EXISTS papers_fts USING fts5(
-                arxiv_id,
-                title,
-                abstract,
-                categories,
-                content='papers',
-                content_rowid='rowid'
-            );
-            """
-        )
+            # SQLite FTS5 external content table
+            conn.execute(
+                """
+                CREATE VIRTUAL TABLE IF NOT EXISTS papers_fts USING fts5(
+                    arxiv_id,
+                    title,
+                    abstract,
+                    categories,
+                    content='papers',
+                    content_rowid='rowid'
+                )
+                """
+            )
 
-        # Triggers to keep FTS index synchronized with papers table
-        conn.execute(
-            """
-            CREATE TRIGGER IF NOT EXISTS papers_ai AFTER INSERT ON papers BEGIN
-                INSERT INTO papers_fts(rowid, arxiv_id, title, abstract, categories)
-                VALUES (new.rowid, new.arxiv_id, new.title, new.abstract, new.categories);
-            END;
-            """
-        )
-        conn.execute(
-            """
-            CREATE TRIGGER IF NOT EXISTS papers_ad AFTER DELETE ON papers BEGIN
-                INSERT INTO papers_fts(papers_fts, rowid, arxiv_id, title, abstract, categories)
-                VALUES('delete', old.rowid, old.arxiv_id, old.title, old.abstract, old.categories);
-            END;
-            """
-        )
-        conn.execute(
-            """
-            CREATE TRIGGER IF NOT EXISTS papers_au AFTER UPDATE ON papers BEGIN
-                INSERT INTO papers_fts(papers_fts, rowid, arxiv_id, title, abstract, categories)
-                VALUES('delete', old.rowid, old.arxiv_id, old.title, old.abstract, old.categories);
-                INSERT INTO papers_fts(rowid, arxiv_id, title, abstract, categories)
-                VALUES (new.rowid, new.arxiv_id, new.title, new.abstract, new.categories);
-            END;
-            """
-        )
+            # Triggers to keep FTS index synchronized with papers table
+            conn.execute(
+                """
+                CREATE TRIGGER IF NOT EXISTS papers_ai AFTER INSERT ON papers BEGIN
+                    INSERT INTO papers_fts(rowid, arxiv_id, title, abstract, categories)
+                    VALUES (new.rowid, new.arxiv_id, new.title, new.abstract, new.categories);
+                END
+                """
+            )
+            conn.execute(
+                """
+                CREATE TRIGGER IF NOT EXISTS papers_ad AFTER DELETE ON papers BEGIN
+                    INSERT INTO papers_fts(papers_fts, rowid, arxiv_id, title, abstract, categories)
+                    VALUES('delete', old.rowid, old.arxiv_id, old.title, old.abstract, old.categories);
+                END
+                """
+            )
+            conn.execute(
+                """
+                CREATE TRIGGER IF NOT EXISTS papers_au AFTER UPDATE ON papers BEGIN
+                    INSERT INTO papers_fts(papers_fts, rowid, arxiv_id, title, abstract, categories)
+                    VALUES('delete', old.rowid, old.arxiv_id, old.title, old.abstract, old.categories);
+                    INSERT INTO papers_fts(rowid, arxiv_id, title, abstract, categories)
+                    VALUES (new.rowid, new.arxiv_id, new.title, new.abstract, new.categories);
+                END
+                """
+            )
+        _CATALOG_INITIALIZED.add(p_str)
+
     return conn
 
 
@@ -172,7 +181,7 @@ def search_catalog(
         cur = conn.execute(
             """
             SELECT p.arxiv_id, p.title, p.abstract, p.year, p.citation_count, p.categories,
-                   bm25(papers_fts) AS rank_score
+                   bm25(papers_fts, 5.0, 10.0, 2.0, 1.0) AS rank_score
             FROM papers_fts f
             JOIN papers p ON p.rowid = f.rowid
             WHERE papers_fts MATCH ?
@@ -232,7 +241,7 @@ def resolve_entities_in_query(
         exact_terms = " OR ".join(f'title:"{kw}"' for kw in keywords[:4])
         cur = conn.execute(
             """
-            SELECT p.arxiv_id, bm25(papers_fts) as rank
+            SELECT p.arxiv_id, bm25(papers_fts, 5.0, 10.0, 2.0, 1.0) as rank
             FROM papers_fts f
             JOIN papers p ON p.rowid = f.rowid
             WHERE papers_fts MATCH ?
@@ -561,17 +570,17 @@ def browse_catalog(
 
             # Order by
             if sort_by == "citations_desc":
-                order_clause = "ORDER BY p.citation_count DESC, bm25(papers_fts) ASC"
+                order_clause = "ORDER BY p.citation_count DESC, bm25(papers_fts, 5.0, 10.0, 2.0, 1.0) ASC"
             elif sort_by == "year_desc":
-                order_clause = "ORDER BY p.year DESC, bm25(papers_fts) ASC"
+                order_clause = "ORDER BY p.year DESC, bm25(papers_fts, 5.0, 10.0, 2.0, 1.0) ASC"
             elif sort_by == "title_asc":
                 order_clause = "ORDER BY p.title ASC"
             else:
-                order_clause = "ORDER BY bm25(papers_fts) ASC, p.citation_count DESC"
+                order_clause = "ORDER BY bm25(papers_fts, 5.0, 10.0, 2.0, 1.0) ASC, p.citation_count DESC"
 
             data_sql = f"""
                 SELECT p.arxiv_id, p.title, p.abstract, p.year, p.citation_count, p.categories, p.doi,
-                       bm25(papers_fts) as rank_score
+                       bm25(papers_fts, 5.0, 10.0, 2.0, 1.0) as rank_score
                 FROM papers_fts f
                 JOIN papers p ON p.rowid = f.rowid
                 {where_str}

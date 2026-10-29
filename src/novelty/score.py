@@ -30,7 +30,7 @@ from .ids import canonical_id, normalise_arxiv_id, strip_version
 from .metrics import compute_profile, effective_dimension
 from .refs import resolve_focal_and_refs
 
-MIN_FRAC_ABSTRACT = 0.25  # practical default — title fallback enabled by default
+MIN_FRAC_ABSTRACT = 0.25  # practical default: title fallback enabled by default
 MIN_REFS_WITH_ABS = 3
 DEFAULT_MAX_REFS = 80
 CAP_SEED = 17  # deterministic reference cap
@@ -50,7 +50,7 @@ def _ensure_embedding(conn, rec: dict[str, Any], model_name: str, dim: int, mode
 
 
 def _dedupe_refs(refs: list[dict[str, Any]], focal_cid: str) -> list[dict[str, Any]]:
-    """Merge by canonical_id; drop self / near-self (same arxiv id)."""
+    """Merge by canonical_id, dropping self / near-self (same arxiv id)."""
     seen: set[str] = set()
     out: list[dict[str, Any]] = []
     focal_arxiv = None
@@ -111,30 +111,27 @@ def score_paper(
     Ultra-fast: uses local catalog/graph databases first, vectorized S2/OpenAlex batch calls,
     lazy model loading (sub-millisecond evaluation when cached), and graceful title fallback.
     """
-    # Clean input and extract valid arXiv identifier
-    clean_aid = normalise_arxiv_id(arxiv_id)
-    if not clean_aid:
-        import re
-        m = re.search(r"(\d{4}\.\d{4,5})", str(arxiv_id))
-        if m:
-            clean_aid = m.group(1)
-        else:
-            doi_candidate = str(arxiv_id).replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
-            return {
-                "ok": False,
-                "error": "non_arxiv_paper",
-                "message": f"Identifier '{arxiv_id}' is not an arXiv paper ID. Novelty cone projection requires an arXiv paper (e.g. 2206.04615).",
-                "focal_id": f"doi:{doi_candidate}" if "10." in doi_candidate else None,
-            }
+    from src.core.ids import canonical_id, normalise_arxiv_id, normalise_doi
 
-    aid = clean_aid
+    clean_aid = normalise_arxiv_id(arxiv_id)
+    clean_doi = normalise_doi(arxiv_id)
+
+    if clean_aid:
+        aid = clean_aid
+        focal_cid = canonical_id(arxiv_id=aid) or f"arxiv:{aid}"
+    elif clean_doi:
+        aid = clean_doi
+        focal_cid = canonical_id(doi=clean_doi) or f"doi:{clean_doi}"
+    else:
+        aid = str(arxiv_id).strip()
+        focal_cid = f"title:{abs(hash(aid))}"
+
     model_name, dim = model_and_dim()
     conn = connect()
-    focal_cid = canonical_id(arxiv_id=aid) or f"arxiv:{aid}"
 
     need_resolve = force_refresh_refs or not get_ref_ids(conn, focal_cid)
     if need_resolve:
-        resolved = resolve_focal_and_refs(aid, max_refs=max_refs * 2)  # fetch extra then cap
+        resolved = resolve_focal_and_refs(arxiv_id, max_refs=max_refs * 2)  # fetch extra then cap
         focal = resolved["focal"]
         refs = _dedupe_refs(resolved["refs"], focal_cid)
         refs = _cap_refs(refs, max_refs)
@@ -142,14 +139,14 @@ def score_paper(
         upsert_paper(
             conn,
             canonical_id=focal_cid,
-            arxiv_id=aid,
+            arxiv_id=focal.get("arxiv_id") or (aid if clean_aid else None),
             title=focal.get("title"),
             abstract=focal.get("abstract"),
             year=focal.get("year"),
             categories=focal.get("categories"),
             s2_id=focal.get("s2_id"),
             openalex_id=focal.get("openalex_id"),
-            doi=focal.get("doi"),
+            doi=focal.get("doi") or (aid if clean_doi else None),
             source_api=focal.get("source_api"),
         )
         ref_ids = []
@@ -223,7 +220,7 @@ def score_paper(
             "dim": dim,
             "message": (
                 f"Need ≥{MIN_REFS_WITH_ABS} refs with abstracts and "
-                f"frac≥{min_frac_abstract:.0%}; got n_abs={n_abs} frac={frac:.2f}. "
+                f"frac≥{min_frac_abstract:.0%}, got n_abs={n_abs} frac={frac:.2f}. "
                 "Score not computed (refusing noisy output). Pass --allow-partial to compute with title fallback."
             ),
         }
@@ -433,7 +430,7 @@ def score_paper(
     profile["attribution"] = enriched_attr
     if not coverage_ok:
         profile["coverage_warning"] = (
-            f"Partial abstract coverage ({n_abs}/{len(ref_ids)} = {frac:.1%}); "
+            f"Partial abstract coverage ({n_abs}/{len(ref_ids)} = {frac:.1%}), "
             "reference title fallback was used for missing abstracts."
         )
     profile["covariates"] = covariate_notes(
@@ -447,7 +444,7 @@ def score_paper(
         "note": (
             "subtracted mean of cached vectors for this (model,dim)"
             if center_vec is not None
-            else "not enough cached vectors (≥20) for cohort mean; raw geometry used"
+            else "not enough cached vectors (≥20) for cohort mean, raw geometry used"
         ),
     }
 

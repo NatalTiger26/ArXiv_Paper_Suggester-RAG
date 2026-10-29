@@ -10,29 +10,11 @@ from typing import Iterable
 import requests
 from tqdm import tqdm
 
+from src.core.ids import normalise_arxiv_id
 from .config import DOWNLOAD_RETRIES, DOWNLOAD_TIMEOUT, PAPERS_DIR
 
 ARXIV_PDF_URL = "https://arxiv.org/pdf/{id}.pdf"
 ARXIV_ABS_URL = "https://export.arxiv.org/api/query?id_list={id}"
-ARXIV_ID_RE = re.compile(
-    r"(?P<id>(?:\d{4}\.\d{4,5}(?:v\d+)?)|(?:[a-z\-]+/\d{7}))",
-    re.IGNORECASE,
-)
-
-
-def normalise_arxiv_id(raw: str) -> str | None:
-    """Extract a clean arXiv ID from free text or a URL (version suffix stripped)."""
-    if not raw:
-        return None
-    raw = raw.strip()
-    raw = re.sub(r"^https?://arxiv\.org/(abs|pdf)/", "", raw, flags=re.I)
-    raw = raw.replace(".pdf", "").strip("/")
-    m = ARXIV_ID_RE.search(raw)
-    if not m:
-        return None
-    aid = m.group("id")
-    aid = re.sub(r"v\d+$", "", aid, flags=re.I)
-    return aid
 
 
 def pdf_path_for(arxiv_id: str) -> Path:
@@ -50,7 +32,7 @@ def fetch_arxiv_title(arxiv_id: str) -> str | None:
         resp = requests.get(url, timeout=20)
         if resp.status_code != 200:
             return None
-        # Minimal XML parse — title is the first <title> after the feed title
+        # Minimal XML parse: title is the first <title> after the feed title
         titles = re.findall(r"<title[^>]*>(.*?)</title>", resp.text, flags=re.S | re.I)
         if len(titles) >= 2:
             title = re.sub(r"\s+", " ", titles[1]).strip()
@@ -59,6 +41,36 @@ def fetch_arxiv_title(arxiv_id: str) -> str | None:
     except Exception:
         return None
     return None
+
+
+def evict_old_pdfs(max_cached_files: int = 50, max_cached_mb: float = 250.0) -> int:
+    """Evict older inactive raw PDFs whose markdown representations exist to reclaim disk space."""
+    if not PAPERS_DIR.exists():
+        return 0
+    pdfs = list(PAPERS_DIR.glob("*.pdf"))
+    if len(pdfs) <= max_cached_files:
+        total_mb = sum(p.stat().st_size for p in pdfs) / 1024 / 1024
+        if total_mb <= max_cached_mb:
+            return 0
+
+    # Sort by modification time ascending (oldest first)
+    pdfs.sort(key=lambda p: p.stat().st_mtime)
+    try:
+        from src.settings import MARKDOWN_DIR
+    except Exception:
+        MARKDOWN_DIR = PAPERS_DIR.parent / "markdown"
+
+    evicted = 0
+    for p in pdfs:
+        md_name = f"{p.stem}.md"
+        md_path = MARKDOWN_DIR / md_name
+        if md_path.exists() and (len(pdfs) - evicted) > max_cached_files:
+            try:
+                p.unlink()
+                evicted += 1
+            except Exception:
+                pass
+    return evicted
 
 
 def download_paper(arxiv_id: str, force: bool = False) -> Path:
@@ -98,6 +110,10 @@ def download_paper(arxiv_id: str, force: bool = False) -> Path:
             tmp.replace(dest)
             if dest.stat().st_size < 1000:
                 raise RuntimeError(f"Downloaded file too small: {dest}")
+            try:
+                evict_old_pdfs()
+            except Exception:
+                pass
             return dest
         except Exception as e:
             last_err = e

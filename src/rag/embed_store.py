@@ -61,6 +61,16 @@ def load_embedding_model(model_name: str | None = None):
         raise SystemExit("uv add sentence-transformers")
 
     name = model_name or EMBEDDING_MODEL
+
+    try:
+        from src import corpus_index as ci
+        if getattr(ci, "_CORPUS_MODEL", None) is not None and getattr(ci, "_CORPUS_MODEL_NAME", None) == name:
+            _model = ci._CORPUS_MODEL
+            _model_name_loaded = name
+            return _model
+    except Exception:
+        pass
+
     try:
         from settings import IS_STREAMLIT_CLOUD
     except Exception:
@@ -98,6 +108,15 @@ def load_embedding_model(model_name: str | None = None):
     _model_name_loaded = name
     used = EMBEDDING_DIM if EMBEDDING_DIM and 0 < EMBEDDING_DIM < full else full
     print(f"[embed] Ready. full_dim={full}  active_dim={used}  model={name}")
+
+    try:
+        from src import corpus_index as ci
+        if getattr(ci, "_CORPUS_MODEL", None) is None:
+            ci._CORPUS_MODEL = _model
+            ci._CORPUS_MODEL_NAME = name
+    except Exception:
+        pass
+
     return _model
 
 
@@ -179,7 +198,7 @@ def get_collection(create: bool = True):
                 model_mismatch = True
         if dim_mismatch or model_mismatch:
             print(
-                f"[embed] Index incompatible (collection dim={got_dim or '?'}, model={got_model or '?'}; "
+                f"[embed] Index incompatible (collection dim={got_dim or '?'}, model={got_model or '?'}, "
                 f"want dim={want_dim}, model={meta_model}). Recreating collection.",
                 flush=True,
             )
@@ -483,7 +502,7 @@ def list_ingested_papers(*, force_chroma: bool = False) -> list[dict[str, Any]]:
     """Return unique papers in the RAG index.
 
     Prefer progress files + corpus titles (fast). Full Chroma metadata scan only
-    when forced or when progress files are empty — that scan is expensive on
+    when forced or when progress files are empty, because that scan is expensive on
     large indexes and must not run on every Streamlit rerun.
     """
     global _list_papers_cache, _list_papers_cache_key
@@ -591,7 +610,7 @@ def invalidate_paper_list_cache() -> None:
 def index_stats(*, include_papers: bool = False) -> dict[str, Any]:
     """Lightweight by default: chunk count only. Set include_papers=True for full list.
 
-    Streamlit calls this often; never scan all chunks unless requested.
+    Streamlit calls this often, so never scan all chunks unless requested.
     """
     global _chunk_count_cache
     try:
@@ -614,7 +633,7 @@ def index_stats(*, include_papers: bool = False) -> dict[str, Any]:
         elif count and _list_papers_cache is not None:
             paper_count = len(_list_papers_cache)
         else:
-            paper_count = 0  # unknown without scan; UI may load catalog on demand
+            paper_count = 0  # unknown without scan, UI may load catalog on demand
 
     full = _model_full_dim
     active = (

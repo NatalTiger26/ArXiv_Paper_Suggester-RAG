@@ -2,11 +2,11 @@
 RAG evaluation harness (AI-in-Practice inspired).
 
 Metrics:
-  Retrieval — Recall@k, MRR, hit_rate@1, mean top score  (Lab 3)
-  Refusal   — precision / recall on should_refuse items  (Lab 4)
-  Coverage  — high / partial / low / none distribution
-  Latency   — p50 / p95                                   (Lab 7)
-  Generation (optional) — refusal correctness when API available
+  Retrieval: Recall@k, MRR, hit_rate@1, mean top score (Lab 3)
+  Refusal: precision / recall on should_refuse items (Lab 4)
+  Coverage: high / partial / low / none distribution
+  Latency: p50 / p95 (Lab 7)
+  Generation (optional): refusal correctness when API available
 
 Dim sweep is handled by src/eval_suite.py (in-memory Matryoshka on corpus texts).
 
@@ -392,7 +392,7 @@ def _to_markdown(report: dict[str, Any]) -> str:
     lines.append("")
     if s.get("mrr_ci95"):
         lines.append(
-            f"**95% bootstrap CI** — MRR {s.get('mrr_ci95')}, "
+            f"**95% bootstrap CI**: MRR {s.get('mrr_ci95')}, "
             f"Recall@k {s.get('recall_ci95')}, Hit@1 {s.get('hit1_ci95')}"
         )
     if s.get("fail_hint_counts"):
@@ -417,11 +417,11 @@ def _to_markdown(report: dict[str, Any]) -> str:
             "",
             "## Interpretation (AIP concepts)",
             "",
-            "- **Recall@k / MRR / hit@1** — retrieval quality (Lab 3). Prefer MRR when hit@5 saturates.",
-            "- **Refusal recall & precision** — both required (Lab 4); only one hides failure modes.",
-            "- **Unanswerable items are noisy** at small n — report raw counts in the full report.",
-            "- **Coverage** — score-based gate before generation (grounding).",
-            "- **Latency p50/p95** — service SLO style (Lab 7).",
+            "- **Recall@k / MRR / hit@1**: retrieval quality (Lab 3). Prefer MRR when hit@5 saturates.",
+            "- **Refusal recall & precision**: both required (Lab 4), only one hides failure modes.",
+            "- **Unanswerable items are noisy** at small n: report raw counts in the full report.",
+            "- **Coverage**: score-based gate before generation (grounding).",
+            "- **Latency p50/p95**: service SLO style (Lab 7).",
             "",
             "## Not safe for",
             "",

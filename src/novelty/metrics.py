@@ -1,6 +1,6 @@
 """Reference-conditional embedding geometry metrics.
 
-Framing: geometry vs cited works in a fixed embedding space — not idea-level novelty.
+Framing: geometry vs cited works in a fixed embedding space: not idea-level novelty.
 
 Pipeline (per score call):
   1) Unit-normalize inputs
@@ -32,7 +32,7 @@ def prepare_matrix(
     center: np.ndarray | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
     """
-    Build unit columns; optionally subtract the same cohort mean from x and each y,
+    Build unit columns, optionally subtract the same cohort mean from x and each y,
     then re-normalize (approximate whitening-free centering).
     """
     x = np.asarray(x, dtype=np.float64).ravel()

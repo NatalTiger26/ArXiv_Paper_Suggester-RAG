@@ -4,6 +4,7 @@ import json
 import os
 import sqlite3
 import time
+import zlib
 from pathlib import Path
 from typing import Any
 
@@ -18,11 +19,11 @@ except ImportError:
 
 load_dotenv()
 
-from .ids import canonical_id, normalise_arxiv_id, strip_version
+from .ids import canonical_id, normalise_arxiv_id, normalise_doi, strip_version
 
 S2_BASE = "https://api.semanticscholar.org/graph/v1"
 OPENALEX_BASE = "https://api.openalex.org"
-USER_AGENT = "ArXivPaperSuggester-Novelty/0.1 (research; contact: local)"
+USER_AGENT = "ArXivPaperSuggester-Novelty/0.1 (research, contact: local)"
 
 # Persistent connection-pooled HTTP session for high-throughput batch operations
 _SESSION = requests.Session()
@@ -99,9 +100,20 @@ def _cache_get(key: str) -> Any | None:
             (key,),
         ).fetchone()
         if row:
-            resp_str, exp = row
+            resp_val, exp = row
             if exp > now:
-                val = json.loads(resp_str)
+                if isinstance(resp_val, (bytes, bytearray)):
+                    if resp_val.startswith(b"ZLIB:"):
+                        decomp = zlib.decompress(resp_val[5:]).decode("utf-8")
+                    else:
+                        try:
+                            decomp = zlib.decompress(resp_val).decode("utf-8")
+                        except Exception:
+                            decomp = resp_val.decode("utf-8")
+                    val = json.loads(decomp)
+                else:
+                    val = json.loads(resp_val)
+
                 if len(_MEMORY_CACHE) < _MEMORY_CACHE_MAX:
                     _MEMORY_CACHE[key] = (exp, val)
                 return val
@@ -126,12 +138,18 @@ def _cache_set(
         _MEMORY_CACHE[key] = (exp, val)
     try:
         conn = _get_cache_db()
+        raw_bytes = json.dumps(val, ensure_ascii=False).encode("utf-8")
+        if len(raw_bytes) > 1024:
+            payload = b"ZLIB:" + zlib.compress(raw_bytes, level=6)
+        else:
+            payload = raw_bytes.decode("utf-8")
+
         conn.execute(
             """
             INSERT OR REPLACE INTO http_cache (cache_key, url, response_json, status_code, created_at, expires_at)
             VALUES (?, ?, ?, ?, ?, ?)
             """,
-            (key, url, json.dumps(val, ensure_ascii=False), status_code, now, exp),
+            (key, url, payload, status_code, now, exp),
         )
         conn.commit()
     except Exception:
@@ -218,7 +236,7 @@ def _get(
 
 
 def suggested_inter_request_sleep(base: float = 0.35) -> float:
-    """Recommend pause between papers; grows after recent rate limits."""
+    """Recommend pause between papers, which grows after recent rate limits."""
     global _LAST_RATE_LIMIT_AT, _RATE_LIMIT_STREAK
     extra = 0.0
     if _RATE_LIMIT_STREAK > 0:
@@ -449,7 +467,7 @@ def s2_node_to_record(node: dict[str, Any]) -> dict[str, Any] | None:
 
 
 def fetch_openalex_by_arxiv(arxiv_id: str) -> dict[str, Any] | None:
-    """Resolve OpenAlex work; always re-fetch by id so referenced_works is present."""
+    """Resolve OpenAlex work, always re-fetching by id so referenced_works is present."""
     aid = strip_version(arxiv_id)
     mailto = os.getenv("OPENALEX_MAILTO", "novelty@localhost")
     filters = [
@@ -486,7 +504,7 @@ def fetch_openalex_by_arxiv(arxiv_id: str) -> dict[str, Any] | None:
                     break
     if not work:
         return None
-    # List results often omit referenced_works — fetch full record
+    # List results often omit referenced_works: fetch full record
     oid = work.get("id")
     if oid:
         full = _get(str(oid), params={"mailto": mailto})
@@ -519,6 +537,34 @@ def fetch_s2_paper_flexible(arxiv_id: str) -> dict[str, Any] | None:
                 return hit
             if hit.get("paperId"):
                 return hit
+    return None
+
+
+def fetch_openalex_by_doi(doi: str) -> dict[str, Any] | None:
+    """Fetch OpenAlex work directly using a clean DOI."""
+    clean = normalise_doi(doi) or str(doi).strip().lower()
+    clean = clean.replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
+    mailto = os.getenv("OPENALEX_MAILTO", "novelty@localhost")
+    data = _get(
+        f"{OPENALEX_BASE}/works/https://doi.org/{clean}",
+        params={"mailto": mailto},
+    )
+    if isinstance(data, dict) and data.get("id"):
+        return data
+    return None
+
+
+def fetch_s2_paper_by_doi(doi: str) -> dict[str, Any] | None:
+    """Fetch Semantic Scholar work directly using a clean DOI."""
+    clean = normalise_doi(doi) or str(doi).strip()
+    clean = clean.replace("https://doi.org/", "").replace("http://doi.org/", "").strip()
+    data = _get(
+        f"{S2_BASE}/paper/DOI:{clean}",
+        headers=_s2_headers(),
+        params={"fields": "paperId,externalIds,title,abstract,year,citationCount,fieldsOfStudy,references"},
+    )
+    if isinstance(data, dict) and data.get("paperId"):
+        return data
     return None
 
 
@@ -936,7 +982,31 @@ def enrich_refs_abstracts(
                         target["title"] = w.get("title") or w.get("display_name")
                     enriched_oa += 1
 
-    return refs, enriched_s2 + enriched_oa
+    # 4. Zero-Drop Synthetic Bibliographic Fallback for remaining references
+    synthetic_count = 0
+    for r in refs:
+        if not r.get("has_abstract") or not (r.get("abstract") or "").strip():
+            title = r.get("title") or "Unknown Title"
+            authors = ", ".join(r.get("authors") or []) if r.get("authors") else ""
+            year = str(r.get("year") or "")
+            venue = str(r.get("venue") or "")
+            raw = str(r.get("raw_text") or "")
+            parts = [f"Title: {title}"]
+            if authors:
+                parts.append(f"Authors: {authors}")
+            if venue:
+                parts.append(f"Venue: {venue}")
+            if year:
+                parts.append(f"Year: {year}")
+            if raw and raw != title:
+                parts.append(f"Citation: {raw}")
+            synth_text = "\n".join(parts)
+            r["abstract"] = synth_text
+            r["has_abstract"] = True
+            r["source_api"] = r.get("source_api") or "synthetic_bibliographic_anchor"
+            synthetic_count += 1
+
+    return refs, enriched_s2 + enriched_oa + synthetic_count
 
 
 def resolve_focal_and_refs(
@@ -946,51 +1016,73 @@ def resolve_focal_and_refs(
     enrich_abstracts: bool = True,
 ) -> dict[str, Any]:
     """
-    Resolve focal paper metadata + reference records.
-
-    Returns dict with keys: focal, refs, source, stats
-
-    enrich_abstracts:
-      True  — novelty scoring (fills missing abstracts; slow, many API calls)
-      False — citation-graph / edge collection only (fast; titles+ids enough)
+    Resolve focal paper metadata + reference records. Supports arXiv IDs and DOIs.
     """
-    aid = strip_version(arxiv_id)
+    clean_doi = normalise_doi(arxiv_id)
+    clean_aid = normalise_arxiv_id(arxiv_id)
+    aid = clean_aid or strip_version(arxiv_id)
+
     focal: dict[str, Any] | None = None
     refs: list[dict[str, Any]] = []
     source = ""
 
-    # Prefer one combined S2 call (focal + refs) to cut rate-limit pressure
-    s2_raw, raw_refs, src = fetch_s2_paper_with_refs(aid, limit=max_refs)
-    if s2_raw:
-        focal = s2_node_to_record(s2_raw)
-        source = src
-        for node in raw_refs:
-            rec = s2_node_to_record(node)
-            if rec:
-                refs.append(rec)
-        if enrich_abstracts and focal and not focal.get("has_abstract"):
-            focal = _enrich_ref_abstract(focal)
-    else:
-        s2 = fetch_s2_paper(aid) or fetch_s2_paper_flexible(aid)
-        if s2:
-            focal = s2_node_to_record(s2)
-            if enrich_abstracts and focal and not focal.get("has_abstract"):
-                focal = _enrich_ref_abstract(focal)
-            raw_refs2, src2 = fetch_s2_references(
-                aid, limit=max_refs, s2_paper_id=s2.get("paperId")
-            )
-            source = src2
-            for node in raw_refs2:
+    # Path 1: Non-arXiv DOI handling
+    if clean_doi and not clean_aid:
+        s2_doi_node = fetch_s2_paper_by_doi(clean_doi)
+        if s2_doi_node:
+            focal = s2_node_to_record(s2_doi_node)
+            source = "s2:doi"
+            for node in (s2_doi_node.get("references") or []):
                 rec = s2_node_to_record(node)
                 if rec:
                     refs.append(rec)
+        if focal is None or not refs:
+            oa_doi_node = fetch_openalex_by_doi(clean_doi)
+            if oa_doi_node:
+                focal = openalex_work_to_record(oa_doi_node)
+                source = "openalex:doi"
+                ref_urls = (oa_doi_node.get("referenced_works") or [])[:max_refs]
+                wids = [str(url).rstrip("/").split("/")[-1] for url in ref_urls if url]
+                if wids:
+                    oa_results = fetch_openalex_papers_batch(wids)
+                    for data in oa_results:
+                        rec = openalex_work_to_record(data)
+                        if rec:
+                            refs.append(rec)
+
+    # Path 2: Standard arXiv resolution
+    if focal is None and clean_aid:
+        s2_raw, raw_refs, src = fetch_s2_paper_with_refs(aid, limit=max_refs)
+        if s2_raw:
+            focal = s2_node_to_record(s2_raw)
+            source = src
+            for node in raw_refs:
+                rec = s2_node_to_record(node)
+                if rec:
+                    refs.append(rec)
+            if enrich_abstracts and focal and not focal.get("has_abstract"):
+                focal = _enrich_ref_abstract(focal)
+        else:
+            s2 = fetch_s2_paper(aid) or fetch_s2_paper_flexible(aid)
+            if s2:
+                focal = s2_node_to_record(s2)
+                if enrich_abstracts and focal and not focal.get("has_abstract"):
+                    focal = _enrich_ref_abstract(focal)
+                raw_refs2, src2 = fetch_s2_references(
+                    aid, limit=max_refs, s2_paper_id=s2.get("paperId")
+                )
+                source = src2
+                for node in raw_refs2:
+                    rec = s2_node_to_record(node)
+                    if rec:
+                        refs.append(rec)
 
     if focal is None or not refs:
         oa = fetch_openalex_by_arxiv(aid)
         if oa and focal is None:
             focal = openalex_work_to_record(oa)
         if not refs:
-            # OpenAlex referenced_works is one HTTP per ref — only when needed
+            # OpenAlex referenced_works is one HTTP per ref: only when needed
             if enrich_abstracts:
                 oa_refs, oa_src = fetch_openalex_references(aid, limit=max_refs)
             else:
@@ -1011,7 +1103,7 @@ def resolve_focal_and_refs(
     if refs:
         _enrich_from_local_catalog(refs)
 
-    # Nested S2 refs often lack abstracts — enrich only for novelty path
+    # Nested S2 refs often lack abstracts: enrich only for novelty path
     if enrich_abstracts:
         with_abs0 = sum(1 for r in refs if r.get("has_abstract"))
         if refs and (with_abs0 / len(refs) < 0.25 or with_abs0 < 3):
@@ -1048,10 +1140,12 @@ def resolve_focal_and_refs(
             pass
 
     if focal is None:
+        cid = canonical_id(arxiv_id=clean_aid, doi=clean_doi) or f"raw:{aid}"
         focal = {
-            "canonical_id": canonical_id(arxiv_id=aid) or f"arxiv:{aid}",
-            "arxiv_id": aid,
-            "title": None,
+            "canonical_id": cid,
+            "arxiv_id": clean_aid,
+            "doi": clean_doi,
+            "title": arxiv_id,
             "abstract": None,
             "year": None,
             "categories": [],
@@ -1087,7 +1181,7 @@ def fetch_openalex_references_light(
     limit: int = 100,
 ) -> tuple[list[dict[str, Any]], str]:
     """
-    Citation-graph path: one OpenAlex work fetch; build minimal ref records from
+    Citation-graph path: one OpenAlex work fetch, building minimal ref records from
     referenced_works URLs without a follow-up HTTP per cited work.
     """
     oa = fetch_openalex_by_arxiv(arxiv_id)

@@ -81,7 +81,13 @@ def shuffled_reference_percentiles(
         candidates.append((_cohort_score(meta_f, meta_o), other))
 
     candidates.sort(key=lambda t: -t[0])
-    pool_ids = [cid for _, cid in candidates]
+    # Stratified null candidate selection: prioritize donors with category match
+    stratified_candidates = [cid for score, cid in candidates if score >= 2]
+    is_stratified = len(stratified_candidates) >= min_pool
+    if is_stratified:
+        pool_ids = stratified_candidates
+    else:
+        pool_ids = [cid for _, cid in candidates]
     if len(pool_ids) < min_pool:
         return {
             "ok": False,
@@ -90,7 +96,7 @@ def shuffled_reference_percentiles(
             "min_pool": min_pool,
             "message": (
                 f"Need ≥{min_pool} other scored focals with enough non-overlapping "
-                f"refs; have {len(pool_ids)}. Score more papers, then re-run null."
+                f"refs, have {len(pool_ids)}. Score more papers, then re-run null."
             ),
         }
 
@@ -143,6 +149,7 @@ def shuffled_reference_percentiles(
     out: dict[str, Any] = {
         "ok": True,
         "pool_candidates": len(pool_ids),
+        "stratified_category": is_stratified,
         "n_null_requested": n_null,
         "n_null_used": usable,
         "matched_n": n_target,
@@ -182,7 +189,7 @@ def estimate_cohort_mean(
     *,
     max_vectors: int = 2000,
 ) -> np.ndarray | None:
-    """Mean of cached embedding vectors for (model, dim) — used for centering."""
+    """Mean of cached embedding vectors for (model, dim): used for centering."""
     rows = conn.execute(
         """
         SELECT vector FROM embeddings

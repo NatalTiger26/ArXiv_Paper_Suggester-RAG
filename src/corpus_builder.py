@@ -29,6 +29,11 @@ from urllib.parse import quote_plus
 import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.core.ids import normalise_arxiv_id
+
 DATA_DIR = PROJECT_ROOT / "data"
 CORPUS_PATH = DATA_DIR / "corpus.json"
 ARXIV_API = "http://export.arxiv.org/api/query"
@@ -43,22 +48,6 @@ def _text(el: ET.Element | None) -> str:
     if el is None or el.text is None:
         return ""
     return re.sub(r"\s+", " ", el.text).strip()
-
-
-def normalise_arxiv_id(raw: str) -> str | None:
-    if not raw:
-        return None
-    raw = raw.strip()
-    raw = re.sub(r"^https?://arxiv\.org/(abs|pdf)/", "", raw, flags=re.I)
-    raw = raw.replace(".pdf", "").strip("/")
-    m = re.search(
-        r"((?:\d{4}\.\d{4,5})|(?:[a-z\-]+/\d{7}))",
-        raw,
-        flags=re.I,
-    )
-    if not m:
-        return None
-    return re.sub(r"v\d+$", "", m.group(1), flags=re.I)
 
 
 def _parse_entry(entry: ET.Element) -> dict[str, Any]:

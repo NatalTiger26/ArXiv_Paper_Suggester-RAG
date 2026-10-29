@@ -119,6 +119,42 @@ def _dedupe_chunks(
     return sorted(selected, key=_chunk_rank_score, reverse=True)
 
 
+def _expand_parent_context(c: dict[str, Any]) -> str:
+    """Expand child chunk with surrounding parent markdown section context up to ~300 tokens."""
+    body = (c.get("text") or "").strip()
+    source_md = c.get("source_md") or ""
+    pid = c.get("paper_id") or ""
+    start = c.get("char_start")
+    end = c.get("char_end")
+    if start is None or end is None:
+        return body
+    try:
+        from .config import MARKDOWN_DIR
+        start_i = int(start)
+        end_i = int(end)
+        md_file = None
+        if source_md:
+            candidate = Path(MARKDOWN_DIR) / source_md
+            if candidate.exists():
+                md_file = candidate
+        if md_file is None and pid:
+            for cand in (Path(MARKDOWN_DIR) / f"{pid}.md", Path(MARKDOWN_DIR) / f"{pid}.mmd"):
+                if cand.exists():
+                    md_file = cand
+                    break
+        if md_file and md_file.exists():
+            full_text = md_file.read_text(encoding="utf-8", errors="ignore")
+            # Expand by 250 characters before and after for richer contextual comprehension
+            exp_start = max(0, start_i - 250)
+            exp_end = min(len(full_text), end_i + 250)
+            expanded = full_text[exp_start:exp_end].strip()
+            if len(expanded) > len(body):
+                return expanded
+    except Exception:
+        pass
+    return body
+
+
 def _build_context(chunks: list[dict[str, Any]], max_chars: int) -> tuple[str, list[dict]]:
     deduped = _dedupe_chunks(chunks)
     # Strictly maintain hybrid RRF ranking order!
@@ -127,8 +163,8 @@ def _build_context(chunks: list[dict[str, Any]], max_chars: int) -> tuple[str, l
     used = []
     total = 0
     for i, c in enumerate(deduped, 1):
-        header = f"[{i}] {c.get('title') or c.get('paper_id')} — § {c.get('section') or 'body'}"
-        body = (c.get("text") or "").strip()
+        header = f"[{i}] {c.get('title') or c.get('paper_id')} : Section {c.get('section') or 'body'}"
+        body = _expand_parent_context(c)
         block = f"{header}\n{body}\n"
         if total + len(block) > max_chars and used:
             break
@@ -240,7 +276,7 @@ def _get_gemini_client(api_key: str):
 
 
 def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
-    """Prefer Gemini; on failure or missing key, use OpenAI-compatible failsafe."""
+    """Prefer Gemini, and on failure or missing key, use OpenAI-compatible failsafe."""
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     gemini_err: Exception | None = None
 
@@ -271,10 +307,10 @@ def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
                     print(f"[llm] Gemini model {model!r} retry with fallback candidate: {e}", flush=True)
                     continue
             gemini_err = last_err
-            print(f"[llm] Gemini unavailable after trying {candidates}; trying fallback…", flush=True)
+            print(f"[llm] Gemini unavailable after trying {candidates}, trying fallback...", flush=True)
         except Exception as e:
             gemini_err = e
-            print(f"[llm] Gemini client error ({e}); trying fallback…", flush=True)
+            print(f"[llm] Gemini client error ({e}), trying fallback...", flush=True)
 
     if FALLBACK_LLM_API_KEY:
         print(f"[llm] Using fallback model {FALLBACK_LLM_MODEL} @ {FALLBACK_LLM_BASE_URL}")
@@ -364,14 +400,18 @@ def ask(
         chunks = hybrid_rerank(chunks, question, top_k=top_k)
 
     cov = _coverage(chunks)
+    top_score = float(chunks[0].get("score") or 0.0) if chunks else 0.0
 
-    if not chunks or cov == "none":
+    # Deterministic refusal guardrail (tau_refuse = 0.55)
+    # When top retrieval score falls below MIN_RELEVANCE_SCORE, refuse immediately without calling LLM
+    if not chunks or cov == "none" or top_score < MIN_RELEVANCE_SCORE:
         result = {
             "answer": (
                 "Not covered by the ingested papers.\n\n"
-                "No relevant passages were retrieved. "
-                "Ingest a paper that addresses this topic "
-                "(e.g. `python -m src.rag.cli ingest <arxiv_id>`) and try again."
+                f"The highest retrieval relevance score was {top_score:.3f}, which falls below "
+                f"the confidence threshold ({MIN_RELEVANCE_SCORE:.2f}). "
+                "No passages in the current index provide verified evidence for this question. "
+                "Ingest a paper that addresses this topic and try again."
             ),
             "references": [],
             "coverage": "none",

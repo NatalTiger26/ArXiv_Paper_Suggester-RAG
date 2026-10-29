@@ -87,6 +87,7 @@ uv run python src/final_eval.py --help >/dev/null && ok "final_eval.py --help" |
 uv run python -m src.cli --help >/dev/null && ok "python -m src.cli --help" || bad "src.cli --help failed"
 uv run python scripts/batch_novelty_library.py --help >/dev/null && ok "scripts/batch_novelty_library.py --help" || bad "scripts/batch_novelty_library.py --help failed"
 uv run python scripts/bulk_topic_ingest.py --help >/dev/null && ok "scripts/bulk_topic_ingest.py --help" || bad "scripts/bulk_topic_ingest.py --help failed"
+uv run python scripts/master_system_evaluation.py --help >/dev/null && ok "scripts/master_system_evaluation.py --help" || bad "scripts/master_system_evaluation.py --help failed"
 
 # 5. Unit Test Suite
 echo "[5/6] Running core unit test suite..."
@@ -105,7 +106,7 @@ if command -v ruff >/dev/null 2>&1; then
 elif uv run ruff --version >/dev/null 2>&1; then
   uv run ruff check src/ scripts/ --select E,F,W --ignore E501,E402 && ok "uv ruff linter passed" || bad "uv ruff linter warnings"
 else
-  echo "  – ruff not installed in env (skipped)"
+  echo "  - ruff not installed in env (skipped)"
 fi
 
 echo "======================================================="

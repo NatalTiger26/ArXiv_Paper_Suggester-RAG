@@ -77,7 +77,7 @@ def cmd_ingest(args: argparse.Namespace) -> None:
             fmt = r.get("source_format", "pdf")
             print(f"  ✓ {r['arxiv_id']}  ({r['chunks']} chunks, format={fmt})  {title}")
         else:
-            print(f"  ✗ {r['arxiv_id']}  — {r.get('error')}")
+            print(f"  ✗ {r['arxiv_id']}  : {r.get('error')}")
 
 
 def cmd_purge_pdfs(args: argparse.Namespace) -> None:
@@ -296,7 +296,7 @@ def cmd_status(args: argparse.Namespace) -> None:
             if len(papers) > 10:
                 print(f"  ... and {len(papers) - 10} more")
         else:
-            print("  (none yet — run `ingest` first)")
+            print("  (none yet, run `ingest` first)")
 
 
 def cmd_papers(args: argparse.Namespace) -> None:
@@ -349,7 +349,7 @@ def build_parser() -> argparse.ArgumentParser:
     ask_p.add_argument("-v", "--verbose", action="store_true")
     ask_p.add_argument("--no-cache", action="store_true")
     ask_p.add_argument("--dense-only", action="store_true", help="Disable hybrid BM25 lexical ranking (use dense cosine only)")
-    ask_p.add_argument("--hybrid", action="store_true", help="Deprecated alias; hybrid is now enabled by default")
+    ask_p.add_argument("--hybrid", action="store_true", help="Deprecated alias, hybrid is now enabled by default")
     ask_p.add_argument("--export", action="store_true", help="Write Markdown answer to results/rag_answers/")
     ask_p.set_defaults(func=cmd_ask)
 

@@ -19,6 +19,7 @@ build/
 .idea/
 .vscode/
 .DS_Store
+**/.DS_Store
 *.swp
 *~
 .ipynb_checkpoints/
@@ -26,48 +27,15 @@ build/
 # Secrets
 *.key
 HF_TOKEN
+.streamlit/secrets.toml
 
-# ----- Large / regenerable data (do not commit) -----
-# All local/runtime data (regenerable or machine-specific)
-data/papers/
-data/markdown/
-data/chroma_rag/
-data/chroma_corpus/
-data/embeddings/
-data/rag_cache/
-data/papers.db
-data/corpus_all.jsonl
-data/corpus_100.csv
-data/corpus.json
-data/corpus_*.json
-data/corpus_*.jsonl
-data/rag_ingest_progress/
-data/novelty/
-data/*.db
-data/catalog.sqlite3*
-data/telemetry.sqlite3*
+# Large / regenerable data (do not commit)
+/data/
+backups/
 logs/
-
-# Keep corpus JSON if you want offline recommend out of the box;
-# comment the next line to ship corpus_100.json in the repo.
-# data/corpus_100.json
 
 # Eval / answer outputs (regenerable)
 results/rag_answers/
 results/rag_eval/last_eval.json
 results/rag_eval/last_eval.md
-# keep gold_questions.json and phase5 results tracked
 
-# macOS
-.DS_Store
-**/.DS_Store
-
-# Streamlit local secrets (never commit real keys)
-.streamlit/secrets.toml
-/data
-data/chroma_corpus/chroma.sqlite3
-data/chroma_rag/chroma.sqlite3
-data/corpus.json
-data/embeddings/corpus_embeddings.json
-/data
-/backups
