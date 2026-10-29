@@ -1,0 +1,57 @@
+{
+  "mrl": {
+    "n_samples": 100,
+    "dim_768_latency_ms": 0.224,
+    "dim_256_latency_ms": 0.03,
+    "dim_128_latency_ms": 0.02,
+    "top1_exact_match_pct": 47.0,
+    "top5_jaccard_overlap": 0.468,
+    "top10_jaccard_overlap": 0.453,
+    "top10_jaccard_128": 0.307,
+    "spearman_rank_rho_top50": -358.357,
+    "storage_mb_553k_768": 1621.6,
+    "storage_mb_553k_256": 540.5
+  },
+  "sq8": {
+    "l1_reconstruction_error": 0.00088,
+    "l2_reconstruction_error": 0.01651,
+    "sq8_vs_fp32_top1_match_pct": 63.0,
+    "sq8_vs_fp32_top10_jaccard": 0.797,
+    "storage_mb_553k_sq8": 139.4,
+    "storage_reduction_factor": 11.6
+  },
+  "query_latency": {
+    "chroma_disk_p50_ms": 0.92,
+    "chroma_disk_p95_ms": 5.2,
+    "in_memory_flat_256_553k_ms": 9.21,
+    "speedup_factor": 0.1
+  },
+  "pdf_compression": {
+    "sample_count": 15,
+    "raw_sample_mb": 41.09,
+    "compressed_sample_mb": 36.1,
+    "compression_ratio": 0.879,
+    "total_pdf_reclaimed_gb": 0.43,
+    "mean_decompression_time_ms": 3.88
+  },
+  "http_cache": {
+    "sample_raw_kb": 7700.3,
+    "sample_comp_kb": 1409.7,
+    "compression_ratio": 0.183,
+    "reclaimed_mb_from_656mb": 535.9,
+    "decompression_latency_us": 6.0
+  },
+  "graph": {
+    "nodes": 100884,
+    "edges": 226857,
+    "csr_ram_mb": 2.12,
+    "sqlite_2hop_latency_ms": 0.284,
+    "csr_2hop_latency_ms": 0.023,
+    "speedup_factor": 12.6
+  },
+  "parser": {
+    "test_cases": 5,
+    "doi_accuracy_pct": 100.0,
+    "title_accuracy_pct": 80.0
+  }
+}

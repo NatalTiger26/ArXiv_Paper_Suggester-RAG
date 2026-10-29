@@ -1,0 +1,83 @@
+{
+  "info_gathering": {
+    "n_references": 50,
+    "strategy_local_sqlite_ms": 30.428,
+    "strategy_sqlite_throughput_refs_per_sec": 1643.2,
+    "strategy_http_cache_ms": 804.032,
+    "strategy_arxiv_html_single_call_ms": 450.0,
+    "strategy_sequential_http_estimate_ms": 12500.0,
+    "speedup_local_over_sequential": 410.8,
+    "speedup_batch_over_sequential": 27.8
+  },
+  "scaling": {
+    "current_chroma_chunks": 553516,
+    "chroma_query_p50_ms": 1.48,
+    "chroma_query_p95_ms": 5.78,
+    "storage_scaling_table": [
+      {
+        "chunks": 5000,
+        "storage_768_float32_mb": 14.6,
+        "storage_256_float32_mb": 4.9,
+        "savings_mb": 9.8,
+        "savings_pct": 66.7
+      },
+      {
+        "chunks": 50000,
+        "storage_768_float32_mb": 146.5,
+        "storage_256_float32_mb": 48.8,
+        "savings_mb": 97.7,
+        "savings_pct": 66.7
+      },
+      {
+        "chunks": 553516,
+        "storage_768_float32_mb": 1621.6,
+        "storage_256_float32_mb": 540.5,
+        "savings_mb": 1081.1,
+        "savings_pct": 66.7
+      },
+      {
+        "chunks": 5000000,
+        "storage_768_float32_mb": 14648.4,
+        "storage_256_float32_mb": 4882.8,
+        "savings_mb": 9765.6,
+        "savings_pct": 66.7
+      }
+    ],
+    "10x_data_savings_gb": 9.54
+  },
+  "novelty_robustness": [
+    {
+      "missing_rate": 0.2,
+      "n_missing_out_of_50": 10,
+      "drop_delta_m": 0.0,
+      "drop_delta_res": 0.0,
+      "synth_delta_m": 0.0,
+      "synth_delta_res": 0.0,
+      "error_reduction_factor": 0.0
+    },
+    {
+      "missing_rate": 0.5,
+      "n_missing_out_of_50": 25,
+      "drop_delta_m": 0.0,
+      "drop_delta_res": 0.0,
+      "synth_delta_m": 0.0,
+      "synth_delta_res": 0.0,
+      "error_reduction_factor": 0.0
+    },
+    {
+      "missing_rate": 0.8,
+      "n_missing_out_of_50": 40,
+      "drop_delta_m": 0.0,
+      "drop_delta_res": 0.0031,
+      "synth_delta_m": 0.0,
+      "synth_delta_res": 0.003,
+      "error_reduction_factor": 1.0
+    }
+  ],
+  "nnls_speed": {
+    "nnls_768_latency_ms": 0.388,
+    "nnls_256_latency_ms": 0.098,
+    "speedup_factor": 3.94,
+    "time_to_score_5000_papers_sec": 0.49
+  }
+}
