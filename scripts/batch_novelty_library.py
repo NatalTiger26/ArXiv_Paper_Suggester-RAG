@@ -47,10 +47,37 @@ def classify_geometry(m: float, delta: float, r2_plus: float) -> str:
         return "Diffused Reference Combination"
 
 
-def resolve_real_paper_title(aid: str, candidate_title: str | None = None) -> str:
-    """Resolve true bibliographic paper title from local citation and novelty databases."""
+def preload_title_map() -> dict[str, str]:
+    """Preload in-memory mapping from arxiv_id to cleaned title across local databases."""
+    title_map: dict[str, str] = {}
+    from src.settings import DATA_DIR
+    db_paths = [
+        CATALOG_DB,
+        DATA_DIR / "citation_library" / "graph.sqlite3",
+        DATA_DIR / "novelty" / "novelty_cache.sqlite3",
+    ]
+    for db_path in db_paths:
+        if not db_path.exists():
+            continue
+        try:
+            with sqlite3.connect(str(db_path)) as con:
+                for row in con.execute("SELECT arxiv_id, title FROM papers WHERE arxiv_id IS NOT NULL"):
+                    aid, t = row[0], row[1]
+                    if aid and t and t not in ("Untitled", "arXiv") and len(str(t).strip()) > 3:
+                        title_map[aid] = str(t).strip()
+        except Exception:
+            pass
+    return title_map
+
+
+def resolve_real_paper_title(
+    aid: str, candidate_title: str | None = None, title_map: dict[str, str] | None = None
+) -> str:
+    """Resolve true bibliographic paper title from in-memory map or local databases."""
     if candidate_title and candidate_title not in ("Untitled", "arXiv") and len(candidate_title.strip()) > 3:
         return candidate_title.strip()
+    if title_map and aid in title_map:
+        return title_map[aid]
     try:
         from src.settings import DATA_DIR
         g_path = DATA_DIR / "citation_library" / "graph.sqlite3"
@@ -114,13 +141,13 @@ def load_candidate_papers(
 
 
 def run_batch_novelty(
-    limit: int = 50,
+    limit: int = 6000,
     category: str | None = None,
     min_citations: int = 0,
     resume: bool = True,
     output_json: Path = DEFAULT_JSON,
     output_md: Path = DEFAULT_MD,
-    sleep_s: float = 0.25,
+    sleep_s: float = 0.0,
 ) -> dict[str, Any]:
     from src.novelty.cache import connect, purge_corrupted_embeddings
     from src.novelty.score import score_paper
@@ -128,6 +155,8 @@ def run_batch_novelty(
 
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_md.parent.mkdir(parents=True, exist_ok=True)
+
+    title_map = preload_title_map()
 
     # Ensure novelty cache has no corrupted NaN vectors from earlier runs
     try:
@@ -157,7 +186,7 @@ def run_batch_novelty(
                         and str(m_val) != "nan"
                         and str(d_val) != "nan"
                     ):
-                        item["title"] = resolve_real_paper_title(aid_val, item.get("title"))
+                        item["title"] = resolve_real_paper_title(aid_val, item.get("title"), title_map=title_map)
                         if r2_val is not None and str(r2_val) != "nan":
                             item["classification"] = classify_geometry(float(m_val), float(d_val), float(r2_val))
                         existing_records[aid_val] = item
@@ -181,14 +210,14 @@ def run_batch_novelty(
 
     for idx, paper in enumerate(candidates, 1):
         aid = paper["arxiv_id"]
-        title = resolve_real_paper_title(aid, paper.get("title"))
+        title = resolve_real_paper_title(aid, paper.get("title"), title_map=title_map)
         year = paper.get("year")
         cites = paper.get("citation_count") or 0
 
         # Check resume cache
         if resume and aid in existing_records:
             cached_rec = existing_records[aid]
-            cached_rec["title"] = resolve_real_paper_title(aid, cached_rec.get("title"))
+            cached_rec["title"] = resolve_real_paper_title(aid, cached_rec.get("title"), title_map=title_map)
             print(f"[{idx:3d}/{len(candidates)}] {aid} | (cached) {cached_rec['title'][:48]}...")
             results.append(cached_rec)
             continue
@@ -274,13 +303,13 @@ def run_batch_novelty(
                 "error": str(e),
             })
         finally:
-            drain_mps_cache()
+            if idx % 500 == 0:
+                drain_mps_cache()
 
-        # Save checkpoint every 10 papers (and update markdown report every 50)
-        if idx % 10 == 0:
+        # Save checkpoint every 500 papers
+        if idx % 500 == 0:
             chk = _save_json_report(output_json, results, limit, category, min_citations)
-            if idx % 50 == 0:
-                _generate_markdown_report(output_md, chk)
+            _generate_markdown_report(output_md, chk)
 
     total_time = time.perf_counter() - t_start
     print("=" * 76)
@@ -378,7 +407,8 @@ def _generate_markdown_report(path: Path, report_data: dict[str, Any]) -> None:
     ])
     top_synergy = sorted(valid, key=lambda x: -x.get("Delta", 0.0))[:10]
     for p in top_synergy:
-        title = (p.get("title") or "")[:45].replace("|", "-")
+        raw_t = (p.get("title") or "")[:45].replace("|", "-").replace("\u2014", " - ").replace("\u2013", " - ").replace("\x3b", ",")
+        title = raw_t
         aid = p.get("arxiv_id")
         lines.append(
             f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '-'} | "
@@ -397,7 +427,8 @@ def _generate_markdown_report(path: Path, report_data: dict[str, Any]) -> None:
     ])
     top_novel = sorted(valid, key=lambda x: -x.get("novelty_residual", 0.0))[:10]
     for p in top_novel:
-        title = (p.get("title") or "")[:45].replace("|", "-")
+        raw_t = (p.get("title") or "")[:45].replace("|", "-").replace("\u2014", " - ").replace("\u2013", " - ").replace("\x3b", ",")
+        title = raw_t
         aid = p.get("arxiv_id")
         lines.append(
             f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '-'} | "
@@ -416,7 +447,8 @@ def _generate_markdown_report(path: Path, report_data: dict[str, Any]) -> None:
     ])
     top_anchored = sorted(valid, key=lambda x: -x.get("m", 0.0))[:10]
     for p in top_anchored:
-        title = (p.get("title") or "")[:40].replace("|", "-")
+        raw_t = (p.get("title") or "")[:40].replace("|", "-").replace("\u2014", " - ").replace("\u2013", " - ").replace("\x3b", ",")
+        title = raw_t
         aid = p.get("arxiv_id")
         attr = p.get("attribution", [])
         top_parent_str = "None"
@@ -447,7 +479,7 @@ def main() -> int:
         description="Batch Novelty Subspace Pipeline for ArXiv Catalog"
     )
     parser.add_argument(
-        "--limit", type=int, default=50, help="Number of papers to evaluate (0 for all)"
+        "--limit", type=int, default=6000, help="Number of papers to evaluate (0 for all)"
     )
     parser.add_argument(
         "--category", type=str, default=None, help="Filter by arXiv category (e.g. cs.LG)"
@@ -473,7 +505,7 @@ def main() -> int:
     parser.add_argument(
         "--sleep",
         type=float,
-        default=0.25,
+        default=0.0,
         help="Sleep delay between external API calls (seconds)",
     )
 

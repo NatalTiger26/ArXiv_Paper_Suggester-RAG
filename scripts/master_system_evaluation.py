@@ -623,6 +623,25 @@ def evaluate_novelty(repo_root: Path, seed: int = 42) -> dict[str, Any]:
             all_shifts_naive = {m: [] for m in masking_levels}
             all_shifts_fallback = {m: [] for m in masking_levels}
 
+            # Derive empirical title-abstract displacement vectors from catalog samples
+            empirical_diffs: list[np.ndarray] = []
+            try:
+                from src.novelty.embed_util import embed_texts
+                from src.catalog import connect as catalog_connect
+                with catalog_connect() as cat_conn:
+                    sample_rows = cat_conn.execute(
+                        "SELECT title, abstract FROM papers WHERE abstract IS NOT NULL AND length(abstract) > 100 LIMIT 20"
+                    ).fetchall()
+                if sample_rows:
+                    t_texts = [r["title"] for r in sample_rows]
+                    full_texts = [f"{r['title']}\n{r['abstract']}" for r in sample_rows]
+                    t_vecs = embed_texts(t_texts, model_name="google/embeddinggemma-2", dim=256)
+                    full_vecs = embed_texts(full_texts, model_name="google/embeddinggemma-2", dim=256)
+                    for tv, fv in zip(t_vecs, full_vecs):
+                        empirical_diffs.append((tv - fv).astype(np.float32))
+            except Exception:
+                pass
+
             for fid in focal_candidates:
                 cur_nov.execute("SELECT vector FROM embeddings WHERE canonical_id = ? AND dim = 256", (fid,))
                 x_row = cur_nov.fetchone()
@@ -672,8 +691,13 @@ def evaluate_novelty(repo_root: Path, seed: int = 42) -> dict[str, Any]:
                     all_shifts_naive[mask_frac].append(shift_naive)
 
                     Y_fb = Y_mat.copy()
-                    noise = rng.normal(0, 0.05, size=(Y_mat.shape[0], len(mask_idx))).astype(np.float32)
-                    Y_fb[:, mask_idx] = Y_fb[:, mask_idx] + noise
+                    for m_idx in mask_idx:
+                        if empirical_diffs:
+                            diff_vec = empirical_diffs[rng.randint(len(empirical_diffs))]
+                            Y_fb[:, m_idx] = Y_fb[:, m_idx] + diff_vec
+                        else:
+                            noise = rng.normal(0, 0.05, size=Y_mat.shape[0]).astype(np.float32)
+                            Y_fb[:, m_idx] = Y_fb[:, m_idx] + noise
                     fb_norms = np.linalg.norm(Y_fb, axis=0, keepdims=True)
                     fb_norms[fb_norms == 0] = 1.0
                     Y_fb = Y_fb / fb_norms

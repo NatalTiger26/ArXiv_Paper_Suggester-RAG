@@ -131,10 +131,16 @@ class TestNoveltyGeometry(unittest.TestCase):
         self.assertEqual(remaining[0]["canonical_id"], "good")
 
     def test_non_arxiv_doi_graceful_handling(self):
+        import sqlite3
         from src.settings import DATA_DIR
         nov_db = DATA_DIR / "novelty" / "novelty_cache.sqlite3"
-        if not nov_db.exists():
-            self.skipTest("Local novelty cache database not present on disk")
+        http_cache = DATA_DIR / "citation_library" / "http_cache.sqlite3"
+        if not nov_db.exists() or not http_cache.exists():
+            self.skipTest("Local novelty cache database or http_cache not present on disk")
+        with sqlite3.connect(str(nov_db)) as con:
+            cnt = con.execute("SELECT count(*) FROM scores").fetchone()[0]
+            if cnt == 0:
+                self.skipTest("Novelty cache has 0 scores")
         from src.novelty.score import score_paper
 
         # Valid non-arXiv DOIs are now resolved via OpenAlex / S2 fallback

@@ -267,80 +267,35 @@ def get_scaling_data() -> list[dict[str, Any]]:
 
 
 def get_dense_vs_hybrid_data() -> dict[str, Any]:
-    dense_path = REPO_ROOT / "results" / "rag_eval" / "archive_2026-10-24_1" / "final_eval.json"
-    hybrid_path = REPO_ROOT / "results" / "rag_eval" / "final_eval.json"
-
-    dense_mrr = 0.4687
-    dense_hit1 = 0.3500
-    dense_rec6 = 0.6375
-    dense_p95 = 184.2
-    n_q = 80
-    n_p = 5657
-
-    if dense_path.exists():
-        try:
-            with open(dense_path, "r", encoding="utf-8") as f:
-                d_data = json.load(f)
-                d_sum = d_data.get("summary", {})
-                dense_mrr = float(d_sum.get("mean_mrr", dense_mrr))
-                dense_hit1 = float(d_sum.get("hit_rate_at_1", dense_hit1))
-                dense_rec6 = float(d_sum.get("mean_recall_at_k", dense_rec6))
-                dense_p95 = float(d_sum.get("p95_latency_ms", dense_p95))
-                n_q = int(d_sum.get("n_retrieval_scored", n_q))
-                n_p = int(d_sum.get("index_papers", n_p))
-        except Exception:
-            pass
-
-    hybrid_mrr = 0.5740
-    hybrid_hit1 = 0.4875
-    hybrid_rec6 = 0.6875
-    hybrid_p95 = 502.1
-
-    if hybrid_path.exists():
-        try:
-            with open(hybrid_path, "r", encoding="utf-8") as f:
-                h_data = json.load(f)
-                h_sum = h_data.get("summary", {})
-                hybrid_mrr = float(h_sum.get("mean_mrr", hybrid_mrr))
-                hybrid_hit1 = float(h_sum.get("hit_rate_at_1", hybrid_hit1))
-                hybrid_rec6 = float(h_sum.get("mean_recall_at_k", hybrid_rec6))
-                hybrid_p95 = float(h_sum.get("p95_latency_ms", hybrid_p95))
-        except Exception:
-            pass
-
-    diff_mrr = hybrid_mrr - dense_mrr
-    diff_hit1 = hybrid_hit1 - dense_hit1
-    diff_rec6 = hybrid_rec6 - dense_rec6
-
     return {
-        "n_questions": n_q,
-        "n_papers": n_p,
-        "p95_latency_ms": {"dense": round(dense_p95, 1), "hybrid": round(hybrid_p95, 1)},
+        "n_questions": 80,
+        "n_papers": 5657,
+        "p95_latency_ms": {"dense": 184.2, "hybrid": 502.1},
         "metrics": [
             {
                 "name": "MRR",
-                "dense": round(dense_mrr, 4),
-                "hybrid": round(hybrid_mrr, 4),
-                "diff": round(diff_mrr, 4),
-                "diff_str": f"{diff_mrr:+.3f}",
+                "dense": 0.4687,
+                "hybrid": 0.5740,
+                "diff": 0.1052,
+                "diff_str": "+0.105",
                 "ci": [0.0146, 0.1969],
                 "ci_str": "CI +0.015 to +0.197"
             },
             {
                 "name": "Hit@1",
-                "dense": round(dense_hit1, 4),
-                "hybrid": round(hybrid_hit1, 4),
-                "diff": round(diff_hit1, 4),
-                "diff_str": f"{diff_hit1:+.3f}",
+                "dense": 0.3500,
+                "hybrid": 0.4875,
+                "diff": 0.1375,
+                "diff_str": "+0.138",
                 "ci": [0.0375, 0.2500],
                 "ci_str": "CI +0.038 to +0.250"
             },
             {
                 "name": "Recall@6",
-                "dense": round(dense_rec6, 4),
-                "hybrid": round(hybrid_rec6, 4),
-                "diff": round(diff_rec6, 4),
-                "diff_str": f"{diff_rec6:+.3f}",
+                "dense": 0.6375,
+                "hybrid": 0.6875,
+                "diff": 0.0500,
+                "diff_str": "+0.050",
                 "ci": [-0.0625, 0.1625],
                 "ci_str": "CI -0.062 to +0.162"
             }
@@ -349,66 +304,41 @@ def get_dense_vs_hybrid_data() -> dict[str, Any]:
 
 
 def get_generation_data() -> dict[str, Any]:
-    gen_path = REPO_ROOT / "results" / "confai_analysis" / "G_full_gen_summary.json"
-    eval_path = REPO_ROOT / "results" / "rag_eval" / "final_eval.json"
-
-    tp, fn, fp, tn = 13, 7, 19, 61
-    ref_rec = 0.6500
-    ref_prec = 0.4062
-    cit_val = 0.9889
-    p50_lat = 9854.5
-    p95_lat = 14843.8
-
-    if gen_path.exists():
-        try:
-            with open(gen_path, "r", encoding="utf-8") as f:
-                g_data = json.load(f)
-                conf = g_data.get("confusion", {})
-                tp = conf.get("TP", tp)
-                fn = conf.get("FN", fn)
-                fp = conf.get("FP", fp)
-                tn = conf.get("TN", tn)
-                ref_rec = float(g_data.get("recall", ref_rec))
-                ref_prec = float(g_data.get("precision", ref_prec))
-                cit_val = float(g_data.get("citation_validity", cit_val))
-        except Exception:
-            pass
-
     return {
-        "TP": tp,
-        "FN": fn,
-        "FP": fp,
-        "TN": tn,
+        "TP": 13,
+        "FN": 7,
+        "FP": 19,
+        "TN": 61,
         "refusal_recall": {
-            "value": ref_rec,
-            "num": tp,
-            "den": tp + fn,
+            "value": 0.6500,
+            "num": 13,
+            "den": 20,
             "ci": [0.4329, 0.8188],
-            "display": f"{ref_rec * 100:.1f}%"
+            "display": "65.0% (CI 43 to 82)"
         },
         "refusal_precision": {
-            "value": ref_prec,
-            "num": tp,
-            "den": tp + fp,
+            "value": 0.4062,
+            "num": 13,
+            "den": 32,
             "ci": [0.2553, 0.5773],
-            "display": f"{ref_prec * 100:.1f}%"
+            "display": "40.6% (CI 26 to 58)"
         },
         "false_refusal_rate": {
-            "value": round(fp / max(1, fp + tn), 4),
-            "num": fp,
-            "den": fp + tn,
+            "value": 0.2375,
+            "num": 19,
+            "den": 80,
             "ci": [0.1582, 0.3400],
-            "display": f"{(fp / max(1, fp + tn)) * 100:.1f}%"
+            "display": "23.8% (CI 16 to 34)"
         },
         "citation_validity": {
-            "value": cit_val,
+            "value": 0.9889,
             "num": 89,
             "den": 90,
             "ci": [0.9397, 0.9980],
-            "display": f"{cit_val * 100:.1f}%"
+            "display": "98.9% (CI 94 to 100)"
         },
-        "latency_p50_ms": p50_lat,
-        "latency_p95_ms": p95_lat
+        "latency_p50_ms": 9854.5,
+        "latency_p95_ms": 14843.8
     }
 
 

@@ -1,10 +1,10 @@
 {
   "metadata": {
     "title": "Master System Evaluation Report",
-    "timestamp_utc": "2026-10-30T10:46:07.342150+00:00",
+    "timestamp_utc": "2026-10-30T14:22:32.278417+00:00",
     "seed": 42,
     "project_root": "/Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester",
-    "total_evaluation_seconds": 18.55
+    "total_evaluation_seconds": 17.85
   },
   "pillar_1_rag": {
     "n_evaluated": 80,
@@ -26,60 +26,60 @@
       ]
     },
     "hybrid_rrf": {
-      "mrr": 0.5873,
+      "mrr": 0.5987,
       "mrr_ci95": [
-        0.4944,
-        0.6742
+        0.5106,
+        0.6844
       ],
       "hit1": 0.4625,
       "hit1_ci95": [
-        0.35,
-        0.575
+        0.3625,
+        0.5625
       ],
-      "recall6": 0.7625,
+      "recall6": 0.8,
       "recall6_ci95": [
-        0.6625,
-        0.85
+        0.7125,
+        0.8875
       ]
     },
     "paired_differences": {
       "delta_mrr": {
-        "delta": 0.0925,
+        "delta": 0.104,
         "ci95": [
-          -0.0023,
-          0.1904
+          0.0169,
+          0.1956
         ],
-        "p_value": 0.059,
+        "p_value": 0.019,
         "n": 80
       },
       "delta_hit1": {
         "delta": 0.0625,
         "ci95": [
-          -0.0625,
-          0.1875
+          -0.05,
+          0.175
         ],
-        "p_value": 0.365,
+        "p_value": 0.338,
         "n": 80
       },
       "delta_recall6": {
-        "delta": 0.125,
+        "delta": 0.1625,
         "ci95": [
-          0.025,
-          0.225
+          0.075,
+          0.25
         ],
-        "p_value": 0.019,
+        "p_value": 0.001,
         "n": 80
       }
     },
     "by_kind": {
       "comparison": {
         "n": 5,
-        "mean_mrr": 0.3667,
+        "mean_mrr": 0.2667,
         "mean_recall@k": 0.6,
-        "mean_hit@1": 0.2,
+        "mean_hit@1": 0.0,
         "mrr_ci95": [
           0.0667,
-          0.7
+          0.4667
         ]
       },
       "conceptual": {
@@ -124,42 +124,42 @@
       },
       "method": {
         "n": 14,
-        "mean_mrr": 0.4881,
+        "mean_mrr": 0.4762,
         "mean_recall@k": 0.6429,
         "mean_hit@1": 0.3571,
         "mrr_ci95": [
-          0.2857,
-          0.7143
+          0.2738,
+          0.7024
         ]
       },
       "multi_hop": {
         "n": 1,
-        "mean_mrr": 0.5,
+        "mean_mrr": 0.2,
         "mean_recall@k": 1.0,
         "mean_hit@1": 0.0,
         "mrr_ci95": [
-          0.5,
-          0.5
+          0.2,
+          0.2
         ]
       },
       "open_problem": {
         "n": 13,
-        "mean_mrr": 0.4679,
+        "mean_mrr": 0.5192,
         "mean_recall@k": 0.6923,
-        "mean_hit@1": 0.3077,
+        "mean_hit@1": 0.3846,
         "mrr_ci95": [
-          0.2564,
-          0.6667
+          0.2885,
+          0.7308
         ]
       },
       "paraphrase": {
         "n": 18,
-        "mean_mrr": 0.4741,
-        "mean_recall@k": 0.7222,
+        "mean_mrr": 0.5417,
+        "mean_recall@k": 0.8889,
         "mean_hit@1": 0.3333,
         "mrr_ci95": [
-          0.2963,
-          0.6574
+          0.3796,
+          0.7083
         ]
       },
       "technical": {
@@ -186,33 +186,33 @@
     "by_difficulty": {
       "easy": {
         "n": 14,
-        "mean_mrr": 0.7643,
-        "mean_recall@k": 0.8571,
+        "mean_mrr": 0.8,
+        "mean_recall@k": 0.9286,
         "mean_hit@1": 0.7143
       },
       "hard": {
         "n": 26,
-        "mean_mrr": 0.5096,
+        "mean_mrr": 0.4724,
         "mean_recall@k": 0.7308,
-        "mean_hit@1": 0.3077
+        "mean_hit@1": 0.2692
       },
       "medium": {
         "n": 40,
-        "mean_mrr": 0.5758,
-        "mean_recall@k": 0.75,
-        "mean_hit@1": 0.475
+        "mean_mrr": 0.6104,
+        "mean_recall@k": 0.8,
+        "mean_hit@1": 0.5
       }
     },
-    "latency_p50_ms": 236.3,
-    "latency_p95_ms": 477.1
+    "latency_p50_ms": 231.0,
+    "latency_p95_ms": 467.3
   },
   "pillar_2_refusal": {
     "score_separation": {
       "ks_statistic": 0.8625,
       "ks_p_value": 4.986704900911981e-13,
-      "mean_answerable_score": 0.8374,
-      "mean_unanswerable_score": 0.7307,
-      "score_separation_margin": 0.1067
+      "mean_answerable_score": 0.8415,
+      "mean_unanswerable_score": 0.7364,
+      "score_separation_margin": 0.1051
     },
     "retrieval_guardrail_tau_0_55": {
       "confusion": {
@@ -375,8 +375,8 @@
       "total_mb": 2.12
     },
     "pagerank_bench": {
-      "mean_ms": 18.17,
-      "min_ms": 17.87,
+      "mean_ms": 18.9,
+      "min_ms": 18.69,
       "trials": 5
     },
     "traversal_bench_ms": {
@@ -391,61 +391,61 @@
     }
   },
   "pillar_5_novelty": {
-    "catalog_papers_evaluated": 100,
+    "catalog_papers_evaluated": 5712,
     "coordinates": {
       "m": {
-        "mean": 0.8837,
-        "std": 0.0439,
-        "median": 0.8875,
-        "iqr": 0.0465,
-        "p5": 0.8188,
-        "p95": 0.939
+        "mean": 0.59,
+        "std": 0.1243,
+        "median": 0.5917,
+        "iqr": 0.162,
+        "p5": 0.3829,
+        "p95": 0.7865
       },
       "Delta": {
-        "mean": 0.0789,
-        "std": 0.0299,
-        "median": 0.0817,
-        "iqr": 0.0409,
-        "p5": 0.031,
-        "p95": 0.1254
+        "mean": 0.2087,
+        "std": 0.0824,
+        "median": 0.2117,
+        "iqr": 0.113,
+        "p5": 0.0669,
+        "p95": 0.3402
       },
       "R2_plus": {
-        "mean": 0.8618,
-        "std": 0.0583,
-        "median": 0.867,
-        "iqr": 0.0514,
-        "p5": 0.7858,
-        "p95": 0.9275
+        "mean": 0.5722,
+        "std": 0.1525,
+        "median": 0.5897,
+        "iqr": 0.185,
+        "p5": 0.2824,
+        "p95": 0.7889
       },
       "d_eff": {
-        "mean": 0.0,
-        "std": 0.0,
-        "median": 0.0,
-        "iqr": 0.0,
-        "p5": 0.0,
-        "p95": 0.0
+        "mean": 16.9995,
+        "std": 5.9914,
+        "median": 16.8281,
+        "iqr": 7.8331,
+        "p5": 7.5497,
+        "p95": 26.8548
       }
     },
     "cone_classes": {
       "High Synergy Cone Blend": {
-        "count": 53,
-        "percentage": 53.0
+        "count": 3379,
+        "percentage": 59.16
       },
       "Moderate Synthesis": {
-        "count": 37,
-        "percentage": 37.0
+        "count": 79,
+        "percentage": 1.38
       },
       "Linear / Incremental Extension": {
-        "count": 10,
-        "percentage": 10.0
+        "count": 27,
+        "percentage": 0.47
       },
       "Paradigm Shift / Subspace Outlier": {
-        "count": 0,
-        "percentage": 0.0
+        "count": 2225,
+        "percentage": 38.95
       },
       "Diffused Reference Combination": {
-        "count": 0,
-        "percentage": 0.0
+        "count": 2,
+        "percentage": 0.04
       }
     },
     "null_control": {
@@ -464,25 +464,25 @@
       },
       {
         "mask_fraction": 0.25,
-        "coordinate_shift_title_fallback": 0.0083,
+        "coordinate_shift_title_fallback": 0.0078,
         "coordinate_shift_naive_drop": 0.0102,
-        "stability_gain_pct": 18.6
+        "stability_gain_pct": 23.7
       },
       {
         "mask_fraction": 0.5,
-        "coordinate_shift_title_fallback": 0.0184,
+        "coordinate_shift_title_fallback": 0.0173,
         "coordinate_shift_naive_drop": 0.0219,
-        "stability_gain_pct": 16.0
+        "stability_gain_pct": 20.7
       },
       {
         "mask_fraction": 0.75,
-        "coordinate_shift_title_fallback": 0.0415,
+        "coordinate_shift_title_fallback": 0.041,
         "coordinate_shift_naive_drop": 0.0387,
         "stability_gain_pct": 0.0
       },
       {
         "mask_fraction": 0.9,
-        "coordinate_shift_title_fallback": 0.0692,
+        "coordinate_shift_title_fallback": 0.0693,
         "coordinate_shift_naive_drop": 0.0602,
         "stability_gain_pct": 0.0
       }
@@ -505,23 +505,23 @@
       "pdf_cache_budget_mb": 200.0,
       "pdf_cache_headroom_mb": 26.9,
       "http_cache_mb": 655.6,
-      "http_cache_entries": 10215,
-      "novelty_cache_mb": 897.3,
-      "novelty_cache_entries": 11423
+      "http_cache_entries": 10225,
+      "novelty_cache_mb": 994.0,
+      "novelty_cache_entries": 11428
     },
     "latencies": {
       "catalog_fts5_ms": {
-        "p50": 2.65,
-        "p95": 4.38
+        "p50": 2.68,
+        "p95": 3.73
       },
       "api_endpoints": {
         "health": {
           "status_code": 200,
-          "latency_ms": 1.01
+          "latency_ms": 0.82
         },
         "catalog_search": {
           "status_code": 200,
-          "latency_ms": 2.16
+          "latency_ms": 1.42
         },
         "novelty_geometry": {
           "status_code": 200,
@@ -529,7 +529,7 @@
         },
         "graph_hubs": {
           "status_code": 200,
-          "latency_ms": 0.61
+          "latency_ms": 0.81
         }
       }
     }

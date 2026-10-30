@@ -6,7 +6,7 @@
     "pool_size": 120,
     "half_life": 4.0,
     "llm_enabled": false,
-    "personal_ranking_path": "/Users/nataltiger/Documents/Plaksha Course/Python Programming/Capstone_Project/ArXiv_Paper_Suggester/rankings/personal_importance.csv",
+    "personal_ranking_path": "/Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester/rankings/personal_importance.csv",
     "ground_truth_count": 48,
     "default_weights": {
       "embedding": 0.5,

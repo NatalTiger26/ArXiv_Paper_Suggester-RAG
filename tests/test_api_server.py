@@ -32,6 +32,15 @@ class TestAPIServer(unittest.TestCase):
         self.assertIn("hubs", data)
 
     def test_novelty_endpoint(self):
+        import sqlite3
+        from src.settings import DATA_DIR
+        nc_path = DATA_DIR / "novelty" / "novelty_cache.sqlite3"
+        if not nc_path.exists():
+            raise unittest.SkipTest("Novelty cache database not found on disk")
+        with sqlite3.connect(str(nc_path)) as con:
+            row_count = con.execute("SELECT count(*) FROM scores").fetchone()[0]
+            if row_count == 0:
+                raise unittest.SkipTest("Novelty cache has 0 scores")
         resp = self.client.get("/api/novelty?arxiv_id=1806.07572")
         self.assertEqual(resp.status_code, 200)
         data = resp.json()
@@ -70,6 +79,9 @@ class TestAPIServer(unittest.TestCase):
         self.assertIn("Literature Discovery", resp.text)
 
     def test_recommend_direct_arxiv_id(self):
+        from src.settings import DATA_DIR
+        if not (DATA_DIR / "corpus.json").exists():
+            raise unittest.SkipTest("corpus.json not found on disk")
         # Query with an explicit arXiv ID
         resp = self.client.post("/api/recommend", json={"query": "1806.07572", "k": 5})
         self.assertEqual(resp.status_code, 200)

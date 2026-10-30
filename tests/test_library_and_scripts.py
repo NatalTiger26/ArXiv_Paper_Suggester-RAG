@@ -13,8 +13,8 @@ class TestCatalogBrowsing(unittest.TestCase):
     def setUpClass(cls):
         from src.settings import DATA_DIR
         db_path = DATA_DIR / "catalog.sqlite3"
-        if not db_path.exists():
-            raise unittest.SkipTest("Local catalog database not present on disk")
+        if not db_path.exists() or get_catalog_stats().get("total_papers", 0) == 0:
+            raise unittest.SkipTest("Local catalog database not present on disk or empty")
 
     def test_catalog_stats(self):
         stats = get_catalog_stats()

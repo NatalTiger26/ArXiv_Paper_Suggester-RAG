@@ -8,17 +8,17 @@
     "embedding_model": "google/embeddinggemma-2",
     "embedding_dim": null,
     "retrieval_mode": "hybrid_bm25_dense",
-    "mean_recall@k": 0.7625,
-    "mean_mrr": 0.5873,
+    "mean_recall@k": 0.8,
+    "mean_mrr": 0.5987,
     "mean_hit_rate@1": 0.4625,
-    "mean_top_score": 0.8161,
+    "mean_top_score": 0.8205,
     "mrr_ci95": [
-      0.4933,
-      0.6792
+      0.5108,
+      0.6862
     ],
     "recall_ci95": [
-      0.6625,
-      0.85
+      0.7125,
+      0.8875
     ],
     "hit1_ci95": [
       0.35,
@@ -27,18 +27,18 @@
     "with_generation": false,
     "use_cache": true,
     "cache_hit_rate": 0.0,
-    "latency_p50_ms": 227.6,
-    "latency_p95_ms": 437.1,
-    "timestamp": "2026-10-30T10:59:15.262728+00:00",
+    "latency_p50_ms": 231.0,
+    "latency_p95_ms": 467.3,
+    "timestamp": "2026-10-30T13:36:19.805942+00:00",
     "by_kind": {
       "comparison": {
         "n": 5,
-        "mean_mrr": 0.3667,
+        "mean_mrr": 0.2667,
         "mean_recall@k": 0.6,
-        "mean_hit@1": 0.2,
+        "mean_hit@1": 0.0,
         "mrr_ci95": [
           0.0667,
-          0.7
+          0.4667
         ]
       },
       "conceptual": {
@@ -83,42 +83,42 @@
       },
       "method": {
         "n": 14,
-        "mean_mrr": 0.4881,
+        "mean_mrr": 0.4762,
         "mean_recall@k": 0.6429,
         "mean_hit@1": 0.3571,
         "mrr_ci95": [
-          0.2857,
-          0.7143
+          0.2738,
+          0.7024
         ]
       },
       "multi_hop": {
         "n": 1,
-        "mean_mrr": 0.5,
+        "mean_mrr": 0.2,
         "mean_recall@k": 1.0,
         "mean_hit@1": 0.0,
         "mrr_ci95": [
-          0.5,
-          0.5
+          0.2,
+          0.2
         ]
       },
       "open_problem": {
         "n": 13,
-        "mean_mrr": 0.4679,
+        "mean_mrr": 0.5192,
         "mean_recall@k": 0.6923,
-        "mean_hit@1": 0.3077,
+        "mean_hit@1": 0.3846,
         "mrr_ci95": [
-          0.2564,
-          0.6667
+          0.2885,
+          0.7308
         ]
       },
       "paraphrase": {
         "n": 18,
-        "mean_mrr": 0.4741,
-        "mean_recall@k": 0.7222,
+        "mean_mrr": 0.5417,
+        "mean_recall@k": 0.8889,
         "mean_hit@1": 0.3333,
         "mrr_ci95": [
-          0.2963,
-          0.6574
+          0.3796,
+          0.7083
         ]
       },
       "technical": {
@@ -145,57 +145,53 @@
     "by_difficulty": {
       "easy": {
         "n": 14,
-        "mean_mrr": 0.7643,
-        "mean_recall@k": 0.8571,
+        "mean_mrr": 0.8,
+        "mean_recall@k": 0.9286,
         "mean_hit@1": 0.7143
       },
       "hard": {
         "n": 26,
-        "mean_mrr": 0.5096,
+        "mean_mrr": 0.4724,
         "mean_recall@k": 0.7308,
-        "mean_hit@1": 0.3077
+        "mean_hit@1": 0.2692
       },
       "medium": {
         "n": 40,
-        "mean_mrr": 0.5758,
-        "mean_recall@k": 0.75,
-        "mean_hit@1": 0.475
+        "mean_mrr": 0.6104,
+        "mean_recall@k": 0.8,
+        "mean_hit@1": 0.5
       }
     },
     "fail_hint_counts": {
-      "ranking": 24,
-      "missing_or_ranking": 19
+      "ranking": 27,
+      "missing_or_ranking": 16
     },
     "missing_papers": [
       {
         "arxiv_id": "2501.16496",
-        "n": 12
+        "n": 11
       },
       {
         "arxiv_id": "2304.14997",
         "n": 11
       },
       {
-        "arxiv_id": "1806.07572",
-        "n": 4
-      },
-      {
         "arxiv_id": "2407.13594",
         "n": 3
       },
       {
-        "arxiv_id": "2404.14082",
+        "arxiv_id": "1806.07572",
         "n": 2
       },
       {
-        "arxiv_id": "2504.13151",
-        "n": 1
+        "arxiv_id": "2404.14082",
+        "n": 2
       }
     ],
     "coverage_calibration": {
       "high": {
         "n": 79,
-        "mean_recall": 0.7595
+        "mean_recall": 0.7975
       },
       "partial": {
         "n": 1,
@@ -207,40 +203,40 @@
         "quintile": 1,
         "n": 16,
         "score_lo": 0.6984,
-        "score_hi": 0.8195,
+        "score_hi": 0.8216,
         "mean_hit@1": 0.625,
         "mean_recall": 0.75
       },
       {
         "quintile": 2,
         "n": 16,
-        "score_lo": 0.8206,
-        "score_hi": 0.8374,
-        "mean_hit@1": 0.25,
-        "mean_recall": 0.75
+        "score_lo": 0.8219,
+        "score_hi": 0.8409,
+        "mean_hit@1": 0.3125,
+        "mean_recall": 0.8125
       },
       {
         "quintile": 3,
         "n": 16,
-        "score_lo": 0.8377,
-        "score_hi": 0.8486,
-        "mean_hit@1": 0.4375,
-        "mean_recall": 0.625
+        "score_lo": 0.841,
+        "score_hi": 0.8517,
+        "mean_hit@1": 0.375,
+        "mean_recall": 0.8125
       },
       {
         "quintile": 4,
         "n": 16,
-        "score_lo": 0.8486,
-        "score_hi": 0.8643,
-        "mean_hit@1": 0.5,
-        "mean_recall": 0.8125
+        "score_lo": 0.8534,
+        "score_hi": 0.8696,
+        "mean_hit@1": 0.4375,
+        "mean_recall": 0.75
       },
       {
         "quintile": 5,
         "n": 16,
-        "score_lo": 0.8656,
+        "score_lo": 0.8697,
         "score_hi": 0.896,
-        "mean_hit@1": 0.5,
+        "mean_hit@1": 0.5625,
         "mean_recall": 0.875
       }
     ],
@@ -286,7 +282,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 3468.5,
+      "latency_ms": 3843.0,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -303,7 +299,7 @@
         "1806.07572"
       ],
       "has_relevant": true,
-      "top_score": 0.8275,
+      "top_score": 0.8628,
       "recall@k": 1.0,
       "mrr": 0.5,
       "hit_rate@1": 0.0,
@@ -317,7 +313,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 267.2,
+      "latency_ms": 256.8,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -332,7 +328,8 @@
       "retrieved_paper_ids": [
         "2106.10165",
         "1806.07572",
-        "1611.01232"
+        "1611.01232",
+        "1505.00387"
       ],
       "has_relevant": true,
       "top_score": 0.8823,
@@ -349,7 +346,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 262.6,
+      "latency_ms": 228.6,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -363,14 +360,14 @@
       ],
       "retrieved_paper_ids": [
         "2106.10165",
-        "1810.02054",
         "1806.07572",
+        "1810.02054",
         "1811.03804"
       ],
       "has_relevant": true,
       "top_score": 0.8486,
       "recall@k": 1.0,
-      "mrr": 0.3333,
+      "mrr": 0.5,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -382,7 +379,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 235.4,
+      "latency_ms": 245.1,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -399,7 +396,7 @@
         "2406.04606"
       ],
       "has_relevant": true,
-      "top_score": 0.8423,
+      "top_score": 0.8494,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -413,7 +410,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 244.0,
+      "latency_ms": 223.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -426,8 +423,7 @@
         "1806.07572"
       ],
       "retrieved_paper_ids": [
-        "1806.07572",
-        "2406.04606"
+        "1806.07572"
       ],
       "has_relevant": true,
       "top_score": 0.8534,
@@ -444,7 +440,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 229.0,
+      "latency_ms": 216.1,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -476,7 +472,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 231.9,
+      "latency_ms": 221.7,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -509,7 +505,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 233.4,
+      "latency_ms": 231.4,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -539,7 +535,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 673.1,
+      "latency_ms": 729.3,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -554,8 +550,7 @@
       "retrieved_paper_ids": [
         "2106.10165",
         "1806.07572",
-        "2106.11542",
-        "2406.04606"
+        "2106.11542"
       ],
       "has_relevant": true,
       "top_score": 0.842,
@@ -572,7 +567,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 228.0,
+      "latency_ms": 232.4,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -586,10 +581,10 @@
       ],
       "retrieved_paper_ids": [
         "1806.07572",
-        "2106.10165"
+        "1812.07956"
       ],
       "has_relevant": true,
-      "top_score": 0.8558,
+      "top_score": 0.8623,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -603,7 +598,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 230.5,
+      "latency_ms": 221.2,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -617,14 +612,14 @@
       ],
       "retrieved_paper_ids": [
         "2406.04606",
-        "1806.07572",
         "2010.00522",
-        "2107.01832"
+        "1806.07572",
+        "1902.04742"
       ],
       "has_relevant": true,
       "top_score": 0.863,
       "recall@k": 1.0,
-      "mrr": 0.5,
+      "mrr": 0.3333,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -636,7 +631,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 241.4,
+      "latency_ms": 231.9,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -666,7 +661,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 233.9,
+      "latency_ms": 238.2,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -680,11 +675,11 @@
       ],
       "retrieved_paper_ids": [
         "2501.16496",
-        "2108.07258",
+        "2207.13243",
         "2209.10652"
       ],
       "has_relevant": true,
-      "top_score": 0.8492,
+      "top_score": 0.8633,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -698,7 +693,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 214.3,
+      "latency_ms": 231.1,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -713,8 +708,8 @@
       "retrieved_paper_ids": [
         "2407.13594",
         "2310.10348",
-        "2507.05810",
         "2506.18852",
+        "2507.05810",
         "2605.08934"
       ],
       "has_relevant": true,
@@ -732,7 +727,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 227.8,
+      "latency_ms": 241.6,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -747,9 +742,10 @@
       "retrieved_paper_ids": [
         "2602.07311",
         "2505.24360",
-        "2507.12464",
         "2608.31084",
-        "2404.14082"
+        "2404.14082",
+        "2605.20607",
+        "2507.12464"
       ],
       "has_relevant": true,
       "top_score": 0.8195,
@@ -766,7 +762,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 226.2,
+      "latency_ms": 256.9,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -799,7 +795,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 218.0,
+      "latency_ms": 235.2,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -833,7 +829,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 237.6,
+      "latency_ms": 240.1,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -846,17 +842,17 @@
         "2501.16496"
       ],
       "retrieved_paper_ids": [
-        "2310.10348",
         "2501.16496",
-        "2603.16335",
+        "2310.10348",
         "2310.01405",
-        "2404.14082"
+        "2404.14082",
+        "2603.16335"
       ],
       "has_relevant": true,
-      "top_score": 0.8721,
+      "top_score": 0.8904,
       "recall@k": 1.0,
-      "mrr": 0.5,
-      "hit_rate@1": 0.0,
+      "mrr": 1.0,
+      "hit_rate@1": 1.0,
       "coverage": "high",
       "should_refuse": false,
       "did_refuse": false,
@@ -867,8 +863,8 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 218.3,
-      "fail_hint": "ranking",
+      "latency_ms": 227.4,
+      "fail_hint": null,
       "answer_preview": ""
     },
     {
@@ -902,7 +898,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 220.8,
+      "latency_ms": 229.4,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -932,7 +928,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 267.7,
+      "latency_ms": 272.9,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -949,7 +945,7 @@
         "2411.17992",
         "2305.10496",
         "2110.08412",
-        "2311.07466",
+        "2209.11326",
         "2410.14155"
       ],
       "has_relevant": true,
@@ -967,7 +963,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 228.2,
+      "latency_ms": 247.0,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -983,8 +979,8 @@
         "2604.14477",
         "2509.25686",
         "2604.07615",
-        "2606.15796",
-        "2511.14465"
+        "2511.14465",
+        "2606.15796"
       ],
       "has_relevant": true,
       "top_score": 0.8294,
@@ -1001,7 +997,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 206.5,
+      "latency_ms": 226.0,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1034,7 +1030,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 223.4,
+      "latency_ms": 243.2,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1048,14 +1044,14 @@
         "2501.16496"
       ],
       "retrieved_paper_ids": [
-        "2407.13594",
         "2407.08734",
+        "2407.13594",
         "2605.24033",
         "2602.15183",
-        "2301.05217"
+        "2511.14465"
       ],
       "has_relevant": true,
-      "top_score": 0.8563,
+      "top_score": 0.8594,
       "recall@k": 0.0,
       "mrr": 0.0,
       "hit_rate@1": 0.0,
@@ -1069,7 +1065,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 211.2,
+      "latency_ms": 221.5,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1083,12 +1079,12 @@
       ],
       "retrieved_paper_ids": [
         "2404.14082",
+        "2407.08734",
         "2501.09967",
-        "2501.16496",
-        "2407.08734"
+        "2604.07615"
       ],
       "has_relevant": true,
-      "top_score": 0.8437,
+      "top_score": 0.8628,
       "recall@k": 0.0,
       "mrr": 0.0,
       "hit_rate@1": 0.0,
@@ -1102,7 +1098,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 218.8,
+      "latency_ms": 245.2,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1117,8 +1113,9 @@
       "retrieved_paper_ids": [
         "2304.14997",
         "2310.18969",
+        "2301.05217",
         "2606.15796",
-        "2301.05217"
+        "2511.14465"
       ],
       "has_relevant": true,
       "top_score": 0.88,
@@ -1135,7 +1132,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 207.8,
+      "latency_ms": 244.5,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1151,7 +1148,7 @@
         "2304.14997"
       ],
       "has_relevant": true,
-      "top_score": 0.7317,
+      "top_score": 0.7391,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -1165,7 +1162,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 436.6,
+      "latency_ms": 468.7,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1181,7 +1178,8 @@
         "2602.16823",
         "2404.14082",
         "2407.08734",
-        "2602.22968"
+        "2602.22968",
+        "2501.16496"
       ],
       "has_relevant": true,
       "top_score": 0.7819,
@@ -1198,7 +1196,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 209.8,
+      "latency_ms": 226.2,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1231,7 +1229,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 219.7,
+      "latency_ms": 221.8,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1245,8 +1243,8 @@
       ],
       "retrieved_paper_ids": [
         "2404.14082",
-        "2507.05810",
-        "2502.20914"
+        "2502.20914",
+        "2605.08934"
       ],
       "has_relevant": true,
       "top_score": 0.8673,
@@ -1263,7 +1261,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 210.4,
+      "latency_ms": 226.5,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1277,13 +1275,13 @@
       ],
       "retrieved_paper_ids": [
         "2505.00808",
-        "2501.16496",
-        "2506.18852"
+        "2506.18852",
+        "2501.16496"
       ],
       "has_relevant": true,
       "top_score": 0.8916,
       "recall@k": 1.0,
-      "mrr": 0.3333,
+      "mrr": 0.5,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -1295,7 +1293,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 210.2,
+      "latency_ms": 220.7,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1326,7 +1324,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 223.6,
+      "latency_ms": 221.7,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1342,7 +1340,7 @@
         "2406.11779"
       ],
       "has_relevant": true,
-      "top_score": 0.8593,
+      "top_score": 0.8862,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -1356,7 +1354,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 232.9,
+      "latency_ms": 226.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1372,7 +1370,7 @@
         "2407.13594"
       ],
       "has_relevant": true,
-      "top_score": 0.8656,
+      "top_score": 0.872,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -1386,7 +1384,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 207.5,
+      "latency_ms": 214.2,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1416,7 +1414,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 216.5,
+      "latency_ms": 223.9,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1447,7 +1445,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 237.3,
+      "latency_ms": 220.8,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1462,6 +1460,7 @@
       ],
       "retrieved_paper_ids": [
         "2501.16496",
+        "2504.13151",
         "2301.05217"
       ],
       "has_relevant": true,
@@ -1479,7 +1478,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 217.7,
+      "latency_ms": 219.9,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1493,14 +1492,14 @@
         "2501.16496"
       ],
       "retrieved_paper_ids": [
-        "2608.15459",
+        "2602.16823",
         "2404.14082",
         "2406.11779",
-        "2310.10348",
-        "1809.11096"
+        "2006.16668",
+        "2601.07315"
       ],
       "has_relevant": true,
-      "top_score": 0.8206,
+      "top_score": 0.8337,
       "recall@k": 1.0,
       "mrr": 0.5,
       "hit_rate@1": 0.0,
@@ -1514,7 +1513,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 229.7,
+      "latency_ms": 224.2,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1547,7 +1546,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 253.1,
+      "latency_ms": 218.2,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1563,9 +1562,9 @@
       "retrieved_paper_ids": [
         "2406.04606",
         "1806.07572",
+        "2504.08310",
         "2508.10490",
-        "2105.15134",
-        "1608.08225"
+        "2407.08734"
       ],
       "has_relevant": true,
       "top_score": 0.8274,
@@ -1582,7 +1581,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 225.1,
+      "latency_ms": 221.9,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1597,11 +1596,11 @@
       ],
       "retrieved_paper_ids": [
         "2607.14271",
-        "2211.09085",
         "2510.21900",
         "1802.05399",
-        "2205.09569",
-        "2604.22026"
+        "2211.09085",
+        "2609.00054",
+        "2607.07762"
       ],
       "has_relevant": true,
       "top_score": 0.8,
@@ -1618,7 +1617,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 229.5,
+      "latency_ms": 231.9,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1633,15 +1632,15 @@
       ],
       "retrieved_paper_ids": [
         "1902.04742",
-        "2501.16496",
         "1611.03530",
+        "2406.04606",
         "2602.03514",
-        "2406.04606"
+        "2501.16496"
       ],
       "has_relevant": true,
       "top_score": 0.8185,
       "recall@k": 1.0,
-      "mrr": 0.5,
+      "mrr": 0.2,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -1653,7 +1652,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 227.9,
+      "latency_ms": 233.3,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1667,50 +1666,17 @@
         "2304.14997"
       ],
       "retrieved_paper_ids": [
+        "2309.08600",
         "2501.16496",
         "2605.20607",
+        "2601.09624",
         "2310.10348",
-        "2309.08600",
-        "2602.10168",
-        "2601.09624"
+        "2602.10168"
       ],
       "has_relevant": true,
-      "top_score": 0.8228,
+      "top_score": 0.8328,
       "recall@k": 1.0,
-      "mrr": 1.0,
-      "hit_rate@1": 1.0,
-      "coverage": "high",
-      "should_refuse": false,
-      "did_refuse": false,
-      "refusal_correct": null,
-      "cache_hit": false,
-      "citation_valid": true,
-      "citation_has": false,
-      "n_citations": 0,
-      "citation_precision": null,
-      "groundedness_ratio": null,
-      "latency_ms": 212.0,
-      "fail_hint": null,
-      "answer_preview": ""
-    },
-    {
-      "id": "para_01",
-      "kind": "paraphrase",
-      "difficulty": "easy",
-      "question": "Tell me what people mean by the neural tangent kernel in deep learning theory.",
-      "expected_paper_ids": [
-        "1806.07572"
-      ],
-      "retrieved_paper_ids": [
-        "2106.10165",
-        "2501.16496",
-        "2406.04606",
-        "2106.11542"
-      ],
-      "has_relevant": true,
-      "top_score": 0.841,
-      "recall@k": 0.0,
-      "mrr": 0.0,
+      "mrr": 0.5,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -1722,8 +1688,41 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 212.9,
-      "fail_hint": "missing_or_ranking",
+      "latency_ms": 216.1,
+      "fail_hint": "ranking",
+      "answer_preview": ""
+    },
+    {
+      "id": "para_01",
+      "kind": "paraphrase",
+      "difficulty": "easy",
+      "question": "Tell me what people mean by the neural tangent kernel in deep learning theory.",
+      "expected_paper_ids": [
+        "1806.07572"
+      ],
+      "retrieved_paper_ids": [
+        "2406.04606",
+        "1806.07572",
+        "2106.10165",
+        "2501.16496"
+      ],
+      "has_relevant": true,
+      "top_score": 0.8806,
+      "recall@k": 1.0,
+      "mrr": 0.5,
+      "hit_rate@1": 0.0,
+      "coverage": "high",
+      "should_refuse": false,
+      "did_refuse": false,
+      "refusal_correct": null,
+      "cache_hit": false,
+      "citation_valid": true,
+      "citation_has": false,
+      "n_citations": 0,
+      "citation_precision": null,
+      "groundedness_ratio": null,
+      "latency_ms": 228.5,
+      "fail_hint": "ranking",
       "answer_preview": ""
     },
     {
@@ -1737,7 +1736,6 @@
       "retrieved_paper_ids": [
         "1806.07572",
         "2106.10165",
-        "1711.00165",
         "2106.11542"
       ],
       "has_relevant": true,
@@ -1755,7 +1753,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 222.1,
+      "latency_ms": 217.4,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -1769,16 +1767,16 @@
       ],
       "retrieved_paper_ids": [
         "1206.5538",
-        "1701.06538",
-        "2106.09524",
         "2412.02104",
-        "1712.09913",
-        "2604.14477"
+        "2106.09524",
+        "1701.06538",
+        "2509.25686",
+        "2501.16496"
       ],
       "has_relevant": true,
       "top_score": 0.841,
-      "recall@k": 0.0,
-      "mrr": 0.0,
+      "recall@k": 1.0,
+      "mrr": 0.1667,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -1790,8 +1788,8 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 217.4,
-      "fail_hint": "missing_or_ranking",
+      "latency_ms": 251.7,
+      "fail_hint": "ranking",
       "answer_preview": ""
     },
     {
@@ -1803,15 +1801,15 @@
         "2304.14997"
       ],
       "retrieved_paper_ids": [
-        "2604.17411",
-        "2111.05639",
-        "2502.04554",
         "2406.04612",
+        "2502.04554",
         "2205.12454",
-        "1710.10903"
+        "1710.10903",
+        "2604.17411",
+        "2111.05639"
       ],
       "has_relevant": true,
-      "top_score": 0.8444,
+      "top_score": 0.8499,
       "recall@k": 0.0,
       "mrr": 0.0,
       "hit_rate@1": 0.0,
@@ -1825,7 +1823,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 229.3,
+      "latency_ms": 241.5,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1839,15 +1837,14 @@
         "2501.16496"
       ],
       "retrieved_paper_ids": [
+        "1808.05054",
         "2411.17992",
         "2404.14082",
-        "1808.05054",
-        "2409.13714",
-        "2305.02160",
-        "2005.12116"
+        "2406.11779",
+        "2305.02160"
       ],
       "has_relevant": true,
-      "top_score": 0.8361,
+      "top_score": 0.8471,
       "recall@k": 0.0,
       "mrr": 0.0,
       "hit_rate@1": 0.0,
@@ -1861,7 +1858,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 220.6,
+      "latency_ms": 226.8,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -1876,15 +1873,15 @@
       "retrieved_paper_ids": [
         "2412.19523",
         "1909.09251",
-        "2504.19475",
+        "2605.00474",
         "2501.09967",
-        "2312.17345",
-        "2605.00474"
+        "2404.14394",
+        "2504.19475"
       ],
       "has_relevant": true,
       "top_score": 0.8499,
       "recall@k": 1.0,
-      "mrr": 0.3333,
+      "mrr": 0.1667,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -1896,7 +1893,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 237.1,
+      "latency_ms": 232.3,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1910,12 +1907,12 @@
       ],
       "retrieved_paper_ids": [
         "2106.10165",
-        "1905.11881"
+        "1806.07572"
       ],
       "has_relevant": true,
       "top_score": 0.8425,
-      "recall@k": 0.0,
-      "mrr": 0.0,
+      "recall@k": 1.0,
+      "mrr": 0.5,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -1927,8 +1924,8 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 242.5,
-      "fail_hint": "missing_or_ranking",
+      "latency_ms": 236.3,
+      "fail_hint": "ranking",
       "answer_preview": ""
     },
     {
@@ -1960,7 +1957,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 218.5,
+      "latency_ms": 228.6,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -1990,7 +1987,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 437.1,
+      "latency_ms": 426.1,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2020,7 +2017,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 472.9,
+      "latency_ms": 467.3,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2050,7 +2047,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 370.6,
+      "latency_ms": 353.8,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2080,7 +2077,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 416.0,
+      "latency_ms": 434.0,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2110,7 +2107,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 467.2,
+      "latency_ms": 472.5,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2123,7 +2120,7 @@
       "retrieved_paper_ids": [
         "2502.20288",
         "2409.19028",
-        "2610.06623"
+        "2504.08310"
       ],
       "has_relevant": false,
       "top_score": 0.8478,
@@ -2140,7 +2137,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 223.3,
+      "latency_ms": 221.1,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2154,7 +2151,7 @@
         "2508.19593",
         "hep-th/0207245",
         "2603.22363",
-        "2608.19251"
+        "1912.09502"
       ],
       "has_relevant": false,
       "top_score": 0.7993,
@@ -2171,7 +2168,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 235.9,
+      "latency_ms": 232.1,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2183,11 +2180,11 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2502.08106",
-        "2610.00656",
-        "2512.04386",
         "1401.3899",
+        "1711.11279",
+        "2610.00656",
         "2304.08192",
-        "1711.11279"
+        "2512.04386"
       ],
       "has_relevant": false,
       "top_score": 0.7881,
@@ -2204,7 +2201,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 239.9,
+      "latency_ms": 224.9,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2235,7 +2232,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 222.9,
+      "latency_ms": 220.8,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2248,8 +2245,8 @@
       "retrieved_paper_ids": [
         "2607.07708",
         "2604.16851",
-        "2104.13478",
-        "2507.03197"
+        "2507.03197",
+        "2104.13478"
       ],
       "has_relevant": false,
       "top_score": 0.7689,
@@ -2266,7 +2263,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 243.2,
+      "latency_ms": 239.0,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2278,11 +2275,11 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2610.02829",
-        "2512.12492",
         "2505.02830",
         "2509.20490",
-        "2504.06227",
-        "2510.06070"
+        "2512.12492",
+        "2607.07019",
+        "2609.03355"
       ],
       "has_relevant": false,
       "top_score": 0.7715,
@@ -2299,7 +2296,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 244.8,
+      "latency_ms": 230.8,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2311,10 +2308,11 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2001.07685",
-        "2002.12538",
+        "2603.22363",
         "2303.12712",
-        "2303.11712",
-        "2603.22363"
+        "2110.08207",
+        "2002.12538",
+        "2604.10392"
       ],
       "has_relevant": false,
       "top_score": 0.7745,
@@ -2331,7 +2329,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 239.9,
+      "latency_ms": 233.8,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2343,11 +2341,11 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2604.16587",
-        "2607.17535",
         "2603.30034",
+        "2607.17535",
         "2608.09898",
         "2507.22576",
-        "2302.04761"
+        "2305.02170"
       ],
       "has_relevant": false,
       "top_score": 0.7597,
@@ -2364,7 +2362,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 235.0,
+      "latency_ms": 236.7,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2375,12 +2373,12 @@
       "question": "Explain the plot of the novel Middlemarch in detail.",
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
-        "2112.04426",
         "2510.01252",
+        "2112.04426",
         "2407.06501"
       ],
       "has_relevant": false,
-      "top_score": 0.7388,
+      "top_score": 0.7577,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -2394,7 +2392,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 222.2,
+      "latency_ms": 246.5,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2408,7 +2406,7 @@
         "2606.08454",
         "2402.14740",
         "2303.08774",
-        "2606.05616"
+        "2603.05318"
       ],
       "has_relevant": false,
       "top_score": 0.7578,
@@ -2425,7 +2423,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 211.7,
+      "latency_ms": 227.9,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2438,9 +2436,9 @@
       "retrieved_paper_ids": [
         "2401.14640",
         "2404.09971",
-        "2403.18346",
+        "2303.14186",
         "2204.02311",
-        "2303.14186"
+        "2403.18346"
       ],
       "has_relevant": false,
       "top_score": 0.7731,
@@ -2457,7 +2455,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 234.8,
+      "latency_ms": 226.2,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2469,11 +2467,11 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2608.21656",
-        "1904.09697",
         "1704.05858",
-        "2308.15712",
         "2301.02437",
-        "2311.17378"
+        "1904.09697",
+        "1705.01599",
+        "2308.15712"
       ],
       "has_relevant": false,
       "top_score": 0.7429,
@@ -2490,7 +2488,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 220.0,
+      "latency_ms": 228.5,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2502,9 +2500,7 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2506.13734",
-        "2307.09288",
-        "2301.12597",
-        "2303.12712"
+        "2307.09288"
       ],
       "has_relevant": false,
       "top_score": 0.7839,
@@ -2521,7 +2517,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 228.7,
+      "latency_ms": 231.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2534,8 +2530,7 @@
       "retrieved_paper_ids": [
         "2107.08128",
         "2108.07258",
-        "2211.03540",
-        "2202.07646"
+        "2607.24651"
       ],
       "has_relevant": false,
       "top_score": 0.7816,
@@ -2552,7 +2547,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 251.2,
+      "latency_ms": 231.3,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2563,15 +2558,14 @@
       "question": "What dosage of amoxicillin is standard for adult strep throat?",
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
-        "2504.06227",
-        "2508.16054",
-        "2606.05616",
-        "1409.5774",
         "2604.20791",
-        "2504.14150"
+        "2606.05616",
+        "2604.18570",
+        "2604.25942",
+        "2604.14656"
       ],
       "has_relevant": false,
-      "top_score": 0.7366,
+      "top_score": 0.7769,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -2585,7 +2579,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 219.2,
+      "latency_ms": 230.9,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2597,11 +2591,11 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2610.01349",
-        "2402.10767",
         "2608.22160",
-        "2608.17646",
-        "2412.20866",
-        "2609.38915"
+        "2402.10767",
+        "2608.15211",
+        "2609.38915",
+        "2207.01754"
       ],
       "has_relevant": false,
       "top_score": 0.7634,
@@ -2618,7 +2612,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 206.0,
+      "latency_ms": 234.5,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2629,12 +2623,13 @@
       "question": "What are the side effects of the Pfizer COVID-19 vaccine in children under 5?",
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
-        "2212.09955",
         "2310.03693",
-        "2303.12712"
+        "2212.09955",
+        "2303.12712",
+        "2601.11886"
       ],
       "has_relevant": false,
-      "top_score": 0.7571,
+      "top_score": 0.7933,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -2648,7 +2643,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 210.6,
+      "latency_ms": 238.7,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2660,13 +2655,13 @@
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
         "2608.04939",
-        "2405.17980",
-        "2512.12500",
+        "2606.01148",
         "2510.06275",
-        "2602.20710"
+        "2405.17980",
+        "2512.12500"
       ],
       "has_relevant": false,
-      "top_score": 0.7299,
+      "top_score": 0.7456,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -2680,7 +2675,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 219.8,
+      "latency_ms": 244.2,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2711,7 +2706,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 202.9,
+      "latency_ms": 303.3,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2743,7 +2738,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 215.0,
+      "latency_ms": 255.0,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -2757,8 +2752,7 @@
       ],
       "retrieved_paper_ids": [
         "2012.03224",
-        "1806.07572",
-        "1712.09913"
+        "1806.07572"
       ],
       "has_relevant": true,
       "top_score": 0.8084,
@@ -2775,7 +2769,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 214.3,
+      "latency_ms": 243.6,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -2788,15 +2782,15 @@
         "2501.16496"
       ],
       "retrieved_paper_ids": [
-        "2209.10652",
         "2103.11251",
-        "2507.06265",
-        "2203.14932",
-        "2205.10900",
-        "2310.17945"
+        "2209.10652",
+        "1711.02245",
+        "2610.25335",
+        "2310.17945",
+        "2507.06265"
       ],
       "has_relevant": true,
-      "top_score": 0.8318,
+      "top_score": 0.8513,
       "recall@k": 0.0,
       "mrr": 0.0,
       "hit_rate@1": 0.0,
@@ -2810,7 +2804,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 208.2,
+      "latency_ms": 235.5,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -2823,15 +2817,15 @@
         "2501.16496"
       ],
       "retrieved_paper_ids": [
-        "2512.05915",
         "1808.09744",
         "2010.00522",
+        "2512.05915",
         "2501.16496",
-        "1010.3467",
-        "1704.04861"
+        "2410.07170",
+        "1010.3467"
       ],
       "has_relevant": true,
-      "top_score": 0.8246,
+      "top_score": 0.8281,
       "recall@k": 1.0,
       "mrr": 0.25,
       "hit_rate@1": 0.0,
@@ -2845,7 +2839,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 211.6,
+      "latency_ms": 219.0,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -2858,14 +2852,13 @@
         "2501.16496"
       ],
       "retrieved_paper_ids": [
-        "2502.20914",
         "1302.4972",
-        "2407.08734",
+        "2502.20914",
         "2305.09204",
-        "2404.08839"
+        "2407.08734"
       ],
       "has_relevant": true,
-      "top_score": 0.8099,
+      "top_score": 0.8219,
       "recall@k": 0.0,
       "mrr": 0.0,
       "hit_rate@1": 0.0,
@@ -2879,7 +2872,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 227.5,
+      "latency_ms": 225.9,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -2894,9 +2887,9 @@
       "retrieved_paper_ids": [
         "2407.08734",
         "2304.14997",
-        "2301.05217",
         "2511.14465",
-        "2606.15796",
+        "2301.05217",
+        "2609.15533",
         "2209.11895"
       ],
       "has_relevant": true,
@@ -2914,7 +2907,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 206.7,
+      "latency_ms": 218.2,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -2930,8 +2923,8 @@
         "2602.16823",
         "2407.08734",
         "2504.13151",
-        "2502.20914",
-        "2604.14477"
+        "2604.14477",
+        "2404.14082"
       ],
       "has_relevant": true,
       "top_score": 0.8409,
@@ -2948,7 +2941,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 200.8,
+      "latency_ms": 213.7,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -2979,7 +2972,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 198.9,
+      "latency_ms": 218.2,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -2996,8 +2989,8 @@
         "2605.24033",
         "2609.30993",
         "2602.16823",
-        "2609.14754",
         "2605.15138",
+        "2609.14754",
         "2209.10652"
       ],
       "has_relevant": true,
@@ -3015,7 +3008,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 205.2,
+      "latency_ms": 233.3,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -3048,7 +3041,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 202.5,
+      "latency_ms": 211.1,
       "fail_hint": "missing_or_ranking",
       "answer_preview": ""
     },
@@ -3064,8 +3057,7 @@
       "retrieved_paper_ids": [
         "2602.16823",
         "2407.08734",
-        "2304.14997",
-        "2504.13151"
+        "2304.14997"
       ],
       "has_relevant": true,
       "top_score": 0.8643,
@@ -3082,7 +3074,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 203.3,
+      "latency_ms": 222.6,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -3095,17 +3087,16 @@
         "1806.07572"
       ],
       "retrieved_paper_ids": [
-        "1811.03804",
         "2106.10165",
+        "1502.04390",
         "2610.25335",
-        "2110.02861",
         "1806.07572",
-        "1502.04390"
+        "1811.03804"
       ],
       "has_relevant": true,
-      "top_score": 0.8457,
+      "top_score": 0.8517,
       "recall@k": 1.0,
-      "mrr": 0.2,
+      "mrr": 0.25,
       "hit_rate@1": 0.0,
       "coverage": "high",
       "should_refuse": false,
@@ -3117,7 +3108,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 208.5,
+      "latency_ms": 223.2,
       "fail_hint": "ranking",
       "answer_preview": ""
     },
@@ -3131,10 +3122,10 @@
       ],
       "retrieved_paper_ids": [
         "2501.16496",
-        "2209.10652",
-        "2303.11712",
         "1904.02323",
-        "2602.18160"
+        "2303.11712",
+        "2607.14271",
+        "1606.06565"
       ],
       "has_relevant": true,
       "top_score": 0.813,
@@ -3151,7 +3142,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 212.0,
+      "latency_ms": 227.4,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3181,7 +3172,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 490.6,
+      "latency_ms": 522.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3211,7 +3202,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 359.0,
+      "latency_ms": 385.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3222,15 +3213,15 @@
       "question": "Give me medical advice for treating hypertension based only on these ML theory papers.",
       "expected_paper_ids": [],
       "retrieved_paper_ids": [
-        "2504.08824",
         "2604.28011",
         "2205.04599",
         "2204.11351",
-        "2604.08295",
-        "2409.19684"
+        "2504.08824",
+        "2409.19684",
+        "2504.18080"
       ],
       "has_relevant": false,
-      "top_score": 0.7624,
+      "top_score": 0.7646,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -3244,7 +3235,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 234.0,
+      "latency_ms": 235.4,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3270,7 +3261,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 245.5,
+      "latency_ms": 238.3,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3286,7 +3277,7 @@
         "1009.3029"
       ],
       "has_relevant": true,
-      "top_score": 0.8219,
+      "top_score": 0.8791,
       "recall@k": 1.0,
       "mrr": 1.0,
       "hit_rate@1": 1.0,
@@ -3300,7 +3291,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 302.6,
+      "latency_ms": 225.8,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3330,7 +3321,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 240.9,
+      "latency_ms": 230.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3360,7 +3351,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 220.5,
+      "latency_ms": 236.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3390,7 +3381,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 228.3,
+      "latency_ms": 221.6,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3403,8 +3394,7 @@
         "1401.7623"
       ],
       "retrieved_paper_ids": [
-        "1401.7623",
-        "2605.06588"
+        "1401.7623"
       ],
       "has_relevant": true,
       "top_score": 0.845,
@@ -3421,7 +3411,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 245.4,
+      "latency_ms": 224.1,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3451,7 +3441,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 226.8,
+      "latency_ms": 228.1,
       "fail_hint": null,
       "answer_preview": ""
     },
@@ -3481,7 +3471,7 @@
       "n_citations": 0,
       "citation_precision": null,
       "groundedness_ratio": null,
-      "latency_ms": 267.8,
+      "latency_ms": 219.6,
       "fail_hint": null,
       "answer_preview": ""
     }

@@ -1,57 +1,59 @@
 # Batch Novelty Subspace Analysis Report
 
-**Generated:** 2026-10-30T11:00:16.291341+00:00  
-**Papers Evaluated:** 100  
-**Success Rate:** 100 / 100 (100.0%)
+**Generated:** 2026-10-30T14:12:26.888028+00:00  
+**Papers Evaluated:** 5752  
+**Success Rate:** 5712 / 5752 (99.3%)
 
 ## 1. Aggregate Geometric Metrics
 
 | Metric | Definition | Cohort Mean | Interpretation |
 | :--- | :--- | :--- | :--- |
-| **m** | Cosine to closest parent | `0.8837` | Baseline anchor strength to closest single prior work |
-| **Δ (Delta)** | Multi-parent cone synergy | `0.0789` | Energy gain from non-negative combination of multiple parents |
-| **R²₊** | Cone reconstruction energy | `0.8618` | Proportion of embedding explained by the reference subspace |
-| **√(1 - R²₊)** | Novelty residual gap | `0.3636` | Orthogonal departure distance from reference cone to unit circle |
+| **m** | Cosine to closest parent | `0.5900` | Baseline anchor strength to closest single prior work |
+| **Δ (Delta)** | Multi-parent cone synergy | `0.2087` | Energy gain from non-negative combination of multiple parents |
+| **R²₊** | Cone reconstruction energy | `0.5722` | Proportion of embedding explained by the reference subspace |
+| **√(1 - R²₊)** | Novelty residual gap | `0.6434` | Orthogonal departure distance from reference cone to unit circle |
 
 ## 2. Discovery Mode Distribution
 
 | Discovery Classification | Paper Count | Percentage |
 | :--- | :---: | :---: |
-| **High Synergy Cone Blend** | 53 | 53.0% |
-| **Moderate Synthesis** | 37 | 37.0% |
-| **Linear / Incremental Extension** | 10 | 10.0% |
+| **High Synergy Cone Blend** | 3379 | 59.2% |
+| **Paradigm Shift / Subspace Outlier** | 2225 | 39.0% |
+| **Moderate Synthesis** | 79 | 1.4% |
+| **Linear / Incremental Extension** | 27 | 0.5% |
+| **Diffused Reference Combination** | 2 | 0.0% |
 
 ## 3. Top Synergistic Syntheses (Highest Multi-Parent Synergy Δ)
 Papers that achieve dramatic innovation by non-linearly fusing multiple distinct research threads:
 
 | arXiv ID | Title | Year | Citations | Δ (Synergy) | m (Anchor) | R²₊ | Mode |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| [1705.10301](https://arxiv.org/abs/1705.10301) | Contextual Explanation Networks... | - | 92 | **0.1441** | 0.809 | 0.799 | High Synergy Cone Blend |
-| [1905.04172](https://arxiv.org/abs/1905.04172) | On the Connection Between Adversarial Robustn... | 2019 | 184 | **0.1420** | 0.812 | 0.802 | High Synergy Cone Blend |
-| [1811.05437](https://arxiv.org/abs/1811.05437) | Argumentation for Explainable Scheduling (Ful... | 2018 | 30 | **0.1400** | 0.844 | 0.852 | High Synergy Cone Blend |
-| [1901.09392](https://arxiv.org/abs/1901.09392) | On the (In)fidelity and Sensitivity for Expla... | 2019 | 651 | **0.1334** | 0.839 | 0.838 | High Synergy Cone Blend |
-| [1904.02057](https://arxiv.org/abs/1904.02057) | Interpreting Adversarial Examples by Activati... | - | 46 | **0.1278** | 0.819 | 0.799 | High Synergy Cone Blend |
-| [1703.06585](https://arxiv.org/abs/1703.06585) | Learning Cooperative Visual Dialog Agents wit... | 2017 | 435 | **0.1253** | 0.862 | 0.868 | High Synergy Cone Blend |
-| [1904.03367](https://arxiv.org/abs/1904.03367) | Reinforcement Learning with Attention that Wo... | - | 67 | **0.1200** | 0.688 | 0.593 | High Synergy Cone Blend |
-| [1808.05054](https://arxiv.org/abs/1808.05054) | Shedding Light on Black Box Machine Learning ... | 2018 | 46 | **0.1185** | 0.854 | 0.848 | High Synergy Cone Blend |
-| [1712.00840](https://arxiv.org/abs/1712.00840) | Visual Explanation by High-Level Abduction: O... | 2017 | 32 | **0.1156** | 0.883 | 0.895 | High Synergy Cone Blend |
-| [1905.11833](https://arxiv.org/abs/1905.11833) | Interpreting and improving natural-language p... | - | 336 | **0.1147** | 0.851 | 0.839 | High Synergy Cone Blend |
+| [2204.03458](https://arxiv.org/abs/2204.03458) | Video Diffusion Models... | - | 0 | **0.4777** | 0.475 | 0.703 | High Synergy Cone Blend |
+| [2310.00761](https://arxiv.org/abs/2310.00761) | Counterfactual Image Generation for adversari... | - | 0 | **0.4708** | 0.508 | 0.730 | High Synergy Cone Blend |
+| [2608.18166](https://arxiv.org/abs/2608.18166) | TractoGraphVLM: A Unified Vision-Language Fra... | 2026 | 0 | **0.4644** | 0.500 | 0.715 | High Synergy Cone Blend |
+| [2012.11905](https://arxiv.org/abs/2012.11905) | GANterfactual - Counterfactual Explanations for... | - | 0 | **0.4556** | 0.489 | 0.695 | High Synergy Cone Blend |
+| [2205.13042](https://arxiv.org/abs/2205.13042) | How explainable are adversarially-robust CNNs... | 2022 | 0 | **0.4555** | 0.478 | 0.684 | High Synergy Cone Blend |
+| [2406.11624](https://arxiv.org/abs/2406.11624) | Words in Motion: Extracting Interpretable Con... | 2024 | 0 | **0.4542** | 0.455 | 0.661 | High Synergy Cone Blend |
+| [2504.02821](https://arxiv.org/abs/2504.02821) | Sparse Autoencoders Learn Monosemantic Featur... | 2025 | 0 | **0.4504** | 0.503 | 0.703 | High Synergy Cone Blend |
+| [2503.04223](https://arxiv.org/abs/2503.04223) | Spiking Meets Attention: Efficient Remote Sen... | - | 0 | **0.4500** | 0.529 | 0.730 | High Synergy Cone Blend |
+| [2307.15217](https://arxiv.org/abs/2307.15217) | Open Problems and Fundamental Limitations of ... | - | 0 | **0.4498** | 0.531 | 0.732 | High Synergy Cone Blend |
+| [2503.02917](https://arxiv.org/abs/2503.02917) | Interpretable Few-Shot Retinal Disease Diagno... | 2025 | 0 | **0.4465** | 0.542 | 0.741 | High Synergy Cone Blend |
 
 ## 4. Top Subspace Outliers / Paradigm Shifts (Highest Residual √(1 - R²₊))
 Papers with large orthogonal departures that cannot be reconstructed from their references:
 
 | arXiv ID | Title | Year | Citations | Novelty Residual | R²₊ | m (Anchor) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| [1806.04398](https://arxiv.org/abs/1806.04398) | Attentive cross-modal paratope prediction... | 2018 | 67 | **0.6392** | 0.591 | 0.703 |
-| [1904.03367](https://arxiv.org/abs/1904.03367) | Reinforcement Learning with Attention that Wo... | - | 67 | **0.6382** | 0.593 | 0.688 |
-| [1004.4421](https://arxiv.org/abs/1004.4421) | Efficient Learning with Partially Observed At... | - | 95 | **0.5093** | 0.741 | 0.808 |
-| [1706.06060](https://arxiv.org/abs/1706.06060) | Consistent feature attribution for tree ensem... | 2017 | 187 | **0.4896** | 0.760 | 0.844 |
-| [1612.08795](https://arxiv.org/abs/1612.08795) | Provable learning of Noisy-or Networks... | 2016 | 28 | **0.4719** | 0.777 | 0.823 |
-| [1711.02245](https://arxiv.org/abs/1711.02245) | Challenges in Disentangling Independent Facto... | 2017 | 53 | **0.4624** | 0.786 | 0.856 |
-| [1811.02394](https://arxiv.org/abs/1811.02394) | DeepChannel: Salience Estimation by Contrasti... | 2018 | 31 | **0.4540** | 0.794 | 0.853 |
-| [1812.06369](https://arxiv.org/abs/1812.06369) | Provable limitations of deep learning... | - | 46 | **0.4521** | 0.796 | 0.829 |
-| [1904.02057](https://arxiv.org/abs/1904.02057) | Interpreting Adversarial Examples by Activati... | - | 46 | **0.4487** | 0.799 | 0.819 |
-| [1705.10301](https://arxiv.org/abs/1705.10301) | Contextual Explanation Networks... | - | 92 | **0.4485** | 0.799 | 0.809 |
+| [2501.02355](https://arxiv.org/abs/2501.02355) | CorrFill: Enhancing Faithfulness in Reference... | 2025 | 0 | **0.9949** | 0.010 | 0.086 |
+| [1806.04838](https://arxiv.org/abs/1806.04838) | Partial AUC Maximization via Nonlinear Scorin... | 2018 | 10 | **0.9934** | 0.013 | 0.105 |
+| [2609.32190](https://arxiv.org/abs/2609.32190) | Evaluating Single and Multi-Omics Based Expla... | 2026 | 0 | **0.9921** | 0.016 | 0.125 |
+| [2207.05374](https://arxiv.org/abs/2207.05374) | Rethinking gradient weights' influence over s... | 2022 | 0 | **0.9912** | 0.018 | 0.099 |
+| [2302.08670](https://arxiv.org/abs/2302.08670) | Cascaded information enhancement and cross-mo... | 2023 | 0 | **0.9903** | 0.019 | 0.124 |
+| [2501.10292](https://arxiv.org/abs/2501.10292) | Enhancing AI Transparency: XRL-Based Resource... | - | 0 | **0.9892** | 0.022 | 0.141 |
+| [2505.16376](https://arxiv.org/abs/2505.16376) | DeCafNet: Delegate and Conquer for Efficient ... | 2025 | 0 | **0.9871** | 0.026 | 0.158 |
+| [1609.02907](https://arxiv.org/abs/1609.02907) | Semi-Supervised Classification with Graph Con... | - | 0 | **0.9871** | 0.026 | 0.144 |
+| [2210.15678](https://arxiv.org/abs/2210.15678) | Prototype-Based Layered Federated Cross-Modal... | - | 0 | **0.9856** | 0.029 | 0.144 |
+| [2011.10731](https://arxiv.org/abs/2011.10731) | LRTA: A Transparent Neural-Symbolic Reasoning... | 2020 | 0 | **0.9847** | 0.030 | 0.123 |
 
 ## 5. Top Foundationally Rooted Works (Highest Single Parent m)
 Works that build directly and deeply on a primary ancestor paper:
@@ -59,15 +61,15 @@ Works that build directly and deeply on a primary ancestor paper:
 | arXiv ID | Title | Year | Citations | m (Anchor) | Δ (Synergy) | Primary Parent Attribution |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
 | [1404.1530](https://arxiv.org/abs/1404.1530) | Provable Deterministic Leverage Score Sa... | 2014 | 88 | **1.0000** | 0.000 | `openalex:W2109818719` (λ=1.00) |
+| [2209.06481](https://arxiv.org/abs/2209.06481) | Targeting interventions for displacement... | 2022 | 0 | **1.0000** | 0.000 | `openalex:W4315488832` (λ=1.00) |
+| [2201.12828](https://arxiv.org/abs/2201.12828) | Comprehensive Saliency Fusion for Object... | 2022 | 0 | **1.0000** | 0.000 | `openalex:W4205623571` (λ=1.00) |
+| [1607.00133](https://arxiv.org/abs/1607.00133) | Deep Learning with Differential Privacy... | - | 0 | **1.0000** | 0.000 | `openalex:W2473418344` (λ=1.00) |
+| [2402.17242](https://arxiv.org/abs/2402.17242) | Scalable Community Search with Accuracy ... | 2024 | 0 | **0.9977** | 0.001 | `openalex:W4400909681` (λ=0.95) |
+| [2504.00435](https://arxiv.org/abs/2504.00435) | User authentication on earable devices v... | 2025 | 0 | **0.9725** | 0.007 | `openalex:W4283219085` (λ=0.77) |
 | [1801.02480](https://arxiv.org/abs/1801.02480) | Facial Attributes: Accuracy and Adversar... | 2018 | 67 | **0.9552** | 0.006 | `s2:e87a38f70420b2d4a11c0bbab55677ae139bcc1b` (λ=0.82) |
+| [2408.12398](https://arxiv.org/abs/2408.12398) | A Comparative Analysis of Faithfulness M... | 2024 | 0 | **0.9464** | 0.001 | `2406.15264` (λ=0.95) |
+| [2109.05201](https://arxiv.org/abs/2109.05201) | Conditional Generation of Synthetic Geos... | - | 0 | **0.9448** | 0.001 | `openalex:W3097305019` (λ=0.96) |
 | [1810.12829](https://arxiv.org/abs/1810.12829) | Cross-Modal Attentional Context Learning... | - | 76 | **0.9438** | 0.056 | `1507.06821` (λ=0.30) |
-| [1705.09425](https://arxiv.org/abs/1705.09425) | Hierarchical Cellular Automata for Visua... | 2017 | 61 | **0.9427** | 0.031 | `openalex:W1897243830` (λ=0.53) |
-| [1709.06316](https://arxiv.org/abs/1709.06316) | Predicting Video Saliency with Object-to... | 2017 | 125 | **0.9400** | 0.044 | `s2:25c65c87968b94631d3dcca253478d9f50806be3` (λ=0.27) |
-| [1812.09041](https://arxiv.org/abs/1812.09041) | A Multi-Task Neural Approach for Emotion... | - | 30 | **0.9390** | 0.047 | `s2:7502372bac32d9967eeb4bf68a430a74dadf748c` (λ=0.38) |
-| [1710.11063](https://arxiv.org/abs/1710.11063) | Grad-CAM++: Improved Visual Explanations... | 2017 | 3,549 | **0.9380** | 0.047 | `s2:5582bebed97947a41e3ddd9bd1f284b73f1648c2` (λ=0.50) |
-| [1901.05742](https://arxiv.org/abs/1901.05742) | A Temporal Attentive Approach for Video-... | - | 29 | **0.9372** | 0.041 | `1709.09930` (λ=0.17) |
-| [1807.04855](https://arxiv.org/abs/1807.04855) | A feature agnostic approach for glaucoma... | 2018 | 193 | **0.9369** | 0.028 | `s2:4a8d000ef73ac5adf3317fc820cccc5332e236af` (λ=0.57) |
-| [1904.04745](https://arxiv.org/abs/1904.04745) | Cross-Modal Self-Attention Network for R... | 2019 | 605 | **0.9362** | 0.040 | `1703.07939` (λ=0.38) |
 
 ---
 ### Methodology & Theoretical Foundations

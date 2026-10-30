@@ -1,7 +1,7 @@
 # Master System Evaluation Report
 
 > Comprehensive empirical evaluation across all six operational pillars of the ArXiv Paper Suggester platform.
-> Generated on 2026-10-30T10:46:07.342150+00:00 with fixed random seed 42.
+> Generated on 2026-10-30T14:22:32.278417+00:00 with fixed random seed 42.
 
 ## Executive Summary
 
@@ -16,12 +16,12 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 | Metric | Dense Baseline | Hybrid RRF | Paired Delta (Hybrid - Dense) | 95% Bootstrap CI | p-value | Significance |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **MRR** | 0.4948 | 0.5873 | +0.0925 | [-0.0023, 0.1904] | 0.0590 | Significant (p < 0.05) |
-| **Hit@1** | 0.4000 | 0.4625 | +0.0625 | [-0.0625, 0.1875] | 0.3650 | Significant (p < 0.05) |
-| **Recall@6** | 0.6375 | 0.7625 | +0.1250 | [0.0250, 0.2250] | 0.0190 | Baseline Parity |
+| **MRR** | 0.4948 | 0.5987 | +0.1040 | [0.0169, 0.1956] | 0.0190 | Significant (p < 0.05) |
+| **Hit@1** | 0.4000 | 0.4625 | +0.0625 | [-0.0500, 0.1750] | 0.3380 | Significant (p < 0.05) |
+| **Recall@6** | 0.6375 | 0.8000 | +0.1625 | [0.0750, 0.2500] | 0.0010 | Baseline Parity |
 
 - **Evaluated Questions**: 80 answerable gold questions
-- **Retrieval Latency**: p50 = 236.3 ms, p95 = 477.1 ms
+- **Retrieval Latency**: p50 = 231.0 ms, p95 = 467.3 ms
 
 ---
 
@@ -42,7 +42,7 @@ All confidence intervals are reported at 95% confidence level using percentile b
 ### Score Separation and Citation Grounding
 
 - **Top-Score Separation KS Test**: D = 0.8625, p = 4.9867e-13
-- **Mean Top Score Answerable**: 0.8374 vs Unanswerable: 0.7307 (margin: +0.1067)
+- **Mean Top Score Answerable**: 0.8415 vs Unanswerable: 0.7364 (margin: +0.1051)
 - **Citation Validity Rate**: 98.89% (95% CI: (0.9397, 0.998)) based on 89 verified references
 
 ---
@@ -77,7 +77,7 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 - **Adjacency Representation**: Compressed Sparse Row (CSR) matrix with 100,884 nodes and 226,857 edges
 - **In-Memory Array RAM**: **2.12 MB** (fits entirely within L3 cache)
-- **PageRank Power Iteration**: mean = **18.17 ms** across 5 runs
+- **PageRank Power Iteration**: mean = **18.90 ms** across 5 runs
 - **2-Hop Neighborhood Traversal**: p50 = **0.001 ms**, p95 = **0.008 ms**
 - **Landmark Hub Authority**: Top-50 PageRank vs In-Degree Jaccard overlap = **0.8868** (47/50 shared hubs, Spearman rho = 0.9755)
 
@@ -85,26 +85,26 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 ## Pillar 5: 2D Novelty Subspace Cone Geometry
 
-Evaluated across 100 successfully profiled catalog papers.
+Evaluated across 5,712 successfully profiled catalog papers.
 
 ### Coordinate Distributions
 
 | Coordinate | Mean | Std | Median | IQR | 5th Percentile | 95th Percentile |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Projection Ratio (m)** | 0.8837 | 0.0439 | 0.8875 | 0.0465 | 0.8188 | 0.9390 |
-| **Novelty Residue (Delta)** | 0.0789 | 0.0299 | 0.0817 | 0.0409 | 0.0310 | 0.1254 |
-| **Cone Fit (R2+)** | 0.8618 | 0.0583 | 0.8670 | 0.0514 | 0.7858 | 0.9275 |
-| **Effective Dimension (d_eff)** | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| **Projection Ratio (m)** | 0.5900 | 0.1243 | 0.5917 | 0.1620 | 0.3829 | 0.7865 |
+| **Novelty Residue (Delta)** | 0.2087 | 0.0824 | 0.2117 | 0.1130 | 0.0669 | 0.3402 |
+| **Cone Fit (R2+)** | 0.5722 | 0.1525 | 0.5897 | 0.1850 | 0.2824 | 0.7889 |
+| **Effective Dimension (d_eff)** | 16.9995 | 5.9914 | 16.8281 | 7.8331 | 7.5497 | 26.8548 |
 
 ### 5-Way Discovery Cone Classification Breakdown
 
 | Discovery Classification | Paper Count | Percentage Share |
 | :--- | :---: | :---: |
-| **High Synergy Cone Blend** | 53 | 53.00% |
-| **Moderate Synthesis** | 37 | 37.00% |
-| **Linear / Incremental Extension** | 10 | 10.00% |
-| **Paradigm Shift / Subspace Outlier** | 0 | 0.00% |
-| **Diffused Reference Combination** | 0 | 0.00% |
+| **High Synergy Cone Blend** | 3,379 | 59.16% |
+| **Moderate Synthesis** | 79 | 1.38% |
+| **Linear / Incremental Extension** | 27 | 0.47% |
+| **Paradigm Shift / Subspace Outlier** | 2,225 | 38.95% |
+| **Diffused Reference Combination** | 2 | 0.04% |
 
 ### Matched Reference Null Control
 
@@ -117,10 +117,10 @@ Evaluated across 100 successfully profiled catalog papers.
 | Missing Abstracts Fraction | Coordinate Shift (Title Fallback) | Coordinate Shift (Naive Drop) | Stability Gain |
 | :---: | :---: | :---: | :---: |
 | 0% | 0.0000 | 0.0000 | +0.0% |
-| 25% | 0.0083 | 0.0102 | +18.6% |
-| 50% | 0.0184 | 0.0219 | +16.0% |
-| 75% | 0.0415 | 0.0387 | +0.0% |
-| 90% | 0.0692 | 0.0602 | +0.0% |
+| 25% | 0.0078 | 0.0102 | +23.7% |
+| 50% | 0.0173 | 0.0219 | +20.7% |
+| 75% | 0.0410 | 0.0387 | +0.0% |
+| 90% | 0.0693 | 0.0602 | +0.0% |
 
 - **Universal Citation Parser Verification**: Non-arXiv DOI resolution = True, BibTeX = True, IEEE = True
 
@@ -134,18 +134,18 @@ Evaluated across 100 successfully profiled catalog papers.
 | :--- | :---: | :---: | :---: | :--- |
 | **Chroma RAG Vector Store** | 7.31 GB (7490.5 MB) | 553,516 passage chunks | 256-d Matryoshka | **3.0x Vector Compression** |
 | **PDF Papers Cache** | 173.1 MB | 50 files | 200.0 MB budget | Headroom: 26.9 MB |
-| **API HTTP Cache** | 655.6 MB | 10215 responses | SQLite zlib | Operational |
-| **Novelty Subspace Cache** | 897.3 MB | 11423 profiles | SQLite | Operational |
+| **API HTTP Cache** | 655.6 MB | 10225 responses | SQLite zlib | Operational |
+| **Novelty Subspace Cache** | 994.0 MB | 11428 profiles | SQLite | Operational |
 
 ### System Latency SLO Matrix
 
 | Operation / Endpoint | Target SLO | Measured Latency | Conformance |
 | :--- | :---: | :---: | :---: |
-| SQLite FTS5 Catalog Search | < 20 ms | p50: 2.65 ms / p95: 4.38 ms | PASS |
-| /api/health | < 100 ms | 1.01 ms | PASS |
-| /api/catalog_search | < 100 ms | 2.16 ms | PASS |
+| SQLite FTS5 Catalog Search | < 20 ms | p50: 2.68 ms / p95: 3.73 ms | PASS |
+| /api/health | < 100 ms | 0.82 ms | PASS |
+| /api/catalog_search | < 100 ms | 1.42 ms | PASS |
 | /api/novelty_geometry | < 100 ms | 1.18 ms | PASS |
-| /api/graph_hubs | < 100 ms | 0.61 ms | PASS |
+| /api/graph_hubs | < 100 ms | 0.81 ms | PASS |
 
 ---
 

@@ -27,6 +27,9 @@ class TestRankingSignals(unittest.TestCase):
         self.assertEqual(v_classic, 1.0)
 
     def test_bibliographic_coupling_affinity(self):
+        from src.settings import DATA_DIR
+        if not (DATA_DIR / "citation_library" / "graph.sqlite3").exists():
+            raise unittest.SkipTest("Citation graph database not found on disk")
         csr = get_citation_csr()
         # Seed with attention paper
         seed = ["arxiv:1706.03762"]

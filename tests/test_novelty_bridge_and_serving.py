@@ -52,6 +52,9 @@ class TestNoveltyBridgeAndServing(unittest.TestCase):
         self.assertLess(len(response.content), 100000)
 
     def test_novelty_bridge_endpoint(self):
+        from src.settings import DATA_DIR
+        if not (DATA_DIR / "corpus_embeddings_checkpoint.npz").exists():
+            self.skipTest("corpus_embeddings_checkpoint.npz not found on disk")
         payload = {
             "domain_a": "deep learning generalization bounds",
             "domain_b": "neural tangent kernel infinite width",

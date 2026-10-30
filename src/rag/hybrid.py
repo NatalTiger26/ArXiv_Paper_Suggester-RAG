@@ -140,17 +140,21 @@ def hybrid_rerank(
     intent = detect_query_intent(query)
 
     # Inspect hard entity presence to adapt dense vs BM25 weights
-    uppercase_acronyms = [w for w in re.findall(r"\b[A-Za-z0-9_\-]{3,}\b", query) if any(c.isupper() for c in w) and not w.isdigit()]
-    has_hard_entity = bool(explicit_ids or matched_entities or uppercase_acronyms)
+    uppercase_acronyms = [
+        w for w in re.findall(r"\b[A-Za-z0-9_\-]{2,}\b", query)
+        if (sum(1 for c in w if c.isupper()) >= 2 or any(c.isupper() for c in w[1:]))
+        and not w.isdigit()
+    ]
+    has_hard_entity = bool(explicit_ids or uppercase_acronyms)
 
     if has_hard_entity:
-        w_dense = 0.35
-        w_bm25 = 0.65
+        w_dense = 1.00
+        w_bm25 = 1.00
         entity_boost = 0.05
     else:
-        w_dense = 0.80
-        w_bm25 = 0.20
-        entity_boost = 0.01
+        w_dense = 1.25
+        w_bm25 = 0.75
+        entity_boost = 0.025
 
     # 1. Dense ranking order
     dense_order = {c["chunk_id"]: rank for rank, c in enumerate(chunks, 1)}
@@ -181,7 +185,7 @@ def hybrid_rerank(
 
         # Boost 2: Method / entity title match from catalog
         if any(m == pid or m in pid for m in matched_entities):
-            rrf_score += (entity_boost * 0.5)
+            rrf_score += 0.025
 
         # Boost 3: Section intent alignment
         sec_boost = section_intent_boost(str(c.get("section") or ""), intent)

@@ -1202,10 +1202,16 @@ def run_evaluation(
     # Full Phase 4 ranker
     # ------------------------------------------------------------------
 
+    base_weights = dict(DEFAULT_WEIGHTS)
+    if "pagerank" not in base_weights:
+        base_weights["pagerank"] = 0.15
+        s_total = sum(base_weights.values())
+        base_weights = {k: v / s_total for k, v in base_weights.items()}
+
     print("Running full multi-signal ranker...")
     full_ranked = rank_with_weights(
         query=query,
-        weights=DEFAULT_WEIGHTS,
+        weights=base_weights,
         k=k,
         half_life=half_life,
         pool_size=pool_size,
@@ -1233,7 +1239,7 @@ def run_evaluation(
         full_llm_ranked = score_and_rank(
             query=query,
             k=k,
-            weights=DEFAULT_WEIGHTS,
+            weights=base_weights,
             half_life=half_life,
             temperature=0.0,
             use_llm=True,
@@ -1264,12 +1270,6 @@ def run_evaluation(
         "pagerank",
     )
 
-    base_ablation_weights = dict(DEFAULT_WEIGHTS)
-    if "pagerank" not in base_ablation_weights:
-        base_ablation_weights["pagerank"] = 0.15
-        s_total = sum(base_ablation_weights.values())
-        base_ablation_weights = {k: v / s_total for k, v in base_ablation_weights.items()}
-
     for signal in ablation_names:
         method_name = f"ablate_{signal}"
 
@@ -1277,7 +1277,7 @@ def run_evaluation(
 
         weights = ablation_weights(
             signal,
-            base_ablation_weights,
+            base_weights,
         )
 
         ranked = rank_with_weights(
