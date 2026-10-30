@@ -1,27 +1,28 @@
 # Batch Novelty Subspace Analysis Report
 
-**Generated:** 2026-10-30T14:12:26.888028+00:00  
+**Generated:** 2026-10-30T16:52:02.435146+00:00  
 **Papers Evaluated:** 5752  
-**Success Rate:** 5712 / 5752 (99.3%)
+**Success Rate:** 5728 / 5752 (99.6%)
 
 ## 1. Aggregate Geometric Metrics
 
 | Metric | Definition | Cohort Mean | Interpretation |
 | :--- | :--- | :--- | :--- |
-| **m** | Cosine to closest parent | `0.5900` | Baseline anchor strength to closest single prior work |
-| **Δ (Delta)** | Multi-parent cone synergy | `0.2087` | Energy gain from non-negative combination of multiple parents |
-| **R²₊** | Cone reconstruction energy | `0.5722` | Proportion of embedding explained by the reference subspace |
-| **√(1 - R²₊)** | Novelty residual gap | `0.6434` | Orthogonal departure distance from reference cone to unit circle |
+| **m** | Cosine to closest parent | `0.5897` | Baseline anchor strength to closest single prior work |
+| **Δ (Delta)** | Multi-parent cone synergy | `0.2086` | Energy gain from non-negative combination of multiple parents |
+| **R²₊** | Cone reconstruction energy | `0.5718` | Proportion of embedding explained by the reference subspace |
+| **√(1 - R²₊)** | Novelty residual gap | `0.6437` | Orthogonal departure distance from reference cone to unit circle |
 
 ## 2. Discovery Mode Distribution
 
 | Discovery Classification | Paper Count | Percentage |
 | :--- | :---: | :---: |
-| **High Synergy Cone Blend** | 3379 | 59.2% |
-| **Paradigm Shift / Subspace Outlier** | 2225 | 39.0% |
-| **Moderate Synthesis** | 79 | 1.4% |
-| **Linear / Incremental Extension** | 27 | 0.5% |
-| **Diffused Reference Combination** | 2 | 0.0% |
+| **High Synergy Cone Blend** | 3371 | 58.9% |
+| **Paradigm Shift / Subspace Outlier** | 2163 | 37.8% |
+| **Uncertain / Reference-Starved** | 90 | 1.6% |
+| **Moderate Synthesis** | 77 | 1.3% |
+| **Linear / Incremental Extension** | 26 | 0.5% |
+| **Diffused Reference Combination** | 1 | 0.0% |
 
 ## 3. Top Synergistic Syntheses (Highest Multi-Parent Synergy Δ)
 Papers that achieve dramatic innovation by non-linearly fusing multiple distinct research threads:
@@ -37,7 +38,7 @@ Papers that achieve dramatic innovation by non-linearly fusing multiple distinct
 | [2504.02821](https://arxiv.org/abs/2504.02821) | Sparse Autoencoders Learn Monosemantic Featur... | 2025 | 0 | **0.4504** | 0.503 | 0.703 | High Synergy Cone Blend |
 | [2503.04223](https://arxiv.org/abs/2503.04223) | Spiking Meets Attention: Efficient Remote Sen... | - | 0 | **0.4500** | 0.529 | 0.730 | High Synergy Cone Blend |
 | [2307.15217](https://arxiv.org/abs/2307.15217) | Open Problems and Fundamental Limitations of ... | - | 0 | **0.4498** | 0.531 | 0.732 | High Synergy Cone Blend |
-| [2503.02917](https://arxiv.org/abs/2503.02917) | Interpretable Few-Shot Retinal Disease Diagno... | 2025 | 0 | **0.4465** | 0.542 | 0.741 | High Synergy Cone Blend |
+| [2001.01037](https://arxiv.org/abs/2001.01037) | Explain and Improve: LRP-Inference Fine-Tunin... | 2020 | 0 | **0.4465** | 0.540 | 0.739 | High Synergy Cone Blend |
 
 ## 4. Top Subspace Outliers / Paradigm Shifts (Highest Residual √(1 - R²₊))
 Papers with large orthogonal departures that cannot be reconstructed from their references:
@@ -50,8 +51,8 @@ Papers with large orthogonal departures that cannot be reconstructed from their 
 | [2207.05374](https://arxiv.org/abs/2207.05374) | Rethinking gradient weights' influence over s... | 2022 | 0 | **0.9912** | 0.018 | 0.099 |
 | [2302.08670](https://arxiv.org/abs/2302.08670) | Cascaded information enhancement and cross-mo... | 2023 | 0 | **0.9903** | 0.019 | 0.124 |
 | [2501.10292](https://arxiv.org/abs/2501.10292) | Enhancing AI Transparency: XRL-Based Resource... | - | 0 | **0.9892** | 0.022 | 0.141 |
-| [2505.16376](https://arxiv.org/abs/2505.16376) | DeCafNet: Delegate and Conquer for Efficient ... | 2025 | 0 | **0.9871** | 0.026 | 0.158 |
 | [1609.02907](https://arxiv.org/abs/1609.02907) | Semi-Supervised Classification with Graph Con... | - | 0 | **0.9871** | 0.026 | 0.144 |
+| [2505.16376](https://arxiv.org/abs/2505.16376) | DeCafNet: Delegate and Conquer for Efficient ... | 2025 | 0 | **0.9871** | 0.026 | 0.158 |
 | [2210.15678](https://arxiv.org/abs/2210.15678) | Prototype-Based Layered Federated Cross-Modal... | - | 0 | **0.9856** | 0.029 | 0.144 |
 | [2011.10731](https://arxiv.org/abs/2011.10731) | LRTA: A Transparent Neural-Symbolic Reasoning... | 2020 | 0 | **0.9847** | 0.030 | 0.123 |
 

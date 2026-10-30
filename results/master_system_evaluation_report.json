@@ -1,10 +1,10 @@
 {
   "metadata": {
     "title": "Master System Evaluation Report",
-    "timestamp_utc": "2026-10-30T14:22:32.278417+00:00",
+    "timestamp_utc": "2026-10-30T16:55:10.917928+00:00",
     "seed": 42,
     "project_root": "/Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester",
-    "total_evaluation_seconds": 17.85
+    "total_evaluation_seconds": 21.04
   },
   "pillar_1_rag": {
     "n_evaluated": 80,
@@ -334,34 +334,34 @@
     "preset_overlap_matrix": {
       "Balanced (default)": {
         "Balanced (default)": 1.0,
-        "Precision (embedding heavy)": 1.0,
+        "Precision (embedding heavy)": 0.6667,
         "Prefer recent": 0.5385,
-        "Citation heavy": 0.6667
+        "Citation heavy": 0.4286
       },
       "Precision (embedding heavy)": {
-        "Balanced (default)": 1.0,
+        "Balanced (default)": 0.6667,
         "Precision (embedding heavy)": 1.0,
-        "Prefer recent": 0.5385,
-        "Citation heavy": 0.6667
+        "Prefer recent": 0.4286,
+        "Citation heavy": 0.5385
       },
       "Prefer recent": {
         "Balanced (default)": 0.5385,
-        "Precision (embedding heavy)": 0.5385,
+        "Precision (embedding heavy)": 0.4286,
         "Prefer recent": 1.0,
-        "Citation heavy": 0.3333
+        "Citation heavy": 0.25
       },
       "Citation heavy": {
-        "Balanced (default)": 0.6667,
-        "Precision (embedding heavy)": 0.6667,
-        "Prefer recent": 0.3333,
+        "Balanced (default)": 0.4286,
+        "Precision (embedding heavy)": 0.5385,
+        "Prefer recent": 0.25,
         "Citation heavy": 1.0
       }
     },
     "preset_title_diversity": {
-      "Balanced (default)": 0.9551,
-      "Precision (embedding heavy)": 0.9551,
-      "Prefer recent": 0.9426,
-      "Citation heavy": 0.9465
+      "Balanced (default)": 0.9557,
+      "Precision (embedding heavy)": 0.955,
+      "Prefer recent": 0.951,
+      "Citation heavy": 0.9459
     }
   },
   "pillar_4_graph": {
@@ -375,13 +375,13 @@
       "total_mb": 2.12
     },
     "pagerank_bench": {
-      "mean_ms": 18.9,
-      "min_ms": 18.69,
+      "mean_ms": 20.07,
+      "min_ms": 19.44,
       "trials": 5
     },
     "traversal_bench_ms": {
       "p50": 0.001,
-      "p95": 0.008,
+      "p95": 0.009,
       "queries": 100
     },
     "hub_authority": {
@@ -391,61 +391,61 @@
     }
   },
   "pillar_5_novelty": {
-    "catalog_papers_evaluated": 5712,
+    "catalog_papers_evaluated": 5728,
     "coordinates": {
       "m": {
-        "mean": 0.59,
+        "mean": 0.5897,
         "std": 0.1243,
-        "median": 0.5917,
-        "iqr": 0.162,
-        "p5": 0.3829,
-        "p95": 0.7865
+        "median": 0.5915,
+        "iqr": 0.1622,
+        "p5": 0.3825,
+        "p95": 0.7863
       },
       "Delta": {
-        "mean": 0.2087,
-        "std": 0.0824,
+        "mean": 0.2086,
+        "std": 0.0825,
         "median": 0.2117,
-        "iqr": 0.113,
-        "p5": 0.0669,
+        "iqr": 0.1129,
+        "p5": 0.0666,
         "p95": 0.3402
       },
       "R2_plus": {
-        "mean": 0.5722,
-        "std": 0.1525,
-        "median": 0.5897,
-        "iqr": 0.185,
-        "p5": 0.2824,
-        "p95": 0.7889
+        "mean": 0.5718,
+        "std": 0.1527,
+        "median": 0.5893,
+        "iqr": 0.1856,
+        "p5": 0.2814,
+        "p95": 0.7888
       },
       "d_eff": {
-        "mean": 16.9995,
-        "std": 5.9914,
+        "mean": 17.0101,
+        "std": 6.0069,
         "median": 16.8281,
-        "iqr": 7.8331,
+        "iqr": 7.8353,
         "p5": 7.5497,
-        "p95": 26.8548
+        "p95": 26.9175
       }
     },
     "cone_classes": {
       "High Synergy Cone Blend": {
-        "count": 3379,
-        "percentage": 59.16
+        "count": 3461,
+        "percentage": 60.42
       },
       "Moderate Synthesis": {
-        "count": 79,
-        "percentage": 1.38
+        "count": 77,
+        "percentage": 1.34
       },
       "Linear / Incremental Extension": {
-        "count": 27,
-        "percentage": 0.47
+        "count": 26,
+        "percentage": 0.45
       },
       "Paradigm Shift / Subspace Outlier": {
-        "count": 2225,
-        "percentage": 38.95
+        "count": 2163,
+        "percentage": 37.76
       },
       "Diffused Reference Combination": {
-        "count": 2,
-        "percentage": 0.04
+        "count": 1,
+        "percentage": 0.02
       }
     },
     "null_control": {
@@ -505,31 +505,31 @@
       "pdf_cache_budget_mb": 200.0,
       "pdf_cache_headroom_mb": 26.9,
       "http_cache_mb": 655.6,
-      "http_cache_entries": 10225,
-      "novelty_cache_mb": 994.0,
-      "novelty_cache_entries": 11428
+      "http_cache_entries": 10228,
+      "novelty_cache_mb": 995.6,
+      "novelty_cache_entries": 11444
     },
     "latencies": {
       "catalog_fts5_ms": {
         "p50": 2.68,
-        "p95": 3.73
+        "p95": 3.89
       },
       "api_endpoints": {
         "health": {
           "status_code": 200,
-          "latency_ms": 0.82
+          "latency_ms": 2.33
         },
         "catalog_search": {
           "status_code": 200,
-          "latency_ms": 1.42
+          "latency_ms": 3.65
         },
         "novelty_geometry": {
           "status_code": 200,
-          "latency_ms": 1.18
+          "latency_ms": 5.14
         },
         "graph_hubs": {
           "status_code": 200,
-          "latency_ms": 0.81
+          "latency_ms": 2.68
         }
       }
     }

@@ -59,6 +59,12 @@ class TestCatalog(unittest.TestCase):
         p = get_paper("1806.07572", conn=self.conn)
         self.assertEqual(p["citation_count"], 5000)
 
+    def test_backfill_catalog_citations(self):
+        from src.catalog import backfill_catalog_citations
+        res = backfill_catalog_citations()
+        self.assertIn("after_with_cites", res)
+        self.assertTrue(res["after_with_cites"] > 0)
+
 
 if __name__ == "__main__":
     unittest.main()

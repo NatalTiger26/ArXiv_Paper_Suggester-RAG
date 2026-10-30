@@ -32,19 +32,11 @@ DEFAULT_JSON = PROJECT_ROOT / "results" / "batch_novelty_report.json"
 DEFAULT_MD = PROJECT_ROOT / "results" / "batch_novelty_report.md"
 
 
-def classify_geometry(m: float, delta: float, r2_plus: float) -> str:
-    """Classify paper discovery mode from 2D reference cone metrics."""
-    res_gap = (max(0.0, 1.0 - r2_plus)) ** 0.5
-    if r2_plus < 0.55 or res_gap >= 0.67:
-        return "Paradigm Shift / Subspace Outlier"
-    elif delta >= 0.08 or (delta >= 0.05 and m < 0.75):
-        return "High Synergy Cone Blend"
-    elif m >= 0.80 and delta < 0.04:
-        return "Linear / Incremental Extension"
-    elif delta >= 0.03:
-        return "Moderate Synthesis"
-    else:
-        return "Diffused Reference Combination"
+def classify_geometry(m: float, delta: float, r2_plus: float, n_refs: int | None = None) -> str:
+    """Classify paper discovery mode from 2D reference cone metrics with starvation guard."""
+    from src.novelty.metrics import classify_novelty
+    classification, _, _ = classify_novelty(m, delta, r2_plus, n_refs=n_refs)
+    return classification
 
 
 def preload_title_map() -> dict[str, str]:
@@ -188,7 +180,12 @@ def run_batch_novelty(
                     ):
                         item["title"] = resolve_real_paper_title(aid_val, item.get("title"), title_map=title_map)
                         if r2_val is not None and str(r2_val) != "nan":
-                            item["classification"] = classify_geometry(float(m_val), float(d_val), float(r2_val))
+                            n_refs_val = int(item.get("n_refs_used") or 0)
+                            from src.novelty.metrics import classify_novelty
+                            cls, conf, warns = classify_novelty(float(m_val), float(d_val), float(r2_val), n_refs=n_refs_val)
+                            item["classification"] = cls
+                            item["confidence"] = conf
+                            item["quality_warnings"] = warns
                         existing_records[aid_val] = item
             print(f"[batch-novelty] Loaded {len(existing_records)} existing records for resumption.")
         except Exception as e:
@@ -255,7 +252,9 @@ def run_batch_novelty(
                     }
                 else:
                     res_gap = float(max(0.0, 1.0 - r2_plus) ** 0.5)
-                    classification = classify_geometry(m, delta, r2_plus)
+                    n_refs_used = int(profile.get("n_refs_used") or 0)
+                    from src.novelty.metrics import classify_novelty
+                    classification, confidence, warnings = classify_novelty(m, delta, r2_plus, n_refs=n_refs_used)
 
                     # Format top parents
                     attr_list = []
@@ -280,8 +279,10 @@ def run_batch_novelty(
                         "novelty_residual": round(res_gap, 4),
                         "novelty_score": round(1.0 - r2_plus, 4),
                         "classification": classification,
+                        "confidence": confidence,
+                        "quality_warnings": warnings,
                         "attribution": attr_list,
-                        "n_refs_used": profile.get("n_refs_used", 0),
+                        "n_refs_used": n_refs_used,
                         "d_eff": profile.get("d_eff_refs") or profile.get("d_eff"),
                     }
                     print(f"       -> m={m:.3f}  Δ={delta:.3f}  R²+={r2_plus:.3f}  Res={res_gap:.3f}  [{classification}]")

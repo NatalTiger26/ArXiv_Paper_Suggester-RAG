@@ -751,6 +751,142 @@ def fetch_arxiv_html_references(
     return out, "arxiv_html"
 
 
+def fetch_local_markdown_references(
+    arxiv_id: str,
+    *,
+    limit: int = 80,
+) -> tuple[list[dict[str, Any]], str]:
+    """
+    Tier 0 reference extraction from local markdown full-text bibliographies on disk.
+    Parses author-written reference sections using src.core.citation_parser with 0 network latency.
+    """
+    aid = normalise_arxiv_id(arxiv_id) or strip_version(arxiv_id)
+    if not aid:
+        return [], "local_markdown:invalid_id"
+
+    root = _get_project_root()
+    md_path = root / "data" / "markdown" / f"{aid}.md"
+    if not md_path.exists():
+        return [], "local_markdown:file_not_found"
+
+    try:
+        content = md_path.read_text(encoding="utf-8", errors="ignore")
+    except Exception as e:
+        return [], f"local_markdown:read_error:{e}"
+
+    import re
+    from src.core.citation_parser import parse_citation
+
+    # Detect bibliography section heading
+    m = re.search(r"(?i)#{1,4}\s*(?:\*\*)?(?:references|bibliography)(?:\*\*)?", content)
+    if not m:
+        return [], "local_markdown:no_bibliography_section"
+
+    ref_text = content[m.start():]
+    # Split by standard bibliographic list patterns (bullets, numbered markers, bracketed numbers)
+    raw_entries = re.split(r"(?m)^[\s*\-•]+\s+|^\[\d+\]\s+|^\d+\.\s+", ref_text)
+
+    out: list[dict[str, Any]] = []
+    seen_cids: set[str] = set()
+
+    for entry in raw_entries:
+        clean = " ".join(entry.strip().split())
+        stripped_lead = re.sub(r"^[#*_\s]+", "", clean).strip()
+        if len(clean) < 15 or stripped_lead.lower().startswith(("references", "bibliography")):
+            continue
+
+        parsed = parse_citation(clean)
+        ref_aid = parsed.arxiv_id
+        doi = parsed.doi
+        cid = None
+        if ref_aid:
+            cid = canonical_id(arxiv_id=ref_aid)
+        elif doi:
+            cid = canonical_id(doi=doi)
+        else:
+            cid = f"raw:{abs(hash(clean[:80]))}"
+
+        if not cid or cid in seen_cids:
+            continue
+        seen_cids.add(cid)
+
+        synth = parsed.to_synthetic_anchor()
+        out.append({
+            "canonical_id": cid,
+            "arxiv_id": ref_aid,
+            "doi": doi,
+            "title": parsed.title or clean[:120],
+            "abstract": synth if len(synth) > 20 else clean[:240],
+            "year": parsed.year,
+            "has_abstract": True,
+            "source_api": "local_markdown",
+        })
+        if len(out) >= limit:
+            break
+
+    if not out:
+        return [], "local_markdown:no_entries_parsed"
+
+    return out, "local_markdown"
+
+
+def _merge_references(
+    existing: list[dict[str, Any]],
+    incoming: list[dict[str, Any]],
+    limit: int = 80,
+) -> list[dict[str, Any]]:
+    """Merge reference lists while preserving order and deduplicating by canonical ID, arXiv ID, and title."""
+    seen_ids: set[str] = set()
+    seen_titles: set[str] = set()
+    out: list[dict[str, Any]] = []
+
+    for r in existing:
+        cid = r.get("canonical_id")
+        aid = r.get("arxiv_id")
+        doi = r.get("doi")
+        t = (r.get("title") or "").strip().lower()
+        if cid:
+            seen_ids.add(cid)
+        if aid:
+            seen_ids.add(aid)
+        if doi:
+            seen_ids.add(doi)
+        if len(t) > 10:
+            seen_titles.add(t)
+        out.append(r)
+        if len(out) >= limit:
+            return out
+
+    for r in incoming:
+        cid = r.get("canonical_id")
+        aid = r.get("arxiv_id")
+        doi = r.get("doi")
+        t = (r.get("title") or "").strip().lower()
+
+        if cid and cid in seen_ids:
+            continue
+        if aid and aid in seen_ids:
+            continue
+        if doi and doi in seen_ids:
+            continue
+        if len(t) > 10 and t in seen_titles:
+            continue
+
+        if cid:
+            seen_ids.add(cid)
+        if aid:
+            seen_ids.add(aid)
+        if doi:
+            seen_ids.add(doi)
+        if len(t) > 10:
+            seen_titles.add(t)
+        out.append(r)
+        if len(out) >= limit:
+            break
+
+    return out
+
+
 def _enrich_ref_abstract(rec: dict[str, Any]) -> dict[str, Any]:
     """Fill missing abstract via S2 paper id or OpenAlex arXiv/DOI."""
     if rec.get("has_abstract") and (rec.get("abstract") or "").strip():
@@ -1077,27 +1213,34 @@ def resolve_focal_and_refs(
                     if rec:
                         refs.append(rec)
 
-    if focal is None or not refs:
+    if focal is None and clean_aid:
         oa = fetch_openalex_by_arxiv(aid)
-        if oa and focal is None:
+        if oa:
             focal = openalex_work_to_record(oa)
-        if not refs:
-            # OpenAlex referenced_works is one HTTP per ref: only when needed
-            if enrich_abstracts:
-                oa_refs, oa_src = fetch_openalex_references(aid, limit=max_refs)
-            else:
-                # Lightweight: OpenAlex work record often includes referenced_works ids only
-                oa_refs, oa_src = fetch_openalex_references_light(aid, limit=max_refs)
-            if oa_refs:
-                refs = oa_refs
-                source = oa_src if not source else source + "+" + oa_src
 
-    # Direct arXiv HTML fallback if S2 and OpenAlex both had no references
-    if not refs:
+    # Multi-source progressive enrichment: if refs < 10, merge with OpenAlex, arXiv HTML, and local markdown
+    if len(refs) < 10 and clean_aid:
+        if enrich_abstracts:
+            oa_refs, oa_src = fetch_openalex_references(aid, limit=max_refs)
+        else:
+            oa_refs, oa_src = fetch_openalex_references_light(aid, limit=max_refs)
+        if oa_refs:
+            refs = _merge_references(refs, oa_refs, limit=max_refs)
+            source = f"{source}+{oa_src}" if source else oa_src
+
+    # Direct arXiv HTML fallback if refs < 10
+    if len(refs) < 10 and clean_aid:
         html_refs, html_src = fetch_arxiv_html_references(aid, limit=max_refs)
         if html_refs:
-            refs = html_refs
-            source = html_src if not source else source + "+" + html_src
+            refs = _merge_references(refs, html_refs, limit=max_refs)
+            source = f"{source}+{html_src}" if source else html_src
+
+    # Tier 0 local markdown full-text fallback if refs < 10
+    if len(refs) < 10 and clean_aid:
+        local_refs, local_src = fetch_local_markdown_references(aid, limit=max_refs)
+        if local_refs:
+            refs = _merge_references(refs, local_refs, limit=max_refs)
+            source = f"{source}+{local_src}" if source else local_src
 
     # Fast local catalog enrichment (0 network delay for in-corpus references)
     if refs:

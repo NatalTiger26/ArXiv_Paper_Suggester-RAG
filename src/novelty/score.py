@@ -28,7 +28,7 @@ from .calibrate import (
 )
 from .embed_util import embed_texts, model_and_dim, text_for_paper
 from .ids import canonical_id, normalise_arxiv_id, strip_version
-from .metrics import compute_profile, effective_dimension
+from .metrics import classify_novelty, compute_profile, effective_dimension
 from .refs import resolve_focal_and_refs
 
 MIN_FRAC_ABSTRACT = 0.25  # practical default: title fallback enabled by default
@@ -321,6 +321,17 @@ def score_paper(
     profile["dim"] = dim
     profile["source"] = source
     profile["stats"] = {**rstats, "n_refs_embedded": len(used_ids)}
+
+    m_val = float(profile.get("m") or 0.0)
+    delta_val = float(profile.get("Delta") or 0.0)
+    r2_val = float(profile.get("R2_plus") or 0.0)
+    n_refs_used = len(used_ids)
+    classification, confidence, warnings = classify_novelty(m_val, delta_val, r2_val, n_refs=n_refs_used)
+    profile["classification"] = classification
+    profile["confidence"] = confidence
+    profile["quality_warnings"] = warnings
+    profile["novelty_residual"] = round(float(max(0.0, 1.0 - r2_val) ** 0.5), 4)
+    profile["novelty_score"] = round(float(max(0.0, 1.0 - r2_val)), 4)
 
     # Enrich attribution list with clean paper titles and authoritative URLs
     raw_attr = profile.get("attribution") or []

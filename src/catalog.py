@@ -280,6 +280,12 @@ def update_citation(arxiv_id: str, count: int, conn: sqlite3.Connection | None =
             conn.close()
 
 
+def backfill_catalog_citations(conn: sqlite3.Connection | None = None) -> dict[str, Any]:
+    """Backfill missing citation counts from local cache and graph databases."""
+    from scripts.sync_citation_counts import run_sync
+    return run_sync()
+
+
 def upsert_paper_record(
     conn: sqlite3.Connection,
     arxiv_id: str,

@@ -1,7 +1,7 @@
 # Master System Evaluation Report
 
 > Comprehensive empirical evaluation across all six operational pillars of the ArXiv Paper Suggester platform.
-> Generated on 2026-10-30T14:22:32.278417+00:00 with fixed random seed 42.
+> Generated on 2026-10-30T16:55:10.917928+00:00 with fixed random seed 42.
 
 ## Executive Summary
 
@@ -66,10 +66,10 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 | Preset Name | Title Token Diversity | Description |
 | :--- | :---: | :--- |
-| **Balanced (default)** | 0.9551 | Distinct unigrams across recommended top-10 |
-| **Precision (embedding heavy)** | 0.9551 | Distinct unigrams across recommended top-10 |
-| **Prefer recent** | 0.9426 | Distinct unigrams across recommended top-10 |
-| **Citation heavy** | 0.9465 | Distinct unigrams across recommended top-10 |
+| **Balanced (default)** | 0.9557 | Distinct unigrams across recommended top-10 |
+| **Precision (embedding heavy)** | 0.9550 | Distinct unigrams across recommended top-10 |
+| **Prefer recent** | 0.9510 | Distinct unigrams across recommended top-10 |
+| **Citation heavy** | 0.9459 | Distinct unigrams across recommended top-10 |
 
 ---
 
@@ -77,34 +77,34 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 - **Adjacency Representation**: Compressed Sparse Row (CSR) matrix with 100,884 nodes and 226,857 edges
 - **In-Memory Array RAM**: **2.12 MB** (fits entirely within L3 cache)
-- **PageRank Power Iteration**: mean = **18.90 ms** across 5 runs
-- **2-Hop Neighborhood Traversal**: p50 = **0.001 ms**, p95 = **0.008 ms**
+- **PageRank Power Iteration**: mean = **20.07 ms** across 5 runs
+- **2-Hop Neighborhood Traversal**: p50 = **0.001 ms**, p95 = **0.009 ms**
 - **Landmark Hub Authority**: Top-50 PageRank vs In-Degree Jaccard overlap = **0.8868** (47/50 shared hubs, Spearman rho = 0.9755)
 
 ---
 
 ## Pillar 5: 2D Novelty Subspace Cone Geometry
 
-Evaluated across 5,712 successfully profiled catalog papers.
+Evaluated across 5,728 successfully profiled catalog papers.
 
 ### Coordinate Distributions
 
 | Coordinate | Mean | Std | Median | IQR | 5th Percentile | 95th Percentile |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Projection Ratio (m)** | 0.5900 | 0.1243 | 0.5917 | 0.1620 | 0.3829 | 0.7865 |
-| **Novelty Residue (Delta)** | 0.2087 | 0.0824 | 0.2117 | 0.1130 | 0.0669 | 0.3402 |
-| **Cone Fit (R2+)** | 0.5722 | 0.1525 | 0.5897 | 0.1850 | 0.2824 | 0.7889 |
-| **Effective Dimension (d_eff)** | 16.9995 | 5.9914 | 16.8281 | 7.8331 | 7.5497 | 26.8548 |
+| **Projection Ratio (m)** | 0.5897 | 0.1243 | 0.5915 | 0.1622 | 0.3825 | 0.7863 |
+| **Novelty Residue (Delta)** | 0.2086 | 0.0825 | 0.2117 | 0.1129 | 0.0666 | 0.3402 |
+| **Cone Fit (R2+)** | 0.5718 | 0.1527 | 0.5893 | 0.1856 | 0.2814 | 0.7888 |
+| **Effective Dimension (d_eff)** | 17.0101 | 6.0069 | 16.8281 | 7.8353 | 7.5497 | 26.9175 |
 
 ### 5-Way Discovery Cone Classification Breakdown
 
 | Discovery Classification | Paper Count | Percentage Share |
 | :--- | :---: | :---: |
-| **High Synergy Cone Blend** | 3,379 | 59.16% |
-| **Moderate Synthesis** | 79 | 1.38% |
-| **Linear / Incremental Extension** | 27 | 0.47% |
-| **Paradigm Shift / Subspace Outlier** | 2,225 | 38.95% |
-| **Diffused Reference Combination** | 2 | 0.04% |
+| **High Synergy Cone Blend** | 3,461 | 60.42% |
+| **Moderate Synthesis** | 77 | 1.34% |
+| **Linear / Incremental Extension** | 26 | 0.45% |
+| **Paradigm Shift / Subspace Outlier** | 2,163 | 37.76% |
+| **Diffused Reference Combination** | 1 | 0.02% |
 
 ### Matched Reference Null Control
 
@@ -134,18 +134,18 @@ Evaluated across 5,712 successfully profiled catalog papers.
 | :--- | :---: | :---: | :---: | :--- |
 | **Chroma RAG Vector Store** | 7.31 GB (7490.5 MB) | 553,516 passage chunks | 256-d Matryoshka | **3.0x Vector Compression** |
 | **PDF Papers Cache** | 173.1 MB | 50 files | 200.0 MB budget | Headroom: 26.9 MB |
-| **API HTTP Cache** | 655.6 MB | 10225 responses | SQLite zlib | Operational |
-| **Novelty Subspace Cache** | 994.0 MB | 11428 profiles | SQLite | Operational |
+| **API HTTP Cache** | 655.6 MB | 10228 responses | SQLite zlib | Operational |
+| **Novelty Subspace Cache** | 995.6 MB | 11444 profiles | SQLite | Operational |
 
 ### System Latency SLO Matrix
 
 | Operation / Endpoint | Target SLO | Measured Latency | Conformance |
 | :--- | :---: | :---: | :---: |
-| SQLite FTS5 Catalog Search | < 20 ms | p50: 2.68 ms / p95: 3.73 ms | PASS |
-| /api/health | < 100 ms | 0.82 ms | PASS |
-| /api/catalog_search | < 100 ms | 1.42 ms | PASS |
-| /api/novelty_geometry | < 100 ms | 1.18 ms | PASS |
-| /api/graph_hubs | < 100 ms | 0.81 ms | PASS |
+| SQLite FTS5 Catalog Search | < 20 ms | p50: 2.68 ms / p95: 3.89 ms | PASS |
+| /api/health | < 100 ms | 2.33 ms | PASS |
+| /api/catalog_search | < 100 ms | 3.65 ms | PASS |
+| /api/novelty_geometry | < 100 ms | 5.14 ms | PASS |
+| /api/graph_hubs | < 100 ms | 2.68 ms | PASS |
 
 ---
 

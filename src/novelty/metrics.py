@@ -244,3 +244,51 @@ def compute_profile(
         }
     )
     return out
+
+
+def classify_novelty(
+    m: float,
+    delta: float,
+    r2_plus: float,
+    n_refs: int | None = None,
+) -> tuple[str, str, list[str]]:
+    """
+    Classify paper discovery mode from 2D reference cone metrics with starvation guard.
+
+    Returns:
+        tuple of (classification, confidence, quality_warnings)
+    """
+    warnings: list[str] = []
+    res_gap = float(max(0.0, 1.0 - r2_plus) ** 0.5)
+
+    # Reference Starvation Guard:
+    # A 256-d vector space requires sufficient basis vectors for non-negative cone projection.
+    # When n_refs is provided and n_refs < 8, R2_+ naturally collapses near 0.
+    if n_refs is not None and n_refs < 8:
+        warnings.append(
+            f"Reference-starved cone ({n_refs} refs). Minimum 8 references required for robust basis."
+        )
+        confidence = "LOW (REFERENCE-STARVED)"
+        classification = "Uncertain / Reference-Starved"
+        return classification, confidence, warnings
+
+    if n_refs is not None and n_refs < 15:
+        confidence = "MEDIUM"
+        warnings.append("Moderate reference coverage (8-14 refs). Classification is indicative.")
+    else:
+        confidence = "HIGH"
+
+    # Standard 2D Cone Geometry Classification
+    if r2_plus < 0.55 or res_gap >= 0.67:
+        classification = "Paradigm Shift / Subspace Outlier"
+    elif delta >= 0.08 or (delta >= 0.05 and m < 0.75):
+        classification = "High Synergy Cone Blend"
+    elif m >= 0.80 and delta < 0.04:
+        classification = "Linear / Incremental Extension"
+    elif delta >= 0.03:
+        classification = "Moderate Synthesis"
+    else:
+        classification = "Diffused Reference Combination"
+
+    return classification, confidence, warnings
+

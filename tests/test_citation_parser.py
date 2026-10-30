@@ -2,6 +2,7 @@
 
 import unittest
 from src.core.citation_parser import parse_citation
+from src.novelty.refs import _merge_references, fetch_local_markdown_references
 
 
 class TestCitationParser(unittest.TestCase):
@@ -47,6 +48,26 @@ class TestCitationParser(unittest.TestCase):
         synth = parsed.to_synthetic_anchor()
         self.assertIn("BERT", synth)
         self.assertIn("2019", synth)
+
+    def test_merge_references_deduplication(self):
+        list1 = [
+            {"canonical_id": "arxiv:1706.03762", "arxiv_id": "1706.03762", "title": "Attention Is All You Need"},
+            {"canonical_id": "arxiv:1810.04805", "arxiv_id": "1810.04805", "title": "BERT"},
+        ]
+        list2 = [
+            {"canonical_id": "arxiv:1706.03762", "arxiv_id": "1706.03762", "title": "Attention Is All You Need Duplicate"},
+            {"canonical_id": "arxiv:1512.03385", "arxiv_id": "1512.03385", "title": "Deep Residual Learning"},
+        ]
+        merged = _merge_references(list1, list2, limit=10)
+        self.assertEqual(len(merged), 3)
+        aids = [r["arxiv_id"] for r in merged]
+        self.assertEqual(aids, ["1706.03762", "1810.04805", "1512.03385"])
+
+    def test_fetch_local_markdown_references_existing(self):
+        refs, src = fetch_local_markdown_references("0912.1128", limit=20)
+        self.assertEqual(src, "local_markdown")
+        self.assertTrue(len(refs) > 0)
+        self.assertTrue(all(r.get("has_abstract") for r in refs))
 
 
 if __name__ == "__main__":

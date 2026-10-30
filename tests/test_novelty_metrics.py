@@ -5,7 +5,7 @@ from __future__ import annotations
 import unittest
 import numpy as np
 
-from src.novelty.metrics import compute_profile, nnls_cone_r2
+from src.novelty.metrics import classify_novelty, compute_profile, nnls_cone_r2
 
 
 def _unit(v: np.ndarray) -> np.ndarray:
@@ -115,6 +115,28 @@ class TestNoveltyMetrics(unittest.TestCase):
         proj = Y @ lam_b
         r2_b = float(np.dot(proj, proj))
         self.assertAlmostEqual(r2_a, r2_b, places=5)
+
+    def test_classify_novelty_starvation_guard(self) -> None:
+        cls, conf, warns = classify_novelty(0.5, 0.02, 0.2, n_refs=3)
+        self.assertEqual(cls, "Uncertain / Reference-Starved")
+        self.assertEqual(conf, "LOW (REFERENCE-STARVED)")
+        self.assertTrue(len(warns) > 0)
+
+    def test_classify_novelty_paradigm_shift_supported(self) -> None:
+        cls, conf, warns = classify_novelty(0.4, 0.02, 0.45, n_refs=25)
+        self.assertEqual(cls, "Paradigm Shift / Subspace Outlier")
+        self.assertEqual(conf, "HIGH")
+        self.assertEqual(len(warns), 0)
+
+    def test_classify_novelty_high_synergy(self) -> None:
+        cls, conf, warns = classify_novelty(0.65, 0.12, 0.85, n_refs=30)
+        self.assertEqual(cls, "High Synergy Cone Blend")
+        self.assertEqual(conf, "HIGH")
+
+    def test_classify_novelty_linear_extension(self) -> None:
+        cls, conf, warns = classify_novelty(0.88, 0.02, 0.92, n_refs=20)
+        self.assertEqual(cls, "Linear / Incremental Extension")
+        self.assertEqual(conf, "HIGH")
 
 
 if __name__ == "__main__":

@@ -58,6 +58,10 @@ class TestScriptsLogic(unittest.TestCase):
         c_shift = classify_geometry(m=0.2, delta=0.01, r2_plus=0.3)
         self.assertEqual(c_shift, "Paradigm Shift / Subspace Outlier")
 
+        # Reference starvation guard: n_refs < 8 suppresses paradigm shift
+        c_starved = classify_geometry(m=0.2, delta=0.01, r2_plus=0.3, n_refs=4)
+        self.assertEqual(c_starved, "Uncertain / Reference-Starved")
+
     def test_parse_topic_list(self):
         topics = parse_topic_list(["mechanistic interpretability", "diffusion, ssm"], None)
         self.assertIn("mechanistic interpretability", topics)
