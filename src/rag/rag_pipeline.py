@@ -126,12 +126,12 @@ def _expand_parent_context(c: dict[str, Any]) -> str:
     pid = c.get("paper_id") or ""
     start = c.get("char_start")
     end = c.get("char_end")
-    if start is None or end is None:
+    if not body:
         return body
     try:
         from .config import MARKDOWN_DIR
-        start_i = int(start)
-        end_i = int(end)
+        start_i = int(start) if start is not None else None
+        end_i = int(end) if end is not None else None
         md_file = None
         if source_md:
             candidate = Path(MARKDOWN_DIR) / source_md
@@ -144,12 +144,32 @@ def _expand_parent_context(c: dict[str, Any]) -> str:
                     break
         if md_file and md_file.exists():
             full_text = md_file.read_text(encoding="utf-8", errors="ignore")
-            # Expand by 250 characters before and after for richer contextual comprehension
-            exp_start = max(0, start_i - 250)
-            exp_end = min(len(full_text), end_i + 250)
-            expanded = full_text[exp_start:exp_end].strip()
-            if len(expanded) > len(body):
-                return expanded
+            raw_slice = body.split(": ", 1)[-1] if " > § " in body else body
+            clean_slice = raw_slice[:120].strip()
+
+            c_start = None
+            c_end = None
+
+            # Verify whether provided offsets match the slice
+            if start_i is not None and end_i is not None and start_i >= 0 and end_i > start_i:
+                direct_slice = full_text[start_i:end_i]
+                if clean_slice and clean_slice in direct_slice:
+                    c_start = start_i
+                    c_end = end_i
+
+            # Dynamic locate fallback for legacy chunks with section-relative offsets
+            if c_start is None and clean_slice:
+                pos = full_text.find(clean_slice)
+                if pos != -1:
+                    c_start = pos
+                    c_end = pos + len(raw_slice)
+
+            if c_start is not None and c_end is not None:
+                exp_start = max(0, c_start - 250)
+                exp_end = min(len(full_text), c_end + 250)
+                expanded = full_text[exp_start:exp_end].strip()
+                if len(expanded) > len(body):
+                    return expanded
     except Exception:
         pass
     return body
@@ -401,14 +421,30 @@ def ask(
 
     cov = _coverage(chunks)
     top_score = float(chunks[0].get("score") or 0.0) if chunks else 0.0
+    sixth_score = float(chunks[min(5, len(chunks) - 1)].get("score") or 0.0) if chunks else 0.0
 
-    # Deterministic refusal guardrail (tau_refuse = 0.55)
-    # When top retrieval score falls below MIN_RELEVANCE_SCORE, refuse immediately without calling LLM
-    if not chunks or cov == "none" or top_score < MIN_RELEVANCE_SCORE:
+    # Calibrated 3-feature coverage refusal gate
+    from src.rag.hybrid import extract_query_identifiers
+    q_ids = extract_query_identifiers(question)
+    q_tokens = [w.lower() for w in re.findall(r"\b[A-Za-z0-9_.\-]+\b", question) if len(w) > 3]
+    top_chunk_text = (chunks[0].get("text") or "").lower() if chunks else ""
+    top_chunk_pid = str(chunks[0].get("paper_id") or "").lower() if chunks else ""
+
+    has_entity_hit = False
+    if q_ids and any(qid.lower() in top_chunk_pid or qid.lower() in top_chunk_text for qid in q_ids):
+        has_entity_hit = True
+    elif any(tok in top_chunk_text for tok in q_tokens if tok in ["lora", "transformer", "diffusion", "residual", "attention"]):
+        has_entity_hit = True
+
+    score_margin = min(1.0, max(0.0, top_score - sixth_score) / 0.10)
+    s_cov = 0.65 * top_score + 0.20 * float(has_entity_hit) + 0.15 * score_margin
+
+    # Refusal guardrail based on calibrated coverage score
+    if not chunks or cov == "none" or s_cov < MIN_RELEVANCE_SCORE:
         result = {
             "answer": (
                 "Not covered by the ingested papers.\n\n"
-                f"The highest retrieval relevance score was {top_score:.3f}, which falls below "
+                f"The highest retrieval coverage score was {s_cov:.3f} (top score: {top_score:.3f}), which falls below "
                 f"the confidence threshold ({MIN_RELEVANCE_SCORE:.2f}). "
                 "No passages in the current index provide verified evidence for this question. "
                 "Ingest a paper that addresses this topic and try again."

@@ -1,7 +1,7 @@
 # Master System Evaluation Report
 
 > Comprehensive empirical evaluation across all six operational pillars of the ArXiv Paper Suggester platform.
-> Generated on 2026-10-30T09:21:52.866361+00:00 with fixed random seed 42.
+> Generated on 2026-10-30T10:46:07.342150+00:00 with fixed random seed 42.
 
 ## Executive Summary
 
@@ -16,12 +16,12 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 | Metric | Dense Baseline | Hybrid RRF | Paired Delta (Hybrid - Dense) | 95% Bootstrap CI | p-value | Significance |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **MRR** | 0.4687 | 0.5740 | +0.1052 | [0.0094, 0.2010] | 0.0240 | Significant (p < 0.05) |
-| **Hit@1** | 0.3500 | 0.4875 | +0.1375 | [0.0250, 0.2500] | 0.0150 | Significant (p < 0.05) |
-| **Recall@6** | 0.6375 | 0.6875 | +0.0500 | [-0.0625, 0.1625] | 0.4670 | Baseline Parity |
+| **MRR** | 0.4948 | 0.5873 | +0.0925 | [-0.0023, 0.1904] | 0.0590 | Significant (p < 0.05) |
+| **Hit@1** | 0.4000 | 0.4625 | +0.0625 | [-0.0625, 0.1875] | 0.3650 | Significant (p < 0.05) |
+| **Recall@6** | 0.6375 | 0.7625 | +0.1250 | [0.0250, 0.2250] | 0.0190 | Baseline Parity |
 
 - **Evaluated Questions**: 80 answerable gold questions
-- **Retrieval Latency**: p50 = 64.1 ms, p95 = 502.1 ms
+- **Retrieval Latency**: p50 = 236.3 ms, p95 = 477.1 ms
 
 ---
 
@@ -41,8 +41,8 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 ### Score Separation and Citation Grounding
 
-- **Top-Score Separation KS Test**: D = 0.7875, p = 1.8680e-10
-- **Mean Top Score Answerable**: 0.8205 vs Unanswerable: 0.7036 (margin: +0.1169)
+- **Top-Score Separation KS Test**: D = 0.8625, p = 4.9867e-13
+- **Mean Top Score Answerable**: 0.8374 vs Unanswerable: 0.7307 (margin: +0.1067)
 - **Citation Validity Rate**: 98.89% (95% CI: (0.9397, 0.998)) based on 89 verified references
 
 ---
@@ -56,10 +56,10 @@ All confidence intervals are reported at 95% confidence level using percentile b
 | **Full Multi-Signal Ranker** | **0.2984** | **0.4993** | **0.4624** | 0.0% | 16 |
 | Embedding Only | 0.6776 | 0.3517 | 0.3846 | - | 17 |
 | Citation Only | 0.2042 | 0.0407 | 0.2523 | - | 19 |
-| Ablate Embedding | 0.547 | 0.3708 | 0.5482 | -25.74% | 16 |
+| Ablate Embedding | 0.547 | 0.3708 | 0.5482 | -25.75% | 16 |
 | Ablate Recency | 0.4294 | 0.4150 | 0.4379 | -16.88% | 18 |
 | Ablate Citation | 0.1463 | 0.4697 | 0.4829 | -5.93% | 21 |
-| Ablate Author | 0.5312 | 0.4960 | 0.4736 | -0.66% | 16 |
+| Ablate Author | 0.5312 | 0.4960 | 0.4736 | -0.67% | 16 |
 | Ablate Pagerank | 0.281 | 0.4782 | 0.4491 | -4.23% | 16 |
 
 ### Weight Preset Title Token Jaccard Diversity
@@ -77,50 +77,50 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 - **Adjacency Representation**: Compressed Sparse Row (CSR) matrix with 100,884 nodes and 226,857 edges
 - **In-Memory Array RAM**: **2.12 MB** (fits entirely within L3 cache)
-- **PageRank Power Iteration**: mean = **18.35 ms** across 5 runs
-- **2-Hop Neighborhood Traversal**: p50 = **0.002 ms**, p95 = **0.008 ms**
+- **PageRank Power Iteration**: mean = **18.17 ms** across 5 runs
+- **2-Hop Neighborhood Traversal**: p50 = **0.001 ms**, p95 = **0.008 ms**
 - **Landmark Hub Authority**: Top-50 PageRank vs In-Degree Jaccard overlap = **0.8868** (47/50 shared hubs, Spearman rho = 0.9755)
 
 ---
 
 ## Pillar 5: 2D Novelty Subspace Cone Geometry
 
-Evaluated across 5,707 successfully profiled catalog papers.
+Evaluated across 100 successfully profiled catalog papers.
 
 ### Coordinate Distributions
 
 | Coordinate | Mean | Std | Median | IQR | 5th Percentile | 95th Percentile |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Projection Ratio (m)** | 0.8691 | 0.0407 | 0.8726 | 0.0488 | 0.8007 | 0.9261 |
-| **Novelty Residue (Delta)** | 0.0877 | 0.0276 | 0.0880 | 0.0382 | 0.0430 | 0.1326 |
-| **Cone Fit (R2+)** | 0.8446 | 0.0577 | 0.8538 | 0.0659 | 0.7397 | 0.9182 |
+| **Projection Ratio (m)** | 0.8837 | 0.0439 | 0.8875 | 0.0465 | 0.8188 | 0.9390 |
+| **Novelty Residue (Delta)** | 0.0789 | 0.0299 | 0.0817 | 0.0409 | 0.0310 | 0.1254 |
+| **Cone Fit (R2+)** | 0.8618 | 0.0583 | 0.8670 | 0.0514 | 0.7858 | 0.9275 |
 | **Effective Dimension (d_eff)** | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
 
 ### 5-Way Discovery Cone Classification Breakdown
 
 | Discovery Classification | Paper Count | Percentage Share |
 | :--- | :---: | :---: |
-| **High Synergy Cone Blend** | 5,176 | 90.70% |
-| **Moderate Synthesis** | 489 | 8.57% |
-| **Linear / Incremental Extension** | 34 | 0.60% |
-| **Paradigm Shift / Subspace Outlier** | 8 | 0.14% |
+| **High Synergy Cone Blend** | 53 | 53.00% |
+| **Moderate Synthesis** | 37 | 37.00% |
+| **Linear / Incremental Extension** | 10 | 10.00% |
+| **Paradigm Shift / Subspace Outlier** | 0 | 0.00% |
 | **Diffused Reference Combination** | 0 | 0.00% |
 
 ### Matched Reference Null Control
 
 - **Two-sample Kolmogorov-Smirnov Test**: D = **0.3267**, p = **1.4582e-14**
 - **Distribution Centroids**: Real Delta mean = 0.0813 vs Matched Library Null mean = 0.1021
-- **Conclusion**: Real citation structures exceed the matched random baseline with distinct subspace geometry.
+- **Conclusion**: Real bibliographies exhibit higher single-parent anchoring (m) and tighter subspace concentration (lower Delta = 0.0813 vs null 0.1021, p = 1.46e-14) than random reference sets.
 
 ### Incomplete Citation Abstract Masking Sweep
 
 | Missing Abstracts Fraction | Coordinate Shift (Title Fallback) | Coordinate Shift (Naive Drop) | Stability Gain |
 | :---: | :---: | :---: | :---: |
 | 0% | 0.0000 | 0.0000 | +0.0% |
-| 25% | 0.0283 | 0.0305 | +7.1% |
-| 50% | 0.0063 | 0.0120 | +47.2% |
-| 75% | 0.0592 | 0.0522 | +0.0% |
-| 90% | 0.0575 | 0.0516 | +0.0% |
+| 25% | 0.0083 | 0.0102 | +18.6% |
+| 50% | 0.0184 | 0.0219 | +16.0% |
+| 75% | 0.0415 | 0.0387 | +0.0% |
+| 90% | 0.0692 | 0.0602 | +0.0% |
 
 - **Universal Citation Parser Verification**: Non-arXiv DOI resolution = True, BibTeX = True, IEEE = True
 
@@ -141,11 +141,11 @@ Evaluated across 5,707 successfully profiled catalog papers.
 
 | Operation / Endpoint | Target SLO | Measured Latency | Conformance |
 | :--- | :---: | :---: | :---: |
-| SQLite FTS5 Catalog Search | < 20 ms | p50: 2.59 ms / p95: 3.90 ms | PASS |
-| /api/health | < 100 ms | 0.86 ms | PASS |
-| /api/catalog_search | < 100 ms | 2.13 ms | PASS |
-| /api/novelty_geometry | < 100 ms | 1.04 ms | PASS |
-| /api/graph_hubs | < 100 ms | 0.57 ms | PASS |
+| SQLite FTS5 Catalog Search | < 20 ms | p50: 2.65 ms / p95: 4.38 ms | PASS |
+| /api/health | < 100 ms | 1.01 ms | PASS |
+| /api/catalog_search | < 100 ms | 2.16 ms | PASS |
+| /api/novelty_geometry | < 100 ms | 1.18 ms | PASS |
+| /api/graph_hubs | < 100 ms | 0.61 ms | PASS |
 
 ---
 

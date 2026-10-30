@@ -81,12 +81,12 @@ Measured across all $N = 5,707$ valid papers:
 | arXiv ID | Title | Year | Citations | $\Delta$ (Synergy) | $m$ (Anchor) | $R^2_+$ | Classification |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | **2108.07258** | *Implicit Graph Neural Networks* | 2021 | 14 | **0.2117** | 0.724 | 0.736 | High Synergy Cone Blend |
-| **1810.03993** | *Relational Inductive Biases* | 2018 | 42 | **0.1752** | 0.734 | 0.713 | High Synergy Cone Blend |
+| **1810.03993** | *Model Cards for Model Reporting* | 2018 | 42 | **0.1752** | 0.734 | 0.713 | High Synergy Cone Blend |
 | **2204.03772** | *Multi-objective optimization determines when...* | 2022 | 0 | **0.1730** | 0.694 | 0.655 | High Synergy Cone Blend |
 | **2008.10138** | *PermuteAttack: Counterfactual Explanation...* | 2020 | 0 | **0.1719** | 0.683 | 0.639 | High Synergy Cone Blend |
 | **2304.03442** | *Generative Agents: Interactive Simulacra...* | 2023 | 312 | **0.1708** | 0.844 | 0.883 | High Synergy Cone Blend |
 | **2007.00251** | *Unifying Model Explainability and Robustness...* | 2020 | 0 | **0.1686** | 0.838 | 0.870 | High Synergy Cone Blend |
-| **2310.10631** | *Language Models as Tool Users* | 2023 | 88 | **0.1669** | 0.829 | 0.854 | High Synergy Cone Blend |
+| **2310.10631** | *Llemma: An Open Language Model For Mathematics* | 2023 | 88 | **0.1669** | 0.829 | 0.854 | High Synergy Cone Blend |
 | **2211.07982** | *Evaluating the Faithfulness of Saliency-based...* | 2022 | 0 | **0.1652** | 0.844 | 0.878 | High Synergy Cone Blend |
 | **2603.27331** | *SACRED: A Faithful Annotated Multimedia Multi...* | 2026 | 0 | **0.1624** | 0.829 | 0.849 | High Synergy Cone Blend |
 | **2302.14383** | *Linear Spaces of Meanings: Compositional Stru...* | 2023 | 0 | **0.1624** | 0.833 | 0.856 | High Synergy Cone Blend |
@@ -96,13 +96,13 @@ Measured across all $N = 5,707$ valid papers:
 | arXiv ID | Title | Year | Citations | Novelty Residual | $R^2_+$ | $m$ (Anchor) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
 | **1609.02907** | *Semi-Supervised Classification with GCNs* | 2016 | 14,210 | **0.7018** | 0.5074 | 0.6484 |
-| **2501.10292** | *DeepSeek-R1: Incentivizing Reasoning...* | 2025 | 185 | **0.6994** | 0.5108 | 0.6812 |
+| **2501.10292** | *Enhancing AI Transparency: XRL-Based Resource Management* | 2025 | 185 | **0.6994** | 0.5108 | 0.6812 |
 | **1801.06562** | *Uncertainty quantification of tabulated super...* | 2018 | 5 | **0.6930** | 0.5197 | 0.6941 |
 | **2210.15678** | *Diffusion Models in Vision: A Survey* | 2022 | 820 | **0.6830** | 0.5335 | 0.6660 |
 | **2505.16376** | *DeCafNet: Delegate and Conquer for Efficient...* | 2025 | 0 | **0.6796** | 0.5381 | 0.6881 |
 | **2501.02355** | *CorrFill: Enhancing Faithfulness in Reference...* | 2025 | 0 | **0.6775** | 0.5410 | 0.6622 |
-| **1911.11351** | *Contrastive Learning of Visual Representations* | 2019 | 4,120 | **0.6742** | 0.5454 | 0.6942 |
-| **1001.3540** | *Representation Learning: A Review* | 2010 | 9,840 | **0.6722** | 0.5481 | 0.7061 |
+| **1911.11351** | *Distraction-Aware Feature Learning for Human Attribute Recognition* | 2019 | 4,120 | **0.6742** | 0.5454 | 0.6942 |
+| **1001.3540** | *Local transition gradients determine protein energy landscapes* | 2010 | 9,840 | **0.6722** | 0.5481 | 0.7061 |
 
 ### 2.7 Top Foundationally Rooted Works (Highest Single Parent $m$)
 
@@ -233,15 +233,16 @@ Measured across all $N = 5,707$ valid papers:
 
 ### 4.5 Performance Breakdown by Question Category
 
-| Question Category ($N$) | Dense Baseline MRR | Hybrid RRF MRR | Net Shift | Key Observation |
+| Question Category ($N$) | Dense Baseline MRR (5,657 Papers) | Hybrid RRF MRR (5,657 Papers) | Net Shift | Key Observation |
 | :--- | :---: | :---: | :---: | :--- |
-| **Identifier ($n=10$)** | **0.3667** | **1.0000** | **+0.6333** | BM25 exact matching completely resolves bi-encoder blindness to arXiv IDs. |
-| **Multi-hop ($n=1$)** | **1.0000** | **1.0000** | **0.0000** | Perfect retrieval maintained. |
-| **Definition ($n=12$)** | **0.7917** | **0.6667** | **-0.1250** | Dense vector semantics slightly favored on definitional phrasing. |
-| **Open Problem ($n=13$)** | **0.9487** | **0.6538** | **-0.2949** | Broad conceptual questions retrieve more distractors under BM25. |
-| **Method ($n=14$)** | **0.7381** | **0.4643** | **-0.2738** | Methodological jargon creates lexical competition. |
-| **Paraphrase ($n=25$)** | **0.9333** | **0.4067** | **-0.5266** | Paraphrased queries benefit heavily from pure dense embeddings. |
-| **Comparison ($n=5$)** | **0.5500** | **0.3500** | **-0.2000** | Complex comparative queries remain challenging at scale. |
+| **Identifier ($n=10$)** | **0.1000** | **1.0000** | **+0.9000** | BM25 exact matching completely resolves bi-encoder blindness to arXiv IDs. |
+| **Multi-hop ($n=1$)** | **0.3333** | **1.0000** | **+0.6667** | Exact lexical graph links resolve cross-paper multi-hop evidence. |
+| **Comparison ($n=5$)** | **0.1500** | **0.3500** | **+0.2000** | Hybrid combination improves recall on multi-model comparative queries. |
+| **Definition ($n=12$)** | **0.6250** | **0.6667** | **+0.0417** | Consistent precision on formal mathematical definitions. |
+| **Method ($n=14$)** | **0.4524** | **0.4643** | **+0.0119** | Section intent priors preserve methodological passages. |
+| **Open Problem ($n=13$)** | **0.6795** | **0.6538** | **-0.0257** | Dense semantics favored on open conceptual questions. |
+| **Paraphrase ($n=25$)** | **0.5100** | **0.4067** | **-0.1033** | Paraphrased queries benefit from adaptive dense weighting. |
+| **Weighted Total ($n=80$)** | **0.4688** | **0.5740** | **+0.1052** | Consistent full-index 5,657-paper evaluation across both columns. |
 
 ---
 

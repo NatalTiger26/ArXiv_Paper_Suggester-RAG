@@ -9,6 +9,13 @@ from src.catalog import browse_catalog, get_catalog_stats
 
 
 class TestCatalogBrowsing(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from src.settings import DATA_DIR
+        db_path = DATA_DIR / "catalog.sqlite3"
+        if not db_path.exists():
+            raise unittest.SkipTest("Local catalog database not present on disk")
+
     def test_catalog_stats(self):
         stats = get_catalog_stats()
         self.assertIn("total_papers", stats)

@@ -189,7 +189,7 @@ BROADER_REFUSAL_EXTRA = [
 
 
 def looks_like_refusal(answer: str) -> bool:
-    """Official substring list — preserved exactly for benchmark comparisons."""
+    """Official substring list, preserved exactly for benchmark comparisons."""
     a = (answer or "").lower()
     return any(k in a for k in OFFICIAL_REFUSAL_KEYS)
 
@@ -389,7 +389,7 @@ def run_dim_sweep(dims: list[int] | None = None) -> dict[str, Any]:
             f"CI={rows[-1]['mrr_ci95']}  R@10={rows[-1]['mean_recall@10']:.3f}"
         )
 
-    # Prefer highest MRR; if within 0.02 of full, allow smaller dim
+    # Prefer highest MRR, if within 0.02 of full, allow smaller dim
     full_row = max(rows, key=lambda r: r["dim"])
     best = sorted(rows, key=lambda r: (-r["mean_mrr"], r["dim"]))[0]
     if best["dim"] == full_row["dim"]:
@@ -397,11 +397,11 @@ def run_dim_sweep(dims: list[int] | None = None) -> dict[str, Any]:
     elif full_row["mean_mrr"] - best["mean_mrr"] <= 0.02:
         rec = (
             f"Consider EMBEDDING_DIM={best['dim']} (MRR={best['mean_mrr']} vs "
-            f"full {full_row['mean_mrr']}; Δ≤0.02). Rebuild indexes after change."
+            f"full {full_row['mean_mrr']}, Δ≤0.02). Rebuild indexes after change."
         )
     else:
         rec = (
-            f"Prefer dim={full_row['dim']} (MRR={full_row['mean_mrr']}); "
+            f"Prefer dim={full_row['dim']} (MRR={full_row['mean_mrr']}), "
             f"best lower dim={best['dim']} loses {full_row['mean_mrr'] - best['mean_mrr']:.3f}."
         )
     out = {
@@ -749,7 +749,7 @@ def load_baseline_for_paired(current_rows: list[dict]) -> dict[str, Any] | None:
     by_id = {r["id"]: r for r in base.get("rows") or []}
     a_rec, b_rec, a_mrr, b_mrr = [], [], [], []
     # McNemar on recall success
-    b_wrong = c_right = 0  # b: v1 right v2 wrong; c: v1 wrong v2 right
+    b_wrong = c_right = 0  # b: v1 right v2 wrong, c: v1 wrong v2 right
     for r in current_rows:
         if not r.get("has_relevant"):
             continue
@@ -820,7 +820,7 @@ def write_report(
         lines.append(" ".join(parts))
         lines.append("")
 
-    h("Evaluation Report — ArXiv Paper Suggester", 1)
+    h("Evaluation Report: ArXiv Paper Suggester", 1)
     p(f"_Generated: {s.get('timestamp')}_  ·  Single harness: `src/final_eval.py`")
 
     h("1. What the system does")
@@ -836,13 +836,13 @@ def write_report(
             "| Concept | Meaning here |",
             "|---------|--------------|",
             "| **Recall@k** | Fraction of labelled questions where *any* expected paper appears in the top-k retrieved papers (Lab 3). |",
-            "| **MRR** | Mean reciprocal rank of the first expected paper; rewards putting the right paper higher (Lab 3). Prefer over saturated hit@5. |",
+            "| **MRR** | Mean reciprocal rank of the first expected paper, rewards putting the right paper higher (Lab 3). Prefer over saturated hit@5. |",
             "| **Hit@1** | Whether the top-1 paper is expected. Harder than Recall@k. |",
             "| **95% bootstrap CI** | Uncertainty on the mean over this gold set (Lab 2). Overlapping CIs ⇒ do not claim a difference. |",
             "| **Wilson CI** | Uncertainty on a proportion (refusal, citation validity). |",
             "| **McNemar / paired bootstrap** | Whether v2 beats v1 on the *same* items (Lab 2). Requires `baseline_v1.json`. |",
-            "| **Refusal precision / recall** | Of declines, how many should have been declined; of items that should be declined, how many were (Lab 4). **Both** required. |",
-            "| **Citation validity** | Every `[n]` in the answer refers to a supplied source — code-checkable (Lab 4). |",
+            "| **Refusal precision / recall** | Of declines, how many should have been declined, and of items that should be declined, how many were (Lab 4). **Both** required. |",
+            "| **Citation validity** | Every `[n]` in the answer refers to a supplied source, code-checkable (Lab 4). |",
             "| **Failure hints** | Coarse Lab 5 taxonomy: missing_or_ranking, ranking, false_answer, over_refuse. |",
             "| **Cohen’s κ** | Agreement between human and LLM judge on faithfulness/correctness. **Not computed here** unless you add human labels + a judge (Lab 4). Retrieval metrics do not need κ. |",
             "",
@@ -857,10 +857,10 @@ def write_report(
             f"| Mean MRR | **{s.get('mean_mrr')}** | {s.get('mrr_ci95')} |",
             f"| Mean Recall@k | **{s.get('mean_recall@k')}** | {s.get('recall_ci95')} |",
             f"| Mean Hit@1 | **{s.get('mean_hit_rate@1')}** | {s.get('hit1_ci95')} |",
-            f"| Mean top score | {s.get('mean_top_score')} | — |",
-            f"| Index | {s.get('index_papers')} papers / {s.get('index_chunks')} chunks | — |",
-            f"| Embedder | {s.get('embedding_model')} @ dim={s.get('embedding_dim')} | — |",
-            f"| Latency p50 / p95 | {s.get('latency_p50_ms')} / {s.get('latency_p95_ms')} ms | — |",
+            f"| Mean top score | {s.get('mean_top_score')} | - |",
+            f"| Index | {s.get('index_papers')} papers / {s.get('index_chunks')} chunks | - |",
+            f"| Embedder | {s.get('embedding_model')} @ dim={s.get('embedding_dim')} | - |",
+            f"| Latency p50 / p95 | {s.get('latency_p50_ms')} / {s.get('latency_p95_ms')} ms | - |",
             f"| Cache hit rate | {s.get('cache_hit_rate')} | (generation runs) |",
             "",
         ]
@@ -868,7 +868,7 @@ def write_report(
     p(
         f"**Interpretation:** On {s.get('n_retrieval_scored')} questions with expected papers,",
         f"MRR={s.get('mean_mrr')} means that on average the first relevant paper sits near rank "
-        f"~{round(1 / s['mean_mrr'], 2) if s.get('mean_mrr') else '—'} when found.",
+        f"~{round(1 / s['mean_mrr'], 2) if s.get('mean_mrr') else '-'} when found.",
         f"Recall={s.get('mean_recall@k')} means about {round(100 * (s.get('mean_recall@k') or 0))}% of those",
         "questions surface at least one expected paper in the top-k. The CI width reflects n≈80:",
         "small improvements inside the CI should not be treated as proven gains (Lab 2).",
@@ -883,9 +883,9 @@ def write_report(
                 "|--------|-------|--------|",
                 f"| Refusal recall | {s.get('refusal_recall')} | {s.get('refusal_recall_ci95')} |",
                 f"| Refusal precision | {s.get('refusal_precision')} | {s.get('refusal_precision_ci95')} |",
-                f"| Refusal accuracy | {s.get('refusal_accuracy')} | — |",
+                f"| Refusal accuracy | {s.get('refusal_accuracy')} | - |",
                 f"| Citation validity rate | {s.get('citation_validity_rate')} | {s.get('citation_validity_ci95')} |",
-                f"| Answers with any [n] | {s.get('answers_with_citation')} / {s.get('n_questions')} | — |",
+                f"| Answers with any [n] | {s.get('answers_with_citation')} / {s.get('n_questions')} | - |",
                 "",
                 "Refusal confusion matrix:",
                 "",
@@ -900,10 +900,10 @@ def write_report(
             "**Interpretation:** Refusal recall is “of out-of-scope items, how often we decline.”",
             "Precision is “of our declines, how often we were right to decline.”",
             "A system that refuses everything gets recall 1.0 and is useless (Lab 4).",
-            f"Cache hit rate was {s.get('cache_hit_rate')} — if this is near 1.0, refusal numbers may",
-            "replay older answers; use `--no-cache` for a cold measurement.",
-            "Citation validity near 1.0 is a **code-level** guarantee that cited indices exist;",
-            "it does not prove factual correctness (that would need a judge + κ).",
+            f"Cache hit rate was {s.get('cache_hit_rate')}. If this is near 1.0, refusal numbers may",
+            "replay older answers. Use `--no-cache` for a cold measurement.",
+            "Citation validity near 1.0 is a **code-level** guarantee that cited indices exist.",
+            "It does not prove factual correctness (that would need a judge + κ).",
         )
     else:
         p("_Generation metrics skipped (`--retrieval-only`). Re-run with `--with-generation` (and optionally `--no-cache`)._")
@@ -943,7 +943,7 @@ def write_report(
         lines.append(f"| {m['arxiv_id']} | {m['n']} |")
     lines.append("")
     p(
-        "**Interpretation:** `missing_or_ranking` means the expected paper never appeared in top-k —",
+        "**Interpretation:** `missing_or_ranking` means the expected paper never appeared in top-k:",
         "either it is not ingested, or the embedder ranked other papers higher.",
         "If the PDF is already in the index, the fix is ranking (hybrid BM25, rerank, query rewrite),",
         "not another download. `ranking` means the paper was in top-k but not rank 1.",
@@ -1010,7 +1010,7 @@ def write_report(
                 "|------|-------------|---------|---------|",
                 f"| Paired bootstrap Recall@k | {pr['delta']} | {pr['ci95']} | {pr['p_value']} |",
                 f"| Paired bootstrap MRR | {pm['delta']} | {pm['ci95']} | {pm['p_value']} |",
-                f"| McNemar (recall success) | b={mc['b']} c={mc['c']} | — | {mc['p_value']} |",
+                f"| McNemar (recall success) | b={mc['b']} c={mc['c']} | - | {mc['p_value']} |",
                 "",
             ]
         )
@@ -1022,8 +1022,8 @@ def write_report(
     else:
         p(
             "No `results/rag_eval/baseline_v1.json` with prior per-question scores, so paired p-values",
-            "are not computed. The first successful `final_eval` run saves a baseline automatically;",
-            "re-run after a change to obtain McNemar / paired bootstrap against that snapshot.",
+            "are not computed. The first successful `final_eval` run saves a baseline automatically.",
+            "Re-run after a change to obtain McNemar / paired bootstrap against that snapshot.",
             "Alternatively, copy an older `last_eval.json` rows into `baseline_v1.json`.",
         )
 
@@ -1043,9 +1043,9 @@ def write_report(
             "- Clinical, legal, or financial decisions without human review.",
             "- Questions about papers outside the RAG index.",
             "- Treating cosine similarity as a calibrated probability.",
-            "- Faithfulness/correctness **LLM-judge scores** or **Cohen’s κ** — not run (would need human labels).",
-            "- Gold-context decomposition (oracle chunks vs retrieved) — not run; residual error is only coarsely attributed via fail hints.",
-            "- Lab 6 attack block rates — out of scope unless tool-use is productized.",
+            "- Faithfulness/correctness **LLM-judge scores** or **Cohen’s κ** (not run, would need human labels).",
+            "- Gold-context decomposition (oracle chunks vs retrieved), not run. Residual error is only coarsely attributed via fail hints.",
+            "- Lab 6 attack block rates, out of scope unless tool-use is productized.",
             "",
         ]
     )
@@ -1058,20 +1058,20 @@ def write_report(
         f"(CI {s.get('mrr_ci95')}) and Recall@k={s.get('mean_recall@k')} on "
         f"{s.get('n_retrieval_scored')} labelled items. "
         f"Residual fail hints: {fh}. "
-        f"Most frequent top-k miss: {top_miss.get('arxiv_id')} (n={top_miss.get('n')}) — "
-        f"treat as ranking if the PDF is already ingested. "
+        f"Most frequent top-k miss: {top_miss.get('arxiv_id')} (n={top_miss.get('n')}). "
+        f"Treat as ranking if the PDF is already ingested. "
     )
     if s.get("with_generation"):
         rec += (
-            f"Refusal P/R={s.get('refusal_precision')}/{s.get('refusal_recall')}; "
+            f"Refusal P/R={s.get('refusal_precision')}/{s.get('refusal_recall')}. "
             f"citation validity={s.get('citation_validity_rate')}. "
         )
         if (s.get("cache_hit_rate") or 0) >= 0.9:
-            rec += "Generation used a warm cache; cold `--no-cache` run recommended for refusal claims. "
+            rec += "Generation used a warm cache. Cold `--no-cache` run recommended for refusal claims. "
     if dim and dim.get("recommendation"):
         rec += dim["recommendation"] + " "
     rec += (
-        "Suitable for a constrained portfolio demo on the ingested MI/NTK library; "
+        "Suitable for a constrained portfolio demo on the ingested MI/NTK library, "
         "not for unsupervised refusal-critical deployment until OOS precision is stronger."
     )
     p(rec)

@@ -131,6 +131,10 @@ class TestNoveltyGeometry(unittest.TestCase):
         self.assertEqual(remaining[0]["canonical_id"], "good")
 
     def test_non_arxiv_doi_graceful_handling(self):
+        from src.settings import DATA_DIR
+        nov_db = DATA_DIR / "novelty" / "novelty_cache.sqlite3"
+        if not nov_db.exists():
+            self.skipTest("Local novelty cache database not present on disk")
         from src.novelty.score import score_paper
 
         # Valid non-arXiv DOIs are now resolved via OpenAlex / S2 fallback

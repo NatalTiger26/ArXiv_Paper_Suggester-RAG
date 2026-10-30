@@ -35,16 +35,43 @@ DEFAULT_MD = PROJECT_ROOT / "results" / "batch_novelty_report.md"
 def classify_geometry(m: float, delta: float, r2_plus: float) -> str:
     """Classify paper discovery mode from 2D reference cone metrics."""
     res_gap = (max(0.0, 1.0 - r2_plus)) ** 0.5
-    if 1.0 - r2_plus >= 0.45 or res_gap >= 0.67:
+    if r2_plus < 0.55 or res_gap >= 0.67:
         return "Paradigm Shift / Subspace Outlier"
-    elif delta >= 0.05:
+    elif delta >= 0.08 or (delta >= 0.05 and m < 0.75):
         return "High Synergy Cone Blend"
-    elif delta >= 0.02:
-        return "Moderate Synthesis"
-    elif m >= 0.60:
+    elif m >= 0.80 and delta < 0.04:
         return "Linear / Incremental Extension"
+    elif delta >= 0.03:
+        return "Moderate Synthesis"
     else:
         return "Diffused Reference Combination"
+
+
+def resolve_real_paper_title(aid: str, candidate_title: str | None = None) -> str:
+    """Resolve true bibliographic paper title from local citation and novelty databases."""
+    if candidate_title and candidate_title not in ("Untitled", "arXiv") and len(candidate_title.strip()) > 3:
+        return candidate_title.strip()
+    try:
+        from src.settings import DATA_DIR
+        g_path = DATA_DIR / "citation_library" / "graph.sqlite3"
+        if g_path.exists():
+            with sqlite3.connect(str(g_path)) as g_con:
+                row = g_con.execute("SELECT title FROM papers WHERE arxiv_id = ?", (aid,)).fetchone()
+                if row and row[0] and row[0] not in ("Untitled", "arXiv"):
+                    return row[0].strip()
+    except Exception:
+        pass
+    try:
+        from src.settings import DATA_DIR
+        n_path = DATA_DIR / "novelty" / "novelty_cache.sqlite3"
+        if n_path.exists():
+            with sqlite3.connect(str(n_path)) as n_con:
+                row = n_con.execute("SELECT title FROM papers WHERE arxiv_id = ?", (aid,)).fetchone()
+                if row and row[0] and row[0] not in ("Untitled", "arXiv"):
+                    return row[0].strip()
+    except Exception:
+        pass
+    return candidate_title or "Untitled"
 
 
 def load_candidate_papers(
@@ -121,14 +148,19 @@ def run_batch_novelty(
                 for item in prev_data.get("results", []):
                     m_val = item.get("m")
                     d_val = item.get("Delta")
+                    r2_val = item.get("R2_plus")
+                    aid_val = item.get("arxiv_id")
                     if (
                         item.get("ok")
-                        and item.get("arxiv_id")
+                        and aid_val
                         and m_val is not None
                         and str(m_val) != "nan"
                         and str(d_val) != "nan"
                     ):
-                        existing_records[item["arxiv_id"]] = item
+                        item["title"] = resolve_real_paper_title(aid_val, item.get("title"))
+                        if r2_val is not None and str(r2_val) != "nan":
+                            item["classification"] = classify_geometry(float(m_val), float(d_val), float(r2_val))
+                        existing_records[aid_val] = item
             print(f"[batch-novelty] Loaded {len(existing_records)} existing records for resumption.")
         except Exception as e:
             print(f"[batch-novelty] Could not load prior results: {e}")
@@ -149,14 +181,16 @@ def run_batch_novelty(
 
     for idx, paper in enumerate(candidates, 1):
         aid = paper["arxiv_id"]
-        title = paper.get("title") or "Untitled"
+        title = resolve_real_paper_title(aid, paper.get("title"))
         year = paper.get("year")
         cites = paper.get("citation_count") or 0
 
         # Check resume cache
         if resume and aid in existing_records:
-            print(f"[{idx:3d}/{len(candidates)}] {aid} | (cached) {title[:48]}...")
-            results.append(existing_records[aid])
+            cached_rec = existing_records[aid]
+            cached_rec["title"] = resolve_real_paper_title(aid, cached_rec.get("title"))
+            print(f"[{idx:3d}/{len(candidates)}] {aid} | (cached) {cached_rec['title'][:48]}...")
+            results.append(cached_rec)
             continue
 
         print(f"[{idx:3d}/{len(candidates)}] Scoring {aid} | {title[:48]}...", flush=True)
@@ -309,7 +343,7 @@ def _generate_markdown_report(path: Path, report_data: dict[str, Any]) -> None:
     lines = [
         "# Batch Novelty Subspace Analysis Report",
         "",
-        f"**Generated:** {stats.get('timestamp', '—')}  ",
+        f"**Generated:** {stats.get('timestamp', '-')}  ",
         f"**Papers Evaluated:** {stats.get('total_evaluated', 0)}  ",
         f"**Success Rate:** {stats.get('total_successful', 0)} / {stats.get('total_evaluated', 0)} "
         f"({(stats.get('total_successful', 0) / max(1, stats.get('total_evaluated', 0)) * 100):.1f}%)",
@@ -347,7 +381,7 @@ def _generate_markdown_report(path: Path, report_data: dict[str, Any]) -> None:
         title = (p.get("title") or "")[:45].replace("|", "-")
         aid = p.get("arxiv_id")
         lines.append(
-            f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '—'} | "
+            f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '-'} | "
             f"{p.get('citation_count', 0):,} | **{p.get('Delta', 0.0):.4f}** | {p.get('m', 0.0):.3f} | "
             f"{p.get('R2_plus', 0.0):.3f} | {p.get('classification')} |"
         )
@@ -366,7 +400,7 @@ def _generate_markdown_report(path: Path, report_data: dict[str, Any]) -> None:
         title = (p.get("title") or "")[:45].replace("|", "-")
         aid = p.get("arxiv_id")
         lines.append(
-            f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '—'} | "
+            f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '-'} | "
             f"{p.get('citation_count', 0):,} | **{p.get('novelty_residual', 0.0):.4f}** | "
             f"{p.get('R2_plus', 0.0):.3f} | {p.get('m', 0.0):.3f} |"
         )
@@ -389,7 +423,7 @@ def _generate_markdown_report(path: Path, report_data: dict[str, Any]) -> None:
         if attr:
             top_parent_str = f"`{attr[0].get('paper_id')}` (λ={attr[0].get('weight', 0):.2f})"
         lines.append(
-            f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '—'} | "
+            f"| [{aid}](https://arxiv.org/abs/{aid}) | {title}... | {p.get('year') or '-'} | "
             f"{p.get('citation_count', 0):,} | **{p.get('m', 0.0):.4f}** | {p.get('Delta', 0.0):.3f} | "
             f"{top_parent_str} |"
         )

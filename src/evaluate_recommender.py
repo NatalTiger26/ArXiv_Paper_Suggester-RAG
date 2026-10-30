@@ -732,8 +732,19 @@ def _build_personal_lookup(
     lookup: dict[str, dict[str, Any]] = {}
 
     for item in personal:
-        pid = _normalize_id(item["paper_id"])
-        lookup[pid] = item
+        pid = _normalize_id(item.get("paper_id"))
+        if pid:
+            lookup[pid] = item
+        aid = _normalize_id(item.get("arxiv_id"))
+        if aid:
+            lookup[aid] = item
+        try:
+            from src.core.ids import canonical_id
+            cid = canonical_id(item.get("paper_id") or item.get("arxiv_id"))
+            if cid:
+                lookup[cid] = item
+        except Exception:
+            pass
 
     return lookup
 
@@ -747,13 +758,13 @@ def _build_rank_lookup(
     result: dict[str, int] = {}
 
     for index, paper in enumerate(ranked, start=1):
-        pid = _normalize_id(
-            paper.get("arxiv_id")
-            or paper.get("paper_id")
-        )
-
-        if pid:
-            result[pid] = index
+        for candidate_key in (
+            paper.get("arxiv_id"),
+            paper.get("paper_id"),
+        ):
+            pid = _normalize_id(candidate_key)
+            if pid and pid not in result:
+                result[pid] = index
 
     return result
 
@@ -774,12 +785,26 @@ def _intersection(
             paper.get("arxiv_id")
             or paper.get("paper_id")
         )
+        aid = _normalize_id(paper.get("arxiv_id"))
+        raw_pid = _normalize_id(paper.get("paper_id"))
+        cid = ""
+        try:
+            from src.core.ids import canonical_id
+            cid = canonical_id(paper.get("paper_id") or paper.get("arxiv_id")) or ""
+        except Exception:
+            pass
 
-        if pid in personal_by_id:
+        match = None
+        for key in (pid, aid, raw_pid, cid):
+            if key and key in personal_by_id:
+                match = personal_by_id[key]
+                break
+
+        if match is not None:
             intersection.append(
                 {
                     "paper": paper,
-                    "personal": personal_by_id[pid],
+                    "personal": match,
                 }
             )
 
@@ -1236,7 +1261,14 @@ def run_evaluation(
         "recency",
         "citation",
         "author",
+        "pagerank",
     )
+
+    base_ablation_weights = dict(DEFAULT_WEIGHTS)
+    if "pagerank" not in base_ablation_weights:
+        base_ablation_weights["pagerank"] = 0.15
+        s_total = sum(base_ablation_weights.values())
+        base_ablation_weights = {k: v / s_total for k, v in base_ablation_weights.items()}
 
     for signal in ablation_names:
         method_name = f"ablate_{signal}"
@@ -1245,7 +1277,7 @@ def run_evaluation(
 
         weights = ablation_weights(
             signal,
-            DEFAULT_WEIGHTS,
+            base_ablation_weights,
         )
 
         ranked = rank_with_weights(
@@ -1523,11 +1555,19 @@ def run_command(args: argparse.Namespace) -> None:
         use_llm=args.llm,
     )
 
+    out_json = Path(args.output) if getattr(args, "output", None) else RESULTS_JSON_PATH
+
     write_results_table(
         evaluation,
         path=RESULTS_TABLE_PATH,
-        json_path=RESULTS_JSON_PATH,
+        json_path=out_json,
     )
+    if out_json != RESULTS_JSON_PATH:
+        write_results_table(
+            evaluation,
+            path=RESULTS_TABLE_PATH,
+            json_path=RESULTS_JSON_PATH,
+        )
 
     # Error analysis is always based on the main full ranker without LLM.
     personal = load_personal_rankings()
@@ -1698,6 +1738,13 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=DEFAULT_TOP_ERRORS,
         help="Number of errors written to the error analysis.",
+    )
+
+    run.add_argument(
+        "--output",
+        type=str,
+        default=str(RESULTS_JSON_PATH),
+        help="Path to write evaluation results JSON.",
     )
 
     run.set_defaults(func=run_command)

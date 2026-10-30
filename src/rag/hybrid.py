@@ -139,6 +139,19 @@ def hybrid_rerank(
 
     intent = detect_query_intent(query)
 
+    # Inspect hard entity presence to adapt dense vs BM25 weights
+    uppercase_acronyms = [w for w in re.findall(r"\b[A-Za-z0-9_\-]{3,}\b", query) if any(c.isupper() for c in w) and not w.isdigit()]
+    has_hard_entity = bool(explicit_ids or matched_entities or uppercase_acronyms)
+
+    if has_hard_entity:
+        w_dense = 0.35
+        w_bm25 = 0.65
+        entity_boost = 0.05
+    else:
+        w_dense = 0.80
+        w_bm25 = 0.20
+        entity_boost = 0.01
+
     # 1. Dense ranking order
     dense_order = {c["chunk_id"]: rank for rank, c in enumerate(chunks, 1)}
 
@@ -159,16 +172,16 @@ def hybrid_rerank(
         dense_r = dense_order[cid]
         bm25_r = bm25_order.get(cid, len(chunks))
 
-        rrf_score = (1.0 / (rrf_k + dense_r)) + (1.0 / (rrf_k + bm25_r))
+        rrf_score = (w_dense / (rrf_k + dense_r)) + (w_bm25 / (rrf_k + bm25_r))
 
         pid = str(c.get("paper_id") or "")
         # Boost 1: Exact explicit arXiv ID in query
         if any(e == pid or e in pid for e in explicit_ids):
-            rrf_score += 0.05
+            rrf_score += entity_boost
 
         # Boost 2: Method / entity title match from catalog
         if any(m == pid or m in pid for m in matched_entities):
-            rrf_score += 0.025
+            rrf_score += (entity_boost * 0.5)
 
         # Boost 3: Section intent alignment
         sec_boost = section_intent_boost(str(c.get("section") or ""), intent)

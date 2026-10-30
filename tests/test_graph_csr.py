@@ -5,6 +5,13 @@ from src.core.graph_csr import CitationGraphCSR, get_citation_csr
 
 
 class TestCitationGraphCSR(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from src.settings import DATA_DIR
+        db_path = DATA_DIR / "citation_library" / "graph.sqlite3"
+        if not db_path.exists():
+            raise unittest.SkipTest("Local citation graph database not present on disk")
+
     def test_singleton_load(self):
         csr = get_citation_csr()
         self.assertIsNotNone(csr)
