@@ -608,6 +608,9 @@ def ablation_weights(
         "recency",
         "citation",
         "author",
+        "pagerank",
+        "velocity",
+        "coupling",
     }
 
     if signal not in valid_signals:

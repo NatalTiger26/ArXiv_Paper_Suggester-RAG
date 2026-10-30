@@ -67,12 +67,28 @@ def sanitize_json_obj(obj: Any) -> Any:
 
 # ── Health & Diagnostics ───────────────────────────────────────────────────────
 
+_HEALTH_CACHE: dict[str, Any] | None = None
+_HEALTH_CACHE_TIME: float = 0.0
+_HEALTH_CACHE_TTL: float = 60.0
+
+_HUBS_CACHE: dict[str, Any] | None = None
+_HUBS_CACHE_TIME: float = 0.0
+_HUBS_CACHE_TTL: float = 60.0
+
 
 async def api_health(request: Request) -> JSONResponse:
-    """System health check and index metrics."""
+    """System health check and index metrics with 60-second in-memory caching."""
+    global _HEALTH_CACHE, _HEALTH_CACHE_TIME
+    now = time.time()
+    if _HEALTH_CACHE is not None and (now - _HEALTH_CACHE_TIME) < _HEALTH_CACHE_TTL:
+        cached = dict(_HEALTH_CACHE)
+        cached["timestamp"] = now
+        cached["telemetry"] = get_telemetry_summary()
+        return JSONResponse(cached)
+
     stats: dict[str, Any] = {
         "status": "healthy",
-        "timestamp": time.time(),
+        "timestamp": now,
         "catalog": catalog_stats(),
     }
 
@@ -110,6 +126,8 @@ async def api_health(request: Request) -> JSONResponse:
         stats["chroma_rag"] = {"error": str(e)}
 
     stats["telemetry"] = get_telemetry_summary()
+    _HEALTH_CACHE = dict(stats)
+    _HEALTH_CACHE_TIME = now
     return JSONResponse(stats)
 
 
@@ -119,7 +137,11 @@ async def api_health(request: Request) -> JSONResponse:
 async def api_search(request: Request) -> JSONResponse:
     """Sub-millisecond FTS5 BM25 catalog search."""
     q = request.query_params.get("q", "").strip()
-    limit = int(request.query_params.get("limit", 20))
+    try:
+        limit = max(1, min(100, int(request.query_params.get("limit", 20))))
+    except (ValueError, TypeError):
+        return JSONResponse({"error": "Query parameter 'limit' must be an integer between 1 and 100."}, status_code=400)
+
     if not q:
         return JSONResponse({"results": [], "count": 0, "query": ""})
 
@@ -149,10 +171,14 @@ async def api_recommend(request: Request) -> JSONResponse:
     if not query:
         return JSONResponse({"error": "Field 'query' is required."}, status_code=400)
 
-    k = int(data.get("k", 10))
+    try:
+        k = max(1, min(100, int(data.get("k", 10))))
+        half_life = max(0.1, min(50.0, float(data.get("half_life", 4.0))))
+        temperature = float(data.get("temperature", 0.0))
+    except (ValueError, TypeError):
+        return JSONResponse({"error": "Invalid parameter types for 'k', 'half_life', or 'temperature'."}, status_code=400)
+
     weights = data.get("weights")
-    half_life = float(data.get("half_life", 4.0))
-    temperature = float(data.get("temperature", 0.0))
     use_llm = bool(data.get("use_llm", False))
 
     t0 = time.perf_counter()
@@ -245,7 +271,10 @@ async def api_ask(request: Request) -> JSONResponse:
     if not query:
         return JSONResponse({"error": "Field 'query' is required."}, status_code=400)
 
-    top_k = int(data.get("top_k", 5))
+    try:
+        top_k = max(1, min(20, int(data.get("top_k", 5))))
+    except (ValueError, TypeError):
+        return JSONResponse({"error": "Field 'top_k' must be an integer between 1 and 20."}, status_code=400)
     use_cache = bool(data.get("use_cache", True))
     paper_ids = data.get("paper_ids")
 
@@ -673,7 +702,12 @@ async def api_workspace_vectors(request: Request) -> Response:
 
 
 async def api_hubs(request: Request) -> JSONResponse:
-    """Return top landmark citation hubs from graph.sqlite3."""
+    """Return top landmark citation hubs from graph.sqlite3 with 60-second in-memory caching."""
+    global _HUBS_CACHE, _HUBS_CACHE_TIME
+    now = time.time()
+    if _HUBS_CACHE is not None and (now - _HUBS_CACHE_TIME) < _HUBS_CACHE_TTL:
+        return JSONResponse(_HUBS_CACHE)
+
     graph_db = PROJECT_ROOT / "data" / "citation_library" / "graph.sqlite3"
     if not graph_db.exists():
         return JSONResponse({"hubs": [], "count": 0})
@@ -700,7 +734,10 @@ async def api_hubs(request: Request) -> JSONResponse:
             }
             for r in rows
         ]
-        return JSONResponse({"hubs": hubs, "count": len(hubs)})
+        res = {"hubs": hubs, "count": len(hubs)}
+        _HUBS_CACHE = res
+        _HUBS_CACHE_TIME = now
+        return JSONResponse(res)
     finally:
         conn.close()
 
@@ -724,11 +761,17 @@ async def api_telemetry_reset(request: Request) -> JSONResponse:
 
 
 def create_app() -> Starlette:
-    """Build the Starlette application with CORS and routes."""
+    """Build the Starlette application with local CORS and routes."""
+    local_origins = [
+        "http://127.0.0.1:8000",
+        "http://localhost:8000",
+        "http://127.0.0.1:8501",
+        "http://localhost:8501",
+    ]
     middleware = [
         Middleware(
             CORSMiddleware,
-            allow_origins=["*"],
+            allow_origins=local_origins,
             allow_methods=["*"],
             allow_headers=["*"],
         )

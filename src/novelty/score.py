@@ -13,6 +13,7 @@ from .cache import (
     get_embedding,
     get_paper,
     get_ref_ids,
+    get_score,
     put_embedding,
     save_score,
     set_ref_edges,
@@ -128,6 +129,13 @@ def score_paper(
 
     model_name, dim = model_and_dim()
     conn = connect()
+
+    if not force_refresh_refs:
+        cached_entry = get_score(conn, focal_cid, model_name, dim)
+        if cached_entry and cached_entry.get("profile"):
+            cached_prof = cached_entry["profile"]
+            if cached_prof.get("ok"):
+                return cached_prof
 
     need_resolve = force_refresh_refs or not get_ref_ids(conn, focal_cid)
     if need_resolve:

@@ -38,11 +38,11 @@ class CitationGraphCSR:
         """Precompute 2-hop neighborhoods for the most connected landmark hubs."""
         if self.n_nodes == 0:
             return
-        out_deg = np.diff(self.adj.indptr)
-        k = min(top_k, len(out_deg))
+        in_deg = np.bincount(self.adj.indices, minlength=self.n_nodes)
+        k = min(top_k, len(in_deg))
         if k <= 0:
             return
-        hub_indices = np.argpartition(out_deg, -k)[-k:]
+        hub_indices = np.argpartition(in_deg, -k)[-k:]
         for idx in hub_indices:
             node_id = self.idx_to_node[idx]
             self._hub_cache[node_id] = self._raw_2hop_traversal(idx, max_results=50)
@@ -140,14 +140,17 @@ class CitationGraphCSR:
         if seed_node is not None:
             seed_idx = self.node_to_idx.get(str(seed_node))
 
+        v = np.zeros(n, dtype=np.float32)
         if seed_idx is not None:
-            teleport = np.zeros(n, dtype=np.float32)
-            teleport[seed_idx] = 1.0 - alpha
+            v[seed_idx] = 1.0
         else:
-            teleport = (1.0 - alpha) / n
+            v.fill(1.0 / n)
+
+        dangling_mask = (out_deg == 0)
 
         for _ in range(max_iter):
-            p_next = alpha * (T.dot(p)) + teleport
+            dangling_sum = float(np.sum(p[dangling_mask]))
+            p_next = alpha * T.dot(p) + (alpha * dangling_sum + (1.0 - alpha)) * v
             if np.sum(np.abs(p_next - p)) < tol:
                 break
             p = p_next

@@ -1,7 +1,7 @@
 # Master System Evaluation Report
 
 > Comprehensive empirical evaluation across all six operational pillars of the ArXiv Paper Suggester platform.
-> Generated on 2026-10-29T20:08:53.955407+00:00 with fixed random seed 42.
+> Generated on 2026-10-30T09:21:52.866361+00:00 with fixed random seed 42.
 
 ## Executive Summary
 
@@ -51,16 +51,16 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 ### Ranking Ablations against Personal Importance Ratings
 
-| Ranker Configuration | Spearman rho | Kendall tau | NDCG@10 | NDCG@20 | MAP@10 | NDCG@10 Drop |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Full Multi-Signal Ranker** | **0.2984** | **0.2215** | **0.4993** | **0.4624** | **0.4420** | 0.0% |
-| Embedding Only | 0.6776 | 0.512 | 0.3517 | 0.3846 | 0.3150 | - |
-| Citation Only | 0.2042 | 0.154 | 0.0407 | 0.2523 | 0.0820 | - |
-| Ablate Embedding | 0.547 | 0.4048 | 0.3708 | 0.5482 | 0.3263 | -25.74% |
-| Ablate Recency | 0.4294 | 0.3178 | 0.4150 | 0.4379 | 0.3652 | -16.88% |
-| Ablate Citation | 0.1463 | 0.1083 | 0.4697 | 0.4829 | 0.4133 | -5.93% |
-| Ablate Author | 0.5312 | 0.3931 | 0.4960 | 0.4736 | 0.4364 | -0.66% |
-| Ablate Pagerank | 0.281 | 0.2079 | 0.4782 | 0.4491 | 0.4208 | -4.23% |
+| Ranker Configuration | Spearman rho | NDCG@10 | NDCG@20 | NDCG@10 Drop | Ground Truth Overlap |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Full Multi-Signal Ranker** | **0.2984** | **0.4993** | **0.4624** | 0.0% | 16 |
+| Embedding Only | 0.6776 | 0.3517 | 0.3846 | - | 17 |
+| Citation Only | 0.2042 | 0.0407 | 0.2523 | - | 19 |
+| Ablate Embedding | 0.547 | 0.3708 | 0.5482 | -25.74% | 16 |
+| Ablate Recency | 0.4294 | 0.4150 | 0.4379 | -16.88% | 18 |
+| Ablate Citation | 0.1463 | 0.4697 | 0.4829 | -5.93% | 21 |
+| Ablate Author | 0.5312 | 0.4960 | 0.4736 | -0.66% | 16 |
+| Ablate Pagerank | 0.281 | 0.4782 | 0.4491 | -4.23% | 16 |
 
 ### Weight Preset Title Token Jaccard Diversity
 
@@ -77,8 +77,8 @@ All confidence intervals are reported at 95% confidence level using percentile b
 
 - **Adjacency Representation**: Compressed Sparse Row (CSR) matrix with 100,884 nodes and 226,857 edges
 - **In-Memory Array RAM**: **2.12 MB** (fits entirely within L3 cache)
-- **PageRank Power Iteration**: mean = **18.01 ms** across 5 runs
-- **2-Hop Neighborhood Traversal**: p50 = **0.002 ms**, p95 = **0.007 ms**
+- **PageRank Power Iteration**: mean = **18.35 ms** across 5 runs
+- **2-Hop Neighborhood Traversal**: p50 = **0.002 ms**, p95 = **0.008 ms**
 - **Landmark Hub Authority**: Top-50 PageRank vs In-Degree Jaccard overlap = **0.8868** (47/50 shared hubs, Spearman rho = 0.9755)
 
 ---
@@ -117,10 +117,10 @@ Evaluated across 5,707 successfully profiled catalog papers.
 | Missing Abstracts Fraction | Coordinate Shift (Title Fallback) | Coordinate Shift (Naive Drop) | Stability Gain |
 | :---: | :---: | :---: | :---: |
 | 0% | 0.0000 | 0.0000 | +0.0% |
-| 25% | 0.0003 | 0.0112 | +97.3% |
-| 50% | 0.0007 | 0.0225 | +96.9% |
-| 75% | 0.0013 | 0.0338 | +96.2% |
-| 90% | 0.0017 | 0.0405 | +95.8% |
+| 25% | 0.0283 | 0.0305 | +7.1% |
+| 50% | 0.0063 | 0.0120 | +47.2% |
+| 75% | 0.0592 | 0.0522 | +0.0% |
+| 90% | 0.0575 | 0.0516 | +0.0% |
 
 - **Universal Citation Parser Verification**: Non-arXiv DOI resolution = True, BibTeX = True, IEEE = True
 
@@ -135,17 +135,17 @@ Evaluated across 5,707 successfully profiled catalog papers.
 | **Chroma RAG Vector Store** | 7.31 GB (7490.5 MB) | 553,516 passage chunks | 256-d Matryoshka | **3.0x Vector Compression** |
 | **PDF Papers Cache** | 173.1 MB | 50 files | 200.0 MB budget | Headroom: 26.9 MB |
 | **API HTTP Cache** | 655.6 MB | 10215 responses | SQLite zlib | Operational |
-| **Novelty Subspace Cache** | 897.3 MB | 0 profiles | SQLite | Operational |
+| **Novelty Subspace Cache** | 897.3 MB | 11423 profiles | SQLite | Operational |
 
 ### System Latency SLO Matrix
 
 | Operation / Endpoint | Target SLO | Measured Latency | Conformance |
 | :--- | :---: | :---: | :---: |
-| SQLite FTS5 Catalog Search | < 20 ms | p50: 4.24 ms / p95: 15.42 ms | PASS |
-| /api/health | < 100 ms | 4398.92 ms | PASS |
-| /api/catalog_search | < 100 ms | 4.74 ms | PASS |
-| /api/novelty_geometry | < 100 ms | 2961.35 ms | PASS |
-| /api/graph_hubs | < 100 ms | 6.97 ms | PASS |
+| SQLite FTS5 Catalog Search | < 20 ms | p50: 2.59 ms / p95: 3.90 ms | PASS |
+| /api/health | < 100 ms | 0.86 ms | PASS |
+| /api/catalog_search | < 100 ms | 2.13 ms | PASS |
+| /api/novelty_geometry | < 100 ms | 1.04 ms | PASS |
+| /api/graph_hubs | < 100 ms | 0.57 ms | PASS |
 
 ---
 

@@ -1,10 +1,10 @@
 {
   "metadata": {
     "title": "Master System Evaluation Report",
-    "timestamp_utc": "2026-10-29T20:08:53.955407+00:00",
+    "timestamp_utc": "2026-10-30T09:21:52.866361+00:00",
     "seed": 42,
     "project_root": "/Users/nataltiger/Documents/Personal Projects/ArXiv_Paper_Suggester",
-    "total_evaluation_seconds": 21.32
+    "total_evaluation_seconds": 19.1
   },
   "pillar_1_rag": {
     "n_evaluated": 80,
@@ -252,55 +252,40 @@
     "ablations": {
       "ablate_embedding": {
         "spearman_rho": 0.547,
-        "kendall_tau": 0.4048,
-        "ndcg5": 0.3522,
         "ndcg10": 0.3708,
         "ndcg20": 0.5482,
-        "map10": 0.3263,
         "drop_ndcg10_pct": 25.74,
         "drop_rho_pct": -83.31,
         "overlap_count": 16
       },
       "ablate_recency": {
         "spearman_rho": 0.4294,
-        "kendall_tau": 0.3178,
-        "ndcg5": 0.3943,
         "ndcg10": 0.415,
         "ndcg20": 0.4379,
-        "map10": 0.3652,
         "drop_ndcg10_pct": 16.88,
         "drop_rho_pct": -43.9,
         "overlap_count": 18
       },
       "ablate_citation": {
         "spearman_rho": 0.1463,
-        "kendall_tau": 0.1083,
-        "ndcg5": 0.4462,
         "ndcg10": 0.4697,
         "ndcg20": 0.4829,
-        "map10": 0.4133,
         "drop_ndcg10_pct": 5.93,
         "drop_rho_pct": 50.97,
         "overlap_count": 21
       },
       "ablate_author": {
         "spearman_rho": 0.5312,
-        "kendall_tau": 0.3931,
-        "ndcg5": 0.4712,
         "ndcg10": 0.496,
         "ndcg20": 0.4736,
-        "map10": 0.4364,
         "drop_ndcg10_pct": 0.66,
         "drop_rho_pct": -78.0,
         "overlap_count": 16
       },
       "ablate_pagerank": {
         "spearman_rho": 0.281,
-        "kendall_tau": 0.2079,
-        "ndcg5": 0.4543,
         "ndcg10": 0.4782,
         "ndcg20": 0.4491,
-        "map10": 0.4208,
         "drop_ndcg10_pct": 4.23,
         "drop_rho_pct": 5.83,
         "overlap_count": 16
@@ -350,13 +335,13 @@
       "total_mb": 2.12
     },
     "pagerank_bench": {
-      "mean_ms": 18.01,
-      "min_ms": 17.88,
+      "mean_ms": 18.35,
+      "min_ms": 17.82,
       "trials": 5
     },
     "traversal_bench_ms": {
       "p50": 0.002,
-      "p95": 0.007,
+      "p95": 0.008,
       "queries": 100
     },
     "hub_authority": {
@@ -439,27 +424,27 @@
       },
       {
         "mask_fraction": 0.25,
-        "coordinate_shift_title_fallback": 0.0003,
-        "coordinate_shift_naive_drop": 0.0112,
-        "stability_gain_pct": 97.3
+        "coordinate_shift_title_fallback": 0.0283,
+        "coordinate_shift_naive_drop": 0.0305,
+        "stability_gain_pct": 7.1
       },
       {
         "mask_fraction": 0.5,
-        "coordinate_shift_title_fallback": 0.0007,
-        "coordinate_shift_naive_drop": 0.0225,
-        "stability_gain_pct": 96.9
+        "coordinate_shift_title_fallback": 0.0063,
+        "coordinate_shift_naive_drop": 0.012,
+        "stability_gain_pct": 47.2
       },
       {
         "mask_fraction": 0.75,
-        "coordinate_shift_title_fallback": 0.0013,
-        "coordinate_shift_naive_drop": 0.0338,
-        "stability_gain_pct": 96.2
+        "coordinate_shift_title_fallback": 0.0592,
+        "coordinate_shift_naive_drop": 0.0522,
+        "stability_gain_pct": 0.0
       },
       {
         "mask_fraction": 0.9,
-        "coordinate_shift_title_fallback": 0.0017,
-        "coordinate_shift_naive_drop": 0.0405,
-        "stability_gain_pct": 95.8
+        "coordinate_shift_title_fallback": 0.0575,
+        "coordinate_shift_naive_drop": 0.0516,
+        "stability_gain_pct": 0.0
       }
     ],
     "universal_parser": {
@@ -482,29 +467,29 @@
       "http_cache_mb": 655.6,
       "http_cache_entries": 10215,
       "novelty_cache_mb": 897.3,
-      "novelty_cache_entries": 0
+      "novelty_cache_entries": 11423
     },
     "latencies": {
       "catalog_fts5_ms": {
-        "p50": 4.24,
-        "p95": 15.42
+        "p50": 2.59,
+        "p95": 3.9
       },
       "api_endpoints": {
         "health": {
           "status_code": 200,
-          "latency_ms": 4398.92
+          "latency_ms": 0.86
         },
         "catalog_search": {
           "status_code": 200,
-          "latency_ms": 4.74
+          "latency_ms": 2.13
         },
         "novelty_geometry": {
           "status_code": 200,
-          "latency_ms": 2961.35
+          "latency_ms": 1.04
         },
         "graph_hubs": {
           "status_code": 200,
-          "latency_ms": 6.97
+          "latency_ms": 0.57
         }
       }
     }

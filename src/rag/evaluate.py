@@ -8,11 +8,11 @@ Metrics:
   Latency: p50 / p95 (Lab 7)
   Generation (optional): refusal correctness when API available
 
-Dim sweep is handled by src/eval_suite.py (in-memory Matryoshka on corpus texts).
+Dim sweep is handled by src/final_eval.py (in-memory Matryoshka on corpus texts).
 
   uv run python -m src.rag.cli eval --retrieval-only
   uv run python -m src.rag.cli eval
-  uv run python src/eval_suite.py --all
+  uv run python src/final_eval.py --retrieval-only
 """
 
 from __future__ import annotations

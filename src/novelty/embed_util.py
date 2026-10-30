@@ -15,7 +15,7 @@ def model_and_dim() -> tuple[str, int]:
 
     try:
         from src.rag import embed_store as es
-        if getattr(es, "_MODEL_INSTANCE", None) is not None:
+        if getattr(es, "_model", None) is not None:
             dim = int(es._active_dim())
             name = getattr(es, "_model_name_loaded", EMBEDDING_MODEL)
             return str(name), dim

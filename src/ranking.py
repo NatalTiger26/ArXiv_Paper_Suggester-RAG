@@ -455,6 +455,12 @@ def _validate_weights(weights: dict[str, float]) -> dict[str, float]:
             raise ValueError(f"Invalid weight for 'velocity': {weights.get('velocity')!r}")
         cleaned["velocity"] = float(val)
 
+    if "pagerank" in weights:
+        val = _safe_float(weights.get("pagerank"))
+        if val is None or val < 0:
+            raise ValueError(f"Invalid weight for 'pagerank': {weights.get('pagerank')!r}")
+        cleaned["pagerank"] = float(val)
+
     if "coupling" in weights:
         val = _safe_float(weights.get("coupling"))
         if val is None or val < 0:
@@ -901,8 +907,12 @@ def score_and_rank(
                 pagerank_val = 0.3
 
         raw_cite = citation_score(cites)
-        # Blend PageRank authority (40%) with citation count (60%) when graph is present
-        effective_citation = 0.6 * raw_cite + 0.4 * min(1.0, pagerank_val * 20.0) if csr is not None else raw_cite
+        scaled_pr = min(1.0, pagerank_val * 20.0)
+        # Use pure citation count when pagerank is an explicit signal weight
+        if "pagerank" in weights and weights["pagerank"] > 0:
+            effective_citation = raw_cite
+        else:
+            effective_citation = 0.6 * raw_cite + 0.4 * scaled_pr if csr is not None else raw_cite
 
         aid = result.get("arxiv_id") or (paper or {}).get("arxiv_id") or pid
         coupling_val = compute_bibliographic_coupling(csr, aid, seed_paper_ids) if (csr is not None and seed_paper_ids) else 0.0
@@ -916,7 +926,7 @@ def score_and_rank(
             "citation": effective_citation,
             "author": author_score(paper or {}, author_frequency),
             "velocity": velocity_score(cites, year, lib_cites),
-            "pagerank": pagerank_val,
+            "pagerank": scaled_pr,
             "coupling": coupling_val,
         }
 
@@ -1007,7 +1017,7 @@ def parse_weights(text: str) -> dict[str, float]:
     """
     Parse CLI weights in the documented order:
 
-      embedding,recency,citation,author[,velocity]
+      embedding,recency,citation,author[,velocity][,pagerank]
     """
     parts = [part.strip() for part in text.split(",")]
 
@@ -1015,10 +1025,12 @@ def parse_weights(text: str) -> dict[str, float]:
         keys = ("embedding", "recency", "citation", "author")
     elif len(parts) == 5:
         keys = ("embedding", "recency", "citation", "author", "velocity")
+    elif len(parts) == 6:
+        keys = ("embedding", "recency", "citation", "author", "velocity", "pagerank")
     else:
         raise argparse.ArgumentTypeError(
-            "--weights must contain 4 or 5 comma-separated values: "
-            "embedding,recency,citation,author[,velocity]"
+            "--weights must contain 4, 5, or 6 comma-separated values: "
+            "embedding,recency,citation,author[,velocity][,pagerank]"
         )
 
     try:

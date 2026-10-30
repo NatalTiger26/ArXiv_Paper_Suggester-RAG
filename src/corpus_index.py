@@ -43,7 +43,7 @@ def load_corpus(path: Path = CORPUS_PATH) -> list[dict]:
     global _CACHED_CORPUS, _CACHED_CORPUS_MTIME
     p = Path(path)
     if not p.exists():
-        raise SystemExit(
+        raise FileNotFoundError(
             f"Corpus not found: {p}\n"
             "  Place data/corpus.json (or legacy corpus_100.json), then optionally\n"
             "  rebuild the index with:  python src/corpus_index.py build"
@@ -53,7 +53,7 @@ def load_corpus(path: Path = CORPUS_PATH) -> list[dict]:
         return _CACHED_CORPUS
     data = json.loads(p.read_text(encoding="utf-8"))
     if not isinstance(data, list) or not data:
-        raise SystemExit("corpus.json must be a non-empty JSON array")
+        raise ValueError("corpus.json must be a non-empty JSON array")
     _CACHED_CORPUS = data
     _CACHED_CORPUS_MTIME = mtime
     return data
@@ -397,7 +397,7 @@ def get_collection():
     import chromadb
     from chromadb.config import Settings
     if not CHROMA_DIR.exists():
-        raise SystemExit(
+        raise FileNotFoundError(
             f"No Chroma index at {CHROMA_DIR}\n"
             "  Run:  python src/corpus_index.py build"
         )

@@ -35,7 +35,7 @@ except Exception:
         from src.settings import get_gemini_model
     except Exception:
         def get_gemini_model() -> str:
-            return (os.getenv("GEMINI_MODEL") or "gemini-3.8-flash").strip()
+            return (os.getenv("GEMINI_MODEL") or "gemini-2.0-flash").strip()
 
 
 
@@ -287,7 +287,7 @@ def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
             candidates: list[str] = []
             for m in (
                 requested,
-                "gemini-3.8-flash",
+                "gemini-2.0-flash",
                 "gemini-2.5-flash",
                 "gemini-flash-latest",
             ):
@@ -331,7 +331,7 @@ def _call_gemini(prompt: str, system: str = SYSTEM_PROMPT) -> str:
     )
     if gemini_err:
         msg += f"\n  Gemini error was: {gemini_err}"
-    raise SystemExit(msg)
+    raise RuntimeError(msg)
 
 
 def _coverage(chunks: list[dict[str, Any]]) -> str:

@@ -124,16 +124,16 @@ clean:
 
 
 eval-suite:
-	$(PY) src/eval_suite.py --all
+	$(PY) src/final_eval.py --all
 
 eval-suite-full:
-	$(PY) src/eval_suite.py --all --with-generation
+	$(PY) src/final_eval.py --with-generation
 
 dim-sweep:
-	$(PY) src/eval_suite.py --dim-sweep
+	$(PY) src/final_eval.py --retrieval-only
 
 eval-advanced:
-	$(PY) src/eval_advanced.py --write-report
+	$(PY) src/final_eval.py --retrieval-only
 
 final-eval:
 	$(PY) src/final_eval.py --retrieval-only

@@ -219,7 +219,7 @@ def run_batch_novelty(
                         "classification": classification,
                         "attribution": attr_list,
                         "n_refs_used": profile.get("n_refs_used", 0),
-                        "d_eff": profile.get("d_eff"),
+                        "d_eff": profile.get("d_eff_refs") or profile.get("d_eff"),
                     }
                     print(f"       -> m={m:.3f}  Δ={delta:.3f}  R²+={r2_plus:.3f}  Res={res_gap:.3f}  [{classification}]")
 

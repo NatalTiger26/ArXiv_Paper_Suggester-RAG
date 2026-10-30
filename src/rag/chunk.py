@@ -187,8 +187,14 @@ def chunk_markdown(
             # keep a short head only
             body = body[:1500]
 
+        # Find absolute document offset for accurate surrounding context expansion
+        body_pos = text.find(body) if body else -1
+        doc_offset = body_pos if body_pos != -1 else 0
+
         for start, end, slice_text in _char_chunks(body, chunk_size, chunk_overlap):
-            raw = f"{paper_id}|{section_name}|{start}|{end}|{slice_text[:48]}"
+            doc_start = doc_offset + start
+            doc_end = doc_offset + end
+            raw = f"{paper_id}|{section_name}|{doc_start}|{doc_end}|{slice_text[:48]}"
             cid = hashlib.sha1(raw.encode()).hexdigest()[:16]
             breadcrumb = f"{title} > § {section_name}: "
             text_anchored = f"{breadcrumb}{slice_text}" if not slice_text.startswith(f"{title} >") else slice_text
@@ -199,8 +205,8 @@ def chunk_markdown(
                     title=title,
                     text=text_anchored,
                     section=section_name,
-                    char_start=start,
-                    char_end=end,
+                    char_start=doc_start,
+                    char_end=doc_end,
                     source_md=str(md_path.name),
                 )
             )

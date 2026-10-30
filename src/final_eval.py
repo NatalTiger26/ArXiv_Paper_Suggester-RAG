@@ -1139,6 +1139,7 @@ def archive_previous_eval(eval_dir: Path, results_dir: Path) -> Path | None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Unified final evaluation")
+    parser.add_argument("--all", action="store_true", help="Run complete evaluation suite")
     parser.add_argument("--retrieval-only", action="store_true")
     parser.add_argument("--with-generation", action="store_true")
     parser.add_argument(

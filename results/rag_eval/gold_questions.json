@@ -998,80 +998,80 @@
     "notes": "Nonexistent id"
   },
   {
-    "id": "pad_1",
-    "kind": "paraphrase",
-    "difficulty": "easy",
-    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 1).",
+    "id": "spectral_hash_01",
+    "kind": "factual",
+    "difficulty": "medium",
+    "question": "How does invariant spectral hashing construct bit vectors from an image saliency graph?",
     "expected_paper_ids": [
-      "1806.07572"
+      "1009.3029"
     ],
     "should_refuse": false,
-    "notes": ""
+    "notes": "Invariant spectral hashing"
   },
   {
-    "id": "pad_2",
-    "kind": "paraphrase",
-    "difficulty": "easy",
-    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 2).",
+    "id": "multimodal_interp_01",
+    "kind": "conceptual",
+    "difficulty": "medium",
+    "question": "What cognitive principles guide robust interpretation across speech and gesture modalities?",
     "expected_paper_ids": [
-      "1806.07572"
+      "1109.6361"
     ],
     "should_refuse": false,
-    "notes": ""
+    "notes": "Multimodal interpretation principles"
   },
   {
-    "id": "pad_3",
-    "kind": "paraphrase",
-    "difficulty": "easy",
-    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 3).",
+    "id": "nearest_attr_01",
+    "kind": "technical",
+    "difficulty": "medium",
+    "question": "How does nearest attribute clustering perform feature selection in high-dimensional classification?",
     "expected_paper_ids": [
-      "1806.07572"
+      "1201.5946"
     ],
     "should_refuse": false,
-    "notes": ""
+    "notes": "Feature selection with nearest attributes"
   },
   {
-    "id": "pad_4",
-    "kind": "paraphrase",
-    "difficulty": "easy",
-    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 4).",
+    "id": "author_attrib_01",
+    "kind": "factual",
+    "difficulty": "medium",
+    "question": "How are word network graph representations utilized for document authorship attribution?",
     "expected_paper_ids": [
-      "1806.07572"
+      "1311.2978"
     ],
     "should_refuse": false,
-    "notes": ""
+    "notes": "Authorship attribution network features"
   },
   {
-    "id": "pad_5",
-    "kind": "paraphrase",
-    "difficulty": "easy",
-    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 5).",
+    "id": "graph_match_01",
+    "kind": "technical",
+    "difficulty": "hard",
+    "question": "What are the trade-offs of continuous relaxation in weighted undirected graph matching?",
     "expected_paper_ids": [
-      "1806.07572"
+      "1401.7623"
     ],
     "should_refuse": false,
-    "notes": ""
+    "notes": "Exact and inexact graph matching"
   },
   {
-    "id": "pad_6",
-    "kind": "paraphrase",
-    "difficulty": "easy",
-    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 6).",
+    "id": "leverage_scores_01",
+    "kind": "theory",
+    "difficulty": "hard",
+    "question": "Under what theoretical conditions does deterministic leverage score column selection yield provable low-rank matrix approximations?",
     "expected_paper_ids": [
-      "1806.07572"
+      "1404.1530"
     ],
     "should_refuse": false,
-    "notes": ""
+    "notes": "Deterministic leverage scores"
   },
   {
-    "id": "pad_7",
-    "kind": "paraphrase",
-    "difficulty": "easy",
-    "question": "Explain the significance of the neural tangent kernel for understanding deep learning (variant 7).",
+    "id": "network_roles_01",
+    "kind": "technical",
+    "difficulty": "medium",
+    "question": "How does active discovery of structural network roles predict class labels of network nodes?",
     "expected_paper_ids": [
-      "1806.07572"
+      "1312.7258"
     ],
     "should_refuse": false,
-    "notes": ""
+    "notes": "Active network role discovery"
   }
 ]

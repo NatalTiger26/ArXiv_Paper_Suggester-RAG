@@ -1,13 +1,13 @@
 """
 Central project settings (paths + models).
 
-Embeddings — local default EmbeddingGemma 2; Cloud defaults to MiniLM:
+Embeddings: local default EmbeddingGemma 2, Cloud defaults to MiniLM:
   EMBEDDING_MODEL=google/embeddinggemma-2  # or all-MiniLM-L6-v2 on Cloud
-  EMBEDDING_DIM=0          # 0 = full model dim; try 512 / 256 / 128 to save cost
+  EMBEDDING_DIM=256        # 256 = Matryoshka mode, 0 = full model dim
 
-Generation — Gemini primary, OpenAI-compatible failsafe (e.g. NVIDIA):
+Generation: Gemini primary, OpenAI-compatible failsafe (e.g. NVIDIA):
   GEMINI_API_KEY=...
-  GEMINI_MODEL=gemini-3.8-flash
+  GEMINI_MODEL=gemini-2.0-flash
   FALLBACK_LLM_API_KEY=...           # or NVIDIA_API_KEY
   FALLBACK_LLM_BASE_URL=https://integrate.api.nvidia.com/v1
   FALLBACK_LLM_MODEL=meta/llama-3.1-8b-instruct
@@ -21,7 +21,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-# .env first (local). Streamlit Secrets must win on Cloud — do NOT use setdefault
+# .env first (local). Streamlit Secrets must win on Cloud. Do NOT use setdefault
 # after dotenv, or a stale GEMINI_MODEL in the environment shadows Secrets.
 load_dotenv(override=False)
 
@@ -199,7 +199,7 @@ EVAL_DIR = RESULTS_DIR / "rag_eval"
 def get_gemini_model() -> str:
     """Always re-read so late secret injection / env edits are visible."""
     _apply_streamlit_secrets(override=True)
-    return (os.getenv("GEMINI_MODEL") or "gemini-3.8-flash").strip()
+    return (os.getenv("GEMINI_MODEL") or "gemini-2.0-flash").strip()
 
 
 GEMINI_MODEL = get_gemini_model()

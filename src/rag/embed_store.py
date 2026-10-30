@@ -197,16 +197,18 @@ def get_collection(create: bool = True):
             if ("minilm" in w and "gemma" in g) or ("gemma" in w and "minilm" in g):
                 model_mismatch = True
         if dim_mismatch or model_mismatch:
+            if not create:
+                raise RuntimeError(
+                    f"[embed] Vector collection dimension or model mismatch: "
+                    f"collection has dim={got_dim or '?'}, model={got_model or '?'}, "
+                    f"requested dim={want_dim}, model={meta_model}. "
+                    f"Set EMBEDDING_DIM={got_dim} in .env or run python scripts/migrate_embeddings_to_256.py."
+                )
             print(
-                f"[embed] Index incompatible (collection dim={got_dim or '?'}, model={got_model or '?'}, "
-                f"want dim={want_dim}, model={meta_model}). Recreating collection.",
+                f"[embed] Warning: Existing collection {COLLECTION_NAME!r} has dim={got_dim}, requested dim={want_dim}.",
                 flush=True,
             )
-            try:
-                client.delete_collection(COLLECTION_NAME)
-            except Exception:
-                pass
-            existing = None
+            return existing
         else:
             return existing
 
@@ -404,12 +406,10 @@ def query_chunks(
     except Exception as e:
         msg = str(e).lower()
         if "dimension" in msg or "not found" in msg:
-            print(
-                f"[embed] Query failed ({e}). Resetting incompatible RAG collection.",
-                flush=True,
+            raise RuntimeError(
+                f"[embed] Query failed due to collection mismatch: {e}. "
+                f"Verify EMBEDDING_DIM in .env matches the indexed collection dimension."
             )
-            reset_rag_collection()
-            return []
         raise
 
     out = []
