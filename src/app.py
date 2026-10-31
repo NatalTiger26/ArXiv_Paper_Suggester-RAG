@@ -12,9 +12,11 @@ import re
 import os
 import sys
 import time
+import math
 import traceback
 from datetime import datetime
 from pathlib import Path
+import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = ROOT
@@ -2812,7 +2814,7 @@ with tab_nov:
                 m_val = float(prof.get("m") or 0.0)
                 delta_val = float(prof.get("Delta") or 0.0)
                 r2_val = float(prof.get("R2_plus") or 0.0)
-                focal_y = float(np.sqrt(max(0.0, delta_val)))
+                focal_y = float(math.sqrt(max(0.0, delta_val)))
                 viz_data = prof.get("viz_2d")
                 res_dist = viz_data.get("metrics", {}).get("residual_distance") if viz_data and viz_data.get("metrics") else float(max(0.0, 1.0 - r2_val) ** 0.5)
 
@@ -3206,7 +3208,7 @@ This platform integrates **Literature Discovery**, **Multi-Signal Ranking**, **C
 
     with st.expander("🔬 How 2D Novelty & Subspace Geometry Works", expanded=True):
         st.markdown(
-            """
+            r"""
 When a paper is scored relative to its cited references, its 768-dimensional embedding vector is projected onto a 2D orthonormal plane defined by its literature:
 
 - **Horizontal Axis ($e_1$):** Direction of the single closest foundational reference (the **Dominant Parent**, shown as a **Red Dot** at $(1, 0)$).
