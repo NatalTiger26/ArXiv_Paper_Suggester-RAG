@@ -743,13 +743,21 @@ def render_results_panel() -> None:
                 pid = r.get("id") or ""
                 title = (r.get("title") or "")[:120]
                 score = r.get("score", "")
-                if pid:
-                    st.markdown(
-                        f"**{i}. [{pid}](https://arxiv.org/abs/{pid})** — {title}"
-                    )
-                else:
-                    st.markdown(f"**{i}.** {title}")
-                st.caption(f"Score: {score}")
+                p_c1, p_c2 = st.columns([5, 1])
+                with p_c1:
+                    if pid:
+                        st.markdown(
+                            f"**{i}. [{pid}](https://arxiv.org/abs/{pid})**: {title}"
+                        )
+                    else:
+                        st.markdown(f"**{i}.** {title}")
+                    st.caption(f"Score: {score}")
+                with p_c2:
+                    if pid:
+                        if st.button("🔬 Inspect", key=f"inspect_subspace_{pid}_{i}", help="Inspect novelty subspace in Novelty tab"):
+                            st.session_state["novelty_target_id"] = pid
+                            st.session_state["trigger_nov_compute"] = True
+                            st.info(f"Target set to `{pid}`. Switch to Novelty & Graph Lab tab to view its geometry.")
     elif kind == "ingest":
         results = payload.get("results") or []
         ok_n = sum(1 for r in results if r.get("ok"))
@@ -2352,6 +2360,18 @@ Change a number → **Custom** (normalized to 1.00). Preset table: **Help**.
             pid = paper_id_from_row(r)
             if pid:
                 ids_order.append(pid)
+
+        # Multi-signal Score Decomposition Chart
+        if ranked:
+            try:
+                from src.novelty.viz import render_ranking_breakdown_chart
+
+                rank_chart = render_ranking_breakdown_chart(ranked, top_k=min(8, len(ranked)))
+                if rank_chart is not None:
+                    st.altair_chart(rank_chart, width="stretch")
+            except Exception as e:
+                st.caption(f"Score decomposition note: {e}")
+
         # Always render the single results panel (rank list)
         if st.session_state.get("results_panel", {}).get("kind") == "rank":
             render_results_panel()
@@ -2365,7 +2385,7 @@ Change a number → **Custom** (normalized to 1.00). Preset table: **Help**.
                     score = r.get("final_score", r.get("score", ""))
                     if pid:
                         st.markdown(
-                            f"**{i}. [{pid}](https://arxiv.org/abs/{pid})** — {title}"
+                            f"**{i}. [{pid}](https://arxiv.org/abs/{pid})**: {title}"
                         )
                     else:
                         st.markdown(f"**{i}.** {title}")
@@ -2659,7 +2679,7 @@ with tab_nov:
 
     nov_mode = st.segmented_control(
         "Lab view",
-        ["Novelty scoring", "Citation network hubs"],
+        ["Novelty scoring", "Dual-paper comparison", "Citation network hubs"],
         default="Novelty scoring",
         key="nov_lab_view_selector",
     )
@@ -2671,12 +2691,61 @@ with tab_nov:
             "spanned by its cited references."
         )
 
+        # Curated Demo Showcase Archetypes
+        with st.container(border=True):
+            st.markdown("#### 🎯 Curated Demo Archetypes")
+            st.caption(
+                "Select a canonical literature pattern to inspect its empirical geometry and subspace projection instantly:"
+            )
+            b_col1, b_col2, b_col3, b_col4 = st.columns(4)
+            with b_col1:
+                if st.button(
+                    "🌟 High Synergy Blend\n\n(Grad-CAM++)",
+                    key="arch_blend",
+                    help="1710.11063: Synthesizes multiple visual explanation lineage roots",
+                    width="stretch",
+                ):
+                    st.session_state["novelty_target_id"] = "1710.11063"
+                    st.session_state["trigger_nov_compute"] = True
+                    st.rerun()
+            with b_col2:
+                if st.button(
+                    "📐 Linear Extension\n\n(Facial Attributes)",
+                    key="arch_ext",
+                    help="1801.02480: Direct follow-up anchored closely to a single parent",
+                    width="stretch",
+                ):
+                    st.session_state["novelty_target_id"] = "1801.02480"
+                    st.session_state["trigger_nov_compute"] = True
+                    st.rerun()
+            with b_col3:
+                if st.button(
+                    "🚀 Paradigm Shift\n\n(GCN Outlier)",
+                    key="arch_outlier",
+                    help="1609.02907: Semi-Supervised Classification with Graph Convolutional Networks",
+                    width="stretch",
+                ):
+                    st.session_state["novelty_target_id"] = "1609.02907"
+                    st.session_state["trigger_nov_compute"] = True
+                    st.rerun()
+            with b_col4:
+                if st.button(
+                    "🛡️ Reference-Starved\n\n(Diagnostic Guard)",
+                    key="arch_starved",
+                    help="0801.1728: Sparse reference edge case triggering starvation guard",
+                    width="stretch",
+                ):
+                    st.session_state["novelty_target_id"] = "0801.1728"
+                    st.session_state["trigger_nov_compute"] = True
+                    st.rerun()
+
+        default_aid = st.session_state.get("novelty_target_id", "1806.07572")
         with st.form("nov_score_form"):
             col_id, col_opt = st.columns([2, 3])
             with col_id:
                 aid_input = st.text_input(
                     "arXiv paper ID",
-                    value=st.session_state.get("novelty_target_id", "1806.07572"),
+                    value=default_aid,
                     placeholder="e.g. 1806.07572, 2404.14082",
                     help="Paper to score relative to its references.",
                     key="nov_aid_input",
@@ -2692,146 +2761,393 @@ with tab_nov:
                 "Compute novelty profile", type="primary"
             )
 
-        if submit_score:
-            target_aid = paper_id_from_row({"id": aid_input or ""})
-            if not target_aid:
-                st.warning("Please provide a valid arXiv ID.")
-            else:
-                log(f"Novelty: scoring {target_aid} (allow_partial={allow_part})")
-                with st.spinner(f"Resolving references and computing embedding projection for {target_aid}…"):
+        trigger_auto = st.session_state.pop("trigger_nov_compute", False)
+        target_aid = paper_id_from_row({"id": aid_input or ""}) if (submit_score or trigger_auto) else None
+
+        if target_aid:
+            log(f"Novelty: scoring {target_aid} (allow_partial={allow_part})")
+            with st.spinner(f"Resolving references and computing embedding projection for {target_aid}…"):
+                try:
+                    from src.novelty.score import score_paper
+                    prof = score_paper(target_aid, allow_partial=allow_part)
+                except Exception as e:
+                    st.markdown(friendly_error(e))
+                    prof = None
+            if prof:
+                st.session_state["nov_last_prof"] = prof
+                st.session_state["nov_last_aid"] = target_aid
+        else:
+            prof = st.session_state.get("nov_last_prof")
+            target_aid = st.session_state.get("nov_last_aid", default_aid)
+
+        if prof:
+            if prof.get("ok"):
+                st.success(f"Novelty profile computed for `{target_aid}`")
+                typ = prof.get("classification") or prof.get("typology_hint", "unknown")
+                conf = prof.get("confidence")
+                typ_lower = typ.lower()
+                if "starved" in typ_lower or "uncertain" in typ_lower:
+                    badge_color = "red"
+                elif "blend" in typ_lower or "synergy" in typ_lower:
+                    badge_color = "violet"
+                elif "extension" in typ_lower or "linear" in typ_lower:
+                    badge_color = "blue"
+                elif "outlier" in typ_lower or "paradigm" in typ_lower:
+                    badge_color = "amber"
+                else:
+                    badge_color = "gray"
+
+                badge_label = typ.replace("_", " ").title()
+                if conf:
+                    badge_label = f"{badge_label} · {str(conf).title()} Confidence"
+                st.badge(badge_label, icon=":material/psychology:", color=badge_color)
+
+                warnings = prof.get("quality_warnings") or []
+                if warnings:
+                    for w in warnings:
+                        st.warning(f"**Geometric Quality Guard:** {w}")
+                elif prof.get("coverage_warning"):
+                    st.warning(f"**Coverage Notice:** {prof['coverage_warning']}")
+
+                m_val = float(prof.get("m") or 0.0)
+                delta_val = float(prof.get("Delta") or 0.0)
+                r2_val = float(prof.get("R2_plus") or 0.0)
+                focal_y = float(np.sqrt(max(0.0, delta_val)))
+                viz_data = prof.get("viz_2d")
+                res_dist = viz_data.get("metrics", {}).get("residual_distance") if viz_data and viz_data.get("metrics") else float(max(0.0, 1.0 - r2_val) ** 0.5)
+
+                c1, c2, c3, c4 = st.columns(4)
+                c1.metric(
+                    "Direct Similarity (m)",
+                    f"{m_val:.3f}",
+                    help="Cosine similarity to single closest foundational parent reference.",
+                )
+                c2.metric(
+                    "Synergy Blend (Δ)",
+                    f"{delta_val:.3f}",
+                    help="Multi-parent combination gain: R²₊ - m².",
+                )
+                c3.metric(
+                    "Cone Variance (R²₊)",
+                    f"{r2_val:.3f}",
+                    help="Total fraction of focal paper representation explained by non-negative reference cone.",
+                )
+                c4.metric(
+                    "Novelty Residual (√1-R²₊)",
+                    f"{res_dist:.3f}",
+                    help="Radial distance outside prior art references to unit horizon ‖x‖ = 1.",
+                )
+
+                # Mathematical Decomposition Card
+                with st.container(border=True):
+                    st.markdown("#### 🔬 Moreau-Cone Geometric Decomposition")
+                    dom_id = (viz_data.get("metrics", {}).get("dominant_parent_id") if viz_data else None) or prof.get("dominant_parent_id") or "Dominant Ref"
+                    st.latex(
+                        rf"\mathbf{{x}}_{{\text{{focal}}}} \approx {m_val:.3f}\,\mathbf{{e}}_1 + {focal_y:.3f}\,\mathbf{{e}}_2 + {res_dist:.3f}\,\mathbf{{e}}_{{\perp}}"
+                    )
+                    st.caption(
+                        rf"Orthonormal coordinates: dominant parent axis $\mathbf{{e}}_1$ ({dom_id}), "
+                        rf"orthogonal synergy dimension $\mathbf{{e}}_2$ ($\sqrt{{\Delta}} = {focal_y:.3f}$), "
+                        rf"and out-of-cone novelty residual $\mathbf{{e}}_{{\perp}}$ ($\sqrt{{1 - R^2_+}} = {res_dist:.3f}$)."
+                    )
+
+                # Interactive Layer Controls
+                st.markdown("##### Visual Subspace Controls")
+                t_c1, t_c2, t_c3, t_c4 = st.columns(4)
+                with t_c1:
+                    show_cone = st.checkbox("Reference cone rays", value=True, key="nov_toggle_cone")
+                with t_c2:
+                    show_horizon = st.checkbox("Unit sphere horizon", value=True, key="nov_toggle_horizon")
+                with t_c3:
+                    show_zones = st.checkbox("Discovery zone labels", value=True, key="nov_toggle_zones")
+                with t_c4:
+                    show_callouts = st.checkbox("On-plot callouts", value=True, key="nov_toggle_callouts")
+
+                if viz_data and viz_data.get("ok"):
                     try:
-                        from src.novelty.score import score_paper
-                        prof = score_paper(target_aid, allow_partial=allow_part)
+                        from src.novelty.viz import render_altair_subspace_chart
+
+                        chart = render_altair_subspace_chart(
+                            viz_data,
+                            show_cone=show_cone,
+                            show_labels=show_callouts,
+                            show_zones=show_zones,
+                            width="stretch",
+                        )
+                        if chart is not None:
+                            st.altair_chart(chart, width="stretch")
                     except Exception as e:
-                        st.markdown(friendly_error(e))
-                        prof = None
+                        st.caption(f"Subspace chart note: {e}")
 
-                if prof:
-                    if prof.get("ok"):
-                        st.success(f"Novelty profile computed for `{target_aid}`")
-                        typ = prof.get("typology_hint", "unknown")
-                        badge_color = "violet" if "blend" in typ else ("blue" if "extension" in typ else "gray")
-                        st.badge(typ.replace("_", " ").title(), icon=":material/psychology:", color=badge_color)
-
-                        if prof.get("coverage_warning"):
-                            st.warning(f"**Coverage Notice:** {prof['coverage_warning']}")
-
-                        c1, c2, c3, c4 = st.columns(4)
-                        c1.metric(
-                            "Direct Similarity (m)",
-                            f"{float(prof.get('m') or 0.0):.3f}",
-                            help="Cosine similarity to single closest foundational parent reference.",
-                        )
-                        c2.metric(
-                            "Synergy Blend (Δ)",
-                            f"{float(prof.get('Delta') or 0.0):.3f}",
-                            help="Multi-parent combination gain: R²₊ - m².",
-                        )
-                        c3.metric(
-                            "Cone Variance (R²₊)",
-                            f"{float(prof.get('R2_plus') or 0.0):.3f}",
-                            help="Total fraction of focal paper representation explained by non-negative reference cone.",
-                        )
-                        viz_data = prof.get("viz_2d")
-                        res_dist = viz_data.get("metrics", {}).get("residual_distance") if viz_data and viz_data.get("metrics") else (max(0.0, 1.0 - float(prof.get("R2_plus") or 0.0)) ** 0.5)
-                        c4.metric(
-                            "Novelty Residual (√1-R²₊)",
-                            f"{float(res_dist):.3f}",
-                            help="Radial distance outside prior art references to unit horizon ‖x‖ = 1.",
-                        )
-
-                        with st.expander("💡 How to Read This Subspace & Metrics", expanded=False):
-                            st.markdown(
-                                """
+                with st.expander("💡 How to Read This Subspace & Metrics", expanded=False):
+                    st.markdown(
+                        r"""
 - **Direct Similarity ($m$):** How closely the paper mirrors its single most influential cited parent.
 - **Synergy Blend ($\Delta$):** The non-linear synthesis gain ($R^2_+ - m^2$) from combining multiple distinct lineages.
 - **Cone Variance ($R^2_+$):** The total fraction of the paper's representation accounted for by prior art references.
 - **Novelty Residual ($\sqrt{1 - R^2_+}$):** The radial distance outside the reference cone to the unit circle $\|x\|=1$. Higher values indicate greater creative departure from existing literature.
 - **Dominant Parent ($e_1$):** Direction of the closest foundational paper placed at $(1, 0)$.
 - **Blend Direction ($e_2$):** Orthogonal dimension capturing cross-reference synthesis.
-                                """
-                            )
+                        """
+                    )
 
-                        if viz_data and viz_data.get("ok"):
-                            try:
-                                from src.novelty.viz import render_altair_subspace_chart
+                stats = prof.get("stats") or {}
+                n_refs_total = stats.get("n_refs") or stats.get("n_raw", 0)
+                n_with_abs = stats.get("n_with_abstract") or stats.get("n_abstracts", 0)
+                n_emb = stats.get("n_refs_embedded") or stats.get("n_total", 0)
+                d_eff_val = prof.get("d_eff_refs") or prof.get("d_eff_cache") or prof.get("d_eff", "n/a")
+                frac_abs = stats.get("frac_with_abstract", 0.0)
 
-                                chart = render_altair_subspace_chart(viz_data)
-                                if chart is not None:
-                                    st.altair_chart(chart, use_container_width=True)
-                            except Exception as e:
-                                st.caption(f"Subspace chart note: {e}")
+                with st.expander("Reference & embedding details", expanded=False):
+                    st.markdown(
+                        f"- **Total references resolved:** {n_refs_total}\n"
+                        f"- **References embedded:** {n_emb}\n"
+                        f"- **Abstracts available:** {n_with_abs} ({frac_abs:.1%})\n"
+                        f"- **Embedding model:** `{prof.get('model', 'default')}` (dim={prof.get('dim', 'auto')})\n"
+                        f"- **Effective dimensionality ($d_{{eff}}$):** {f'{d_eff_val:.2f}' if isinstance(d_eff_val, (int, float)) else d_eff_val}"
+                    )
 
-                        stats = prof.get("stats") or {}
-                        n_refs_total = stats.get("n_refs") or stats.get("n_raw", 0)
-                        n_with_abs = stats.get("n_with_abstract") or stats.get("n_abstracts", 0)
-                        n_emb = stats.get("n_refs_embedded") or stats.get("n_total", 0)
-                        d_eff_val = prof.get("d_eff_refs") or prof.get("d_eff_cache") or prof.get("d_eff", "n/a")
-                        frac_abs = stats.get("frac_with_abstract", 0.0)
-
-                        with st.expander("Reference & embedding details", expanded=False):
-                            st.markdown(
-                                f"- **Total references resolved:** {n_refs_total}\n"
-                                f"- **References embedded:** {n_emb}\n"
-                                f"- **Abstracts available:** {n_with_abs} ({frac_abs:.1%})\n"
-                                f"- **Embedding model:** `{prof.get('model', 'default')}` (dim={prof.get('dim', 'auto')})\n"
-                                f"- **Effective dimensionality ($d_{{eff}}$):** {f'{d_eff_val:.2f}' if isinstance(d_eff_val, (int, float)) else d_eff_val}"
-                            )
-
-                        attr_list = prof.get("attribution") or []
-                        if attr_list:
-                            with st.expander("Foundational parent references (attribution weights)", expanded=True):
-                                st.caption("Top references explaining the focal paper's placement in the embedding cone (NNLS weights):")
-                                attr_rows = []
-                                missing_parents = []
-                                for item in attr_list[:12]:
-                                    rid = item.get("paper_id") or item.get("ref_id") or item.get("canonical_id") or ""
-                                    title = item.get("title") or rid
-                                    aid_clean = rid.replace("arxiv:", "") if "arxiv:" in rid else (rid if re.match(r"^\d{4}\.\d{4,5}", rid) else "")
-                                    in_rag_status = "In RAG" if aid_clean and (PROJECT_ROOT / "data" / "markdown" / f"{aid_clean}.md").exists() else "Missing"
-                                    if in_rag_status == "Missing" and aid_clean:
-                                        missing_parents.append(aid_clean)
-                                    url = item.get("url") or (f"https://arxiv.org/abs/{aid_clean}" if aid_clean else f"https://www.semanticscholar.org/paper/{rid.replace('s2:', '')}")
-                                    provider = item.get("provider") or ("arXiv" if aid_clean else "Semantic Scholar")
-                                    display_id = (aid_clean if aid_clean else (rid[:16] + "…" if len(rid) > 20 else rid))
-                                    attr_rows.append({
-                                        "Reference Title": title,
-                                        "Source": provider,
-                                        "Paper ID": display_id,
-                                        "Weight (λ)": f"{float(item.get('weight') or 0.0):.4f}",
-                                        "Attribution Share": f"{(float(item.get('share') or 0.0) * 100):.1f}%",
-                                        "Paper Link": url,
-                                        "Full-Text Status": in_rag_status,
-                                    })
-                                st.dataframe(
-                                    attr_rows,
-                                    hide_index=True,
-                                    width="stretch",
-                                    column_config={
-                                        "Paper Link": st.column_config.LinkColumn("Paper Link", display_text="Open ↗")
-                                    },
-                                )
-
-                                if missing_parents:
-                                    if st.button(f"📥 Ingest {len(missing_parents)} missing foundational parents into RAG", key="ingest_missing_parents_btn"):
-                                        with st.spinner(f"Ingesting foundational parents: {missing_parents}…"):
-                                            from src.rag.ingest import ingest_papers
-                                            res_parents = ingest_papers(missing_parents)
-                                            st.success(f"Ingested {len(res_parents)} parent papers into RAG!")
-                                            clear_data_caches()
-                                            st.rerun()
-                    else:
-                        st.error(
-                            prof.get("message")
-                            or prof.get("error")
-                            or "Could not compute novelty profile."
+                attr_list = prof.get("attribution") or []
+                if attr_list:
+                    with st.expander("Foundational parent references (attribution weights)", expanded=True):
+                        st.caption("Top references explaining the focal paper's placement in the embedding cone (NNLS weights):")
+                        attr_rows = []
+                        missing_parents = []
+                        for item in attr_list[:12]:
+                            rid = item.get("paper_id") or item.get("ref_id") or item.get("canonical_id") or ""
+                            title = item.get("title") or rid
+                            aid_clean = rid.replace("arxiv:", "") if "arxiv:" in rid else (rid if re.match(r"^\d{4}\.\d{4,5}", rid) else "")
+                            in_rag_status = "In RAG" if aid_clean and (PROJECT_ROOT / "data" / "markdown" / f"{aid_clean}.md").exists() else "Missing"
+                            if in_rag_status == "Missing" and aid_clean:
+                                missing_parents.append(aid_clean)
+                            url = item.get("url") or (f"https://arxiv.org/abs/{aid_clean}" if aid_clean else f"https://www.semanticscholar.org/paper/{rid.replace('s2:', '')}")
+                            provider = item.get("provider") or ("arXiv" if aid_clean else "Semantic Scholar")
+                            display_id = (aid_clean if aid_clean else (rid[:16] + "…" if len(rid) > 20 else rid))
+                            share_val = float(item.get("share") or 0.0)
+                            weight_val = float(item.get("weight") or 0.0)
+                            attr_rows.append({
+                                "Reference Title": title,
+                                "Source": provider,
+                                "Paper ID": display_id,
+                                "Weight (λ)": round(weight_val, 4),
+                                "Attribution Share": round(share_val, 4),
+                                "Paper Link": url,
+                                "Full-Text Status": in_rag_status,
+                            })
+                        st.dataframe(
+                            attr_rows,
+                            hide_index=True,
+                            width="stretch",
+                            column_config={
+                                "Paper Link": st.column_config.LinkColumn("Paper Link", display_text="Open ↗"),
+                                "Attribution Share": st.column_config.ProgressColumn(
+                                    "Attribution Share",
+                                    format="%.1f%%",
+                                    min_value=0.0,
+                                    max_value=1.0,
+                                ),
+                                "Weight (λ)": st.column_config.NumberColumn("Weight (λ)", format="%.4f"),
+                            },
                         )
-                        stats = prof.get("stats") or {}
-                        if stats:
-                            st.caption(
-                                f"References found: {stats.get('n_refs', 0)} "
-                                f"(with abstract: {stats.get('n_with_abstract', 0)})"
-                            )
+
+                        if missing_parents:
+                            if st.button(f"📥 Ingest {len(missing_parents)} missing foundational parents into RAG", key="ingest_missing_parents_btn"):
+                                with st.spinner(f"Ingesting foundational parents: {missing_parents}…"):
+                                    from src.rag.ingest import ingest_papers
+                                    res_parents = ingest_papers(missing_parents)
+                                    st.success(f"Ingested {len(res_parents)} parent papers into RAG!")
+                                    clear_data_caches()
+                                    st.rerun()
+            else:
+                st.error(
+                    prof.get("message")
+                    or prof.get("error")
+                    or "Could not compute novelty profile."
+                )
+                stats = prof.get("stats") or {}
+                if stats:
+                    st.caption(
+                        f"References found: {stats.get('n_refs', 0)} "
+                        f"(with abstract: {stats.get('n_with_abstract', 0)})"
+                    )
+
+    elif nov_mode == "Dual-paper comparison":
+        st.markdown(
+            "Compare two research papers directly in geometric subspace. Visualizes their "
+            "evolution trajectory vector, synergy shift, and shared vs unique reference lineages."
+        )
+
+        preset_pairs = {
+            "Grad-CAM vs Grad-CAM++ (Synergy Evolution)": ("1610.02391", "1710.11063"),
+            "ResNet vs DenseNet (Architecture Evolution)": ("1512.03385", "1608.06993"),
+            "Word2Vec vs GloVe (Embedding Formulation Shift)": ("1301.3781", "1405.3531"),
+            "Custom Paper Pair": ("", ""),
+        }
+
+        chosen_pair_key = st.selectbox(
+            "Comparison Archetypes",
+            list(preset_pairs.keys()),
+            key="comp_preset_select",
+        )
+        def_a, def_b = preset_pairs[chosen_pair_key]
+
+        with st.form("dual_paper_compare_form"):
+            c_a, c_b = st.columns(2)
+            with c_a:
+                aid_a_in = st.text_input(
+                    "Paper A arXiv ID (Baseline)",
+                    value=def_a or "1610.02391",
+                    placeholder="e.g. 1610.02391",
+                    key="comp_aid_a",
+                )
+            with c_b:
+                aid_b_in = st.text_input(
+                    "Paper B arXiv ID (Comparison)",
+                    value=def_b or "1710.11063",
+                    placeholder="e.g. 1710.11063",
+                    key="comp_aid_b",
+                )
+            allow_part_comp = st.checkbox(
+                "Allow partial abstract coverage for references",
+                value=True,
+                key="comp_allow_part",
+            )
+            submit_comp = st.form_submit_button("Compare Subspace Trajectories", type="primary")
+
+        if submit_comp:
+            aid_a = paper_id_from_row({"id": aid_a_in or ""})
+            aid_b = paper_id_from_row({"id": aid_b_in or ""})
+            if not aid_a or not aid_b:
+                st.warning("Please provide valid arXiv IDs for both papers.")
+            else:
+                with st.spinner(f"Scoring both papers ({aid_a} and {aid_b}) and computing comparative trajectory…"):
+                    try:
+                        from src.novelty.score import score_paper
+                        prof_a = score_paper(aid_a, allow_partial=allow_part_comp)
+                        prof_b = score_paper(aid_b, allow_partial=allow_part_comp)
+                        st.session_state["comp_last_prof"] = {
+                            "prof_a": prof_a,
+                            "prof_b": prof_b,
+                            "aid_a": aid_a,
+                            "aid_b": aid_b,
+                        }
+                    except Exception as e:
+                        st.markdown(friendly_error(e))
+
+        cached_comp = st.session_state.get("comp_last_prof")
+        if cached_comp:
+            pa = cached_comp["prof_a"]
+            pb = cached_comp["prof_b"]
+            aid_a = cached_comp["aid_a"]
+            aid_b = cached_comp["aid_b"]
+
+            if pa and pb and pa.get("ok") and pb.get("ok"):
+                title_a = (pa.get("title") or aid_a)[:40]
+                title_b = (pb.get("title") or aid_b)[:40]
+                proj_a = pa.get("viz_2d") or {}
+                proj_b = pb.get("viz_2d") or {}
+
+                try:
+                    from src.novelty.viz import render_altair_comparison_chart
+                    comp_chart = render_altair_comparison_chart(
+                        proj_a,
+                        proj_b,
+                        title_a=f"{aid_a}: {title_a}",
+                        title_b=f"{aid_b}: {title_b}",
+                        height=500,
+                    )
+                    if comp_chart is not None:
+                        st.altair_chart(comp_chart, width="stretch")
+                except Exception as e:
+                    st.caption(f"Comparison chart note: {e}")
+
+                # Comparative Delta Metrics Table
+                st.markdown("#### 📊 Comparative Metric Trajectory")
+                mA = float(pa.get("m") or 0.0)
+                mB = float(pb.get("m") or 0.0)
+                deltaA = float(pa.get("Delta") or 0.0)
+                deltaB = float(pb.get("Delta") or 0.0)
+                r2A = float(pa.get("R2_plus") or 0.0)
+                r2B = float(pb.get("R2_plus") or 0.0)
+                resA = max(0.0, 1.0 - r2A) ** 0.5
+                resB = max(0.0, 1.0 - r2B) ** 0.5
+                typA = pa.get("classification") or pa.get("typology_hint", "unknown")
+                typB = pb.get("classification") or pb.get("typology_hint", "unknown")
+                refsA = (pa.get("stats") or {}).get("n_refs", 0)
+                refsB = (pb.get("stats") or {}).get("n_refs", 0)
+
+                delta_rows = [
+                    {
+                        "Geometric Metric": "Direct Anchor Similarity (m)",
+                        f"Paper A ({aid_a})": f"{mA:.3f}",
+                        f"Paper B ({aid_b})": f"{mB:.3f}",
+                        "Evolution Shift (B - A)": f"{mB - mA:+.3f}",
+                    },
+                    {
+                        "Geometric Metric": "Synergy Blend Gain (Δ)",
+                        f"Paper A ({aid_a})": f"{deltaA:.3f}",
+                        f"Paper B ({aid_b})": f"{deltaB:.3f}",
+                        "Evolution Shift (B - A)": f"{deltaB - deltaA:+.3f}",
+                    },
+                    {
+                        "Geometric Metric": "Cone Variance (R²₊)",
+                        f"Paper A ({aid_a})": f"{r2A:.3f}",
+                        f"Paper B ({aid_b})": f"{r2B:.3f}",
+                        "Evolution Shift (B - A)": f"{r2B - r2A:+.3f}",
+                    },
+                    {
+                        "Geometric Metric": "Novelty Residual (√1-R²₊)",
+                        f"Paper A ({aid_a})": f"{resA:.3f}",
+                        f"Paper B ({aid_b})": f"{resB:.3f}",
+                        "Evolution Shift (B - A)": f"{resB - resA:+.3f}",
+                    },
+                    {
+                        "Geometric Metric": "Resolved References",
+                        f"Paper A ({aid_a})": str(refsA),
+                        f"Paper B ({aid_b})": str(refsB),
+                        "Evolution Shift (B - A)": f"{refsB - refsA:+d}",
+                    },
+                    {
+                        "Geometric Metric": "Typology Classification",
+                        f"Paper A ({aid_a})": typA.replace("_", " ").title(),
+                        f"Paper B ({aid_b})": typB.replace("_", " ").title(),
+                        "Evolution Shift (B - A)": "Shift" if typA != typB else "Identical",
+                    },
+                ]
+                st.dataframe(delta_rows, width="stretch", hide_index=True)
+
+                # Reference Lineage Overlap Analysis
+                st.markdown("#### 🔗 Cited Literature Lineage Overlap")
+                set_a = set()
+                for item in (pa.get("attribution") or []):
+                    rid = item.get("paper_id") or item.get("ref_id") or item.get("canonical_id")
+                    if rid:
+                        set_a.add(str(rid))
+                set_b = set()
+                for item in (pb.get("attribution") or []):
+                    rid = item.get("paper_id") or item.get("ref_id") or item.get("canonical_id")
+                    if rid:
+                        set_b.add(str(rid))
+
+                common_refs = sorted(set_a.intersection(set_b))
+                unique_a = sorted(set_a - set_b)
+                unique_b = sorted(set_b - set_a)
+
+                o1, o2, o3 = st.columns(3)
+                o1.metric("Shared Foundational Parents", f"{len(common_refs)}")
+                o2.metric(f"Unique to {aid_a}", f"{len(unique_a)}")
+                o3.metric(f"Unique to {aid_b}", f"{len(unique_b)}")
+
+                if common_refs:
+                    with st.expander(f"Shared Literature Ancestors ({len(common_refs)})", expanded=False):
+                        for cr in common_refs:
+                            clean_cr = cr.replace("arxiv:", "")
+                            st.markdown(f"- [`{cr}`](https://arxiv.org/abs/{clean_cr})" if clean_cr.replace(".", "").isdigit() else f"- `{cr}`")
+            else:
+                if pa and not pa.get("ok"):
+                    st.error(f"Paper A ({aid_a}) error: {pa.get('error') or pa.get('message')}")
+                if pb and not pb.get("ok"):
+                    st.error(f"Paper B ({aid_b}) error: {pb.get('error') or pb.get('message')}")
 
     elif nov_mode == "Citation network hubs":
         st.markdown(

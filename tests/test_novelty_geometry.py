@@ -169,6 +169,87 @@ class TestNoveltyGeometry(unittest.TestCase):
             self.assertEqual(refs[0]["arxiv_id"], "1706.03762")
             self.assertEqual(refs[1]["doi"], "10.18653/v1/N19-1423")
 
+    def test_render_altair_subspace_chart(self):
+        from src.novelty.viz import project_subspace_2d, render_altair_subspace_chart
+        d = 4
+        x = np.array([0.7, 0.4, 0.5, 0.0])
+        Y = np.eye(d)
+        proj = project_subspace_2d(
+            x=x,
+            Y=Y,
+            ref_ids=["ref_0", "ref_1", "ref_2", "ref_3"],
+            m=0.7,
+            r2_plus=0.65,
+            delta=0.16,
+            lam=np.array([0.7, 0.4, 0.0, 0.0]),
+        )
+        chart = render_altair_subspace_chart(proj)
+        self.assertIsNotNone(chart)
+        spec = chart.to_dict()
+        self.assertIn("layer", spec)
+        self.assertTrue(len(spec["layer"]) >= 3)
+
+    def test_render_altair_comparison_chart(self):
+        from src.novelty.viz import project_subspace_2d, render_altair_comparison_chart
+        d = 4
+        x1 = np.array([0.8, 0.2, 0.5, 0.0])
+        x2 = np.array([0.6, 0.6, 0.4, 0.0])
+        Y = np.eye(d)
+        p1 = project_subspace_2d(x=x1, Y=Y, ref_ids=["r0", "r1", "r2", "r3"], m=0.8, r2_plus=0.68, delta=0.04, lam=np.array([0.8, 0.2, 0.0, 0.0]))
+        p2 = project_subspace_2d(x=x2, Y=Y, ref_ids=["r0", "r1", "r2", "r3"], m=0.6, r2_plus=0.72, delta=0.36, lam=np.array([0.6, 0.6, 0.0, 0.0]))
+        comp_chart = render_altair_comparison_chart(p1, p2, title_a="Paper A", title_b="Paper B")
+        self.assertIsNotNone(comp_chart)
+        spec = comp_chart.to_dict()
+        self.assertIn("layer", spec)
+        self.assertTrue(len(spec["layer"]) >= 3)
+
+    def test_render_ranking_breakdown_chart(self):
+        from src.novelty.viz import render_ranking_breakdown_chart
+        mock_ranked = [
+            {
+                "paper_id": "1706.03762",
+                "arxiv_id": "1706.03762",
+                "title": "Attention Is All You Need",
+                "final_score": 0.85,
+                "contribution": {
+                    "embedding": 0.40,
+                    "recency": 0.15,
+                    "citation": 0.20,
+                    "pagerank": 0.10,
+                },
+                "signals": {
+                    "embedding": 0.80,
+                    "recency": 0.30,
+                    "citation": 0.95,
+                    "pagerank": 0.90,
+                },
+            },
+            {
+                "paper_id": "1810.04805",
+                "arxiv_id": "1810.04805",
+                "title": "BERT: Pre-training of Deep Bidirectional Transformers",
+                "final_score": 0.78,
+                "contribution": {
+                    "embedding": 0.35,
+                    "recency": 0.18,
+                    "citation": 0.15,
+                    "pagerank": 0.10,
+                },
+                "signals": {
+                    "embedding": 0.70,
+                    "recency": 0.36,
+                    "citation": 0.85,
+                    "pagerank": 0.88,
+                },
+            },
+        ]
+        chart = render_ranking_breakdown_chart(mock_ranked, top_k=2)
+        self.assertIsNotNone(chart)
+        spec = chart.to_dict()
+        self.assertEqual(spec["mark"]["type"], "bar")
+        self.assertIn("encoding", spec)
+
 
 if __name__ == "__main__":
     unittest.main()
+
